@@ -10,6 +10,9 @@ pages:
     - Reviews: review.md
     - Deep Learning Wiki:
       - Introduction: deep_learning/intro.md
+    - News:
+      - Welcome: news/news.md
+      - Featured on PyTorch Website 2018: news/deep_learning_wizard_1y_2018_06_01.md
 
 # Configuration
 theme:
