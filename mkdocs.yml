@@ -29,6 +29,7 @@ theme:
   font:
     text: 'Roboto'
     code: 'Roboto Mono'
+  favicon: 'assets/images/favicon.ico'
 
 # Extensions
 markdown_extensions:
