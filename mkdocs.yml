@@ -1,0 +1,77 @@
+# Project information
+site_name: 'Deep Learning Wizard'
+site_description: 'A Material Design theme for MkDocs'
+site_author: 'Ritchie Ng'
+site_url: 'https://www.deeplearningwizard.com/'
+
+# Navigation
+pages:
+    - Home: index.md
+    - Reviews: review.md
+    - Deep Learning Wiki:
+      - Introduction: deep_learning/intro.md
+
+# Configuration
+theme:
+  name: 'material'
+  custom_dir: 'theme'
+  language: 'en'
+  feature:
+    tabs: true
+  logo:
+    icon: 'whatshot'
+  palette:
+    primary: 'indigo'
+    accent: 'indigo'
+  font:
+    text: 'Roboto'
+    code: 'Roboto Mono'
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - codehilite:
+      linenums: true
+  - footnotes
+  - meta
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+# Equations
+extra_javascript:
+  - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
+
+# Social
+extra:
+  social:
+    - type: 'github'
+      link: 'https://github.com/ritchieng'
+    - type: 'facebook'
+      link: 'https://www.facebook.com/DeepLearningWizard/'
+    - type: 'linkedin'
+      link: 'https://www.linkedin.com/company/deeplearningwizard/'
+
+
+# Google Analytics
+google_analytics:
+  - 'UA-122083328-1'
+  - 'auto'
+
+# Copyright
+copyright: 'Copyright &copy; 2018 Deep Learning Wizard'
