@@ -449,60 +449,66 @@ RuntimeError: can't convert a given np.ndarray to a tensor - it has an invalid t
 
 ### Torch to NumPy
 
+!!! note "Create PyTorch tensor of 1's"
+    You would realize this defaults to a float tensor by default if you do this.
 
-```python
-torch_tensor = torch.ones(2, 2)
-```
-
-
-```python
-type(torch_tensor)
-```
+    ```python
+    torch_tensor = torch.ones(2, 2)
+    ```
 
 
-
-
-    torch.FloatTensor
-
-
+    ```python
+    type(torch_tensor)
+    ```
 
 
 ```python
-torch_to_numpy = torch_tensor.numpy()
+torch.FloatTensor
 ```
+
+    
+!!! note "Convert tensor to numpy"
+    It's as simple as this.
+    
+    ```python
+    torch_to_numpy = torch_tensor.numpy()
+    ```
+
+
+    ```python
+    type(torch_to_numpy)
+    ```
+
 
 
 ```python
-type(torch_to_numpy)
+# Wowza, we did it.
+numpy.ndarray
 ```
-
-
-
-
-    numpy.ndarray
-
-
 
 ### 1.4 Tensors on CPU vs GPU
 
-
-```python
-# CPU
-tensor_cpu = torch.ones(2, 2)
-```
-
-
-```python
-# CPU to GPU
-if torch.cuda.is_available():
-    tensor_cpu.cuda()
-```
-
-
-```python
-# GPU to CPU
-tensor_cpu.cpu()
-```
+!!! note "Move tensor to CPU and back"
+    This by default creates a tensor on CPU. You do not need to do anything.
+    ```python
+    # CPU
+    tensor_cpu = torch.ones(2, 2)
+    ```
+    
+    If you would like to send a tensor to your GPU, you just need to do a simple `.cuda()`
+    
+    ```python
+    # CPU to GPU
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    tensor_cpu.to(device)
+    ```
+    
+    And if you want to move that tensor on the GPU back to the CPU, just do the following.
+    
+    ```python
+    # GPU to CPU
+    tensor_cpu.cpu()
+    ```
 
 ### 1.5 Tensor Operations
 
