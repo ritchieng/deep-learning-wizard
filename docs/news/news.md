@@ -1,6 +1,6 @@
 # Welcome to our Blog
 
-Here, we post news related to Deep Learning Wizard's releases, features and achievements :poop:.
+Here, we post news related to Deep Learning Wizard's releases, features and achievements :ghost:
 
 
 ## Notable News

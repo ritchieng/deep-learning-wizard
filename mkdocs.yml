@@ -7,9 +7,11 @@ site_url: 'https://www.deeplearningwizard.com/'
 # Navigation
 pages:
     - Home: index.md
+    - Supporters: supporters.md
     - Reviews: review.md
     - Deep Learning Wiki:
       - Introduction: deep_learning/intro.md
+      - PyTorch Fundamentals - Matrices: deep_learning/practical_pytorch/pytorch_matrices.md
     - News:
       - Welcome: news/news.md
       - Featured on PyTorch Website 2018: news/deep_learning_wizard_1y_2018_06_01.md
