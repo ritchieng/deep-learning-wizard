@@ -23,47 +23,45 @@
 ### 1.1 Creating Matrices
 
 
+!!! note "Create list"
+    ```python
+    # Creating a 2x2 array
+    arr = [[1, 2], [3, 4]]
+    print(arr)
+    ```
+
 ```python
-import numpy as np
-```
-
-
-```python
-# Creating a 2x2 array
-arr = [[1, 2], [3, 4]]
-print(arr)
-```
-
-```python tab="Output"
 [[1, 2], [3, 4]]
 ```
 
+!!! note "Create numpy array via list"
+    ```python
+    import numpy as np
+    ```
+    ```python
+    # Convert to NumPy
+    np.array(arr)
+    ```
 
 ```python
-# Convert to NumPy
-np.array(arr)
-```
-
-
-```python tab="Output"
 
 array([[1, 2],
        [3, 4]])
 
 ```
 
+!!! note "Convert numpy array to PyTorch tensor"
+    ```python
+    import torch
+    ```
+    
+    
+    ```python
+    # Convert to PyTorch Tensor
+    torch.Tensor(arr)
+    ```
 
 ```python
-import torch
-```
-
-
-```python
-# Convert to PyTorch Tensor
-torch.Tensor(arr)
-```
-
-```python tab="Output"
 1  2
 3  4
 [torch.FloatTensor of size 2x2]
@@ -73,381 +71,372 @@ torch.Tensor(arr)
 ### 1.2 Create Matrices with Default Values
 
 
-```python
-np.ones((2, 2))
-```
+!!! note "Create 2x2 numpy array of 1's"
+    ```python
+    np.ones((2, 2))
+    ```
 
-```python tab="Output"
+```python
 array([[ 1.,  1.],
        [ 1.,  1.]])
 
 ```
 
+!!! note "Create 2x2 torch tensor of 1's"
 
+    ```python
+    torch.ones((2, 2))
+    ```
 
-
-
-
-
-```python
-torch.ones((2, 2))
+```
+ 1  1
+ 1  1
+[torch.FloatTensor of size 2x2]
 ```
 
 
+!!! note "Create 2x2 numpy array of random numbers"
+    ```python
+    np.random.rand(2, 2)
+    ```
 
+```python
+array([[ 0.68270631,  0.87721678],
+       [ 0.07420986,  0.79669375]])
 
-    
-     1  1
-     1  1
-    [torch.FloatTensor of size 2x2]
+```
 
+!!! note "Create 2x2 PyTorch tensor of random numbers"
 
+    ```python
+    torch.rand(2, 2)
+    ```
 
 
 ```python
-np.random.rand(2, 2)
+0.3900  0.8268
+0.3888  0.5914
+[torch.FloatTensor of size 2x2]
+
 ```
-
-
-
-
-    array([[ 0.68270631,  0.87721678],
-           [ 0.07420986,  0.79669375]])
-
-
-
-
-```python
-torch.rand(2, 2)
-```
-
-
-
-
-    
-     0.3900  0.8268
-     0.3888  0.5914
-    [torch.FloatTensor of size 2x2]
-
-
 
 ### 1.3 Seeds for Reproducibility
 
-
-```python
-# Seed
-np.random.seed(0)
-np.random.rand(2, 2)
-```
-
-
-
-
-    array([[ 0.5488135 ,  0.71518937],
-           [ 0.60276338,  0.54488318]])
-
-
+!!! question "Why do we need seeds?"
+    We need seeds to enable reproduction of experimental results. This becomes critical later on where you can easily let people reproduce your code's output exactly as you've produced.
+    
+!!! note "Create seed to enable fixed numbers for random number generation "
+    ```python
+    # Seed
+    np.random.seed(0)
+    np.random.rand(2, 2)
+    ```
 
 
 ```python
-# Seed
-np.random.seed(0)
-np.random.rand(2, 2)
+array([[ 0.5488135 ,  0.71518937],
+       [ 0.60276338,  0.54488318]])
+
 ```
 
-
-
-
-    array([[ 0.5488135 ,  0.71518937],
-           [ 0.60276338,  0.54488318]])
-
-
+!!! note "Repeat random array generation to check"
+    If you do not set the seed, you would not get the same set of numbers like here.
+    ```python
+    # Seed
+    np.random.seed(0)
+    np.random.rand(2, 2)
+    ```
 
 
 ```python
-# No seed
-np.random.rand(2, 2)
+array([[ 0.5488135 ,  0.71518937],
+       [ 0.60276338,  0.54488318]])
+
 ```
 
 
-
-
-    array([[ 0.56804456,  0.92559664],
-           [ 0.07103606,  0.0871293 ]])
-
-
+!!! note "Create a numpy array without seed"
+    Notice how you get different numbers compared to the first 2 tries?
+    ```python
+    # No seed
+    np.random.rand(2, 2)
+    ```
 
 
 ```python
-# No seed
-np.random.rand(2, 2)
+array([[ 0.56804456,  0.92559664],
+       [ 0.07103606,  0.0871293 ]])
+
 ```
-
-
-
-
-    array([[ 0.0202184 ,  0.83261985],
-           [ 0.77815675,  0.87001215]])
-
-
-
-
-```python
-# Torch Seed
-torch.manual_seed(0)
-torch.rand(2, 2)
-```
-
-
-
 
     
-     0.5488  0.5928
-     0.7152  0.8443
-    [torch.FloatTensor of size 2x2]
-
-
+!!! note "Repeat numpy array generation without seed"
+    You get the point now, you get a totally different set of numbers.
+    ```python
+    # No seed
+    np.random.rand(2, 2)
+    ```
 
 
 ```python
-# Torch Seed
-torch.manual_seed(0)
-torch.rand(2, 2)
+array([[ 0.0202184 ,  0.83261985],
+       [ 0.77815675,  0.87001215]])
+```
+
+    
+!!! note "Create a PyTorch tensor with a fixed seed"
+    ```python
+    # Torch Seed
+    torch.manual_seed(0)
+    torch.rand(2, 2)
+    ```
+    
+    
+```python
+0.5488  0.5928
+0.7152  0.8443
+[torch.FloatTensor of size 2x2]
+
+```
+!!! note "Repeat creating a PyTorch fixed seed tensor"
+    ```python
+    # Torch Seed
+    torch.manual_seed(0)
+    torch.rand(2, 2)
+    ```
+    
+```python
+0.5488  0.5928
+0.7152  0.8443
+[torch.FloatTensor of size 2x2]
+
 ```
 
 
 
+!!! note "Creating a PyTorch tensor without seed"
+    Like with a numpy array of random numbers without seed, you will not get the same results as above.
+    ```python
+    # Torch No Seed
+    torch.rand(2, 2)
+    ```
 
-    
-     0.5488  0.5928
-     0.7152  0.8443
-    [torch.FloatTensor of size 2x2]
+```python
+0.6028  0.8579
+0.5449  0.8473
+[torch.FloatTensor of size 2x2]
+```   
 
 
+!!! note "Repeat creating a PyTorch tensor without seed"
+    Notice how these are different numbers again?
+    ```python
+    # Torch No Seed
+    torch.rand(2, 2)
+    ```
 
 
 ```python
-# Torch No Seed
-torch.rand(2, 2)
+0.4237  0.6236
+0.6459  0.3844
+[torch.FloatTensor of size 2x2]
+
 ```
-
-
-
-
-    
-     0.6028  0.8579
-     0.5449  0.8473
-    [torch.FloatTensor of size 2x2]
-
-
-
-
-```python
-# Torch No Seed
-torch.rand(2, 2)
-```
-
-
-
-
-    
-     0.4237  0.6236
-     0.6459  0.3844
-    [torch.FloatTensor of size 2x2]
-
-
 
 **Seed for GPU is different for now...**
 
-
-```python
-if torch.cuda.is_available():
-    torch.cuda.manual_seed_all(0)
-```
+!!! note "Fix a seed for GPU tensors"
+    When you conduct deep learning experiments, typically you want to use GPUs to accelerate your computations and fixing seed for tensors on GPUs is different from CPUs as we have done above. 
+    ```python
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(0)
+    ```
 
 ### 1.3 NumPy and Torch Bridge
 
 ### NumPy to Torch 
 
 
-```python
-# Numpy array
-np_array = np.ones((2, 2))
-```
-
-
-```python
-print(np_array)
-```
-
-    [[ 1.  1.]
-     [ 1.  1.]]
-
-
-
-```python
-print(type(np_array))
-```
-
-    <class 'numpy.ndarray'>
-
-
-
-```python
-# Convert to Torch Tensor
-torch_tensor = torch.from_numpy(np_array)
-```
-
-
-```python
-print(torch_tensor)
-```
-
+!!! note "Create a numpy array of 1's"
+    ```python
+    # Numpy array
+    np_array = np.ones((2, 2))
+    ```
     
-     1  1
-     1  1
-    [torch.DoubleTensor of size 2x2]
+    ```python
+    print(np_array)
+    ```
+
+```python
+[[ 1.  1.]
+[ 1.  1.]]
+
+```
+    
+!!! note "Get the type of class for the numpy array"
+
+    ```python
+    print(type(np_array))
+    ```
+
+```python
+<class 'numpy.ndarray'>
+
+```
     
 
 
+!!! note "Convert numpy array to PyTorch tensor"
+
+    ```python
+    # Convert to Torch Tensor
+    torch_tensor = torch.from_numpy(np_array)
+    ```
+    
+    
+    ```python
+    print(torch_tensor)
+    ```
 
 ```python
-print(type(torch_tensor))
+ 1  1
+ 1  1
+[torch.DoubleTensor of size 2x2]
 ```
 
-    <class 'torch.DoubleTensor'>
-
-
+!!! note "Get type of class for PyTorch tensor"
+    Notice how it shows it's a torch DoubleTensor? There're actually tensor types and it depends on the numpy data type.
+    ```python
+    print(type(torch_tensor))
+    ```
 
 ```python
-# Data types matter: intentional error
-np_array_new = np.ones((2, 2), dtype=np.int8)
-torch.from_numpy(np_array_new)
+<class 'torch.DoubleTensor'>
 ```
-
-
-    ---------------------------------------------------------------------------
-
-    RuntimeError                              Traceback (most recent call last)
-
-    <ipython-input-57-b8b085f9b39d> in <module>()
-          1 # Data types matter
-          2 np_array_new = np.ones((2, 2), dtype=np.int8)
-    ----> 3 torch.from_numpy(np_array_new)
     
 
-    RuntimeError: can't convert a given np.ndarray to a tensor - it has an invalid type. The only supported types are: double, float, int64, int32, and uint8.
+
+!!! note "Create PyTorch tensor from a different numpy datatype"
+    You will get an error running this code because PyTorch tensor don't support all datatype. 
+    ```python
+    # Data types matter: intentional error
+    np_array_new = np.ones((2, 2), dtype=np.int8)
+    torch.from_numpy(np_array_new)
+    ```
+
+```python
+---------------------------------------------------------------------------
+RuntimeError                              Traceback (most recent call last)
+
+<ipython-input-57-b8b085f9b39d> in <module>()
+      1 # Data types matter
+      2 np_array_new = np.ones((2, 2), dtype=np.int8)
+----> 3 torch.from_numpy(np_array_new)
 
 
-**The conversion supports:**
-1. `double`
-2. `float` 
-3. `int64`, `int32`, `uint8` 
+RuntimeError: can't convert a given np.ndarray to a tensor - it has an invalid type. The only supported types are: double, float, int64, int32, and uint8.
+
+
+```
+
+!!! help "What conversion support does Numpy to PyTorch tensor bridge gives?"
+    - `double`
+    - `float` 
+    - `int64`, `int32`, `uint8` 
+
+
+!!! note "Create PyTorch long tensor"
+    See how a int64 numpy array gives you a PyTorch long tensor?
+    ```python
+    # Data types matter
+    np_array_new = np.ones((2, 2), dtype=np.int64)
+    torch.from_numpy(np_array_new)
+    ```
+
+
+```
+1  1
+1  1
+[torch.LongTensor of size 2x2]
+
+```
+
+!!! note "Create PyTorch int tensor"
+    
+    ```python
+    # Data types matter
+    np_array_new = np.ones((2, 2), dtype=np.int32)
+    torch.from_numpy(np_array_new)
+    ```
 
 
 ```python
-# Data types matter
-np_array_new = np.ones((2, 2), dtype=np.int64)
-torch.from_numpy(np_array_new)
+1  1
+1  1
+[torch.IntTensor of size 2x2]
 ```
 
+!!! note "Create PyTorch byte tensor"
+
+    ```python
+    # Data types matter
+    np_array_new = np.ones((2, 2), dtype=np.uint8)
+    torch.from_numpy(np_array_new)
+    ```
 
 
+```python
+1  1
+1  1
+[torch.ByteTensor of size 2x2]
+
+```
 
     
-     1  1
-     1  1
-    [torch.LongTensor of size 2x2]
+!!! note "Create PyTorch Double Tensor"
 
+    ```python
+    # Data types matter
+    np_array_new = np.ones((2, 2), dtype=np.float64)
+    torch.from_numpy(np_array_new)
+    ```
+    
+    Alternatively you can do this too via `np.double`
+    
+    ```python
+    # Data types matter
+    np_array_new = np.ones((2, 2), dtype=np.double)
+    torch.from_numpy(np_array_new)
+    ```
+
+```python
+1  1
+1  1
+[torch.DoubleTensor of size 2x2]
+
+```
+    
+!!! note "Create PyTorch Float Tensor"     
+    ```python
+    # Data types matter
+    np_array_new = np.ones((2, 2), dtype=np.float32)
+    torch.from_numpy(np_array_new)
+    ```
 
 
 
 ```python
-# Data types matter
-np_array_new = np.ones((2, 2), dtype=np.int32)
-torch.from_numpy(np_array_new)
+
+1  1
+1  1
+[torch.FloatTensor of size 2x2]
+
 ```
-
-
-
-
-    
-     1  1
-     1  1
-    [torch.IntTensor of size 2x2]
-
-
-
-
-```python
-# Data types matter
-np_array_new = np.ones((2, 2), dtype=np.uint8)
-torch.from_numpy(np_array_new)
-```
-
-
-
-
-    
-     1  1
-     1  1
-    [torch.ByteTensor of size 2x2]
-
-
-
-
-```python
-# Data types matter
-np_array_new = np.ones((2, 2), dtype=np.float64)
-torch.from_numpy(np_array_new)
-```
-
-
-
-
-    
-     1  1
-     1  1
-    [torch.DoubleTensor of size 2x2]
-
-
-
-
-```python
-# Data types matter
-np_array_new = np.ones((2, 2), dtype=np.float32)
-torch.from_numpy(np_array_new)
-```
-
-
-
-
-    
-     1  1
-     1  1
-    [torch.FloatTensor of size 2x2]
-
-
-
-
-```python
-# Data types matter
-np_array_new = np.ones((2, 2), dtype=np.double)
-torch.from_numpy(np_array_new)
-```
-
-
-
-
-    
-     1  1
-     1  1
-    [torch.DoubleTensor of size 2x2]
-
 
 
 **Summary**
-<br />These things don't matter much now. But later when you see error messages that require these particular tensor types, refer to this guide!
+!!! bug "Tensor Type Bug Guide"
+    These things don't matter much now. But later when you see error messages that require these particular tensor types, refer to this guide!
 
 | NumPy Array Type        | Torch Tensor Type           |
 | :-------------: |:--------------:|
