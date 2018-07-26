@@ -4,7 +4,7 @@
 More than 2500 students in over 120 countries around the world from students as young as 15 to postgraduates and professionals in leading corporations and research institutions have taken our course with awesome ratings.
 
 ### Corporations
-* [x] NVIDIA
+* [x] NVIDIA (NVIDIA Inception Partner)
 * [x] Facebook
 * [x] Amazon
 
