@@ -1,9 +1,9 @@
 # PyTorch Fundamentals - Matrices 
 
-## 1. Matrices
+## Matrices
 
 
-### 1.0 Matrices Brief Introduction
+### Matrices Brief Introduction
 * [x] Basic definition: rectangular array of numbers.
 * [x] Tensors (PyTorch)
 * [x] Ndarrays (NumPy)
@@ -20,7 +20,7 @@
 --- | ---| ---
 1 | 1 | 1 
 
-### 1.1 Creating Matrices
+### Creating Matrices
 
 
 !!! note "Create list"
@@ -68,7 +68,7 @@ array([[1, 2],
 
 ```
     
-### 1.2 Create Matrices with Default Values
+### Create Matrices with Default Values
 
 
 !!! note "Create 2x2 numpy array of 1's"
@@ -120,7 +120,7 @@ array([[ 0.68270631,  0.87721678],
 
 ```
 
-### 1.3 Seeds for Reproducibility
+### Seeds for Reproducibility
 
 !!! question "Why do we need seeds?"
     We need seeds to enable reproduction of experimental results. This becomes critical later on where you can easily let people reproduce your code's output exactly as you've produced.
@@ -252,9 +252,9 @@ array([[ 0.0202184 ,  0.83261985],
         torch.cuda.manual_seed_all(0)
     ```
 
-### 1.3 NumPy and Torch Bridge
+### NumPy and Torch Bridge
 
-### NumPy to Torch 
+#### NumPy to Torch 
 
 
 !!! note "Create a numpy array of 1's"
@@ -447,7 +447,7 @@ RuntimeError: can't convert a given np.ndarray to a tensor - it has an invalid t
 | float32 | FloatTensor      |
 | double | DoubleTensor      |
 
-### Torch to NumPy
+#### Torch to NumPy
 
 !!! note "Create PyTorch tensor of 1's"
     You would realize this defaults to a float tensor by default if you do this.
@@ -486,7 +486,7 @@ torch.FloatTensor
 numpy.ndarray
 ```
 
-### 1.4 Tensors on CPU vs GPU
+### Tensors on CPU vs GPU
 
 !!! note "Move tensor to CPU and back"
     This by default creates a tensor on CPU. You do not need to do anything.
@@ -510,448 +510,469 @@ numpy.ndarray
     tensor_cpu.cpu()
     ```
 
-### 1.5 Tensor Operations
+### Tensor Operations
 
 ####  Resizing Tensor
 
+!!! note "Creating a 2x2 tensor"
+    ```python
+    a = torch.ones(2, 2)
+    print(a)
+    ```
 
 ```python
-a = torch.ones(2, 2)
-print(a)
+1  1
+1  1
+[torch.FloatTensor of size 2x2]
+
 ```
 
-    
-     1  1
-     1  1
-    [torch.FloatTensor of size 2x2]
-    
-
-
+!!! note "Getting size of tensor"
+    ```python
+    print(a.size())
+    ```
 
 ```python
-print(a.size())
+torch.Size([2, 2])
 ```
 
-    torch.Size([2, 2])
-
-
-
-```python
-a.view(4)
-```
-
-
-
-
-    
-     1
-     1
-     1
-     1
-    [torch.FloatTensor of size 4]
-
+!!! note "Resize tensor to 4x1"
+    ```python
+    a.view(4)
+    ```
 
 
 
 ```python
-a.view(4).size()
+1
+1
+1
+1
+[torch.FloatTensor of size 4]
+```
+    
+
+
+
+!!! note "Get size of resized tensor"
+    ```python
+    a.view(4).size()
+    ```
+```python
+torch.Size([4])
 ```
 
+#### Element-wise Addition
 
 
-
-    torch.Size([4])
-
-
-
-### Element-wise Addition
-
+!!! note "Creating first 2x2 tensor"
+    ```python
+    a = torch.ones(2, 2)
+    print(a)
+    ```
 
 ```python
-a = torch.ones(2, 2)
-print(a)
+1  1
+1  1
+[torch.FloatTensor of size 2x2]
+
 ```
 
-    
-     1  1
-     1  1
-    [torch.FloatTensor of size 2x2]
-    
-
-
+!!! note "Creating second 2x2 tensor"
+    ```python
+    b = torch.ones(2, 2)
+    print(b)
+    ```
 
 ```python
-b = torch.ones(2, 2)
-print(b)
+1  1
+1  1
+[torch.FloatTensor of size 2x2]
+
 ```
 
-    
-     1  1
-     1  1
-    [torch.FloatTensor of size 2x2]
-    
 
-
+!!! note "Element-wise addition of 2 tensors"
+    ```python
+    # Element-wise addition
+    c = a + b
+    print(c)
+    ```
 
 ```python
-# Element-wise addition
-c = a + b
-print(c)
+ 2  2
+ 2  2
+[torch.FloatTensor of size 2x2]
+
 ```
-
-    
-     2  2
-     2  2
-    [torch.FloatTensor of size 2x2]
     
 
-
+   
+!!! note "Alternative element-wise addition of 2 tensors"
+    ```python
+    # Element-wise addition
+    c = torch.add(a, b)
+    print(c)
+    ```
 
 ```python
-# Element-wise addition
-c = torch.add(a, b)
-print(c)
+ 2  2
+ 2  2
+[torch.FloatTensor of size 2x2]
+
 ```
 
-    
-     2  2
-     2  2
-    [torch.FloatTensor of size 2x2]
-    
 
-
+!!! note "In-place element-wise addition"
+    This would replace the c tensor values with the new addition. 
+    
+    ```python
+    # In-place addition
+    print('Old c tensor')
+    print(c)
+    
+    c.add_(a)
+    
+    print('-'*60)
+    print('New c tensor')
+    print(c)
+    ```
 
 ```python
-# In-place addition
-print('Old c tensor')
-print(c)
+Old c tensor
 
-c.add_(a)
+ 2  2
+ 2  2
+[torch.FloatTensor of size 2x2]
 
-print('-'*60)
-print('New c tensor')
-print(c)
+------------------------------------------------------------
+New c tensor
+
+ 3  3
+ 3  3
+[torch.FloatTensor of size 2x2]
+
 ```
 
-    Old c tensor
-    
-     2  2
-     2  2
-    [torch.FloatTensor of size 2x2]
-    
-    ------------------------------------------------------------
-    New c tensor
-    
-     3  3
-     3  3
-    [torch.FloatTensor of size 2x2]
-    
 
 
 #### Element-wise Subtraction
 
+!!! note "Check values of tensor a and b'"
+    Take note that you've created tensor a and b of sizes 2x2 filled with 1's each above. 
+    ```python
+    print(a)
+    print(b)
+    ```
 
 ```python
-print(a)
-print(b)
-```
-
-    
-     1  1
-     1  1
-    [torch.FloatTensor of size 2x2]
-    
-    
-     1  1
-     1  1
-    [torch.FloatTensor of size 2x2]
-    
+ 1  1
+ 1  1
+[torch.FloatTensor of size 2x2]
 
 
-
-```python
-a - b
+ 1  1
+ 1  1
+[torch.FloatTensor of size 2x2]
 ```
 
 
-
-
-    
-     0  0
-     0  0
-    [torch.FloatTensor of size 2x2]
-
-
+!!! note "Element-wise subtraction: method 1"
+    ```python
+    a - b
+    ```
 
 
 ```python
-# Not in-place
-print(a.sub(b))
-print(a)
+0  0
+0  0
+[torch.FloatTensor of size 2x2]
+
 ```
 
+!!! note "Element-wise subtraction: method 2"
+    ```python
+    # Not in-place
+    print(a.sub(b))
+    print(a)
+    ```
+
     
-     0  0
-     0  0
-    [torch.FloatTensor of size 2x2]
-    
-    
-     1  1
-     1  1
-    [torch.FloatTensor of size 2x2]
+```python
+0  0
+0  0
+[torch.FloatTensor of size 2x2]
+
+
+1  1
+1  1
+[torch.FloatTensor of size 2x2]
+```
     
 
+!!! note "Element-wise subtraction: method 3"
+    This will replace a with the final result filled with 2's
+    ```python
+    # Inplace
+    print(a.sub_(b))
+    print(a)
+    ```
+    
+```python
+0  0
+0  0
+[torch.FloatTensor of size 2x2]
+
+
+0  0
+0  0
+[torch.FloatTensor of size 2x2]
+```
+   
+#### Element-Wise Multiplication
+
+!!! note "Create tensor a and b of sizes 2x2 filled with 1's and 0's"
+    ```python
+    a = torch.ones(2, 2)
+    print(a)
+    b = torch.zeros(2, 2)
+    print(b)
+    ```
+
+    
+```python
+1  1
+1  1
+[torch.FloatTensor of size 2x2]
+
+
+0  0
+0  0
+[torch.FloatTensor of size 2x2]
+
+```
+
+!!! note "Element-wise multiplication: method 1"
+    ```python
+    a * b
+    ```
 
 
 ```python
-# Inplace
-print(a.sub_(b))
-print(a)
+0  0
+0  0
+[torch.FloatTensor of size 2x2]
 ```
 
     
-     0  0
-     0  0
-    [torch.FloatTensor of size 2x2]
+
+!!! note "Element-wise multiplication: method 2"
+    ```python
+    # Not in-place
+    print(torch.mul(a, b))
+    print(a)
+    ```
+
+```python
+0  0
+0  0
+[torch.FloatTensor of size 2x2]
+
+1  1
+1  1
+[torch.FloatTensor of size 2x2]
+```
+
+!!! note "Element-wise multiplication: method 3"
+    ```python
+    # In-place
+    print(a.mul_(b))
+    print(a)
+    ```
+
     
-    
-     0  0
-     0  0
-    [torch.FloatTensor of size 2x2]
-    
+```python
+0  0
+0  0
+[torch.FloatTensor of size 2x2]
+
+0  0
+0  0
+[torch.FloatTensor of size 2x2]
+```
 
 
-### Element-Wise Multiplication
+#### Element-Wise Division
+
+
+!!! note "Create tensor a and b of sizes 2x2 filled with 1's and 0's"
+    ```python
+    a = torch.ones(2, 2)
+    print(a)
+    b = torch.zeros(2, 2)
+    print(b)
+    ```
+
+    
+```python
+1  1
+1  1
+[torch.FloatTensor of size 2x2]
+
+
+0  0
+0  0
+[torch.FloatTensor of size 2x2]
+
+```
+
+!!! note "Element-wise division: method 1"
+    ```python
+    b / a
+    ```
 
 
 ```python
-a = torch.ones(2, 2)
-print(a)
-b = torch.zeros(2, 2)
-print(b)
+0  0
+0  0
+[torch.FloatTensor of size 2x2]
+
 ```
 
-    
-     1  1
-     1  1
-    [torch.FloatTensor of size 2x2]
-    
-    
-     0  0
-     0  0
-    [torch.FloatTensor of size 2x2]
-    
-
-
+!!! note "Element-wise division: method 2"
+    ```python
+    torch.div(b, a)
+    ```
 
 ```python
-a * b
+0  0
+0  0
+[torch.FloatTensor of size 2x2]
+
 ```
 
-
-
-
-    
-     0  0
-     0  0
-    [torch.FloatTensor of size 2x2]
-
-
-
+!!! note "Element-wise division: method 3"
+    ```python
+    # Inplace
+    b.div_(a)
+    ```
 
 ```python
-# Not in-place
-print(torch.mul(a, b))
-print(a)
+0  0
+0  0
+[torch.FloatTensor of size 2x2]
+
 ```
 
-    
-     0  0
-     0  0
-    [torch.FloatTensor of size 2x2]
-    
-    
-     1  1
-     1  1
-    [torch.FloatTensor of size 2x2]
-    
-
-
-
-```python
-# In-place
-print(a.mul_(b))
-print(a)
-```
-
-    
-     0  0
-     0  0
-    [torch.FloatTensor of size 2x2]
-    
-    
-     0  0
-     0  0
-    [torch.FloatTensor of size 2x2]
-    
-
-
-### Element-Wise Division
-
-
-```python
-a = torch.ones(2, 2)
-b = torch.zeros(2, 2)
-```
-
-
-```python
-b / a
-```
-
-
-
-
-    
-     0  0
-     0  0
-    [torch.FloatTensor of size 2x2]
-
-
-
-
-```python
-torch.div(b, a)
-```
-
-
-
-
-    
-     0  0
-     0  0
-    [torch.FloatTensor of size 2x2]
-
-
-
-
-```python
-# Inplace
-b.div_(a)
-```
-
-
-
-
-    
-     0  0
-     0  0
-    [torch.FloatTensor of size 2x2]
-
-
-
-### Tensor Mean
+#### Tensor Mean
 
 $$1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 = 55$$
 
 $$ mean = 55 /10 = 5.5 $$
 
 
+!!! note "Create tensor of size 10 filled from 1 to 10"
+    ```python
+    a = torch.Tensor([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+    a.size()
+    ```
+
 
 ```python
-a = torch.Tensor([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-a.size()
+torch.Size([10])
+
+```
+
+
+!!! note "Get tensor mean"
+    Here we get 5.5 as we've calculated manually above.
+    
+    ```python
+    a.mean(dim=0)
+    ```
+
+```python
+    
+5.5000
+[torch.FloatTensor of size 1]
+
 ```
 
 
 
-
-    torch.Size([10])
-
-
-
+!!! note "Get tensor mean on second dimension"
+    Here we get an error because the tensor is of size 10 and not 10x1 so there's no second dimension to calculate.
+    
+    ```python
+    a.mean(dim=1)
+    ```
 
 ```python
-a.mean(dim=0)
+
+RuntimeError                              Traceback (most recent call last)
+
+<ipython-input-7-81aec0cf1c00> in <module>()
+----> 1 a.mean(dim=1)
+
+
+RuntimeError: dimension out of range (expected to be in range of [-1, 0], but got 1)
+
 ```
 
+!!! note "Create a 2x10 Tensor, of 1-10 digits each"
+    
+    ```python
+    a = torch.Tensor([[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]])
+    ```
+    ```python
+    a.size()
+    ```
 
-
+```python
+torch.Size([2, 10])
+```
 
     
-     5.5000
-    [torch.FloatTensor of size 1]
 
+!!! note "Get tensor mean on second dimension"
+    Here we won't get an error like previously because we've a tensor of size 2x10
 
-
-
-```python
-a.mean(dim=1)
-```
-
-
-    ---------------------------------------------------------------------------
-
-    RuntimeError                              Traceback (most recent call last)
-
-    <ipython-input-7-81aec0cf1c00> in <module>()
-    ----> 1 a.mean(dim=1)
-    
-
-    RuntimeError: dimension out of range (expected to be in range of [-1, 0], but got 1)
-
+    ```python
+    a.mean(dim=1)
+    ```
 
 
 ```python
-a = torch.Tensor([[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]])
-```
+ 5.5000
+ 5.5000
+[torch.FloatTensor of size 2x1]
 
-
-```python
-a.size()
 ```
 
 
 
 
-    torch.Size([2, 10])
 
+#### Tensor Standard Deviation
 
-
-
-```python
-a.mean(dim=1)
-```
-
-
-
-
-    
-     5.5000
-     5.5000
-    [torch.FloatTensor of size 2x1]
-
-
-
-## Tensor Standard Deviation
-
+!!! note "Get standard deviation of tensor"
 
 ```python
+
 a = torch.Tensor([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
 a.std(dim=0)
 ```
 
 
+```python
+ 3.0277
+[torch.FloatTensor of size 1]
 
+```
 
-    
-     3.0277
-    [torch.FloatTensor of size 1]
+## Summary
+We've learnt to...
 
-
-
----
-## We've learnt to...
 !!! success
     * [x] Create Matrices
     * [x] Create Matrices with Default Initialization Values
