@@ -27,7 +27,7 @@
         },
         {
             "location": "/supporters/",
-            "text": "Supporters\n\u00b6\n\n\nMore than 2500 students in over 120 countries around the world from students as young as 15 to postgraduates and professionals in leading corporations and research institutions have taken our course with awesome ratings.\n\n\nCorporations\n\u00b6\n\n\n\n\n NVIDIA (NVIDIA Inception Partner)\n\n\n Facebook\n\n\n Amazon\n\n\n\n\nResearch Institutions\n\u00b6\n\n\n\n\n Montreal Institute of Learning Algorithms (MILA), Montreal, Canada\n\n\n Imperial College London, UK\n\n\n National University of Singapore (NUS), Singapore\n\n\n\n\nNVIDIA Inception Partner\n\u00b6\n\n\n\n\n\"NVIDIA Inception Partner\n\n\nDeep Learning Wizard is proudly an NVIDIA Inception Partner, empowering people across the world to leverage on deep learning via open-source programming languages and frameworks to solve problems",
+            "text": "Supporters\n\u00b6\n\n\nMore than 2500 students in over 120 countries around the world from students as young as 15 to postgraduates and professionals in leading corporations and research institutions have taken our course with awesome ratings.\n\n\nCorporations\n\u00b6\n\n\n\n\n NVIDIA (NVIDIA Inception Partner)\n\n\n Facebook\n\n\n Amazon\n\n\n\n\nResearch Institutions\n\u00b6\n\n\n\n\n Montreal Institute of Learning Algorithms (MILA), Montreal, Canada\n\n\n Imperial College London, UK\n\n\n Massachusetts Institute of Technology (MIT), USA  \n\n\n National University of Singapore (NUS), Singapore\n\n\n Nanyang Technological University (NTU), Singapore\n\n\n\n\nNVIDIA Inception Partner\n\u00b6\n\n\n\n\n\"NVIDIA Inception Partner\n\n\n\n\nDeep Learning Wizard is proudly an NVIDIA Inception Partner, empowering people across the world to leverage on deep learning via open-source programming languages and frameworks to solve problems.",
             "title": "Supporters"
         },
         {
@@ -42,12 +42,12 @@
         },
         {
             "location": "/supporters/#research-institutions",
-            "text": "Montreal Institute of Learning Algorithms (MILA), Montreal, Canada   Imperial College London, UK   National University of Singapore (NUS), Singapore",
+            "text": "Montreal Institute of Learning Algorithms (MILA), Montreal, Canada   Imperial College London, UK   Massachusetts Institute of Technology (MIT), USA     National University of Singapore (NUS), Singapore   Nanyang Technological University (NTU), Singapore",
             "title": "Research Institutions"
         },
         {
             "location": "/supporters/#nvidia-inception-partner",
-            "text": "\"NVIDIA Inception Partner  Deep Learning Wizard is proudly an NVIDIA Inception Partner, empowering people across the world to leverage on deep learning via open-source programming languages and frameworks to solve problems",
+            "text": "\"NVIDIA Inception Partner   Deep Learning Wizard is proudly an NVIDIA Inception Partner, empowering people across the world to leverage on deep learning via open-source programming languages and frameworks to solve problems.",
             "title": "NVIDIA Inception Partner"
         },
         {
