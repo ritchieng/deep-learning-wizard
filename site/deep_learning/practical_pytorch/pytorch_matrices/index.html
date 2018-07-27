@@ -484,6 +484,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../pytorch_gradients/" title="PyTorch Fundamentals - Gradients" class="md-nav__link">
+      PyTorch Fundamentals - Gradients
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -761,113 +773,84 @@
 <h3 id="creating-matrices">Creating Matrices<a class="headerlink" href="#creating-matrices" title="Permanent link">&para;</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Create list</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># Creating a 2x2 array</span>
+<div class="codehilite"><pre><span></span><span class="c1"># Creating a 2x2 array</span>
 <span class="n">arr</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
 <span class="k">print</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+<div class="codehilite"><pre><span></span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Create numpy array via list</p>
-<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<p><div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 </pre></div>
-</td></tr></table>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># Convert to NumPy</span>
+<div class="codehilite"><pre><span></span><span class="c1"># Convert to NumPy</span>
 <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
-</pre></div>
-</td></tr></table></p>
+</pre></div></p>
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+<div class="codehilite"><pre><span></span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
        <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Convert numpy array to PyTorch tensor</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
 </pre></div>
-</td></tr></table>
 
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># Convert to PyTorch Tensor</span>
+<div class="codehilite"><pre><span></span><span class="c1"># Convert to PyTorch Tensor</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="mi">1</span>  <span class="mi">2</span>
+<div class="codehilite"><pre><span></span><span class="mi">1</span>  <span class="mi">2</span>
 <span class="mi">3</span>  <span class="mi">4</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
 </pre></div>
-</td></tr></table>
 
 <h3 id="create-matrices-with-default-values">Create Matrices with Default Values<a class="headerlink" href="#create-matrices-with-default-values" title="Permanent link">&para;</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Create 2x2 numpy array of 1's</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<div class="codehilite"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">array</span><span class="p">([[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">],</span>
+<div class="codehilite"><pre><span></span><span class="n">array</span><span class="p">([[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">],</span>
        <span class="p">[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">]])</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Create 2x2 torch tensor of 1's</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<div class="codehilite"><pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span> 1  1
+<div class="codehilite"><pre><span></span> 1  1
  1  1
 [torch.FloatTensor of size 2x2]
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Create 2x2 numpy array of random numbers</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">array</span><span class="p">([[</span> <span class="mf">0.68270631</span><span class="p">,</span>  <span class="mf">0.87721678</span><span class="p">],</span>
+<div class="codehilite"><pre><span></span><span class="n">array</span><span class="p">([[</span> <span class="mf">0.68270631</span><span class="p">,</span>  <span class="mf">0.87721678</span><span class="p">],</span>
        <span class="p">[</span> <span class="mf">0.07420986</span><span class="p">,</span>  <span class="mf">0.79669375</span><span class="p">]])</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Create 2x2 PyTorch tensor of random numbers</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="mf">0.3900</span>  <span class="mf">0.8268</span>
+<div class="codehilite"><pre><span></span><span class="mf">0.3900</span>  <span class="mf">0.8268</span>
 <span class="mf">0.3888</span>  <span class="mf">0.5914</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
 </pre></div>
-</td></tr></table>
 
 <h3 id="seeds-for-reproducibility">Seeds for Reproducibility<a class="headerlink" href="#seeds-for-reproducibility" title="Permanent link">&para;</a></h3>
 <div class="admonition question">
@@ -876,227 +859,161 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">Create seed to enable fixed numbers for random number generation </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># Seed</span>
+<div class="codehilite"><pre><span></span><span class="c1"># Seed</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">array</span><span class="p">([[</span> <span class="mf">0.5488135</span> <span class="p">,</span>  <span class="mf">0.71518937</span><span class="p">],</span>
+<div class="codehilite"><pre><span></span><span class="n">array</span><span class="p">([[</span> <span class="mf">0.5488135</span> <span class="p">,</span>  <span class="mf">0.71518937</span><span class="p">],</span>
        <span class="p">[</span> <span class="mf">0.60276338</span><span class="p">,</span>  <span class="mf">0.54488318</span><span class="p">]])</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Repeat random array generation to check</p>
 <p>If you do not set the seed, you would not get the same set of numbers like here.
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># Seed</span>
+<div class="codehilite"><pre><span></span><span class="c1"># Seed</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</td></tr></table></p>
+</pre></div></p>
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">array</span><span class="p">([[</span> <span class="mf">0.5488135</span> <span class="p">,</span>  <span class="mf">0.71518937</span><span class="p">],</span>
+<div class="codehilite"><pre><span></span><span class="n">array</span><span class="p">([[</span> <span class="mf">0.5488135</span> <span class="p">,</span>  <span class="mf">0.71518937</span><span class="p">],</span>
        <span class="p">[</span> <span class="mf">0.60276338</span><span class="p">,</span>  <span class="mf">0.54488318</span><span class="p">]])</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Create a numpy array without seed</p>
 <p>Notice how you get different numbers compared to the first 2 tries?
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># No seed</span>
+<div class="codehilite"><pre><span></span><span class="c1"># No seed</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</td></tr></table></p>
+</pre></div></p>
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">array</span><span class="p">([[</span> <span class="mf">0.56804456</span><span class="p">,</span>  <span class="mf">0.92559664</span><span class="p">],</span>
+<div class="codehilite"><pre><span></span><span class="n">array</span><span class="p">([[</span> <span class="mf">0.56804456</span><span class="p">,</span>  <span class="mf">0.92559664</span><span class="p">],</span>
        <span class="p">[</span> <span class="mf">0.07103606</span><span class="p">,</span>  <span class="mf">0.0871293</span> <span class="p">]])</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Repeat numpy array generation without seed</p>
 <p>You get the point now, you get a totally different set of numbers.
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># No seed</span>
+<div class="codehilite"><pre><span></span><span class="c1"># No seed</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</td></tr></table></p>
+</pre></div></p>
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">array</span><span class="p">([[</span> <span class="mf">0.0202184</span> <span class="p">,</span>  <span class="mf">0.83261985</span><span class="p">],</span>
+<div class="codehilite"><pre><span></span><span class="n">array</span><span class="p">([[</span> <span class="mf">0.0202184</span> <span class="p">,</span>  <span class="mf">0.83261985</span><span class="p">],</span>
        <span class="p">[</span> <span class="mf">0.77815675</span><span class="p">,</span>  <span class="mf">0.87001215</span><span class="p">]])</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Create a PyTorch tensor with a fixed seed</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># Torch Seed</span>
+<div class="codehilite"><pre><span></span><span class="c1"># Torch Seed</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
 </div>
 <div class="admonition note">
 <p class="admonition-title">Repeat creating a PyTorch fixed seed tensor</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># Torch Seed</span>
+<div class="codehilite"><pre><span></span><span class="c1"># Torch Seed</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="mf">0.5488</span>  <span class="mf">0.5928</span>
+<div class="codehilite"><pre><span></span><span class="mf">0.5488</span>  <span class="mf">0.5928</span>
 <span class="mf">0.7152</span>  <span class="mf">0.8443</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Creating a PyTorch tensor without seed</p>
 <p>Like with a numpy array of random numbers without seed, you will not get the same results as above.
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># Torch No Seed</span>
+<div class="codehilite"><pre><span></span><span class="c1"># Torch No Seed</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</td></tr></table></p>
+</pre></div></p>
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="mf">0.6028</span>  <span class="mf">0.8579</span>
+<div class="codehilite"><pre><span></span><span class="mf">0.6028</span>  <span class="mf">0.8579</span>
 <span class="mf">0.5449</span>  <span class="mf">0.8473</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Repeat creating a PyTorch tensor without seed</p>
 <p>Notice how these are different numbers again?
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># Torch No Seed</span>
+<div class="codehilite"><pre><span></span><span class="c1"># Torch No Seed</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</td></tr></table></p>
+</pre></div></p>
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="mf">0.4237</span>  <span class="mf">0.6236</span>
+<div class="codehilite"><pre><span></span><span class="mf">0.4237</span>  <span class="mf">0.6236</span>
 <span class="mf">0.6459</span>  <span class="mf">0.3844</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
 </pre></div>
-</td></tr></table>
 
 <p><strong>Seed for GPU is different for now...</strong></p>
 <div class="admonition note">
 <p class="admonition-title">Fix a seed for GPU tensors</p>
 <p>When you conduct deep learning experiments, typically you want to use GPUs to accelerate your computations and fixing seed for tensors on GPUs is different from CPUs as we have done above. 
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
+<div class="codehilite"><pre><span></span><span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
     <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">manual_seed_all</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</pre></div>
-</td></tr></table></p>
+</pre></div></p>
 </div>
 <h3 id="numpy-and-torch-bridge">NumPy and Torch Bridge<a class="headerlink" href="#numpy-and-torch-bridge" title="Permanent link">&para;</a></h3>
 <h4 id="numpy-to-torch">NumPy to Torch<a class="headerlink" href="#numpy-to-torch" title="Permanent link">&para;</a></h4>
 <div class="admonition note">
 <p class="admonition-title">Create a numpy array of 1's</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># Numpy array</span>
+<div class="codehilite"><pre><span></span><span class="c1"># Numpy array</span>
 <span class="n">np_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 </pre></div>
-</td></tr></table>
 
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">np_array</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">np_array</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">[[</span> <span class="mf">1.</span>  <span class="mf">1.</span><span class="p">]</span>
+<div class="codehilite"><pre><span></span><span class="p">[[</span> <span class="mf">1.</span>  <span class="mf">1.</span><span class="p">]</span>
 <span class="p">[</span> <span class="mf">1.</span>  <span class="mf">1.</span><span class="p">]]</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Get the type of class for the numpy array</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">np_array</span><span class="p">))</span>
+<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">np_array</span><span class="p">))</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="s1">&#39;&gt;</span>
+<div class="codehilite"><pre><span></span><span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="s1">&#39;&gt;</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Convert numpy array to PyTorch tensor</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># Convert to Torch Tensor</span>
+<div class="codehilite"><pre><span></span><span class="c1"># Convert to Torch Tensor</span>
 <span class="n">torch_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">np_array</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">torch_tensor</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">torch_tensor</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span> <span class="mi">1</span>  <span class="mi">1</span>
+<div class="codehilite"><pre><span></span> <span class="mi">1</span>  <span class="mi">1</span>
  <span class="mi">1</span>  <span class="mi">1</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">DoubleTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Get type of class for PyTorch tensor</p>
 <p>Notice how it shows it's a torch DoubleTensor? There're actually tensor types and it depends on the numpy data type.
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">torch_tensor</span><span class="p">))</span>
-</pre></div>
-</td></tr></table></p>
+<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">torch_tensor</span><span class="p">))</span>
+</pre></div></p>
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">torch</span><span class="o">.</span><span class="n">DoubleTensor</span><span class="s1">&#39;&gt;</span>
+<div class="codehilite"><pre><span></span><span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">torch</span><span class="o">.</span><span class="n">DoubleTensor</span><span class="s1">&#39;&gt;</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Create PyTorch tensor from a different numpy datatype</p>
 <p>You will get an error running this code because PyTorch tensor don't support all datatype. 
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># Data types matter: intentional error</span>
+<div class="codehilite"><pre><span></span><span class="c1"># Data types matter: intentional error</span>
 <span class="n">np_array_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">)</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">np_array_new</span><span class="p">)</span>
-</pre></div>
-</td></tr></table></p>
+</pre></div></p>
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">---------------------------------------------------------------------------</span>
+<div class="codehilite"><pre><span></span><span class="o">---------------------------------------------------------------------------</span>
 <span class="ne">RuntimeError</span>                              <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
 
 <span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">57</span><span class="o">-</span><span class="n">b8b085f9b39d</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">()</span>
@@ -1107,7 +1024,6 @@
 
 <span class="ne">RuntimeError</span><span class="p">:</span> <span class="n">can</span><span class="s1">&#39;t convert a given np.ndarray to a tensor - it has an invalid type. The only supported types are: double, float, int64, int32, and uint8.</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition help">
 <p class="admonition-title">What conversion support does Numpy to PyTorch tensor bridge gives?</p>
@@ -1120,106 +1036,73 @@
 <div class="admonition note">
 <p class="admonition-title">Create PyTorch long tensor</p>
 <p>See how a int64 numpy array gives you a PyTorch long tensor?
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># Data types matter</span>
+<div class="codehilite"><pre><span></span><span class="c1"># Data types matter</span>
 <span class="n">np_array_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">np_array_new</span><span class="p">)</span>
-</pre></div>
-</td></tr></table></p>
+</pre></div></p>
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>1  1
+<div class="codehilite"><pre><span></span>1  1
 1  1
 [torch.LongTensor of size 2x2]
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Create PyTorch int tensor</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># Data types matter</span>
+<div class="codehilite"><pre><span></span><span class="c1"># Data types matter</span>
 <span class="n">np_array_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">np_array_new</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="mi">1</span>  <span class="mi">1</span>
+<div class="codehilite"><pre><span></span><span class="mi">1</span>  <span class="mi">1</span>
 <span class="mi">1</span>  <span class="mi">1</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">IntTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Create PyTorch byte tensor</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># Data types matter</span>
+<div class="codehilite"><pre><span></span><span class="c1"># Data types matter</span>
 <span class="n">np_array_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">np_array_new</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="mi">1</span>  <span class="mi">1</span>
+<div class="codehilite"><pre><span></span><span class="mi">1</span>  <span class="mi">1</span>
 <span class="mi">1</span>  <span class="mi">1</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">ByteTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Create PyTorch Double Tensor</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># Data types matter</span>
+<div class="codehilite"><pre><span></span><span class="c1"># Data types matter</span>
 <span class="n">np_array_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">np_array_new</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
 <p>Alternatively you can do this too via <code class="codehilite">np.double</code></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># Data types matter</span>
+<div class="codehilite"><pre><span></span><span class="c1"># Data types matter</span>
 <span class="n">np_array_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">np_array_new</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="mi">1</span>  <span class="mi">1</span>
+<div class="codehilite"><pre><span></span><span class="mi">1</span>  <span class="mi">1</span>
 <span class="mi">1</span>  <span class="mi">1</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">DoubleTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Create PyTorch Float Tensor</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># Data types matter</span>
+<div class="codehilite"><pre><span></span><span class="c1"># Data types matter</span>
 <span class="n">np_array_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">np_array_new</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="mi">1</span>  <span class="mi">1</span>
+<div class="codehilite"><pre><span></span><span class="mi">1</span>  <span class="mi">1</span>
 <span class="mi">1</span>  <span class="mi">1</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition bug">
 <p class="admonition-title">Tensor Type Bug Guide</p>
@@ -1263,208 +1146,149 @@
 <div class="admonition note">
 <p class="admonition-title">Create PyTorch tensor of 1's</p>
 <p>You would realize this defaults to a float tensor by default if you do this.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">torch_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="n">torch_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">torch_tensor</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">torch_tensor</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span>
+<div class="codehilite"><pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Convert tensor to numpy</p>
 <p>It's as simple as this.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">torch_to_numpy</span> <span class="o">=</span> <span class="n">torch_tensor</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<div class="codehilite"><pre><span></span><span class="n">torch_to_numpy</span> <span class="o">=</span> <span class="n">torch_tensor</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
 </pre></div>
-</td></tr></table>
 
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">torch_to_numpy</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">torch_to_numpy</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># Wowza, we did it.</span>
+<div class="codehilite"><pre><span></span><span class="c1"># Wowza, we did it.</span>
 <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span>
 </pre></div>
-</td></tr></table>
 
 <h3 id="tensors-on-cpu-vs-gpu">Tensors on CPU vs GPU<a class="headerlink" href="#tensors-on-cpu-vs-gpu" title="Permanent link">&para;</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Move tensor to CPU and back</p>
 <p>This by default creates a tensor on CPU. You do not need to do anything.
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># CPU</span>
+<div class="codehilite"><pre><span></span><span class="c1"># CPU</span>
 <span class="n">tensor_cpu</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</td></tr></table></p>
+</pre></div></p>
 <p>If you would like to send a tensor to your GPU, you just need to do a simple <code class="codehilite"><span class="na">.cuda</span><span class="p">()</span></code></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># CPU to GPU</span>
+<div class="codehilite"><pre><span></span><span class="c1"># CPU to GPU</span>
 <span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda:0&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
 <span class="n">tensor_cpu</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
 <p>And if you want to move that tensor on the GPU back to the CPU, just do the following.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># GPU to CPU</span>
+<div class="codehilite"><pre><span></span><span class="c1"># GPU to CPU</span>
 <span class="n">tensor_cpu</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span>
 </pre></div>
-</td></tr></table>
 
 </div>
 <h3 id="tensor-operations">Tensor Operations<a class="headerlink" href="#tensor-operations" title="Permanent link">&para;</a></h3>
 <h4 id="resizing-tensor">Resizing Tensor<a class="headerlink" href="#resizing-tensor" title="Permanent link">&para;</a></h4>
 <div class="admonition note">
 <p class="admonition-title">Creating a 2x2 tensor</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="mi">1</span>  <span class="mi">1</span>
+<div class="codehilite"><pre><span></span><span class="mi">1</span>  <span class="mi">1</span>
 <span class="mi">1</span>  <span class="mi">1</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Getting size of tensor</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<div class="codehilite"><pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Resize tensor to 4x1</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="mi">1</span>
+<div class="codehilite"><pre><span></span><span class="mi">1</span>
 <span class="mi">1</span>
 <span class="mi">1</span>
 <span class="mi">1</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">4</span><span class="p">]</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Get size of resized tensor</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<div class="codehilite"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">4</span><span class="p">])</span>
+<div class="codehilite"><pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">4</span><span class="p">])</span>
 </pre></div>
-</td></tr></table>
 
 <h4 id="element-wise-addition">Element-wise Addition<a class="headerlink" href="#element-wise-addition" title="Permanent link">&para;</a></h4>
 <div class="admonition note">
 <p class="admonition-title">Creating first 2x2 tensor</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="mi">1</span>  <span class="mi">1</span>
+<div class="codehilite"><pre><span></span><span class="mi">1</span>  <span class="mi">1</span>
 <span class="mi">1</span>  <span class="mi">1</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Creating second 2x2 tensor</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="mi">1</span>  <span class="mi">1</span>
+<div class="codehilite"><pre><span></span><span class="mi">1</span>  <span class="mi">1</span>
 <span class="mi">1</span>  <span class="mi">1</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Element-wise addition of 2 tensors</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># Element-wise addition</span>
+<div class="codehilite"><pre><span></span><span class="c1"># Element-wise addition</span>
 <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
 <span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span> <span class="mi">2</span>  <span class="mi">2</span>
+<div class="codehilite"><pre><span></span> <span class="mi">2</span>  <span class="mi">2</span>
  <span class="mi">2</span>  <span class="mi">2</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Alternative element-wise addition of 2 tensors</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># Element-wise addition</span>
+<div class="codehilite"><pre><span></span><span class="c1"># Element-wise addition</span>
 <span class="n">c</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span> <span class="mi">2</span>  <span class="mi">2</span>
+<div class="codehilite"><pre><span></span> <span class="mi">2</span>  <span class="mi">2</span>
  <span class="mi">2</span>  <span class="mi">2</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">In-place element-wise addition</p>
 <p>This would replace the c tensor values with the new addition. </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># In-place addition</span>
+<div class="codehilite"><pre><span></span><span class="c1"># In-place addition</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Old c tensor&#39;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
 
@@ -1474,21 +1298,9 @@
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;New c tensor&#39;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Old</span> <span class="n">c</span> <span class="n">tensor</span>
+<div class="codehilite"><pre><span></span><span class="n">Old</span> <span class="n">c</span> <span class="n">tensor</span>
 
  <span class="mi">2</span>  <span class="mi">2</span>
  <span class="mi">2</span>  <span class="mi">2</span>
@@ -1501,26 +1313,16 @@
  <span class="mi">3</span>  <span class="mi">3</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
 </pre></div>
-</td></tr></table>
 
 <h4 id="element-wise-subtraction">Element-wise Subtraction<a class="headerlink" href="#element-wise-subtraction" title="Permanent link">&para;</a></h4>
 <div class="admonition note">
 <p class="admonition-title">Check values of tensor a and b'</p>
 <p>Take note that you've created tensor a and b of sizes 2x2 filled with 1's each above. 
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-</pre></div>
-</td></tr></table></p>
+</pre></div></p>
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span> <span class="mi">1</span>  <span class="mi">1</span>
+<div class="codehilite"><pre><span></span> <span class="mi">1</span>  <span class="mi">1</span>
  <span class="mi">1</span>  <span class="mi">1</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
 
@@ -1529,42 +1331,27 @@
  <span class="mi">1</span>  <span class="mi">1</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Element-wise subtraction: method 1</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
+<div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="mi">0</span>  <span class="mi">0</span>
+<div class="codehilite"><pre><span></span><span class="mi">0</span>  <span class="mi">0</span>
 <span class="mi">0</span>  <span class="mi">0</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Element-wise subtraction: method 2</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># Not in-place</span>
+<div class="codehilite"><pre><span></span><span class="c1"># Not in-place</span>
 <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="mi">0</span>  <span class="mi">0</span>
+<div class="codehilite"><pre><span></span><span class="mi">0</span>  <span class="mi">0</span>
 <span class="mi">0</span>  <span class="mi">0</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
 
@@ -1573,27 +1360,16 @@
 <span class="mi">1</span>  <span class="mi">1</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Element-wise subtraction: method 3</p>
 <p>This will replace a with the final result filled with 2's
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># Inplace</span>
+<div class="codehilite"><pre><span></span><span class="c1"># Inplace</span>
 <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">sub_</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-</pre></div>
-</td></tr></table></p>
+</pre></div></p>
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="mi">0</span>  <span class="mi">0</span>
+<div class="codehilite"><pre><span></span><span class="mi">0</span>  <span class="mi">0</span>
 <span class="mi">0</span>  <span class="mi">0</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
 
@@ -1602,30 +1378,18 @@
 <span class="mi">0</span>  <span class="mi">0</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
 </pre></div>
-</td></tr></table>
 
 <h4 id="element-wise-multiplication">Element-Wise Multiplication<a class="headerlink" href="#element-wise-multiplication" title="Permanent link">&para;</a></h4>
 <div class="admonition note">
 <p class="admonition-title">Create tensor a and b of sizes 2x2 filled with 1's and 0's</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="mi">1</span>  <span class="mi">1</span>
+<div class="codehilite"><pre><span></span><span class="mi">1</span>  <span class="mi">1</span>
 <span class="mi">1</span>  <span class="mi">1</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
 
@@ -1634,41 +1398,27 @@
 <span class="mi">0</span>  <span class="mi">0</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Element-wise multiplication: method 1</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+<div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="mi">0</span>  <span class="mi">0</span>
+<div class="codehilite"><pre><span></span><span class="mi">0</span>  <span class="mi">0</span>
 <span class="mi">0</span>  <span class="mi">0</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Element-wise multiplication: method 2</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># Not in-place</span>
+<div class="codehilite"><pre><span></span><span class="c1"># Not in-place</span>
 <span class="k">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="mi">0</span>  <span class="mi">0</span>
+<div class="codehilite"><pre><span></span><span class="mi">0</span>  <span class="mi">0</span>
 <span class="mi">0</span>  <span class="mi">0</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
 
@@ -1676,26 +1426,16 @@
 <span class="mi">1</span>  <span class="mi">1</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Element-wise multiplication: method 3</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># In-place</span>
+<div class="codehilite"><pre><span></span><span class="c1"># In-place</span>
 <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">mul_</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="mi">0</span>  <span class="mi">0</span>
+<div class="codehilite"><pre><span></span><span class="mi">0</span>  <span class="mi">0</span>
 <span class="mi">0</span>  <span class="mi">0</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
 
@@ -1703,30 +1443,18 @@
 <span class="mi">0</span>  <span class="mi">0</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
 </pre></div>
-</td></tr></table>
 
 <h4 id="element-wise-division">Element-Wise Division<a class="headerlink" href="#element-wise-division" title="Permanent link">&para;</a></h4>
 <div class="admonition note">
 <p class="admonition-title">Create tensor a and b of sizes 2x2 filled with 1's and 0's</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="mi">1</span>  <span class="mi">1</span>
+<div class="codehilite"><pre><span></span><span class="mi">1</span>  <span class="mi">1</span>
 <span class="mi">1</span>  <span class="mi">1</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
 
@@ -1735,54 +1463,40 @@
 <span class="mi">0</span>  <span class="mi">0</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Element-wise division: method 1</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">b</span> <span class="o">/</span> <span class="n">a</span>
+<div class="codehilite"><pre><span></span><span class="n">b</span> <span class="o">/</span> <span class="n">a</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="mi">0</span>  <span class="mi">0</span>
+<div class="codehilite"><pre><span></span><span class="mi">0</span>  <span class="mi">0</span>
 <span class="mi">0</span>  <span class="mi">0</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Element-wise division: method 2</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="mi">0</span>  <span class="mi">0</span>
+<div class="codehilite"><pre><span></span><span class="mi">0</span>  <span class="mi">0</span>
 <span class="mi">0</span>  <span class="mi">0</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Element-wise division: method 3</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1"># Inplace</span>
+<div class="codehilite"><pre><span></span><span class="c1"># Inplace</span>
 <span class="n">b</span><span class="o">.</span><span class="n">div_</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="mi">0</span>  <span class="mi">0</span>
+<div class="codehilite"><pre><span></span><span class="mi">0</span>  <span class="mi">0</span>
 <span class="mi">0</span>  <span class="mi">0</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x2</span><span class="p">]</span>
 </pre></div>
-</td></tr></table>
 
 <h4 id="tensor-mean">Tensor Mean<a class="headerlink" href="#tensor-mean" title="Permanent link">&para;</a></h4>
 <div>
@@ -1795,46 +1509,33 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">Create tensor of size 10 filled from 1 to 10</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+<div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
 <span class="n">a</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">10</span><span class="p">])</span>
+<div class="codehilite"><pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">10</span><span class="p">])</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Get tensor mean</p>
 <p>Here we get 5.5 as we've calculated manually above.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="mf">5.5000</span>
+<div class="codehilite"><pre><span></span><span class="mf">5.5000</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">1</span><span class="p">]</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Get tensor mean on second dimension</p>
 <p>Here we get an error because the tensor is of size 10 and not 10x1 so there's no second dimension to calculate.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="ne">RuntimeError</span>                              <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="ne">RuntimeError</span>                              <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
 
 <span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="mi">81</span><span class="n">aec0cf1c00</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">()</span>
 <span class="o">----&gt;</span> <span class="mi">1</span> <span class="n">a</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -1842,52 +1543,40 @@
 
 <span class="ne">RuntimeError</span><span class="p">:</span> <span class="n">dimension</span> <span class="n">out</span> <span class="n">of</span> <span class="nb">range</span> <span class="p">(</span><span class="n">expected</span> <span class="n">to</span> <span class="n">be</span> <span class="ow">in</span> <span class="nb">range</span> <span class="n">of</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">but</span> <span class="n">got</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Create a 2x10 Tensor, of 1-10 digits each</p>
-<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]])</span>
+<p><div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]])</span>
 </pre></div>
-</td></tr></table>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
-</pre></div>
-</td></tr></table></p>
+<div class="codehilite"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+</pre></div></p>
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+<div class="codehilite"><pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
 </pre></div>
-</td></tr></table>
 
 <div class="admonition note">
 <p class="admonition-title">Get tensor mean on second dimension</p>
 <p>Here we won't get an error like previously because we've a tensor of size 2x10</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span> <span class="mf">5.5000</span>
+<div class="codehilite"><pre><span></span> <span class="mf">5.5000</span>
  <span class="mf">5.5000</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">2</span><span class="n">x1</span><span class="p">]</span>
 </pre></div>
-</td></tr></table>
 
 <h4 id="tensor-standard-deviation">Tensor Standard Deviation<a class="headerlink" href="#tensor-standard-deviation" title="Permanent link">&para;</a></h4>
 <div class="admonition note">
 <p class="admonition-title">Get standard deviation of tensor</p>
 </div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+<div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
 <span class="n">a</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
 
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span> <span class="mf">3.0277</span>
+<div class="codehilite"><pre><span></span> <span class="mf">3.0277</span>
 <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">1</span><span class="p">]</span>
 </pre></div>
-</td></tr></table>
 
 <h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
 <p>We've learnt to...</p>
@@ -1901,8 +1590,8 @@
 </ul>
 </li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Initialize Seeds for Reproducibility on GPU and CPU</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Convert Matrices: NumPy <img alt="➡️" class="emojione" src="https://cdn.jsdelivr.net/emojione/assets/svg/27a1.svg" title=":arrow_right:" /> Torch and Torch <img alt="➡️" class="emojione" src="https://cdn.jsdelivr.net/emojione/assets/svg/27a1.svg" title=":arrow_right:" /> NumPy</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Move Tensors: CPU <img alt="➡️" class="emojione" src="https://cdn.jsdelivr.net/emojione/assets/svg/27a1.svg" title=":arrow_right:" /> GPU and GPU <img alt="➡️" class="emojione" src="https://cdn.jsdelivr.net/emojione/assets/svg/27a1.svg" title=":arrow_right:" /> CPU</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Convert Matrices: NumPy to Torch and Torch to NumPy</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Move Tensors: CPU to GPU and GPU to CPU</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Run Important Tensor Operations<ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Element-wise addition, subtraction, multiplication and division</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Resize</li>
@@ -1947,13 +1636,13 @@
           </a>
         
         
-          <a href="../../../news/news/" title="Welcome" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../pytorch_gradients/" title="PyTorch Fundamentals - Gradients" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Welcome
+                PyTorch Fundamentals - Gradients
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

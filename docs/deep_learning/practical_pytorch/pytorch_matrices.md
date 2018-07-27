@@ -979,8 +979,8 @@ We've learnt to...
         * [x] Zeros 
         * [x] Ones
     * [x] Initialize Seeds for Reproducibility on GPU and CPU
-    * [x] Convert Matrices: NumPy :arrow_right: Torch and Torch :arrow_right: NumPy
-    * [x] Move Tensors: CPU :arrow_right: GPU and GPU :arrow_right: CPU
+    * [x] Convert Matrices: NumPy to Torch and Torch to NumPy
+    * [x] Move Tensors: CPU to GPU and GPU to CPU
     * [x] Run Important Tensor Operations
         * [x] Element-wise addition, subtraction, multiplication and division
         * [x] Resize

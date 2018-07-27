@@ -12,6 +12,7 @@ pages:
     - Deep Learning Wiki:
       - Introduction: deep_learning/intro.md
       - PyTorch Fundamentals - Matrices: deep_learning/practical_pytorch/pytorch_matrices.md
+      - PyTorch Fundamentals - Gradients: deep_learning/practical_pytorch/pytorch_gradients.md
     - News:
       - Welcome: news/news.md
       - Featured on PyTorch Website 2018: news/deep_learning_wizard_1y_2018_06_01.md
@@ -37,7 +38,7 @@ theme:
 markdown_extensions:
   - admonition
   - codehilite:
-      linenums: true
+      linenums: false
   - footnotes
   - meta
   - toc:
