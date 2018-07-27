@@ -202,7 +202,7 @@
         },
         {
             "location": "/news/news/",
-            "text": "Welcome to our Blog\n\u00b6\n\n\nHere, we post news related to Deep Learning Wizard's releases, features and achievements \n\n\nNotable News\n\u00b6\n\n\n\n\n Featured on PyTorch Website in 2018\n\n\n Reached 2200+ students in 2018\n\n\n Reached 1000+ students in 2017\n\n\n And more...",
+            "text": "Welcome to our Blog\n\u00b6\n\n\nHere, we post news related to Deep Learning Wizard's releases, features and achievements \n\n\nNotable News\n\u00b6\n\n\n\n\n Conducted NUS-MIT-NUHS Datathon NVIDIA Image Recognition Workshop, July 2018\n\n\n Reached 2200+ students, 2018\n\n\n Featured on PyTorch Website, January 2018\n\n\n Reached 1000+ students, 2017\n\n\n Hosted NVIDIA Self-Driving Cars and Healthcare Talk, June 2017\n\n\n And more...",
             "title": "Welcome"
         },
         {
@@ -212,8 +212,23 @@
         },
         {
             "location": "/news/news/#notable-news",
-            "text": "Featured on PyTorch Website in 2018   Reached 2200+ students in 2018   Reached 1000+ students in 2017   And more...",
+            "text": "Conducted NUS-MIT-NUHS Datathon NVIDIA Image Recognition Workshop, July 2018   Reached 2200+ students, 2018   Featured on PyTorch Website, January 2018   Reached 1000+ students, 2017   Hosted NVIDIA Self-Driving Cars and Healthcare Talk, June 2017   And more...",
             "title": "Notable News"
+        },
+        {
+            "location": "/news/nvidia_nus_mit_datathon_2018_07_05/",
+            "text": "NVIDIA Workshop at NUS-MIT-NUHS Datathon\n\u00b6\n\n\nImage Recognition Workshop by Ritchie Ng\n\u00b6\n\n\nThe NVIDIA Deep Learning Institute (DLI) trains developers, data scientists, and researchers on how to use artificial intelligence to solve real-world problems across a wide range of domains. In the deep learning courses, you\u2019ll learn how to train, optimize, and deploy neural networks using the latest tools, frameworks, and techniques for deep learning.\n\n\nIn \u201cImage Classification with DIGITS\u201d mini-course, you will learn how to train a deep neural network to recognize handwritten digits by loading image data into a training environment, choosing and training a network, testing with new data, and iterating to improve performance.\n\n\nLink to the NUS-MIT-NUHS Datathon \nworkshop\n.",
+            "title": "NUS-MIT-NUHS NVIDIA Image Recognition Workshop July 2018"
+        },
+        {
+            "location": "/news/nvidia_nus_mit_datathon_2018_07_05/#nvidia-workshop-at-nus-mit-nuhs-datathon",
+            "text": "",
+            "title": "NVIDIA Workshop at NUS-MIT-NUHS Datathon"
+        },
+        {
+            "location": "/news/nvidia_nus_mit_datathon_2018_07_05/#image-recognition-workshop-by-ritchie-ng",
+            "text": "The NVIDIA Deep Learning Institute (DLI) trains developers, data scientists, and researchers on how to use artificial intelligence to solve real-world problems across a wide range of domains. In the deep learning courses, you\u2019ll learn how to train, optimize, and deploy neural networks using the latest tools, frameworks, and techniques for deep learning.  In \u201cImage Classification with DIGITS\u201d mini-course, you will learn how to train a deep neural network to recognize handwritten digits by loading image data into a training environment, choosing and training a network, testing with new data, and iterating to improve performance.  Link to the NUS-MIT-NUHS Datathon  workshop .",
+            "title": "Image Recognition Workshop by Ritchie Ng"
         },
         {
             "location": "/news/deep_learning_wizard_1y_2018_06_01/",
@@ -229,6 +244,21 @@
             "location": "/news/deep_learning_wizard_1y_2018_06_01/#pytorch-a-year-later",
             "text": "We are featured on  PyTorch website's post    I used PyTorch from day 1 and I fell in love with it. One year later, PyTorch's community has grown tremendously. I thank Facebook AI Research (FAIR) and everyone who contributed to building one of the best deep learning framework. In particular Soumith Chintala from FAIR where he is continually fixing bugs and making PyTorch better everyday.  A year later, Deep Learning Wizard has taught more than 2000 students across 100+ countries, and we continue to strive to release new and updated content to enable anyone to build customized deep learning systems to solve many problems. And I'm trying to push for PyTorch workshops at NVIDIA Deep Learning Institute in Singapore and across the world, so stay tuned!  A big shoutout for  Alfredo Canziani  who's currently a postdoc at NYU co-teaching with Yann LeCun on deep learning classes and he's releasing another technical course on PyTorch that is going to be awesome.  To more great years ahead for PyTorch   Cheers, Ritchie Ng",
             "title": "PyTorch a Year Later"
+        },
+        {
+            "location": "/news/nvidia_self_driving_cars_talk_2017_06_21/",
+            "text": "NVIDIA Self-Driving Cars and Healthcare Workshop\n\u00b6\n\n\nHosted by Ritchie Ng\n\u00b6\n\n\nA talk by Marek Bardo\u0144ski, Senior Deep Learning Research Engineer, NVIDIA Switzerland. This is hosted by Ritchie Ng, Deep Learning Researcher, NExT Search Centre, NUS.\n\n\nWe will be touching on cutting-edge applications of deep learning for self-driving cars and medical diagnostics. Also there will be a tutorial followed by networking with deep learning researchers from NUS and NVIDIA.\n\n\nDetails:\nWednesday, June 21\nst\n\n1:00 PM to 3:30 PM\n\n\nThe Hangar by NUS Enterprise\n21 Heng Mui Keng Terrace, Singapore 119613",
+            "title": "NVIDIA Self Driving Cars & Healthcare Talk June 2017"
+        },
+        {
+            "location": "/news/nvidia_self_driving_cars_talk_2017_06_21/#nvidia-self-driving-cars-and-healthcare-workshop",
+            "text": "",
+            "title": "NVIDIA Self-Driving Cars and Healthcare Workshop"
+        },
+        {
+            "location": "/news/nvidia_self_driving_cars_talk_2017_06_21/#hosted-by-ritchie-ng",
+            "text": "A talk by Marek Bardo\u0144ski, Senior Deep Learning Research Engineer, NVIDIA Switzerland. This is hosted by Ritchie Ng, Deep Learning Researcher, NExT Search Centre, NUS.  We will be touching on cutting-edge applications of deep learning for self-driving cars and medical diagnostics. Also there will be a tutorial followed by networking with deep learning researchers from NUS and NVIDIA.  Details:\nWednesday, June 21 st \n1:00 PM to 3:30 PM  The Hangar by NUS Enterprise\n21 Heng Mui Keng Terrace, Singapore 119613",
+            "title": "Hosted by Ritchie Ng"
         }
     ]
 }

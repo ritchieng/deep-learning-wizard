@@ -15,7 +15,9 @@ pages:
       - PyTorch Fundamentals - Gradients: deep_learning/practical_pytorch/pytorch_gradients.md
     - News:
       - Welcome: news/news.md
+      - NUS-MIT-NUHS NVIDIA Image Recognition Workshop July 2018: news/nvidia_nus_mit_datathon_2018_07_05.md
       - Featured on PyTorch Website 2018: news/deep_learning_wizard_1y_2018_06_01.md
+      - NVIDIA Self Driving Cars & Healthcare Talk June 2017: news/nvidia_self_driving_cars_talk_2017_06_21.md
 
 # Configuration
 theme:
