@@ -1,0 +1,1521 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="We deploy a top-down approach that enables you to grasp deep learning theories and code easily and quickly. Used by thousands of students and professionals from top tech companies, research institutions.">
+      
+      
+        <link rel="canonical" href="https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_linear_regression/">
+      
+      
+        <meta name="author" content="Ritchie Ng">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../../assets/images/favicon.ico">
+      <meta name="generator" content="mkdocs-0.17.5, mkdocs-material-2.9.2">
+    
+    
+      
+        <title>PyTorch Fundamentals - Linear Regression - Deep Learning Wizard</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.ba0fd1a6.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.6079476c.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#3f51b5">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+      
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#linear-regression-with-pytorch" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://www.deeplearningwizard.com/" title="Deep Learning Wizard" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">whatshot</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Deep Learning Wizard
+              </span>
+              <span class="md-header-nav__topic">
+                PyTorch Fundamentals - Linear Regression
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../../.." title="Home" class="md-tabs__link">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../intro/" title="Deep Learning Wiki" class="md-tabs__link md-tabs__link--active">
+          Deep Learning Wiki
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../news/news/" title="News" class="md-tabs__link">
+          News
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <span class="md-nav__button md-logo">
+      
+        <i class="md-icon">whatshot</i>
+      
+    </span>
+    Deep Learning Wizard
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../supporters/" title="Supporters" class="md-nav__link">
+      Supporters
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../review/" title="Reviews" class="md-nav__link">
+      Reviews
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      Deep Learning Wiki
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Deep Learning Wiki
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../intro/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../pytorch_matrices/" title="PyTorch Fundamentals - Matrices" class="md-nav__link">
+      PyTorch Fundamentals - Matrices
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../pytorch_gradients/" title="PyTorch Fundamentals - Gradients" class="md-nav__link">
+      PyTorch Fundamentals - Gradients
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        PyTorch Fundamentals - Linear Regression
+      </label>
+    
+    <a href="./" title="PyTorch Fundamentals - Linear Regression" class="md-nav__link md-nav__link--active">
+      PyTorch Fundamentals - Linear Regression
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#about-linear-regression" title="About Linear Regression" class="md-nav__link">
+    About Linear Regression
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simple-linear-regression-basics" title="Simple Linear Regression Basics" class="md-nav__link">
+    Simple Linear Regression Basics
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-of-simple-linear-regression" title="Example of simple linear regression" class="md-nav__link">
+    Example of simple linear regression
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aim-of-linear-regression" title="Aim of Linear Regression" class="md-nav__link">
+    Aim of Linear Regression
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-a-linear-regression-model-with-pytorch" title="Building a Linear Regression Model with PyTorch" class="md-nav__link">
+    Building a Linear Regression Model with PyTorch
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example" title="Example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-a-toy-dataset" title="Building a Toy Dataset" class="md-nav__link">
+    Building a Toy Dataset
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-model" title="Building Model" class="md-nav__link">
+    Building Model
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-a-linear-regression-model-with-pytorch-gpu" title="Building a Linear Regression Model with PyTorch (GPU)" class="md-nav__link">
+    Building a Linear Regression Model with PyTorch (GPU)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" title="Summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      News
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        News
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/news/" title="Welcome" class="md-nav__link">
+      Welcome
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/nvidia_nus_mit_datathon_2018_07_05/" title="NUS-MIT-NUHS NVIDIA Image Recognition Workshop July 2018" class="md-nav__link">
+      NUS-MIT-NUHS NVIDIA Image Recognition Workshop July 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/deep_learning_wizard_1y_2018_06_01/" title="Featured on PyTorch Website 2018" class="md-nav__link">
+      Featured on PyTorch Website 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/nvidia_self_driving_cars_talk_2017_06_21/" title="NVIDIA Self Driving Cars & Healthcare Talk June 2017" class="md-nav__link">
+      NVIDIA Self Driving Cars & Healthcare Talk June 2017
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#about-linear-regression" title="About Linear Regression" class="md-nav__link">
+    About Linear Regression
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simple-linear-regression-basics" title="Simple Linear Regression Basics" class="md-nav__link">
+    Simple Linear Regression Basics
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-of-simple-linear-regression" title="Example of simple linear regression" class="md-nav__link">
+    Example of simple linear regression
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aim-of-linear-regression" title="Aim of Linear Regression" class="md-nav__link">
+    Aim of Linear Regression
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-a-linear-regression-model-with-pytorch" title="Building a Linear Regression Model with PyTorch" class="md-nav__link">
+    Building a Linear Regression Model with PyTorch
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example" title="Example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-a-toy-dataset" title="Building a Toy Dataset" class="md-nav__link">
+    Building a Toy Dataset
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-model" title="Building Model" class="md-nav__link">
+    Building Model
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-a-linear-regression-model-with-pytorch-gpu" title="Building a Linear Regression Model with PyTorch (GPU)" class="md-nav__link">
+    Building a Linear Regression Model with PyTorch (GPU)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" title="Summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="linear-regression-with-pytorch">Linear Regression with PyTorch<a class="headerlink" href="#linear-regression-with-pytorch" title="Permanent link">&para;</a></h1>
+<h2 id="about-linear-regression">About Linear Regression<a class="headerlink" href="#about-linear-regression" title="Permanent link">&para;</a></h2>
+<h3 id="simple-linear-regression-basics">Simple Linear Regression Basics<a class="headerlink" href="#simple-linear-regression-basics" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Allows us to understand <strong>relationship</strong> between two <strong>continuous variables</strong></li>
+<li>Example<ul>
+<li>x: independent variable<ul>
+<li>weight</li>
+</ul>
+</li>
+<li>y: dependent variable<ul>
+<li>height</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span><span class="MathJax_Preview">y = \alpha x + \beta</span><script type="math/tex">y = \alpha x + \beta</script></span></li>
+</ul>
+<h3 id="example-of-simple-linear-regression">Example of simple linear regression<a class="headerlink" href="#example-of-simple-linear-regression" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Create plot for simple linear regression</p>
+<p>Take note that this code is not important at all. It simply creates random data points and does a simple best-fit line to best approximate the underlying function if one even exists.</p>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+
+<span class="c1"># Creates 50 random x and y numbers</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># Makes the dots colorful</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># Plots best-fit line via polyfit</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">))(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+
+<span class="c1"># Plots the random x and y data points we created</span>
+<span class="c1"># Interestingly, alpha makes it more aesthetically pleasing</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+<p><img alt="png" src="../pytorch_linear_regression_files/pytorch_linear_regression_3_0.png" /></p>
+</div>
+<h3 id="aim-of-linear-regression">Aim of Linear Regression<a class="headerlink" href="#aim-of-linear-regression" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Minimize the distance between the points and the line (<span><span class="MathJax_Preview">y = \alpha x + \beta</span><script type="math/tex">y = \alpha x + \beta</script></span>)</li>
+<li>Adjusting<ul>
+<li>Coefficient: <span><span class="MathJax_Preview">\alpha</span><script type="math/tex">\alpha</script></span></li>
+<li>Bias/intercept: <span><span class="MathJax_Preview">\beta</span><script type="math/tex">\beta</script></span></li>
+</ul>
+</li>
+</ul>
+<h2 id="building-a-linear-regression-model-with-pytorch">Building a Linear Regression Model with PyTorch<a class="headerlink" href="#building-a-linear-regression-model-with-pytorch" title="Permanent link">&para;</a></h2>
+<h3 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Coefficient: <span><span class="MathJax_Preview">\alpha = 2</span><script type="math/tex">\alpha = 2</script></span></li>
+<li>Bias/intercept: <span><span class="MathJax_Preview">\beta = 1</span><script type="math/tex">\beta = 1</script></span></li>
+<li>Equation: <span><span class="MathJax_Preview">y = 2x + 1</span><script type="math/tex">y = 2x + 1</script></span></li>
+</ul>
+<h3 id="building-a-toy-dataset">Building a Toy Dataset<a class="headerlink" href="#building-a-toy-dataset" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Create a list of values from 0 to 11</p>
+<div class="codehilite"><pre><span></span><span class="n">x_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">11</span><span class="p">)]</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span><span class="n">x_values</span>
+</pre></div>
+
+</div>
+<div class="codehilite"><pre><span></span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+</pre></div>
+
+<div class="admonition note">
+<p class="admonition-title">Convert list of numbers to numpy array</p>
+<div class="codehilite"><pre><span></span><span class="c1"># Convert to numpy</span>
+<span class="n">x_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">x_train</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+</div>
+<div class="codehilite"><pre><span></span><span class="p">(</span><span class="mi">11</span><span class="p">,)</span>
+</pre></div>
+
+<div class="admonition note">
+<p class="admonition-title">Convert to 2-dimensional array</p>
+<p>If you don't this you will get an error stating you need 2D. Simply just reshape accordingly if you ever face such errors down the road.
+<div class="codehilite"><pre><span></span><span class="c1"># IMPORTANT: 2D required</span>
+<span class="n">x_train</span> <span class="o">=</span> <span class="n">x_train</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">x_train</span><span class="o">.</span><span class="n">shape</span>
+</pre></div></p>
+</div>
+<div class="codehilite"><pre><span></span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+<div class="admonition note">
+<p class="admonition-title">Create list of y values</p>
+<p>We want y values for every x value we have above. </p>
+<p><span><span class="MathJax_Preview">y = 2x + 1</span><script type="math/tex">y = 2x + 1</script></span></p>
+<div class="codehilite"><pre><span></span><span class="n">y_values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x_values</span><span class="p">]</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span><span class="n">y_values</span>
+</pre></div>
+
+</div>
+<div class="codehilite"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">21</span><span class="p">]</span>
+</pre></div>
+
+<div class="admonition note">
+<p class="admonition-title">Alternative to create list of y values</p>
+<p>If you're weak in list iterators, this might be an easier alternative.
+<div class="codehilite"><pre><span></span><span class="c1"># In case you&#39;re weak in list iterators...</span>
+<span class="n">y_values</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x_values</span><span class="p">:</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">y_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> 
+</pre></div></p>
+<div class="codehilite"><pre><span></span><span class="n">y_values</span>
+</pre></div>
+
+</div>
+<div class="codehilite"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">21</span><span class="p">]</span>
+</pre></div>
+
+<div class="admonition note">
+<p class="admonition-title">Convert to numpy array</p>
+<p>You will slowly get a hang on how when you deal with PyTorch tensors, you just keep on making sure your raw data is in numpy form to make sure everything's good.</p>
+<div class="codehilite"><pre><span></span><span class="n">y_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y_values</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">y_train</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+</div>
+<div class="codehilite"><pre><span></span><span class="p">(</span><span class="mi">11</span><span class="p">,)</span>
+</pre></div>
+
+<div class="admonition note">
+<p class="admonition-title">Reshape y numpy array to 2-dimension</p>
+<div class="codehilite"><pre><span></span><span class="c1"># IMPORTANT: 2D required</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">y_train</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">y_train</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+</div>
+<div class="codehilite"><pre><span></span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+<h3 id="building-model">Building Model<a class="headerlink" href="#building-model" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Critical Imports</p>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="kn">as</span> <span class="nn">nn</span>
+</pre></div>
+
+</div>
+<div class="admonition note">
+<p class="admonition-title">Create Model</p>
+<ol>
+<li>Linear model<ul>
+<li>True Equation: <span><span class="MathJax_Preview">y = 2x + 1</span><script type="math/tex">y = 2x + 1</script></span></li>
+</ul>
+</li>
+<li>Forward<ul>
+<li>Example<ul>
+<li>Input $x = 1 $</li>
+<li>Output <span><span class="MathJax_Preview">\hat y = ?</span><script type="math/tex">\hat y = ?</script></span></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<div class="codehilite"><pre><span></span><span class="c1"># Create class</span>
+<span class="k">class</span> <span class="nc">LinearRegressionModel</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LinearRegressionModel</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linear</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">)</span>  
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">out</span>
+</pre></div>
+
+</div>
+<div class="admonition note">
+<p class="admonition-title">Instantiate Model Class</p>
+<ul>
+<li>input: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</li>
+<li>desired output: [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21]</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="n">input_dim</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">output_dim</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegressionModel</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">)</span>
+</pre></div>
+
+</div>
+<div class="admonition note">
+<p class="admonition-title">Instantiate Loss Class</p>
+<ul>
+<li>MSE Loss: Mean Squared Error</li>
+<li><span><span class="MathJax_Preview">MSE = \frac{1}{n} \sum_{i=1}^n(\hat y_i - y_i)</span><script type="math/tex">MSE = \frac{1}{n} \sum_{i=1}^n(\hat y_i - y_i)</script></span><ul>
+<li><span><span class="MathJax_Preview">\hat y</span><script type="math/tex">\hat y</script></span>: prediction</li>
+<li><span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>: true value</li>
+</ul>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+</pre></div>
+
+</div>
+<div class="admonition note">
+<p class="admonition-title">Instantiate Optimizer Class</p>
+<ul>
+<li>Simplified equation<ul>
+<li>$\theta = \theta - \eta \cdot \nabla_\theta $<ul>
+<li><span><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span>: parameters (our variables)</li>
+<li><span><span class="MathJax_Preview">\eta</span><script type="math/tex">\eta</script></span>: learning rate (how fast we want to learn)</li>
+<li><span><span class="MathJax_Preview">\nabla_\theta</span><script type="math/tex">\nabla_\theta</script></span>: parameters' gradients</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Even simplier equation<ul>
+<li><code class="codehilite">parameters = parameters - learning_rate * parameters_gradients</code><ul>
+<li>parameters: <span><span class="MathJax_Preview">\alpha</span><script type="math/tex">\alpha</script></span> and <span><span class="MathJax_Preview">\beta</span><script type="math/tex">\beta</script></span> in $ y = \alpha x + \beta$</li>
+<li>desired parameters: <span><span class="MathJax_Preview">\alpha = 2</span><script type="math/tex">\alpha = 2</script></span> and <span><span class="MathJax_Preview">\beta = 1</span><script type="math/tex">\beta = 1</script></span> in $ y = 2x + 1$ </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">)</span>
+</pre></div>
+
+</div>
+<div class="admonition note">
+<p class="admonition-title">Train Model</p>
+<ul>
+<li>
+<p>1 epoch: going through the whole x_train data once</p>
+<ul>
+<li>100 epochs: <ul>
+<li>100x mapping <code class="codehilite">x_train = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Process </p>
+<ol>
+<li>Convert inputs/labels to tensors with gradients</li>
+<li>Clear gradient buffets</li>
+<li>Get output given inputs </li>
+<li>Get loss</li>
+<li>Get gradients w.r.t. parameters</li>
+<li>Update parameters using gradients<ul>
+<li><code class="codehilite">parameters = parameters - learning_rate * parameters_gradients</code></li>
+</ul>
+</li>
+<li>REPEAT</li>
+</ol>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="n">epochs</span> <span class="o">=</span> <span class="mi">100</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span><span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+    <span class="n">epoch</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="c1"># Convert numpy array to torch Variable</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">()</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span>
+
+    <span class="c1"># Clear gradients w.r.t. parameters</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span> 
+
+    <span class="c1"># Forward to get output</span>
+    <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+
+    <span class="c1"># Calculate Loss</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+
+    <span class="c1"># Getting gradients w.r.t. parameters</span>
+    <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+
+    <span class="c1"># Updating parameters</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;epoch {}, loss {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">epoch</span><span class="p">,</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()))</span>
+</pre></div>
+
+</div>
+<div class="codehilite"><pre><span></span><span class="n">epoch</span> <span class="mi">1</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">140.58143615722656</span>
+<span class="n">epoch</span> <span class="mi">2</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">11.467253684997559</span>
+<span class="n">epoch</span> <span class="mi">3</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.9358152747154236</span>
+<span class="n">epoch</span> <span class="mi">4</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.07679400593042374</span>
+<span class="n">epoch</span> <span class="mi">5</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0067212567664682865</span>
+<span class="n">epoch</span> <span class="mi">6</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0010006226366385818</span>
+<span class="n">epoch</span> <span class="mi">7</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0005289533291943371</span>
+<span class="n">epoch</span> <span class="mi">8</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0004854927829001099</span>
+<span class="n">epoch</span> <span class="mi">9</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00047700389404781163</span>
+<span class="n">epoch</span> <span class="mi">10</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0004714332753792405</span>
+<span class="n">epoch</span> <span class="mi">11</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00046614606981165707</span>
+<span class="n">epoch</span> <span class="mi">12</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0004609318566508591</span>
+<span class="n">epoch</span> <span class="mi">13</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0004557870561257005</span>
+<span class="n">epoch</span> <span class="mi">14</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00045069155748933554</span>
+<span class="n">epoch</span> <span class="mi">15</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00044567222357727587</span>
+<span class="n">epoch</span> <span class="mi">16</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00044068993884138763</span>
+<span class="n">epoch</span> <span class="mi">17</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00043576463940553367</span>
+<span class="n">epoch</span> <span class="mi">18</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00043090470717288554</span>
+<span class="n">epoch</span> <span class="mi">19</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00042609183583408594</span>
+<span class="n">epoch</span> <span class="mi">20</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0004213254142086953</span>
+<span class="n">epoch</span> <span class="mi">21</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0004166301223449409</span>
+<span class="n">epoch</span> <span class="mi">22</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0004119801160413772</span>
+<span class="n">epoch</span> <span class="mi">23</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00040738462121225893</span>
+<span class="n">epoch</span> <span class="mi">24</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0004028224211651832</span>
+<span class="n">epoch</span> <span class="mi">25</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0003983367350883782</span>
+<span class="n">epoch</span> <span class="mi">26</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0003938761365134269</span>
+<span class="n">epoch</span> <span class="mi">27</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.000389480876037851</span>
+<span class="n">epoch</span> <span class="mi">28</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00038514015614055097</span>
+<span class="n">epoch</span> <span class="mi">29</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.000380824290914461</span>
+<span class="n">epoch</span> <span class="mi">30</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00037657516077160835</span>
+<span class="n">epoch</span> <span class="mi">31</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.000372376263840124</span>
+<span class="n">epoch</span> <span class="mi">32</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0003682126116473228</span>
+<span class="n">epoch</span> <span class="mi">33</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0003640959912445396</span>
+<span class="n">epoch</span> <span class="mi">34</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00036003670538775623</span>
+<span class="n">epoch</span> <span class="mi">35</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00035601368290372193</span>
+<span class="n">epoch</span> <span class="mi">36</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00035203873994760215</span>
+<span class="n">epoch</span> <span class="mi">37</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00034810820943675935</span>
+<span class="n">epoch</span> <span class="mi">38</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.000344215368386358</span>
+<span class="n">epoch</span> <span class="mi">39</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0003403784066904336</span>
+<span class="n">epoch</span> <span class="mi">40</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00033658024040050805</span>
+<span class="n">epoch</span> <span class="mi">41</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0003328165039420128</span>
+<span class="n">epoch</span> <span class="mi">42</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0003291067841928452</span>
+<span class="n">epoch</span> <span class="mi">43</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0003254293987993151</span>
+<span class="n">epoch</span> <span class="mi">44</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0003217888588551432</span>
+<span class="n">epoch</span> <span class="mi">45</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0003182037326041609</span>
+<span class="n">epoch</span> <span class="mi">46</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0003146533854305744</span>
+<span class="n">epoch</span> <span class="mi">47</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00031113551813177764</span>
+<span class="n">epoch</span> <span class="mi">48</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0003076607536058873</span>
+<span class="n">epoch</span> <span class="mi">49</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00030422292184084654</span>
+<span class="n">epoch</span> <span class="mi">50</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00030083119054324925</span>
+<span class="n">epoch</span> <span class="mi">51</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00029746422660537064</span>
+<span class="n">epoch</span> <span class="mi">52</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0002941471466328949</span>
+<span class="n">epoch</span> <span class="mi">53</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00029085995629429817</span>
+<span class="n">epoch</span> <span class="mi">54</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0002876132493838668</span>
+<span class="n">epoch</span> <span class="mi">55</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00028440452297218144</span>
+<span class="n">epoch</span> <span class="mi">56</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00028122696676291525</span>
+<span class="n">epoch</span> <span class="mi">57</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00027808290906250477</span>
+<span class="n">epoch</span> <span class="mi">58</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00027497278642840683</span>
+<span class="n">epoch</span> <span class="mi">59</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00027190230321139097</span>
+<span class="n">epoch</span> <span class="mi">60</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00026887087733484805</span>
+<span class="n">epoch</span> <span class="mi">61</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0002658693410921842</span>
+<span class="n">epoch</span> <span class="mi">62</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0002629039518069476</span>
+<span class="n">epoch</span> <span class="mi">63</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00025996880140155554</span>
+<span class="n">epoch</span> <span class="mi">64</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0002570618235040456</span>
+<span class="n">epoch</span> <span class="mi">65</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00025419273879379034</span>
+<span class="n">epoch</span> <span class="mi">66</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00025135406758636236</span>
+<span class="n">epoch</span> <span class="mi">67</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0002485490695107728</span>
+<span class="n">epoch</span> <span class="mi">68</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0002457649679854512</span>
+<span class="n">epoch</span> <span class="mi">69</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0002430236927466467</span>
+<span class="n">epoch</span> <span class="mi">70</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00024031475186347961</span>
+<span class="n">epoch</span> <span class="mi">71</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00023762597993481904</span>
+<span class="n">epoch</span> <span class="mi">72</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00023497406800743192</span>
+<span class="n">epoch</span> <span class="mi">73</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0002323519001947716</span>
+<span class="n">epoch</span> <span class="mi">74</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00022976362379267812</span>
+<span class="n">epoch</span> <span class="mi">75</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0002271933335578069</span>
+<span class="n">epoch</span> <span class="mi">76</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00022465786605607718</span>
+<span class="n">epoch</span> <span class="mi">77</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00022214400814846158</span>
+<span class="n">epoch</span> <span class="mi">78</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00021966728672850877</span>
+<span class="n">epoch</span> <span class="mi">79</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0002172116219298914</span>
+<span class="n">epoch</span> <span class="mi">80</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00021478648704942316</span>
+<span class="n">epoch</span> <span class="mi">81</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00021239375928416848</span>
+<span class="n">epoch</span> <span class="mi">82</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0002100227284245193</span>
+<span class="n">epoch</span> <span class="mi">83</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00020767028036061674</span>
+<span class="n">epoch</span> <span class="mi">84</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00020534756185952574</span>
+<span class="n">epoch</span> <span class="mi">85</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00020305956422816962</span>
+<span class="n">epoch</span> <span class="mi">86</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0002007894654525444</span>
+<span class="n">epoch</span> <span class="mi">87</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00019854879064951092</span>
+<span class="n">epoch</span> <span class="mi">88</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00019633043848443776</span>
+<span class="n">epoch</span> <span class="mi">89</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00019413618429098278</span>
+<span class="n">epoch</span> <span class="mi">90</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00019197272195015103</span>
+<span class="n">epoch</span> <span class="mi">91</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0001898303598864004</span>
+<span class="n">epoch</span> <span class="mi">92</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00018771187751553953</span>
+<span class="n">epoch</span> <span class="mi">93</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00018561164324637502</span>
+<span class="n">epoch</span> <span class="mi">94</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00018354636267758906</span>
+<span class="n">epoch</span> <span class="mi">95</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00018149390234611928</span>
+<span class="n">epoch</span> <span class="mi">96</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0001794644631445408</span>
+<span class="n">epoch</span> <span class="mi">97</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00017746571393217891</span>
+<span class="n">epoch</span> <span class="mi">98</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00017548113828524947</span>
+<span class="n">epoch</span> <span class="mi">99</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00017352371651213616</span>
+<span class="n">epoch</span> <span class="mi">100</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.00017157981346827</span>
+</pre></div>
+
+<div class="admonition note">
+<p class="admonition-title">Looking at predicted values</p>
+<div class="codehilite"><pre><span></span><span class="c1"># Purely inference</span>
+<span class="n">predicted</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">())</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="n">predicted</span>
+</pre></div>
+
+</div>
+<div class="codehilite"><pre><span></span><span class="n">array</span><span class="p">([[</span> <span class="mf">0.9756333</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">2.9791424</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">4.982651</span> <span class="p">],</span>
+       <span class="p">[</span> <span class="mf">6.9861603</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">8.98967</span>  <span class="p">],</span>
+       <span class="p">[</span><span class="mf">10.993179</span> <span class="p">],</span>
+       <span class="p">[</span><span class="mf">12.996688</span> <span class="p">],</span>
+       <span class="p">[</span><span class="mf">15.000196</span> <span class="p">],</span>
+       <span class="p">[</span><span class="mf">17.003706</span> <span class="p">],</span>
+       <span class="p">[</span><span class="mf">19.007215</span> <span class="p">],</span>
+       <span class="p">[</span><span class="mf">21.010725</span> <span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">float32</span><span class="p">)</span>
+</pre></div>
+
+<div class="admonition note">
+<p class="admonition-title">Looking at training values</p>
+<p>These are the true values, you can see how it's able to predict similar values.</p>
+<div class="codehilite"><pre><span></span><span class="c1"># y = 2x + 1 </span>
+<span class="n">y_train</span>
+</pre></div>
+
+</div>
+<div class="codehilite"><pre><span></span><span class="n">array</span><span class="p">([[</span> <span class="mf">1.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">3.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">5.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">7.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">9.</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">11.</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">13.</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">15.</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">17.</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">19.</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">21.</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">float32</span><span class="p">)</span>
+</pre></div>
+
+<div class="admonition note">
+<p class="admonition-title">Plot of predicted and actual values</p>
+<div class="codehilite"><pre><span></span><span class="c1"># Clear figure</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+
+<span class="c1"># Get predictions</span>
+<span class="n">predicted</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">())</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+
+<span class="c1"># Plot true data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="s1">&#39;go&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;True data&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># Plot predictions</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">predicted</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Predictions&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># Legend and plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+<p><img alt="png" src="../pytorch_linear_regression_files/pytorch_linear_regression_35_0.png" /></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Save Model</p>
+<div class="codehilite"><pre><span></span><span class="n">save_model</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="k">if</span> <span class="n">save_model</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="c1"># Saves only parameters</span>
+    <span class="c1"># alpha &amp; beta</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="s1">&#39;awesome_model.pkl&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+<div class="admonition note">
+<p class="admonition-title">Load Model</p>
+<div class="codehilite"><pre><span></span><span class="n">load_model</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="k">if</span> <span class="n">load_model</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;awesome_model.pkl&#39;</span><span class="p">))</span>
+</pre></div>
+
+</div>
+<h2 id="building-a-linear-regression-model-with-pytorch-gpu">Building a Linear Regression Model with PyTorch (GPU)<a class="headerlink" href="#building-a-linear-regression-model-with-pytorch-gpu" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">CPU Summary</p>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="kn">as</span> <span class="nn">nn</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 1: CREATE MODEL CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="k">class</span> <span class="nc">LinearRegressionModel</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LinearRegressionModel</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linear</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">)</span>  
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">out</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 2: INSTANTIATE MODEL CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">input_dim</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">output_dim</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegressionModel</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 3: INSTANTIATE LOSS CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 4: INSTANTIATE OPTIMIZER CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 5: TRAIN THE MODEL</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+    <span class="n">epoch</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="c1"># Convert numpy array to torch Variable</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">()</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span>
+
+    <span class="c1"># Clear gradients w.r.t. parameters</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span> 
+
+    <span class="c1"># Forward to get output</span>
+    <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+
+    <span class="c1"># Calculate Loss</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+
+    <span class="c1"># Getting gradients w.r.t. parameters</span>
+    <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+
+    <span class="c1"># Updating parameters</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+</pre></div>
+
+</div>
+<div class="admonition note">
+<p class="admonition-title">GPU Summary</p>
+<ul>
+<li>Just remember always 2 things must be on GPU<ul>
+<li><code class="codehilite">model</code></li>
+<li><code class="codehilite">tensors with gradients</code></li>
+</ul>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="kn">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 1: CREATE MODEL CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="k">class</span> <span class="nc">LinearRegressionModel</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LinearRegressionModel</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linear</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">)</span>  
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">out</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 2: INSTANTIATE MODEL CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">input_dim</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">output_dim</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegressionModel</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">)</span>
+
+
+<span class="c1">#######################</span>
+<span class="c1">#  USE GPU FOR MODEL  #</span>
+<span class="c1">#######################</span>
+
+<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda:0&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 3: INSTANTIATE LOSS CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 4: INSTANTIATE OPTIMIZER CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 5: TRAIN THE MODEL</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+    <span class="n">epoch</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="c1"># Convert numpy array to torch Variable</span>
+
+    <span class="c1">#######################</span>
+    <span class="c1">#  USE GPU FOR MODEL  #</span>
+    <span class="c1">#######################</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+    <span class="c1"># Clear gradients w.r.t. parameters</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span> 
+
+    <span class="c1"># Forward to get output</span>
+    <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+
+    <span class="c1"># Calculate Loss</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+
+    <span class="c1"># Getting gradients w.r.t. parameters</span>
+    <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+
+    <span class="c1"># Updating parameters</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+    <span class="c1"># Logging</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;epoch {}, loss {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">epoch</span><span class="p">,</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()))</span>
+</pre></div>
+
+</div>
+<div class="codehilite"><pre><span></span><span class="n">epoch</span> <span class="mi">1</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">336.0314025878906</span>
+<span class="n">epoch</span> <span class="mi">2</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">27.67657470703125</span>
+<span class="n">epoch</span> <span class="mi">3</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">2.5220539569854736</span>
+<span class="n">epoch</span> <span class="mi">4</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.46732547879219055</span>
+<span class="n">epoch</span> <span class="mi">5</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.2968060076236725</span>
+<span class="n">epoch</span> <span class="mi">6</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.2800087630748749</span>
+<span class="n">epoch</span> <span class="mi">7</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.27578213810920715</span>
+<span class="n">epoch</span> <span class="mi">8</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.2726128399372101</span>
+<span class="n">epoch</span> <span class="mi">9</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.269561231136322</span>
+<span class="n">epoch</span> <span class="mi">10</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.2665504515171051</span>
+<span class="n">epoch</span> <span class="mi">11</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.2635740041732788</span>
+<span class="n">epoch</span> <span class="mi">12</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.26063060760498047</span>
+<span class="n">epoch</span> <span class="mi">13</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.2577202618122101</span>
+<span class="n">epoch</span> <span class="mi">14</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.2548423111438751</span>
+<span class="n">epoch</span> <span class="mi">15</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.25199657678604126</span>
+<span class="n">epoch</span> <span class="mi">16</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.24918246269226074</span>
+<span class="n">epoch</span> <span class="mi">17</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.24639996886253357</span>
+<span class="n">epoch</span> <span class="mi">18</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.24364829063415527</span>
+<span class="n">epoch</span> <span class="mi">19</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.24092751741409302</span>
+<span class="n">epoch</span> <span class="mi">20</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.2382371574640274</span>
+<span class="n">epoch</span> <span class="mi">21</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.23557686805725098</span>
+<span class="n">epoch</span> <span class="mi">22</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.2329462170600891</span>
+<span class="n">epoch</span> <span class="mi">23</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.2303449958562851</span>
+<span class="n">epoch</span> <span class="mi">24</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.22777271270751953</span>
+<span class="n">epoch</span> <span class="mi">25</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.2252292037010193</span>
+<span class="n">epoch</span> <span class="mi">26</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.22271405160427094</span>
+<span class="n">epoch</span> <span class="mi">27</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.22022713720798492</span>
+<span class="n">epoch</span> <span class="mi">28</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.21776780486106873</span>
+<span class="n">epoch</span> <span class="mi">29</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.21533599495887756</span>
+<span class="n">epoch</span> <span class="mi">30</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.21293145418167114</span>
+<span class="n">epoch</span> <span class="mi">31</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.21055366098880768</span>
+<span class="n">epoch</span> <span class="mi">32</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.20820240676403046</span>
+<span class="n">epoch</span> <span class="mi">33</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.2058774083852768</span>
+<span class="n">epoch</span> <span class="mi">34</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.20357847213745117</span>
+<span class="n">epoch</span> <span class="mi">35</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.20130516588687897</span>
+<span class="n">epoch</span> <span class="mi">36</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.1990572065114975</span>
+<span class="n">epoch</span> <span class="mi">37</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.19683438539505005</span>
+<span class="n">epoch</span> <span class="mi">38</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.19463638961315155</span>
+<span class="n">epoch</span> <span class="mi">39</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.19246290624141693</span>
+<span class="n">epoch</span> <span class="mi">40</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.1903136670589447</span>
+<span class="n">epoch</span> <span class="mi">41</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.1881885528564453</span>
+<span class="n">epoch</span> <span class="mi">42</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.18608702719211578</span>
+<span class="n">epoch</span> <span class="mi">43</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.18400898575782776</span>
+<span class="n">epoch</span> <span class="mi">44</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.18195408582687378</span>
+<span class="n">epoch</span> <span class="mi">45</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.17992223799228668</span>
+<span class="n">epoch</span> <span class="mi">46</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.17791320383548737</span>
+<span class="n">epoch</span> <span class="mi">47</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.17592646181583405</span>
+<span class="n">epoch</span> <span class="mi">48</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.17396186292171478</span>
+<span class="n">epoch</span> <span class="mi">49</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.17201924324035645</span>
+<span class="n">epoch</span> <span class="mi">50</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.17009828984737396</span>
+<span class="n">epoch</span> <span class="mi">51</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.16819894313812256</span>
+<span class="n">epoch</span> <span class="mi">52</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.16632060706615448</span>
+<span class="n">epoch</span> <span class="mi">53</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.16446338593959808</span>
+<span class="n">epoch</span> <span class="mi">54</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.16262666881084442</span>
+<span class="n">epoch</span> <span class="mi">55</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.16081078350543976</span>
+<span class="n">epoch</span> <span class="mi">56</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.15901507437229156</span>
+<span class="n">epoch</span> <span class="mi">57</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.15723931789398193</span>
+<span class="n">epoch</span> <span class="mi">58</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.15548335015773773</span>
+<span class="n">epoch</span> <span class="mi">59</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.15374726057052612</span>
+<span class="n">epoch</span> <span class="mi">60</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.1520303338766098</span>
+<span class="n">epoch</span> <span class="mi">61</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.15033268928527832</span>
+<span class="n">epoch</span> <span class="mi">62</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.14865389466285706</span>
+<span class="n">epoch</span> <span class="mi">63</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.14699392020702362</span>
+<span class="n">epoch</span> <span class="mi">64</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.14535246789455414</span>
+<span class="n">epoch</span> <span class="mi">65</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.14372935891151428</span>
+<span class="n">epoch</span> <span class="mi">66</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.14212435483932495</span>
+<span class="n">epoch</span> <span class="mi">67</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.14053721725940704</span>
+<span class="n">epoch</span> <span class="mi">68</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.13896773755550385</span>
+<span class="n">epoch</span> <span class="mi">69</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.1374160647392273</span>
+<span class="n">epoch</span> <span class="mi">70</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.1358814686536789</span>
+<span class="n">epoch</span> <span class="mi">71</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.13436420261859894</span>
+<span class="n">epoch</span> <span class="mi">72</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.13286370038986206</span>
+<span class="n">epoch</span> <span class="mi">73</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.1313801407814026</span>
+<span class="n">epoch</span> <span class="mi">74</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.12991292774677277</span>
+<span class="n">epoch</span> <span class="mi">75</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.12846232950687408</span>
+<span class="n">epoch</span> <span class="mi">76</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.1270277351140976</span>
+<span class="n">epoch</span> <span class="mi">77</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.12560924887657166</span>
+<span class="n">epoch</span> <span class="mi">78</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.12420656532049179</span>
+<span class="n">epoch</span> <span class="mi">79</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.12281957268714905</span>
+<span class="n">epoch</span> <span class="mi">80</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.1214480847120285</span>
+<span class="n">epoch</span> <span class="mi">81</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.12009195983409882</span>
+<span class="n">epoch</span> <span class="mi">82</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.1187509223818779</span>
+<span class="n">epoch</span> <span class="mi">83</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.11742479354143143</span>
+<span class="n">epoch</span> <span class="mi">84</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.11611353605985641</span>
+<span class="n">epoch</span> <span class="mi">85</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.11481687426567078</span>
+<span class="n">epoch</span> <span class="mi">86</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.11353478580713272</span>
+<span class="n">epoch</span> <span class="mi">87</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.11226697266101837</span>
+<span class="n">epoch</span> <span class="mi">88</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.11101329326629639</span>
+<span class="n">epoch</span> <span class="mi">89</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.10977360606193542</span>
+<span class="n">epoch</span> <span class="mi">90</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.10854770988225937</span>
+<span class="n">epoch</span> <span class="mi">91</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.10733554512262344</span>
+<span class="n">epoch</span> <span class="mi">92</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.10613703727722168</span>
+<span class="n">epoch</span> <span class="mi">93</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.10495180636644363</span>
+<span class="n">epoch</span> <span class="mi">94</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.10377981513738632</span>
+<span class="n">epoch</span> <span class="mi">95</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.10262089222669601</span>
+<span class="n">epoch</span> <span class="mi">96</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.10147502273321152</span>
+<span class="n">epoch</span> <span class="mi">97</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.1003417894244194</span>
+<span class="n">epoch</span> <span class="mi">98</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.09922132641077042</span>
+<span class="n">epoch</span> <span class="mi">99</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.0981132984161377</span>
+<span class="n">epoch</span> <span class="mi">100</span><span class="p">,</span> <span class="n">loss</span> <span class="mf">0.09701769798994064</span>
+</pre></div>
+
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>We've learnt to...</p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Simple <strong>linear regression basics</strong><ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <span><span class="MathJax_Preview">y = Ax + B</span><script type="math/tex">y = Ax + B</script></span></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <span><span class="MathJax_Preview">y = 2x + 1</span><script type="math/tex">y = 2x + 1</script></span></li>
+</ul>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>Example</strong> of simple linear regression</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>Aim</strong> of linear regression<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Minimizing distance between the points and the line<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Calculate "distance" through <code class="codehilite">MSE</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Calculate <code class="codehilite">gradients</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Update parameters with <code class="codehilite">parameters = parameters - learning_rate * gradients</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Slowly update parameters <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> and <span><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span> model the linear relationship between <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span> and <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> of the form <span><span class="MathJax_Preview">y = 2x + 1</span><script type="math/tex">y = 2x + 1</script></span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Built a linear regression <strong>model</strong> in <strong>CPU and GPU</strong><ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Step 1: Create Model Class</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Step 2: Instantiate Model Class</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Step 3: Instantiate Loss Class</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Step 4: Instantiate Optimizer Class</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Step 5: Train Model</li>
+</ul>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Important things to be on <strong>GPU</strong><ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code class="codehilite">model</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code class="codehilite">tensors with gradients</code></li>
+</ul>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> How to bring to <strong>GPU</strong>?<ul>
+<li><code class="codehilite">model_name.to(device)</code></li>
+<li><code class="codehilite">variable_name.to(device)</code></li>
+</ul>
+</li>
+</ul>
+</div>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../pytorch_gradients/" title="PyTorch Fundamentals - Gradients" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                PyTorch Fundamentals - Gradients
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../../news/news/" title="Welcome" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Welcome
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2018 Deep Learning Wizard
+          </div>
+        
+        proudly an
+        <a href="http://www.nvidia.com/page/home.html">NVIDIA Inception Partner</a>
+        based in Singapore by
+        <a href="https://www.ritchieng.com/">
+          Ritchie Ng (NVIDIA Deep Learning Institute Instructor)</a>
+      </div>
+      
+        
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/ritchieng" class="md-footer-social__link fa fa-github"></a>
+    
+      <a href="https://www.facebook.com/DeepLearningWizard/" class="md-footer-social__link fa fa-facebook"></a>
+    
+      <a href="https://www.linkedin.com/company/deeplearningwizard/" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.a59e2a89.js"></script>
+      
+      <script>app.initialize({version:"0.17.5",url:{base:"../../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+    
+      
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-122083328-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+      
+    
+  </body>
+</html>
