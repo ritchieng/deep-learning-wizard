@@ -3,6 +3,8 @@ Our main open-source programming languages and libraries are Python, PyTorch and
 
 ## Paths
 !!! info "Work-in-progress"
-    This open-source portion is still a work in progress. Stay tuned while we gradually upload our tutorials and notes. Feel free to contact [Ritchie Ng](https://www.ritchieng.com/) if you would like to contribute via our [Facebook](https://www.facebook.com/DeepLearningWizard/) page.
+    This open-source portion is still a work in progress, it is very sparse in explanation as traditionally all our explanation are done via video. Stay tuned while we gradually upload our tutorials and notes. Feel free to contact [Ritchie Ng](https://www.ritchieng.com/) if you would like to contribute via our [Facebook](https://www.facebook.com/DeepLearningWizard/) page.
     
-    Also take note that these notes are best used as a referral if you are new to deep learning and programming. Go head and take our [video course](https://www.udemy.com/practical-deep-learning-with-pytorch/?couponCode=DEEPWIZARD) that provides a much easier experience.
+    Also take note that these notes are best used as a referral. This is because we have yet to expand it comprehensively to be a stand-alone guide. Go head and take our [video course](https://www.udemy.com/practical-deep-learning-with-pytorch/?couponCode=DEEPWIZARD) that provides a much easier experience.
+    
+    All of our code allows you to run in a notebook for this deep learning section. Please use a `jupyter notebook` and run the examples from the start of the page to the end.

@@ -13,6 +13,8 @@ pages:
       - Introduction: deep_learning/intro.md
       - PyTorch Fundamentals - Matrices: deep_learning/practical_pytorch/pytorch_matrices.md
       - PyTorch Fundamentals - Gradients: deep_learning/practical_pytorch/pytorch_gradients.md
+      - PyTorch Fundamentals - Linear Regression: deep_learning/practical_pytorch/pytorch_linear_regression.md
+      - PyTorch Fundamentals - Logistic Regression: deep_learning/practical_pytorch/pytorch_logistic_regression.md
     - News:
       - Welcome: news/news.md
       - NUS-MIT-NUHS NVIDIA Image Recognition Workshop July 2018: news/nvidia_nus_mit_datathon_2018_07_05.md
