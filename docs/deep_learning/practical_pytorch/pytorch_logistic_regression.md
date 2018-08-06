@@ -1230,349 +1230,372 @@ tensor(2)
 82.94
 ```
 
-
+!!! note "Explanation of Python's .sum() function"
+    Python's .sum() function allows you to do a comparison between two matrices and sum the ones that return `True` or in our case, those predictions that match actual labels (correct predictions).
+    
+    ```python
+    # Explaining .sum() python built-in function
+    # correct += (predicted == labels).sum()
+    import numpy as np
+    a = np.ones((10))
+    print(a)
+    b = np.ones((10))
+    print(b)
+    
+    print(a == b)
+    
+    print((a == b).sum())
+    ```
 
 ```python
-# Explaining .sum() python built-in function
-# correct += (predicted == labels).sum()
-import numpy as np
-a = np.ones((10))
-print(a)
-b = np.ones((10))
-print(b)
+# matrix a
+[1. 1. 1. 1. 1. 1. 1. 1. 1. 1.]
 
-print(a == b)
+# matrix b
+[1. 1. 1. 1. 1. 1. 1. 1. 1. 1.]
 
-print((a == b).sum())
+# boolean array
+[ True  True  True  True  True  True  True  True  True  True]
+
+# number of elementswhere a matches b
+10
 ```
 
-    [1. 1. 1. 1. 1. 1. 1. 1. 1. 1.]
-    [1. 1. 1. 1. 1. 1. 1. 1. 1. 1.]
-    [ True  True  True  True  True  True  True  True  True  True]
-    10
 
 
 #### Saving Model
 
+!!! note "Saving PyTorch model"
+    This is how you save your model. Feel free to just change `save_model = True` to save your model
+    ```python
+    save_model = False
+    if save_model is True:
+        # Saves only parameters
+        torch.save(model.state_dict(), 'awesome_model.pkl')
+    ```
 
-```python
-save_model = False
-if save_model is True:
-    # Saves only parameters
-    torch.save(model.state_dict(), 'awesome_model.pkl')
-```
-
-## 3. Building a Logistic Regression Model with PyTorch (GPU)
-
-
-
-**CPU Version**
+## Building a Logistic Regression Model with PyTorch (GPU)
 
 
-```python
-import torch
-import torch.nn as nn
-import torchvision.transforms as transforms
-import torchvision.datasets as dsets
 
-'''
-STEP 1: LOADING DATASET
-'''
-
-train_dataset = dsets.MNIST(root='./data', 
-                            train=True, 
-                            transform=transforms.ToTensor(),
-                            download=True)
-
-test_dataset = dsets.MNIST(root='./data', 
-                           train=False, 
-                           transform=transforms.ToTensor())
-
-'''
-STEP 2: MAKING DATASET ITERABLE
-'''
-
-batch_size = 100
-n_iters = 3000
-num_epochs = n_iters / (len(train_dataset) / batch_size)
-num_epochs = int(num_epochs)
-
-train_loader = torch.utils.data.DataLoader(dataset=train_dataset, 
-                                           batch_size=batch_size, 
-                                           shuffle=True)
-
-test_loader = torch.utils.data.DataLoader(dataset=test_dataset, 
-                                          batch_size=batch_size, 
-                                          shuffle=False)
-
-'''
-STEP 3: CREATE MODEL CLASS
-'''
-class LogisticRegressionModel(nn.Module):
-    def __init__(self, input_size, num_classes):
-        super(LogisticRegressionModel, self).__init__()
-        self.linear = nn.Linear(input_dim, output_dim)
+!!! note "CPU version"
+    The usual 7-step process, getting repetitive by now which we like. 
     
-    def forward(self, x):
-        out = self.linear(x)
-        return out
-
-'''
-STEP 4: INSTANTIATE MODEL CLASS
-'''
-input_dim = 28*28
-output_dim = 10
-
-model = LogisticRegressionModel(input_dim, output_dim)
-
-'''
-STEP 5: INSTANTIATE LOSS CLASS
-'''
-criterion = nn.CrossEntropyLoss()
-
-
-'''
-STEP 6: INSTANTIATE OPTIMIZER CLASS
-'''
-learning_rate = 0.001
-
-optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
-
-'''
-STEP 7: TRAIN THE MODEL
-'''
-iter = 0
-for epoch in range(num_epochs):
-    for i, (images, labels) in enumerate(train_loader):
-        # Load images as Variable
-        images = images.view(-1, 28*28).requires_grad_()
-        labels = labels
-        
-        # Clear gradients w.r.t. parameters
-        optimizer.zero_grad()
-        
-        # Forward pass to get output/logits
-        # 100 x 10
-        outputs = model(images)
-        
-        # Calculate Loss: softmax --> cross entropy loss
-        loss = criterion(outputs, labels)
-        
-        # Getting gradients w.r.t. parameters
-        loss.backward()
-        
-        # Updating parameters
-        optimizer.step()
-        
-        iter += 1
-        
-        if iter % 500 == 0:
-            # Calculate Accuracy         
-            correct = 0
-            total = 0
-            # Iterate through test dataset
-            for images, labels in test_loader:
-                # Load images to a Torch Variable
-                images = images.view(-1, 28*28).requires_grad_()
-                
-                # Forward pass only to get logits/output
-                outputs = model(images)
-                
-                # Get predictions from the maximum value
-                # 100 x 1
-                _, predicted = torch.max(outputs.data, 1)
-                
-                # Total number of labels
-                total += labels.size(0)
-                
-                # Total correct predictions
-                correct += (predicted == labels).sum()
-            
-            accuracy = 100 * correct.item() / total
-            
-            # Print Loss
-            print('Iteration: {}. Loss: {}. Accuracy: {}'.format(iter, loss.item(), accuracy))
-```
-
-    Iteration: 500. Loss: 1.876196026802063. Accuracy: 64.44
-    Iteration: 1000. Loss: 1.5153584480285645. Accuracy: 75.68
-    Iteration: 1500. Loss: 1.3521136045455933. Accuracy: 78.98
-    Iteration: 2000. Loss: 1.2136967182159424. Accuracy: 80.95
-    Iteration: 2500. Loss: 1.0934826135635376. Accuracy: 81.97
-    Iteration: 3000. Loss: 1.024120569229126. Accuracy: 82.49
-
-
-GPU: 2 things must be on GPU
-- `model`
-- `variables`
-
-
-```python
-import torch
-import torch.nn as nn
-import torchvision.transforms as transforms
-import torchvision.datasets as dsets
-
-'''
-STEP 1: LOADING DATASET
-'''
-
-train_dataset = dsets.MNIST(root='./data', 
-                            train=True, 
-                            transform=transforms.ToTensor(),
-                            download=True)
-
-test_dataset = dsets.MNIST(root='./data', 
-                           train=False, 
-                           transform=transforms.ToTensor())
-
-'''
-STEP 2: MAKING DATASET ITERABLE
-'''
-
-batch_size = 100
-n_iters = 3000
-num_epochs = n_iters / (len(train_dataset) / batch_size)
-num_epochs = int(num_epochs)
-
-train_loader = torch.utils.data.DataLoader(dataset=train_dataset, 
-                                           batch_size=batch_size, 
-                                           shuffle=True)
-
-test_loader = torch.utils.data.DataLoader(dataset=test_dataset, 
-                                          batch_size=batch_size, 
-                                          shuffle=False)
-
-'''
-STEP 3: CREATE MODEL CLASS
-'''
-class LogisticRegressionModel(nn.Module):
-    def __init__(self, input_size, num_classes):
-        super(LogisticRegressionModel, self).__init__()
-        self.linear = nn.Linear(input_dim, output_dim)
+    ```python
+    import torch
+    import torch.nn as nn
+    import torchvision.transforms as transforms
+    import torchvision.datasets as dsets
     
-    def forward(self, x):
-        out = self.linear(x)
-        return out
-
-'''
-STEP 4: INSTANTIATE MODEL CLASS
-'''
-input_dim = 28*28
-output_dim = 10
-
-model = LogisticRegressionModel(input_dim, output_dim)
-
-#######################
-#  USE GPU FOR MODEL  #
-#######################
-
-device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-model.to(device)
-
-'''
-STEP 5: INSTANTIATE LOSS CLASS
-'''
-criterion = nn.CrossEntropyLoss()
-
-
-'''
-STEP 6: INSTANTIATE OPTIMIZER CLASS
-'''
-learning_rate = 0.001
-
-optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
-
-'''
-STEP 7: TRAIN THE MODEL
-'''
-iter = 0
-for epoch in range(num_epochs):
-    for i, (images, labels) in enumerate(train_loader):
+    '''
+    STEP 1: LOADING DATASET
+    '''
+    
+    train_dataset = dsets.MNIST(root='./data', 
+                                train=True, 
+                                transform=transforms.ToTensor(),
+                                download=True)
+    
+    test_dataset = dsets.MNIST(root='./data', 
+                               train=False, 
+                               transform=transforms.ToTensor())
+    
+    '''
+    STEP 2: MAKING DATASET ITERABLE
+    '''
+    
+    batch_size = 100
+    n_iters = 3000
+    num_epochs = n_iters / (len(train_dataset) / batch_size)
+    num_epochs = int(num_epochs)
+    
+    train_loader = torch.utils.data.DataLoader(dataset=train_dataset, 
+                                               batch_size=batch_size, 
+                                               shuffle=True)
+    
+    test_loader = torch.utils.data.DataLoader(dataset=test_dataset, 
+                                              batch_size=batch_size, 
+                                              shuffle=False)
+    
+    '''
+    STEP 3: CREATE MODEL CLASS
+    '''
+    class LogisticRegressionModel(nn.Module):
+        def __init__(self, input_size, num_classes):
+            super(LogisticRegressionModel, self).__init__()
+            self.linear = nn.Linear(input_dim, output_dim)
         
-        #######################
-        #  USE GPU FOR MODEL  #
-        #######################
-        images = images.view(-1, 28*28).requires_grad_().to(device)
-        labels = labels.to(device)
-        
-        # Clear gradients w.r.t. parameters
-        optimizer.zero_grad()
-        
-        # Forward pass to get output/logits
-        outputs = model(images)
-        
-        # Calculate Loss: softmax --> cross entropy loss
-        loss = criterion(outputs, labels)
-        
-        # Getting gradients w.r.t. parameters
-        loss.backward()
-        
-        # Updating parameters
-        optimizer.step()
-        
-        iter += 1
-        
-        if iter % 500 == 0:
-            # Calculate Accuracy         
-            correct = 0
-            total = 0
-            # Iterate through test dataset
-            for images, labels in test_loader:
-                #######################
-                #  USE GPU FOR MODEL  #
-                #######################
-                images = images.view(-1, 28*28).to(device)
-                
-                # Forward pass only to get logits/output
-                outputs = model(images)
-                
-                # Get predictions from the maximum value
-                _, predicted = torch.max(outputs.data, 1)
-                
-                # Total number of labels
-                total += labels.size(0)
-                
-                #######################
-                #  USE GPU FOR MODEL  #
-                #######################
-                # Total correct predictions
-                if torch.cuda.is_available():
-                    correct += (predicted.cpu() == labels.cpu()).sum()
-                else:
+        def forward(self, x):
+            out = self.linear(x)
+            return out
+    
+    '''
+    STEP 4: INSTANTIATE MODEL CLASS
+    '''
+    input_dim = 28*28
+    output_dim = 10
+    
+    model = LogisticRegressionModel(input_dim, output_dim)
+    
+    '''
+    STEP 5: INSTANTIATE LOSS CLASS
+    '''
+    criterion = nn.CrossEntropyLoss()
+    
+    
+    '''
+    STEP 6: INSTANTIATE OPTIMIZER CLASS
+    '''
+    learning_rate = 0.001
+    
+    optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
+    
+    '''
+    STEP 7: TRAIN THE MODEL
+    '''
+    iter = 0
+    for epoch in range(num_epochs):
+        for i, (images, labels) in enumerate(train_loader):
+            # Load images as Variable
+            images = images.view(-1, 28*28).requires_grad_()
+            labels = labels
+            
+            # Clear gradients w.r.t. parameters
+            optimizer.zero_grad()
+            
+            # Forward pass to get output/logits
+            # 100 x 10
+            outputs = model(images)
+            
+            # Calculate Loss: softmax --> cross entropy loss
+            loss = criterion(outputs, labels)
+            
+            # Getting gradients w.r.t. parameters
+            loss.backward()
+            
+            # Updating parameters
+            optimizer.step()
+            
+            iter += 1
+            
+            if iter % 500 == 0:
+                # Calculate Accuracy         
+                correct = 0
+                total = 0
+                # Iterate through test dataset
+                for images, labels in test_loader:
+                    # Load images to a Torch Variable
+                    images = images.view(-1, 28*28).requires_grad_()
+                    
+                    # Forward pass only to get logits/output
+                    outputs = model(images)
+                    
+                    # Get predictions from the maximum value
+                    # 100 x 1
+                    _, predicted = torch.max(outputs.data, 1)
+                    
+                    # Total number of labels
+                    total += labels.size(0)
+                    
+                    # Total correct predictions
                     correct += (predicted == labels).sum()
-            
-            accuracy = 100 * correct.item() / total
-            
-            # Print Loss
-            print('Iteration: {}. Loss: {}. Accuracy: {}'.format(iter, loss.item(), accuracy))
+                
+                accuracy = 100 * correct.item() / total
+                
+                # Print Loss
+                print('Iteration: {}. Loss: {}. Accuracy: {}'.format(iter, loss.item(), accuracy))
+    ```
+
+```python
+Iteration: 500. Loss: 1.876196026802063. Accuracy: 64.44
+Iteration: 1000. Loss: 1.5153584480285645. Accuracy: 75.68
+Iteration: 1500. Loss: 1.3521136045455933. Accuracy: 78.98
+Iteration: 2000. Loss: 1.2136967182159424. Accuracy: 80.95
+Iteration: 2500. Loss: 1.0934826135635376. Accuracy: 81.97
+Iteration: 3000. Loss: 1.024120569229126. Accuracy: 82.49
 ```
 
-    Iteration: 500. Loss: 1.8571407794952393. Accuracy: 68.99
-    Iteration: 1000. Loss: 1.5415704250335693. Accuracy: 75.86
-    Iteration: 1500. Loss: 1.2755383253097534. Accuracy: 78.92
-    Iteration: 2000. Loss: 1.2468739748001099. Accuracy: 80.72
-    Iteration: 2500. Loss: 1.0708973407745361. Accuracy: 81.73
-    Iteration: 3000. Loss: 1.0359245538711548. Accuracy: 82.74
 
 
-# Summary
+!!! note "GPU version"
+    
+    2 things must be on GPU
+    <br />- `model`
+    <br />- `variables`
 
-- **Logistic regression** basics
-- **Problems** of **linear regression**
-- **In-depth** Logistic Regression
-    1. Get logits
-    2. Get softmax
-    3. Get cross-entropy loss
-- **Aim**: reduce cross-entropy loss
-- Built a **logistic regression model** in **CPU and GPU**
-    - Step 1: Load Dataset
-    - Step 2: Make Dataset Iterable
-    - Step 3: Create Model Class
-    - Step 4: Instantiate Model Class
-    - Step 5: Instantiate Loss Class
-    - Step 6: Instantiate Optimizer Class
-    - Step 7: Train Model
-- Important things to be on **GPU**
-    - `model`
-    - `tensors with gradients`
+    Remember step 4 and 7 will be affected and this will be the same for all model building moving forward.
+    
+    ```python
+    import torch
+    import torch.nn as nn
+    import torchvision.transforms as transforms
+    import torchvision.datasets as dsets
+    
+    '''
+    STEP 1: LOADING DATASET
+    '''
+    
+    train_dataset = dsets.MNIST(root='./data', 
+                                train=True, 
+                                transform=transforms.ToTensor(),
+                                download=True)
+    
+    test_dataset = dsets.MNIST(root='./data', 
+                               train=False, 
+                               transform=transforms.ToTensor())
+    
+    '''
+    STEP 2: MAKING DATASET ITERABLE
+    '''
+    
+    batch_size = 100
+    n_iters = 3000
+    num_epochs = n_iters / (len(train_dataset) / batch_size)
+    num_epochs = int(num_epochs)
+    
+    train_loader = torch.utils.data.DataLoader(dataset=train_dataset, 
+                                               batch_size=batch_size, 
+                                               shuffle=True)
+    
+    test_loader = torch.utils.data.DataLoader(dataset=test_dataset, 
+                                              batch_size=batch_size, 
+                                              shuffle=False)
+    
+    '''
+    STEP 3: CREATE MODEL CLASS
+    '''
+    class LogisticRegressionModel(nn.Module):
+        def __init__(self, input_size, num_classes):
+            super(LogisticRegressionModel, self).__init__()
+            self.linear = nn.Linear(input_dim, output_dim)
+        
+        def forward(self, x):
+            out = self.linear(x)
+            return out
+    
+    '''
+    STEP 4: INSTANTIATE MODEL CLASS
+    '''
+    input_dim = 28*28
+    output_dim = 10
+    
+    model = LogisticRegressionModel(input_dim, output_dim)
+    
+    #######################
+    #  USE GPU FOR MODEL  #
+    #######################
+    
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    model.to(device)
+    
+    '''
+    STEP 5: INSTANTIATE LOSS CLASS
+    '''
+    criterion = nn.CrossEntropyLoss()
+    
+    
+    '''
+    STEP 6: INSTANTIATE OPTIMIZER CLASS
+    '''
+    learning_rate = 0.001
+    
+    optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
+    
+    '''
+    STEP 7: TRAIN THE MODEL
+    '''
+    iter = 0
+    for epoch in range(num_epochs):
+        for i, (images, labels) in enumerate(train_loader):
+            
+            #######################
+            #  USE GPU FOR MODEL  #
+            #######################
+            images = images.view(-1, 28*28).requires_grad_().to(device)
+            labels = labels.to(device)
+            
+            # Clear gradients w.r.t. parameters
+            optimizer.zero_grad()
+            
+            # Forward pass to get output/logits
+            outputs = model(images)
+            
+            # Calculate Loss: softmax --> cross entropy loss
+            loss = criterion(outputs, labels)
+            
+            # Getting gradients w.r.t. parameters
+            loss.backward()
+            
+            # Updating parameters
+            optimizer.step()
+            
+            iter += 1
+            
+            if iter % 500 == 0:
+                # Calculate Accuracy         
+                correct = 0
+                total = 0
+                # Iterate through test dataset
+                for images, labels in test_loader:
+                    #######################
+                    #  USE GPU FOR MODEL  #
+                    #######################
+                    images = images.view(-1, 28*28).to(device)
+                    
+                    # Forward pass only to get logits/output
+                    outputs = model(images)
+                    
+                    # Get predictions from the maximum value
+                    _, predicted = torch.max(outputs.data, 1)
+                    
+                    # Total number of labels
+                    total += labels.size(0)
+                    
+                    #######################
+                    #  USE GPU FOR MODEL  #
+                    #######################
+                    # Total correct predictions
+                    if torch.cuda.is_available():
+                        correct += (predicted.cpu() == labels.cpu()).sum()
+                    else:
+                        correct += (predicted == labels).sum()
+                
+                accuracy = 100 * correct.item() / total
+                
+                # Print Loss
+                print('Iteration: {}. Loss: {}. Accuracy: {}'.format(iter, loss.item(), accuracy))
+    ```
+
+```python
+Iteration: 500. Loss: 1.8571407794952393. Accuracy: 68.99
+Iteration: 1000. Loss: 1.5415704250335693. Accuracy: 75.86
+Iteration: 1500. Loss: 1.2755383253097534. Accuracy: 78.92
+Iteration: 2000. Loss: 1.2468739748001099. Accuracy: 80.72
+Iteration: 2500. Loss: 1.0708973407745361. Accuracy: 81.73
+Iteration: 3000. Loss: 1.0359245538711548. Accuracy: 82.74
+```
+
+
+
+## Summary
+We've learnt to...
+
+!!! success
+    * [x] **Logistic regression** basics
+    * [x] **Problems** of **linear regression**
+    * [x] **In-depth** Logistic Regression
+        * [x] Get logits
+        * [x] Get softmax
+        * [x] Get cross-entropy loss
+    * [x] **Aim**: reduce cross-entropy loss
+    * [x] Built a **logistic regression model** in **CPU and GPU**
+        * [x] Step 1: Load Dataset
+        * [x] Step 2: Make Dataset Iterable
+        * [x] Step 3: Create Model Class
+        * [x] Step 4: Instantiate Model Class
+        * [x] Step 5: Instantiate Loss Class
+        * [x] Step 6: Instantiate Optimizer Class
+        * [x] Step 7: Train Model
+    * [x] Important things to be on **GPU**
+        * [x] `model`
+        * [x] `tensors with gradients`
