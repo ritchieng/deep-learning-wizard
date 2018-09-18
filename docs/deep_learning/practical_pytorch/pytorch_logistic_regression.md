@@ -1,7 +1,6 @@
 # Logistic Regression with PyTorch
 ## About Logistic Regression
 
-
 ### Logistic Regression Basics
 
 #### Classification algorithm
