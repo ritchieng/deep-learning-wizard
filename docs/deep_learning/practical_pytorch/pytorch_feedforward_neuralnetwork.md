@@ -1,70 +1,69 @@
-
-<img src="images/deeplearningwizard_web_logo.png" alt="deeplearningwizard" style="width: 100px;"/>
-
 # Feedforward Neural Network with PyTorch
+
 ## About Feedforward Neural Network
 
 ### Logistic Regression Transition to Neural Networks
 
 #### Logistic Regression Review
 
-<img src="./images/cross_entropy_final_4.png" alt="deeplearningwizard" style="width: 900px;"/>
+![](./images/cross_entropy_final_4.png)
 
-
-```python
-import torch
-import torch.nn as nn
-```
-
-
-```python
-class LogisticRegressionModel(nn.Module):
-    def __init__(self, input_dim, output_dim):
-        super(LogisticRegressionModel, self).__init__()
-        self.linear = nn.Linear(input_dim, output_dim)
+!!! note "Define logistic regression model"
+    Import our relevant torch modules.
+    ```python
+    import torch
+    import torch.nn as nn
+    ```
     
-    def forward(self, x):
-        out = self.linear(x)
-        return out
-```
-
+    Define our model class.
+    ```python
+    class LogisticRegressionModel(nn.Module):
+        def __init__(self, input_dim, output_dim):
+            super(LogisticRegressionModel, self).__init__()
+            self.linear = nn.Linear(input_dim, output_dim)
+        
+        def forward(self, x):
+            out = self.linear(x)
+            return out
+    ```
+    
+    
+    Instantiate the logistic regression model.
+    ```python
+    input_dim = 28*28
+    output_dim = 10
+    
+    model = LogisticRegressionModel(input_dim, output_dim)
+    ```
+    
+    When we inspect the model, we would have an input size of 784 (derived from 28 x 28) and output size of 10 (which is the number of classes we are classifying from 0 to 9).
+    ```python
+    print(model)
+    ```
 
 ```python
-input_dim = 28*28
-output_dim = 10
-
-model = LogisticRegressionModel(input_dim, output_dim)
+LogisticRegressionModel(
+  (linear): Linear(in_features=784, out_features=10, bias=True)
+)
 ```
-
-
-```python
-print(model)
-```
-
-    LogisticRegressionModel(
-      (linear): Linear(in_features=784, out_features=10, bias=True)
-    )
-
 
 #### Logistic Regression Problems
 - Can represent **linear** functions well
-    - $ y = 2x + 3$
-    - $ y = x_1 + x_2 $
-    - $ y = x_1 + 3x_2 + 4x_3 $
+    - $y = 2x + 3$
+    - $y = x_1 + x_2$
+    - $y = x_1 + 3x_2 + 4x_3$
 - Cannot represent **non-linear** functions
-    - $ y = 4x_1 + 2x_2^2 +3x_3^3 $
-    - $ y = x_1x_2$
+    - $y = 4x_1 + 2x_2^2 +3x_3^3$
+    - $y = x_1x_2$
        
 ### Introducing a Non-linear Function
-
-<img src="./images/logistic_regression_comparison_nn5.png" alt="deeplearningwizard" style="width: 900px;"/>
-
+![](./images/logistic_regression_comparison_nn5.png)
 
 ### Non-linear Function In-Depth
 - Function: takes a number & perform mathematical operation
 - Common Types of Non-linearity
     - ReLUs (Rectified Linear Units)      
-    - Sigmoid     
+    - Sigmoid
     - Tanh
 
 #### Sigmoid (Logistic)
@@ -98,12 +97,11 @@ print(model)
     1. Many ReLU units "die" $\rightarrow$ **gradients = 0** forever
         - **Solution**: careful learning rate choice
       
-
-
-## 2. Building a Feedforward Neural Network with PyTorch
+      
+## Building a Feedforward Neural Network with PyTorch
 
 ### Model A: 1 Hidden Layer Feedforward Neural Network (Sigmoid Activation)
-<img src="./images/nn1.png" alt="deeplearningwizard" style="width: 900px;"/>
+![](./images/nn1.png)
 
 ### Steps
 - Step 1: Load Dataset
@@ -115,93 +113,119 @@ print(model)
 - Step 7: Train Model
 
 ### Step 1: Loading MNIST Train Dataset
-**Images from 1 to 9**
 
-
-```python
-import torch
-import torch.nn as nn
-import torchvision.transforms as transforms
-import torchvision.datasets as dsets
-```
-
-
-```python
-train_dataset = dsets.MNIST(root='./data', 
-                            train=True, 
-                            transform=transforms.ToTensor(),
-                            download=True)
-
-test_dataset = dsets.MNIST(root='./data', 
-                           train=False, 
-                           transform=transforms.ToTensor())
-```
+!!! note "Images from 1 to 9"
+    Similar to what we did in logistic regression, we will be using the same MNIST dataset where we load our training and testing datasets.
+    
+    ```python
+    import torch
+    import torch.nn as nn
+    import torchvision.transforms as transforms
+    import torchvision.datasets as dsets
+    ```
+    
+    
+    ```python
+    train_dataset = dsets.MNIST(root='./data', 
+                                train=True, 
+                                transform=transforms.ToTensor(),
+                                download=True)
+    
+    test_dataset = dsets.MNIST(root='./data', 
+                               train=False, 
+                               transform=transforms.ToTensor())
+    ```
 
 ### Step 2: Make Dataset Iterable
 
 
+!!! note "Batch sizes and iterations"
+    Because we have 60000 training samples (images), we need to split them up to small groups (batches) and pass these batches of samples to our feedforward neural network subsesquently.
+    
+    There are a few reasons why we split them into batches. Passing your whole dataset as a single batch would:
+    
+    (1) require a lot of RAM/VRAM on your CPU/GPU and this might result in Out-of-Memory (OOM) errors. 
+    
+    (2) cause unstable training if you just use all the errors accumulated in 60,000 images to update the model rather than gradually update the model. In layman terms, imagine you accumulated errors for a student taking an exam with 60,000 questions and punish the student all at the same time. It is much harder for the student to learn compared to letting the student learn it made mistakes and did well in smaller batches of questions like mini-tests!
+    
+    If we have 60,000 images and we want a batch size of 100, then we would have 600 iterations where each iteration involves passing 600 images to the model and getting their respective predictions. 
+    
+    ```python
+    60000 / 100
+    ```
+
 ```python
-60000 / 100
+600.0
 ```
 
 
+!!! note "Epochs"
+    An epoch means that you have successfully passed the whole training set, 60,000 images, to the model. Continuing our example above, an epoch consists of 600 iterations.
+    
+    If we want to go through the whole dataset 5 times (5 epochs) for the model to learn, then we need 3000 iterations (600 x 5). 
 
-
-    600.0
-
-
-
-
-```python
-6000 / 600
-```
-
-
-
-
-    10.0
-
-
+    
+    ```python
+    600 * 5
+    ```
 
 
 ```python
-batch_size = 100
-n_iters = 3000
-num_epochs = n_iters / (len(train_dataset) / batch_size)
-num_epochs = int(num_epochs)
-
-train_loader = torch.utils.data.DataLoader(dataset=train_dataset, 
-                                           batch_size=batch_size, 
-                                           shuffle=True)
-
-test_loader = torch.utils.data.DataLoader(dataset=test_dataset, 
-                                          batch_size=batch_size, 
-                                          shuffle=False)
+3000.0
 ```
+
+
+!!! note "Bringing batch size, iterations and epochs together"
+    As we have gone through above, we want to have 5 epochs, where each epoch would have 600 iterations and each iteration has a batch size of 100.
+    
+    Because we want 5 epochs, we need a total of 3000 iterations.
+    
+    ```python
+    batch_size = 100
+    n_iters = 3000
+    num_epochs = n_iters / (len(train_dataset) / batch_size)
+    num_epochs = int(num_epochs)
+    
+    train_loader = torch.utils.data.DataLoader(dataset=train_dataset, 
+                                               batch_size=batch_size, 
+                                               shuffle=True)
+    
+    test_loader = torch.utils.data.DataLoader(dataset=test_dataset, 
+                                              batch_size=batch_size, 
+                                              shuffle=False)
+    ```
 
 ### Step 3: Create Model Class
 
-
-```python
-class FeedforwardNeuralNetModel(nn.Module):
-    def __init__(self, input_dim, hidden_dim, output_dim):
-        super(FeedforwardNeuralNetModel, self).__init__()
-        # Linear function
-        self.fc1 = nn.Linear(input_dim, hidden_dim) 
-        # Non-linearity
-        self.sigmoid = nn.Sigmoid()
-        # Linear function (readout)
-        self.fc2 = nn.Linear(hidden_dim, output_dim)  
+!!! note "Creating our feedforward neural network"
+    Compared to logistic regression with only a single linear layer, we know for an FNN we need an additional linear layer and non-linear layer. 
     
-    def forward(self, x):
-        # Linear function  # LINEAR
-        out = self.fc1(x)
-        # Non-linearity  # NON-LINEAR
-        out = self.sigmoid(out)
-        # Linear function (readout)  # LINEAR
-        out = self.fc2(out)
-        return out
-```
+    This translates to just 4 more lines of code! 
+    
+    ```python
+    class FeedforwardNeuralNetModel(nn.Module):
+        def __init__(self, input_dim, hidden_dim, output_dim):
+            super(FeedforwardNeuralNetModel, self).__init__()
+            # Linear function
+            self.fc1 = nn.Linear(input_dim, hidden_dim) 
+            
+            # Non-linearity
+            self.sigmoid = nn.Sigmoid()
+            
+            # Linear function (readout)
+            self.fc2 = nn.Linear(hidden_dim, output_dim)  
+        
+        def forward(self, x):
+            # Linear function  # LINEAR
+            out = self.fc1(x)
+            
+            # Non-linearity  # NON-LINEAR
+            out = self.sigmoid(out)
+            
+            # Linear function (readout)  # LINEAR
+            out = self.fc2(out)
+            return out
+    ```
 
 ### Step 4: Instantiate Model Class
 - **Input** dimension: **784** 
@@ -216,13 +240,22 @@ class FeedforwardNeuralNetModel(nn.Module):
         - Number of non-linear activation functions
 
 
-```python
-input_dim = 28*28
-hidden_dim = 100
-output_dim = 10
-
-model = FeedforwardNeuralNetModel(input_dim, hidden_dim, output_dim)
-```
+!!! note "Instantiating our model class"
+    Our input size is determined by the size of the image (numbers ranging from 0 to 9) which has a width of 28 pixels and a height of 28 pixels. Hence the size of our input is 784 (28 x 28).
+    
+    Our output size is what we are trying to predict. When we pass an image to our model, it will try to predict if it's 0, 1, 2, 3, 4, 5, 6, 7, 8, or 9. That is a total of 10 classes, hence we have an output size of 10.
+    
+    Now the tricky part is in determining our hidden layer size, that is the size of our first linear layer prior to the non-linear layer. This can be any number, a larger number implies a bigger model with more parameters. Intuitively we think a bigger model equates to a better model, but a bigger model requires more training samples to learn and converge to a good model (also called curse of dimensionality). Hence, it is wise to pick the model size for the problem at hand. Because it is a simple problem of recognizing digits, we typically would not need a big model to achieve state-of-the-art results.
+    
+    On the flipside, too small of a hidden size would mean there would be insufficient model capacity to predict competently. In layman terms, too small of a capacity implies a smaller brain capacity so no matter how many training samples you give it, it has a maximum capacity in terms of its predictive power. 
+    
+    ```python
+    input_dim = 28*28
+    hidden_dim = 100
+    output_dim = 10
+    
+    model = FeedforwardNeuralNetModel(input_dim, hidden_dim, output_dim)
+    ```
 
 ### Step 5: Instantiate Loss Class
 - Feedforward Neural Network: **Cross Entropy Loss**
@@ -230,10 +263,12 @@ model = FeedforwardNeuralNetModel(input_dim, hidden_dim, output_dim)
     - _Linear Regression_: **MSE**
    
 
-
-```python
-criterion = nn.CrossEntropyLoss()
-```
+!!! note "Loss class"
+    This is exactly the same as what we did in logistic regression because we are going through a classification problem, cross entropy function is required to compute the loss between our softmax outputs and our binary labels.
+    
+    ```python
+    criterion = nn.CrossEntropyLoss()
+    ```
 
 ### Step 6: Instantiate Optimizer Class
 - Simplified equation

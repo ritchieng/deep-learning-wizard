@@ -1,5 +1,5 @@
 # About Us
-We deploy a top-down approach that enables you to grasp deep learning theories and code easily and quickly. We have open-sourced all our materials through our Deep Learning Wizard Wikipedia. For visual learners, feel free to sign up for our [video course](https://www.udemy.com/practical-deep-learning-with-pytorch/?couponCode=DEEPWIZARD) and join over 2300 deep learning wizards. 
+We deploy a top-down approach that enables you to grasp deep learning theories and code easily and quickly. We have open-sourced all our materials through our Deep Learning Wizard Wikipedia. For visual learners, feel free to sign up for our [video course](https://www.udemy.com/practical-deep-learning-with-pytorch/?couponCode=DEEPWIZARD) and join over 2300 deep learning wizards.
 
 To this date, we have taught thousands of students across more than 120+ countries from students as young as 15 to postgraduates and professionals in leading MNCs and research institutions around the world.
 

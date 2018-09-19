@@ -14,7 +14,6 @@
 - **Logistic regression**:
     - Output: probability [0, 1] given input belonging to a class
     
-    
 #### Input/Output Comparison
 - **Linear regression: Multiplication**
     - Input: [1]

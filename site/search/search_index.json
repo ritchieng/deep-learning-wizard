@@ -412,7 +412,7 @@
         },
         {
             "location": "/news/news/",
-            "text": "Welcome to our Blog\n\u00b6\n\n\nHere, we post news related to Deep Learning Wizard's releases, features and achievements \n\n\nNotable News\n\u00b6\n\n\n\n\n Conducted NUS-MIT-NUHS Datathon NVIDIA Image Recognition Workshop, July 2018\n\n\n Reached 2200+ students, 2018\n\n\n Featured on PyTorch Website, January 2018\n\n\n Reached 1000+ students, 2017\n\n\n Hosted NVIDIA Self-Driving Cars and Healthcare Talk, June 2017\n\n\n And more...",
+            "text": "Welcome to our Blog\n\u00b6\n\n\nHere, we post news related to Deep Learning Wizard's releases, features and achievements \n\n\nNotable News\n\u00b6\n\n\n\n\n Facebook PyTorch Developer Conference, San Francisco, USA, September 2018\n\n\n Conducted NUS-MIT-NUHS Datathon NVIDIA Image Recognition Workshop, Singapore, July 2018\n\n\n Reached 2200+ students, 2018\n\n\n Featured on PyTorch Website, January 2018\n\n\n Reached 1000+ students, 2017\n\n\n Hosted NVIDIA Self-Driving Cars and Healthcare Talk, Singapore, June 2017\n\n\n NVIDIA Inception Partner, May 2017\n\n\n And more...",
             "title": "Welcome"
         },
         {
@@ -422,13 +422,28 @@
         },
         {
             "location": "/news/news/#notable-news",
-            "text": "Conducted NUS-MIT-NUHS Datathon NVIDIA Image Recognition Workshop, July 2018   Reached 2200+ students, 2018   Featured on PyTorch Website, January 2018   Reached 1000+ students, 2017   Hosted NVIDIA Self-Driving Cars and Healthcare Talk, June 2017   And more...",
+            "text": "Facebook PyTorch Developer Conference, San Francisco, USA, September 2018   Conducted NUS-MIT-NUHS Datathon NVIDIA Image Recognition Workshop, Singapore, July 2018   Reached 2200+ students, 2018   Featured on PyTorch Website, January 2018   Reached 1000+ students, 2017   Hosted NVIDIA Self-Driving Cars and Healthcare Talk, Singapore, June 2017   NVIDIA Inception Partner, May 2017   And more...",
             "title": "Notable News"
+        },
+        {
+            "location": "/news/facebook_pytorch_developer_conference_2018_09_05/",
+            "text": "Facebook PyTorch Developer Conference\n\u00b6\n\n\nWe are heading down!\n\u00b6\n\n\n\n\nIn barely 2 short years, PyTorch (Facebook) will be hosting their first \nPyTorch Developer Conference\n in San Francisco, USA.\n\n\nI will be heading down thanks to Soumith Chintala for the invite and arrangements. Looking forward to meet anyone there. \n\n\nThe PyTorch ecosystem has grown tremendously from when I first started using it. To this date, I've taught more than 3000 students worldwide in 120+ countries and every single wizard has fallen in love with it!\n\n\nCheers,\n\nRitchie Ng",
+            "title": "Facebook PyTorch Developer Conference, San Francisco, September 2018"
+        },
+        {
+            "location": "/news/facebook_pytorch_developer_conference_2018_09_05/#facebook-pytorch-developer-conference",
+            "text": "",
+            "title": "Facebook PyTorch Developer Conference"
+        },
+        {
+            "location": "/news/facebook_pytorch_developer_conference_2018_09_05/#we-are-heading-down",
+            "text": "In barely 2 short years, PyTorch (Facebook) will be hosting their first  PyTorch Developer Conference  in San Francisco, USA.  I will be heading down thanks to Soumith Chintala for the invite and arrangements. Looking forward to meet anyone there.   The PyTorch ecosystem has grown tremendously from when I first started using it. To this date, I've taught more than 3000 students worldwide in 120+ countries and every single wizard has fallen in love with it!  Cheers, Ritchie Ng",
+            "title": "We are heading down!"
         },
         {
             "location": "/news/nvidia_nus_mit_datathon_2018_07_05/",
             "text": "NVIDIA Workshop at NUS-MIT-NUHS Datathon\n\u00b6\n\n\nImage Recognition Workshop by Ritchie Ng\n\u00b6\n\n\nThe NVIDIA Deep Learning Institute (DLI) trains developers, data scientists, and researchers on how to use artificial intelligence to solve real-world problems across a wide range of domains. In the deep learning courses, you\u2019ll learn how to train, optimize, and deploy neural networks using the latest tools, frameworks, and techniques for deep learning.\n\n\nIn \u201cImage Classification with DIGITS\u201d mini-course, you will learn how to train a deep neural network to recognize handwritten digits by loading image data into a training environment, choosing and training a network, testing with new data, and iterating to improve performance.\n\n\nLink to the NUS-MIT-NUHS Datathon \nworkshop\n.",
-            "title": "NUS-MIT-NUHS NVIDIA Image Recognition Workshop July 2018"
+            "title": "NUS-MIT-NUHS NVIDIA Image Recognition Workshop, Singapore, July 2018"
         },
         {
             "location": "/news/nvidia_nus_mit_datathon_2018_07_05/#nvidia-workshop-at-nus-mit-nuhs-datathon",
@@ -442,7 +457,7 @@
         },
         {
             "location": "/news/deep_learning_wizard_1y_2018_06_01/",
-            "text": "Featured on PyTorch Website\n\u00b6\n\n\nPyTorch a Year Later\n\u00b6\n\n\nWe are featured on \nPyTorch website's post\n \n\n\nI used PyTorch from day 1 and I fell in love with it. One year later, PyTorch's community has grown tremendously. I thank Facebook AI Research (FAIR) and everyone who contributed to building one of the best deep learning framework. In particular Soumith Chintala from FAIR where he is continually fixing bugs and making PyTorch better everyday.\n\n\nA year later, Deep Learning Wizard has taught more than 2000 students across 100+ countries, and we continue to strive to release new and updated content to enable anyone to build customized deep learning systems to solve many problems. And I'm trying to push for PyTorch workshops at NVIDIA Deep Learning Institute in Singapore and across the world, so stay tuned!\n\n\nA big shoutout for \nAlfredo Canziani\n who's currently a postdoc at NYU co-teaching with Yann LeCun on deep learning classes and he's releasing another technical course on PyTorch that is going to be awesome.\n\n\nTo more great years ahead for PyTorch \n\n\nCheers,\n\nRitchie Ng",
+            "text": "Featured on PyTorch Website\n\u00b6\n\n\nPyTorch a Year Later\n\u00b6\n\n\n\n\nWe are featured on \nPyTorch website's post\n \n\n\nI used PyTorch from day 1 and I fell in love with it. One year later, PyTorch's community has grown tremendously. I thank Facebook AI Research (FAIR) and everyone who contributed to building one of the best deep learning framework. In particular Soumith Chintala from FAIR where he is continually fixing bugs and making PyTorch better everyday.\n\n\nA year later, Deep Learning Wizard has taught more than 2000 students across 100+ countries, and we continue to strive to release new and updated content to enable anyone to build customized deep learning systems to solve many problems. And I'm trying to push for PyTorch workshops at NVIDIA Deep Learning Institute in Singapore and across the world, so stay tuned!\n\n\nA big shoutout for \nAlfredo Canziani\n who's currently a postdoc at NYU co-teaching with Yann LeCun on deep learning classes and he's releasing another technical course on PyTorch that is going to be awesome.\n\n\nTo more great years ahead for PyTorch \n\n\nCheers,\n\nRitchie Ng",
             "title": "Featured on PyTorch Website 2018"
         },
         {
@@ -458,7 +473,7 @@
         {
             "location": "/news/nvidia_self_driving_cars_talk_2017_06_21/",
             "text": "NVIDIA Self-Driving Cars and Healthcare Workshop\n\u00b6\n\n\nHosted by Ritchie Ng\n\u00b6\n\n\nA talk by Marek Bardo\u0144ski, Senior Deep Learning Research Engineer, NVIDIA Switzerland. This is hosted by Ritchie Ng, Deep Learning Researcher, NExT Search Centre, NUS.\n\n\nWe will be touching on cutting-edge applications of deep learning for self-driving cars and medical diagnostics. Also there will be a tutorial followed by networking with deep learning researchers from NUS and NVIDIA.\n\n\nDetails:\nWednesday, June 21\nst\n\n1:00 PM to 3:30 PM\n\n\nThe Hangar by NUS Enterprise\n21 Heng Mui Keng Terrace, Singapore 119613",
-            "title": "NVIDIA Self Driving Cars & Healthcare Talk June 2017"
+            "title": "NVIDIA Self Driving Cars & Healthcare Talk, Singapore, June 2017"
         },
         {
             "location": "/news/nvidia_self_driving_cars_talk_2017_06_21/#nvidia-self-driving-cars-and-healthcare-workshop",
@@ -469,6 +484,21 @@
             "location": "/news/nvidia_self_driving_cars_talk_2017_06_21/#hosted-by-ritchie-ng",
             "text": "A talk by Marek Bardo\u0144ski, Senior Deep Learning Research Engineer, NVIDIA Switzerland. This is hosted by Ritchie Ng, Deep Learning Researcher, NExT Search Centre, NUS.  We will be touching on cutting-edge applications of deep learning for self-driving cars and medical diagnostics. Also there will be a tutorial followed by networking with deep learning researchers from NUS and NVIDIA.  Details:\nWednesday, June 21 st \n1:00 PM to 3:30 PM  The Hangar by NUS Enterprise\n21 Heng Mui Keng Terrace, Singapore 119613",
             "title": "Hosted by Ritchie Ng"
+        },
+        {
+            "location": "/news/deep_learning_wizard_nvidia_inception_2018_05_01/",
+            "text": "We Are an NVIDIA Inception Partner\n\u00b6\n\n\nWe did it!\n\u00b6\n\n\nAfter almost a year, we are an NVIDIA Inception Partner now! \n\n\n\n\n\"NVIDIA Inception Partner\n\n\n\n\nDeep Learning Wizard is proudly an NVIDIA Inception Partner, empowering people across the world to leverage on deep learning via open-source programming languages and frameworks to solve problems. \n\n\n\n\nCheers,\n\nRitchie Ng",
+            "title": "NVIDIA Inception Partner Status, Singapore, May 2017"
+        },
+        {
+            "location": "/news/deep_learning_wizard_nvidia_inception_2018_05_01/#we-are-an-nvidia-inception-partner",
+            "text": "",
+            "title": "We Are an NVIDIA Inception Partner"
+        },
+        {
+            "location": "/news/deep_learning_wizard_nvidia_inception_2018_05_01/#we-did-it",
+            "text": "After almost a year, we are an NVIDIA Inception Partner now!    \"NVIDIA Inception Partner   Deep Learning Wizard is proudly an NVIDIA Inception Partner, empowering people across the world to leverage on deep learning via open-source programming languages and frameworks to solve problems.    Cheers, Ritchie Ng",
+            "title": "We did it!"
         }
     ]
 }
