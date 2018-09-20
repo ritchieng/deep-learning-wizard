@@ -264,7 +264,7 @@ LogisticRegressionModel(
    
 
 !!! note "Loss class"
-    This is exactly the same as what we did in logistic regression because we are going through a classification problem, cross entropy function is required to compute the loss between our softmax outputs and our binary labels.
+    This is exactly the same as what we did in logistic regression. Because we are going through a classification problem, cross entropy function is required to compute the loss between our softmax outputs and our binary labels.
     
     ```python
     criterion = nn.CrossEntropyLoss()
@@ -272,7 +272,7 @@ LogisticRegressionModel(
 
 ### Step 6: Instantiate Optimizer Class
 - Simplified equation
-    - $\theta = \theta - \eta \cdot \nabla_\theta $
+    - $\theta = \theta - \eta \cdot \nabla_\theta$
         - $\theta$: parameters (our tensors with gradient accumulation capabilities)
         - $\eta$: learning rate (how fast we want to learn)
         - $\nabla_\theta$: parameters' gradients
@@ -281,42 +281,83 @@ LogisticRegressionModel(
     - **At every iteration, we update our model's parameters**
 
 
-```python
-learning_rate = 0.1
+!!! note "Optimizer class"
+    Learning rate determines how fast the algorithm learns. Too small and the algorithm learns too slowly, too large and the algorithm learns too fast resulting in instabilities.
+    
+    Intuitively, we would think a larger learning rate would be better because we learn faster. But that's not true. Imagine we pass 10 images to a human to learn how to recognize whether the image is a hot dog or not, and it got half right and half wrong. 
+    
+    A well defined learning rate (neither too small or large) is equivalent to rewarding the human with a sweet for getting the first half right, and punishing the other half the human got wrong with a smack on the palm. 
+    
+    A large learning rate would be equivalent to feeding a thousand sweets to the human and smacking a thousand times on the human's palm. This would lead in a very unstable learning environment. Similarly, we will observe that the algorithm's convergence path will be extremely unstable if you use a large learning rate without reducing it subsequently. 
+    
+    We are using an optimization algorithm called Stochastic Gradient Descent (SGD) which is essentially what we covered above on calculating the parameters' gradients multiplied by the learning rate then using it to update our parameters gradually. There's an in-depth analysis of various optimization algorithms on top of SGD in another section.
+    
+    ```python
+    learning_rate = 0.1
+    
+    optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)  
+    ```
 
-optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)  
+#### Parameters In-Depth
+
+
+!!! note "Linear layers' parameters"
+    In a simple linear layer it's $Y = AX + B$, and our parameters are $A$ and bias $B$. 
+    
+    Hence, each linear layer would have 2 groups of parameters  $A$ and $B$. It is critical to take note that our non-linear layers have no parameters to update. They are merely mathematical functions performed on $Y$, the output of our linear layers.
+    
+    This would return a Python generator object, so you need to call list on the generator object to access anything meaningful.
+    ```python
+    print(model.parameters())
+    ```
+    
+    Here we call list on the generator object and getting the length of the list. This would return 4 because we've 2 linear layers, and each layer has 2 groups of parameters $A$ and $b$.
+    
+    ```python
+    print(len(list(model.parameters())))
+    ```
+    
+    Our first linear layer parameters, $A_1$, would be of size 100 x 784. This is because we've an input size of 784 (28 x 28) and a hidden size of 100.
+    ```python
+    # FC 1 Parameters 
+    print(list(model.parameters())[0].size())
+    ```
+    
+    Our first linear layer bias parameters, $B_1$, would be of size 100 which is our hidden size.
+    ```python
+    # FC 1 Bias Parameters
+    print(list(model.parameters())[1].size())
+    ```
+    
+    Our second linear layer is our readout layer, where the parameters $A_2$ would be of size 10 x 100. This is because our output size is 10 and hidden size is 100.
+    
+    ```python
+    # FC 2 Parameters
+    print(list(model.parameters())[2].size())
+    ```
+    
+    Likewise our readout layer's bias $B_1$ would just be 10, the size of our output.
+    
+    ```python
+    # FC 2 Bias Parameters
+    print(list(model.parameters())[3].size())
+    ```
+    
+    The diagram below shows the interaction amongst our input $X$ and our linear layers' parameters $A_1$, $B_1$, $A_2$, and $B_2$ to reach to the final size of 10 x 1.
+    
+    If you're still unfamiliar with dot product, go ahead and review the previous quick lesson where we covered it in [logistic regression](https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_logistic_regression/#step-6-instantiate-optimizer-class).
+    
+
+```python
+<generator object Module.parameters at 0x7f1d530fa678>
+4
+torch.Size([100, 784])
+torch.Size([100])
+torch.Size([10, 100])
+torch.Size([10])
 ```
 
-### Parameters In-Depth
-
-
-```python
-print(model.parameters())
-
-print(len(list(model.parameters())))
-
-# FC 1 Parameters 
-print(list(model.parameters())[0].size())
-
-# FC 1 Bias Parameters
-print(list(model.parameters())[1].size())
-
-# FC 2 Parameters
-print(list(model.parameters())[2].size())
-
-# FC 2 Bias Parameters
-print(list(model.parameters())[3].size())
-```
-
-    <generator object Module.parameters at 0x7f1d530fa678>
-    4
-    torch.Size([100, 784])
-    torch.Size([100])
-    torch.Size([10, 100])
-    torch.Size([10])
-
-
-<img src="./images/nn1_params3.png" alt="deeplearningwizard" style="width: 900px;"/>
+![](./images/nn1_params3.png)
 
 ### Step 7: Train Model
 - Process 
@@ -329,68 +370,71 @@ print(list(model.parameters())[3].size())
         - `parameters = parameters - learning_rate * parameters_gradients`
     7. REPEAT
 
+!!! note "7-step training process"
+    ```python
+    iter = 0
+    for epoch in range(num_epochs):
+        for i, (images, labels) in enumerate(train_loader):
+            # Load images with gradient accumulation capabilities
+            images = images.view(-1, 28*28).requires_grad_()
+            
+            # Clear gradients w.r.t. parameters
+            optimizer.zero_grad()
+            
+            # Forward pass to get output/logits
+            outputs = model(images)
+            
+            # Calculate Loss: softmax --> cross entropy loss
+            loss = criterion(outputs, labels)
+            
+            # Getting gradients w.r.t. parameters
+            loss.backward()
+            
+            # Updating parameters
+            optimizer.step()
+            
+            iter += 1
+            
+            if iter % 500 == 0:
+                # Calculate Accuracy         
+                correct = 0
+                total = 0
+                # Iterate through test dataset
+                for images, labels in test_loader:
+                    # Load images with gradient accumulation capabilities
+                    images = images.view(-1, 28*28).requires_grad_()
+                    
+                    # Forward pass only to get logits/output
+                    outputs = model(images)
+                    
+                    # Get predictions from the maximum value
+                    _, predicted = torch.max(outputs.data, 1)
+                    
+                    # Total number of labels
+                    total += labels.size(0)
+                    
+                    # Total correct predictions
+                    correct += (predicted == labels).sum()
+                
+                accuracy = 100 * correct / total
+                
+                # Print Loss
+                print('Iteration: {}. Loss: {}. Accuracy: {}'.format(iter, loss.item(), accuracy))
+    ```
 
 ```python
-iter = 0
-for epoch in range(num_epochs):
-    for i, (images, labels) in enumerate(train_loader):
-        # Load images with gradient accumulation capabilities
-        images = images.view(-1, 28*28).requires_grad_()
-        
-        # Clear gradients w.r.t. parameters
-        optimizer.zero_grad()
-        
-        # Forward pass to get output/logits
-        outputs = model(images)
-        
-        # Calculate Loss: softmax --> cross entropy loss
-        loss = criterion(outputs, labels)
-        
-        # Getting gradients w.r.t. parameters
-        loss.backward()
-        
-        # Updating parameters
-        optimizer.step()
-        
-        iter += 1
-        
-        if iter % 500 == 0:
-            # Calculate Accuracy         
-            correct = 0
-            total = 0
-            # Iterate through test dataset
-            for images, labels in test_loader:
-                # Load images with gradient accumulation capabilities
-                images = images.view(-1, 28*28).requires_grad_()
-                
-                # Forward pass only to get logits/output
-                outputs = model(images)
-                
-                # Get predictions from the maximum value
-                _, predicted = torch.max(outputs.data, 1)
-                
-                # Total number of labels
-                total += labels.size(0)
-                
-                # Total correct predictions
-                correct += (predicted == labels).sum()
-            
-            accuracy = 100 * correct / total
-            
-            # Print Loss
-            print('Iteration: {}. Loss: {}. Accuracy: {}'.format(iter, loss.item(), accuracy))
-```
+Iteration: 500. Loss: 0.6457265615463257. Accuracy: 85
+Iteration: 1000. Loss: 0.39627206325531006. Accuracy: 89
+Iteration: 1500. Loss: 0.2831554412841797. Accuracy: 90
+Iteration: 2000. Loss: 0.4409525394439697. Accuracy: 91
+Iteration: 2500. Loss: 0.2397005707025528. Accuracy: 91
+Iteration: 3000. Loss: 0.3160165846347809. Accuracy: 91
 
-    Iteration: 500. Loss: 0.6457265615463257. Accuracy: 85
-    Iteration: 1000. Loss: 0.39627206325531006. Accuracy: 89
-    Iteration: 1500. Loss: 0.2831554412841797. Accuracy: 90
-    Iteration: 2000. Loss: 0.4409525394439697. Accuracy: 91
-    Iteration: 2500. Loss: 0.2397005707025528. Accuracy: 91
-    Iteration: 3000. Loss: 0.3160165846347809. Accuracy: 91
+```
 
 
 ### Model B: 1 Hidden Layer Feedforward Neural Network (Tanh Activation)
-<img src="./images/nn1.png" alt="deeplearningwizard" style="width: 900px;"/>
+![](./images/nn1.png)
 
 ### Steps
 - Step 1: Load Dataset
@@ -402,147 +446,150 @@ for epoch in range(num_epochs):
 - Step 7: Train Model
 
 
-```python
-import torch
-import torch.nn as nn
-import torchvision.transforms as transforms
-import torchvision.datasets as dsets
-
-'''
-STEP 1: LOADING DATASET
-'''
-
-train_dataset = dsets.MNIST(root='./data', 
-                            train=True, 
-                            transform=transforms.ToTensor(),
-                            download=True)
-
-test_dataset = dsets.MNIST(root='./data', 
-                           train=False, 
-                           transform=transforms.ToTensor())
-
-'''
-STEP 2: MAKING DATASET ITERABLE
-'''
-
-batch_size = 100
-n_iters = 3000
-num_epochs = n_iters / (len(train_dataset) / batch_size)
-num_epochs = int(num_epochs)
-
-train_loader = torch.utils.data.DataLoader(dataset=train_dataset, 
-                                           batch_size=batch_size, 
-                                           shuffle=True)
-
-test_loader = torch.utils.data.DataLoader(dataset=test_dataset, 
-                                          batch_size=batch_size, 
-                                          shuffle=False)
-
-'''
-STEP 3: CREATE MODEL CLASS
-'''
-class FeedforwardNeuralNetModel(nn.Module):
-    def __init__(self, input_dim, hidden_dim, output_dim):
-        super(FeedforwardNeuralNetModel, self).__init__()
-        # Linear function
-        self.fc1 = nn.Linear(input_dim, hidden_dim) 
-        # Non-linearity
-        self.tanh = nn.Tanh()
-        # Linear function (readout)
-        self.fc2 = nn.Linear(hidden_dim, output_dim)  
+!!! note "1-layer FNN with Tanh Activation"
+    The only difference here compared to previously is that we are using Tanh activation instead of Sigmoid activation. This affects step 3.
+    ```python
+    import torch
+    import torch.nn as nn
+    import torchvision.transforms as transforms
+    import torchvision.datasets as dsets
     
-    def forward(self, x):
-        # Linear function
-        out = self.fc1(x)
-        # Non-linearity
-        out = self.tanh(out)
-        # Linear function (readout)
-        out = self.fc2(out)
-        return out
-'''
-STEP 4: INSTANTIATE MODEL CLASS
-'''
-input_dim = 28*28
-hidden_dim = 100
-output_dim = 10
-
-model = FeedforwardNeuralNetModel(input_dim, hidden_dim, output_dim)
-
-'''
-STEP 5: INSTANTIATE LOSS CLASS
-'''
-criterion = nn.CrossEntropyLoss()
-
-'''
-STEP 6: INSTANTIATE OPTIMIZER CLASS
-'''
-learning_rate = 0.1
-
-optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
-
-'''
-STEP 7: TRAIN THE MODEL
-'''
-iter = 0
-for epoch in range(num_epochs):
-    for i, (images, labels) in enumerate(train_loader):
-        # Load images with gradient accumulation capabilities
-        images = images.view(-1, 28*28).requires_grad_()
+    '''
+    STEP 1: LOADING DATASET
+    '''
+    
+    train_dataset = dsets.MNIST(root='./data', 
+                                train=True, 
+                                transform=transforms.ToTensor(),
+                                download=True)
+    
+    test_dataset = dsets.MNIST(root='./data', 
+                               train=False, 
+                               transform=transforms.ToTensor())
+    
+    '''
+    STEP 2: MAKING DATASET ITERABLE
+    '''
+    
+    batch_size = 100
+    n_iters = 3000
+    num_epochs = n_iters / (len(train_dataset) / batch_size)
+    num_epochs = int(num_epochs)
+    
+    train_loader = torch.utils.data.DataLoader(dataset=train_dataset, 
+                                               batch_size=batch_size, 
+                                               shuffle=True)
+    
+    test_loader = torch.utils.data.DataLoader(dataset=test_dataset, 
+                                              batch_size=batch_size, 
+                                              shuffle=False)
+    
+    '''
+    STEP 3: CREATE MODEL CLASS
+    '''
+    class FeedforwardNeuralNetModel(nn.Module):
+        def __init__(self, input_dim, hidden_dim, output_dim):
+            super(FeedforwardNeuralNetModel, self).__init__()
+            # Linear function
+            self.fc1 = nn.Linear(input_dim, hidden_dim) 
+            # Non-linearity
+            self.tanh = nn.Tanh()
+            # Linear function (readout)
+            self.fc2 = nn.Linear(hidden_dim, output_dim)  
         
-        # Clear gradients w.r.t. parameters
-        optimizer.zero_grad()
-        
-        # Forward pass to get output/logits
-        outputs = model(images)
-        
-        # Calculate Loss: softmax --> cross entropy loss
-        loss = criterion(outputs, labels)
-        
-        # Getting gradients w.r.t. parameters
-        loss.backward()
-        
-        # Updating parameters
-        optimizer.step()
-        
-        iter += 1
-        
-        if iter % 500 == 0:
-            # Calculate Accuracy         
-            correct = 0
-            total = 0
-            # Iterate through test dataset
-            for images, labels in test_loader:
-                # Load images with gradient accumulation capabilities
-                images = images.view(-1, 28*28).requires_grad_()
-                
-                # Forward pass only to get logits/output
-                outputs = model(images)
-                
-                # Get predictions from the maximum value
-                _, predicted = torch.max(outputs.data, 1)
-                
-                # Total number of labels
-                total += labels.size(0)
-                
-                # Total correct predictions
-                correct += (predicted == labels).sum()
+        def forward(self, x):
+            # Linear function
+            out = self.fc1(x)
+            # Non-linearity
+            out = self.tanh(out)
+            # Linear function (readout)
+            out = self.fc2(out)
+            return out
+    '''
+    STEP 4: INSTANTIATE MODEL CLASS
+    '''
+    input_dim = 28*28
+    hidden_dim = 100
+    output_dim = 10
+    
+    model = FeedforwardNeuralNetModel(input_dim, hidden_dim, output_dim)
+    
+    '''
+    STEP 5: INSTANTIATE LOSS CLASS
+    '''
+    criterion = nn.CrossEntropyLoss()
+    
+    '''
+    STEP 6: INSTANTIATE OPTIMIZER CLASS
+    '''
+    learning_rate = 0.1
+    
+    optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
+    
+    '''
+    STEP 7: TRAIN THE MODEL
+    '''
+    iter = 0
+    for epoch in range(num_epochs):
+        for i, (images, labels) in enumerate(train_loader):
+            # Load images with gradient accumulation capabilities
+            images = images.view(-1, 28*28).requires_grad_()
             
-            accuracy = 100 * correct / total
+            # Clear gradients w.r.t. parameters
+            optimizer.zero_grad()
             
-            # Print Loss
-            print('Iteration: {}. Loss: {}. Accuracy: {}'.format(iter, loss.item(), accuracy))
+            # Forward pass to get output/logits
+            outputs = model(images)
+            
+            # Calculate Loss: softmax --> cross entropy loss
+            loss = criterion(outputs, labels)
+            
+            # Getting gradients w.r.t. parameters
+            loss.backward()
+            
+            # Updating parameters
+            optimizer.step()
+            
+            iter += 1
+            
+            if iter % 500 == 0:
+                # Calculate Accuracy         
+                correct = 0
+                total = 0
+                # Iterate through test dataset
+                for images, labels in test_loader:
+                    # Load images with gradient accumulation capabilities
+                    images = images.view(-1, 28*28).requires_grad_()
+                    
+                    # Forward pass only to get logits/output
+                    outputs = model(images)
+                    
+                    # Get predictions from the maximum value
+                    _, predicted = torch.max(outputs.data, 1)
+                    
+                    # Total number of labels
+                    total += labels.size(0)
+                    
+                    # Total correct predictions
+                    correct += (predicted == labels).sum()
+                
+                accuracy = 100 * correct / total
+                
+                # Print Loss
+                print('Iteration: {}. Loss: {}. Accuracy: {}'.format(iter, loss.item(), accuracy))
+    ```
+
+```python
+Iteration: 500. Loss: 0.4128190577030182. Accuracy: 91
+Iteration: 1000. Loss: 0.14497484266757965. Accuracy: 92
+Iteration: 1500. Loss: 0.272532194852829. Accuracy: 93
+Iteration: 2000. Loss: 0.2758277952671051. Accuracy: 94
+Iteration: 2500. Loss: 0.1603182554244995. Accuracy: 94
+Iteration: 3000. Loss: 0.08848697692155838. Accuracy: 95
 ```
-
-    Iteration: 500. Loss: 0.4128190577030182. Accuracy: 91
-    Iteration: 1000. Loss: 0.14497484266757965. Accuracy: 92
-    Iteration: 1500. Loss: 0.272532194852829. Accuracy: 93
-    Iteration: 2000. Loss: 0.2758277952671051. Accuracy: 94
-    Iteration: 2500. Loss: 0.1603182554244995. Accuracy: 94
-    Iteration: 3000. Loss: 0.08848697692155838. Accuracy: 95
-
 
 ### Model C: 1 Hidden Layer Feedforward Neural Network (ReLU Activation)
-<img src="./images/nn1.png" alt="deeplearningwizard" style="width: 900px;"/>
+![](./images/nn1.png)
 
 ### Steps
 - Step 1: Load Dataset
@@ -553,149 +600,152 @@ for epoch in range(num_epochs):
 - Step 6: Instantiate Optimizer Class
 - Step 7: Train Model
 
+!!! note "1-layer FNN with ReLU Activation"
+    The only difference again is in using ReLU activation and it affects step 3.
+    ```python
+    import torch
+    import torch.nn as nn
+    import torchvision.transforms as transforms
+    import torchvision.datasets as dsets
+    
+    '''
+    STEP 1: LOADING DATASET
+    '''
+    
+    train_dataset = dsets.MNIST(root='./data', 
+                                train=True, 
+                                transform=transforms.ToTensor(),
+                                download=True)
+    
+    test_dataset = dsets.MNIST(root='./data', 
+                               train=False, 
+                               transform=transforms.ToTensor())
+    
+    '''
+    STEP 2: MAKING DATASET ITERABLE
+    '''
+    
+    batch_size = 100
+    n_iters = 3000
+    num_epochs = n_iters / (len(train_dataset) / batch_size)
+    num_epochs = int(num_epochs)
+    
+    train_loader = torch.utils.data.DataLoader(dataset=train_dataset, 
+                                               batch_size=batch_size, 
+                                               shuffle=True)
+    
+    test_loader = torch.utils.data.DataLoader(dataset=test_dataset, 
+                                              batch_size=batch_size, 
+                                              shuffle=False)
+    
+    '''
+    STEP 3: CREATE MODEL CLASS
+    '''
+    class FeedforwardNeuralNetModel(nn.Module):
+        def __init__(self, input_dim, hidden_dim, output_dim):
+            super(FeedforwardNeuralNetModel, self).__init__()
+            # Linear function
+            self.fc1 = nn.Linear(input_dim, hidden_dim) 
+            # Non-linearity
+            self.relu = nn.ReLU()
+            # Linear function (readout)
+            self.fc2 = nn.Linear(hidden_dim, output_dim)  
+        
+        def forward(self, x):
+            # Linear function
+            out = self.fc1(x)
+            # Non-linearity
+            out = self.relu(out)
+            # Linear function (readout)
+            out = self.fc2(out)
+            return out
+    '''
+    STEP 4: INSTANTIATE MODEL CLASS
+    '''
+    input_dim = 28*28
+    hidden_dim = 100
+    output_dim = 10
+    
+    model = FeedforwardNeuralNetModel(input_dim, hidden_dim, output_dim)
+    
+    '''
+    STEP 5: INSTANTIATE LOSS CLASS
+    '''
+    criterion = nn.CrossEntropyLoss()
+    
+    
+    '''
+    STEP 6: INSTANTIATE OPTIMIZER CLASS
+    '''
+    learning_rate = 0.1
+    
+    optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
+    
+    '''
+    STEP 7: TRAIN THE MODEL
+    '''
+    iter = 0
+    for epoch in range(num_epochs):
+        for i, (images, labels) in enumerate(train_loader):
+            # Load images with gradient accumulation capabilities
+            images = images.view(-1, 28*28).requires_grad_()
+            
+            # Clear gradients w.r.t. parameters
+            optimizer.zero_grad()
+            
+            # Forward pass to get output/logits
+            outputs = model(images)
+            
+            # Calculate Loss: softmax --> cross entropy loss
+            loss = criterion(outputs, labels)
+            
+            # Getting gradients w.r.t. parameters
+            loss.backward()
+            
+            # Updating parameters
+            optimizer.step()
+            
+            iter += 1
+            
+            if iter % 500 == 0:
+                # Calculate Accuracy         
+                correct = 0
+                total = 0
+                # Iterate through test dataset
+                for images, labels in test_loader:
+                    # Load images with gradient accumulation capabilities
+                    images = images.view(-1, 28*28).requires_grad_()
+                    
+                    # Forward pass only to get logits/output
+                    outputs = model(images)
+                    
+                    # Get predictions from the maximum value
+                    _, predicted = torch.max(outputs.data, 1)
+                    
+                    # Total number of labels
+                    total += labels.size(0)
+                    
+                    # Total correct predictions
+                    correct += (predicted == labels).sum()
+                
+                accuracy = 100 * correct / total
+                
+                # Print Loss
+                print('Iteration: {}. Loss: {}. Accuracy: {}'.format(iter, loss.item(), accuracy))
+    ```
 
 ```python
-import torch
-import torch.nn as nn
-import torchvision.transforms as transforms
-import torchvision.datasets as dsets
-
-'''
-STEP 1: LOADING DATASET
-'''
-
-train_dataset = dsets.MNIST(root='./data', 
-                            train=True, 
-                            transform=transforms.ToTensor(),
-                            download=True)
-
-test_dataset = dsets.MNIST(root='./data', 
-                           train=False, 
-                           transform=transforms.ToTensor())
-
-'''
-STEP 2: MAKING DATASET ITERABLE
-'''
-
-batch_size = 100
-n_iters = 3000
-num_epochs = n_iters / (len(train_dataset) / batch_size)
-num_epochs = int(num_epochs)
-
-train_loader = torch.utils.data.DataLoader(dataset=train_dataset, 
-                                           batch_size=batch_size, 
-                                           shuffle=True)
-
-test_loader = torch.utils.data.DataLoader(dataset=test_dataset, 
-                                          batch_size=batch_size, 
-                                          shuffle=False)
-
-'''
-STEP 3: CREATE MODEL CLASS
-'''
-class FeedforwardNeuralNetModel(nn.Module):
-    def __init__(self, input_dim, hidden_dim, output_dim):
-        super(FeedforwardNeuralNetModel, self).__init__()
-        # Linear function
-        self.fc1 = nn.Linear(input_dim, hidden_dim) 
-        # Non-linearity
-        self.relu = nn.ReLU()
-        # Linear function (readout)
-        self.fc2 = nn.Linear(hidden_dim, output_dim)  
-    
-    def forward(self, x):
-        # Linear function
-        out = self.fc1(x)
-        # Non-linearity
-        out = self.relu(out)
-        # Linear function (readout)
-        out = self.fc2(out)
-        return out
-'''
-STEP 4: INSTANTIATE MODEL CLASS
-'''
-input_dim = 28*28
-hidden_dim = 100
-output_dim = 10
-
-model = FeedforwardNeuralNetModel(input_dim, hidden_dim, output_dim)
-
-'''
-STEP 5: INSTANTIATE LOSS CLASS
-'''
-criterion = nn.CrossEntropyLoss()
-
-
-'''
-STEP 6: INSTANTIATE OPTIMIZER CLASS
-'''
-learning_rate = 0.1
-
-optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
-
-'''
-STEP 7: TRAIN THE MODEL
-'''
-iter = 0
-for epoch in range(num_epochs):
-    for i, (images, labels) in enumerate(train_loader):
-        # Load images with gradient accumulation capabilities
-        images = images.view(-1, 28*28).requires_grad_()
-        
-        # Clear gradients w.r.t. parameters
-        optimizer.zero_grad()
-        
-        # Forward pass to get output/logits
-        outputs = model(images)
-        
-        # Calculate Loss: softmax --> cross entropy loss
-        loss = criterion(outputs, labels)
-        
-        # Getting gradients w.r.t. parameters
-        loss.backward()
-        
-        # Updating parameters
-        optimizer.step()
-        
-        iter += 1
-        
-        if iter % 500 == 0:
-            # Calculate Accuracy         
-            correct = 0
-            total = 0
-            # Iterate through test dataset
-            for images, labels in test_loader:
-                # Load images with gradient accumulation capabilities
-                images = images.view(-1, 28*28).requires_grad_()
-                
-                # Forward pass only to get logits/output
-                outputs = model(images)
-                
-                # Get predictions from the maximum value
-                _, predicted = torch.max(outputs.data, 1)
-                
-                # Total number of labels
-                total += labels.size(0)
-                
-                # Total correct predictions
-                correct += (predicted == labels).sum()
-            
-            accuracy = 100 * correct / total
-            
-            # Print Loss
-            print('Iteration: {}. Loss: {}. Accuracy: {}'.format(iter, loss.item(), accuracy))
+Iteration: 500. Loss: 0.3179700970649719. Accuracy: 91
+Iteration: 1000. Loss: 0.17288273572921753. Accuracy: 93
+Iteration: 1500. Loss: 0.16829034686088562. Accuracy: 94
+Iteration: 2000. Loss: 0.25494423508644104. Accuracy: 94
+Iteration: 2500. Loss: 0.16818439960479736. Accuracy: 95
+Iteration: 3000. Loss: 0.11110792309045792. Accuracy: 95
 ```
-
-    Iteration: 500. Loss: 0.3179700970649719. Accuracy: 91
-    Iteration: 1000. Loss: 0.17288273572921753. Accuracy: 93
-    Iteration: 1500. Loss: 0.16829034686088562. Accuracy: 94
-    Iteration: 2000. Loss: 0.25494423508644104. Accuracy: 94
-    Iteration: 2500. Loss: 0.16818439960479736. Accuracy: 95
-    Iteration: 3000. Loss: 0.11110792309045792. Accuracy: 95
 
 
 ### Model D: 2 Hidden Layer Feedforward Neural Network (ReLU Activation)
-<img src="./images/nn2.png" alt="deeplearningwizard" style="width: 900px;"/>
+![](./images/nn2.png)
 
 ### Steps
 - Step 1: Load Dataset
@@ -707,161 +757,164 @@ for epoch in range(num_epochs):
 - Step 7: Train Model
 
 
-```python
-import torch
-import torch.nn as nn
-import torchvision.transforms as transforms
-import torchvision.datasets as dsets
-
-'''
-STEP 1: LOADING DATASET
-'''
-
-train_dataset = dsets.MNIST(root='./data', 
-                            train=True, 
-                            transform=transforms.ToTensor(),
-                            download=True)
-
-test_dataset = dsets.MNIST(root='./data', 
-                           train=False, 
-                           transform=transforms.ToTensor())
-
-'''
-STEP 2: MAKING DATASET ITERABLE
-'''
-
-batch_size = 100
-n_iters = 3000
-num_epochs = n_iters / (len(train_dataset) / batch_size)
-num_epochs = int(num_epochs)
-
-train_loader = torch.utils.data.DataLoader(dataset=train_dataset, 
-                                           batch_size=batch_size, 
-                                           shuffle=True)
-
-test_loader = torch.utils.data.DataLoader(dataset=test_dataset, 
-                                          batch_size=batch_size, 
-                                          shuffle=False)
-
-'''
-STEP 3: CREATE MODEL CLASS
-'''
-class FeedforwardNeuralNetModel(nn.Module):
-    def __init__(self, input_dim, hidden_dim, output_dim):
-        super(FeedforwardNeuralNetModel, self).__init__()
-        # Linear function 1: 784 --> 100
-        self.fc1 = nn.Linear(input_dim, hidden_dim) 
-        # Non-linearity 1
-        self.relu1 = nn.ReLU()
-        
-        # Linear function 2: 100 --> 100
-        self.fc2 = nn.Linear(hidden_dim, hidden_dim)
-        # Non-linearity 2
-        self.relu2 = nn.ReLU()
-        
-        # Linear function 3 (readout): 100 --> 10
-        self.fc3 = nn.Linear(hidden_dim, output_dim)  
+!!! note "2-layer FNN with ReLU Activation"
+    This is a bigger difference that increases your model's capacity by adding another linear layer and non-linear layer which affects step 3.
+    ```python
+    import torch
+    import torch.nn as nn
+    import torchvision.transforms as transforms
+    import torchvision.datasets as dsets
     
-    def forward(self, x):
-        # Linear function 1
-        out = self.fc1(x)
-        # Non-linearity 1
-        out = self.relu1(out)
-        
-        # Linear function 2
-        out = self.fc2(out)
-        # Non-linearity 2
-        out = self.relu2(out)
-        
-        # Linear function 3 (readout)
-        out = self.fc3(out)
-        return out
-'''
-STEP 4: INSTANTIATE MODEL CLASS
-'''
-input_dim = 28*28
-hidden_dim = 100
-output_dim = 10
-
-model = FeedforwardNeuralNetModel(input_dim, hidden_dim, output_dim)
-
-'''
-STEP 5: INSTANTIATE LOSS CLASS
-'''
-criterion = nn.CrossEntropyLoss()
-
-
-'''
-STEP 6: INSTANTIATE OPTIMIZER CLASS
-'''
-learning_rate = 0.1
-
-optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
-
-'''
-STEP 7: TRAIN THE MODEL
-'''
-iter = 0
-for epoch in range(num_epochs):
-    for i, (images, labels) in enumerate(train_loader):
-        # Load images with gradient accumulation capabilities
-        images = images.view(-1, 28*28).requires_grad_()
-        labels = labels
-        
-        # Clear gradients w.r.t. parameters
-        optimizer.zero_grad()
-        
-        # Forward pass to get output/logits
-        outputs = model(images)
-        
-        # Calculate Loss: softmax --> cross entropy loss
-        loss = criterion(outputs, labels)
-        
-        # Getting gradients w.r.t. parameters
-        loss.backward()
-        
-        # Updating parameters
-        optimizer.step()
-        
-        iter += 1
-        
-        if iter % 500 == 0:
-            # Calculate Accuracy         
-            correct = 0
-            total = 0
-            # Iterate through test dataset
-            for images, labels in test_loader:
-                # Load images with gradient accumulation capabilities
-                images = images.view(-1, 28*28).requires_grad_()
-                
-                # Forward pass only to get logits/output
-                outputs = model(images)
-                
-                # Get predictions from the maximum value
-                _, predicted = torch.max(outputs.data, 1)
-                
-                # Total number of labels
-                total += labels.size(0)
-                
-                # Total correct predictions
-                correct += (predicted == labels).sum()
+    '''
+    STEP 1: LOADING DATASET
+    '''
+    
+    train_dataset = dsets.MNIST(root='./data', 
+                                train=True, 
+                                transform=transforms.ToTensor(),
+                                download=True)
+    
+    test_dataset = dsets.MNIST(root='./data', 
+                               train=False, 
+                               transform=transforms.ToTensor())
+    
+    '''
+    STEP 2: MAKING DATASET ITERABLE
+    '''
+    
+    batch_size = 100
+    n_iters = 3000
+    num_epochs = n_iters / (len(train_dataset) / batch_size)
+    num_epochs = int(num_epochs)
+    
+    train_loader = torch.utils.data.DataLoader(dataset=train_dataset, 
+                                               batch_size=batch_size, 
+                                               shuffle=True)
+    
+    test_loader = torch.utils.data.DataLoader(dataset=test_dataset, 
+                                              batch_size=batch_size, 
+                                              shuffle=False)
+    
+    '''
+    STEP 3: CREATE MODEL CLASS
+    '''
+    class FeedforwardNeuralNetModel(nn.Module):
+        def __init__(self, input_dim, hidden_dim, output_dim):
+            super(FeedforwardNeuralNetModel, self).__init__()
+            # Linear function 1: 784 --> 100
+            self.fc1 = nn.Linear(input_dim, hidden_dim) 
+            # Non-linearity 1
+            self.relu1 = nn.ReLU()
             
-            accuracy = 100 * correct / total
+            # Linear function 2: 100 --> 100
+            self.fc2 = nn.Linear(hidden_dim, hidden_dim)
+            # Non-linearity 2
+            self.relu2 = nn.ReLU()
             
-            # Print Loss
-            print('Iteration: {}. Loss: {}. Accuracy: {}'.format(iter, loss.item(), accuracy))
+            # Linear function 3 (readout): 100 --> 10
+            self.fc3 = nn.Linear(hidden_dim, output_dim)  
+        
+        def forward(self, x):
+            # Linear function 1
+            out = self.fc1(x)
+            # Non-linearity 1
+            out = self.relu1(out)
+            
+            # Linear function 2
+            out = self.fc2(out)
+            # Non-linearity 2
+            out = self.relu2(out)
+            
+            # Linear function 3 (readout)
+            out = self.fc3(out)
+            return out
+    '''
+    STEP 4: INSTANTIATE MODEL CLASS
+    '''
+    input_dim = 28*28
+    hidden_dim = 100
+    output_dim = 10
+    
+    model = FeedforwardNeuralNetModel(input_dim, hidden_dim, output_dim)
+    
+    '''
+    STEP 5: INSTANTIATE LOSS CLASS
+    '''
+    criterion = nn.CrossEntropyLoss()
+    
+    
+    '''
+    STEP 6: INSTANTIATE OPTIMIZER CLASS
+    '''
+    learning_rate = 0.1
+    
+    optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
+    
+    '''
+    STEP 7: TRAIN THE MODEL
+    '''
+    iter = 0
+    for epoch in range(num_epochs):
+        for i, (images, labels) in enumerate(train_loader):
+            # Load images with gradient accumulation capabilities
+            images = images.view(-1, 28*28).requires_grad_()
+            labels = labels
+            
+            # Clear gradients w.r.t. parameters
+            optimizer.zero_grad()
+            
+            # Forward pass to get output/logits
+            outputs = model(images)
+            
+            # Calculate Loss: softmax --> cross entropy loss
+            loss = criterion(outputs, labels)
+            
+            # Getting gradients w.r.t. parameters
+            loss.backward()
+            
+            # Updating parameters
+            optimizer.step()
+            
+            iter += 1
+            
+            if iter % 500 == 0:
+                # Calculate Accuracy         
+                correct = 0
+                total = 0
+                # Iterate through test dataset
+                for images, labels in test_loader:
+                    # Load images with gradient accumulation capabilities
+                    images = images.view(-1, 28*28).requires_grad_()
+                    
+                    # Forward pass only to get logits/output
+                    outputs = model(images)
+                    
+                    # Get predictions from the maximum value
+                    _, predicted = torch.max(outputs.data, 1)
+                    
+                    # Total number of labels
+                    total += labels.size(0)
+                    
+                    # Total correct predictions
+                    correct += (predicted == labels).sum()
+                
+                accuracy = 100 * correct / total
+                
+                # Print Loss
+                print('Iteration: {}. Loss: {}. Accuracy: {}'.format(iter, loss.item(), accuracy))
+    ```
+
+```python
+Iteration: 500. Loss: 0.2995373010635376. Accuracy: 91
+Iteration: 1000. Loss: 0.3924565613269806. Accuracy: 93
+Iteration: 1500. Loss: 0.1283276081085205. Accuracy: 94
+Iteration: 2000. Loss: 0.10905527323484421. Accuracy: 95
+Iteration: 2500. Loss: 0.11943754553794861. Accuracy: 96
+Iteration: 3000. Loss: 0.15632082521915436. Accuracy: 96
 ```
-
-    Iteration: 500. Loss: 0.2995373010635376. Accuracy: 91
-    Iteration: 1000. Loss: 0.3924565613269806. Accuracy: 93
-    Iteration: 1500. Loss: 0.1283276081085205. Accuracy: 94
-    Iteration: 2000. Loss: 0.10905527323484421. Accuracy: 95
-    Iteration: 2500. Loss: 0.11943754553794861. Accuracy: 96
-    Iteration: 3000. Loss: 0.15632082521915436. Accuracy: 96
-
 
 ### Model E: 3 Hidden Layer Feedforward Neural Network (ReLU Activation)
-<img src="./images/nn3.png" alt="deeplearningwizard" style="width: 900px;"/>
+![](./images/nn3.png")
 
 ### Steps
 - Step 1: Load Dataset
@@ -872,170 +925,173 @@ for epoch in range(num_epochs):
 - Step 6: Instantiate Optimizer Class
 - Step 7: Train Model
 
+!!! note "3-layer FNN with ReLU Activation"
+    Let's add one more layer! Bigger model capacity. But will it be better? Remember what we talked about on curse of dimensionality?
+
+    ```python
+    import torch
+    import torch.nn as nn
+    import torchvision.transforms as transforms
+    import torchvision.datasets as dsets
+    
+    '''
+    STEP 1: LOADING DATASET
+    '''
+    
+    train_dataset = dsets.MNIST(root='./data', 
+                                train=True, 
+                                transform=transforms.ToTensor(),
+                                download=True)
+    
+    test_dataset = dsets.MNIST(root='./data', 
+                               train=False, 
+                               transform=transforms.ToTensor())
+    
+    '''
+    STEP 2: MAKING DATASET ITERABLE
+    '''
+    
+    batch_size = 100
+    n_iters = 3000
+    num_epochs = n_iters / (len(train_dataset) / batch_size)
+    num_epochs = int(num_epochs)
+    
+    train_loader = torch.utils.data.DataLoader(dataset=train_dataset, 
+                                               batch_size=batch_size, 
+                                               shuffle=True)
+    
+    test_loader = torch.utils.data.DataLoader(dataset=test_dataset, 
+                                              batch_size=batch_size, 
+                                              shuffle=False)
+    
+    '''
+    STEP 3: CREATE MODEL CLASS
+    '''
+    class FeedforwardNeuralNetModel(nn.Module):
+        def __init__(self, input_dim, hidden_dim, output_dim):
+            super(FeedforwardNeuralNetModel, self).__init__()
+            # Linear function 1: 784 --> 100
+            self.fc1 = nn.Linear(input_dim, hidden_dim) 
+            # Non-linearity 1
+            self.relu1 = nn.ReLU()
+            
+            # Linear function 2: 100 --> 100
+            self.fc2 = nn.Linear(hidden_dim, hidden_dim)
+            # Non-linearity 2
+            self.relu2 = nn.ReLU()
+            
+            # Linear function 3: 100 --> 100
+            self.fc3 = nn.Linear(hidden_dim, hidden_dim)
+            # Non-linearity 3
+            self.relu3 = nn.ReLU()
+            
+            # Linear function 4 (readout): 100 --> 10
+            self.fc4 = nn.Linear(hidden_dim, output_dim)  
+        
+        def forward(self, x):
+            # Linear function 1
+            out = self.fc1(x)
+            # Non-linearity 1
+            out = self.relu1(out)
+            
+            # Linear function 2
+            out = self.fc2(out)
+            # Non-linearity 2
+            out = self.relu2(out)
+            
+            # Linear function 2
+            out = self.fc3(out)
+            # Non-linearity 2
+            out = self.relu3(out)
+            
+            # Linear function 4 (readout)
+            out = self.fc4(out)
+            return out
+    '''
+    STEP 4: INSTANTIATE MODEL CLASS
+    '''
+    input_dim = 28*28
+    hidden_dim = 100
+    output_dim = 10
+    
+    model = FeedforwardNeuralNetModel(input_dim, hidden_dim, output_dim)
+    
+    '''
+    STEP 5: INSTANTIATE LOSS CLASS
+    '''
+    criterion = nn.CrossEntropyLoss()
+    
+    
+    '''
+    STEP 6: INSTANTIATE OPTIMIZER CLASS
+    '''
+    learning_rate = 0.1
+    
+    optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
+    
+    '''
+    STEP 7: TRAIN THE MODEL
+    '''
+    iter = 0
+    for epoch in range(num_epochs):
+        for i, (images, labels) in enumerate(train_loader):
+            # Load images with gradient accumulation capabilities
+            images = images.view(-1, 28*28).requires_grad_()
+            
+            # Clear gradients w.r.t. parameters
+            optimizer.zero_grad()
+            
+            # Forward pass to get output/logits
+            outputs = model(images)
+            
+            # Calculate Loss: softmax --> cross entropy loss
+            loss = criterion(outputs, labels)
+            
+            # Getting gradients w.r.t. parameters
+            loss.backward()
+            
+            # Updating parameters
+            optimizer.step()
+            
+            iter += 1
+            
+            if iter % 500 == 0:
+                # Calculate Accuracy         
+                correct = 0
+                total = 0
+                # Iterate through test dataset
+                for images, labels in test_loader:
+                    # Load images with gradient accumulation capabilities
+                    images = images.view(-1, 28*28).requires_grad_()
+                    
+                    # Forward pass only to get logits/output
+                    outputs = model(images)
+                    
+                    # Get predictions from the maximum value
+                    _, predicted = torch.max(outputs.data, 1)
+                    
+                    # Total number of labels
+                    total += labels.size(0)
+                    
+                    # Total correct predictions
+                    correct += (predicted == labels).sum()
+                
+                accuracy = 100 * correct / total
+                
+                # Print Loss
+                print('Iteration: {}. Loss: {}. Accuracy: {}'.format(iter, loss.item(), accuracy))
+    ```
 
 ```python
-import torch
-import torch.nn as nn
-import torchvision.transforms as transforms
-import torchvision.datasets as dsets
-
-'''
-STEP 1: LOADING DATASET
-'''
-
-train_dataset = dsets.MNIST(root='./data', 
-                            train=True, 
-                            transform=transforms.ToTensor(),
-                            download=True)
-
-test_dataset = dsets.MNIST(root='./data', 
-                           train=False, 
-                           transform=transforms.ToTensor())
-
-'''
-STEP 2: MAKING DATASET ITERABLE
-'''
-
-batch_size = 100
-n_iters = 3000
-num_epochs = n_iters / (len(train_dataset) / batch_size)
-num_epochs = int(num_epochs)
-
-train_loader = torch.utils.data.DataLoader(dataset=train_dataset, 
-                                           batch_size=batch_size, 
-                                           shuffle=True)
-
-test_loader = torch.utils.data.DataLoader(dataset=test_dataset, 
-                                          batch_size=batch_size, 
-                                          shuffle=False)
-
-'''
-STEP 3: CREATE MODEL CLASS
-'''
-class FeedforwardNeuralNetModel(nn.Module):
-    def __init__(self, input_dim, hidden_dim, output_dim):
-        super(FeedforwardNeuralNetModel, self).__init__()
-        # Linear function 1: 784 --> 100
-        self.fc1 = nn.Linear(input_dim, hidden_dim) 
-        # Non-linearity 1
-        self.relu1 = nn.ReLU()
-        
-        # Linear function 2: 100 --> 100
-        self.fc2 = nn.Linear(hidden_dim, hidden_dim)
-        # Non-linearity 2
-        self.relu2 = nn.ReLU()
-        
-        # Linear function 3: 100 --> 100
-        self.fc3 = nn.Linear(hidden_dim, hidden_dim)
-        # Non-linearity 3
-        self.relu3 = nn.ReLU()
-        
-        # Linear function 4 (readout): 100 --> 10
-        self.fc4 = nn.Linear(hidden_dim, output_dim)  
-    
-    def forward(self, x):
-        # Linear function 1
-        out = self.fc1(x)
-        # Non-linearity 1
-        out = self.relu1(out)
-        
-        # Linear function 2
-        out = self.fc2(out)
-        # Non-linearity 2
-        out = self.relu2(out)
-        
-        # Linear function 2
-        out = self.fc3(out)
-        # Non-linearity 2
-        out = self.relu3(out)
-        
-        # Linear function 4 (readout)
-        out = self.fc4(out)
-        return out
-'''
-STEP 4: INSTANTIATE MODEL CLASS
-'''
-input_dim = 28*28
-hidden_dim = 100
-output_dim = 10
-
-model = FeedforwardNeuralNetModel(input_dim, hidden_dim, output_dim)
-
-'''
-STEP 5: INSTANTIATE LOSS CLASS
-'''
-criterion = nn.CrossEntropyLoss()
-
-
-'''
-STEP 6: INSTANTIATE OPTIMIZER CLASS
-'''
-learning_rate = 0.1
-
-optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
-
-'''
-STEP 7: TRAIN THE MODEL
-'''
-iter = 0
-for epoch in range(num_epochs):
-    for i, (images, labels) in enumerate(train_loader):
-        # Load images with gradient accumulation capabilities
-        images = images.view(-1, 28*28).requires_grad_()
-        
-        # Clear gradients w.r.t. parameters
-        optimizer.zero_grad()
-        
-        # Forward pass to get output/logits
-        outputs = model(images)
-        
-        # Calculate Loss: softmax --> cross entropy loss
-        loss = criterion(outputs, labels)
-        
-        # Getting gradients w.r.t. parameters
-        loss.backward()
-        
-        # Updating parameters
-        optimizer.step()
-        
-        iter += 1
-        
-        if iter % 500 == 0:
-            # Calculate Accuracy         
-            correct = 0
-            total = 0
-            # Iterate through test dataset
-            for images, labels in test_loader:
-                # Load images with gradient accumulation capabilities
-                images = images.view(-1, 28*28).requires_grad_()
-                
-                # Forward pass only to get logits/output
-                outputs = model(images)
-                
-                # Get predictions from the maximum value
-                _, predicted = torch.max(outputs.data, 1)
-                
-                # Total number of labels
-                total += labels.size(0)
-                
-                # Total correct predictions
-                correct += (predicted == labels).sum()
-            
-            accuracy = 100 * correct / total
-            
-            # Print Loss
-            print('Iteration: {}. Loss: {}. Accuracy: {}'.format(iter, loss.item(), accuracy))
+Iteration: 500. Loss: 0.33234935998916626. Accuracy: 89
+Iteration: 1000. Loss: 0.3098006248474121. Accuracy: 94
+Iteration: 1500. Loss: 0.12461677193641663. Accuracy: 95
+Iteration: 2000. Loss: 0.14346086978912354. Accuracy: 96
+Iteration: 2500. Loss: 0.03763459622859955. Accuracy: 96
+Iteration: 3000. Loss: 0.1397182047367096. Accuracy: 97
 ```
 
-    Iteration: 500. Loss: 0.33234935998916626. Accuracy: 89
-    Iteration: 1000. Loss: 0.3098006248474121. Accuracy: 94
-    Iteration: 1500. Loss: 0.12461677193641663. Accuracy: 95
-    Iteration: 2000. Loss: 0.14346086978912354. Accuracy: 96
-    Iteration: 2500. Loss: 0.03763459622859955. Accuracy: 96
-    Iteration: 3000. Loss: 0.1397182047367096. Accuracy: 97
-
-
-### Deep Learning
+### General Comments on FNNs
 - 2 ways to expand a neural network
     - More non-linear activation units (neurons)
     - More hidden layers 
@@ -1045,10 +1101,7 @@ for epoch in range(num_epochs):
     - Does not necessarily mean higher accuracy
 
 ## 3. Building a Feedforward Neural Network with PyTorch (GPU)
-
-
-
-<img src="./images/nn3.png" alt="deeplearningwizard" style="width: 900px;"/>
+![](./images/nn3.png)
 
 GPU: 2 things must be on GPU
 - `model`
@@ -1063,224 +1116,230 @@ GPU: 2 things must be on GPU
 - Step 6: Instantiate Optimizer Class
 - **Step 7: Train Model**
 
+!!! note "3-layer FNN with ReLU Activation on GPU"
+    Only step 4 and 7 of the CPU code will be affected and it's a simple change.
+    
+    ```python
+    import torch
+    import torch.nn as nn
+    import torchvision.transforms as transforms
+    import torchvision.datasets as dsets
+    
+    '''
+    STEP 1: LOADING DATASET
+    '''
+    
+    train_dataset = dsets.MNIST(root='./data', 
+                                train=True, 
+                                transform=transforms.ToTensor(),
+                                download=True)
+    
+    test_dataset = dsets.MNIST(root='./data', 
+                               train=False, 
+                               transform=transforms.ToTensor())
+    
+    '''
+    STEP 2: MAKING DATASET ITERABLE
+    '''
+    
+    batch_size = 100
+    n_iters = 3000
+    num_epochs = n_iters / (len(train_dataset) / batch_size)
+    num_epochs = int(num_epochs)
+    
+    train_loader = torch.utils.data.DataLoader(dataset=train_dataset, 
+                                               batch_size=batch_size, 
+                                               shuffle=True)
+    
+    test_loader = torch.utils.data.DataLoader(dataset=test_dataset, 
+                                              batch_size=batch_size, 
+                                              shuffle=False)
+    
+    '''
+    STEP 3: CREATE MODEL CLASS
+    '''
+    class FeedforwardNeuralNetModel(nn.Module):
+        def __init__(self, input_dim, hidden_dim, output_dim):
+            super(FeedforwardNeuralNetModel, self).__init__()
+            # Linear function 1: 784 --> 100
+            self.fc1 = nn.Linear(input_dim, hidden_dim) 
+            # Non-linearity 1
+            self.relu1 = nn.ReLU()
+            
+            # Linear function 2: 100 --> 100
+            self.fc2 = nn.Linear(hidden_dim, hidden_dim)
+            # Non-linearity 2
+            self.relu2 = nn.ReLU()
+            
+            # Linear function 3: 100 --> 100
+            self.fc3 = nn.Linear(hidden_dim, hidden_dim)
+            # Non-linearity 3
+            self.relu3 = nn.ReLU()
+            
+            # Linear function 4 (readout): 100 --> 10
+            self.fc4 = nn.Linear(hidden_dim, output_dim)  
+        
+        def forward(self, x):
+            # Linear function 1
+            out = self.fc1(x)
+            # Non-linearity 1
+            out = self.relu1(out)
+            
+            # Linear function 2
+            out = self.fc2(out)
+            # Non-linearity 2
+            out = self.relu2(out)
+            
+            # Linear function 2
+            out = self.fc3(out)
+            # Non-linearity 2
+            out = self.relu3(out)
+            
+            # Linear function 4 (readout)
+            out = self.fc4(out)
+            return out
+    '''
+    STEP 4: INSTANTIATE MODEL CLASS
+    '''
+    input_dim = 28*28
+    hidden_dim = 100
+    output_dim = 10
+    
+    model = FeedforwardNeuralNetModel(input_dim, hidden_dim, output_dim)
+    
+    #######################
+    #  USE GPU FOR MODEL  #
+    #######################
+    
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    model.to(device)
+    
+    '''
+    STEP 5: INSTANTIATE LOSS CLASS
+    '''
+    criterion = nn.CrossEntropyLoss()
+    
+    
+    '''
+    STEP 6: INSTANTIATE OPTIMIZER CLASS
+    '''
+    learning_rate = 0.1
+    
+    optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
+    
+    '''
+    STEP 7: TRAIN THE MODEL
+    '''
+    iter = 0
+    for epoch in range(num_epochs):
+        for i, (images, labels) in enumerate(train_loader):
+            
+            #######################
+            #  USE GPU FOR MODEL  #
+            #######################
+            images = images.view(-1, 28*28).requires_grad_().to(device)
+            labels = labels.to(device)
+            
+            # Clear gradients w.r.t. parameters
+            optimizer.zero_grad()
+            
+            # Forward pass to get output/logits
+            outputs = model(images)
+            
+            # Calculate Loss: softmax --> cross entropy loss
+            loss = criterion(outputs, labels)
+            
+            # Getting gradients w.r.t. parameters
+            loss.backward()
+            
+            # Updating parameters
+            optimizer.step()
+            
+            iter += 1
+            
+            if iter % 500 == 0:
+                # Calculate Accuracy         
+                correct = 0
+                total = 0
+                # Iterate through test dataset
+                for images, labels in test_loader:
+                    #######################
+                    #  USE GPU FOR MODEL  #
+                    #######################
+                    images = images.view(-1, 28*28).requires_grad_().to(device)
+                    
+                    # Forward pass only to get logits/output
+                    outputs = model(images)
+                    
+                    # Get predictions from the maximum value
+                    _, predicted = torch.max(outputs.data, 1)
+                    
+                    # Total number of labels
+                    total += labels.size(0)
+                    
+                    #######################
+                    #  USE GPU FOR MODEL  #
+                    #######################
+                    # Total correct predictions
+                    if torch.cuda.is_available():
+                        correct += (predicted.cpu() == labels.cpu()).sum()
+                    else:
+                        correct += (predicted == labels).sum()
+                
+                accuracy = 100 * correct / total
+                
+                # Print Loss
+                print('Iteration: {}. Loss: {}. Accuracy: {}'.format(iter, loss.item(), accuracy))
+    ```
 
 ```python
-import torch
-import torch.nn as nn
-import torchvision.transforms as transforms
-import torchvision.datasets as dsets
-
-'''
-STEP 1: LOADING DATASET
-'''
-
-train_dataset = dsets.MNIST(root='./data', 
-                            train=True, 
-                            transform=transforms.ToTensor(),
-                            download=True)
-
-test_dataset = dsets.MNIST(root='./data', 
-                           train=False, 
-                           transform=transforms.ToTensor())
-
-'''
-STEP 2: MAKING DATASET ITERABLE
-'''
-
-batch_size = 100
-n_iters = 3000
-num_epochs = n_iters / (len(train_dataset) / batch_size)
-num_epochs = int(num_epochs)
-
-train_loader = torch.utils.data.DataLoader(dataset=train_dataset, 
-                                           batch_size=batch_size, 
-                                           shuffle=True)
-
-test_loader = torch.utils.data.DataLoader(dataset=test_dataset, 
-                                          batch_size=batch_size, 
-                                          shuffle=False)
-
-'''
-STEP 3: CREATE MODEL CLASS
-'''
-class FeedforwardNeuralNetModel(nn.Module):
-    def __init__(self, input_dim, hidden_dim, output_dim):
-        super(FeedforwardNeuralNetModel, self).__init__()
-        # Linear function 1: 784 --> 100
-        self.fc1 = nn.Linear(input_dim, hidden_dim) 
-        # Non-linearity 1
-        self.relu1 = nn.ReLU()
-        
-        # Linear function 2: 100 --> 100
-        self.fc2 = nn.Linear(hidden_dim, hidden_dim)
-        # Non-linearity 2
-        self.relu2 = nn.ReLU()
-        
-        # Linear function 3: 100 --> 100
-        self.fc3 = nn.Linear(hidden_dim, hidden_dim)
-        # Non-linearity 3
-        self.relu3 = nn.ReLU()
-        
-        # Linear function 4 (readout): 100 --> 10
-        self.fc4 = nn.Linear(hidden_dim, output_dim)  
-    
-    def forward(self, x):
-        # Linear function 1
-        out = self.fc1(x)
-        # Non-linearity 1
-        out = self.relu1(out)
-        
-        # Linear function 2
-        out = self.fc2(out)
-        # Non-linearity 2
-        out = self.relu2(out)
-        
-        # Linear function 2
-        out = self.fc3(out)
-        # Non-linearity 2
-        out = self.relu3(out)
-        
-        # Linear function 4 (readout)
-        out = self.fc4(out)
-        return out
-'''
-STEP 4: INSTANTIATE MODEL CLASS
-'''
-input_dim = 28*28
-hidden_dim = 100
-output_dim = 10
-
-model = FeedforwardNeuralNetModel(input_dim, hidden_dim, output_dim)
-
-#######################
-#  USE GPU FOR MODEL  #
-#######################
-
-device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-model.to(device)
-
-'''
-STEP 5: INSTANTIATE LOSS CLASS
-'''
-criterion = nn.CrossEntropyLoss()
-
-
-'''
-STEP 6: INSTANTIATE OPTIMIZER CLASS
-'''
-learning_rate = 0.1
-
-optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
-
-'''
-STEP 7: TRAIN THE MODEL
-'''
-iter = 0
-for epoch in range(num_epochs):
-    for i, (images, labels) in enumerate(train_loader):
-        
-        #######################
-        #  USE GPU FOR MODEL  #
-        #######################
-        images = images.view(-1, 28*28).requires_grad_().to(device)
-        labels = labels.to(device)
-        
-        # Clear gradients w.r.t. parameters
-        optimizer.zero_grad()
-        
-        # Forward pass to get output/logits
-        outputs = model(images)
-        
-        # Calculate Loss: softmax --> cross entropy loss
-        loss = criterion(outputs, labels)
-        
-        # Getting gradients w.r.t. parameters
-        loss.backward()
-        
-        # Updating parameters
-        optimizer.step()
-        
-        iter += 1
-        
-        if iter % 500 == 0:
-            # Calculate Accuracy         
-            correct = 0
-            total = 0
-            # Iterate through test dataset
-            for images, labels in test_loader:
-                #######################
-                #  USE GPU FOR MODEL  #
-                #######################
-                images = images.view(-1, 28*28).requires_grad_().to(device)
-                
-                # Forward pass only to get logits/output
-                outputs = model(images)
-                
-                # Get predictions from the maximum value
-                _, predicted = torch.max(outputs.data, 1)
-                
-                # Total number of labels
-                total += labels.size(0)
-                
-                #######################
-                #  USE GPU FOR MODEL  #
-                #######################
-                # Total correct predictions
-                if torch.cuda.is_available():
-                    correct += (predicted.cpu() == labels.cpu()).sum()
-                else:
-                    correct += (predicted == labels).sum()
-            
-            accuracy = 100 * correct / total
-            
-            # Print Loss
-            print('Iteration: {}. Loss: {}. Accuracy: {}'.format(iter, loss.item(), accuracy))
+Iteration: 500. Loss: 0.3877025246620178. Accuracy: 90
+Iteration: 1000. Loss: 0.1337055265903473. Accuracy: 93
+Iteration: 1500. Loss: 0.2038637101650238. Accuracy: 95
+Iteration: 2000. Loss: 0.17892278730869293. Accuracy: 95
+Iteration: 2500. Loss: 0.14455552399158478. Accuracy: 96
+Iteration: 3000. Loss: 0.024540524929761887. Accuracy: 96
 ```
 
-    Iteration: 500. Loss: 0.3877025246620178. Accuracy: 90
-    Iteration: 1000. Loss: 0.1337055265903473. Accuracy: 93
-    Iteration: 1500. Loss: 0.2038637101650238. Accuracy: 95
-    Iteration: 2000. Loss: 0.17892278730869293. Accuracy: 95
-    Iteration: 2500. Loss: 0.14455552399158478. Accuracy: 96
-    Iteration: 3000. Loss: 0.024540524929761887. Accuracy: 96
 
+## Summary
+We've learnt to...
 
-# Summary
-
-- **Logistic Regression Problems** for Non-Linear Functions Representation
-    - Cannot represent **non-linear** functions
-        - $ y = 4x_1 + 2x_2^2 +3x_3^3 $
-        - $ y = x_1x_2$
-- Introduced **Non-Linearity** to Logistic Regression to form a Neural Network
-- **Types** of Non-Linearity
-    - Sigmoid
-    - Tanh
-    - ReLU
-- Feedforward Neural Network **Models**
-    - Model A: 1 hidden layer (**sigmoid** activation)
-    - Model B: 1 hidden layer (**tanh** activation)
-    - Model C: 1 hidden layer (**ReLU** activation)
-    - Model D: **2 hidden** layers (ReLU activation)
-    - Model E: **3 hidden** layers (ReLU activation)
-- Models Variation in **Code**
-    - Modifying only step 3
-- Ways to Expand Model’s **Capacity**
-    - More non-linear activation units (**neurons**)
-    - More hidden **layers**
-- **Cons** of Expanding Capacity
-    - Need more **data**
-    - Does not necessarily mean higher **accuracy**
-- **GPU** Code
-    - 2 things on GPU
-        - **model**
-        - **tensors with gradient accumulation capabilities**
-    - Modifying only **Step 4 & Step 7**
-- **7 Step** Model Building Recap
-    - Step 1: Load Dataset
-    - Step 2: Make Dataset Iterable
-    - Step 3: Create Model Class
-    - Step 4: Instantiate Model Class
-    - Step 5: Instantiate Loss Class
-    - Step 6: Instantiate Optimizer Class
-    - Step 7: Train Model
-
+!!! success
+    * [x] **Logistic Regression Problems** for Non-Linear Functions Representation
+        * [x] Cannot represent **non-linear** functions
+            * [x] $ y = 4x_1 + 2x_2^2 +3x_3^3 $
+            * [x] $ y = x_1x_2$
+    * [x] Introduced **Non-Linearity** to Logistic Regression to form a Neural Network
+    * [x] **Types** of Non-Linearity
+        * [x] Sigmoid
+        * [x] Tanh
+        * [x] ReLU
+    * [x] Feedforward Neural Network **Models**
+        * [x] Model A: 1 hidden layer (**sigmoid** activation)
+        * [x] Model B: 1 hidden layer (**tanh** activation)
+        * [x] Model C: 1 hidden layer (**ReLU** activation)
+        * [x] Model D: **2 hidden** layers (ReLU activation)
+        * [x] Model E: **3 hidden** layers (ReLU activation)
+    * [x] Models Variation in **Code**
+        * [x] Modifying only step 3
+    * [x] Ways to Expand Model’s **Capacity**
+        * [x] More non-linear activation units (**neurons**)
+        * [x] More hidden **layers**
+    * [x] **Cons** of Expanding Capacity
+        * [x] Need more **data**
+        * [x] Does not necessarily mean higher **accuracy**
+    * [x] **GPU** Code
+        * [x] 2 things on GPU
+            * [x] **model**
+            * [x] **tensors with gradient accumulation capabilities**
+        * [x] Modifying only **Step 4 & Step 7**
+    * [x] **7 Step** Model Building Recap
+        * [x] Step 1: Load Dataset
+        * [x] Step 2: Make Dataset Iterable
+        * [x] Step 3: Create Model Class
+        * [x] Step 4: Instantiate Model Class
+        * [x] Step 5: Instantiate Loss Class
+        * [x] Step 6: Instantiate Optimizer Class
+        * [x] Step 7: Train Model
+    
