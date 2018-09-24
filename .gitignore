@@ -1,5 +1,5 @@
 .idea/
 ./docs/deep_learning/practical_pytorch/data
-*.ipynb
+*.ipynb_checkpoints
 *.pt
 *-ubyte
