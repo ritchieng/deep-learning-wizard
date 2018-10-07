@@ -2,8 +2,6 @@
 
 ## We are heading down!
 
-<center><img src="https://pytorch.org/static/img/logos/pytorch-logo-dark.png" style="width:400px"/></center>
-
 In barely 2 short years, PyTorch (Facebook) will be hosting their first [PyTorch Developer Conference](https://pytorch.fbreg.com) in San Francisco, USA.
 
 I will be heading down thanks to Soumith Chintala for the invite and arrangements. Looking forward to meet anyone there. 

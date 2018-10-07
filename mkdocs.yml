@@ -16,8 +16,10 @@ pages:
       - PyTorch Fundamentals - Linear Regression: deep_learning/practical_pytorch/pytorch_linear_regression.md
       - PyTorch Fundamentals - Logistic Regression: deep_learning/practical_pytorch/pytorch_logistic_regression.md
       - PyTorch Fundamentals - Feedforward Neural Networks: deep_learning/practical_pytorch/pytorch_feedforward_neuralnetwork.md
+
     - News:
       - Welcome: news/news.md
+      - Recap of Facebook PyTorch Developer Conference, San Francisco, September 2018: news/facebook_pytorch_devcon_recap_2018_10_02.md
       - Facebook PyTorch Developer Conference, San Francisco, September 2018: news/facebook_pytorch_developer_conference_2018_09_05.md
       - NUS-MIT-NUHS NVIDIA Image Recognition Workshop, Singapore, July 2018: news/nvidia_nus_mit_datathon_2018_07_05.md
       - Featured on PyTorch Website 2018: news/deep_learning_wizard_1y_2018_06_01.md

@@ -5,22 +5,31 @@
 ### Transition From Feedforward Neural Network
 
 #### Hidden Layer Feedforward Neural Network
+
+!!! note "Recap of FNN"
+    So let's do a recap of what we covered in the Feedforward Neural Network (FNN) section. 
+    
+    1. [Yellow box] Step 1: Pass input into a linear function $Y = AX + B$
+    2. [
 ![](./images/nn1_new.png)
 
 #### Basic Convolutional Neural Network
 - Additional **convolution** and **pooling** layers **before feedforward neural network**
 - Layer with a **linear function & non-linearity**: **Fully connected layer**
-<img src="./images/cnn1.png" alt="deeplearningwizard" style="width: 900px;"/>
+
+![](./images/cnn1.png)
 
 ### 1.2 One Convolutional Layer: High Level View
-<img src="./images/cnn2.png" alt="deeplearningwizard" style="width: 900px;"/>
-<img src="./images/cnn3.png" alt="deeplearningwizard" style="width: 900px;"/>
-<img src="./images/cnn2.png" alt="deeplearningwizard" style="width: 900px;"/>
-<img src="./images/cnn6-1.png" alt="deeplearningwizard" style="width: 900px;"/>
-<img src="./images/cnn6-2.png" alt="deeplearningwizard" style="width: 900px;"/>
+![](./images/cnn2.png")
+![](./images/cnn3.png)
+![](./images/cnn2.png") 
+![](./images/cnn6-1.png)
+![](./images/cnn6-2.png)
 
 ### 1.2 One Convolutional Layer: High Level View Summary
-<img src="./images/cnn2.png" alt="deeplearningwizard" style="width: 900px;"/>
+
+![](./images/cnn2.png)
+
 - As the **kernel is sliding/convolving** across the image $\rightarrow$ 2 operations done **per patch**
     1. Element-wise multiplication
     2. Summation
@@ -29,20 +38,23 @@
     
 
 ### 1.3 Multiple Convolutional Layers: High Level View
-<img src="./images/cnn7-3.png" alt="deeplearningwizard" style="width: 900px;"/>
+
+![](./images/cnn7-3.png)
 
 ### 1.4 Pooling Layer: High Level View
 - 2 Common Types
     - Max Pooling
     - Average Pooling
 
-<img src="./images/cnn8n2.png" alt="deeplearningwizard" style="width: 900px;"/>
+![](./images/cnn8n2.png)
 
 ### 1.5 Multiple Pooling Layers: High Level View
-<img src="./images/cnn7-3.png" alt="deeplearningwizard" style="width: 900px;"/>
+
+![](./images/cnn7-3.png)
 
 ### 1.6 Padding
-<img src="./images/cnn9-4.png" alt="deeplearningwizard" style="width: 900px;"/>
+
+![](./images/cnn9-4.png)
 
 ### 1.7 Padding Summary
 - **Valid** Padding (Zero Padding)
@@ -51,30 +63,32 @@
     - Output size = Input Size
 
 ### 1.8 Dimension Calculations
-- $ O = \frac {W - K + 2P}{S} + 1$
+- $O = \frac {W - K + 2P}{S} + 1$
     - $O$: output height/length
     - $W$: input height/length
     - $K$: filter size (kernel size)
     - $P$: padding
-        - $ P = \frac{K - 1}{2} $
+        - $P = \frac{K - 1}{2}$
     - $S$: stride
 
 
 #### Example 1: Output Dimension Calculation for Valid Padding
-<img src="./images/cnn9-2.png" alt="deeplearningwizard" style="width: 900px;"/>
+![](./images/cnn9-2.png)
+
 - $W = 4$
 - $K = 3$
 - $P = 0$
 - $S = 1$
-- $O = \frac {4 - 3 + 2*0}{1} + 1 = \frac {1}{1} + 1 = 1 + 1 = 2 $
+- $O = \frac {4 - 3 + 2*0}{1} + 1 = \frac {1}{1} + 1 = 1 + 1 = 2$
 
 
 #### Example 2: Output Dimension Calculation for Same Padding
-<img src="./images/cnn9-3.png" alt="deeplearningwizard" style="width: 900px;"/>
+![](./images/cnn9-3.png)
+
 - $W = 5$
 - $K = 3$
-- $P = \frac{3 - 1}{2} = \frac{2}{2} = 1 $
-- $S = 1 $
+- $P = \frac{3 - 1}{2} = \frac{2}{2} = 1$
+- $S = 1$
 - $O = \frac {5 - 3 + 2*1}{1} + 1 = \frac {4}{1} + 1 = 5$
 
 
@@ -85,7 +99,8 @@
     - Same Padding (same output size)
 - 2 Max Pooling Layers
 - 1 Fully Connected Layer
-<img src="./images/cnn10-1.png" alt="deeplearningwizard" style="width: 900px;"/>
+
+![](./images/cnn10-1.png)
 
 ### Steps
 - Step 1: Load Dataset
@@ -171,10 +186,11 @@ test_loader = torch.utils.data.DataLoader(dataset=test_dataset,
 ```
 
 ### Step 3: Create Model Class
-<img src="./images/cnn10-1.png" alt="deeplearningwizard" style="width: 900px;"/>
+
+![](./images/cnn10-1.png)
 
 #### Output Formula for Convolution
-- $ O = \frac {W - K + 2P}{S} + 1$
+- $O = \frac {W - K + 2P}{S} + 1$
     - $O$: output height/length
     - $W$: input height/length
     - $K$: **filter size (kernel size) = 5**
@@ -183,11 +199,11 @@ test_loader = torch.utils.data.DataLoader(dataset=test_dataset,
     - $S$: **stride = 1**
     
 #### Output Formula for Pooling
-- $ O = \frac {W}{K}$
+- $O = \frac {W}{K}$
     - W: input height/width
     - K: **filter size = 2**
     
-<img src="./images/cnn10-2n.png" alt="deeplearningwizard" style="width: 900px;"/>
+![](./images/cnn10-2n.png)
 
 
 ```python
@@ -252,16 +268,13 @@ model = CNNModel()
     - _Logistic Regression_: **Cross Entropy Loss**
     - _Linear Regression_: **MSE**
     
-   
-
-
 ```python
 criterion = nn.CrossEntropyLoss()
 ```
 
 ### Step 6: Instantiate Optimizer Class
 - Simplified equation
-    - $\theta = \theta - \eta \cdot \nabla_\theta $
+    - $\theta = \theta - \eta \cdot \nabla_\theta$
         - $\theta$: parameters (our variables)
         - $\eta$: learning rate (how fast we want to learn)
         - $\nabla_\theta$: parameters' gradients
@@ -391,8 +404,9 @@ for epoch in range(num_epochs):
     - Same Padding (same output size)
 - 2 **Average Pooling** Layers
 - 1 Fully Connected Layer
-<img src="./images/cnn10-3.png" alt="deeplearningwizard" style="width: 900px;"/>
-<img src="./images/cnn10-4.png" alt="deeplearningwizard" style="width: 900px;"/>
+
+![](./images/cnn10-3.png)
+![](./images/cnn10-4.png)
 
 ### Steps
 - Step 1: Load Dataset
@@ -578,8 +592,9 @@ for epoch in range(num_epochs):
     - **Valid Padding** (smaller output size)
 - 2 **Max Pooling** Layers
 - 1 Fully Connected Layer
-<img src="./images/cnn10-5.png" alt="deeplearningwizard" style="width: 900px;"/>
-<img src="./images/cnn10-6n.png" alt="deeplearningwizard" style="width: 900px;"/>
+
+![](./images/cnn10-5.png)
+![](./images/cnn10-6n.png)
 
 ### Steps
 - Step 1: Load Dataset
@@ -760,8 +775,8 @@ for epoch in range(num_epochs):
 
 ### Summary of Results
 
-| Model A | Model B   | Model C | 
-|------|------|
+| Model A | Model B | Model C | 
+|------|------|------|
 |   Max Pooling  | Average Pooling | Max Pooling |
 | Same Padding | Same Padding | Valid Padding | 
 | 97.04% | 93.59% | 96.5% | 
@@ -773,8 +788,6 @@ for epoch in range(num_epochs):
 | Convolution Kernel Size = 5 x 5 |
 | Convolution Kernel Stride = 1 |
 | Pooling Kernel Size = 2 x 2 |
-
-
 
 
 ### Deep Learning
@@ -790,8 +803,9 @@ for epoch in range(num_epochs):
 
 ## 3. Building a Convolutional Neural Network with PyTorch (GPU)
 ### Model A
-<img src="./images/cnn10-1.png" alt="deeplearningwizard" style="width: 900px;"/>
-<img src="./images/cnn10-2n.png" alt="deeplearningwizard" style="width: 900px;"/>
+
+![](./images/cnn10-1.png)
+![](./images/cnn10-2n.png)
 
 GPU: 2 things must be on GPU
 - `model`
@@ -1002,9 +1016,9 @@ for epoch in range(num_epochs):
 - One **Pooling** Layer Basics
     - Max pooling
     - Average pooling
-- **Padding **
+- **Padding**
 - **Output Dimension** Calculations and Examples
-    -  $ O = \frac {W - K + 2P}{S} + 1$
+    -  $O = \frac {W - K + 2P}{S} + 1$
 - Convolutional Neural Networks
     - **Model A**: 2 Conv + 2 Max pool + 1 FC
         - Same Padding
