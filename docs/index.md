@@ -29,12 +29,12 @@ For book lovers, you will be happy to know [Deep Learning Wizard's wikipedia](ht
 ## Experienced Research and Applied Team
 
 !!! abstract "Ritchie Ng"
-    Currently I am leading artificial intelligence with my colleagues in ensemblecap.ai, an AI hedge fund based in Singapore. I am also an NVIDIA Deep Learning Institute instructor enabling developers, data scientists, and researchers leverage on deep learning to solve the most challenging problems. Also, I’m into deep learning research with researchers based in NExT++ (NUS) and MILA.
-
+    Currently I am leading artificial intelligence with my colleagues in ensemblecap.ai, an AI hedge fund based in Singapore. I am also an NVIDIA Deep Learning Institute instructor leading all deep learning workshops in NUS, Singapore and conducting workshops across Southeast Asia. And, I’m into deep learning research with researchers based in NExT++ (NUS) and MILA.
+    
     My passion for enabling anyone to leverage on deep learning has led to the creation of Deep Learning Wizard where I have taught and still continue to teach more than 2000 students in over 60 countries around the world. The course is recognized by Soumith Chintala, Facebook AI Research, and Alfredo Canziani, Post-Doctoral Associate under Yann Lecun, as the first comprehensive PyTorch Tutorial.
     
-    I was previously conducting research in deep learning, computer vision and natural language processing in NExT Search Centre led by Professor Tat-Seng Chua that is jointly setup between National University of Singapore (NUS) and Tsinghua University and is part of NUS Smart Systems Institute. During my time there, I managed to publish in top-tier conferences and workshops like ICML and IJCAI.
-    
+    I was previously conducting research in deep learning, computer vision and natural language processing in NExT Search Centre that is jointly setup between National University of Singapore (NUS), Tsinghua University and University of Southampton led by co-directors Prof Tat-Seng Chua (KITHCT Chair Professor at the School of Computing), Prof Sun Maosong (Dean of Department of Computer Science and Technology, Tsinghua University), and Prof Dame Wendy Hall (Director of the Web Science Institute, University of Southampton). During my time there, I managed to publish in top-tier conferences and workshops like ICML and IJCAI.
+        
     Check out my profile link at [ritchieng.com](https://www.ritchieng.com/)
 
 !!! abstract "Jie Fu"
