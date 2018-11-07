@@ -1111,15 +1111,50 @@
 <h4 id="logistic-function-g">Logistic Function g()<a class="headerlink" href="#logistic-function-g" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Two-class logistic regression</li>
-<li><span><span class="MathJax_Preview">y = A x + b</span><script type="math/tex">y = A x + b</script></span></li>
-<li><span><span class="MathJax_Preview">g(y) = A x + b</span><script type="math/tex">g(y) = A x + b</script></span></li>
-<li><span><span class="MathJax_Preview">g(y) = \frac {1} {1 + e^{-y}} = \frac {1} {1 + e^{-(A x + b)}}</span><script type="math/tex">g(y) = \frac {1} {1 + e^{-y}} = \frac {1} {1 + e^{-(A x + b)}}</script></span></li>
-<li><span><span class="MathJax_Preview">g(y)</span><script type="math/tex">g(y)</script></span> = Estimated probability that <span><span class="MathJax_Preview">y = 1</span><script type="math/tex">y = 1</script></span> given <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span></li>
+<li><span><span class="MathJax_Preview">Y = AX + B</span><script type="math/tex">Y = AX + B</script></span><ul>
+<li>Where <span><span class="MathJax_Preview">Y</span><script type="math/tex">Y</script></span> is a vector comprising the 2-class prediction <span><span class="MathJax_Preview">y_0</span><script type="math/tex">y_0</script></span> and <span><span class="MathJax_Preview">y_1</span><script type="math/tex">y_1</script></span></li>
+<li>Where the labels are <span><span class="MathJax_Preview">y_0 = 0</span><script type="math/tex">y_0 = 0</script></span>  and <span><span class="MathJax_Preview">y_1 = 1</span><script type="math/tex">y_1 = 1</script></span></li>
+</ul>
+</li>
+<li><span><span class="MathJax_Preview">g(y_1) = \frac {1} {1 + e^{-y_1}}</span><script type="math/tex">g(y_1) = \frac {1} {1 + e^{-y_1}}</script></span><ul>
+<li><span><span class="MathJax_Preview">g(y_1)</span><script type="math/tex">g(y_1)</script></span> = Estimated probability that <span><span class="MathJax_Preview">y = 1</span><script type="math/tex">y = 1</script></span></li>
+</ul>
+</li>
+<li><span><span class="MathJax_Preview">g(y_0) = 1 - g(y_1)</span><script type="math/tex">g(y_0) = 1 - g(y_1)</script></span><ul>
+<li><span><span class="MathJax_Preview">g(y_0)</span><script type="math/tex">g(y_0)</script></span> = Estimated probability that <span><span class="MathJax_Preview">y = 0</span><script type="math/tex">y = 0</script></span></li>
+</ul>
+</li>
+<li>For our illustration above, we have 4 classes, so we have to use softmax function explained below</li>
 </ul>
 <h4 id="softmax-function-g">Softmax Function g()<a class="headerlink" href="#softmax-function-g" title="Permanent link">&para;</a></h4>
 <ul>
-<li>Multi-class logistic regression</li>
-<li>Generalization of logistic function</li>
+<li>Multi-class logistic regression<ul>
+<li>Generalization of logistic function, where you can derive back to the logistic function if you've a 2 class classification problem</li>
+<li>Here, we will use a 4 class example (K = 4) as shown above to be very clear in how it relates back to that simple examaple.</li>
+</ul>
+</li>
+<li><span><span class="MathJax_Preview">Y = AX + B</span><script type="math/tex">Y = AX + B</script></span><ul>
+<li>Where <span><span class="MathJax_Preview">Y</span><script type="math/tex">Y</script></span> is a vector comprising the 4-class prediction <span><span class="MathJax_Preview">y_0, y_1, y_2, y_3</span><script type="math/tex">y_0, y_1, y_2, y_3</script></span></li>
+<li>Where the 4 labels (K = 4) are <span><span class="MathJax_Preview">y_0 = 0, y_1 = 1, y_2 = 2, y_3 = 3</span><script type="math/tex">y_0 = 0, y_1 = 1, y_2 = 2, y_3 = 3</script></span></li>
+</ul>
+</li>
+<li><span><span class="MathJax_Preview">g(y_i) = \frac {e^{y_i} } {\sum^K_i e^{y_i}}</span><script type="math/tex">g(y_i) = \frac {e^{y_i} } {\sum^K_i e^{y_i}}</script></span> where K = 4 because we have 4 classes<ul>
+<li>To put numbers to this equation in relation to the illustration above where we've <span><span class="MathJax_Preview">y_0 = 1.3, y_1 = 1.2, y = 4.5, y = 4.8</span><script type="math/tex">y_0 = 1.3, y_1 = 1.2, y = 4.5, y = 4.8</script></span><ul>
+<li><span><span class="MathJax_Preview">g(y_0) = \frac {e^{1.3}}{e^{1.3} + e^{1.2} + e^{4.5} + e^{4.8}} = 0.017</span><script type="math/tex">g(y_0) = \frac {e^{1.3}}{e^{1.3} + e^{1.2} + e^{4.5} + e^{4.8}} = 0.017</script></span></li>
+<li><span><span class="MathJax_Preview">g(y_1) = \frac {e^{1.2}}{e^{1.3} + e^{1.2} + e^{4.5} + e^{4.8}} = 0.015</span><script type="math/tex">g(y_1) = \frac {e^{1.2}}{e^{1.3} + e^{1.2} + e^{4.5} + e^{4.8}} = 0.015</script></span></li>
+<li><span><span class="MathJax_Preview">g(y_2) = \frac {e^{4.5}}{e^{1.3} + e^{1.2} + e^{4.5} + e^{4.8}} = 0.412</span><script type="math/tex">g(y_2) = \frac {e^{4.5}}{e^{1.3} + e^{1.2} + e^{4.5} + e^{4.8}} = 0.412</script></span></li>
+<li><span><span class="MathJax_Preview">g(y_3) = \frac {e^{4.8}}{e^{1.3} + e^{1.2} + e^{4.5} + e^{4.8}} = 0.556</span><script type="math/tex">g(y_3) = \frac {e^{4.8}}{e^{1.3} + e^{1.2} + e^{4.5} + e^{4.8}} = 0.556</script></span></li>
+<li><span><span class="MathJax_Preview">g(y_0) + g(y_1) + g(y_2) + g(y_3) = 1.0</span><script type="math/tex">g(y_0) + g(y_1) + g(y_2) + g(y_3) = 1.0</script></span></li>
+<li>All softmax outputs have to sum to one as they represent a probability distribution over K classes. </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Take note how these numbers are not exactly as in the illustration in the softmax box but the concept is important (intentionally made so).<ul>
+<li><span><span class="MathJax_Preview">y_0</span><script type="math/tex">y_0</script></span> and <span><span class="MathJax_Preview">y_1</span><script type="math/tex">y_1</script></span> are approximately similar in values and they return similar probabilities.</li>
+<li>Similarly, <span><span class="MathJax_Preview">y_2</span><script type="math/tex">y_2</script></span> and <span><span class="MathJax_Preview">y_3</span><script type="math/tex">y_3</script></span> are approximately similar in values and they return similar probabilities.</li>
+</ul>
+</li>
 </ul>
 <h4 id="cross-entropy-function-d">Cross Entropy Function D()<a class="headerlink" href="#cross-entropy-function-d" title="Permanent link">&para;</a></h4>
 <ul>
@@ -1692,15 +1727,15 @@
 </pre></div>
 
 <div class="admonition note">
-<p class="admonition-title">Quick Dot Product Review</p>
+<p class="admonition-title">Quick Matrix Product Review</p>
 <ul>
-<li>Example 1: <strong>dot product</strong><ul>
+<li>Example 1: <strong>matrix product</strong><ul>
 <li><span><span class="MathJax_Preview">A: (100, 10)</span><script type="math/tex">A: (100, 10)</script></span></li>
 <li><span><span class="MathJax_Preview">B: (10, 1)</span><script type="math/tex">B: (10, 1)</script></span></li>
 <li><span><span class="MathJax_Preview">A \cdot B = (100, 10) \cdot (10, 1) = (100, 1)</span><script type="math/tex">A \cdot B = (100, 10) \cdot (10, 1) = (100, 1)</script></span></li>
 </ul>
 </li>
-<li>Example 2: <strong>dot product</strong><ul>
+<li>Example 2: <strong>matrix product</strong><ul>
 <li><span><span class="MathJax_Preview">A: (50, 5)</span><script type="math/tex">A: (50, 5)</script></span></li>
 <li><span><span class="MathJax_Preview">B: (5, 2)</span><script type="math/tex">B: (5, 2)</script></span></li>
 <li><span><span class="MathJax_Preview">A \cdot B = (50, 5) \cdot (5, 2) = (50, 2)</span><script type="math/tex">A \cdot B = (50, 5) \cdot (5, 2) = (50, 2)</script></span></li>
