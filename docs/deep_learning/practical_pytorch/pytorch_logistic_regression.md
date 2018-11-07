@@ -92,16 +92,33 @@
 
 #### Logistic Function g()
 - Two-class logistic regression
-- $y = A x + b$
-- $g(y) = A x + b$
-- $g(y) = \frac {1} {1 + e^{-y}} = \frac {1} {1 + e^{-(A x + b)}}$
-- $g(y)$ = Estimated probability that $y = 1$ given $x$
-
+- $Y = AX + B$
+    - Where $Y$ is a vector comprising the 2-class prediction $y_0$ and $y_1$
+    - Where the labels are $y_0 = 0$  and $y_1 = 1$
+- $g(y_1) = \frac {1} {1 + e^{-y_1}}$
+    - $g(y_1)$ = Estimated probability that $y = 1$
+- $g(y_0) = 1 - g(y_1)$
+    - $g(y_0)$ = Estimated probability that $y = 0$
+- For our illustration above, we have 4 classes, so we have to use softmax function explained below
 
 #### Softmax Function g() 
 - Multi-class logistic regression
-- Generalization of logistic function
-
+    - Generalization of logistic function, where you can derive back to the logistic function if you've a 2 class classification problem
+    - Here, we will use a 4 class example (K = 4) as shown above to be very clear in how it relates back to that simple examaple.
+- $Y = AX + B$
+    - Where $Y$ is a vector comprising the 4-class prediction $y_0, y_1, y_2, y_3$
+    - Where the 4 labels (K = 4) are $y_0 = 0, y_1 = 1, y_2 = 2, y_3 = 3$
+- $g(y_i) = \frac {e^{y_i} } {\sum^K_i e^{y_i}}$ where K = 4 because we have 4 classes
+    - To put numbers to this equation in relation to the illustration above where we've $y_0 = 1.3, y_1 = 1.2, y = 4.5, y = 4.8$
+        - $g(y_0) = \frac {e^{1.3}}{e^{1.3} + e^{1.2} + e^{4.5} + e^{4.8}} = 0.017$
+        - $g(y_1) = \frac {e^{1.2}}{e^{1.3} + e^{1.2} + e^{4.5} + e^{4.8}} = 0.015$
+        - $g(y_2) = \frac {e^{4.5}}{e^{1.3} + e^{1.2} + e^{4.5} + e^{4.8}} = 0.412$
+        - $g(y_3) = \frac {e^{4.8}}{e^{1.3} + e^{1.2} + e^{4.5} + e^{4.8}} = 0.556$
+        - $g(y_0) + g(y_1) + g(y_2) + g(y_3) = 1.0$
+        - All softmax outputs have to sum to one as they represent a probability distribution over K classes. 
+- Take note how these numbers are not exactly as in the illustration in the softmax box but the concept is important (intentionally made so).
+    - $y_0$ and $y_1$ are approximately similar in values and they return similar probabilities.
+    - Similarly, $y_2$ and $y_3$ are approximately similar in values and they return similar probabilities.
 
 #### Cross Entropy Function D()
 - $D(S, L) = L log S - (1-L)log(1-S)$
