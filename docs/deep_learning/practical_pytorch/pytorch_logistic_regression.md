@@ -744,12 +744,12 @@ torch.Size([10])
 
 
 
-!!! note "Quick Dot Product Review"
-    - Example 1: **dot product**
+!!! note "Quick Matrix Product Review"
+    - Example 1: **matrix product**
         - $A: (100, 10)$
         - $B: (10, 1)$
         - $A \cdot B = (100, 10) \cdot (10, 1) = (100, 1)$
-    - Example 2: **dot product**
+    - Example 2: **matrix product**
         - $A: (50, 5)$
         - $B: (5, 2)$
         - $A \cdot B = (50, 5) \cdot (5, 2) = (50, 2)$
