@@ -92,9 +92,10 @@
 
 #### Logistic Function g()
 - Two-class logistic regression
-- $Y = AX + B$
-    - Where $Y$ is a vector comprising the 2-class prediction $y_0$ and $y_1$
+- $\boldsymbol{y} = A\boldsymbol{x} + \boldsymbol{b}$
+    - Where $\boldsymbol{y}$ is a vector comprising the 2-class prediction $y_0$ and $y_1$
     - Where the labels are $y_0 = 0$  and $y_1 = 1$
+    - Also, it's bolded because it's a vector, not a matrix.
 - $g(y_1) = \frac {1} {1 + e^{-y_1}}$
     - $g(y_1)$ = Estimated probability that $y = 1$
 - $g(y_0) = 1 - g(y_1)$
@@ -105,8 +106,8 @@
 - Multi-class logistic regression
     - Generalization of logistic function, where you can derive back to the logistic function if you've a 2 class classification problem
     - Here, we will use a 4 class example (K = 4) as shown above to be very clear in how it relates back to that simple examaple.
-- $Y = AX + B$
-    - Where $Y$ is a vector comprising the 4-class prediction $y_0, y_1, y_2, y_3$
+- $\boldsymbol{y} = A\boldsymbol{x} + \boldsymbol{b}$
+    - Where $\boldsymbol{y}$ is a vector comprising the 4-class prediction $y_0, y_1, y_2, y_3$
     - Where the 4 labels (K = 4) are $y_0 = 0, y_1 = 1, y_2 = 2, y_3 = 3$
 - $g(y_i) = \frac {e^{y_i} } {\sum^K_i e^{y_i}}$ where K = 4 because we have 4 classes
     - To put numbers to this equation in relation to the illustration above where we've $y_0 = 1.3, y_1 = 1.2, y = 4.5, y = 4.8$
@@ -169,7 +170,7 @@
 
 #### Cross Entropy Loss L
 - Goal: Minimizing Cross Entropy Loss
-- $L = \frac {1}{N} \sum_i D(g(Ax_i + b), L_i)$
+- $L = \frac {1}{N} \sum_i D(g(Ax_i + b_i ), L_i)$
 
 ## Building a Logistic Regression Model with PyTorch
 ![](./images/lr2.png)

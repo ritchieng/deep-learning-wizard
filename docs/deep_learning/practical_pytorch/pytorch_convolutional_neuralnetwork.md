@@ -8,7 +8,7 @@
 !!! note "Recap of FNN"
     So let's do a recap of what we covered in the Feedforward Neural Network (FNN) section. 
     
-    1. [Yellow box] Step 1: Pass input into a linear function $Y = AX + B$
+    1. [Yellow box] Step 1: Pass input into a linear function $\boldsymbol{y} = A\boldsymbol{x} + \boldsymbol{b}$
     2. [Red box] Step 2
     3. [
 ![](./images/nn1_new.png)

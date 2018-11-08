@@ -345,7 +345,7 @@ LogisticRegressionModel(
     
     The diagram below shows the interaction amongst our input $X$ and our linear layers' parameters $A_1$, $B_1$, $A_2$, and $B_2$ to reach to the final size of 10 x 1.
     
-    If you're still unfamiliar with dot product, go ahead and review the previous quick lesson where we covered it in [logistic regression](https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_logistic_regression/#step-6-instantiate-optimizer-class).
+    If you're still unfamiliar with matrix product, go ahead and review the previous quick lesson where we covered it in [logistic regression](https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_logistic_regression/#step-6-instantiate-optimizer-class).
     
 
 ```python
