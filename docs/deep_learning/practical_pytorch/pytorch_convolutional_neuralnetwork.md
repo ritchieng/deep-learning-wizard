@@ -1045,3 +1045,8 @@ for epoch in range(num_epochs):
     - Step 5: Instantiate Loss Class
     - Step 6: Instantiate Optimizer Class
     - Step 7: Train Model
+
+## Citation
+If you have found these useful in your research, presentations, school work, projects or workshops, feel free to cite using this DOI.
+
+[![DOI](https://zenodo.org/badge/139945544.svg)](https://zenodo.org/badge/latestdoi/139945544)

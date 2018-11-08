@@ -1343,3 +1343,7 @@ We've learnt to...
         * [x] Step 6: Instantiate Optimizer Class
         * [x] Step 7: Train Model
     
+## Citation
+If you have found these useful in your research, presentations, school work, projects or workshops, feel free to cite using this DOI.
+
+[![DOI](https://zenodo.org/badge/139945544.svg)](https://zenodo.org/badge/latestdoi/139945544)

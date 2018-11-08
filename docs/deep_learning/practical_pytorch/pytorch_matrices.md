@@ -986,3 +986,8 @@ We've learnt to...
         * [x] Resize
         * [x] Calculate mean 
         * [x] Calculate standard deviation
+
+## Citation
+If you have found these useful in your research, presentations, school work, projects or workshops, feel free to cite using this DOI.
+
+[![DOI](https://zenodo.org/badge/139945544.svg)](https://zenodo.org/badge/latestdoi/139945544)

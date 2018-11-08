@@ -1,4 +1,5 @@
 # About Us
+
 We deploy a top-down approach that enables you to grasp deep learning theories and code easily and quickly. We have open-sourced all our materials through our Deep Learning Wizard Wikipedia. For visual learners, feel free to sign up for our [video course](https://www.udemy.com/practical-deep-learning-with-pytorch/?couponCode=DEEPWIZARD) and join over 2300 deep learning wizards.
 
 To this date, we have taught thousands of students across more than 120+ countries from students as young as 15 to postgraduates and professionals in leading MNCs and research institutions around the world.
@@ -47,3 +48,8 @@ For book lovers, you will be happy to know [Deep Learning Wizard's wikipedia](ht
     I am interested in machine learning. More specifically, my research is focused on deep learning, probabilistic reasoning, reinforcement learning and neural abstract machines. I am especially excited about reducing the gap between theoretical and practical algorithms in a principled and efficient manner.
     
     Check out my profile link at [bigaidream.github.io](http://bigaidream.github.io/)
+
+## Citation
+If you have found these useful in your research, presentations, school work, projects or workshops, feel free to cite using this DOI.
+
+[![DOI](https://zenodo.org/badge/139945544.svg)](https://zenodo.org/badge/latestdoi/139945544)

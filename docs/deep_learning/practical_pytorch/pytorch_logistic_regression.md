@@ -1615,3 +1615,8 @@ We've learnt to...
     * [x] Important things to be on **GPU**
         * [x] `model`
         * [x] `tensors with gradients`
+
+## Citation
+If you have found these useful in your research, presentations, school work, projects or workshops, feel free to cite using this DOI.
+
+[![DOI](https://zenodo.org/badge/139945544.svg)](https://zenodo.org/badge/latestdoi/139945544)

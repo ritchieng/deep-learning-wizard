@@ -221,3 +221,8 @@ We've learnt to...
         * [x] Reduce to scalar output, `o` through `mean`
         * [x] Calculate gradients with `o.backward()`
         * [x] Then access gradients of the `x` tensor with `requires_grad` through `x.grad`
+
+## Citation
+If you have found these useful in your research, presentations, school work, projects or workshops, feel free to cite using this DOI.
+
+[![DOI](https://zenodo.org/badge/139945544.svg)](https://zenodo.org/badge/latestdoi/139945544)
