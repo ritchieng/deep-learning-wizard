@@ -1,4 +1,5 @@
 # Deep Learning Materials by Deep Learning Wizard
+[![DOI](https://zenodo.org/badge/139945544.svg)](https://zenodo.org/badge/latestdoi/139945544)
 
 ## Start Learning Now
 Please head to [www.deeplearningwizard.com](https://www.deeplearningwizard.com/) to start learning!
@@ -28,3 +29,8 @@ We are openly calling people to contribute to this repository for errors. Feel f
 - [Jie Fu, Editor (Postdoc in Montreal Institute for Learning Algorithms (MILA)](https://github.com/bigaidream)
 - [Alfredo Canziani, Supporter (Postdoc in NYU under Yann Lecun)](https://github.com/Atcold)
 - [Marek Bardonski, Supporter (Global Head of Deep Learning, Sigmoidal)](https://www.linkedin.com/in/marek-bardonski/)
+
+## Citation
+If you find the materials useful, like the diagrams or content, feel free to cite this repository.
+
+[![DOI](https://zenodo.org/badge/139945544.svg)](https://zenodo.org/badge/latestdoi/139945544)
