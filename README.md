@@ -21,7 +21,7 @@ We are openly calling people to contribute to this repository for errors. Feel f
 ## Main Contributor
 [Ritchie Ng](https://github.com/ritchieng)
 
-## Editors and Supports
+## Editors and Supporters
 - [Jie Fu, Editor (Postdoc in Montreal Institute for Learning Algorithms (MILA)](https://github.com/bigaidream)
 - [Alfredo Canziani, Supporter (Postdoc in NYU under Yann Lecun)](https://github.com/Atcold)
 - [Marek Bardonski, Supporter (Global Head of Deep Learning, Sigmoidal)](https://www.linkedin.com/in/marek-bardonski/)
