@@ -1,5 +1,8 @@
 # Deep Learning Materials by Deep Learning Wizard
 
+## Start Learning Now
+Please head to [www.deeplearningwizard.com](https://www.deeplearningwizard.com/) to start learning!
+
 ## About This Repository
 After careful deliberation, I have decided to gradually open-source our written deep learning materials that I have used to teach more than 3000 students worldwide across 120 countries through my [video course, Practical Deep Learning with Pytorch](https://www.udemy.com/practical-deep-learning-with-pytorch/?couponCode=DEEPWIZARD).
 
