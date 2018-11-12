@@ -16,7 +16,7 @@ pages:
       - PyTorch Fundamentals - Linear Regression: deep_learning/practical_pytorch/pytorch_linear_regression.md
       - PyTorch Fundamentals - Logistic Regression: deep_learning/practical_pytorch/pytorch_logistic_regression.md
       - PyTorch Fundamentals - Feedforward Neural Networks: deep_learning/practical_pytorch/pytorch_feedforward_neuralnetwork.md
-      - PyTorch Fundamentals - Convolutional Neural Networks: deep_learning/practical_pytorch/pytorch_convolutional_neuralnetwork.md
+      # - PyTorch Fundamentals - Convolutional Neural Networks: deep_learning/practical_pytorch/pytorch_convolutional_neuralnetwork.md
 
     - News:
       - Welcome: news/news.md

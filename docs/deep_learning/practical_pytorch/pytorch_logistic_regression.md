@@ -91,7 +91,7 @@
 ![](./images/cross_entropy_final_4.png)
 
 #### Logistic Function g()
-- Two-class logistic regression
+- **"Two-class logistic regression"**
 - $\boldsymbol{y} = A\boldsymbol{x} + \boldsymbol{b}$
     - Where $\boldsymbol{y}$ is a vector comprising the 2-class prediction $y_0$ and $y_1$
     - Where the labels are $y_0 = 0$  and $y_1 = 1$
@@ -102,8 +102,8 @@
     - $g(y_0)$ = Estimated probability that $y = 0$
 - For our illustration above, we have 4 classes, so we have to use softmax function explained below
 
-#### Softmax Function g() 
-- Multi-class logistic regression
+#### Softmax Function g()
+- **"Multi-class logistic regression"**
     - Generalization of logistic function, where you can derive back to the logistic function if you've a 2 class classification problem
     - Here, we will use a 4 class example (K = 4) as shown above to be very clear in how it relates back to that simple examaple.
 - $\boldsymbol{y} = A\boldsymbol{x} + \boldsymbol{b}$
@@ -121,7 +121,19 @@
     - $y_0$ and $y_1$ are approximately similar in values and they return similar probabilities.
     - Similarly, $y_2$ and $y_3$ are approximately similar in values and they return similar probabilities.
 
-#### Cross Entropy Function D()
+
+!!! bug "Softmax versus Soft(arg)max"
+
+    Do you know many researchers and anyone in deep learning in general use the term softmax when it should be soft(arg)max.
+    
+    This is because soft(arg)max returns the probability distribution over K classes, a vector. 
+    
+    However, softmax only returns the max! This means you will be getting a scalar value versus a probability distribution.
+    
+    According to my friend, Alfredo Canziani (postdoc in NYU under Yann Lecun), it was actually a mistake made in the original paper previously but it was too late because the term softmax was adopted. Full credits to him for this tip.
+     
+#### Cross Entropy Function D() for 2 Class
+- Take note that here, $S$ is our softmax outputs and $L$ are our labels
 - $D(S, L) = L log S - (1-L)log(1-S)$
     - If L = 0 (label)
         - $D(S, 0) = - log(1-S)$
@@ -167,10 +179,19 @@
 
 ```
 
+#### Cross Entropy Function D() for More Than 2 Class
+- For the case where we have more than 2 class, we need a more generalized function
+- $D(S, L) = - \sum^K_1 L_i log(S_i)$
+    - $K$: number of classes
+    - $L_i$: label of i-th class, 1 if that's the class else 0
+    - $S_i$: output of softmax for i-th class
 
-#### Cross Entropy Loss L
-- Goal: Minimizing Cross Entropy Loss
-- $L = \frac {1}{N} \sum_i D(g(Ax_i + b_i ), L_i)$
+#### Cross Entropy Loss over N samples
+- Goal: Minimizing Cross Entropy Loss, L
+- $Loss = \frac {1}{N} \sum_j^N D_j$
+    - $D_j$: j-th sample of cross entropy function $D(S, L)$
+    - $N$: number of samples
+    - $Loss$: average cross entropy loss over N samples
 
 ## Building a Logistic Regression Model with PyTorch
 ![](./images/lr2.png)
@@ -528,7 +549,7 @@ tensor(7)
     - 1 iteration: one mini-batch forward & backward pass
 - **epochs**
     - 1 epoch: running through the whole dataset once
-    - $epochs = iterations \div \frac{totaldata}{minibatch} = 3000 \div \frac{60000}{100} = 5 $
+    - $epochs = iterations \div \frac{totaldata}{minibatch} = 3000 \div \frac{60000}{100} = 5$
     
 
 

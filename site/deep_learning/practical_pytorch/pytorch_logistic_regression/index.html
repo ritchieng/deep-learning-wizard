@@ -590,6 +590,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#citation" title="Citation" class="md-nav__link">
+    Citation
+  </a>
+  
+</li>
+      
       
       
       
@@ -989,6 +996,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#citation" title="Citation" class="md-nav__link">
+    Citation
+  </a>
+  
+</li>
+      
       
       
       
@@ -1123,9 +1137,10 @@
 <h4 id="logistic-function-g">Logistic Function g()<a class="headerlink" href="#logistic-function-g" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Two-class logistic regression</li>
-<li><span><span class="MathJax_Preview">Y = AX + B</span><script type="math/tex">Y = AX + B</script></span><ul>
-<li>Where <span><span class="MathJax_Preview">Y</span><script type="math/tex">Y</script></span> is a vector comprising the 2-class prediction <span><span class="MathJax_Preview">y_0</span><script type="math/tex">y_0</script></span> and <span><span class="MathJax_Preview">y_1</span><script type="math/tex">y_1</script></span></li>
+<li><span><span class="MathJax_Preview">\boldsymbol{y} = A\boldsymbol{x} + \boldsymbol{b}</span><script type="math/tex">\boldsymbol{y} = A\boldsymbol{x} + \boldsymbol{b}</script></span><ul>
+<li>Where <span><span class="MathJax_Preview">\boldsymbol{y}</span><script type="math/tex">\boldsymbol{y}</script></span> is a vector comprising the 2-class prediction <span><span class="MathJax_Preview">y_0</span><script type="math/tex">y_0</script></span> and <span><span class="MathJax_Preview">y_1</span><script type="math/tex">y_1</script></span></li>
 <li>Where the labels are <span><span class="MathJax_Preview">y_0 = 0</span><script type="math/tex">y_0 = 0</script></span>  and <span><span class="MathJax_Preview">y_1 = 1</span><script type="math/tex">y_1 = 1</script></span></li>
+<li>Also, it's bolded because it's a vector, not a matrix.</li>
 </ul>
 </li>
 <li><span><span class="MathJax_Preview">g(y_1) = \frac {1} {1 + e^{-y_1}}</span><script type="math/tex">g(y_1) = \frac {1} {1 + e^{-y_1}}</script></span><ul>
@@ -1145,8 +1160,8 @@
 <li>Here, we will use a 4 class example (K = 4) as shown above to be very clear in how it relates back to that simple examaple.</li>
 </ul>
 </li>
-<li><span><span class="MathJax_Preview">Y = AX + B</span><script type="math/tex">Y = AX + B</script></span><ul>
-<li>Where <span><span class="MathJax_Preview">Y</span><script type="math/tex">Y</script></span> is a vector comprising the 4-class prediction <span><span class="MathJax_Preview">y_0, y_1, y_2, y_3</span><script type="math/tex">y_0, y_1, y_2, y_3</script></span></li>
+<li><span><span class="MathJax_Preview">\boldsymbol{y} = A\boldsymbol{x} + \boldsymbol{b}</span><script type="math/tex">\boldsymbol{y} = A\boldsymbol{x} + \boldsymbol{b}</script></span><ul>
+<li>Where <span><span class="MathJax_Preview">\boldsymbol{y}</span><script type="math/tex">\boldsymbol{y}</script></span> is a vector comprising the 4-class prediction <span><span class="MathJax_Preview">y_0, y_1, y_2, y_3</span><script type="math/tex">y_0, y_1, y_2, y_3</script></span></li>
 <li>Where the 4 labels (K = 4) are <span><span class="MathJax_Preview">y_0 = 0, y_1 = 1, y_2 = 2, y_3 = 3</span><script type="math/tex">y_0 = 0, y_1 = 1, y_2 = 2, y_3 = 3</script></span></li>
 </ul>
 </li>
@@ -1215,7 +1230,7 @@
 <h4 id="cross-entropy-loss-l">Cross Entropy Loss L<a class="headerlink" href="#cross-entropy-loss-l" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Goal: Minimizing Cross Entropy Loss</li>
-<li><span><span class="MathJax_Preview">L = \frac {1}{N} \sum_i D(g(Ax_i + b), L_i)</span><script type="math/tex">L = \frac {1}{N} \sum_i D(g(Ax_i + b), L_i)</script></span></li>
+<li><span><span class="MathJax_Preview">L = \frac {1}{N} \sum_i D(g(Ax_i + b_i ), L_i)</span><script type="math/tex">L = \frac {1}{N} \sum_i D(g(Ax_i + b_i ), L_i)</script></span></li>
 </ul>
 <h2 id="building-a-logistic-regression-model-with-pytorch">Building a Logistic Regression Model with PyTorch<a class="headerlink" href="#building-a-logistic-regression-model-with-pytorch" title="Permanent link">&para;</a></h2>
 <p><img alt="" src="../images/lr2.png" /></p>
@@ -2592,6 +2607,9 @@ tensor([-0.4181, -1.0784, -0.4840, -0.0985, -0.2394, -0.1801, -1.1639,
 </li>
 </ul>
 </div>
+<h2 id="citation">Citation<a class="headerlink" href="#citation" title="Permanent link">&para;</a></h2>
+<p>If you have found these useful in your research, presentations, school work, projects or workshops, feel free to cite using this DOI.</p>
+<p><a href="https://zenodo.org/badge/latestdoi/139945544"><img alt="DOI" src="https://zenodo.org/badge/139945544.svg" /></a></p>
                 
                   
                 

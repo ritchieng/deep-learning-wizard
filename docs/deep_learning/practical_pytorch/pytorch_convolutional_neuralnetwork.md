@@ -57,9 +57,9 @@
 ![](./images/cnn9-4.png)
 
 ### 1.7 Padding Summary
-- **Valid** Padding (Zero Padding)
+- **Valid** Padding (No Padding)
     - Output size < Input Size
-- **Same** Padding
+- **Same** Padding (Zero Padding)
     - Output size = Input Size
 
 ### 1.8 Dimension Calculations
