@@ -5,28 +5,33 @@
 
 #### Hidden Layer Feedforward Neural Network
 
-!!! note "Recap of FNN"
-    So let's do a recap of what we covered in the Feedforward Neural Network (FNN) section. 
+!!! info "Recap of FNN"
+    So let's do a recap of what we covered in the Feedforward Neural Network (FNN) section using a simple FNN with 1 hidden layer (a pair of affine function and non-linear function)
     
-    1. [Yellow box] Step 1: Pass input into a linear function $\boldsymbol{y} = A\boldsymbol{x} + \boldsymbol{b}$
-    2. [Red box] Step 2
-    3. [
+    1. [Yellow box] Pass input into an affine function $\boldsymbol{y} = A\boldsymbol{x} + \boldsymbol{b}$
+    2. [Pink box] Pass logits to non-linear function, for example sigmoid, tanh (hyperbolic tangent), ReLU, or LeakyReLU
+    3. [Blue box] Pass output of non-linear function to another affine function
+    4. [Red box] Pass output of final affine function to softmax function to get our probability distribution over K classes
+    5. [Purple box] Finally we can get our loss by using our cross entropy function 
 ![](./images/nn1_new.png)
 
-#### Basic Convolutional Neural Network
-- Additional **convolution** and **pooling** layers **before feedforward neural network**
-- Layer with a **linear function & non-linearity**: **Fully connected layer**
+#### Basic Convolutional Neural Network (CNN)
+- A basic CNN just requires 2 additional layers!
+    - **Convolution** and **pooling** layers **before our feedforward neural network**
+
+!!! info "Fully Connected (FC) Layer"
+    A layer with an **affine function & non-linear function** is called a **Fully Connected (FC) layer**
 
 ![](./images/cnn1.png)
 
-### 1.2 One Convolutional Layer: High Level View
+### One Convolutional Layer: High Level View
 ![](./images/cnn2.png")
 ![](./images/cnn3.png)
 ![](./images/cnn2.png") 
 ![](./images/cnn6-1.png)
 ![](./images/cnn6-2.png)
 
-### 1.2 One Convolutional Layer: High Level View Summary
+### One Convolutional Layer: High Level View Summary
 
 ![](./images/cnn2.png)
 
@@ -37,32 +42,32 @@
     - Can capture **more information** about the input
     
 
-### 1.3 Multiple Convolutional Layers: High Level View
+### Multiple Convolutional Layers: High Level View
 
 ![](./images/cnn7-3.png)
 
-### 1.4 Pooling Layer: High Level View
+### Pooling Layer: High Level View
 - 2 Common Types
     - Max Pooling
     - Average Pooling
 
 ![](./images/cnn8n2.png)
 
-### 1.5 Multiple Pooling Layers: High Level View
+### Multiple Pooling Layers: High Level View
 
 ![](./images/cnn7-3.png)
 
-### 1.6 Padding
+### Padding
 
 ![](./images/cnn9-4.png)
 
-### 1.7 Padding Summary
+### Padding Summary
 - **Valid** Padding (No Padding)
     - Output size < Input Size
 - **Same** Padding (Zero Padding)
     - Output size = Input Size
 
-### 1.8 Dimension Calculations
+### Dimension Calculations
 - $O = \frac {W - K + 2P}{S} + 1$
     - $O$: output height/length
     - $W$: input height/length
@@ -92,7 +97,7 @@
 - $O = \frac {5 - 3 + 2*1}{1} + 1 = \frac {4}{1} + 1 = 5$
 
 
-## 2. Building a Convolutional Neural Network with PyTorch
+## Building a Convolutional Neural Network with PyTorch
 
 ### Model A: 
 - 2 Convolutional Layers
@@ -102,7 +107,7 @@
 
 ![](./images/cnn10-1.png)
 
-### Steps
+#### Steps
 - Step 1: Load Dataset
 - Step 2: Make Dataset Iterable
 - Step 3: Create Model Class
@@ -111,7 +116,7 @@
 - Step 6: Instantiate Optimizer Class
 - Step 7: Train Model
 
-### Step 1: Loading MNIST Train Dataset
+#### Step 1: Loading MNIST Train Dataset
 **Images from 1 to 9**
 
 
@@ -120,7 +125,6 @@ import torch
 import torch.nn as nn
 import torchvision.transforms as transforms
 import torchvision.datasets as dsets
-from torch.autograd import Variable
 ```
 
 
@@ -167,7 +171,7 @@ print(test_dataset.test_labels.size())
     torch.Size([10000])
 
 
-### Step 2: Make Dataset Iterable
+#### Step 2: Make Dataset Iterable
 
 
 ```python
@@ -185,11 +189,11 @@ test_loader = torch.utils.data.DataLoader(dataset=test_dataset,
                                           shuffle=False)
 ```
 
-### Step 3: Create Model Class
+#### Step 3: Create Model Class
 
 ![](./images/cnn10-1.png)
 
-#### Output Formula for Convolution
+##### Output Formula for Convolution
 - $O = \frac {W - K + 2P}{S} + 1$
     - $O$: output height/length
     - $W$: input height/length
@@ -198,7 +202,7 @@ test_loader = torch.utils.data.DataLoader(dataset=test_dataset,
         - $P = \frac{K - 1}{2}  = \frac{5 - 1}{2} = 2$
     - $S$: **stride = 1**
     
-#### Output Formula for Pooling
+##### Output Formula for Pooling
 - $O = \frac {W}{K}$
     - W: input height/width
     - K: **filter size = 2**
@@ -255,14 +259,14 @@ class CNNModel(nn.Module):
         return out
 ```
 
-### Step 4: Instantiate Model Class
+#### Step 4: Instantiate Model Class
 
 
 ```python
 model = CNNModel()
 ```
 
-### Step 5: Instantiate Loss Class
+#### Step 5: Instantiate Loss Class
 - Convolutional Neural Network: **Cross Entropy Loss**
     - _Feedforward Neural Network_: **Cross Entropy Loss**
     - _Logistic Regression_: **Cross Entropy Loss**
@@ -272,10 +276,10 @@ model = CNNModel()
 criterion = nn.CrossEntropyLoss()
 ```
 
-### Step 6: Instantiate Optimizer Class
+#### Step 6: Instantiate Optimizer Class
 - Simplified equation
     - $\theta = \theta - \eta \cdot \nabla_\theta$
-        - $\theta$: parameters (our variables)
+        - $\theta$: parameters
         - $\eta$: learning rate (how fast we want to learn)
         - $\nabla_\theta$: parameters' gradients
 - Even simplier equation
@@ -289,7 +293,7 @@ learning_rate = 0.01
 optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)  
 ```
 
-### Parameters In-Depth
+##### Parameters In-Depth
 
 
 ```python
@@ -326,9 +330,9 @@ print(list(model.parameters())[5].size())
     torch.Size([10])
 
 
-### Step 7: Train Model
+#### Step 7: Train Model
 - Process 
-    1. **Convert inputs/labels to variables**
+    1. **Convert inputs to tensors with gradient accumulation abilities**
         - CNN Input: (1, 28, 28) 
         - Feedforward NN Input: (1, 28*28)
     2. Clear gradient buffets
@@ -408,7 +412,7 @@ for epoch in range(num_epochs):
 ![](./images/cnn10-3.png)
 ![](./images/cnn10-4.png)
 
-### Steps
+#### Steps
 - Step 1: Load Dataset
 - Step 2: Make Dataset Iterable
 - Step 3: Create Model Class
@@ -423,7 +427,6 @@ import torch
 import torch.nn as nn
 import torchvision.transforms as transforms
 import torchvision.datasets as dsets
-from torch.autograd import Variable
 
 '''
 STEP 1: LOADING DATASET
@@ -530,7 +533,7 @@ STEP 7: TRAIN THE MODEL
 iter = 0
 for epoch in range(num_epochs):
     for i, (images, labels) in enumerate(train_loader):
-        # Load images as Variable
+        # Load images as tensors with gradient accumulation abilities
         images = images.requires_grad_()
 
         # Clear gradients w.r.t. parameters
@@ -556,7 +559,7 @@ for epoch in range(num_epochs):
             total = 0
             # Iterate through test dataset
             for images, labels in test_loader:
-                # Load images to a Torch Variable
+                # Load images to tensors with gradient accumulation abilities
                 images = images.requires_grad_()
                 
                 # Forward pass only to get logits/output
@@ -585,7 +588,8 @@ for epoch in range(num_epochs):
     Iteration: 3000. Loss: 0.26440390944480896. Accuracy: 92
 
 
-### Average Pooling Test Accuracy < Max Pooling Test Accuracy
+!!! note "Comparison of accuracies"
+    It seems like average pooling test accuracy is less than the max pooling accuracy! Does this mean average pooling is better? This is not definitive and depends on a lot of factors including the model's architecture and more.
 
 ### Model C: 
 - 2 Convolutional Layers
@@ -596,7 +600,7 @@ for epoch in range(num_epochs):
 ![](./images/cnn10-5.png)
 ![](./images/cnn10-6n.png)
 
-### Steps
+#### Steps
 - Step 1: Load Dataset
 - Step 2: Make Dataset Iterable
 - Step 3: Create Model Class
@@ -611,7 +615,6 @@ import torch
 import torch.nn as nn
 import torchvision.transforms as transforms
 import torchvision.datasets as dsets
-from torch.autograd import Variable
 
 '''
 STEP 1: LOADING DATASET
@@ -718,7 +721,7 @@ STEP 7: TRAIN THE MODEL
 iter = 0
 for epoch in range(num_epochs):
     for i, (images, labels) in enumerate(train_loader):
-        # Load images as Variable
+        # Load images as tensors with gradient accumulation abilities
         images = images.requires_grad_()
         
         # Clear gradients w.r.t. parameters
@@ -744,7 +747,7 @@ for epoch in range(num_epochs):
             total = 0
             # Iterate through test dataset
             for images, labels in test_loader:
-                # Load images to a Torch Variable
+                # Load images to tensors with gradient accumulation abilities
                 images = images.requires_grad_()
                 
                 # Forward pass only to get logits/output
@@ -790,7 +793,7 @@ for epoch in range(num_epochs):
 | Pooling Kernel Size = 2 x 2 |
 
 
-### Deep Learning
+### General Deep Learning Notes on CNN and FNN
 - 3 ways to expand a convolutional neural network
     - More convolutional layers 
     - Less aggressive downsampling
@@ -809,7 +812,7 @@ for epoch in range(num_epochs):
 
 GPU: 2 things must be on GPU
 - `model`
-- `variables`
+- `tensors with gradient accumulation abilities`
 
 ### Steps
 - Step 1: Load Dataset
@@ -825,8 +828,7 @@ GPU: 2 things must be on GPU
 import torch
 import torch.nn as nn
 import torchvision.transforms as transforms
-import torchvision.datasets as dsets
-from torch.autograd import Variable
+import torchvision.datasets as dsets 
 
 '''
 STEP 1: LOADING DATASET
@@ -1007,44 +1009,52 @@ for epoch in range(num_epochs):
     Iteration: 2500. Loss: 0.13419771194458008. Accuracy: 96
     Iteration: 3000. Loss: 0.16750787198543549. Accuracy: 96
 
+!!! tip "More Efficient Convolutions via Toeplitz Matrices"
+    This is beyond the scope of this particular lesson. But now that we understand how convolutions work, it is critical to know that it is quite an inefficient operation if we use for-loops to perform our 2D convolutions (5 x 5 convolution kernel size for example) on our 2D images (28 x 28 MNIST image for example).
+    
+    A more efficient implementation is in converting our convolution kernel into a Toeplitz matrix and our image into a vector. Then, we will do just one matrix operation using our Toeplitz matrix and vector.
+    
+    There will be a whole lesson dedicated to this operation released down the road. 
+    
+## Summary
+We've learnt to...
 
-# Summary
-
-- Transition from **Feedforward Neural Network**
-    - Addition of **Convolutional** & **Pooling** Layers before Linear Layers
-- One **Convolutional** Layer Basics
-- One **Pooling** Layer Basics
-    - Max pooling
-    - Average pooling
-- **Padding**
-- **Output Dimension** Calculations and Examples
-    -  $O = \frac {W - K + 2P}{S} + 1$
-- Convolutional Neural Networks
-    - **Model A**: 2 Conv + 2 Max pool + 1 FC
-        - Same Padding
-    - **Model B**: 2 Conv + 2 Average pool + 1 FC
-        - Same Padding
-    - **Model C**: 2 Conv + 2 Max pool + 1 FC
-        - Valid Padding
-- Model Variation in **Code**
-    - Modifying only step 3
-- Ways to Expand Model’s **Capacity**
-    - More convolutions
-    - Gradual pooling
-    - More fully connected layers
-- **GPU** Code
-    - 2 things on GPU
-        - **model**
-        - **variable**
-    - Modifying only **Step 4 & Step 7**
-- **7 Step** Model Building Recap
-    - Step 1: Load Dataset
-    - Step 2: Make Dataset Iterable
-    - Step 3: Create Model Class
-    - Step 4: Instantiate Model Class
-    - Step 5: Instantiate Loss Class
-    - Step 6: Instantiate Optimizer Class
-    - Step 7: Train Model
+!!! success
+    * [x] Transition from **Feedforward Neural Network**
+        * [x] Addition of **Convolutional** & **Pooling** Layers before Linear Layers
+    * [x] One **Convolutional** Layer Basics
+    * [x] One **Pooling** Layer Basics
+        * [x] Max pooling
+        * [x] Average pooling
+    * [x] **Padding**
+    * [x] **Output Dimension** Calculations and Examples
+        * [x]  $O = \frac {W - K + 2P}{S} + 1$
+    * [x] Convolutional Neural Networks
+        * [x] **Model A**: 2 Conv + 2 Max pool + 1 FC
+            * [x] Same Padding
+        * [x] **Model B**: 2 Conv + 2 Average pool + 1 FC
+            * [x] Same Padding
+        * [x] **Model C**: 2 Conv + 2 Max pool + 1 FC
+            * [x] Valid Padding
+    * [x] Model Variation in **Code**
+        * [x] Modifying only step 3
+    * [x] Ways to Expand Model’s **Capacity**
+        * [x] More convolutions
+        * [x] Gradual pooling
+        * [x] More fully connected layers
+    * [x] **GPU** Code
+        * [x] 2 things on GPU
+            * [x] **model**
+            * [x] **tensors with gradient accumulation abilities**
+        * [x] Modifying only **Step 4 & Step 7**
+    * [x] **7 Step** Model Building Recap
+        * [x] Step 1: Load Dataset
+        * [x] Step 2: Make Dataset Iterable
+        * [x] Step 3: Create Model Class
+        * [x] Step 4: Instantiate Model Class
+        * [x] Step 5: Instantiate Loss Class
+        * [x] Step 6: Instantiate Optimizer Class
+        * [x] Step 7: Train Model
 
 ## Citation
 If you have found these useful in your research, presentations, school work, projects or workshops, feel free to cite using this DOI.

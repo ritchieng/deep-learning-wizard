@@ -444,15 +444,22 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#cross-entropy-function-d" title="Cross Entropy Function D()" class="md-nav__link">
-    Cross Entropy Function D()
+  <a href="#cross-entropy-function-d-for-2-class" title="Cross Entropy Function D() for 2 Class" class="md-nav__link">
+    Cross Entropy Function D() for 2 Class
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#cross-entropy-loss-l" title="Cross Entropy Loss L" class="md-nav__link">
-    Cross Entropy Loss L
+  <a href="#cross-entropy-function-d-for-more-than-2-class" title="Cross Entropy Function D() for More Than 2 Class" class="md-nav__link">
+    Cross Entropy Function D() for More Than 2 Class
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cross-entropy-loss-over-n-samples" title="Cross Entropy Loss over N samples" class="md-nav__link">
+    Cross Entropy Loss over N samples
   </a>
   
 </li>
@@ -850,15 +857,22 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#cross-entropy-function-d" title="Cross Entropy Function D()" class="md-nav__link">
-    Cross Entropy Function D()
+  <a href="#cross-entropy-function-d-for-2-class" title="Cross Entropy Function D() for 2 Class" class="md-nav__link">
+    Cross Entropy Function D() for 2 Class
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#cross-entropy-loss-l" title="Cross Entropy Loss L" class="md-nav__link">
-    Cross Entropy Loss L
+  <a href="#cross-entropy-function-d-for-more-than-2-class" title="Cross Entropy Function D() for More Than 2 Class" class="md-nav__link">
+    Cross Entropy Function D() for More Than 2 Class
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cross-entropy-loss-over-n-samples" title="Cross Entropy Loss over N samples" class="md-nav__link">
+    Cross Entropy Loss over N samples
   </a>
   
 </li>
@@ -1136,7 +1150,7 @@
 <p><img alt="" src="../images/cross_entropy_final_4.png" /></p>
 <h4 id="logistic-function-g">Logistic Function g()<a class="headerlink" href="#logistic-function-g" title="Permanent link">&para;</a></h4>
 <ul>
-<li>Two-class logistic regression</li>
+<li><strong>"Two-class logistic regression"</strong></li>
 <li><span><span class="MathJax_Preview">\boldsymbol{y} = A\boldsymbol{x} + \boldsymbol{b}</span><script type="math/tex">\boldsymbol{y} = A\boldsymbol{x} + \boldsymbol{b}</script></span><ul>
 <li>Where <span><span class="MathJax_Preview">\boldsymbol{y}</span><script type="math/tex">\boldsymbol{y}</script></span> is a vector comprising the 2-class prediction <span><span class="MathJax_Preview">y_0</span><script type="math/tex">y_0</script></span> and <span><span class="MathJax_Preview">y_1</span><script type="math/tex">y_1</script></span></li>
 <li>Where the labels are <span><span class="MathJax_Preview">y_0 = 0</span><script type="math/tex">y_0 = 0</script></span>  and <span><span class="MathJax_Preview">y_1 = 1</span><script type="math/tex">y_1 = 1</script></span></li>
@@ -1155,7 +1169,7 @@
 </ul>
 <h4 id="softmax-function-g">Softmax Function g()<a class="headerlink" href="#softmax-function-g" title="Permanent link">&para;</a></h4>
 <ul>
-<li>Multi-class logistic regression<ul>
+<li><strong>"Multi-class logistic regression"</strong><ul>
 <li>Generalization of logistic function, where you can derive back to the logistic function if you've a 2 class classification problem</li>
 <li>Here, we will use a 4 class example (K = 4) as shown above to be very clear in how it relates back to that simple examaple.</li>
 </ul>
@@ -1183,8 +1197,16 @@
 </ul>
 </li>
 </ul>
-<h4 id="cross-entropy-function-d">Cross Entropy Function D()<a class="headerlink" href="#cross-entropy-function-d" title="Permanent link">&para;</a></h4>
+<div class="admonition bug">
+<p class="admonition-title">Softmax versus Soft(arg)max</p>
+<p>Do you know many researchers and anyone in deep learning in general use the term softmax when it should be soft(arg)max.</p>
+<p>This is because soft(arg)max returns the probability distribution over K classes, a vector. </p>
+<p>However, softmax only returns the max! This means you will be getting a scalar value versus a probability distribution.</p>
+<p>According to my friend, Alfredo Canziani (postdoc in NYU under Yann Lecun), it was actually a mistake made in the original paper previously but it was too late because the term softmax was adopted. Full credits to him for this tip.</p>
+</div>
+<h4 id="cross-entropy-function-d-for-2-class">Cross Entropy Function D() for 2 Class<a class="headerlink" href="#cross-entropy-function-d-for-2-class" title="Permanent link">&para;</a></h4>
 <ul>
+<li>Take note that here, <span><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span> is our softmax outputs and <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span> are our labels</li>
 <li><span><span class="MathJax_Preview">D(S, L) = L log S - (1-L)log(1-S)</span><script type="math/tex">D(S, L) = L log S - (1-L)log(1-S)</script></span><ul>
 <li>If L = 0 (label)<ul>
 <li><span><span class="MathJax_Preview">D(S, 0) = - log(1-S)</span><script type="math/tex">D(S, 0) = - log(1-S)</script></span><ul>
@@ -1227,10 +1249,25 @@
 <span class="o">-</span><span class="mf">11.512925464970229</span>
 </pre></div>
 
-<h4 id="cross-entropy-loss-l">Cross Entropy Loss L<a class="headerlink" href="#cross-entropy-loss-l" title="Permanent link">&para;</a></h4>
+<h4 id="cross-entropy-function-d-for-more-than-2-class">Cross Entropy Function D() for More Than 2 Class<a class="headerlink" href="#cross-entropy-function-d-for-more-than-2-class" title="Permanent link">&para;</a></h4>
 <ul>
-<li>Goal: Minimizing Cross Entropy Loss</li>
-<li><span><span class="MathJax_Preview">L = \frac {1}{N} \sum_i D(g(Ax_i + b_i ), L_i)</span><script type="math/tex">L = \frac {1}{N} \sum_i D(g(Ax_i + b_i ), L_i)</script></span></li>
+<li>For the case where we have more than 2 class, we need a more generalized function</li>
+<li><span><span class="MathJax_Preview">D(S, L) = - \sum^K_1 L_i log(S_i)</span><script type="math/tex">D(S, L) = - \sum^K_1 L_i log(S_i)</script></span><ul>
+<li><span><span class="MathJax_Preview">K</span><script type="math/tex">K</script></span>: number of classes</li>
+<li><span><span class="MathJax_Preview">L_i</span><script type="math/tex">L_i</script></span>: label of i-th class, 1 if that's the class else 0</li>
+<li><span><span class="MathJax_Preview">S_i</span><script type="math/tex">S_i</script></span>: output of softmax for i-th class</li>
+</ul>
+</li>
+</ul>
+<h4 id="cross-entropy-loss-over-n-samples">Cross Entropy Loss over N samples<a class="headerlink" href="#cross-entropy-loss-over-n-samples" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Goal: Minimizing Cross Entropy Loss, L</li>
+<li><span><span class="MathJax_Preview">Loss = \frac {1}{N} \sum_j^N D_j</span><script type="math/tex">Loss = \frac {1}{N} \sum_j^N D_j</script></span><ul>
+<li><span><span class="MathJax_Preview">D_j</span><script type="math/tex">D_j</script></span>: j-th sample of cross entropy function <span><span class="MathJax_Preview">D(S, L)</span><script type="math/tex">D(S, L)</script></span></li>
+<li><span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span>: number of samples</li>
+<li><span><span class="MathJax_Preview">Loss</span><script type="math/tex">Loss</script></span>: average cross entropy loss over N samples</li>
+</ul>
+</li>
 </ul>
 <h2 id="building-a-logistic-regression-model-with-pytorch">Building a Logistic Regression Model with PyTorch<a class="headerlink" href="#building-a-logistic-regression-model-with-pytorch" title="Permanent link">&para;</a></h2>
 <p><img alt="" src="../images/lr2.png" /></p>
@@ -1547,7 +1584,7 @@
 </li>
 <li><strong>epochs</strong><ul>
 <li>1 epoch: running through the whole dataset once</li>
-<li>$epochs = iterations \div \frac{totaldata}{minibatch} = 3000 \div \frac{60000}{100} = 5 $</li>
+<li><span><span class="MathJax_Preview">epochs = iterations \div \frac{totaldata}{minibatch} = 3000 \div \frac{60000}{100} = 5</span><script type="math/tex">epochs = iterations \div \frac{totaldata}{minibatch} = 3000 \div \frac{60000}{100} = 5</script></span></li>
 </ul>
 </li>
 </ul>
