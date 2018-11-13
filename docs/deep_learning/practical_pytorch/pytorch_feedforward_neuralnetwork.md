@@ -1301,7 +1301,9 @@ Iteration: 2500. Loss: 0.14455552399158478. Accuracy: 96
 Iteration: 3000. Loss: 0.024540524929761887. Accuracy: 96
 ```
 
-
+!!! tip "Alternative Term of Neural Network"
+    The alternative term is **Universal Function Approximator**. This is because ultimately we are trying to find a function that maps our input, $X$, to our output, $y$. 
+    
 ## Summary
 We've learnt to...
 

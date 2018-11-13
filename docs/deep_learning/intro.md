@@ -14,5 +14,8 @@ Our main open-source programming languages and libraries are Python, PyTorch, Nu
     
     If you did not go through all the materials, you would not be familiar with these, so go through them and come back to review these changes.
     
-    * [x] For all diagrams that says dot product, it actually refers to matrix product. 
+    * [x] For all diagrams that says dot product, they refer to matrix product. 
+    * [x] For all diagrams that says valid padding, they refer to no padding such that your output size will be smaller than your input size.
+    * [x] For all diagrams that says same padding, they refer to zero padding (padding your input with zeroes) such that your output size will be equal to your input size.
     * [x] When we state linear function, more specifically we meant affine function that comprises a linear function and a constant.
+    
