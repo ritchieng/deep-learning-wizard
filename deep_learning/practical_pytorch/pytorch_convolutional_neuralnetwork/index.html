@@ -42,7 +42,7 @@
     
     
       
-        <title>Convolutional Neural Network with PyTorch - Deep Learning Wizard</title>
+        <title>PyTorch Fundamentals - Convolutional Neural Networks - Deep Learning Wizard</title>
       
     
     
@@ -111,7 +111,7 @@
                 Deep Learning Wizard
               </span>
               <span class="md-header-nav__topic">
-                Convolutional Neural Network with PyTorch
+                PyTorch Fundamentals - Convolutional Neural Networks
               </span>
             
           
@@ -159,14 +159,16 @@
       
         
 
-<nav class="md-tabs" data-md-component="tabs">
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
         
   <li class="md-tabs__item">
     
-      <a href="../../.." title="Home" class="md-tabs__link md-tabs__link--active">
+      <a href="../../.." title="Home" class="md-tabs__link">
         Home
       </a>
     
@@ -182,7 +184,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../intro/" title="Deep Learning Wiki" class="md-tabs__link">
+        <a href="../../intro/" title="Deep Learning Wiki" class="md-tabs__link md-tabs__link--active">
           Deep Learning Wiki
         </a>
       
@@ -266,10 +268,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
     
     <label class="md-nav__link" for="nav-4">
       Deep Learning Wiki
@@ -350,6 +354,381 @@
     <a href="../pytorch_feedforward_neuralnetwork/" title="PyTorch Fundamentals - Feedforward Neural Networks" class="md-nav__link">
       PyTorch Fundamentals - Feedforward Neural Networks
     </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        PyTorch Fundamentals - Convolutional Neural Networks
+      </label>
+    
+    <a href="./" title="PyTorch Fundamentals - Convolutional Neural Networks" class="md-nav__link md-nav__link--active">
+      PyTorch Fundamentals - Convolutional Neural Networks
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#about-convolutional-neural-network" title="About Convolutional Neural Network" class="md-nav__link">
+    About Convolutional Neural Network
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#transition-from-feedforward-neural-network" title="Transition From Feedforward Neural Network" class="md-nav__link">
+    Transition From Feedforward Neural Network
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hidden-layer-feedforward-neural-network" title="Hidden Layer Feedforward Neural Network" class="md-nav__link">
+    Hidden Layer Feedforward Neural Network
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-convolutional-neural-network-cnn" title="Basic Convolutional Neural Network (CNN)" class="md-nav__link">
+    Basic Convolutional Neural Network (CNN)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one-convolutional-layer-high-level-view" title="One Convolutional Layer: High Level View" class="md-nav__link">
+    One Convolutional Layer: High Level View
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one-convolutional-layer-high-level-view-summary" title="One Convolutional Layer: High Level View Summary" class="md-nav__link">
+    One Convolutional Layer: High Level View Summary
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-convolutional-layers-high-level-view" title="Multiple Convolutional Layers: High Level View" class="md-nav__link">
+    Multiple Convolutional Layers: High Level View
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pooling-layer-high-level-view" title="Pooling Layer: High Level View" class="md-nav__link">
+    Pooling Layer: High Level View
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-pooling-layers-high-level-view" title="Multiple Pooling Layers: High Level View" class="md-nav__link">
+    Multiple Pooling Layers: High Level View
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#padding" title="Padding" class="md-nav__link">
+    Padding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#padding-summary" title="Padding Summary" class="md-nav__link">
+    Padding Summary
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dimension-calculations" title="Dimension Calculations" class="md-nav__link">
+    Dimension Calculations
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1-output-dimension-calculation-for-valid-padding" title="Example 1: Output Dimension Calculation for Valid Padding" class="md-nav__link">
+    Example 1: Output Dimension Calculation for Valid Padding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-2-output-dimension-calculation-for-same-padding" title="Example 2: Output Dimension Calculation for Same Padding" class="md-nav__link">
+    Example 2: Output Dimension Calculation for Same Padding
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-a-convolutional-neural-network-with-pytorch" title="Building a Convolutional Neural Network with PyTorch" class="md-nav__link">
+    Building a Convolutional Neural Network with PyTorch
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model-a" title="Model A:" class="md-nav__link">
+    Model A:
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steps" title="Steps" class="md-nav__link">
+    Steps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-1-loading-mnist-train-dataset" title="Step 1: Loading MNIST Train Dataset" class="md-nav__link">
+    Step 1: Loading MNIST Train Dataset
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-make-dataset-iterable" title="Step 2: Make Dataset Iterable" class="md-nav__link">
+    Step 2: Make Dataset Iterable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-create-model-class" title="Step 3: Create Model Class" class="md-nav__link">
+    Step 3: Create Model Class
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#output-formula-for-convolution" title="Output Formula for Convolution" class="md-nav__link">
+    Output Formula for Convolution
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output-formula-for-pooling" title="Output Formula for Pooling" class="md-nav__link">
+    Output Formula for Pooling
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-instantiate-model-class" title="Step 4: Instantiate Model Class" class="md-nav__link">
+    Step 4: Instantiate Model Class
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-instantiate-loss-class" title="Step 5: Instantiate Loss Class" class="md-nav__link">
+    Step 5: Instantiate Loss Class
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-instantiate-optimizer-class" title="Step 6: Instantiate Optimizer Class" class="md-nav__link">
+    Step 6: Instantiate Optimizer Class
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters-in-depth" title="Parameters In-Depth" class="md-nav__link">
+    Parameters In-Depth
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-7-train-model" title="Step 7: Train Model" class="md-nav__link">
+    Step 7: Train Model
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-b" title="Model B:" class="md-nav__link">
+    Model B:
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steps_1" title="Steps" class="md-nav__link">
+    Steps
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-c" title="Model C:" class="md-nav__link">
+    Model C:
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steps_2" title="Steps" class="md-nav__link">
+    Steps
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-of-results" title="Summary of Results" class="md-nav__link">
+    Summary of Results
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#general-deep-learning-notes-on-cnn-and-fnn" title="General Deep Learning Notes on CNN and FNN" class="md-nav__link">
+    General Deep Learning Notes on CNN and FNN
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-building-a-convolutional-neural-network-with-pytorch-gpu" title="3. Building a Convolutional Neural Network with PyTorch (GPU)" class="md-nav__link">
+    3. Building a Convolutional Neural Network with PyTorch (GPU)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model-a_1" title="Model A" class="md-nav__link">
+    Model A
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steps_3" title="Steps" class="md-nav__link">
+    Steps
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" title="Summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#citation" title="Citation" class="md-nav__link">
+    Citation
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="Comments" class="md-nav__link md-nav__link--active">
+            Comments
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -522,8 +901,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#basic-convolutional-neural-network" title="Basic Convolutional Neural Network" class="md-nav__link">
-    Basic Convolutional Neural Network
+  <a href="#basic-convolutional-neural-network-cnn" title="Basic Convolutional Neural Network (CNN)" class="md-nav__link">
+    Basic Convolutional Neural Network (CNN)
   </a>
   
 </li>
@@ -534,57 +913,57 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#12-one-convolutional-layer-high-level-view" title="1.2 One Convolutional Layer: High Level View" class="md-nav__link">
-    1.2 One Convolutional Layer: High Level View
+  <a href="#one-convolutional-layer-high-level-view" title="One Convolutional Layer: High Level View" class="md-nav__link">
+    One Convolutional Layer: High Level View
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#12-one-convolutional-layer-high-level-view-summary" title="1.2 One Convolutional Layer: High Level View Summary" class="md-nav__link">
-    1.2 One Convolutional Layer: High Level View Summary
+  <a href="#one-convolutional-layer-high-level-view-summary" title="One Convolutional Layer: High Level View Summary" class="md-nav__link">
+    One Convolutional Layer: High Level View Summary
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#13-multiple-convolutional-layers-high-level-view" title="1.3 Multiple Convolutional Layers: High Level View" class="md-nav__link">
-    1.3 Multiple Convolutional Layers: High Level View
+  <a href="#multiple-convolutional-layers-high-level-view" title="Multiple Convolutional Layers: High Level View" class="md-nav__link">
+    Multiple Convolutional Layers: High Level View
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#14-pooling-layer-high-level-view" title="1.4 Pooling Layer: High Level View" class="md-nav__link">
-    1.4 Pooling Layer: High Level View
+  <a href="#pooling-layer-high-level-view" title="Pooling Layer: High Level View" class="md-nav__link">
+    Pooling Layer: High Level View
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#15-multiple-pooling-layers-high-level-view" title="1.5 Multiple Pooling Layers: High Level View" class="md-nav__link">
-    1.5 Multiple Pooling Layers: High Level View
+  <a href="#multiple-pooling-layers-high-level-view" title="Multiple Pooling Layers: High Level View" class="md-nav__link">
+    Multiple Pooling Layers: High Level View
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#16-padding" title="1.6 Padding" class="md-nav__link">
-    1.6 Padding
+  <a href="#padding" title="Padding" class="md-nav__link">
+    Padding
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#17-padding-summary" title="1.7 Padding Summary" class="md-nav__link">
-    1.7 Padding Summary
+  <a href="#padding-summary" title="Padding Summary" class="md-nav__link">
+    Padding Summary
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#18-dimension-calculations" title="1.8 Dimension Calculations" class="md-nav__link">
-    1.8 Dimension Calculations
+  <a href="#dimension-calculations" title="Dimension Calculations" class="md-nav__link">
+    Dimension Calculations
   </a>
   
     <nav class="md-nav">
@@ -615,8 +994,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-building-a-convolutional-neural-network-with-pytorch" title="2. Building a Convolutional Neural Network with PyTorch" class="md-nav__link">
-    2. Building a Convolutional Neural Network with PyTorch
+  <a href="#building-a-convolutional-neural-network-with-pytorch" title="Building a Convolutional Neural Network with PyTorch" class="md-nav__link">
+    Building a Convolutional Neural Network with PyTorch
   </a>
   
     <nav class="md-nav">
@@ -627,7 +1006,8 @@
     Model A:
   </a>
   
-</li>
+    <nav class="md-nav">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#steps" title="Steps" class="md-nav__link">
@@ -696,12 +1076,18 @@
     Step 6: Instantiate Optimizer Class
   </a>
   
-</li>
+    <nav class="md-nav">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#parameters-in-depth" title="Parameters In-Depth" class="md-nav__link">
     Parameters In-Depth
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -712,12 +1098,18 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
           <li class="md-nav__item">
   <a href="#model-b" title="Model B:" class="md-nav__link">
     Model B:
   </a>
   
-</li>
+    <nav class="md-nav">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#steps_1" title="Steps" class="md-nav__link">
@@ -726,10 +1118,8 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#average-pooling-test-accuracy-max-pooling-test-accuracy" title="Average Pooling Test Accuracy &lt; Max Pooling Test Accuracy" class="md-nav__link">
-    Average Pooling Test Accuracy &lt; Max Pooling Test Accuracy
-  </a>
+      </ul>
+    </nav>
   
 </li>
         
@@ -738,12 +1128,18 @@
     Model C:
   </a>
   
-</li>
+    <nav class="md-nav">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#steps_2" title="Steps" class="md-nav__link">
     Steps
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -755,8 +1151,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#deep-learning" title="Deep Learning" class="md-nav__link">
-    Deep Learning
+  <a href="#general-deep-learning-notes-on-cnn-and-fnn" title="General Deep Learning Notes on CNN and FNN" class="md-nav__link">
+    General Deep Learning Notes on CNN and FNN
   </a>
   
 </li>
@@ -793,6 +1189,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#summary" title="Summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#citation" title="Citation" class="md-nav__link">
+    Citation
+  </a>
+  
+</li>
+      
       
       
       
@@ -820,27 +1230,35 @@
 <h2 id="about-convolutional-neural-network">About Convolutional Neural Network<a class="headerlink" href="#about-convolutional-neural-network" title="Permanent link">&para;</a></h2>
 <h3 id="transition-from-feedforward-neural-network">Transition From Feedforward Neural Network<a class="headerlink" href="#transition-from-feedforward-neural-network" title="Permanent link">&para;</a></h3>
 <h4 id="hidden-layer-feedforward-neural-network">Hidden Layer Feedforward Neural Network<a class="headerlink" href="#hidden-layer-feedforward-neural-network" title="Permanent link">&para;</a></h4>
-<div class="admonition note">
+<div class="admonition info">
 <p class="admonition-title">Recap of FNN</p>
-<p>So let's do a recap of what we covered in the Feedforward Neural Network (FNN) section. </p>
+<p>So let's do a recap of what we covered in the Feedforward Neural Network (FNN) section using a simple FNN with 1 hidden layer (a pair of affine function and non-linear function)</p>
 <ol>
-<li>[Yellow box] Step 1: Pass input into a linear function <span><span class="MathJax_Preview">\boldsymbol{y} = A\boldsymbol{x} + \boldsymbol{b}</span><script type="math/tex">\boldsymbol{y} = A\boldsymbol{x} + \boldsymbol{b}</script></span></li>
-<li>[Red box] Step 2</li>
-<li>[</li>
+<li>[Yellow box] Pass input into an affine function <span><span class="MathJax_Preview">\boldsymbol{y} = A\boldsymbol{x} + \boldsymbol{b}</span><script type="math/tex">\boldsymbol{y} = A\boldsymbol{x} + \boldsymbol{b}</script></span></li>
+<li>[Pink box] Pass logits to non-linear function, for example sigmoid, tanh (hyperbolic tangent), ReLU, or LeakyReLU</li>
+<li>[Blue box] Pass output of non-linear function to another affine function</li>
+<li>[Red box] Pass output of final affine function to softmax function to get our probability distribution over K classes</li>
+<li>[Purple box] Finally we can get our loss by using our cross entropy function </li>
 </ol>
 </div>
 <p><img alt="" src="../images/nn1_new.png" /></p>
-<h4 id="basic-convolutional-neural-network">Basic Convolutional Neural Network<a class="headerlink" href="#basic-convolutional-neural-network" title="Permanent link">&para;</a></h4>
+<h4 id="basic-convolutional-neural-network-cnn">Basic Convolutional Neural Network (CNN)<a class="headerlink" href="#basic-convolutional-neural-network-cnn" title="Permanent link">&para;</a></h4>
 <ul>
-<li>Additional <strong>convolution</strong> and <strong>pooling</strong> layers <strong>before feedforward neural network</strong></li>
-<li>Layer with a <strong>linear function &amp; non-linearity</strong>: <strong>Fully connected layer</strong></li>
+<li>A basic CNN just requires 2 additional layers!<ul>
+<li><strong>Convolution</strong> and <strong>pooling</strong> layers <strong>before our feedforward neural network</strong></li>
 </ul>
+</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Fully Connected (FC) Layer</p>
+<p>A layer with an <strong>affine function &amp; non-linear function</strong> is called a <strong>Fully Connected (FC) layer</strong></p>
+</div>
 <p><img alt="" src="../images/cnn1.png" /></p>
-<h3 id="12-one-convolutional-layer-high-level-view">1.2 One Convolutional Layer: High Level View<a class="headerlink" href="#12-one-convolutional-layer-high-level-view" title="Permanent link">&para;</a></h3>
+<h3 id="one-convolutional-layer-high-level-view">One Convolutional Layer: High Level View<a class="headerlink" href="#one-convolutional-layer-high-level-view" title="Permanent link">&para;</a></h3>
 <p><img alt="" src="../images/cnn2.png" title=") ![](./images/cnn3.png) ![](./images/cnn2.png" /> 
 <img alt="" src="../images/cnn6-1.png" />
 <img alt="" src="../images/cnn6-2.png" /></p>
-<h3 id="12-one-convolutional-layer-high-level-view-summary">1.2 One Convolutional Layer: High Level View Summary<a class="headerlink" href="#12-one-convolutional-layer-high-level-view-summary" title="Permanent link">&para;</a></h3>
+<h3 id="one-convolutional-layer-high-level-view-summary">One Convolutional Layer: High Level View Summary<a class="headerlink" href="#one-convolutional-layer-high-level-view-summary" title="Permanent link">&para;</a></h3>
 <p><img alt="" src="../images/cnn2.png" /></p>
 <ul>
 <li>As the <strong>kernel is sliding/convolving</strong> across the image <span><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> 2 operations done <strong>per patch</strong><ol>
@@ -853,9 +1271,9 @@
 </ul>
 </li>
 </ul>
-<h3 id="13-multiple-convolutional-layers-high-level-view">1.3 Multiple Convolutional Layers: High Level View<a class="headerlink" href="#13-multiple-convolutional-layers-high-level-view" title="Permanent link">&para;</a></h3>
+<h3 id="multiple-convolutional-layers-high-level-view">Multiple Convolutional Layers: High Level View<a class="headerlink" href="#multiple-convolutional-layers-high-level-view" title="Permanent link">&para;</a></h3>
 <p><img alt="" src="../images/cnn7-3.png" /></p>
-<h3 id="14-pooling-layer-high-level-view">1.4 Pooling Layer: High Level View<a class="headerlink" href="#14-pooling-layer-high-level-view" title="Permanent link">&para;</a></h3>
+<h3 id="pooling-layer-high-level-view">Pooling Layer: High Level View<a class="headerlink" href="#pooling-layer-high-level-view" title="Permanent link">&para;</a></h3>
 <ul>
 <li>2 Common Types<ul>
 <li>Max Pooling</li>
@@ -864,11 +1282,11 @@
 </li>
 </ul>
 <p><img alt="" src="../images/cnn8n2.png" /></p>
-<h3 id="15-multiple-pooling-layers-high-level-view">1.5 Multiple Pooling Layers: High Level View<a class="headerlink" href="#15-multiple-pooling-layers-high-level-view" title="Permanent link">&para;</a></h3>
+<h3 id="multiple-pooling-layers-high-level-view">Multiple Pooling Layers: High Level View<a class="headerlink" href="#multiple-pooling-layers-high-level-view" title="Permanent link">&para;</a></h3>
 <p><img alt="" src="../images/cnn7-3.png" /></p>
-<h3 id="16-padding">1.6 Padding<a class="headerlink" href="#16-padding" title="Permanent link">&para;</a></h3>
+<h3 id="padding">Padding<a class="headerlink" href="#padding" title="Permanent link">&para;</a></h3>
 <p><img alt="" src="../images/cnn9-4.png" /></p>
-<h3 id="17-padding-summary">1.7 Padding Summary<a class="headerlink" href="#17-padding-summary" title="Permanent link">&para;</a></h3>
+<h3 id="padding-summary">Padding Summary<a class="headerlink" href="#padding-summary" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Valid</strong> Padding (No Padding)<ul>
 <li>Output size &lt; Input Size</li>
@@ -879,7 +1297,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="18-dimension-calculations">1.8 Dimension Calculations<a class="headerlink" href="#18-dimension-calculations" title="Permanent link">&para;</a></h3>
+<h3 id="dimension-calculations">Dimension Calculations<a class="headerlink" href="#dimension-calculations" title="Permanent link">&para;</a></h3>
 <ul>
 <li><span><span class="MathJax_Preview">O = \frac {W - K + 2P}{S} + 1</span><script type="math/tex">O = \frac {W - K + 2P}{S} + 1</script></span><ul>
 <li><span><span class="MathJax_Preview">O</span><script type="math/tex">O</script></span>: output height/length</li>
@@ -911,7 +1329,7 @@
 <li><span><span class="MathJax_Preview">S = 1</span><script type="math/tex">S = 1</script></span></li>
 <li><span><span class="MathJax_Preview">O = \frac {5 - 3 + 2*1}{1} + 1 = \frac {4}{1} + 1 = 5</span><script type="math/tex">O = \frac {5 - 3 + 2*1}{1} + 1 = \frac {4}{1} + 1 = 5</script></span></li>
 </ul>
-<h2 id="2-building-a-convolutional-neural-network-with-pytorch">2. Building a Convolutional Neural Network with PyTorch<a class="headerlink" href="#2-building-a-convolutional-neural-network-with-pytorch" title="Permanent link">&para;</a></h2>
+<h2 id="building-a-convolutional-neural-network-with-pytorch">Building a Convolutional Neural Network with PyTorch<a class="headerlink" href="#building-a-convolutional-neural-network-with-pytorch" title="Permanent link">&para;</a></h2>
 <h3 id="model-a">Model A:<a class="headerlink" href="#model-a" title="Permanent link">&para;</a></h3>
 <ul>
 <li>2 Convolutional Layers<ul>
@@ -922,7 +1340,7 @@
 <li>1 Fully Connected Layer</li>
 </ul>
 <p><img alt="" src="../images/cnn10-1.png" /></p>
-<h3 id="steps">Steps<a class="headerlink" href="#steps" title="Permanent link">&para;</a></h3>
+<h4 id="steps">Steps<a class="headerlink" href="#steps" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Step 1: Load Dataset</li>
 <li>Step 2: Make Dataset Iterable</li>
@@ -932,13 +1350,14 @@
 <li>Step 6: Instantiate Optimizer Class</li>
 <li>Step 7: Train Model</li>
 </ul>
-<h3 id="step-1-loading-mnist-train-dataset">Step 1: Loading MNIST Train Dataset<a class="headerlink" href="#step-1-loading-mnist-train-dataset" title="Permanent link">&para;</a></h3>
+<h4 id="step-1-loading-mnist-train-dataset">Step 1: Loading MNIST Train Dataset<a class="headerlink" href="#step-1-loading-mnist-train-dataset" title="Permanent link">&para;</a></h4>
 <p><strong>Images from 1 to 9</strong></p>
+<div class="admonition note">
+<p class="admonition-title">MNIST Dataset and Size of Training Dataset (Excluding Labels)</p>
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">import</span> <span class="nn">torch.nn</span> <span class="kn">as</span> <span class="nn">nn</span>
 <span class="kn">import</span> <span class="nn">torchvision.transforms</span> <span class="kn">as</span> <span class="nn">transforms</span>
 <span class="kn">import</span> <span class="nn">torchvision.datasets</span> <span class="kn">as</span> <span class="nn">dsets</span>
-<span class="kn">from</span> <span class="nn">torch.autograd</span> <span class="kn">import</span> <span class="n">Variable</span>
 </pre></div>
 
 <div class="codehilite"><pre><span></span><span class="n">train_dataset</span> <span class="o">=</span> <span class="n">dsets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;./data&#39;</span><span class="p">,</span> 
@@ -954,32 +1373,40 @@
 <div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">train_dataset</span><span class="o">.</span><span class="n">train_data</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
 </pre></div>
 
-<div class="codehilite"><pre><span></span>torch.Size([60000, 28, 28])
+</div>
+<div class="codehilite"><pre><span></span>torch.Size<span class="o">([</span><span class="m">60000</span>, <span class="m">28</span>, <span class="m">28</span><span class="o">])</span>
 </pre></div>
 
-
+<div class="admonition note">
+<p class="admonition-title">Size of our training dataset labels</p>
 <div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">train_dataset</span><span class="o">.</span><span class="n">train_labels</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
 </pre></div>
 
-<div class="codehilite"><pre><span></span>torch.Size([60000])
+</div>
+<div class="codehilite"><pre><span></span>torch.Size<span class="o">([</span><span class="m">60000</span><span class="o">])</span>
 </pre></div>
 
-
+<div class="admonition note">
+<p class="admonition-title">Size of our testing dataset (excluding labels)</p>
+</div>
 <div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">test_dataset</span><span class="o">.</span><span class="n">test_data</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
 </pre></div>
 
-<div class="codehilite"><pre><span></span>torch.Size([10000, 28, 28])
+<div class="codehilite"><pre><span></span>torch.Size<span class="o">([</span><span class="m">10000</span>, <span class="m">28</span>, <span class="m">28</span><span class="o">])</span>
 </pre></div>
 
-
+<div class="admonition note">
+<p class="admonition-title">Size of our testing dataset labels</p>
 <div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">test_dataset</span><span class="o">.</span><span class="n">test_labels</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
 </pre></div>
 
-<div class="codehilite"><pre><span></span>torch.Size([10000])
+</div>
+<div class="codehilite"><pre><span></span>torch.Size<span class="o">([</span><span class="m">10000</span><span class="o">])</span>
 </pre></div>
 
-
-<h3 id="step-2-make-dataset-iterable">Step 2: Make Dataset Iterable<a class="headerlink" href="#step-2-make-dataset-iterable" title="Permanent link">&para;</a></h3>
+<h4 id="step-2-make-dataset-iterable">Step 2: Make Dataset Iterable<a class="headerlink" href="#step-2-make-dataset-iterable" title="Permanent link">&para;</a></h4>
+<div class="admonition note">
+<p class="admonition-title">Load Dataset into Dataloader</p>
 <div class="codehilite"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">n_iters</span> <span class="o">=</span> <span class="mi">3000</span>
 <span class="n">num_epochs</span> <span class="o">=</span> <span class="n">n_iters</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">)</span> <span class="o">/</span> <span class="n">batch_size</span><span class="p">)</span>
@@ -994,9 +1421,10 @@
                                           <span class="n">shuffle</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 </pre></div>
 
-<h3 id="step-3-create-model-class">Step 3: Create Model Class<a class="headerlink" href="#step-3-create-model-class" title="Permanent link">&para;</a></h3>
+</div>
+<h4 id="step-3-create-model-class">Step 3: Create Model Class<a class="headerlink" href="#step-3-create-model-class" title="Permanent link">&para;</a></h4>
 <p><img alt="" src="../images/cnn10-1.png" /></p>
-<h4 id="output-formula-for-convolution">Output Formula for Convolution<a class="headerlink" href="#output-formula-for-convolution" title="Permanent link">&para;</a></h4>
+<h5 id="output-formula-for-convolution">Output Formula for Convolution<a class="headerlink" href="#output-formula-for-convolution" title="Permanent link">&para;</a></h5>
 <ul>
 <li><span><span class="MathJax_Preview">O = \frac {W - K + 2P}{S} + 1</span><script type="math/tex">O = \frac {W - K + 2P}{S} + 1</script></span><ul>
 <li><span><span class="MathJax_Preview">O</span><script type="math/tex">O</script></span>: output height/length</li>
@@ -1010,7 +1438,7 @@
 </ul>
 </li>
 </ul>
-<h4 id="output-formula-for-pooling">Output Formula for Pooling<a class="headerlink" href="#output-formula-for-pooling" title="Permanent link">&para;</a></h4>
+<h5 id="output-formula-for-pooling">Output Formula for Pooling<a class="headerlink" href="#output-formula-for-pooling" title="Permanent link">&para;</a></h5>
 <ul>
 <li><span><span class="MathJax_Preview">O = \frac {W}{K}</span><script type="math/tex">O = \frac {W}{K}</script></span><ul>
 <li>W: input height/width</li>
@@ -1019,6 +1447,8 @@
 </li>
 </ul>
 <p><img alt="" src="../images/cnn10-2n.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Define our simple 2 convolutional layer CNN</p>
 <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">CNNModel</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">CNNModel</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -1067,11 +1497,15 @@
         <span class="k">return</span> <span class="n">out</span>
 </pre></div>
 
-<h3 id="step-4-instantiate-model-class">Step 4: Instantiate Model Class<a class="headerlink" href="#step-4-instantiate-model-class" title="Permanent link">&para;</a></h3>
+</div>
+<h4 id="step-4-instantiate-model-class">Step 4: Instantiate Model Class<a class="headerlink" href="#step-4-instantiate-model-class" title="Permanent link">&para;</a></h4>
+<div class="admonition note">
+<p class="admonition-title">Our model</p>
 <div class="codehilite"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">CNNModel</span><span class="p">()</span>
 </pre></div>
 
-<h3 id="step-5-instantiate-loss-class">Step 5: Instantiate Loss Class<a class="headerlink" href="#step-5-instantiate-loss-class" title="Permanent link">&para;</a></h3>
+</div>
+<h4 id="step-5-instantiate-loss-class">Step 5: Instantiate Loss Class<a class="headerlink" href="#step-5-instantiate-loss-class" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Convolutional Neural Network: <strong>Cross Entropy Loss</strong><ul>
 <li><em>Feedforward Neural Network</em>: <strong>Cross Entropy Loss</strong></li>
@@ -1080,14 +1514,17 @@
 </ul>
 </li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Our cross entropy loss</p>
 <div class="codehilite"><pre><span></span><span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
 </pre></div>
 
-<h3 id="step-6-instantiate-optimizer-class">Step 6: Instantiate Optimizer Class<a class="headerlink" href="#step-6-instantiate-optimizer-class" title="Permanent link">&para;</a></h3>
+</div>
+<h4 id="step-6-instantiate-optimizer-class">Step 6: Instantiate Optimizer Class<a class="headerlink" href="#step-6-instantiate-optimizer-class" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Simplified equation<ul>
 <li><span><span class="MathJax_Preview">\theta = \theta - \eta \cdot \nabla_\theta</span><script type="math/tex">\theta = \theta - \eta \cdot \nabla_\theta</script></span><ul>
-<li><span><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span>: parameters (our variables)</li>
+<li><span><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span>: parameters</li>
 <li><span><span class="MathJax_Preview">\eta</span><script type="math/tex">\eta</script></span>: learning rate (how fast we want to learn)</li>
 <li><span><span class="MathJax_Preview">\nabla_\theta</span><script type="math/tex">\nabla_\theta</script></span>: parameters' gradients</li>
 </ul>
@@ -1100,12 +1537,17 @@
 </ul>
 </li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Optimizer</p>
 <div class="codehilite"><pre><span></span><span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.01</span>
 
 <span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">)</span>  
 </pre></div>
 
-<h3 id="parameters-in-depth">Parameters In-Depth<a class="headerlink" href="#parameters-in-depth" title="Permanent link">&para;</a></h3>
+</div>
+<h5 id="parameters-in-depth">Parameters In-Depth<a class="headerlink" href="#parameters-in-depth" title="Permanent link">&para;</a></h5>
+<div class="admonition note">
+<p class="admonition-title">Print model's parameter</p>
 <div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span>
 
 <span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())))</span>
@@ -1129,21 +1571,21 @@
 <span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
 </pre></div>
 
-<div class="codehilite"><pre><span></span>&amp;lt;generator object Module.parameters at 0x7f9864363c50&amp;gt;
-6
-torch.Size([16, 1, 5, 5])
-torch.Size([16])
-torch.Size([32, 16, 5, 5])
-torch.Size([32])
-torch.Size([10, 1568])
-torch.Size([10])
+</div>
+<div class="codehilite"><pre><span></span>&lt;generator object Module.parameters at 0x7f9864363c50&gt;
+<span class="m">6</span>
+torch.Size<span class="o">([</span><span class="m">16</span>, <span class="m">1</span>, <span class="m">5</span>, <span class="m">5</span><span class="o">])</span>
+torch.Size<span class="o">([</span><span class="m">16</span><span class="o">])</span>
+torch.Size<span class="o">([</span><span class="m">32</span>, <span class="m">16</span>, <span class="m">5</span>, <span class="m">5</span><span class="o">])</span>
+torch.Size<span class="o">([</span><span class="m">32</span><span class="o">])</span>
+torch.Size<span class="o">([</span><span class="m">10</span>, <span class="m">1568</span><span class="o">])</span>
+torch.Size<span class="o">([</span><span class="m">10</span><span class="o">])</span>
 </pre></div>
 
-
-<h3 id="step-7-train-model">Step 7: Train Model<a class="headerlink" href="#step-7-train-model" title="Permanent link">&para;</a></h3>
+<h4 id="step-7-train-model">Step 7: Train Model<a class="headerlink" href="#step-7-train-model" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Process <ol>
-<li><strong>Convert inputs/labels to variables</strong><ul>
+<li><strong>Convert inputs to tensors with gradient accumulation abilities</strong><ul>
 <li>CNN Input: (1, 28, 28) </li>
 <li>Feedforward NN Input: (1, 28*28)</li>
 </ul>
@@ -1160,6 +1602,8 @@ torch.Size([10])
 </ol>
 </li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Model training</p>
 <div class="codehilite"><pre><span></span><span class="nb">iter</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">train_loader</span><span class="p">):</span>
@@ -1210,6 +1654,7 @@ torch.Size([10])
             <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Iteration: {}. Loss: {}. Accuracy: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">accuracy</span><span class="p">))</span>
 </pre></div>
 
+</div>
 <div class="codehilite"><pre><span></span><span class="n">Iteration</span><span class="o">:</span> <span class="mi">500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.43324267864227295</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">90</span>
 <span class="n">Iteration</span><span class="o">:</span> <span class="mi">1000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.2511480152606964</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">92</span>
 <span class="n">Iteration</span><span class="o">:</span> <span class="mi">1500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.13431282341480255</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">94</span>
@@ -1217,7 +1662,6 @@ torch.Size([10])
 <span class="n">Iteration</span><span class="o">:</span> <span class="mi">2500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.06409914791584015</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">96</span>
 <span class="n">Iteration</span><span class="o">:</span> <span class="mi">3000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.14377528429031372</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">96</span>
 </pre></div>
-
 
 <h3 id="model-b">Model B:<a class="headerlink" href="#model-b" title="Permanent link">&para;</a></h3>
 <ul>
@@ -1230,7 +1674,7 @@ torch.Size([10])
 </ul>
 <p><img alt="" src="../images/cnn10-3.png" />
 <img alt="" src="../images/cnn10-4.png" /></p>
-<h3 id="steps_1">Steps<a class="headerlink" href="#steps_1" title="Permanent link">&para;</a></h3>
+<h4 id="steps_1">Steps<a class="headerlink" href="#steps_1" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Step 1: Load Dataset</li>
 <li>Step 2: Make Dataset Iterable</li>
@@ -1240,11 +1684,12 @@ torch.Size([10])
 <li>Step 6: Instantiate Optimizer Class</li>
 <li>Step 7: Train Model</li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">2 Conv + 2 Average Pool + 1 FC (Zero Padding, Same Padding)</p>
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">import</span> <span class="nn">torch.nn</span> <span class="kn">as</span> <span class="nn">nn</span>
 <span class="kn">import</span> <span class="nn">torchvision.transforms</span> <span class="kn">as</span> <span class="nn">transforms</span>
 <span class="kn">import</span> <span class="nn">torchvision.datasets</span> <span class="kn">as</span> <span class="nn">dsets</span>
-<span class="kn">from</span> <span class="nn">torch.autograd</span> <span class="kn">import</span> <span class="n">Variable</span>
 
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">STEP 1: LOADING DATASET</span>
@@ -1351,7 +1796,7 @@ torch.Size([10])
 <span class="nb">iter</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">train_loader</span><span class="p">):</span>
-        <span class="c1"># Load images as Variable</span>
+        <span class="c1"># Load images as tensors with gradient accumulation abilities</span>
         <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">()</span>
 
         <span class="c1"># Clear gradients w.r.t. parameters</span>
@@ -1377,7 +1822,7 @@ torch.Size([10])
             <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
             <span class="c1"># Iterate through test dataset</span>
             <span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">test_loader</span><span class="p">:</span>
-                <span class="c1"># Load images to a Torch Variable</span>
+                <span class="c1"># Load images to tensors with gradient accumulation abilities</span>
                 <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">()</span>
 
                 <span class="c1"># Forward pass only to get logits/output</span>
@@ -1398,16 +1843,19 @@ torch.Size([10])
             <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Iteration: {}. Loss: {}. Accuracy: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">accuracy</span><span class="p">))</span>
 </pre></div>
 
-<div class="codehilite"><pre><span></span><span class="n">Iteration</span><span class="o">:</span> <span class="mi">500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.6850348711013794</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">85</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">1000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.36549052596092224</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">88</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">1500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.31540098786354065</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">89</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">2000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.3522164225578308</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">90</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">2500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.2680729925632477</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">91</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">3000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.26440390944480896</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">92</span>
+</div>
+<div class="codehilite"><pre><span></span>Iteration: <span class="m">500</span>. Loss: <span class="m">0</span>.6850348711013794. Accuracy: <span class="m">85</span>
+Iteration: <span class="m">1000</span>. Loss: <span class="m">0</span>.36549052596092224. Accuracy: <span class="m">88</span>
+Iteration: <span class="m">1500</span>. Loss: <span class="m">0</span>.31540098786354065. Accuracy: <span class="m">89</span>
+Iteration: <span class="m">2000</span>. Loss: <span class="m">0</span>.3522164225578308. Accuracy: <span class="m">90</span>
+Iteration: <span class="m">2500</span>. Loss: <span class="m">0</span>.2680729925632477. Accuracy: <span class="m">91</span>
+Iteration: <span class="m">3000</span>. Loss: <span class="m">0</span>.26440390944480896. Accuracy: <span class="m">92</span>
 </pre></div>
 
-
-<h3 id="average-pooling-test-accuracy-max-pooling-test-accuracy">Average Pooling Test Accuracy &lt; Max Pooling Test Accuracy<a class="headerlink" href="#average-pooling-test-accuracy-max-pooling-test-accuracy" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Comparison of accuracies</p>
+<p>It seems like average pooling test accuracy is less than the max pooling accuracy! Does this mean average pooling is better? This is not definitive and depends on a lot of factors including the model's architecture, seed (that affects random weight initialization) and more.</p>
+</div>
 <h3 id="model-c">Model C:<a class="headerlink" href="#model-c" title="Permanent link">&para;</a></h3>
 <ul>
 <li>2 Convolutional Layers<ul>
@@ -1419,7 +1867,7 @@ torch.Size([10])
 </ul>
 <p><img alt="" src="../images/cnn10-5.png" />
 <img alt="" src="../images/cnn10-6n.png" /></p>
-<h3 id="steps_2">Steps<a class="headerlink" href="#steps_2" title="Permanent link">&para;</a></h3>
+<h4 id="steps_2">Steps<a class="headerlink" href="#steps_2" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Step 1: Load Dataset</li>
 <li>Step 2: Make Dataset Iterable</li>
@@ -1429,11 +1877,12 @@ torch.Size([10])
 <li>Step 6: Instantiate Optimizer Class</li>
 <li>Step 7: Train Model</li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">2 Conv + 2 Max Pool + 1 FC (Valid Padding, No Padding)</p>
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">import</span> <span class="nn">torch.nn</span> <span class="kn">as</span> <span class="nn">nn</span>
 <span class="kn">import</span> <span class="nn">torchvision.transforms</span> <span class="kn">as</span> <span class="nn">transforms</span>
 <span class="kn">import</span> <span class="nn">torchvision.datasets</span> <span class="kn">as</span> <span class="nn">dsets</span>
-<span class="kn">from</span> <span class="nn">torch.autograd</span> <span class="kn">import</span> <span class="n">Variable</span>
 
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">STEP 1: LOADING DATASET</span>
@@ -1540,7 +1989,7 @@ torch.Size([10])
 <span class="nb">iter</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">train_loader</span><span class="p">):</span>
-        <span class="c1"># Load images as Variable</span>
+        <span class="c1"># Load images as tensors with gradient accumulation abilities</span>
         <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">()</span>
 
         <span class="c1"># Clear gradients w.r.t. parameters</span>
@@ -1566,7 +2015,7 @@ torch.Size([10])
             <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
             <span class="c1"># Iterate through test dataset</span>
             <span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">test_loader</span><span class="p">:</span>
-                <span class="c1"># Load images to a Torch Variable</span>
+                <span class="c1"># Load images to tensors with gradient accumulation abilities</span>
                 <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">()</span>
 
                 <span class="c1"># Forward pass only to get logits/output</span>
@@ -1587,14 +2036,14 @@ torch.Size([10])
             <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Iteration: {}. Loss: {}. Accuracy: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">accuracy</span><span class="p">))</span>
 </pre></div>
 
-<div class="codehilite"><pre><span></span><span class="n">Iteration</span><span class="o">:</span> <span class="mi">500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.5153220295906067</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">88</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">1000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.28784745931625366</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">92</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">1500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.4086027443408966</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">94</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">2000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.09390712529420853</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">95</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">2500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.07138358801603317</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">95</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">3000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.05396252125501633</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">96</span>
+</div>
+<div class="codehilite"><pre><span></span>Iteration: <span class="m">500</span>. Loss: <span class="m">0</span>.5153220295906067. Accuracy: <span class="m">88</span>
+Iteration: <span class="m">1000</span>. Loss: <span class="m">0</span>.28784745931625366. Accuracy: <span class="m">92</span>
+Iteration: <span class="m">1500</span>. Loss: <span class="m">0</span>.4086027443408966. Accuracy: <span class="m">94</span>
+Iteration: <span class="m">2000</span>. Loss: <span class="m">0</span>.09390712529420853. Accuracy: <span class="m">95</span>
+Iteration: <span class="m">2500</span>. Loss: <span class="m">0</span>.07138358801603317. Accuracy: <span class="m">95</span>
+Iteration: <span class="m">3000</span>. Loss: <span class="m">0</span>.05396252125501633. Accuracy: <span class="m">96</span>
 </pre></div>
-
 
 <h3 id="summary-of-results">Summary of Results<a class="headerlink" href="#summary-of-results" title="Permanent link">&para;</a></h3>
 <table>
@@ -1644,7 +2093,7 @@ torch.Size([10])
 </tr>
 </tbody>
 </table>
-<h3 id="deep-learning">Deep Learning<a class="headerlink" href="#deep-learning" title="Permanent link">&para;</a></h3>
+<h3 id="general-deep-learning-notes-on-cnn-and-fnn">General Deep Learning Notes on CNN and FNN<a class="headerlink" href="#general-deep-learning-notes-on-cnn-and-fnn" title="Permanent link">&para;</a></h3>
 <ul>
 <li>3 ways to expand a convolutional neural network<ul>
 <li>More convolutional layers </li>
@@ -1670,7 +2119,7 @@ torch.Size([10])
 <img alt="" src="../images/cnn10-2n.png" /></p>
 <p>GPU: 2 things must be on GPU
 - <code class="codehilite">model</code>
-- <code class="codehilite">variables</code></p>
+- <code class="codehilite">tensors with gradient accumulation abilities</code></p>
 <h3 id="steps_3">Steps<a class="headerlink" href="#steps_3" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Step 1: Load Dataset</li>
@@ -1681,11 +2130,12 @@ torch.Size([10])
 <li>Step 6: Instantiate Optimizer Class</li>
 <li><strong>Step 7: Train Model</strong></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">2 Conv + 2 Max Pooling + 1 FC (Same Padding, Zero Padding)</p>
 <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">import</span> <span class="nn">torch.nn</span> <span class="kn">as</span> <span class="nn">nn</span>
 <span class="kn">import</span> <span class="nn">torchvision.transforms</span> <span class="kn">as</span> <span class="nn">transforms</span>
-<span class="kn">import</span> <span class="nn">torchvision.datasets</span> <span class="kn">as</span> <span class="nn">dsets</span>
-<span class="kn">from</span> <span class="nn">torch.autograd</span> <span class="kn">import</span> <span class="n">Variable</span>
+<span class="kn">import</span> <span class="nn">torchvision.datasets</span> <span class="kn">as</span> <span class="nn">dsets</span> 
 
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">STEP 1: LOADING DATASET</span>
@@ -1859,77 +2309,87 @@ torch.Size([10])
             <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Iteration: {}. Loss: {}. Accuracy: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">accuracy</span><span class="p">))</span>
 </pre></div>
 
-<div class="codehilite"><pre><span></span><span class="n">Iteration</span><span class="o">:</span> <span class="mi">500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.36831170320510864</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">88</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">1000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.31790846586227417</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">92</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">1500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.1510857343673706</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">94</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">2000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.08368007838726044</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">95</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">2500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.13419771194458008</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">96</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">3000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.16750787198543549</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">96</span>
+</div>
+<div class="codehilite"><pre><span></span>Iteration: <span class="m">500</span>. Loss: <span class="m">0</span>.36831170320510864. Accuracy: <span class="m">88</span>
+Iteration: <span class="m">1000</span>. Loss: <span class="m">0</span>.31790846586227417. Accuracy: <span class="m">92</span>
+Iteration: <span class="m">1500</span>. Loss: <span class="m">0</span>.1510857343673706. Accuracy: <span class="m">94</span>
+Iteration: <span class="m">2000</span>. Loss: <span class="m">0</span>.08368007838726044. Accuracy: <span class="m">95</span>
+Iteration: <span class="m">2500</span>. Loss: <span class="m">0</span>.13419771194458008. Accuracy: <span class="m">96</span>
+Iteration: <span class="m">3000</span>. Loss: <span class="m">0</span>.16750787198543549. Accuracy: <span class="m">96</span>
 </pre></div>
 
-
-<h1 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h1>
-<ul>
-<li>Transition from <strong>Feedforward Neural Network</strong><ul>
-<li>Addition of <strong>Convolutional</strong> &amp; <strong>Pooling</strong> Layers before Linear Layers</li>
+<div class="admonition tip">
+<p class="admonition-title">More Efficient Convolutions via Toeplitz Matrices</p>
+<p>This is beyond the scope of this particular lesson. But now that we understand how convolutions work, it is critical to know that it is quite an inefficient operation if we use for-loops to perform our 2D convolutions (5 x 5 convolution kernel size for example) on our 2D images (28 x 28 MNIST image for example).</p>
+<p>A more efficient implementation is in converting our convolution kernel into a Toeplitz matrix and our image into a vector. Then, we will do just one matrix operation using our Toeplitz matrix and vector.</p>
+<p>There will be a whole lesson dedicated to this operation released down the road. </p>
+</div>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>We've learnt to...</p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Transition from <strong>Feedforward Neural Network</strong><ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Addition of <strong>Convolutional</strong> &amp; <strong>Pooling</strong> Layers before Linear Layers</li>
 </ul>
 </li>
-<li>One <strong>Convolutional</strong> Layer Basics</li>
-<li>One <strong>Pooling</strong> Layer Basics<ul>
-<li>Max pooling</li>
-<li>Average pooling</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> One <strong>Convolutional</strong> Layer Basics</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> One <strong>Pooling</strong> Layer Basics<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Max pooling</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Average pooling</li>
 </ul>
 </li>
-<li><strong>Padding</strong></li>
-<li><strong>Output Dimension</strong> Calculations and Examples<ul>
-<li><span><span class="MathJax_Preview">O = \frac {W - K + 2P}{S} + 1</span><script type="math/tex">O = \frac {W - K + 2P}{S} + 1</script></span></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>Padding</strong></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>Output Dimension</strong> Calculations and Examples<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <span><span class="MathJax_Preview">O = \frac {W - K + 2P}{S} + 1</span><script type="math/tex">O = \frac {W - K + 2P}{S} + 1</script></span></li>
 </ul>
 </li>
-<li>Convolutional Neural Networks<ul>
-<li><strong>Model A</strong>: 2 Conv + 2 Max pool + 1 FC<ul>
-<li>Same Padding</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Convolutional Neural Networks<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>Model A</strong>: 2 Conv + 2 Max pool + 1 FC<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Same Padding</li>
 </ul>
 </li>
-<li><strong>Model B</strong>: 2 Conv + 2 Average pool + 1 FC<ul>
-<li>Same Padding</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>Model B</strong>: 2 Conv + 2 Average pool + 1 FC<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Same Padding</li>
 </ul>
 </li>
-<li><strong>Model C</strong>: 2 Conv + 2 Max pool + 1 FC<ul>
-<li>Valid Padding</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Model Variation in <strong>Code</strong><ul>
-<li>Modifying only step 3</li>
-</ul>
-</li>
-<li>Ways to Expand Model’s <strong>Capacity</strong><ul>
-<li>More convolutions</li>
-<li>Gradual pooling</li>
-<li>More fully connected layers</li>
-</ul>
-</li>
-<li><strong>GPU</strong> Code<ul>
-<li>2 things on GPU<ul>
-<li><strong>model</strong></li>
-<li><strong>variable</strong></li>
-</ul>
-</li>
-<li>Modifying only <strong>Step 4 &amp; Step 7</strong></li>
-</ul>
-</li>
-<li><strong>7 Step</strong> Model Building Recap<ul>
-<li>Step 1: Load Dataset</li>
-<li>Step 2: Make Dataset Iterable</li>
-<li>Step 3: Create Model Class</li>
-<li>Step 4: Instantiate Model Class</li>
-<li>Step 5: Instantiate Loss Class</li>
-<li>Step 6: Instantiate Optimizer Class</li>
-<li>Step 7: Train Model</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>Model C</strong>: 2 Conv + 2 Max pool + 1 FC<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Valid Padding</li>
 </ul>
 </li>
 </ul>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Model Variation in <strong>Code</strong><ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Modifying only step 3</li>
+</ul>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Ways to Expand Model’s <strong>Capacity</strong><ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> More convolutions</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Gradual pooling</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> More fully connected layers</li>
+</ul>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>GPU</strong> Code<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> 2 things on GPU<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>model</strong></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>tensors with gradient accumulation abilities</strong></li>
+</ul>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Modifying only <strong>Step 4 &amp; Step 7</strong></li>
+</ul>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>7 Step</strong> Model Building Recap<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Step 1: Load Dataset</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Step 2: Make Dataset Iterable</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Step 3: Create Model Class</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Step 4: Instantiate Model Class</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Step 5: Instantiate Loss Class</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Step 6: Instantiate Optimizer Class</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Step 7: Train Model</li>
+</ul>
+</li>
+</ul>
+</div>
 <h2 id="citation">Citation<a class="headerlink" href="#citation" title="Permanent link">&para;</a></h2>
 <p>If you have found these useful in your research, presentations, school work, projects or workshops, feel free to cite using this DOI.</p>
 <p><a href="https://zenodo.org/badge/latestdoi/139945544"><img alt="DOI" src="https://zenodo.org/badge/139945544.svg" /></a></p>
@@ -1965,6 +2425,41 @@ torch.Size([10])
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="deep_learning/practical_pytorch/pytorch_feedforward_neuralnetwork/" title="PyTorch Fundamentals - Feedforward Neural Networks" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                PyTorch Fundamentals - Feedforward Neural Networks
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="news/news/" title="Welcome" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Welcome
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
