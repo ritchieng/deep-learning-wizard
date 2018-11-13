@@ -120,74 +120,81 @@
 **Images from 1 to 9**
 
 
-```python
-import torch
-import torch.nn as nn
-import torchvision.transforms as transforms
-import torchvision.datasets as dsets
+!!! note "MNIST Dataset and Size of Training Dataset (Excluding Labels)"
+    ```python
+    import torch
+    import torch.nn as nn
+    import torchvision.transforms as transforms
+    import torchvision.datasets as dsets
+    ```
+    
+    
+    ```python
+    train_dataset = dsets.MNIST(root='./data', 
+                                train=True, 
+                                transform=transforms.ToTensor(),
+                                download=True)
+    
+    test_dataset = dsets.MNIST(root='./data', 
+                               train=False, 
+                               transform=transforms.ToTensor())
+    ```
+    
+    
+    ```python
+    print(train_dataset.train_data.size())
+    ```
+
+```bash
+torch.Size([60000, 28, 28])
 ```
 
+!!! note "Size of our training dataset labels"
+    ```python
+    print(train_dataset.train_labels.size())
+    ```
 
-```python
-train_dataset = dsets.MNIST(root='./data', 
-                            train=True, 
-                            transform=transforms.ToTensor(),
-                            download=True)
-
-test_dataset = dsets.MNIST(root='./data', 
-                           train=False, 
-                           transform=transforms.ToTensor())
+```bash
+torch.Size([60000])
 ```
 
-
-```python
-print(train_dataset.train_data.size())
-```
-
-    torch.Size([60000, 28, 28])
-
-
-
-```python
-print(train_dataset.train_labels.size())
-```
-
-    torch.Size([60000])
-
-
-
+!!! note "Size of our testing dataset (excluding labels)"
 ```python
 print(test_dataset.test_data.size())
 ```
 
-    torch.Size([10000, 28, 28])
-
-
-
-```python
-print(test_dataset.test_labels.size())
+```bash
+torch.Size([10000, 28, 28])
 ```
+   
+!!! note "Size of our testing dataset labels"
+    ```python
+    print(test_dataset.test_labels.size())
+    ```
 
-    torch.Size([10000])
-
+```bash
+torch.Size([10000])
+```
+   
 
 #### Step 2: Make Dataset Iterable
 
 
-```python
-batch_size = 100
-n_iters = 3000
-num_epochs = n_iters / (len(train_dataset) / batch_size)
-num_epochs = int(num_epochs)
-
-train_loader = torch.utils.data.DataLoader(dataset=train_dataset, 
-                                           batch_size=batch_size, 
-                                           shuffle=True)
-
-test_loader = torch.utils.data.DataLoader(dataset=test_dataset, 
-                                          batch_size=batch_size, 
-                                          shuffle=False)
-```
+!!! note "Load Dataset into Dataloader"
+    ```python
+    batch_size = 100
+    n_iters = 3000
+    num_epochs = n_iters / (len(train_dataset) / batch_size)
+    num_epochs = int(num_epochs)
+    
+    train_loader = torch.utils.data.DataLoader(dataset=train_dataset, 
+                                               batch_size=batch_size, 
+                                               shuffle=True)
+    
+    test_loader = torch.utils.data.DataLoader(dataset=test_dataset, 
+                                              batch_size=batch_size, 
+                                              shuffle=False)
+    ```
 
 #### Step 3: Create Model Class
 
@@ -210,61 +217,62 @@ test_loader = torch.utils.data.DataLoader(dataset=test_dataset,
 ![](./images/cnn10-2n.png)
 
 
-```python
-class CNNModel(nn.Module):
-    def __init__(self):
-        super(CNNModel, self).__init__()
+!!! note "Define our simple 2 convolutional layer CNN"
+    ```python
+    class CNNModel(nn.Module):
+        def __init__(self):
+            super(CNNModel, self).__init__()
+            
+            # Convolution 1
+            self.cnn1 = nn.Conv2d(in_channels=1, out_channels=16, kernel_size=5, stride=1, padding=2)
+            self.relu1 = nn.ReLU()
+            
+            # Max pool 1
+            self.maxpool1 = nn.MaxPool2d(kernel_size=2)
+         
+            # Convolution 2
+            self.cnn2 = nn.Conv2d(in_channels=16, out_channels=32, kernel_size=5, stride=1, padding=2)
+            self.relu2 = nn.ReLU()
+            
+            # Max pool 2
+            self.maxpool2 = nn.MaxPool2d(kernel_size=2)
+            
+            # Fully connected 1 (readout)
+            self.fc1 = nn.Linear(32 * 7 * 7, 10) 
         
-        # Convolution 1
-        self.cnn1 = nn.Conv2d(in_channels=1, out_channels=16, kernel_size=5, stride=1, padding=2)
-        self.relu1 = nn.ReLU()
-        
-        # Max pool 1
-        self.maxpool1 = nn.MaxPool2d(kernel_size=2)
-     
-        # Convolution 2
-        self.cnn2 = nn.Conv2d(in_channels=16, out_channels=32, kernel_size=5, stride=1, padding=2)
-        self.relu2 = nn.ReLU()
-        
-        # Max pool 2
-        self.maxpool2 = nn.MaxPool2d(kernel_size=2)
-        
-        # Fully connected 1 (readout)
-        self.fc1 = nn.Linear(32 * 7 * 7, 10) 
+        def forward(self, x):
+            # Convolution 1
+            out = self.cnn1(x)
+            out = self.relu1(out)
+            
+            # Max pool 1
+            out = self.maxpool1(out)
+            
+            # Convolution 2 
+            out = self.cnn2(out)
+            out = self.relu2(out)
+            
+            # Max pool 2 
+            out = self.maxpool2(out)
+            
+            # Resize
+            # Original size: (100, 32, 7, 7)
+            # out.size(0): 100
+            # New out size: (100, 32*7*7)
+            out = out.view(out.size(0), -1)
     
-    def forward(self, x):
-        # Convolution 1
-        out = self.cnn1(x)
-        out = self.relu1(out)
-        
-        # Max pool 1
-        out = self.maxpool1(out)
-        
-        # Convolution 2 
-        out = self.cnn2(out)
-        out = self.relu2(out)
-        
-        # Max pool 2 
-        out = self.maxpool2(out)
-        
-        # Resize
-        # Original size: (100, 32, 7, 7)
-        # out.size(0): 100
-        # New out size: (100, 32*7*7)
-        out = out.view(out.size(0), -1)
-
-        # Linear function (readout)
-        out = self.fc1(out)
-        
-        return out
-```
+            # Linear function (readout)
+            out = self.fc1(out)
+            
+            return out
+    ```
 
 #### Step 4: Instantiate Model Class
 
-
-```python
-model = CNNModel()
-```
+!!! note "Our model"
+    ```python
+    model = CNNModel()
+    ```
 
 #### Step 5: Instantiate Loss Class
 - Convolutional Neural Network: **Cross Entropy Loss**
@@ -272,9 +280,10 @@ model = CNNModel()
     - _Logistic Regression_: **Cross Entropy Loss**
     - _Linear Regression_: **MSE**
     
-```python
-criterion = nn.CrossEntropyLoss()
-```
+!!! note "Our cross entropy loss"
+    ```python
+    criterion = nn.CrossEntropyLoss()
+    ```
 
 #### Step 6: Instantiate Optimizer Class
 - Simplified equation
@@ -287,48 +296,52 @@ criterion = nn.CrossEntropyLoss()
     - **At every iteration, we update our model's parameters**
 
 
-```python
-learning_rate = 0.01
-
-optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)  
-```
+!!! note "Optimizer"
+    ```python
+    learning_rate = 0.01
+    
+    optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)  
+    ```
 
 ##### Parameters In-Depth
 
 
-```python
-print(model.parameters())
+!!! note "Print model's parameter"
+    ```python
+    print(model.parameters())
+    
+    print(len(list(model.parameters())))
+    
+    # Convolution 1: 16 Kernels
+    print(list(model.parameters())[0].size())
+    
+    # Convolution 1 Bias: 16 Kernels
+    print(list(model.parameters())[1].size())
+    
+    # Convolution 2: 32 Kernels with depth = 16
+    print(list(model.parameters())[2].size())
+    
+    # Convolution 2 Bias: 32 Kernels with depth = 16
+    print(list(model.parameters())[3].size())
+    
+    # Fully Connected Layer 1
+    print(list(model.parameters())[4].size())
+    
+    # Fully Connected Layer Bias
+    print(list(model.parameters())[5].size())
+    ```
 
-print(len(list(model.parameters())))
-
-# Convolution 1: 16 Kernels
-print(list(model.parameters())[0].size())
-
-# Convolution 1 Bias: 16 Kernels
-print(list(model.parameters())[1].size())
-
-# Convolution 2: 32 Kernels with depth = 16
-print(list(model.parameters())[2].size())
-
-# Convolution 2 Bias: 32 Kernels with depth = 16
-print(list(model.parameters())[3].size())
-
-# Fully Connected Layer 1
-print(list(model.parameters())[4].size())
-
-# Fully Connected Layer Bias
-print(list(model.parameters())[5].size())
+```bash
+<generator object Module.parameters at 0x7f9864363c50>
+6
+torch.Size([16, 1, 5, 5])
+torch.Size([16])
+torch.Size([32, 16, 5, 5])
+torch.Size([32])
+torch.Size([10, 1568])
+torch.Size([10])
 ```
-
-    <generator object Module.parameters at 0x7f9864363c50>
-    6
-    torch.Size([16, 1, 5, 5])
-    torch.Size([16])
-    torch.Size([32, 16, 5, 5])
-    torch.Size([32])
-    torch.Size([10, 1568])
-    torch.Size([10])
-
+    
 
 #### Step 7: Train Model
 - Process 
@@ -344,65 +357,67 @@ print(list(model.parameters())[5].size())
     7. REPEAT
 
 
-```python
-iter = 0
-for epoch in range(num_epochs):
-    for i, (images, labels) in enumerate(train_loader):
-        # Load images
-        images = images.requires_grad_()
-        
-        # Clear gradients w.r.t. parameters
-        optimizer.zero_grad()
-        
-        # Forward pass to get output/logits
-        outputs = model(images)
-        
-        # Calculate Loss: softmax --> cross entropy loss
-        loss = criterion(outputs, labels)
-        
-        # Getting gradients w.r.t. parameters
-        loss.backward()
-        
-        # Updating parameters
-        optimizer.step()
-        
-        iter += 1
-        
-        if iter % 500 == 0:
-            # Calculate Accuracy         
-            correct = 0
-            total = 0
-            # Iterate through test dataset
-            for images, labels in test_loader:
-                # Load images
-                images = images.requires_grad_()
-                
-                # Forward pass only to get logits/output
-                outputs = model(images)
-                
-                # Get predictions from the maximum value
-                _, predicted = torch.max(outputs.data, 1)
-                
-                # Total number of labels
-                total += labels.size(0)
-                
-                # Total correct predictions
-                correct += (predicted == labels).sum()
+!!! note "Model training"
+    ```python
+    iter = 0
+    for epoch in range(num_epochs):
+        for i, (images, labels) in enumerate(train_loader):
+            # Load images
+            images = images.requires_grad_()
             
-            accuracy = 100 * correct / total
+            # Clear gradients w.r.t. parameters
+            optimizer.zero_grad()
             
-            # Print Loss
-            print('Iteration: {}. Loss: {}. Accuracy: {}'.format(iter, loss.item(), accuracy))
+            # Forward pass to get output/logits
+            outputs = model(images)
+            
+            # Calculate Loss: softmax --> cross entropy loss
+            loss = criterion(outputs, labels)
+            
+            # Getting gradients w.r.t. parameters
+            loss.backward()
+            
+            # Updating parameters
+            optimizer.step()
+            
+            iter += 1
+            
+            if iter % 500 == 0:
+                # Calculate Accuracy         
+                correct = 0
+                total = 0
+                # Iterate through test dataset
+                for images, labels in test_loader:
+                    # Load images
+                    images = images.requires_grad_()
+                    
+                    # Forward pass only to get logits/output
+                    outputs = model(images)
+                    
+                    # Get predictions from the maximum value
+                    _, predicted = torch.max(outputs.data, 1)
+                    
+                    # Total number of labels
+                    total += labels.size(0)
+                    
+                    # Total correct predictions
+                    correct += (predicted == labels).sum()
+                
+                accuracy = 100 * correct / total
+                
+                # Print Loss
+                print('Iteration: {}. Loss: {}. Accuracy: {}'.format(iter, loss.item(), accuracy))
+    ```
+
 ```
-
-    Iteration: 500. Loss: 0.43324267864227295. Accuracy: 90
-    Iteration: 1000. Loss: 0.2511480152606964. Accuracy: 92
-    Iteration: 1500. Loss: 0.13431282341480255. Accuracy: 94
-    Iteration: 2000. Loss: 0.11173319816589355. Accuracy: 95
-    Iteration: 2500. Loss: 0.06409914791584015. Accuracy: 96
-    Iteration: 3000. Loss: 0.14377528429031372. Accuracy: 96
-
-
+Iteration: 500. Loss: 0.43324267864227295. Accuracy: 90
+Iteration: 1000. Loss: 0.2511480152606964. Accuracy: 92
+Iteration: 1500. Loss: 0.13431282341480255. Accuracy: 94
+Iteration: 2000. Loss: 0.11173319816589355. Accuracy: 95
+Iteration: 2500. Loss: 0.06409914791584015. Accuracy: 96
+Iteration: 3000. Loss: 0.14377528429031372. Accuracy: 96
+```
+    
 ### Model B: 
 - 2 Convolutional Layers
     - Same Padding (same output size)
@@ -421,175 +436,176 @@ for epoch in range(num_epochs):
 - Step 6: Instantiate Optimizer Class
 - Step 7: Train Model
 
-
-```python
-import torch
-import torch.nn as nn
-import torchvision.transforms as transforms
-import torchvision.datasets as dsets
-
-'''
-STEP 1: LOADING DATASET
-'''
-
-train_dataset = dsets.MNIST(root='./data', 
-                            train=True, 
-                            transform=transforms.ToTensor(),
-                            download=True)
-
-test_dataset = dsets.MNIST(root='./data', 
-                           train=False, 
-                           transform=transforms.ToTensor())
-
-'''
-STEP 2: MAKING DATASET ITERABLE
-'''
-
-batch_size = 100
-n_iters = 3000
-num_epochs = n_iters / (len(train_dataset) / batch_size)
-num_epochs = int(num_epochs)
-
-train_loader = torch.utils.data.DataLoader(dataset=train_dataset, 
-                                           batch_size=batch_size, 
-                                           shuffle=True)
-
-test_loader = torch.utils.data.DataLoader(dataset=test_dataset, 
-                                          batch_size=batch_size, 
-                                          shuffle=False)
-
-'''
-STEP 3: CREATE MODEL CLASS
-'''
-class CNNModel(nn.Module):
-    def __init__(self):
-        super(CNNModel, self).__init__()
-        
-        # Convolution 1
-        self.cnn1 = nn.Conv2d(in_channels=1, out_channels=16, kernel_size=5, stride=1, padding=2)
-        self.relu1 = nn.ReLU()
-        
-        # Average pool 1
-        self.avgpool1 = nn.AvgPool2d(kernel_size=2)
-     
-        # Convolution 2
-        self.cnn2 = nn.Conv2d(in_channels=16, out_channels=32, kernel_size=5, stride=1, padding=2)
-        self.relu2 = nn.ReLU()
-        
-        # Average pool 2
-        self.avgpool2 = nn.AvgPool2d(kernel_size=2)
-        
-        # Fully connected 1 (readout)
-        self.fc1 = nn.Linear(32 * 7 * 7, 10) 
+!!! note "2 Conv + 2 Average Pool + 1 FC (Zero Padding, Same Padding)"
+    ```python
+    import torch
+    import torch.nn as nn
+    import torchvision.transforms as transforms
+    import torchvision.datasets as dsets
     
-    def forward(self, x):
-        # Convolution 1
-        out = self.cnn1(x)
-        out = self.relu1(out)
-        
-        # Average pool 1
-        out = self.avgpool1(out)
-        
-        # Convolution 2 
-        out = self.cnn2(out)
-        out = self.relu2(out)
-        
-        # Max pool 2 
-        out = self.avgpool2(out)
-        
-        # Resize
-        # Original size: (100, 32, 7, 7)
-        # out.size(0): 100
-        # New out size: (100, 32*7*7)
-        out = out.view(out.size(0), -1)
-
-        # Linear function (readout)
-        out = self.fc1(out)
-        
-        return out
-
-'''
-STEP 4: INSTANTIATE MODEL CLASS
-'''
-
-model = CNNModel()
-
-'''
-STEP 5: INSTANTIATE LOSS CLASS
-'''
-criterion = nn.CrossEntropyLoss()
-
-
-'''
-STEP 6: INSTANTIATE OPTIMIZER CLASS
-'''
-learning_rate = 0.01
-
-optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
-
-'''
-STEP 7: TRAIN THE MODEL
-'''
-iter = 0
-for epoch in range(num_epochs):
-    for i, (images, labels) in enumerate(train_loader):
-        # Load images as tensors with gradient accumulation abilities
-        images = images.requires_grad_()
-
-        # Clear gradients w.r.t. parameters
-        optimizer.zero_grad()
-        
-        # Forward pass to get output/logits
-        outputs = model(images)
-        
-        # Calculate Loss: softmax --> cross entropy loss
-        loss = criterion(outputs, labels)
-        
-        # Getting gradients w.r.t. parameters
-        loss.backward()
-        
-        # Updating parameters
-        optimizer.step()
-        
-        iter += 1
-        
-        if iter % 500 == 0:
-            # Calculate Accuracy         
-            correct = 0
-            total = 0
-            # Iterate through test dataset
-            for images, labels in test_loader:
-                # Load images to tensors with gradient accumulation abilities
-                images = images.requires_grad_()
-                
-                # Forward pass only to get logits/output
-                outputs = model(images)
-                
-                # Get predictions from the maximum value
-                _, predicted = torch.max(outputs.data, 1)
-                
-                # Total number of labels
-                total += labels.size(0)
-                
-                # Total correct predictions
-                correct += (predicted == labels).sum()
+    '''
+    STEP 1: LOADING DATASET
+    '''
+    
+    train_dataset = dsets.MNIST(root='./data', 
+                                train=True, 
+                                transform=transforms.ToTensor(),
+                                download=True)
+    
+    test_dataset = dsets.MNIST(root='./data', 
+                               train=False, 
+                               transform=transforms.ToTensor())
+    
+    '''
+    STEP 2: MAKING DATASET ITERABLE
+    '''
+    
+    batch_size = 100
+    n_iters = 3000
+    num_epochs = n_iters / (len(train_dataset) / batch_size)
+    num_epochs = int(num_epochs)
+    
+    train_loader = torch.utils.data.DataLoader(dataset=train_dataset, 
+                                               batch_size=batch_size, 
+                                               shuffle=True)
+    
+    test_loader = torch.utils.data.DataLoader(dataset=test_dataset, 
+                                              batch_size=batch_size, 
+                                              shuffle=False)
+    
+    '''
+    STEP 3: CREATE MODEL CLASS
+    '''
+    class CNNModel(nn.Module):
+        def __init__(self):
+            super(CNNModel, self).__init__()
             
-            accuracy = 100 * correct / total
+            # Convolution 1
+            self.cnn1 = nn.Conv2d(in_channels=1, out_channels=16, kernel_size=5, stride=1, padding=2)
+            self.relu1 = nn.ReLU()
             
-            # Print Loss
-            print('Iteration: {}. Loss: {}. Accuracy: {}'.format(iter, loss.item(), accuracy))
+            # Average pool 1
+            self.avgpool1 = nn.AvgPool2d(kernel_size=2)
+         
+            # Convolution 2
+            self.cnn2 = nn.Conv2d(in_channels=16, out_channels=32, kernel_size=5, stride=1, padding=2)
+            self.relu2 = nn.ReLU()
+            
+            # Average pool 2
+            self.avgpool2 = nn.AvgPool2d(kernel_size=2)
+            
+            # Fully connected 1 (readout)
+            self.fc1 = nn.Linear(32 * 7 * 7, 10) 
+        
+        def forward(self, x):
+            # Convolution 1
+            out = self.cnn1(x)
+            out = self.relu1(out)
+            
+            # Average pool 1
+            out = self.avgpool1(out)
+            
+            # Convolution 2 
+            out = self.cnn2(out)
+            out = self.relu2(out)
+            
+            # Max pool 2 
+            out = self.avgpool2(out)
+            
+            # Resize
+            # Original size: (100, 32, 7, 7)
+            # out.size(0): 100
+            # New out size: (100, 32*7*7)
+            out = out.view(out.size(0), -1)
+    
+            # Linear function (readout)
+            out = self.fc1(out)
+            
+            return out
+    
+    '''
+    STEP 4: INSTANTIATE MODEL CLASS
+    '''
+    
+    model = CNNModel()
+    
+    '''
+    STEP 5: INSTANTIATE LOSS CLASS
+    '''
+    criterion = nn.CrossEntropyLoss()
+    
+    
+    '''
+    STEP 6: INSTANTIATE OPTIMIZER CLASS
+    '''
+    learning_rate = 0.01
+    
+    optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
+    
+    '''
+    STEP 7: TRAIN THE MODEL
+    '''
+    iter = 0
+    for epoch in range(num_epochs):
+        for i, (images, labels) in enumerate(train_loader):
+            # Load images as tensors with gradient accumulation abilities
+            images = images.requires_grad_()
+    
+            # Clear gradients w.r.t. parameters
+            optimizer.zero_grad()
+            
+            # Forward pass to get output/logits
+            outputs = model(images)
+            
+            # Calculate Loss: softmax --> cross entropy loss
+            loss = criterion(outputs, labels)
+            
+            # Getting gradients w.r.t. parameters
+            loss.backward()
+            
+            # Updating parameters
+            optimizer.step()
+            
+            iter += 1
+            
+            if iter % 500 == 0:
+                # Calculate Accuracy         
+                correct = 0
+                total = 0
+                # Iterate through test dataset
+                for images, labels in test_loader:
+                    # Load images to tensors with gradient accumulation abilities
+                    images = images.requires_grad_()
+                    
+                    # Forward pass only to get logits/output
+                    outputs = model(images)
+                    
+                    # Get predictions from the maximum value
+                    _, predicted = torch.max(outputs.data, 1)
+                    
+                    # Total number of labels
+                    total += labels.size(0)
+                    
+                    # Total correct predictions
+                    correct += (predicted == labels).sum()
+                
+                accuracy = 100 * correct / total
+                
+                # Print Loss
+                print('Iteration: {}. Loss: {}. Accuracy: {}'.format(iter, loss.item(), accuracy))
+    ```
+
+```bash
+Iteration: 500. Loss: 0.6850348711013794. Accuracy: 85
+Iteration: 1000. Loss: 0.36549052596092224. Accuracy: 88
+Iteration: 1500. Loss: 0.31540098786354065. Accuracy: 89
+Iteration: 2000. Loss: 0.3522164225578308. Accuracy: 90
+Iteration: 2500. Loss: 0.2680729925632477. Accuracy: 91
+Iteration: 3000. Loss: 0.26440390944480896. Accuracy: 92
 ```
 
-    Iteration: 500. Loss: 0.6850348711013794. Accuracy: 85
-    Iteration: 1000. Loss: 0.36549052596092224. Accuracy: 88
-    Iteration: 1500. Loss: 0.31540098786354065. Accuracy: 89
-    Iteration: 2000. Loss: 0.3522164225578308. Accuracy: 90
-    Iteration: 2500. Loss: 0.2680729925632477. Accuracy: 91
-    Iteration: 3000. Loss: 0.26440390944480896. Accuracy: 92
-
-
 !!! note "Comparison of accuracies"
-    It seems like average pooling test accuracy is less than the max pooling accuracy! Does this mean average pooling is better? This is not definitive and depends on a lot of factors including the model's architecture and more.
+    It seems like average pooling test accuracy is less than the max pooling accuracy! Does this mean average pooling is better? This is not definitive and depends on a lot of factors including the model's architecture, seed (that affects random weight initialization) and more.
 
 ### Model C: 
 - 2 Convolutional Layers
@@ -609,173 +625,174 @@ for epoch in range(num_epochs):
 - Step 6: Instantiate Optimizer Class
 - Step 7: Train Model
 
-
-```python
-import torch
-import torch.nn as nn
-import torchvision.transforms as transforms
-import torchvision.datasets as dsets
-
-'''
-STEP 1: LOADING DATASET
-'''
-
-train_dataset = dsets.MNIST(root='./data', 
-                            train=True, 
-                            transform=transforms.ToTensor(),
-                            download=True)
-
-test_dataset = dsets.MNIST(root='./data', 
-                           train=False, 
-                           transform=transforms.ToTensor())
-
-'''
-STEP 2: MAKING DATASET ITERABLE
-'''
-
-batch_size = 100
-n_iters = 3000
-num_epochs = n_iters / (len(train_dataset) / batch_size)
-num_epochs = int(num_epochs)
-
-train_loader = torch.utils.data.DataLoader(dataset=train_dataset, 
-                                           batch_size=batch_size, 
-                                           shuffle=True)
-
-test_loader = torch.utils.data.DataLoader(dataset=test_dataset, 
-                                          batch_size=batch_size, 
-                                          shuffle=False)
-
-'''
-STEP 3: CREATE MODEL CLASS
-'''
-class CNNModel(nn.Module):
-    def __init__(self):
-        super(CNNModel, self).__init__()
-        
-        # Convolution 1
-        self.cnn1 = nn.Conv2d(in_channels=1, out_channels=16, kernel_size=5, stride=1, padding=0)
-        self.relu1 = nn.ReLU()
-        
-        # Max pool 1
-        self.maxpool1 = nn.MaxPool2d(kernel_size=2)
-     
-        # Convolution 2
-        self.cnn2 = nn.Conv2d(in_channels=16, out_channels=32, kernel_size=5, stride=1, padding=0)
-        self.relu2 = nn.ReLU()
-        
-        # Max pool 2
-        self.maxpool2 = nn.MaxPool2d(kernel_size=2)
-        
-        # Fully connected 1 (readout)
-        self.fc1 = nn.Linear(32 * 4 * 4, 10) 
+!!! note "2 Conv + 2 Max Pool + 1 FC (Valid Padding, No Padding)" 
+    ```python
+    import torch
+    import torch.nn as nn
+    import torchvision.transforms as transforms
+    import torchvision.datasets as dsets
     
-    def forward(self, x):
-        # Convolution 1
-        out = self.cnn1(x)
-        out = self.relu1(out)
-        
-        # Max pool 1
-        out = self.maxpool1(out)
-        
-        # Convolution 2 
-        out = self.cnn2(out)
-        out = self.relu2(out)
-        
-        # Max pool 2 
-        out = self.maxpool2(out)
-        
-        # Resize
-        # Original size: (100, 32, 7, 7)
-        # out.size(0): 100
-        # New out size: (100, 32*7*7)
-        out = out.view(out.size(0), -1)
-
-        # Linear function (readout)
-        out = self.fc1(out)
-        
-        return out
-
-'''
-STEP 4: INSTANTIATE MODEL CLASS
-'''
-
-model = CNNModel()
-
-'''
-STEP 5: INSTANTIATE LOSS CLASS
-'''
-criterion = nn.CrossEntropyLoss()
-
-
-'''
-STEP 6: INSTANTIATE OPTIMIZER CLASS
-'''
-learning_rate = 0.01
-
-optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
-
-'''
-STEP 7: TRAIN THE MODEL
-'''
-iter = 0
-for epoch in range(num_epochs):
-    for i, (images, labels) in enumerate(train_loader):
-        # Load images as tensors with gradient accumulation abilities
-        images = images.requires_grad_()
-        
-        # Clear gradients w.r.t. parameters
-        optimizer.zero_grad()
-        
-        # Forward pass to get output/logits
-        outputs = model(images)
-        
-        # Calculate Loss: softmax --> cross entropy loss
-        loss = criterion(outputs, labels)
-        
-        # Getting gradients w.r.t. parameters
-        loss.backward()
-        
-        # Updating parameters
-        optimizer.step()
-        
-        iter += 1
-        
-        if iter % 500 == 0:
-            # Calculate Accuracy         
-            correct = 0
-            total = 0
-            # Iterate through test dataset
-            for images, labels in test_loader:
-                # Load images to tensors with gradient accumulation abilities
-                images = images.requires_grad_()
-                
-                # Forward pass only to get logits/output
-                outputs = model(images)
-                
-                # Get predictions from the maximum value
-                _, predicted = torch.max(outputs.data, 1)
-                
-                # Total number of labels
-                total += labels.size(0)
-                
-                # Total correct predictions
-                correct += (predicted == labels).sum()
+    '''
+    STEP 1: LOADING DATASET
+    '''
+    
+    train_dataset = dsets.MNIST(root='./data', 
+                                train=True, 
+                                transform=transforms.ToTensor(),
+                                download=True)
+    
+    test_dataset = dsets.MNIST(root='./data', 
+                               train=False, 
+                               transform=transforms.ToTensor())
+    
+    '''
+    STEP 2: MAKING DATASET ITERABLE
+    '''
+    
+    batch_size = 100
+    n_iters = 3000
+    num_epochs = n_iters / (len(train_dataset) / batch_size)
+    num_epochs = int(num_epochs)
+    
+    train_loader = torch.utils.data.DataLoader(dataset=train_dataset, 
+                                               batch_size=batch_size, 
+                                               shuffle=True)
+    
+    test_loader = torch.utils.data.DataLoader(dataset=test_dataset, 
+                                              batch_size=batch_size, 
+                                              shuffle=False)
+    
+    '''
+    STEP 3: CREATE MODEL CLASS
+    '''
+    class CNNModel(nn.Module):
+        def __init__(self):
+            super(CNNModel, self).__init__()
             
-            accuracy = 100 * correct / total
+            # Convolution 1
+            self.cnn1 = nn.Conv2d(in_channels=1, out_channels=16, kernel_size=5, stride=1, padding=0)
+            self.relu1 = nn.ReLU()
             
-            # Print Loss
-            print('Iteration: {}. Loss: {}. Accuracy: {}'.format(iter, loss.item(), accuracy))
+            # Max pool 1
+            self.maxpool1 = nn.MaxPool2d(kernel_size=2)
+         
+            # Convolution 2
+            self.cnn2 = nn.Conv2d(in_channels=16, out_channels=32, kernel_size=5, stride=1, padding=0)
+            self.relu2 = nn.ReLU()
+            
+            # Max pool 2
+            self.maxpool2 = nn.MaxPool2d(kernel_size=2)
+            
+            # Fully connected 1 (readout)
+            self.fc1 = nn.Linear(32 * 4 * 4, 10) 
+        
+        def forward(self, x):
+            # Convolution 1
+            out = self.cnn1(x)
+            out = self.relu1(out)
+            
+            # Max pool 1
+            out = self.maxpool1(out)
+            
+            # Convolution 2 
+            out = self.cnn2(out)
+            out = self.relu2(out)
+            
+            # Max pool 2 
+            out = self.maxpool2(out)
+            
+            # Resize
+            # Original size: (100, 32, 7, 7)
+            # out.size(0): 100
+            # New out size: (100, 32*7*7)
+            out = out.view(out.size(0), -1)
+    
+            # Linear function (readout)
+            out = self.fc1(out)
+            
+            return out
+    
+    '''
+    STEP 4: INSTANTIATE MODEL CLASS
+    '''
+    
+    model = CNNModel()
+    
+    '''
+    STEP 5: INSTANTIATE LOSS CLASS
+    '''
+    criterion = nn.CrossEntropyLoss()
+    
+    
+    '''
+    STEP 6: INSTANTIATE OPTIMIZER CLASS
+    '''
+    learning_rate = 0.01
+    
+    optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
+    
+    '''
+    STEP 7: TRAIN THE MODEL
+    '''
+    iter = 0
+    for epoch in range(num_epochs):
+        for i, (images, labels) in enumerate(train_loader):
+            # Load images as tensors with gradient accumulation abilities
+            images = images.requires_grad_()
+            
+            # Clear gradients w.r.t. parameters
+            optimizer.zero_grad()
+            
+            # Forward pass to get output/logits
+            outputs = model(images)
+            
+            # Calculate Loss: softmax --> cross entropy loss
+            loss = criterion(outputs, labels)
+            
+            # Getting gradients w.r.t. parameters
+            loss.backward()
+            
+            # Updating parameters
+            optimizer.step()
+            
+            iter += 1
+            
+            if iter % 500 == 0:
+                # Calculate Accuracy         
+                correct = 0
+                total = 0
+                # Iterate through test dataset
+                for images, labels in test_loader:
+                    # Load images to tensors with gradient accumulation abilities
+                    images = images.requires_grad_()
+                    
+                    # Forward pass only to get logits/output
+                    outputs = model(images)
+                    
+                    # Get predictions from the maximum value
+                    _, predicted = torch.max(outputs.data, 1)
+                    
+                    # Total number of labels
+                    total += labels.size(0)
+                    
+                    # Total correct predictions
+                    correct += (predicted == labels).sum()
+                
+                accuracy = 100 * correct / total
+                
+                # Print Loss
+                print('Iteration: {}. Loss: {}. Accuracy: {}'.format(iter, loss.item(), accuracy))
+    ```
+
+```bash
+Iteration: 500. Loss: 0.5153220295906067. Accuracy: 88
+Iteration: 1000. Loss: 0.28784745931625366. Accuracy: 92
+Iteration: 1500. Loss: 0.4086027443408966. Accuracy: 94
+Iteration: 2000. Loss: 0.09390712529420853. Accuracy: 95
+Iteration: 2500. Loss: 0.07138358801603317. Accuracy: 95
+Iteration: 3000. Loss: 0.05396252125501633. Accuracy: 96
 ```
-
-    Iteration: 500. Loss: 0.5153220295906067. Accuracy: 88
-    Iteration: 1000. Loss: 0.28784745931625366. Accuracy: 92
-    Iteration: 1500. Loss: 0.4086027443408966. Accuracy: 94
-    Iteration: 2000. Loss: 0.09390712529420853. Accuracy: 95
-    Iteration: 2500. Loss: 0.07138358801603317. Accuracy: 95
-    Iteration: 3000. Loss: 0.05396252125501633. Accuracy: 96
-
-
+  
 ### Summary of Results
 
 | Model A | Model B | Model C | 
@@ -824,190 +841,194 @@ GPU: 2 things must be on GPU
 - **Step 7: Train Model**
 
 
-```python
-import torch
-import torch.nn as nn
-import torchvision.transforms as transforms
-import torchvision.datasets as dsets 
-
-'''
-STEP 1: LOADING DATASET
-'''
-
-train_dataset = dsets.MNIST(root='./data', 
-                            train=True, 
-                            transform=transforms.ToTensor(),
-                            download=True)
-
-test_dataset = dsets.MNIST(root='./data', 
-                           train=False, 
-                           transform=transforms.ToTensor())
-
-'''
-STEP 2: MAKING DATASET ITERABLE
-'''
-
-batch_size = 100
-n_iters = 3000
-num_epochs = n_iters / (len(train_dataset) / batch_size)
-num_epochs = int(num_epochs)
-
-train_loader = torch.utils.data.DataLoader(dataset=train_dataset, 
-                                           batch_size=batch_size, 
-                                           shuffle=True)
-
-test_loader = torch.utils.data.DataLoader(dataset=test_dataset, 
-                                          batch_size=batch_size, 
-                                          shuffle=False)
-
-'''
-STEP 3: CREATE MODEL CLASS
-'''
-class CNNModel(nn.Module):
-    def __init__(self):
-        super(CNNModel, self).__init__()
-        
-        # Convolution 1
-        self.cnn1 = nn.Conv2d(in_channels=1, out_channels=16, kernel_size=5, stride=1, padding=0)
-        self.relu1 = nn.ReLU()
-        
-        # Max pool 1
-        self.maxpool1 = nn.MaxPool2d(kernel_size=2)
-     
-        # Convolution 2
-        self.cnn2 = nn.Conv2d(in_channels=16, out_channels=32, kernel_size=5, stride=1, padding=0)
-        self.relu2 = nn.ReLU()
-        
-        # Max pool 2
-        self.maxpool2 = nn.MaxPool2d(kernel_size=2)
-        
-        # Fully connected 1 (readout)
-        self.fc1 = nn.Linear(32 * 4 * 4, 10) 
+!!! note "2 Conv + 2 Max Pooling + 1 FC (Same Padding, Zero Padding)"
+    ```python
+    import torch
+    import torch.nn as nn
+    import torchvision.transforms as transforms
+    import torchvision.datasets as dsets 
     
-    def forward(self, x):
-        # Convolution 1
-        out = self.cnn1(x)
-        out = self.relu1(out)
-        
-        # Max pool 1
-        out = self.maxpool1(out)
-        
-        # Convolution 2 
-        out = self.cnn2(out)
-        out = self.relu2(out)
-        
-        # Max pool 2 
-        out = self.maxpool2(out)
-        
-        # Resize
-        # Original size: (100, 32, 7, 7)
-        # out.size(0): 100
-        # New out size: (100, 32*7*7)
-        out = out.view(out.size(0), -1)
-
-        # Linear function (readout)
-        out = self.fc1(out)
-        
-        return out
-
-'''
-STEP 4: INSTANTIATE MODEL CLASS
-'''
-
-model = CNNModel()
-
-#######################
-#  USE GPU FOR MODEL  #
-#######################
-
-device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-model.to(device)
-
-'''
-STEP 5: INSTANTIATE LOSS CLASS
-'''
-criterion = nn.CrossEntropyLoss()
-
-
-'''
-STEP 6: INSTANTIATE OPTIMIZER CLASS
-'''
-learning_rate = 0.01
-
-optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
-
-'''
-STEP 7: TRAIN THE MODEL
-'''
-iter = 0
-for epoch in range(num_epochs):
-    for i, (images, labels) in enumerate(train_loader):
-        
-        #######################
-        #  USE GPU FOR MODEL  #
-        #######################
-        images = images.requires_grad_().to(device)
-        labels = labels.to(device)
-        
-        # Clear gradients w.r.t. parameters
-        optimizer.zero_grad()
-        
-        # Forward pass to get output/logits
-        outputs = model(images)
-        
-        # Calculate Loss: softmax --> cross entropy loss
-        loss = criterion(outputs, labels)
-        
-        # Getting gradients w.r.t. parameters
-        loss.backward()
-        
-        # Updating parameters
-        optimizer.step()
-        
-        iter += 1
-        
-        if iter % 500 == 0:
-            # Calculate Accuracy         
-            correct = 0
-            total = 0
-            # Iterate through test dataset
-            for images, labels in test_loader:
-                #######################
-                #  USE GPU FOR MODEL  #
-                #######################
-                images = images.requires_grad_().to(device)
-                labels = labels.to(device)
-                
-                # Forward pass only to get logits/output
-                outputs = model(images)
-                
-                # Get predictions from the maximum value
-                _, predicted = torch.max(outputs.data, 1)
-                
-                # Total number of labels
-                total += labels.size(0)
-                
-                #######################
-                #  USE GPU FOR MODEL  #
-                #######################
-                # Total correct predictions
-                if torch.cuda.is_available():
-                    correct += (predicted.cpu() == labels.cpu()).sum()
-                else:
-                    correct += (predicted == labels).sum()
+    '''
+    STEP 1: LOADING DATASET
+    '''
+    
+    train_dataset = dsets.MNIST(root='./data', 
+                                train=True, 
+                                transform=transforms.ToTensor(),
+                                download=True)
+    
+    test_dataset = dsets.MNIST(root='./data', 
+                               train=False, 
+                               transform=transforms.ToTensor())
+    
+    '''
+    STEP 2: MAKING DATASET ITERABLE
+    '''
+    
+    batch_size = 100
+    n_iters = 3000
+    num_epochs = n_iters / (len(train_dataset) / batch_size)
+    num_epochs = int(num_epochs)
+    
+    train_loader = torch.utils.data.DataLoader(dataset=train_dataset, 
+                                               batch_size=batch_size, 
+                                               shuffle=True)
+    
+    test_loader = torch.utils.data.DataLoader(dataset=test_dataset, 
+                                              batch_size=batch_size, 
+                                              shuffle=False)
+    
+    '''
+    STEP 3: CREATE MODEL CLASS
+    '''
+    class CNNModel(nn.Module):
+        def __init__(self):
+            super(CNNModel, self).__init__()
             
-            accuracy = 100 * correct / total
+            # Convolution 1
+            self.cnn1 = nn.Conv2d(in_channels=1, out_channels=16, kernel_size=5, stride=1, padding=0)
+            self.relu1 = nn.ReLU()
             
-            # Print Loss
-            print('Iteration: {}. Loss: {}. Accuracy: {}'.format(iter, loss.item(), accuracy))
+            # Max pool 1
+            self.maxpool1 = nn.MaxPool2d(kernel_size=2)
+         
+            # Convolution 2
+            self.cnn2 = nn.Conv2d(in_channels=16, out_channels=32, kernel_size=5, stride=1, padding=0)
+            self.relu2 = nn.ReLU()
+            
+            # Max pool 2
+            self.maxpool2 = nn.MaxPool2d(kernel_size=2)
+            
+            # Fully connected 1 (readout)
+            self.fc1 = nn.Linear(32 * 4 * 4, 10) 
+        
+        def forward(self, x):
+            # Convolution 1
+            out = self.cnn1(x)
+            out = self.relu1(out)
+            
+            # Max pool 1
+            out = self.maxpool1(out)
+            
+            # Convolution 2 
+            out = self.cnn2(out)
+            out = self.relu2(out)
+            
+            # Max pool 2 
+            out = self.maxpool2(out)
+            
+            # Resize
+            # Original size: (100, 32, 7, 7)
+            # out.size(0): 100
+            # New out size: (100, 32*7*7)
+            out = out.view(out.size(0), -1)
+    
+            # Linear function (readout)
+            out = self.fc1(out)
+            
+            return out
+    
+    '''
+    STEP 4: INSTANTIATE MODEL CLASS
+    '''
+    
+    model = CNNModel()
+    
+    #######################
+    #  USE GPU FOR MODEL  #
+    #######################
+    
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    model.to(device)
+    
+    '''
+    STEP 5: INSTANTIATE LOSS CLASS
+    '''
+    criterion = nn.CrossEntropyLoss()
+    
+    
+    '''
+    STEP 6: INSTANTIATE OPTIMIZER CLASS
+    '''
+    learning_rate = 0.01
+    
+    optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
+    
+    '''
+    STEP 7: TRAIN THE MODEL
+    '''
+    iter = 0
+    for epoch in range(num_epochs):
+        for i, (images, labels) in enumerate(train_loader):
+            
+            #######################
+            #  USE GPU FOR MODEL  #
+            #######################
+            images = images.requires_grad_().to(device)
+            labels = labels.to(device)
+            
+            # Clear gradients w.r.t. parameters
+            optimizer.zero_grad()
+            
+            # Forward pass to get output/logits
+            outputs = model(images)
+            
+            # Calculate Loss: softmax --> cross entropy loss
+            loss = criterion(outputs, labels)
+            
+            # Getting gradients w.r.t. parameters
+            loss.backward()
+            
+            # Updating parameters
+            optimizer.step()
+            
+            iter += 1
+            
+            if iter % 500 == 0:
+                # Calculate Accuracy         
+                correct = 0
+                total = 0
+                # Iterate through test dataset
+                for images, labels in test_loader:
+                    #######################
+                    #  USE GPU FOR MODEL  #
+                    #######################
+                    images = images.requires_grad_().to(device)
+                    labels = labels.to(device)
+                    
+                    # Forward pass only to get logits/output
+                    outputs = model(images)
+                    
+                    # Get predictions from the maximum value
+                    _, predicted = torch.max(outputs.data, 1)
+                    
+                    # Total number of labels
+                    total += labels.size(0)
+                    
+                    #######################
+                    #  USE GPU FOR MODEL  #
+                    #######################
+                    # Total correct predictions
+                    if torch.cuda.is_available():
+                        correct += (predicted.cpu() == labels.cpu()).sum()
+                    else:
+                        correct += (predicted == labels).sum()
+                
+                accuracy = 100 * correct / total
+                
+                # Print Loss
+                print('Iteration: {}. Loss: {}. Accuracy: {}'.format(iter, loss.item(), accuracy))
+    ```
+
+```bash
+Iteration: 500. Loss: 0.36831170320510864. Accuracy: 88
+Iteration: 1000. Loss: 0.31790846586227417. Accuracy: 92
+Iteration: 1500. Loss: 0.1510857343673706. Accuracy: 94
+Iteration: 2000. Loss: 0.08368007838726044. Accuracy: 95
+Iteration: 2500. Loss: 0.13419771194458008. Accuracy: 96
+Iteration: 3000. Loss: 0.16750787198543549. Accuracy: 96
 ```
 
-    Iteration: 500. Loss: 0.36831170320510864. Accuracy: 88
-    Iteration: 1000. Loss: 0.31790846586227417. Accuracy: 92
-    Iteration: 1500. Loss: 0.1510857343673706. Accuracy: 94
-    Iteration: 2000. Loss: 0.08368007838726044. Accuracy: 95
-    Iteration: 2500. Loss: 0.13419771194458008. Accuracy: 96
-    Iteration: 3000. Loss: 0.16750787198543549. Accuracy: 96
 
 !!! tip "More Efficient Convolutions via Toeplitz Matrices"
     This is beyond the scope of this particular lesson. But now that we understand how convolutions work, it is critical to know that it is quite an inefficient operation if we use for-loops to perform our 2D convolutions (5 x 5 convolution kernel size for example) on our 2D images (28 x 28 MNIST image for example).
