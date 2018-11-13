@@ -15,7 +15,7 @@ cd ..
 git checkout gh-pages
 cd site
 touch .nojekyll
-git cd ..
+cd ..
 git checkout gh-pages
 git add ./site
 git commit -m "Manual deploy"
