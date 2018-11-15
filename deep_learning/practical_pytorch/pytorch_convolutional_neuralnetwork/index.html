@@ -1440,9 +1440,14 @@
 </ul>
 <h5 id="output-formula-for-pooling">Output Formula for Pooling<a class="headerlink" href="#output-formula-for-pooling" title="Permanent link">&para;</a></h5>
 <ul>
-<li><span><span class="MathJax_Preview">O = \frac {W}{K}</span><script type="math/tex">O = \frac {W}{K}</script></span><ul>
+<li><span><span class="MathJax_Preview">O = \frac {W - K}{S} + 1</span><script type="math/tex">O = \frac {W - K}{S} + 1</script></span><ul>
 <li>W: input height/width</li>
 <li>K: <strong>filter size = 2</strong></li>
+<li>S: <strong>stride size = filter size</strong>, PyTorch defaults the stride to kernel filter size<ul>
+<li>If using PyTorch default stride, this will result in the formula $ O = \frac {W}{K}$</li>
+<li>By default, in our tutorials, we do this for simplicity.</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
