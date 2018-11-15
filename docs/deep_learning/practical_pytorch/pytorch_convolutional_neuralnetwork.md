@@ -214,7 +214,7 @@ torch.Size([10000])
     - W: input height/width
     - K: **filter size = 2**
     - S: **stride size = filter size**, PyTorch defaults the stride to kernel filter size
-        - If using PyTorch default stride, this will result in the formula $ O = \frac {W}{K}$
+        - If using PyTorch default stride, this will result in the formula $O = \frac {W}{K}$
         - By default, in our tutorials, we do this for simplicity.
      
 ![](./images/cnn10-2n.png)
