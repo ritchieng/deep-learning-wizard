@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 echo Cleaning files for deploy...
-find . -name "*.pt" -exec rm {} \;
-find . -name "*-ubyte" -exec rm {} \;
-find . -name "*.ipynb" -exec rm {} \;
-find . -name "*.ipynb_checkpoints" -exec rm {} \;
+sudo find . -name "*.pt" -exec rm {} \;
+sudo find . -name "*-ubyte" -exec rm {} \;
+sudo find . -name "*.ipynb" -exec rm {} \;
+sudo find . -name "*.ipynb_checkpoints" -exec rmdir {} \;
 
 echo Deploy to pages branch
 mkdocs gh-deploy --force
