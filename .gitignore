@@ -3,4 +3,5 @@
 *.ipynb_checkpoints
 *.pt
 *-ubyte
+*-ubyte.gz
 site/
