@@ -20,6 +20,7 @@ pages:
 
     - News:
       - Welcome: news/news.md
+      - AMMI (AIMS) supported by Facebook and Google, November 2018: news/ammi_facebook_google_recap_2018_11_21.md
       - NExT++ AI in Healthcare and Finance, Nanjing, November 2018: news/nanjing_next_nus_tsinghua_ai_finance_healthcare_2018_11_01.md
       - Recap of Facebook PyTorch Developer Conference, San Francisco, September 2018: news/facebook_pytorch_devcon_recap_2018_10_02.md
       - Facebook PyTorch Developer Conference, San Francisco, September 2018: news/facebook_pytorch_developer_conference_2018_09_05.md
