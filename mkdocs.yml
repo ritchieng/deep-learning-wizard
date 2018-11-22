@@ -11,12 +11,14 @@ pages:
     - Reviews: review.md
     - Deep Learning Wiki:
       - Introduction: deep_learning/intro.md
-      - PyTorch Fundamentals - Matrices: deep_learning/practical_pytorch/pytorch_matrices.md
-      - PyTorch Fundamentals - Gradients: deep_learning/practical_pytorch/pytorch_gradients.md
-      - PyTorch Fundamentals - Linear Regression: deep_learning/practical_pytorch/pytorch_linear_regression.md
-      - PyTorch Fundamentals - Logistic Regression: deep_learning/practical_pytorch/pytorch_logistic_regression.md
-      - PyTorch Fundamentals - Feedforward Neural Networks: deep_learning/practical_pytorch/pytorch_feedforward_neuralnetwork.md
-      - PyTorch Fundamentals - Convolutional Neural Networks: deep_learning/practical_pytorch/pytorch_convolutional_neuralnetwork.md
+      - Course Progression: deep_learning/course_progression.md
+      - Matrices: deep_learning/practical_pytorch/pytorch_matrices.md
+      - Gradients: deep_learning/practical_pytorch/pytorch_gradients.md
+      - Linear Regression: deep_learning/practical_pytorch/pytorch_linear_regression.md
+      - Logistic Regression: deep_learning/practical_pytorch/pytorch_logistic_regression.md
+      - Feedforward Neural Networks: deep_learning/practical_pytorch/pytorch_feedforward_neuralnetwork.md
+      - Convolutional Neural Networks: deep_learning/practical_pytorch/pytorch_convolutional_neuralnetwork.md
+      # - Recurrent Neural Networks: deep_learning/practical_pytorch/pytorch_recurrent_neuralnetwork.md
 
     - News:
       - Welcome: news/news.md
@@ -39,12 +41,12 @@ theme:
   logo:
     icon: 'whatshot'
   palette:
-    primary: 'indigo'
-    accent: 'indigo'
+    primary: 'blue-grey'
+    accent: 'blue'
   font:
     text: 'Roboto'
     code: 'Roboto Mono'
-  favicon: 'assets/images/favicon.ico'
+  favicon: './assets/images/favicon.ico'
 
 # Extensions
 markdown_extensions:

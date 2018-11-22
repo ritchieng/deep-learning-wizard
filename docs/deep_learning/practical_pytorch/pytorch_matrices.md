@@ -1,4 +1,4 @@
-# PyTorch Fundamentals - Matrices 
+# Matrices with PyTorch 
 
 ## Matrices
 

@@ -1,4 +1,4 @@
-# PyTorch Fundamentals - Gradients
+# Gradients with PyTorch
 
 ## Tensors with Gradients
 
