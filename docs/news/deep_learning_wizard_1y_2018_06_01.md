@@ -2,8 +2,6 @@
 
 ## PyTorch a Year Later
 
-<center><img src="https://pytorch.org/static/img/logos/pytorch-logo-dark.png" style="width:400px"/></center>
-
 We are featured on [PyTorch website's post](https://pytorch.org/2018/01/19/a-year-in.html) :ghost:
 
 I used PyTorch from day 1 and I fell in love with it. One year later, PyTorch's community has grown tremendously. I thank Facebook AI Research (FAIR) and everyone who contributed to building one of the best deep learning framework. In particular Soumith Chintala from FAIR where he is continually fixing bugs and making PyTorch better everyday.
