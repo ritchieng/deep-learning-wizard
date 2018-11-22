@@ -1,0 +1,1860 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="We deploy a top-down approach that enables you to grasp deep learning theories and code easily and quickly. Used by thousands of students and professionals from top tech companies, research institutions.">
+      
+      
+        <link rel="canonical" href="https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_recurrent_neuralnetwork/">
+      
+      
+        <meta name="author" content="Ritchie Ng">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../../assets/images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+    
+    
+      
+        <title>Recurrent Neural Network with PyTorch - Deep Learning Wizard</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.451f80e5.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#546e7a">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue-grey" data-md-color-accent="blue">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../../../#recurrent-neural-network-with-pytorch" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://www.deeplearningwizard.com/" title="Deep Learning Wizard" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">whatshot</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Deep Learning Wizard
+              </span>
+              <span class="md-header-nav__topic">
+                Recurrent Neural Network with PyTorch
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+<nav class="md-tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../../.." title="Home" class="md-tabs__link md-tabs__link--active">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../intro/" title="Deep Learning Wiki" class="md-tabs__link">
+          Deep Learning Wiki
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../news/news/" title="News" class="md-tabs__link">
+          News
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://www.deeplearningwizard.com/" title="Deep Learning Wizard" class="md-nav__button md-logo">
+      
+        <i class="md-icon">whatshot</i>
+      
+    </a>
+    Deep Learning Wizard
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../supporters/" title="Supporters" class="md-nav__link">
+      Supporters
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../review/" title="Reviews" class="md-nav__link">
+      Reviews
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Deep Learning Wiki
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Deep Learning Wiki
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../intro/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../course_progression/" title="Course Progression" class="md-nav__link">
+      Course Progression
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../pytorch_matrices/" title="Matrices" class="md-nav__link">
+      Matrices
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../pytorch_gradients/" title="Gradients" class="md-nav__link">
+      Gradients
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../pytorch_linear_regression/" title="Linear Regression" class="md-nav__link">
+      Linear Regression
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../pytorch_logistic_regression/" title="Logistic Regression" class="md-nav__link">
+      Logistic Regression
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../pytorch_feedforward_neuralnetwork/" title="Feedforward Neural Networks" class="md-nav__link">
+      Feedforward Neural Networks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../pytorch_convolutional_neuralnetwork/" title="Convolutional Neural Networks" class="md-nav__link">
+      Convolutional Neural Networks
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      News
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        News
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/news/" title="Welcome" class="md-nav__link">
+      Welcome
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/ammi_facebook_google_recap_2018_11_21/" title="AMMI (AIMS) supported by Facebook and Google, November 2018" class="md-nav__link">
+      AMMI (AIMS) supported by Facebook and Google, November 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/nanjing_next_nus_tsinghua_ai_finance_healthcare_2018_11_01/" title="NExT++ AI in Healthcare and Finance, Nanjing, November 2018" class="md-nav__link">
+      NExT++ AI in Healthcare and Finance, Nanjing, November 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/facebook_pytorch_devcon_recap_2018_10_02/" title="Recap of Facebook PyTorch Developer Conference, San Francisco, September 2018" class="md-nav__link">
+      Recap of Facebook PyTorch Developer Conference, San Francisco, September 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/facebook_pytorch_developer_conference_2018_09_05/" title="Facebook PyTorch Developer Conference, San Francisco, September 2018" class="md-nav__link">
+      Facebook PyTorch Developer Conference, San Francisco, September 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/nvidia_nus_mit_datathon_2018_07_05/" title="NUS-MIT-NUHS NVIDIA Image Recognition Workshop, Singapore, July 2018" class="md-nav__link">
+      NUS-MIT-NUHS NVIDIA Image Recognition Workshop, Singapore, July 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/deep_learning_wizard_1y_2018_06_01/" title="Featured on PyTorch Website 2018" class="md-nav__link">
+      Featured on PyTorch Website 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/nvidia_self_driving_cars_talk_2017_06_21/" title="NVIDIA Self Driving Cars & Healthcare Talk, Singapore, June 2017" class="md-nav__link">
+      NVIDIA Self Driving Cars & Healthcare Talk, Singapore, June 2017
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/deep_learning_wizard_nvidia_inception_2018_05_01/" title="NVIDIA Inception Partner Status, Singapore, May 2017" class="md-nav__link">
+      NVIDIA Inception Partner Status, Singapore, May 2017
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#about-recurrent-neural-network" title="About Recurrent Neural Network" class="md-nav__link">
+    About Recurrent Neural Network
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#feedforward-neural-networks-transition-to-recurrent-neural-networks" title="Feedforward Neural Networks Transition to Recurrent Neural Networks" class="md-nav__link">
+    Feedforward Neural Networks Transition to Recurrent Neural Networks
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#weights-transition" title="Weights Transition" class="md-nav__link">
+    Weights Transition
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-a-recurrent-neural-network-with-pytorch" title="Building a Recurrent Neural Network with PyTorch" class="md-nav__link">
+    Building a Recurrent Neural Network with PyTorch
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model-a-1-hidden-layer-relu" title="Model A: 1 Hidden Layer (ReLU)" class="md-nav__link">
+    Model A: 1 Hidden Layer (ReLU)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steps" title="Steps" class="md-nav__link">
+    Steps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-1-loading-mnist-train-dataset" title="Step 1: Loading MNIST Train Dataset" class="md-nav__link">
+    Step 1: Loading MNIST Train Dataset
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-make-dataset-iterable" title="Step 2: Make Dataset Iterable" class="md-nav__link">
+    Step 2: Make Dataset Iterable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-create-model-class" title="Step 3: Create Model Class" class="md-nav__link">
+    Step 3: Create Model Class
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-instantiate-model-class" title="Step 4: Instantiate Model Class" class="md-nav__link">
+    Step 4: Instantiate Model Class
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-instantiate-loss-class" title="Step 5: Instantiate Loss Class" class="md-nav__link">
+    Step 5: Instantiate Loss Class
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-instantiate-optimizer-class" title="Step 6: Instantiate Optimizer Class" class="md-nav__link">
+    Step 6: Instantiate Optimizer Class
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters-in-depth" title="Parameters In-Depth" class="md-nav__link">
+    Parameters In-Depth
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-7-train-model" title="Step 7: Train Model" class="md-nav__link">
+    Step 7: Train Model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-b-2-hidden-layer-relu" title="Model B: 2 Hidden Layer (ReLU)" class="md-nav__link">
+    Model B: 2 Hidden Layer (ReLU)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steps_1" title="Steps" class="md-nav__link">
+    Steps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-c-2-hidden-layer" title="Model C: 2 Hidden Layer" class="md-nav__link">
+    Model C: 2 Hidden Layer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steps_2" title="Steps" class="md-nav__link">
+    Steps
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-of-results" title="Summary of Results" class="md-nav__link">
+    Summary of Results
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deep-learning" title="Deep Learning" class="md-nav__link">
+    Deep Learning
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-building-a-recurrent-neural-network-with-pytorch-gpu" title="3. Building a Recurrent Neural Network with PyTorch (GPU)" class="md-nav__link">
+    3. Building a Recurrent Neural Network with PyTorch (GPU)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model-c-2-hidden-layer-tanh" title="Model C: 2 Hidden Layer (Tanh)" class="md-nav__link">
+    Model C: 2 Hidden Layer (Tanh)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steps_3" title="Steps" class="md-nav__link">
+    Steps
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="Comments" class="md-nav__link md-nav__link--active">
+            Comments
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="recurrent-neural-network-with-pytorch">Recurrent Neural Network with PyTorch<a class="headerlink" href="#recurrent-neural-network-with-pytorch" title="Permanent link">&para;</a></h1>
+<h2 id="about-recurrent-neural-network">About Recurrent Neural Network<a class="headerlink" href="#about-recurrent-neural-network" title="Permanent link">&para;</a></h2>
+<h3 id="feedforward-neural-networks-transition-to-recurrent-neural-networks">Feedforward Neural Networks Transition to Recurrent Neural Networks<a class="headerlink" href="#feedforward-neural-networks-transition-to-recurrent-neural-networks" title="Permanent link">&para;</a></h3>
+<ul>
+<li>RNN is essentially an FNN but with a hidden layer (non-linear output) that passes on information to the next FNN</li>
+<li>Compared to an FNN, we've one additional set of weight and bias that allows information to flow from one FNN to another FNN sequentially that allows time-dependency.</li>
+<li>The diagram below shows the only difference between an FNN and a RNN.
+<img alt="" src="../images/rnn0-1.png" /></li>
+</ul>
+<h3 id="weights-transition">Weights Transition<a class="headerlink" href="#weights-transition" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../images/rnn0-2.png" /></p>
+<h2 id="building-a-recurrent-neural-network-with-pytorch">Building a Recurrent Neural Network with PyTorch<a class="headerlink" href="#building-a-recurrent-neural-network-with-pytorch" title="Permanent link">&para;</a></h2>
+<h3 id="model-a-1-hidden-layer-relu">Model A: 1 Hidden Layer (ReLU)<a class="headerlink" href="#model-a-1-hidden-layer-relu" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Unroll 28 time steps<ul>
+<li>Each step input size: 28 x 1</li>
+<li>Total per unroll: 28 x 28<ul>
+<li>Feedforward Neural Network input size: 28 x 28 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>1 Hidden layer</li>
+<li>ReLU Activation Function
+<img src="./images/rnn2n.png" alt="deeplearningwizard" style="width: 500px;"/></li>
+</ul>
+<h3 id="steps">Steps<a class="headerlink" href="#steps" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Step 1: Load Dataset</li>
+<li>Step 2: Make Dataset Iterable</li>
+<li>Step 3: Create Model Class</li>
+<li>Step 4: Instantiate Model Class</li>
+<li>Step 5: Instantiate Loss Class</li>
+<li>Step 6: Instantiate Optimizer Class</li>
+<li>Step 7: Train Model</li>
+</ul>
+<h3 id="step-1-loading-mnist-train-dataset">Step 1: Loading MNIST Train Dataset<a class="headerlink" href="#step-1-loading-mnist-train-dataset" title="Permanent link">&para;</a></h3>
+<p><strong>Images from 1 to 9</strong></p>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="kn">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torchvision.transforms</span> <span class="kn">as</span> <span class="nn">transforms</span>
+<span class="kn">import</span> <span class="nn">torchvision.datasets</span> <span class="kn">as</span> <span class="nn">dsets</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span><span class="n">train_dataset</span> <span class="o">=</span> <span class="n">dsets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;./data&#39;</span><span class="p">,</span> 
+                            <span class="n">train</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> 
+                            <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+                            <span class="n">download</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">test_dataset</span> <span class="o">=</span> <span class="n">dsets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;./data&#39;</span><span class="p">,</span> 
+                           <span class="n">train</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> 
+                           <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">())</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">train_dataset</span><span class="o">.</span><span class="n">train_data</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>torch.Size([60000, 28, 28])
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">train_dataset</span><span class="o">.</span><span class="n">train_labels</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>torch.Size([60000])
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">test_dataset</span><span class="o">.</span><span class="n">test_data</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>torch.Size([10000, 28, 28])
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">test_dataset</span><span class="o">.</span><span class="n">test_labels</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>torch.Size([10000])
+</pre></div>
+
+
+<h3 id="step-2-make-dataset-iterable">Step 2: Make Dataset Iterable<a class="headerlink" href="#step-2-make-dataset-iterable" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">n_iters</span> <span class="o">=</span> <span class="mi">3000</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="n">n_iters</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">)</span> <span class="o">/</span> <span class="n">batch_size</span><span class="p">)</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">)</span>
+
+<span class="n">train_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">train_dataset</span><span class="p">,</span> 
+                                           <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> 
+                                           <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">test_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">test_dataset</span><span class="p">,</span> 
+                                          <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> 
+                                          <span class="n">shuffle</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+
+<h3 id="step-3-create-model-class">Step 3: Create Model Class<a class="headerlink" href="#step-3-create-model-class" title="Permanent link">&para;</a></h3>
+<p><img src="./images/rnn2n.png" alt="deeplearningwizard" style="width: 500px;"/></p>
+<div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">RNNModel</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">layer_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RNNModel</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="c1"># Hidden dimensions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span> <span class="o">=</span> <span class="n">hidden_dim</span>
+
+        <span class="c1"># Number of hidden layers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layer_dim</span> <span class="o">=</span> <span class="n">layer_dim</span>
+
+        <span class="c1"># Building your RNN</span>
+        <span class="c1"># batch_first=True causes input/output tensors to be of shape</span>
+        <span class="c1"># (batch_dim, seq_dim, input_dim)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rnn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">RNN</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">layer_dim</span><span class="p">,</span> <span class="n">batch_first</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">nonlinearity</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Readout layer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="c1"># Initialize hidden state with zeros</span>
+        <span class="c1"># (layer_dim, batch_size, hidden_dim)</span>
+        <span class="n">h0</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layer_dim</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">)</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">()</span>
+
+        <span class="c1"># We need to detach the hidden state to prevent exploding/vanishing gradients</span>
+        <span class="c1"># This is part of truncated backpropagation through time (BPTT)</span>
+        <span class="n">out</span><span class="p">,</span> <span class="n">hn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rnn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">h0</span><span class="o">.</span><span class="n">detach</span><span class="p">())</span>
+
+        <span class="c1"># Index hidden state of last time step</span>
+        <span class="c1"># out.size() --&gt; 100, 28, 10</span>
+        <span class="c1"># out[:, -1, :] --&gt; 100, 10 --&gt; just want last time step hidden states! </span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc</span><span class="p">(</span><span class="n">out</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:])</span> 
+        <span class="c1"># out.size() --&gt; 100, 10</span>
+        <span class="k">return</span> <span class="n">out</span>
+</pre></div>
+
+<h3 id="step-4-instantiate-model-class">Step 4: Instantiate Model Class<a class="headerlink" href="#step-4-instantiate-model-class" title="Permanent link">&para;</a></h3>
+<ul>
+<li>28 time steps<ul>
+<li>Each time step: input dimension = 28</li>
+</ul>
+</li>
+<li>1 hidden layer</li>
+<li>MNIST 1-9 digits <span><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> output dimension = 10</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="n">input_dim</span> <span class="o">=</span> <span class="mi">28</span>
+<span class="n">hidden_dim</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">layer_dim</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">output_dim</span> <span class="o">=</span> <span class="mi">10</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">RNNModel</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">layer_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">)</span>
+</pre></div>
+
+<h3 id="step-5-instantiate-loss-class">Step 5: Instantiate Loss Class<a class="headerlink" href="#step-5-instantiate-loss-class" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Recurrent Neural Network: <strong>Cross Entropy Loss</strong><ul>
+<li><em>Convolutional Neural Network</em>: <strong>Cross Entropy Loss</strong></li>
+<li><em>Feedforward Neural Network</em>: <strong>Cross Entropy Loss</strong></li>
+<li><em>Logistic Regression</em>: <strong>Cross Entropy Loss</strong></li>
+<li><em>Linear Regression</em>: <strong>MSE</strong></li>
+</ul>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+</pre></div>
+
+<h3 id="step-6-instantiate-optimizer-class">Step 6: Instantiate Optimizer Class<a class="headerlink" href="#step-6-instantiate-optimizer-class" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Simplified equation<ul>
+<li>$\theta = \theta - \eta \cdot \nabla_\theta $<ul>
+<li><span><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span>: parameters (our tensors with gradient accumulation abilities)</li>
+<li><span><span class="MathJax_Preview">\eta</span><script type="math/tex">\eta</script></span>: learning rate (how fast we want to learn)</li>
+<li><span><span class="MathJax_Preview">\nabla_\theta</span><script type="math/tex">\nabla_\theta</script></span>: parameters' gradients</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Even simplier equation<ul>
+<li><code class="codehilite">parameters = parameters - learning_rate * parameters_gradients</code></li>
+<li><strong>At every iteration, we update our model's parameters</strong></li>
+</ul>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">)</span>  
+</pre></div>
+
+<h3 id="parameters-in-depth">Parameters In-Depth<a class="headerlink" href="#parameters-in-depth" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">()))</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>6
+</pre></div>
+
+
+<p><strong>Parameters</strong>
+- Input to Hidden Layer Linear Function
+    - A1, B1
+- HIdden Layer to Output Linear Function
+    - A2, B2
+- Hidden Layer to Hidden Layer Linear Function
+    - A3, B3</p>
+<p><img src="./images/rnn4n.png" alt="deeplearningwizard" style="width: 900px;"/></p>
+<div class="codehilite"><pre><span></span><span class="c1"># Input --&gt; Hidden (A1)</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>torch.Size([100, 28])
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="c1"># Input --&gt; Hidden BIAS (B1)</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>torch.Size([100])
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="c1"># Hidden --&gt; Hidden (A3)</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>torch.Size([100, 100])
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="c1"># Hidden --&gt; Hidden BIAS(B3)</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>torch.Size([100])
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="c1"># Hidden --&gt; Output (A2)</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>torch.Size([10, 100])
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="c1"># Hidden --&gt; Output BIAS (B2)</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>torch.Size([10])
+</pre></div>
+
+
+<h3 id="step-7-train-model">Step 7: Train Model<a class="headerlink" href="#step-7-train-model" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Process <ol>
+<li><strong>Convert inputs/labels to tensors with gradient accumulation abilities</strong><ul>
+<li>RNN Input: (1, 28)</li>
+<li>CNN Input: (1, 28, 28) </li>
+<li>FNN Input: (1, 28*28)</li>
+</ul>
+</li>
+<li>Clear gradient buffets</li>
+<li>Get output given inputs </li>
+<li>Get loss</li>
+<li>Get gradients w.r.t. parameters</li>
+<li>Update parameters using gradients<ul>
+<li><code class="codehilite">parameters = parameters - learning_rate * parameters_gradients</code></li>
+</ul>
+</li>
+<li>REPEAT</li>
+</ol>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="c1"># Number of steps to unroll</span>
+<span class="n">seq_dim</span> <span class="o">=</span> <span class="mi">28</span>  
+
+<span class="nb">iter</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">train_loader</span><span class="p">):</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+        <span class="c1"># Load images as tensors with gradient accumulation abilities</span>
+        <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">seq_dim</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">)</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">()</span>
+
+        <span class="c1"># Clear gradients w.r.t. parameters</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+
+        <span class="c1"># Forward pass to get output/logits</span>
+        <span class="c1"># outputs.size() --&gt; 100, 10</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+
+        <span class="c1"># Calculate Loss: softmax --&gt; cross entropy loss</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+
+        <span class="c1"># Getting gradients w.r.t. parameters</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+
+        <span class="c1"># Updating parameters</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+        <span class="nb">iter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="nb">iter</span> <span class="o">%</span> <span class="mi">500</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+            <span class="c1"># Calculate Accuracy         </span>
+            <span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="c1"># Iterate through test dataset</span>
+            <span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">test_loader</span><span class="p">:</span>
+                <span class="c1"># Load images to a Torch tensors with gradient accumulation abilities</span>
+                <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">seq_dim</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">)</span>
+
+                <span class="c1"># Forward pass only to get logits/output</span>
+                <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+
+                <span class="c1"># Get predictions from the maximum value</span>
+                <span class="n">_</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+                <span class="c1"># Total number of labels</span>
+                <span class="n">total</span> <span class="o">+=</span> <span class="n">labels</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+                <span class="c1"># Total correct predictions</span>
+                <span class="n">correct</span> <span class="o">+=</span> <span class="p">(</span><span class="n">predicted</span> <span class="o">==</span> <span class="n">labels</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+            <span class="n">accuracy</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">correct</span> <span class="o">/</span> <span class="n">total</span>
+
+            <span class="c1"># Print Loss</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Iteration: {}. Loss: {}. Accuracy: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">accuracy</span><span class="p">))</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span><span class="n">Iteration</span><span class="o">:</span> <span class="mi">500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">2.301494836807251</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">12</span>
+<span class="n">Iteration</span><span class="o">:</span> <span class="mi">1000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">2.2986037731170654</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">14</span>
+<span class="n">Iteration</span><span class="o">:</span> <span class="mi">1500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">2.278566598892212</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">18</span>
+<span class="n">Iteration</span><span class="o">:</span> <span class="mi">2000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">2.169614315032959</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">21</span>
+<span class="n">Iteration</span><span class="o">:</span> <span class="mi">2500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">1.1662731170654297</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">51</span>
+<span class="n">Iteration</span><span class="o">:</span> <span class="mi">3000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.9290509223937988</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">71</span>
+</pre></div>
+
+
+<h3 id="model-b-2-hidden-layer-relu">Model B: 2 Hidden Layer (ReLU)<a class="headerlink" href="#model-b-2-hidden-layer-relu" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Unroll 28 time steps<ul>
+<li>Each step input size: 28 x 1</li>
+<li>Total per unroll: 28 x 28<ul>
+<li>Feedforward Neural Network inpt size: 28 x 28 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>2 Hidden layer</strong></li>
+<li>ReLU Activation Function
+<img src="./images/rnn5nr.png" alt="deeplearningwizard" style="width: 900px;"/></li>
+</ul>
+<h3 id="steps_1">Steps<a class="headerlink" href="#steps_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Step 1: Load Dataset</li>
+<li>Step 2: Make Dataset Iterable</li>
+<li>Step 3: Create Model Class</li>
+<li><strong>Step 4: Instantiate Model Class</strong></li>
+<li>Step 5: Instantiate Loss Class</li>
+<li>Step 6: Instantiate Optimizer Class</li>
+<li>Step 7: Train Model</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="kn">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torchvision.transforms</span> <span class="kn">as</span> <span class="nn">transforms</span>
+<span class="kn">import</span> <span class="nn">torchvision.datasets</span> <span class="kn">as</span> <span class="nn">dsets</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 1: LOADING DATASET</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">train_dataset</span> <span class="o">=</span> <span class="n">dsets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;./data&#39;</span><span class="p">,</span> 
+                            <span class="n">train</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> 
+                            <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+                            <span class="n">download</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">test_dataset</span> <span class="o">=</span> <span class="n">dsets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;./data&#39;</span><span class="p">,</span> 
+                           <span class="n">train</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> 
+                           <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">())</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 2: MAKING DATASET ITERABLE</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">n_iters</span> <span class="o">=</span> <span class="mi">3000</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="n">n_iters</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">)</span> <span class="o">/</span> <span class="n">batch_size</span><span class="p">)</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">)</span>
+
+<span class="n">train_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">train_dataset</span><span class="p">,</span> 
+                                           <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> 
+                                           <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">test_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">test_dataset</span><span class="p">,</span> 
+                                          <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> 
+                                          <span class="n">shuffle</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 3: CREATE MODEL CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="k">class</span> <span class="nc">RNNModel</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">layer_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RNNModel</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="c1"># Hidden dimensions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span> <span class="o">=</span> <span class="n">hidden_dim</span>
+
+        <span class="c1"># Number of hidden layers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layer_dim</span> <span class="o">=</span> <span class="n">layer_dim</span>
+
+        <span class="c1"># Building your RNN</span>
+        <span class="c1"># batch_first=True causes input/output tensors to be of shape</span>
+        <span class="c1"># (batch_dim, seq_dim, feature_dim)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rnn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">RNN</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">layer_dim</span><span class="p">,</span> <span class="n">batch_first</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">nonlinearity</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Readout layer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="c1"># Initialize hidden state with zeros</span>
+        <span class="n">h0</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layer_dim</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">)</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">()</span>
+
+        <span class="c1"># We need to detach the hidden state to prevent exploding/vanishing gradients</span>
+        <span class="c1"># This is part of truncated backpropagation through time (BPTT)</span>
+        <span class="n">out</span><span class="p">,</span> <span class="n">hn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rnn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">h0</span><span class="o">.</span><span class="n">detach</span><span class="p">())</span>
+
+        <span class="c1"># Index hidden state of last time step</span>
+        <span class="c1"># out.size() --&gt; 100, 28, 100</span>
+        <span class="c1"># out[:, -1, :] --&gt; 100, 100 --&gt; just want last time step hidden states! </span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc</span><span class="p">(</span><span class="n">out</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:])</span> 
+        <span class="c1"># out.size() --&gt; 100, 10</span>
+        <span class="k">return</span> <span class="n">out</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 4: INSTANTIATE MODEL CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">input_dim</span> <span class="o">=</span> <span class="mi">28</span>
+<span class="n">hidden_dim</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">layer_dim</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># ONLY CHANGE IS HERE FROM ONE LAYER TO TWO LAYER</span>
+<span class="n">output_dim</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">RNNModel</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">layer_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">)</span>
+
+<span class="c1"># JUST PRINTING MODEL &amp; PARAMETERS </span>
+<span class="k">print</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">()))):</span>
+    <span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 5: INSTANTIATE LOSS CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 6: INSTANTIATE OPTIMIZER CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">)</span>  
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 7: TRAIN THE MODEL</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="c1"># Number of steps to unroll</span>
+<span class="n">seq_dim</span> <span class="o">=</span> <span class="mi">28</span>  
+
+<span class="nb">iter</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">train_loader</span><span class="p">):</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+        <span class="c1"># Load images as tensors with gradient accumulation abilities</span>
+        <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">seq_dim</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">)</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">()</span>
+
+        <span class="c1"># Clear gradients w.r.t. parameters</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+
+        <span class="c1"># Forward pass to get output/logits</span>
+        <span class="c1"># outputs.size() --&gt; 100, 10</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+
+        <span class="c1"># Calculate Loss: softmax --&gt; cross entropy loss</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+
+        <span class="c1"># Getting gradients w.r.t. parameters</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+
+        <span class="c1"># Updating parameters</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+        <span class="nb">iter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="nb">iter</span> <span class="o">%</span> <span class="mi">500</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+            <span class="c1"># Calculate Accuracy         </span>
+            <span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="c1"># Iterate through test dataset</span>
+            <span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">test_loader</span><span class="p">:</span>
+                <span class="c1"># Resize images</span>
+                <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">seq_dim</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">)</span>
+
+                <span class="c1"># Forward pass only to get logits/output</span>
+                <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+
+                <span class="c1"># Get predictions from the maximum value</span>
+                <span class="n">_</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+                <span class="c1"># Total number of labels</span>
+                <span class="n">total</span> <span class="o">+=</span> <span class="n">labels</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+                <span class="c1"># Total correct predictions</span>
+                <span class="n">correct</span> <span class="o">+=</span> <span class="p">(</span><span class="n">predicted</span> <span class="o">==</span> <span class="n">labels</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+            <span class="n">accuracy</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">correct</span> <span class="o">/</span> <span class="n">total</span>
+
+            <span class="c1"># Print Loss</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Iteration: {}. Loss: {}. Accuracy: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">accuracy</span><span class="p">))</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>RNNModel(
+  (rnn): RNN(28, 100, num_layers=2, batch_first=True)
+  (fc): Linear(in_features=100, out_features=10, bias=True)
+)
+10
+torch.Size([100, 28])
+torch.Size([100, 100])
+torch.Size([100])
+torch.Size([100])
+torch.Size([100, 100])
+torch.Size([100, 100])
+torch.Size([100])
+torch.Size([100])
+torch.Size([10, 100])
+torch.Size([10])
+Iteration: 500. Loss: 2.3019518852233887. Accuracy: 11
+Iteration: 1000. Loss: 2.299217700958252. Accuracy: 11
+Iteration: 1500. Loss: 2.279090166091919. Accuracy: 14
+Iteration: 2000. Loss: 2.126953125. Accuracy: 25
+Iteration: 2500. Loss: 1.356347680091858. Accuracy: 57
+Iteration: 3000. Loss: 0.7377720475196838. Accuracy: 69
+</pre></div>
+
+
+<ul>
+<li><strong>10 sets of parameters</strong></li>
+<li>First hidden Layer<ul>
+<li><span><span class="MathJax_Preview">A_1 = [100, 28]</span><script type="math/tex">A_1 = [100, 28]</script></span></li>
+<li><span><span class="MathJax_Preview">A_3 = [100, 100]</span><script type="math/tex">A_3 = [100, 100]</script></span></li>
+<li><span><span class="MathJax_Preview">B_1 = [100]</span><script type="math/tex">B_1 = [100]</script></span></li>
+<li><span><span class="MathJax_Preview">B_3 = [100]</span><script type="math/tex">B_3 = [100]</script></span></li>
+</ul>
+</li>
+<li>Second hidden layer<ul>
+<li><span><span class="MathJax_Preview">A_2 = [100, 100]</span><script type="math/tex">A_2 = [100, 100]</script></span></li>
+<li><span><span class="MathJax_Preview">A_5 = [100, 100]</span><script type="math/tex">A_5 = [100, 100]</script></span></li>
+<li><span><span class="MathJax_Preview">B_2 = [100]</span><script type="math/tex">B_2 = [100]</script></span></li>
+<li><span><span class="MathJax_Preview">B_5 = [100]</span><script type="math/tex">B_5 = [100]</script></span></li>
+</ul>
+</li>
+<li>Readout layer<ul>
+<li><span><span class="MathJax_Preview">A_5 = [10, 100]</span><script type="math/tex">A_5 = [10, 100]</script></span></li>
+<li><span><span class="MathJax_Preview">B_5 = [10]</span><script type="math/tex">B_5 = [10]</script></span></li>
+</ul>
+</li>
+</ul>
+<p><img src="./images/rnn6.png" alt="deeplearningwizard" style="width: 900px;"/></p>
+<h3 id="model-c-2-hidden-layer">Model C: 2 Hidden Layer<a class="headerlink" href="#model-c-2-hidden-layer" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Unroll 28 time steps<ul>
+<li>Each step input size: 28 x 1</li>
+<li>Total per unroll: 28 x 28<ul>
+<li>Feedforward Neural Network inpt size: 28 x 28 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>2 Hidden layer</li>
+<li><strong>Tanh</strong> Activation Function
+<img src="./images/rnn5nr.png" alt="deeplearningwizard" style="width: 900px;"/></li>
+</ul>
+<h3 id="steps_2">Steps<a class="headerlink" href="#steps_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Step 1: Load Dataset</li>
+<li>Step 2: Make Dataset Iterable</li>
+<li>Step 3: Create Model Class</li>
+<li><strong>Step 4: Instantiate Model Class</strong></li>
+<li>Step 5: Instantiate Loss Class</li>
+<li>Step 6: Instantiate Optimizer Class</li>
+<li>Step 7: Train Model</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="kn">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torchvision.transforms</span> <span class="kn">as</span> <span class="nn">transforms</span>
+<span class="kn">import</span> <span class="nn">torchvision.datasets</span> <span class="kn">as</span> <span class="nn">dsets</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 1: LOADING DATASET</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">train_dataset</span> <span class="o">=</span> <span class="n">dsets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;./data&#39;</span><span class="p">,</span> 
+                            <span class="n">train</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> 
+                            <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+                            <span class="n">download</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">test_dataset</span> <span class="o">=</span> <span class="n">dsets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;./data&#39;</span><span class="p">,</span> 
+                           <span class="n">train</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> 
+                           <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">())</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 2: MAKING DATASET ITERABLE</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">n_iters</span> <span class="o">=</span> <span class="mi">3000</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="n">n_iters</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">)</span> <span class="o">/</span> <span class="n">batch_size</span><span class="p">)</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">)</span>
+
+<span class="n">train_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">train_dataset</span><span class="p">,</span> 
+                                           <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> 
+                                           <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">test_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">test_dataset</span><span class="p">,</span> 
+                                          <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> 
+                                          <span class="n">shuffle</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 3: CREATE MODEL CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="k">class</span> <span class="nc">RNNModel</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">layer_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RNNModel</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="c1"># Hidden dimensions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span> <span class="o">=</span> <span class="n">hidden_dim</span>
+
+        <span class="c1"># Number of hidden layers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layer_dim</span> <span class="o">=</span> <span class="n">layer_dim</span>
+
+        <span class="c1"># Building your RNN</span>
+        <span class="c1"># batch_first=True causes input/output tensors to be of shape</span>
+        <span class="c1"># (batch_dim, seq_dim, feature_dim)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rnn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">RNN</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">layer_dim</span><span class="p">,</span> <span class="n">batch_first</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">nonlinearity</span><span class="o">=</span><span class="s1">&#39;tanh&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Readout layer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="c1"># Initialize hidden state with zeros</span>
+        <span class="n">h0</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layer_dim</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">)</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">()</span>
+
+        <span class="c1"># One time step</span>
+        <span class="c1"># We need to detach the hidden state to prevent exploding/vanishing gradients</span>
+        <span class="c1"># This is part of truncated backpropagation through time (BPTT)</span>
+        <span class="n">out</span><span class="p">,</span> <span class="n">hn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rnn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">h0</span><span class="o">.</span><span class="n">detach</span><span class="p">())</span>
+
+        <span class="c1"># Index hidden state of last time step</span>
+        <span class="c1"># out.size() --&gt; 100, 28, 100</span>
+        <span class="c1"># out[:, -1, :] --&gt; 100, 100 --&gt; just want last time step hidden states! </span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc</span><span class="p">(</span><span class="n">out</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:])</span> 
+        <span class="c1"># out.size() --&gt; 100, 10</span>
+        <span class="k">return</span> <span class="n">out</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 4: INSTANTIATE MODEL CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">input_dim</span> <span class="o">=</span> <span class="mi">28</span>
+<span class="n">hidden_dim</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">layer_dim</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># ONLY CHANGE IS HERE FROM ONE LAYER TO TWO LAYER</span>
+<span class="n">output_dim</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">RNNModel</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">layer_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">)</span>
+
+<span class="c1"># JUST PRINTING MODEL &amp; PARAMETERS </span>
+<span class="k">print</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">()))):</span>
+    <span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 5: INSTANTIATE LOSS CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 6: INSTANTIATE OPTIMIZER CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">)</span>  
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 7: TRAIN THE MODEL</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="c1"># Number of steps to unroll</span>
+<span class="n">seq_dim</span> <span class="o">=</span> <span class="mi">28</span>  
+
+<span class="nb">iter</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">train_loader</span><span class="p">):</span>
+        <span class="c1"># Load images as tensors with gradient accumulation abilities</span>
+        <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">seq_dim</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">)</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">()</span>
+
+        <span class="c1"># Clear gradients w.r.t. parameters</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+
+        <span class="c1"># Forward pass to get output/logits</span>
+        <span class="c1"># outputs.size() --&gt; 100, 10</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+
+        <span class="c1"># Calculate Loss: softmax --&gt; cross entropy loss</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+
+        <span class="c1"># Getting gradients w.r.t. parameters</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+
+        <span class="c1"># Updating parameters</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+        <span class="nb">iter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="nb">iter</span> <span class="o">%</span> <span class="mi">500</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># Calculate Accuracy         </span>
+            <span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="c1"># Iterate through test dataset</span>
+            <span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">test_loader</span><span class="p">:</span>
+                <span class="c1"># Resize images</span>
+                <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">seq_dim</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">)</span>
+
+                <span class="c1"># Forward pass only to get logits/output</span>
+                <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+
+                <span class="c1"># Get predictions from the maximum value</span>
+                <span class="n">_</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+                <span class="c1"># Total number of labels</span>
+                <span class="n">total</span> <span class="o">+=</span> <span class="n">labels</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+                <span class="c1"># Total correct predictions</span>
+                <span class="n">correct</span> <span class="o">+=</span> <span class="p">(</span><span class="n">predicted</span> <span class="o">==</span> <span class="n">labels</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+            <span class="n">accuracy</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">correct</span> <span class="o">/</span> <span class="n">total</span>
+
+            <span class="c1"># Print Loss</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Iteration: {}. Loss: {}. Accuracy: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">accuracy</span><span class="p">))</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>RNNModel(
+  (rnn): RNN(28, 100, num_layers=2, batch_first=True)
+  (fc): Linear(in_features=100, out_features=10, bias=True)
+)
+10
+torch.Size([100, 28])
+torch.Size([100, 100])
+torch.Size([100])
+torch.Size([100])
+torch.Size([100, 100])
+torch.Size([100, 100])
+torch.Size([100])
+torch.Size([100])
+torch.Size([10, 100])
+torch.Size([10])
+Iteration: 500. Loss: 0.5943437218666077. Accuracy: 77
+Iteration: 1000. Loss: 0.22048641741275787. Accuracy: 91
+Iteration: 1500. Loss: 0.18479223549365997. Accuracy: 94
+Iteration: 2000. Loss: 0.2723771929740906. Accuracy: 91
+Iteration: 2500. Loss: 0.18817797303199768. Accuracy: 92
+Iteration: 3000. Loss: 0.1685929149389267. Accuracy: 92
+</pre></div>
+
+
+<h2 id="summary-of-results">Summary of Results<a class="headerlink" href="#summary-of-results" title="Permanent link">&para;</a></h2>
+<p>| Model A | Model B   | Model C | 
+|------|------|
+|   ReLU | ReLU | Tanh |
+| 1 Hidden Layer | 2 Hidden Layers | 2 Hidden Layers | 
+| 100 Hidden Units | 100 Hidden Units |100 Hidden Units |
+| 92.48% | 95.09% | 95.54% | </p>
+<h3 id="deep-learning">Deep Learning<a class="headerlink" href="#deep-learning" title="Permanent link">&para;</a></h3>
+<ul>
+<li>2 ways to expand a recurrent neural network<ul>
+<li>More non-linear activation units (neurons)</li>
+<li>More hidden layers</li>
+</ul>
+</li>
+<li>Cons<ul>
+<li>Need a larger dataset<ul>
+<li>Curse of dimensionality</li>
+</ul>
+</li>
+<li>Does not necessarily mean higher accuracy</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-building-a-recurrent-neural-network-with-pytorch-gpu">3. Building a Recurrent Neural Network with PyTorch (GPU)<a class="headerlink" href="#3-building-a-recurrent-neural-network-with-pytorch-gpu" title="Permanent link">&para;</a></h2>
+<h3 id="model-c-2-hidden-layer-tanh">Model C: 2 Hidden Layer (Tanh)<a class="headerlink" href="#model-c-2-hidden-layer-tanh" title="Permanent link">&para;</a></h3>
+<p><img src="./images/rnn5nr.png" alt="deeplearningwizard" style="width: 900px;"/></p>
+<p>GPU: 2 things must be on GPU
+- <code class="codehilite">model</code>
+- <code class="codehilite">tensors with gradient accumulation abilities</code></p>
+<h3 id="steps_3">Steps<a class="headerlink" href="#steps_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Step 1: Load Dataset</li>
+<li>Step 2: Make Dataset Iterable</li>
+<li><strong>Step 3: Create Model Class</strong></li>
+<li><strong>Step 4: Instantiate Model Class</strong></li>
+<li>Step 5: Instantiate Loss Class</li>
+<li>Step 6: Instantiate Optimizer Class</li>
+<li><strong>Step 7: Train Model</strong></li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="kn">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torchvision.transforms</span> <span class="kn">as</span> <span class="nn">transforms</span>
+<span class="kn">import</span> <span class="nn">torchvision.datasets</span> <span class="kn">as</span> <span class="nn">dsets</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 1: LOADING DATASET</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">train_dataset</span> <span class="o">=</span> <span class="n">dsets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;./data&#39;</span><span class="p">,</span> 
+                            <span class="n">train</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> 
+                            <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+                            <span class="n">download</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">test_dataset</span> <span class="o">=</span> <span class="n">dsets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;./data&#39;</span><span class="p">,</span> 
+                           <span class="n">train</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> 
+                           <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">())</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 2: MAKING DATASET ITERABLE</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">n_iters</span> <span class="o">=</span> <span class="mi">3000</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="n">n_iters</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">)</span> <span class="o">/</span> <span class="n">batch_size</span><span class="p">)</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">)</span>
+
+<span class="n">train_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">train_dataset</span><span class="p">,</span> 
+                                           <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> 
+                                           <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">test_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">test_dataset</span><span class="p">,</span> 
+                                          <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> 
+                                          <span class="n">shuffle</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 3: CREATE MODEL CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="k">class</span> <span class="nc">RNNModel</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">layer_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RNNModel</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="c1"># Hidden dimensions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span> <span class="o">=</span> <span class="n">hidden_dim</span>
+
+        <span class="c1"># Number of hidden layers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layer_dim</span> <span class="o">=</span> <span class="n">layer_dim</span>
+
+        <span class="c1"># Building your RNN</span>
+        <span class="c1"># batch_first=True causes input/output tensors to be of shape</span>
+        <span class="c1"># (batch_dim, seq_dim, feature_dim)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rnn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">RNN</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">layer_dim</span><span class="p">,</span> <span class="n">batch_first</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">nonlinearity</span><span class="o">=</span><span class="s1">&#39;tanh&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Readout layer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="c1"># Initialize hidden state with zeros</span>
+        <span class="c1">#######################</span>
+        <span class="c1">#  USE GPU FOR MODEL  #</span>
+        <span class="c1">#######################</span>
+        <span class="n">h0</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layer_dim</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+        <span class="c1"># One time step</span>
+        <span class="c1"># We need to detach the hidden state to prevent exploding/vanishing gradients</span>
+        <span class="c1"># This is part of truncated backpropagation through time (BPTT)</span>
+        <span class="n">out</span><span class="p">,</span> <span class="n">hn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rnn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">h0</span><span class="o">.</span><span class="n">detach</span><span class="p">())</span>
+
+        <span class="c1"># Index hidden state of last time step</span>
+        <span class="c1"># out.size() --&gt; 100, 28, 100</span>
+        <span class="c1"># out[:, -1, :] --&gt; 100, 100 --&gt; just want last time step hidden states! </span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc</span><span class="p">(</span><span class="n">out</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:])</span> 
+        <span class="c1"># out.size() --&gt; 100, 10</span>
+        <span class="k">return</span> <span class="n">out</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 4: INSTANTIATE MODEL CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">input_dim</span> <span class="o">=</span> <span class="mi">28</span>
+<span class="n">hidden_dim</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">layer_dim</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># ONLY CHANGE IS HERE FROM ONE LAYER TO TWO LAYER</span>
+<span class="n">output_dim</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">RNNModel</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">layer_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">)</span>
+
+<span class="c1">#######################</span>
+<span class="c1">#  USE GPU FOR MODEL  #</span>
+<span class="c1">#######################</span>
+
+<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda:0&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 5: INSTANTIATE LOSS CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 6: INSTANTIATE OPTIMIZER CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">)</span>  
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 7: TRAIN THE MODEL</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="c1"># Number of steps to unroll</span>
+<span class="n">seq_dim</span> <span class="o">=</span> <span class="mi">28</span>  
+
+<span class="nb">iter</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">train_loader</span><span class="p">):</span>
+        <span class="c1"># Load images as tensors with gradient accumulation abilities</span>
+        <span class="c1">#######################</span>
+        <span class="c1">#  USE GPU FOR MODEL  #</span>
+        <span class="c1">#######################</span>
+        <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">seq_dim</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">)</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+        <span class="c1"># Clear gradients w.r.t. parameters</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+
+        <span class="c1"># Forward pass to get output/logits</span>
+        <span class="c1"># outputs.size() --&gt; 100, 10</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+
+        <span class="c1"># Calculate Loss: softmax --&gt; cross entropy loss</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+
+        <span class="c1"># Getting gradients w.r.t. parameters</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+
+        <span class="c1"># Updating parameters</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+        <span class="nb">iter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="nb">iter</span> <span class="o">%</span> <span class="mi">500</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># Calculate Accuracy         </span>
+            <span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="c1"># Iterate through test dataset</span>
+            <span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">test_loader</span><span class="p">:</span>
+                <span class="c1">#######################</span>
+                <span class="c1">#  USE GPU FOR MODEL  #</span>
+                <span class="c1">#######################</span>
+                <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">seq_dim</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+                <span class="c1"># Forward pass only to get logits/output</span>
+                <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+
+                <span class="c1"># Get predictions from the maximum value</span>
+                <span class="n">_</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+                <span class="c1"># Total number of labels</span>
+                <span class="n">total</span> <span class="o">+=</span> <span class="n">labels</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+                <span class="c1"># Total correct predictions</span>
+                <span class="c1">#######################</span>
+                <span class="c1">#  USE GPU FOR MODEL  #</span>
+                <span class="c1">#######################</span>
+                <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
+                    <span class="n">correct</span> <span class="o">+=</span> <span class="p">(</span><span class="n">predicted</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span> <span class="o">==</span> <span class="n">labels</span><span class="o">.</span><span class="n">cpu</span><span class="p">())</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">correct</span> <span class="o">+=</span> <span class="p">(</span><span class="n">predicted</span> <span class="o">==</span> <span class="n">labels</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+            <span class="n">accuracy</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">correct</span> <span class="o">/</span> <span class="n">total</span>
+
+            <span class="c1"># Print Loss</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Iteration: {}. Loss: {}. Accuracy: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">accuracy</span><span class="p">))</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span><span class="n">Iteration</span><span class="o">:</span> <span class="mi">500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.5983774662017822</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">81</span>
+<span class="n">Iteration</span><span class="o">:</span> <span class="mi">1000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.2960105836391449</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">86</span>
+<span class="n">Iteration</span><span class="o">:</span> <span class="mi">1500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.19428101181983948</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">93</span>
+<span class="n">Iteration</span><span class="o">:</span> <span class="mi">2000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.11918395012617111</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">95</span>
+<span class="n">Iteration</span><span class="o">:</span> <span class="mi">2500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.11246936023235321</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">95</span>
+<span class="n">Iteration</span><span class="o">:</span> <span class="mi">3000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.15849310159683228</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">95</span>
+</pre></div>
+
+
+<h1 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h1>
+<ul>
+<li><strong>Feedforward Neural Networks</strong> Transition to Recurrent Neural Networks</li>
+<li><strong>RNN Models</strong> in PyTorch<ul>
+<li>Model A: 1 Hidden Layer RNN (ReLU)</li>
+<li>Model B: 2 Hidden Layer RNN (ReLU)</li>
+<li>Model C: 2 Hidden Layer RNN (Tanh)</li>
+</ul>
+</li>
+<li>Models Variation in <strong>Code</strong><ul>
+<li>Modifying only step 4</li>
+</ul>
+</li>
+<li>Ways to Expand Model’s <strong>Capacity</strong><ul>
+<li>More non-linear activation units (<strong>neurons</strong>)</li>
+<li>More hidden <strong>layers</strong></li>
+</ul>
+</li>
+<li><strong>Cons</strong> of Expanding Capacity<ul>
+<li>Need more <strong>data</strong></li>
+<li>Does not necessarily mean higher <strong>accuracy</strong></li>
+</ul>
+</li>
+<li><strong>GPU</strong> Code<ul>
+<li>2 things on GPU<ul>
+<li><strong>model</strong></li>
+<li><strong>tensors with gradient accumulation abilities</strong></li>
+</ul>
+</li>
+<li>Modifying only <strong>Step 3, 4 and 7</strong></li>
+</ul>
+</li>
+<li><strong>7 Step</strong> Model Building Recap<ul>
+<li>Step 1: Load Dataset</li>
+<li>Step 2: Make Dataset Iterable</li>
+<li><strong>Step 3: Create Model Class</strong></li>
+<li><strong>Step 4: Instantiate Model Class</strong></li>
+<li>Step 5: Instantiate Loss Class</li>
+<li>Step 6: Instantiate Optimizer Class</li>
+<li><strong>Step 7: Train Model</strong></li>
+</ul>
+</li>
+</ul>
+                
+                  
+                
+              
+              
+                
+
+
+  <h2 id="__comments">Comments</h2>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_recurrent_neuralnetwork/";
+      this.page.identifier =
+        "deep_learning/practical_pytorch/pytorch_recurrent_neuralnetwork/";
+    };
+    (function() {
+      var d = document, s = d.createElement("script");
+      s.src = "//deep-learning-wizard.disqus.com/embed.js";
+      s.setAttribute("data-timestamp", +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2018 Deep Learning Wizard
+          </div>
+        
+        proudly an
+        <a href="http://www.nvidia.com/page/home.html">NVIDIA Inception Partner</a>
+        based in Singapore by
+        <a href="https://www.ritchieng.com/">
+          Ritchie Ng (NVIDIA Deep Learning Institute Instructor)</a>
+      </div>
+      
+        
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/ritchieng" class="md-footer-social__link fa fa-github"></a>
+    
+      <a href="https://www.facebook.com/DeepLearningWizard/" class="md-footer-social__link fa fa-facebook"></a>
+    
+      <a href="https://www.linkedin.com/company/deeplearningwizard/" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.583bbe55.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+    
+      
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-122083328-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+      
+    
+  </body>
+</html>
