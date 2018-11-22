@@ -10,16 +10,16 @@ If you would like a smooth transition in learning deep learning concepts, you ne
 * [x] Feedforward Neural Networks (FNN)
 * [x] Convolutional Neural Networks (CNN)
 * [x] Recurrent Neural Networks (RNN)
-* [x] Long Short Term Memory Neural Networks (LSTM)
-* [x] Autoencoders (AE)
-* [x] Variational Autoencoders (VAEs)
-* [x] Generative Adversarial Networks (GANs)
+* [] Long Short Term Memory Neural Networks (LSTM)
+* [] Autoencoders (AE)
+* [] Variational Autoencoders (VAEs)
+* [] Generative Adversarial Networks (GANs)
 
 ## 2. Boosting Deep Learning Models with PyTorch
-* [x] Gradient Descent and Backpropagation
-* [x] Learning Rate Scheduling
-* [x] Optimizers
-* [x] Advanced Learning Rate Optimization
-* [x] Weight Initializations and Activation Functions
-* [x] Overfitting Prevention
-* [x] Loss, Accuracy and Weight Visualizations
+* [] Gradient Descent and Backpropagation
+* [] Learning Rate Scheduling
+* [] Optimizers
+* [] Advanced Learning Rate Optimization
+* [] Weight Initializations and Activation Functions
+* [] Overfitting Prevention
+* [] Loss, Accuracy and Weight Visualizations

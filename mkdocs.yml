@@ -18,7 +18,7 @@ pages:
       - Logistic Regression: deep_learning/practical_pytorch/pytorch_logistic_regression.md
       - Feedforward Neural Networks: deep_learning/practical_pytorch/pytorch_feedforward_neuralnetwork.md
       - Convolutional Neural Networks: deep_learning/practical_pytorch/pytorch_convolutional_neuralnetwork.md
-      # - Recurrent Neural Networks: deep_learning/practical_pytorch/pytorch_recurrent_neuralnetwork.md
+      - Recurrent Neural Networks: deep_learning/practical_pytorch/pytorch_recurrent_neuralnetwork.md
 
     - News:
       - Welcome: news/news.md
