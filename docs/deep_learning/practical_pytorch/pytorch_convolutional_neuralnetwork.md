@@ -832,7 +832,7 @@ Iteration: 3000. Loss: 0.05396252125501633. Accuracy: 96
 
 GPU: 2 things must be on GPU
 - `model`
-- `tensors with gradient accumulation abilities`
+- `tensors`
 
 ### Steps
 - Step 1: Load Dataset

@@ -1458,7 +1458,7 @@ Iteration: 3000. Loss: 1.024120569229126. Accuracy: 82.49
     
     2 things must be on GPU
     <br />- `model`
-    <br />- `variables`
+    <br />- `tensors`
 
     Remember step 4 and 7 will be affected and this will be the same for all model building moving forward.
     

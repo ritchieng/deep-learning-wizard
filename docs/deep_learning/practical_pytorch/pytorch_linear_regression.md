@@ -538,7 +538,7 @@ array([[ 1.],
 !!! note "GPU Summary"
     - Just remember always 2 things must be on GPU
         - `model`
-        - `tensors with gradients`
+        - `tensors`
 
 
     ```python

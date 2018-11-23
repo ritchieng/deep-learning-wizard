@@ -22,7 +22,7 @@
 
 ![](./images/rnn2n.png)
 
-### Steps
+#### Steps
 - Step 1: Load Dataset
 - Step 2: Make Dataset Iterable
 - Step 3: Create Model Class
@@ -31,7 +31,7 @@
 - Step 6: Instantiate Optimizer Class
 - Step 7: Train Model
 
-### Step 1: Loading MNIST Train Dataset
+#### Step 1: Loading MNIST Train Dataset
 **Images from 1 to 9**
 
 
@@ -85,7 +85,7 @@ torch.Size([10000, 28, 28])
 torch.Size([10000])
 ```
 
-### Step 2: Make Dataset Iterable
+#### Step 2: Make Dataset Iterable
 
 !!! note "Creating iterable objects to loop through subsequently"
     ```python
@@ -103,7 +103,7 @@ torch.Size([10000])
                                               shuffle=False)
     ```
 
-### Step 3: Create Model Class
+#### Step 3: Create Model Class
 
 
 !!! note "1 Layer RNN"
@@ -145,7 +145,7 @@ torch.Size([10000])
             return out
     ```
 
-### Step 4: Instantiate Model Class
+#### Step 4: Instantiate Model Class
 - 28 time steps
     - Each time step: input dimension = 28
 - 1 hidden layer
@@ -165,7 +165,7 @@ torch.Size([10000])
     model = RNNModel(input_dim, hidden_dim, layer_dim, output_dim)
     ```
 
-### Step 5: Instantiate Loss Class
+#### Step 5: Instantiate Loss Class
 - Recurrent Neural Network: **Cross Entropy Loss**
     - _Convolutional Neural Network_: **Cross Entropy Loss**
     - _Feedforward Neural Network_: **Cross Entropy Loss**
@@ -185,7 +185,7 @@ torch.Size([10000])
     
     And we use MSE for regression tasks (predicting temperatures in every December in San Francisco for example).
     
-### Step 6: Instantiate Optimizer Class
+#### Step 6: Instantiate Optimizer Class
 - Simplified equation
     - $\theta = \theta - \eta \cdot \nabla_\theta$
         - $\theta$: parameters (our tensors with gradient accumulation abilities)
@@ -202,7 +202,7 @@ learning_rate = 0.01
 optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)  
 ```
 
-#### Parameters In-Depth
+###### Parameters In-Depth
 - Input to Hidden Layer Affine Function
     - A1, B1
 - Hidden Layer to Output Affine Function
@@ -296,7 +296,7 @@ torch.Size([10])
 ```
 
 
-### Step 7: Train Model
+#### Step 7: Train Model
 - Process 
     1. **Convert inputs/labels to tensors with gradient accumulation abilities**
         - RNN Input: (1, 28)
@@ -836,7 +836,7 @@ Iteration: 3000. Loss: 0.1685929149389267. Accuracy: 92
 
 GPU: 2 things must be on GPU
 - `model`
-- `tensors with gradient accumulation abilities`
+- `tensors`
 
 ### Steps
 - Step 1: Load Dataset
