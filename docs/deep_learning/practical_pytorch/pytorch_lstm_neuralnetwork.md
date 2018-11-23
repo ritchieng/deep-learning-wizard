@@ -1,14 +1,12 @@
-
-
-# 8. Long Short-Term Memory (LSTM) network with PyTorch
-## 1. About LSTMs: Special RNN
+# Long Short-Term Memory (LSTM) network with PyTorch
+## About LSTMs: Special RNN
 - Capable of learning long-term dependencies
 - LSTM = RNN on super juice
 
-### 1.1 RNN Transition to LSTM
-<img src="./images/lstm0n2.png" alt="deeplearningwizard" style="width: 900px;"/>
+### RNN Transition to LSTM
+![](./images/lstm0n2.png)
 
-## 2. Building an LSTM with PyTorch
+## Building an LSTM with PyTorch
 
 ### Model A: 1 Hidden Layer
 - Unroll 28 time steps
@@ -17,7 +15,7 @@
         - Feedforward Neural Network input size: 28 x 28 
 - 1 Hidden layer
 
-<img src="./images/lstm1.png" alt="deeplearningwizard" style="width: 900px;"/>
+![](./images/lstm1.png)
 
 ### Steps
 - Step 1: Load Dataset
@@ -38,7 +36,6 @@ import torch.nn as nn
 import torchvision.transforms as transforms
 import torchvision.datasets as dsets
 ```
-
 
 ```python
 train_dataset = dsets.MNIST(root='./data', 
@@ -239,7 +236,7 @@ for i in range(len(list(model.parameters()))):
     - $[10, 100] \rightarrow w_9 $
     - $[10] \rightarrow b_9$
 
-<img src="./images/lstm2.png" alt="deeplearningwizard" style="width: 700px;"/>
+![](./images/lstm2.png)
 
 ### Step 7: Train Model
 - Process 
