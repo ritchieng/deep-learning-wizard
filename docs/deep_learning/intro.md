@@ -12,7 +12,9 @@ Our main open-source programming languages and libraries are Python, PyTorch, Nu
     Remember to use `CTRL +` if you would like to zoom into the diagrams if you find them too small or blur.
     
 !!! warning "Errors to be corrected"
-    As we are rapidly prototyping there may be some errors. For these errors stated here, they will be corrected very soon. 
+    As we are rapidly prototyping there may be some errors. For these errors stated here, they will be corrected very soon.
+    
+    Feel free to report bugs, corrections or improvements on our [Github repositor](https://github.com/ritchieng/deep-learning-wizard). 
     
     If you did not go through all the materials, you would not be familiar with these, so go through them and come back to review these changes.
     
