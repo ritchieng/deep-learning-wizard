@@ -30,6 +30,9 @@ We are openly calling people to contribute to this repository for errors. Feel f
 - [Alfredo Canziani, Supporter (Postdoc in NYU under Yann Lecun)](https://github.com/Atcold)
 - [Marek Bardonski, Supporter (Global Head of Deep Learning, Sigmoidal)](https://www.linkedin.com/in/marek-bardonski/)
 
+## Bugs and Improvements
+Feel free to report bugs and improvements via issues. Or just simply try to pull to make any improvements/corrections.
+
 ## Citation
 If you find the materials useful, like the diagrams or content, feel free to cite this repository.
 
