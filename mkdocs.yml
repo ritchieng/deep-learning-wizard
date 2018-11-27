@@ -20,6 +20,7 @@ pages:
       - Convolutional Neural Networks: deep_learning/practical_pytorch/pytorch_convolutional_neuralnetwork.md
       - Recurrent Neural Networks: deep_learning/practical_pytorch/pytorch_recurrent_neuralnetwork.md
       - Long Short Term Memory Neural Networks: deep_learning/practical_pytorch/pytorch_lstm_neuralnetwork.md
+      - Derivative, Gradient and Jacobian: deep_learning/boosting_models_pytorch/derivative_gradient_jacobian.md
 
     - News:
       - Welcome: news/news.md

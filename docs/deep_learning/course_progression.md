@@ -16,6 +16,7 @@ If you would like a smooth transition in learning deep learning concepts, you ne
 * [x] Generative Adversarial Networks (GANs)
 
 ## 2. Boosting Deep Learning Models with PyTorch
+* [x] Derivatives, Gradients and Jacobian
 * [x] Gradient Descent and Backpropagation
 * [x] Learning Rate Scheduling
 * [x] Optimizers
