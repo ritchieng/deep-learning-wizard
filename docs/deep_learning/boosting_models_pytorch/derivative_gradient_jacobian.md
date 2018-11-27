@@ -24,10 +24,10 @@
 ## Steps
 - Derivatives
 - Partial Derivatives
-- Gradient
+- Gradients
 - Gradient, Jacobian and Generalized Jacobian Differences
-- Backpropagation: computing gradient without
-- Gradient descent: using gradient to update parameters
+- Backpropagation: computing gradients
+- Gradient descent: using gradients to update parameters
 
 
 ### Derivative
