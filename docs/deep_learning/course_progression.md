@@ -13,6 +13,7 @@ If you would like a smooth transition in learning deep learning concepts, you ne
 * [x] Long Short Term Memory Neural Networks (LSTM)
 * [x] Autoencoders (AE)
 * [x] Variational Autoencoders (VAEs)
+* [x] Adversarial Autoencoders (AAEs)
 * [x] Generative Adversarial Networks (GANs)
 
 ## 2. Boosting Deep Learning Models with PyTorch
