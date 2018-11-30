@@ -134,15 +134,15 @@
      
 #### Cross Entropy Function D() for 2 Class
 - Take note that here, $S$ is our softmax outputs and $L$ are our labels
-- $D(S, L) = L log S - (1-L)log(1-S)$
+- $D(S, L) = -(L log S + (1-L)log(1-S))$
     - If L = 0 (label)
         - $D(S, 0) = - log(1-S)$
             - $- log(1-S)$: less positive if $S \longrightarrow 0$
             - $- log(1-S)$: more positive if $S \longrightarrow 1$ (BIGGER LOSS)
     - If L = 1 (label)
-        - $D(S, 1) = log S$
-            - $logS$: less negative if $S \longrightarrow 1$
-            - $logS$: more negative if $S \longrightarrow 0$ (BIGGER LOSS)
+        - $D(S, 1) = - log S$
+            - $-log(S)$: less positive if $S \longrightarrow 1$
+            - $-log(S)$: more positive if $S \longrightarrow 0$ (BIGGER LOSS)
 
 !!! note "Numerical example of bigger or small loss"
     
@@ -163,19 +163,19 @@
     You get a small error of -1e-5 if your label is 1 and S is near 1 (very correct prediction).
     ```python
     
-    print(math.log(0.99999))
+    print(-math.log(0.99999))
     ```
     
     You get a big error of -11.51 if your label is 1 and S is near 0 (very wrong prediction).
     ```python
     
-    print(math.log(0.00001))
+    print(-math.log(0.00001))
     ```
 ```python
 1.0000050000287824e-05
 11.51292546497478
--1.0000050000287824e-05
--11.512925464970229
+1.0000050000287824e-05
+11.512925464970229
 
 ```
 
