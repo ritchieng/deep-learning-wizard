@@ -31,14 +31,16 @@ For book lovers, you will be happy to know [Deep Learning Wizard's wikipedia](ht
 
 !!! abstract "Ritchie Ng"
     Currently I am leading artificial intelligence with my colleagues in [ensemblecap.ai](https://ensemblecap.ai/), an AI hedge fund based in Singapore comprising quants and traders from JPMorgan and Nomura. I have built the whole AI tech stack in a production environment with rigorous time-sensitive and fail-safe software testing powering multi-million dollar trades daily. Additionally, I co-run, as portfolio manager, our systematic end-to-end deep learning portfolio with the CIO.
-    
+
     I am also an [NVIDIA Deep Learning Institute instructor](https://www.facebook.com/nus.nvidia/) leading all deep learning workshops in NUS, Singapore and conducting workshops across Southeast Asia.
     
     My passion for enabling anyone to leverage on deep learning has led to the creation of [Deep Learning Wizard](https://www.deeplearningwizard.com/) where I have taught and still continue to teach more than 2000 students in over 60 countries around the world. The course is recognized by [Soumith Chintala](https://pytorch.org/2018/01/19/a-year-in.html), Facebook AI Research, and [Alfredo Canziani](https://www.linkedin.com/feed/update/urn:li:activity:6407592585275142144), Post-Doctoral Associate under Yann Lecun, as the first comprehensive PyTorch Video Tutorial. 
     
     I have taught [Deep Learning Foundations](https://github.com/Atcold/pytorch-Deep-Learning-Minicourse) with Alfredo Canziani at Rwanda, Africa for the African Masters in Machine Intelligence (AMMI) in 2018 supported by Google and Facebook.
     
-    In my free time, I'm into deep learning research with researchers based in [NExT++ (NUS) led by Chua Tat-Seng](http://www.nextcenter.org/) and [MILA led by Yoshua Bengio](https://mila.quebec/en/). I was previously conducting research in meta-learning for hyperparameter optimization for deep learning algorithms in NExT Search Centre that is jointly setup between National University of Singapore (NUS), Tsinghua University and University of Southampton led by co-directors [Prof Tat-Seng Chua](https://www.chuatatseng.com/) (KITHCT Chair Professor at the School of Computing), [Prof Sun Maosong](http://www.cs.tsinghua.edu.cn/publish/csen/4623/2010/20101224193416561782037/20101224193416561782037_.html) (Dean of Department of Computer Science and Technology, Tsinghua University), and [Prof Dame Wendy Hall](https://www.ecs.soton.ac.uk/people/wh) (Director of the Web Science Institute, University of Southampton). During my time there, I managed to publish in top-tier conferences and workshops like ICML.
+    In my free time, I'm into deep learning research with [MILA](https://mila.quebec/en/) and NUS where I am a research associate in [NExT (NUS)](http://www.nextcenter.org/). 
+    
+    I was previously conducting research in meta-learning for hyperparameter optimization for deep learning algorithms in NExT Search Centre that is jointly setup between National University of Singapore (NUS), Tsinghua University and University of Southampton led by co-directors [Prof Tat-Seng Chua](https://www.chuatatseng.com/) (KITHCT Chair Professor at the School of Computing), [Prof Sun Maosong](http://www.cs.tsinghua.edu.cn/publish/csen/4623/2010/20101224193416561782037/20101224193416561782037_.html) (Dean of Department of Computer Science and Technology, Tsinghua University), and [Prof Dame Wendy Hall](https://www.ecs.soton.ac.uk/people/wh) (Director of the Web Science Institute, University of Southampton).
     
     I graduated from NUS where I was an NUS Global Merit Scholar, Chua Thian Poh Community Leadership Programme Fellow, Philip Yeo Innovation Fellow, and NUS Enterprise I&E Praticum Award recipient.
 
