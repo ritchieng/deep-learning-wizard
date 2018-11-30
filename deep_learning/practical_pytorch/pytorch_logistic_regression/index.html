@@ -1279,7 +1279,7 @@
 <h4 id="cross-entropy-function-d-for-2-class">Cross Entropy Function D() for 2 Class<a class="headerlink" href="#cross-entropy-function-d-for-2-class" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Take note that here, <span><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span> is our softmax outputs and <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span> are our labels</li>
-<li><span><span class="MathJax_Preview">D(S, L) = L log S - (1-L)log(1-S)</span><script type="math/tex">D(S, L) = L log S - (1-L)log(1-S)</script></span><ul>
+<li><span><span class="MathJax_Preview">D(S, L) = -(L log S + (1-L)log(1-S))</span><script type="math/tex">D(S, L) = -(L log S + (1-L)log(1-S))</script></span><ul>
 <li>If L = 0 (label)<ul>
 <li><span><span class="MathJax_Preview">D(S, 0) = - log(1-S)</span><script type="math/tex">D(S, 0) = - log(1-S)</script></span><ul>
 <li><span><span class="MathJax_Preview">- log(1-S)</span><script type="math/tex">- log(1-S)</script></span>: less positive if <span><span class="MathJax_Preview">S \longrightarrow 0</span><script type="math/tex">S \longrightarrow 0</script></span></li>
@@ -1289,9 +1289,9 @@
 </ul>
 </li>
 <li>If L = 1 (label)<ul>
-<li><span><span class="MathJax_Preview">D(S, 1) = log S</span><script type="math/tex">D(S, 1) = log S</script></span><ul>
-<li><span><span class="MathJax_Preview">logS</span><script type="math/tex">logS</script></span>: less negative if <span><span class="MathJax_Preview">S \longrightarrow 1</span><script type="math/tex">S \longrightarrow 1</script></span></li>
-<li><span><span class="MathJax_Preview">logS</span><script type="math/tex">logS</script></span>: more negative if <span><span class="MathJax_Preview">S \longrightarrow 0</span><script type="math/tex">S \longrightarrow 0</script></span> (BIGGER LOSS)</li>
+<li><span><span class="MathJax_Preview">D(S, 1) = - log S</span><script type="math/tex">D(S, 1) = - log S</script></span><ul>
+<li><span><span class="MathJax_Preview">-log(S)</span><script type="math/tex">-log(S)</script></span>: less positive if <span><span class="MathJax_Preview">S \longrightarrow 1</span><script type="math/tex">S \longrightarrow 1</script></span></li>
+<li><span><span class="MathJax_Preview">-log(S)</span><script type="math/tex">-log(S)</script></span>: more positive if <span><span class="MathJax_Preview">S \longrightarrow 0</span><script type="math/tex">S \longrightarrow 0</script></span> (BIGGER LOSS)</li>
 </ul>
 </li>
 </ul>
@@ -1309,16 +1309,16 @@
 <div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mf">0.99999</span><span class="p">))</span> 
 </pre></div></p>
 <p>You get a small error of -1e-5 if your label is 1 and S is near 1 (very correct prediction).
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">0.99999</span><span class="p">))</span>
+<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">0.99999</span><span class="p">))</span>
 </pre></div></p>
 <p>You get a big error of -11.51 if your label is 1 and S is near 0 (very wrong prediction).
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">0.00001</span><span class="p">))</span>
+<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">0.00001</span><span class="p">))</span>
 </pre></div></p>
 </div>
 <div class="codehilite"><pre><span></span><span class="mf">1.0000050000287824e-05</span>
 <span class="mf">11.51292546497478</span>
-<span class="o">-</span><span class="mf">1.0000050000287824e-05</span>
-<span class="o">-</span><span class="mf">11.512925464970229</span>
+<span class="mf">1.0000050000287824e-05</span>
+<span class="mf">11.512925464970229</span>
 </pre></div>
 
 <h4 id="cross-entropy-function-d-for-more-than-2-class">Cross Entropy Function D() for More Than 2 Class<a class="headerlink" href="#cross-entropy-function-d-for-more-than-2-class" title="Permanent link">&para;</a></h4>
