@@ -205,6 +205,8 @@ Epoch 80 | Loss: 0.666690468788147
 Epoch 100 | Loss: 0.6648102402687073
 ```
 
+Our loss is decreasing gradually, so it's learning. It has a possibility of reducing to almost 0 (overfitting) with sufficient model capacity (more layers or wider layers). We will explore overfitting and learning rate optimization subsequently.
+
 ## Summary
 We've learnt...
 
