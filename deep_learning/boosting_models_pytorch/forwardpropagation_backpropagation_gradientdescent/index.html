@@ -1,0 +1,1043 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="We deploy a top-down approach that enables you to grasp deep learning theories and code easily and quickly. Used by thousands of students and professionals from top tech companies, research institutions.">
+      
+      
+        <link rel="canonical" href="https://www.deeplearningwizard.com/deep_learning/boosting_models_pytorch/forwardpropagation_backpropagation_gradientdescent/">
+      
+      
+        <meta name="author" content="Ritchie Ng">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../../assets/images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+    
+    
+      
+        <title>Forward- and Backward-propagation and Gradient Descent - Deep Learning Wizard</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.451f80e5.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#546e7a">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue-grey" data-md-color-accent="blue">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../../../#transiting-to-backpropagation" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://www.deeplearningwizard.com/" title="Deep Learning Wizard" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">whatshot</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Deep Learning Wizard
+              </span>
+              <span class="md-header-nav__topic">
+                Forward- and Backward-propagation and Gradient Descent
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../../.." title="Home" class="md-tabs__link">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../intro/" title="Deep Learning Wiki" class="md-tabs__link md-tabs__link--active">
+          Deep Learning Wiki
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../news/news/" title="News" class="md-tabs__link">
+          News
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://www.deeplearningwizard.com/" title="Deep Learning Wizard" class="md-nav__button md-logo">
+      
+        <i class="md-icon">whatshot</i>
+      
+    </a>
+    Deep Learning Wizard
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../supporters/" title="Supporters" class="md-nav__link">
+      Supporters
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../review/" title="Reviews" class="md-nav__link">
+      Reviews
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      Deep Learning Wiki
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Deep Learning Wiki
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../intro/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../course_progression/" title="Course Progression" class="md-nav__link">
+      Course Progression
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../practical_pytorch/pytorch_matrices/" title="Matrices" class="md-nav__link">
+      Matrices
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../practical_pytorch/pytorch_gradients/" title="Gradients" class="md-nav__link">
+      Gradients
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../practical_pytorch/pytorch_linear_regression/" title="Linear Regression" class="md-nav__link">
+      Linear Regression
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../practical_pytorch/pytorch_logistic_regression/" title="Logistic Regression" class="md-nav__link">
+      Logistic Regression
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../practical_pytorch/pytorch_feedforward_neuralnetwork/" title="Feedforward Neural Networks" class="md-nav__link">
+      Feedforward Neural Networks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../practical_pytorch/pytorch_convolutional_neuralnetwork/" title="Convolutional Neural Networks" class="md-nav__link">
+      Convolutional Neural Networks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../practical_pytorch/pytorch_recurrent_neuralnetwork/" title="Recurrent Neural Networks" class="md-nav__link">
+      Recurrent Neural Networks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../practical_pytorch/pytorch_lstm_neuralnetwork/" title="Long Short Term Memory Neural Networks" class="md-nav__link">
+      Long Short Term Memory Neural Networks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../derivative_gradient_jacobian/" title="Derivative, Gradient and Jacobian" class="md-nav__link">
+      Derivative, Gradient and Jacobian
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Forward- and Backward-propagation and Gradient Descent
+      </label>
+    
+    <a href="./" title="Forward- and Backward-propagation and Gradient Descent" class="md-nav__link md-nav__link--active">
+      Forward- and Backward-propagation and Gradient Descent
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#transiting-to-backpropagation" title="Transiting to Backpropagation" class="md-nav__link">
+    Transiting to Backpropagation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#forward-propagation-backward-propagation-and-gradient-descent" title="Forward Propagation, Backward Propagation and Gradient Descent" class="md-nav__link">
+    Forward Propagation, Backward Propagation and Gradient Descent
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" title="Summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#citation" title="Citation" class="md-nav__link">
+    Citation
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="Comments" class="md-nav__link md-nav__link--active">
+            Comments
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      News
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        News
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/news/" title="Welcome" class="md-nav__link">
+      Welcome
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/ammi_facebook_google_recap_2018_11_21/" title="AMMI (AIMS) supported by Facebook and Google, November 2018" class="md-nav__link">
+      AMMI (AIMS) supported by Facebook and Google, November 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/nanjing_next_nus_tsinghua_ai_finance_healthcare_2018_11_01/" title="NExT++ AI in Healthcare and Finance, Nanjing, November 2018" class="md-nav__link">
+      NExT++ AI in Healthcare and Finance, Nanjing, November 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/facebook_pytorch_devcon_recap_2018_10_02/" title="Recap of Facebook PyTorch Developer Conference, San Francisco, September 2018" class="md-nav__link">
+      Recap of Facebook PyTorch Developer Conference, San Francisco, September 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/facebook_pytorch_developer_conference_2018_09_05/" title="Facebook PyTorch Developer Conference, San Francisco, September 2018" class="md-nav__link">
+      Facebook PyTorch Developer Conference, San Francisco, September 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/nvidia_nus_mit_datathon_2018_07_05/" title="NUS-MIT-NUHS NVIDIA Image Recognition Workshop, Singapore, July 2018" class="md-nav__link">
+      NUS-MIT-NUHS NVIDIA Image Recognition Workshop, Singapore, July 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/deep_learning_wizard_1y_2018_06_01/" title="Featured on PyTorch Website 2018" class="md-nav__link">
+      Featured on PyTorch Website 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/nvidia_self_driving_cars_talk_2017_06_21/" title="NVIDIA Self Driving Cars & Healthcare Talk, Singapore, June 2017" class="md-nav__link">
+      NVIDIA Self Driving Cars & Healthcare Talk, Singapore, June 2017
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/deep_learning_wizard_nvidia_inception_2018_05_01/" title="NVIDIA Inception Partner Status, Singapore, May 2017" class="md-nav__link">
+      NVIDIA Inception Partner Status, Singapore, May 2017
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#transiting-to-backpropagation" title="Transiting to Backpropagation" class="md-nav__link">
+    Transiting to Backpropagation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#forward-propagation-backward-propagation-and-gradient-descent" title="Forward Propagation, Backward Propagation and Gradient Descent" class="md-nav__link">
+    Forward Propagation, Backward Propagation and Gradient Descent
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" title="Summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#citation" title="Citation" class="md-nav__link">
+    Citation
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="Comments" class="md-nav__link md-nav__link--active">
+            Comments
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Forward- and Backward-propagation and Gradient Descent</h1>
+                
+                <h4 id="transiting-to-backpropagation">Transiting to Backpropagation<a class="headerlink" href="#transiting-to-backpropagation" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Let's go back to our simple FNN to put things in perspective<ul>
+<li>Let us ignore non-linearities for now to keep it simpler, but it's just a tiny change subsequently</li>
+<li>Given a linear transformation on our input (for simplicity instead of an affine transformation that includes a bias): <span><span class="MathJax_Preview">\hat y = \theta x</span><script type="math/tex">\hat y = \theta x</script></span><ul>
+<li><span><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span> is our parameters</li>
+<li><span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> is our input</li>
+<li><span><span class="MathJax_Preview">\hat y</span><script type="math/tex">\hat y</script></span> is our prediction</li>
+</ul>
+</li>
+<li>Then we have our MSE loss function <span><span class="MathJax_Preview">L = \frac{1}{2} (\hat y - y)^2</span><script type="math/tex">L = \frac{1}{2} (\hat y - y)^2</script></span></li>
+</ul>
+</li>
+<li>We need to calculate our partial derivatives of our loss w.r.t. our parameters to update our parameters: <span><span class="MathJax_Preview">\nabla_{\theta} = \frac{\delta L}{\delta \theta}</span><script type="math/tex">\nabla_{\theta} = \frac{\delta L}{\delta \theta}</script></span><ul>
+<li>With chain rule we have <span><span class="MathJax_Preview">\frac{\delta L}{\delta \theta} = \frac{\delta L}{\delta \hat y} \frac{\delta \hat y}{\delta \theta}</span><script type="math/tex">\frac{\delta L}{\delta \theta} = \frac{\delta L}{\delta \hat y} \frac{\delta \hat y}{\delta \theta}</script></span><ul>
+<li><span><span class="MathJax_Preview">\frac{\delta L}{\delta \hat y} = (\hat y -  y)</span><script type="math/tex">\frac{\delta L}{\delta \hat y} = (\hat y -  y)</script></span></li>
+<li><span><span class="MathJax_Preview">\frac{\delta \hat y}{\delta \theta}</span><script type="math/tex">\frac{\delta \hat y}{\delta \theta}</script></span> is our partial derivatives of <span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span> w.r.t. our parameters (our gradient) as we have covered previously</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="forward-propagation-backward-propagation-and-gradient-descent">Forward Propagation, Backward Propagation and Gradient Descent<a class="headerlink" href="#forward-propagation-backward-propagation-and-gradient-descent" title="Permanent link">&para;</a></h4>
+<ul>
+<li>All right, now let's put together what we have learnt on backpropagation and apply it on a simple feedforward neural network (FNN)</li>
+<li>Let us assume the following simple FNN architecture and take note that we do not have bias here to keep things simple<ul>
+<li>FNN architecture<ol>
+<li>Linear function: hidden size = 32</li>
+<li>Non-linear function: sigmoid</li>
+<li>Linear function: output size = 1</li>
+<li>Non-linear function: sigmoid</li>
+</ol>
+</li>
+<li>We will be going through a binary classification problem classifying 2 types of flowers<ul>
+<li>Output size: 1 (represented by 0 or 1 depending on the flower)</li>
+<li>Input size: 2 (features of the flower)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="../images/manual_bp.png" /> </p>
+<div class="admonition note">
+<p class="admonition-title">Load 3-class dataset</p>
+<p>We want to set a seed to encourage reproducibility so you can match our loss numbers.</p>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="kn">as</span> <span class="nn">nn</span>
+
+<span class="c1"># Set manual seed</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+<p>Here we want to load our flower classification dataset of 150 samples. There are 2 features, hence the input size would be 150x2. There is no one-hot encoding so the output would not be a size of 150x3 but a size of 150x1.
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">preprocessing</span>
+<span class="n">iris</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
+</pre></div></p>
+<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+</pre></div>
+
+</div>
+<div class="codehilite"><pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">150</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">150</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</pre></div>
+
+<div class="admonition note">
+<p class="admonition-title">From 3 class dataset to 2 class dataset</p>
+<p>We only want 2 classes because we want a binary classification problem. As mentioned, there is no one-hot encoding, so each class is represented by 0, 1, or 2. All we need to do is to filter out all samples with a label of 2 to have 2 classes.
+<div class="codehilite"><pre><span></span><span class="c1"># We only take 2 classes to make a binary classification problem</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:</span><span class="n">y</span><span class="p">[</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">[:</span><span class="n">y</span><span class="p">[</span><span class="n">y</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="sb">````</span>
+
+<span class="sb">``</span><span class="err">`</span><span class="n">python</span>
+<span class="k">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+</pre></div></p>
+</div>
+<div class="codehilite"><pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</pre></div>
+
+<div class="admonition note">
+<p class="admonition-title">Building our FNN model class from scratch</p>
+<div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">FNN</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="c1"># Dimensions for input, hidden and output</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_dim</span> <span class="o">=</span> <span class="mi">2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span> <span class="o">=</span> <span class="mi">32</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="c1"># Learning rate definition</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.001</span>
+
+        <span class="c1"># Our parameters (weights)</span>
+        <span class="c1"># w1: 2 x 32</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">)</span>
+
+        <span class="c1"># w2: 32 x 1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_dim</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">sigmoid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">s</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">sigmoid_first_order_derivative</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">s</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">s</span><span class="p">)</span>
+
+    <span class="c1"># Forward propagation</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="c1"># First linear layer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">w1</span><span class="p">)</span> <span class="c1"># 3 X 3 &quot;.dot&quot; does not broadcast in PyTorch</span>
+
+        <span class="c1"># First non-linearity</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y1</span><span class="p">)</span>
+
+        <span class="c1"># Second linear layer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y3</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">w2</span><span class="p">)</span>
+
+        <span class="c1"># Second non-linearity</span>
+        <span class="n">y4</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y3</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">y4</span>
+
+    <span class="c1"># Backward propagation</span>
+    <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">y4</span><span class="p">):</span>
+        <span class="c1"># Derivative of binary cross entropy cost w.r.t. final output y4</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dC_dy4</span> <span class="o">=</span> <span class="n">y4</span> <span class="o">-</span> <span class="n">l</span>
+
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Gradients for w2: partial derivative of cost w.r.t. w2</span>
+<span class="sd">        dC/dw2</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dy4_dy3</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigmoid_first_order_derivative</span><span class="p">(</span><span class="n">y4</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dy3_dw2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y2</span>
+
+        <span class="c1"># Y4 delta: dC_dy4 dy4_dy3</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y4_delta</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dC_dy4</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dy4_dy3</span>
+
+        <span class="c1"># This is our gradients for w1: dC_dy4 dy4_dy3 dy3_dw2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dC_dw2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">t</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dy3_dw2</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">y4_delta</span><span class="p">)</span>
+
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Gradients for w1: partial derivative of cost w.r.t w1</span>
+<span class="sd">        dC/dw1</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dy3_dy2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">w2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dy2_dy1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigmoid_first_order_derivative</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y2</span><span class="p">)</span>
+
+        <span class="c1"># Y2 delta: (dC_dy4 dy4_dy3) dy3_dy2 dy2_dy1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y2_delta</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y4_delta</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">t</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dy3_dy2</span><span class="p">))</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dy2_dy1</span>
+
+        <span class="c1"># Gradients for w1: (dC_dy4 dy4_dy3) dy3_dy2 dy2_dy1 dy1_dw1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dC_dw1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">t</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">y2_delta</span><span class="p">)</span>
+
+        <span class="c1"># Gradient descent on the weights from our 2 linear layers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w1</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">learning_rate</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dC_dw1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w2</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">learning_rate</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">dC_dw2</span>
+
+    <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">l</span><span class="p">):</span>
+        <span class="c1"># Forward propagation</span>
+        <span class="n">y4</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+        <span class="c1"># Backward propagation and gradient descent</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">y4</span><span class="p">)</span>
+</pre></div>
+
+</div>
+<div class="admonition note">
+<p class="admonition-title">Training our FNN model</p>
+<div class="codehilite"><pre><span></span><span class="c1"># Instantiate our model class and assign it to our model object</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">FNN</span><span class="p">()</span>
+
+<span class="c1"># Loss list for plotting of loss behaviour</span>
+<span class="n">loss_lst</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Number of times we want our FNN to look at all 100 samples we have, 100 implies looking through 100x</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">101</span>
+
+<span class="c1"># Let&#39;s train our model with 100 epochs</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
+    <span class="c1"># Get our predictions</span>
+    <span class="n">y_hat</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+    <span class="c1"># Cross entropy loss, remember this can never be negative by nature of the equation</span>
+    <span class="c1"># But it does not mean the loss can&#39;t be negative for other loss functions</span>
+    <span class="n">cross_entropy_loss</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">y</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">y_hat</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">y_hat</span><span class="p">))</span>
+
+    <span class="c1"># We have to take cross entropy loss over all our samples, 100 in this 2-class iris dataset</span>
+    <span class="n">mean_cross_entropy_loss</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cross_entropy_loss</span><span class="p">)</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+    <span class="c1"># Print our mean cross entropy loss</span>
+    <span class="k">if</span> <span class="n">epoch</span> <span class="o">%</span> <span class="mi">20</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Epoch {} | Loss: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">epoch</span><span class="p">,</span> <span class="n">mean_cross_entropy_loss</span><span class="p">))</span>
+    <span class="n">loss_lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mean_cross_entropy_loss</span><span class="p">)</span>
+
+    <span class="c1"># (1) Forward propagation: to get our predictions to pass to our cross entropy loss function</span>
+    <span class="c1"># (2) Back propagation: get our partial derivatives w.r.t. parameters (gradients)</span>
+    <span class="c1"># (3) Gradient Descent: update our weights with our gradients</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+
+</div>
+<div class="codehilite"><pre><span></span><span class="n">Epoch</span> <span class="mi">0</span> <span class="o">|</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.9228229522705078</span>
+<span class="n">Epoch</span> <span class="mi">20</span> <span class="o">|</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.6966760754585266</span>
+<span class="n">Epoch</span> <span class="mi">40</span> <span class="o">|</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.6714916229248047</span>
+<span class="n">Epoch</span> <span class="mi">60</span> <span class="o">|</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.6686137914657593</span>
+<span class="n">Epoch</span> <span class="mi">80</span> <span class="o">|</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.666690468788147</span>
+<span class="n">Epoch</span> <span class="mi">100</span> <span class="o">|</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.6648102402687073</span>
+</pre></div>
+
+<p>Our loss is decreasing gradually, so it's learning. It has a possibility of reducing to almost 0 (overfitting) with sufficient model capacity (more layers or wider layers). We will explore overfitting and learning rate optimization subsequently.</p>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>We've learnt...</p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> The math behind forwardpropagation, backwardpropagation and gradient descent for FNN</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Implement a basic FNN from scratch with PyTorch</li>
+</ul>
+</div>
+<h2 id="citation">Citation<a class="headerlink" href="#citation" title="Permanent link">&para;</a></h2>
+<p>If you have found these useful in your research, presentations, school work, projects or workshops, feel free to cite using this DOI.</p>
+<p><a href="https://zenodo.org/badge/latestdoi/139945544"><img alt="DOI" src="https://zenodo.org/badge/139945544.svg" /></a> </p>
+                
+                  
+                
+              
+              
+                
+
+
+  <h2 id="__comments">Comments</h2>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://www.deeplearningwizard.com/deep_learning/boosting_models_pytorch/forwardpropagation_backpropagation_gradientdescent/";
+      this.page.identifier =
+        "deep_learning/boosting_models_pytorch/forwardpropagation_backpropagation_gradientdescent/";
+    };
+    (function() {
+      var d = document, s = d.createElement("script");
+      s.src = "//deep-learning-wizard.disqus.com/embed.js";
+      s.setAttribute("data-timestamp", +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="deep_learning/boosting_models_pytorch/derivative_gradient_jacobian/" title="Derivative, Gradient and Jacobian" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Derivative, Gradient and Jacobian
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="news/news/" title="Welcome" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Welcome
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2018 Deep Learning Wizard
+          </div>
+        
+        proudly an
+        <a href="http://www.nvidia.com/page/home.html">NVIDIA Inception Partner</a>
+        based in Singapore by
+        <a href="https://www.ritchieng.com/">
+          Ritchie Ng (NVIDIA Deep Learning Institute Instructor)</a>
+      </div>
+      
+        
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/ritchieng" class="md-footer-social__link fa fa-github"></a>
+    
+      <a href="https://www.facebook.com/DeepLearningWizard/" class="md-footer-social__link fa fa-facebook"></a>
+    
+      <a href="https://www.linkedin.com/company/deeplearningwizard/" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.583bbe55.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+    
+      
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-122083328-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+      
+    
+  </body>
+</html>
