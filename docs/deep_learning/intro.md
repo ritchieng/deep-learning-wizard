@@ -9,7 +9,7 @@ Our main open-source programming languages and libraries are Python, PyTorch, Nu
     
     All of our code allows you to run in a notebook for this deep learning section. Please use a `jupyter notebook` and run the examples from the start of the page to the end.
     
-    Remember to use `CTRL +` if you would like to zoom into the diagrams if you find them too small or blur.
+    Remember to use `CTRL +` if you would like to zoom into the diagrams if you find them too small or blur. You can also just right click and open the image in a new tab if you prefer.
     
 !!! warning "Errors to be corrected"
     As we are rapidly prototyping there may be some errors. For these errors stated here, they will be corrected very soon.
