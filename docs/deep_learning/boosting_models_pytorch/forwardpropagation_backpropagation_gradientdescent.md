@@ -24,6 +24,7 @@
     - We will be going through a binary classification problem classifying 2 types of flowers
         - Output size: 1 (represented by 0 or 1 depending on the flower)
         - Input size: 2 (features of the flower)
+        - Number of training samples: 100
 
 ![](./images/manual_bp.png) 
 
