@@ -45,8 +45,8 @@
         - $v_t = \gamma v_{t-1} + \eta \cdot  \nabla J(\theta - \gamma v_{t-1}, x^{i: i+n}, y^{i:i+n})$
         - $\theta = \theta - v_t$
 - Practical example
-    - Given $\eta_t = 0.1 $ and $ \gamma = 0.01$
-    - Epoch 0: $\eta_t = 0.1 $
+    - Given $\eta_t = 0.1$ and $ \gamma = 0.01$
+    - Epoch 0: $\eta_t = 0.1$
     - Epoch 1: $\eta_{t+1} = 0.1 (0.1) =  0.01$
     - Epoch 2: $\eta_{t+2} = 0.1 (0.1)^2 =  0.001$
     - Epoch n: $\eta_{t+n} = 0.1 (0.1)^n$
