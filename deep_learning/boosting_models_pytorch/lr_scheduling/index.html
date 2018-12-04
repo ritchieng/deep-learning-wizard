@@ -1,0 +1,2168 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="We deploy a top-down approach that enables you to grasp deep learning theories and code easily and quickly. Used by thousands of students and professionals from top tech companies, research institutions.">
+      
+      
+        <link rel="canonical" href="https://www.deeplearningwizard.com/deep_learning/boosting_models_pytorch/lr_scheduling/">
+      
+      
+        <meta name="author" content="Ritchie Ng">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../../assets/images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+    
+    
+      
+        <title>Learning Rate Scheduling - Deep Learning Wizard</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.451f80e5.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#546e7a">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue-grey" data-md-color-accent="blue">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../../../#learning-rate-scheduling" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://www.deeplearningwizard.com/" title="Deep Learning Wizard" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">whatshot</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Deep Learning Wizard
+              </span>
+              <span class="md-header-nav__topic">
+                Learning Rate Scheduling
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../../.." title="Home" class="md-tabs__link">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../intro/" title="Deep Learning Wiki" class="md-tabs__link md-tabs__link--active">
+          Deep Learning Wiki
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../news/news/" title="News" class="md-tabs__link">
+          News
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://www.deeplearningwizard.com/" title="Deep Learning Wizard" class="md-nav__button md-logo">
+      
+        <i class="md-icon">whatshot</i>
+      
+    </a>
+    Deep Learning Wizard
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../supporters/" title="Supporters" class="md-nav__link">
+      Supporters
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../review/" title="Reviews" class="md-nav__link">
+      Reviews
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      Deep Learning Wiki
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Deep Learning Wiki
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../intro/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../course_progression/" title="Course Progression" class="md-nav__link">
+      Course Progression
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../practical_pytorch/pytorch_matrices/" title="Matrices" class="md-nav__link">
+      Matrices
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../practical_pytorch/pytorch_gradients/" title="Gradients" class="md-nav__link">
+      Gradients
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../practical_pytorch/pytorch_linear_regression/" title="Linear Regression" class="md-nav__link">
+      Linear Regression
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../practical_pytorch/pytorch_logistic_regression/" title="Logistic Regression" class="md-nav__link">
+      Logistic Regression
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../practical_pytorch/pytorch_feedforward_neuralnetwork/" title="Feedforward Neural Networks" class="md-nav__link">
+      Feedforward Neural Networks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../practical_pytorch/pytorch_convolutional_neuralnetwork/" title="Convolutional Neural Networks" class="md-nav__link">
+      Convolutional Neural Networks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../practical_pytorch/pytorch_recurrent_neuralnetwork/" title="Recurrent Neural Networks" class="md-nav__link">
+      Recurrent Neural Networks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../practical_pytorch/pytorch_lstm_neuralnetwork/" title="Long Short Term Memory Neural Networks" class="md-nav__link">
+      Long Short Term Memory Neural Networks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../derivative_gradient_jacobian/" title="Derivative, Gradient and Jacobian" class="md-nav__link">
+      Derivative, Gradient and Jacobian
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../forwardpropagation_backpropagation_gradientdescent/" title="Forward- and Backward-propagation and Gradient Descent" class="md-nav__link">
+      Forward- and Backward-propagation and Gradient Descent
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Learning Rate Scheduling
+      </label>
+    
+    <a href="./" title="Learning Rate Scheduling" class="md-nav__link md-nav__link--active">
+      Learning Rate Scheduling
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#optimization-algorithm-mini-batch-stochastic-gradient-descent-sgd" title="Optimization Algorithm: Mini-batch Stochastic Gradient Descent (SGD)" class="md-nav__link">
+    Optimization Algorithm: Mini-batch Stochastic Gradient Descent (SGD)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-intuition-recap" title="Learning Intuition Recap" class="md-nav__link">
+    Learning Intuition Recap
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-rate-pointers" title="Learning Rate Pointers" class="md-nav__link">
+    Learning Rate Pointers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#need-for-learning-rate-schedules" title="Need for Learning Rate Schedules" class="md-nav__link">
+    Need for Learning Rate Schedules
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#top-basic-learning-rate-schedules" title="Top Basic Learning Rate Schedules" class="md-nav__link">
+    Top Basic Learning Rate Schedules
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-wise-learning-rate-decay" title="Step-wise Learning Rate Decay" class="md-nav__link">
+    Step-wise Learning Rate Decay
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-wise-decay-every-epoch" title="Step-wise Decay: Every Epoch" class="md-nav__link">
+    Step-wise Decay: Every Epoch
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-wise-decay-every-2-epochs" title="Step-wise Decay: Every 2 Epochs" class="md-nav__link">
+    Step-wise Decay: Every 2 Epochs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-wise-decay-every-epoch-larger-gamma" title="Step-wise Decay: Every Epoch, Larger Gamma" class="md-nav__link">
+    Step-wise Decay: Every Epoch, Larger Gamma
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pointers-on-step-wise-decay" title="Pointers on Step-wise Decay" class="md-nav__link">
+    Pointers on Step-wise Decay
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reduce-on-loss-plateau-decay" title="Reduce on Loss Plateau Decay" class="md-nav__link">
+    Reduce on Loss Plateau Decay
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reduce-on-loss-plateau-decay-patience0-factor01" title="Reduce on Loss Plateau Decay, Patience=0, Factor=0.1" class="md-nav__link">
+    Reduce on Loss Plateau Decay, Patience=0, Factor=0.1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reduce-on-loss-plateau-decay-patience0-factor05" title="Reduce on Loss Plateau Decay, Patience=0, Factor=0.5" class="md-nav__link">
+    Reduce on Loss Plateau Decay, Patience=0, Factor=0.5
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pointers-on-reduce-on-loss-pleateau-decay" title="Pointers on Reduce on Loss Pleateau Decay" class="md-nav__link">
+    Pointers on Reduce on Loss Pleateau Decay
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" title="Summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#citation" title="Citation" class="md-nav__link">
+    Citation
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="Comments" class="md-nav__link md-nav__link--active">
+            Comments
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      News
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        News
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/news/" title="Welcome" class="md-nav__link">
+      Welcome
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/ammi_facebook_google_recap_2018_11_21/" title="AMMI (AIMS) supported by Facebook and Google, November 2018" class="md-nav__link">
+      AMMI (AIMS) supported by Facebook and Google, November 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/nanjing_next_nus_tsinghua_ai_finance_healthcare_2018_11_01/" title="NExT++ AI in Healthcare and Finance, Nanjing, November 2018" class="md-nav__link">
+      NExT++ AI in Healthcare and Finance, Nanjing, November 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/facebook_pytorch_devcon_recap_2018_10_02/" title="Recap of Facebook PyTorch Developer Conference, San Francisco, September 2018" class="md-nav__link">
+      Recap of Facebook PyTorch Developer Conference, San Francisco, September 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/facebook_pytorch_developer_conference_2018_09_05/" title="Facebook PyTorch Developer Conference, San Francisco, September 2018" class="md-nav__link">
+      Facebook PyTorch Developer Conference, San Francisco, September 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/nvidia_nus_mit_datathon_2018_07_05/" title="NUS-MIT-NUHS NVIDIA Image Recognition Workshop, Singapore, July 2018" class="md-nav__link">
+      NUS-MIT-NUHS NVIDIA Image Recognition Workshop, Singapore, July 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/deep_learning_wizard_1y_2018_06_01/" title="Featured on PyTorch Website 2018" class="md-nav__link">
+      Featured on PyTorch Website 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/nvidia_self_driving_cars_talk_2017_06_21/" title="NVIDIA Self Driving Cars & Healthcare Talk, Singapore, June 2017" class="md-nav__link">
+      NVIDIA Self Driving Cars & Healthcare Talk, Singapore, June 2017
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/deep_learning_wizard_nvidia_inception_2018_05_01/" title="NVIDIA Inception Partner Status, Singapore, May 2017" class="md-nav__link">
+      NVIDIA Inception Partner Status, Singapore, May 2017
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#optimization-algorithm-mini-batch-stochastic-gradient-descent-sgd" title="Optimization Algorithm: Mini-batch Stochastic Gradient Descent (SGD)" class="md-nav__link">
+    Optimization Algorithm: Mini-batch Stochastic Gradient Descent (SGD)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-intuition-recap" title="Learning Intuition Recap" class="md-nav__link">
+    Learning Intuition Recap
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-rate-pointers" title="Learning Rate Pointers" class="md-nav__link">
+    Learning Rate Pointers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#need-for-learning-rate-schedules" title="Need for Learning Rate Schedules" class="md-nav__link">
+    Need for Learning Rate Schedules
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#top-basic-learning-rate-schedules" title="Top Basic Learning Rate Schedules" class="md-nav__link">
+    Top Basic Learning Rate Schedules
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-wise-learning-rate-decay" title="Step-wise Learning Rate Decay" class="md-nav__link">
+    Step-wise Learning Rate Decay
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-wise-decay-every-epoch" title="Step-wise Decay: Every Epoch" class="md-nav__link">
+    Step-wise Decay: Every Epoch
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-wise-decay-every-2-epochs" title="Step-wise Decay: Every 2 Epochs" class="md-nav__link">
+    Step-wise Decay: Every 2 Epochs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-wise-decay-every-epoch-larger-gamma" title="Step-wise Decay: Every Epoch, Larger Gamma" class="md-nav__link">
+    Step-wise Decay: Every Epoch, Larger Gamma
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pointers-on-step-wise-decay" title="Pointers on Step-wise Decay" class="md-nav__link">
+    Pointers on Step-wise Decay
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reduce-on-loss-plateau-decay" title="Reduce on Loss Plateau Decay" class="md-nav__link">
+    Reduce on Loss Plateau Decay
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reduce-on-loss-plateau-decay-patience0-factor01" title="Reduce on Loss Plateau Decay, Patience=0, Factor=0.1" class="md-nav__link">
+    Reduce on Loss Plateau Decay, Patience=0, Factor=0.1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reduce-on-loss-plateau-decay-patience0-factor05" title="Reduce on Loss Plateau Decay, Patience=0, Factor=0.5" class="md-nav__link">
+    Reduce on Loss Plateau Decay, Patience=0, Factor=0.5
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pointers-on-reduce-on-loss-pleateau-decay" title="Pointers on Reduce on Loss Pleateau Decay" class="md-nav__link">
+    Pointers on Reduce on Loss Pleateau Decay
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" title="Summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#citation" title="Citation" class="md-nav__link">
+    Citation
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="Comments" class="md-nav__link md-nav__link--active">
+            Comments
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="learning-rate-scheduling">Learning Rate Scheduling<a class="headerlink" href="#learning-rate-scheduling" title="Permanent link">&para;</a></h1>
+<h2 id="optimization-algorithm-mini-batch-stochastic-gradient-descent-sgd">Optimization Algorithm: Mini-batch Stochastic Gradient Descent (SGD)<a class="headerlink" href="#optimization-algorithm-mini-batch-stochastic-gradient-descent-sgd" title="Permanent link">&para;</a></h2>
+<ul>
+<li>We will be using mini-batch gradient descent in all our examples here when scheduling our learning rate</li>
+<li>Combination of batch gradient descent &amp; stochastic gradient descent<ul>
+<li><span><span class="MathJax_Preview">\theta = \theta - \eta \cdot  \nabla J(\theta, x^{i: i+n}, y^{i:i+n})</span><script type="math/tex">\theta = \theta - \eta \cdot  \nabla J(\theta, x^{i: i+n}, y^{i:i+n})</script></span></li>
+</ul>
+</li>
+<li>Characteristics<ul>
+<li>Compute the gradient of the lost function w.r.t. parameters for <strong>n sets of training sample (n input and n label)</strong>, <span><span class="MathJax_Preview">\nabla J(\theta, x^{i: i+n}, y^{i:i+n})</span><script type="math/tex">\nabla J(\theta, x^{i: i+n}, y^{i:i+n})</script></span></li>
+<li>Use this to update our parameters at every iteration</li>
+</ul>
+</li>
+<li>Typically in deep learning, some variation of mini-batch gradient is used where the batch size is a hyperparameter to be determined</li>
+</ul>
+<h2 id="learning-intuition-recap">Learning Intuition Recap<a class="headerlink" href="#learning-intuition-recap" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Learning process<ul>
+<li>Original parameters <span><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> given input, get output <span><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> compare with labels <span><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> get loss with comparison of input/output <span><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> get gradients of loss w.r.t parameters <span><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> <strong>update parameters so model can churn output closer to labels</strong> <span><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> repeat</li>
+</ul>
+</li>
+<li>For a detailed mathematical account of how this works and how to implement from scratch in Python and PyTorch, you can read our <a href="https://www.deeplearningwizard.com/deep_learning/boosting_models_pytorch/forwardpropagation_backpropagation_gradientdescent/">forward- and back-propagation and gradient descent post</a>.</li>
+</ul>
+<h2 id="learning-rate-pointers">Learning Rate Pointers<a class="headerlink" href="#learning-rate-pointers" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="../images/lr1.png" /></p>
+<ul>
+<li><strong>Update parameters so model can churn output closer to labels, lower loss</strong><ul>
+<li><span><span class="MathJax_Preview">\theta = \theta - \eta \cdot  \nabla J(\theta, x^{i: i+n}, y^{i:i+n})</span><script type="math/tex">\theta = \theta - \eta \cdot  \nabla J(\theta, x^{i: i+n}, y^{i:i+n})</script></span></li>
+</ul>
+</li>
+<li>If we set <span><span class="MathJax_Preview">\eta</span><script type="math/tex">\eta</script></span> to be a <strong>large value</strong> <span><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> learn too much (rapid learning)<ul>
+<li>Unable to converge to a good local minima (unable to effectively gradually decrease your loss, overshoot the local lowest value)</li>
+</ul>
+</li>
+<li>If we set <span><span class="MathJax_Preview">\eta</span><script type="math/tex">\eta</script></span> to be a <strong>small value</strong> <span><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> learn too little (slow learning)<ul>
+<li>May take too long or unable to convert to a good local minima</li>
+</ul>
+</li>
+</ul>
+<h2 id="need-for-learning-rate-schedules">Need for Learning Rate Schedules<a class="headerlink" href="#need-for-learning-rate-schedules" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Benefits<ul>
+<li>Converge faster</li>
+<li>Higher accuracy
+<img alt="" src="../images/lr2.png" /></li>
+</ul>
+</li>
+</ul>
+<h2 id="top-basic-learning-rate-schedules">Top Basic Learning Rate Schedules<a class="headerlink" href="#top-basic-learning-rate-schedules" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Step-wise Decay </li>
+<li>Reduce on Loss Plateau Decay</li>
+</ol>
+<h3 id="step-wise-learning-rate-decay">Step-wise Learning Rate Decay<a class="headerlink" href="#step-wise-learning-rate-decay" title="Permanent link">&para;</a></h3>
+<h4 id="step-wise-decay-every-epoch">Step-wise Decay: Every Epoch<a class="headerlink" href="#step-wise-decay-every-epoch" title="Permanent link">&para;</a></h4>
+<ul>
+<li>At every epoch,<ul>
+<li><span><span class="MathJax_Preview">\eta_t = \eta_{t-1}\gamma</span><script type="math/tex">\eta_t = \eta_{t-1}\gamma</script></span></li>
+<li><span><span class="MathJax_Preview">\gamma = 0.1</span><script type="math/tex">\gamma = 0.1</script></span></li>
+</ul>
+</li>
+<li>Optimization Algorithm 4: SGD Nesterov<ul>
+<li>Modification of SGD Momentum <ul>
+<li><span><span class="MathJax_Preview">v_t = \gamma v_{t-1} + \eta \cdot  \nabla J(\theta - \gamma v_{t-1}, x^{i: i+n}, y^{i:i+n})</span><script type="math/tex">v_t = \gamma v_{t-1} + \eta \cdot  \nabla J(\theta - \gamma v_{t-1}, x^{i: i+n}, y^{i:i+n})</script></span></li>
+<li><span><span class="MathJax_Preview">\theta = \theta - v_t</span><script type="math/tex">\theta = \theta - v_t</script></span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Practical example<ul>
+<li>Given $\eta_t = 0.1 $ and $ \gamma = 0.01$</li>
+<li>Epoch 0: $\eta_t = 0.1 $</li>
+<li>Epoch 1: <span><span class="MathJax_Preview">\eta_{t+1} = 0.1 (0.1) =  0.01</span><script type="math/tex">\eta_{t+1} = 0.1 (0.1) =  0.01</script></span></li>
+<li>Epoch 2: <span><span class="MathJax_Preview">\eta_{t+2} = 0.1 (0.1)^2 =  0.001</span><script type="math/tex">\eta_{t+2} = 0.1 (0.1)^2 =  0.001</script></span></li>
+<li>Epoch n: <span><span class="MathJax_Preview">\eta_{t+n} = 0.1 (0.1)^n</span><script type="math/tex">\eta_{t+n} = 0.1 (0.1)^n</script></span></li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Code for step-wise learning rate decay at every epoch</p>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="kn">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torchvision.transforms</span> <span class="kn">as</span> <span class="nn">transforms</span>
+<span class="kn">import</span> <span class="nn">torchvision.datasets</span> <span class="kn">as</span> <span class="nn">dsets</span>
+
+<span class="c1"># Set seed</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Where to add a new import</span>
+<span class="kn">from</span> <span class="nn">torch.optim.lr_scheduler</span> <span class="kn">import</span> <span class="n">StepLR</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 1: LOADING DATASET</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">train_dataset</span> <span class="o">=</span> <span class="n">dsets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;./data&#39;</span><span class="p">,</span> 
+                            <span class="n">train</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> 
+                            <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+                            <span class="n">download</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">test_dataset</span> <span class="o">=</span> <span class="n">dsets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;./data&#39;</span><span class="p">,</span> 
+                           <span class="n">train</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> 
+                           <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">())</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 2: MAKING DATASET ITERABLE</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">n_iters</span> <span class="o">=</span> <span class="mi">3000</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="n">n_iters</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">)</span> <span class="o">/</span> <span class="n">batch_size</span><span class="p">)</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">)</span>
+
+<span class="n">train_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">train_dataset</span><span class="p">,</span> 
+                                           <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> 
+                                           <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">test_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">test_dataset</span><span class="p">,</span> 
+                                          <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> 
+                                          <span class="n">shuffle</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 3: CREATE MODEL CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="k">class</span> <span class="nc">FeedforwardNeuralNetModel</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">FeedforwardNeuralNetModel</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="c1"># Linear function</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">)</span> 
+        <span class="c1"># Non-linearity</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">relu</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+        <span class="c1"># Linear function (readout)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">)</span>  
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="c1"># Linear function</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="c1"># Non-linearity</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+        <span class="c1"># Linear function (readout)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">out</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 4: INSTANTIATE MODEL CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">input_dim</span> <span class="o">=</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span>
+<span class="n">hidden_dim</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">output_dim</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">FeedforwardNeuralNetModel</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 5: INSTANTIATE LOSS CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 6: INSTANTIATE OPTIMIZER CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">nesterov</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 7: INSTANTIATE STEP LEARNING SCHEDULER CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="c1"># step_size: at how many multiples of epoch you decay</span>
+<span class="c1"># step_size = 1, after every 1 epoch, new_lr = lr*gamma </span>
+<span class="c1"># step_size = 2, after every 2 epoch, new_lr = lr*gamma </span>
+
+<span class="c1"># gamma = decaying factor</span>
+<span class="n">scheduler</span> <span class="o">=</span> <span class="n">StepLR</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">step_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 7: TRAIN THE MODEL</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="nb">iter</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
+    <span class="c1"># Decay Learning Rate</span>
+    <span class="n">scheduler</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+    <span class="c1"># Print Learning Rate</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Epoch:&#39;</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span><span class="s1">&#39;LR:&#39;</span><span class="p">,</span> <span class="n">scheduler</span><span class="o">.</span><span class="n">get_lr</span><span class="p">())</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">train_loader</span><span class="p">):</span>
+        <span class="c1"># Load images</span>
+        <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">)</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">()</span>
+
+        <span class="c1"># Clear gradients w.r.t. parameters</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+
+        <span class="c1"># Forward pass to get output/logits</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+
+        <span class="c1"># Calculate Loss: softmax --&gt; cross entropy loss</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+
+        <span class="c1"># Getting gradients w.r.t. parameters</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+
+        <span class="c1"># Updating parameters</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+        <span class="nb">iter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="nb">iter</span> <span class="o">%</span> <span class="mi">500</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># Calculate Accuracy         </span>
+            <span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="c1"># Iterate through test dataset</span>
+            <span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">test_loader</span><span class="p">:</span>
+                <span class="c1"># Load images to a Torch Variable</span>
+                <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">)</span>
+
+                <span class="c1"># Forward pass only to get logits/output</span>
+                <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+
+                <span class="c1"># Get predictions from the maximum value</span>
+                <span class="n">_</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+                <span class="c1"># Total number of labels</span>
+                <span class="n">total</span> <span class="o">+=</span> <span class="n">labels</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+                <span class="c1"># Total correct predictions</span>
+                <span class="n">correct</span> <span class="o">+=</span> <span class="p">(</span><span class="n">predicted</span> <span class="o">==</span> <span class="n">labels</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+            <span class="n">accuracy</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">correct</span> <span class="o">/</span> <span class="n">total</span>
+
+            <span class="c1"># Print Loss</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Iteration: {}. Loss: {}. Accuracy: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">accuracy</span><span class="p">))</span>
+</pre></div>
+
+</div>
+<div class="codehilite"><pre><span></span><span class="n">Epoch</span><span class="p">:</span> <span class="mi">0</span> <span class="n">LR</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">]</span>
+<span class="n">Iteration</span><span class="p">:</span> <span class="mf">500.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.15292978286743164</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mi">96</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">1</span> <span class="n">LR</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.010000000000000002</span><span class="p">]</span>
+<span class="n">Iteration</span><span class="p">:</span> <span class="mf">1000.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1207798570394516</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mi">97</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">2</span> <span class="n">LR</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0010000000000000002</span><span class="p">]</span>
+<span class="n">Iteration</span><span class="p">:</span> <span class="mf">1500.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.12287932634353638</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mi">97</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">3</span> <span class="n">LR</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.00010000000000000003</span><span class="p">]</span>
+<span class="n">Iteration</span><span class="p">:</span> <span class="mf">2000.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.05614742264151573</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mi">97</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">4</span> <span class="n">LR</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.0000000000000003e-05</span><span class="p">]</span>
+<span class="n">Iteration</span><span class="p">:</span> <span class="mf">2500.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.06775809079408646</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mi">97</span>
+<span class="n">Iteration</span><span class="p">:</span> <span class="mf">3000.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.03737065941095352</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mi">97</span>
+</pre></div>
+
+<h4 id="step-wise-decay-every-2-epochs">Step-wise Decay: Every 2 Epochs<a class="headerlink" href="#step-wise-decay-every-2-epochs" title="Permanent link">&para;</a></h4>
+<ul>
+<li>At every 2 epoch,<ul>
+<li><span><span class="MathJax_Preview">\eta_t = \eta_{t-1}\gamma</span><script type="math/tex">\eta_t = \eta_{t-1}\gamma</script></span></li>
+<li><span><span class="MathJax_Preview">\gamma = 0.1</span><script type="math/tex">\gamma = 0.1</script></span></li>
+</ul>
+</li>
+<li>Optimization Algorithm 4: SGD Nesterov<ul>
+<li>Modification of SGD Momentum <ul>
+<li><span><span class="MathJax_Preview">v_t = \gamma v_{t-1} + \eta \cdot  \nabla J(\theta - \gamma v_{t-1}, x^{i: i+n}, y^{i:i+n})</span><script type="math/tex">v_t = \gamma v_{t-1} + \eta \cdot  \nabla J(\theta - \gamma v_{t-1}, x^{i: i+n}, y^{i:i+n})</script></span></li>
+<li><span><span class="MathJax_Preview">\theta = \theta - v_t</span><script type="math/tex">\theta = \theta - v_t</script></span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Practical example<ul>
+<li>Given <span><span class="MathJax_Preview">\eta_t = 0.1</span><script type="math/tex">\eta_t = 0.1</script></span> and <span><span class="MathJax_Preview">\gamma = 0.01</span><script type="math/tex">\gamma = 0.01</script></span></li>
+<li>Epoch 0: <span><span class="MathJax_Preview">\eta_t = 0.1</span><script type="math/tex">\eta_t = 0.1</script></span></li>
+<li>Epoch 1: <span><span class="MathJax_Preview">\eta_{t+1} = 0.1</span><script type="math/tex">\eta_{t+1} = 0.1</script></span></li>
+<li>Epoch 2: <span><span class="MathJax_Preview">\eta_{t+2} = 0.1 (0.1) =  0.01</span><script type="math/tex">\eta_{t+2} = 0.1 (0.1) =  0.01</script></span></li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Code for step-wise learning rate decay at every 2 epoch</p>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="kn">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torchvision.transforms</span> <span class="kn">as</span> <span class="nn">transforms</span>
+<span class="kn">import</span> <span class="nn">torchvision.datasets</span> <span class="kn">as</span> <span class="nn">dsets</span>
+
+<span class="c1"># Set seed</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Where to add a new import</span>
+<span class="kn">from</span> <span class="nn">torch.optim.lr_scheduler</span> <span class="kn">import</span> <span class="n">StepLR</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 1: LOADING DATASET</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">train_dataset</span> <span class="o">=</span> <span class="n">dsets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;./data&#39;</span><span class="p">,</span> 
+                            <span class="n">train</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> 
+                            <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+                            <span class="n">download</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">test_dataset</span> <span class="o">=</span> <span class="n">dsets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;./data&#39;</span><span class="p">,</span> 
+                           <span class="n">train</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> 
+                           <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">())</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 2: MAKING DATASET ITERABLE</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">n_iters</span> <span class="o">=</span> <span class="mi">3000</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="n">n_iters</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">)</span> <span class="o">/</span> <span class="n">batch_size</span><span class="p">)</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">)</span>
+
+<span class="n">train_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">train_dataset</span><span class="p">,</span> 
+                                           <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> 
+                                           <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">test_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">test_dataset</span><span class="p">,</span> 
+                                          <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> 
+                                          <span class="n">shuffle</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 3: CREATE MODEL CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="k">class</span> <span class="nc">FeedforwardNeuralNetModel</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">FeedforwardNeuralNetModel</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="c1"># Linear function</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">)</span> 
+        <span class="c1"># Non-linearity</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">relu</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+        <span class="c1"># Linear function (readout)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">)</span>  
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="c1"># Linear function</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="c1"># Non-linearity</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+        <span class="c1"># Linear function (readout)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">out</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 4: INSTANTIATE MODEL CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">input_dim</span> <span class="o">=</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span>
+<span class="n">hidden_dim</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">output_dim</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">FeedforwardNeuralNetModel</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 5: INSTANTIATE LOSS CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 6: INSTANTIATE OPTIMIZER CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">nesterov</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 7: INSTANTIATE STEP LEARNING SCHEDULER CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="c1"># step_size: at how many multiples of epoch you decay</span>
+<span class="c1"># step_size = 1, after every 2 epoch, new_lr = lr*gamma </span>
+<span class="c1"># step_size = 2, after every 2 epoch, new_lr = lr*gamma </span>
+
+<span class="c1"># gamma = decaying factor</span>
+<span class="n">scheduler</span> <span class="o">=</span> <span class="n">StepLR</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">step_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 7: TRAIN THE MODEL</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="nb">iter</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
+    <span class="c1"># Decay Learning Rate</span>
+    <span class="n">scheduler</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+    <span class="c1"># Print Learning Rate</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Epoch:&#39;</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span><span class="s1">&#39;LR:&#39;</span><span class="p">,</span> <span class="n">scheduler</span><span class="o">.</span><span class="n">get_lr</span><span class="p">())</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">train_loader</span><span class="p">):</span>
+        <span class="c1"># Load images as Variable</span>
+        <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">)</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">()</span>
+
+        <span class="c1"># Clear gradients w.r.t. parameters</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+
+        <span class="c1"># Forward pass to get output/logits</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+
+        <span class="c1"># Calculate Loss: softmax --&gt; cross entropy loss</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+
+        <span class="c1"># Getting gradients w.r.t. parameters</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+
+        <span class="c1"># Updating parameters</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+        <span class="nb">iter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="nb">iter</span> <span class="o">%</span> <span class="mi">500</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># Calculate Accuracy         </span>
+            <span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="c1"># Iterate through test dataset</span>
+            <span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">test_loader</span><span class="p">:</span>
+                <span class="c1"># Load images to a Torch Variable</span>
+                <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">)</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">()</span>
+
+                <span class="c1"># Forward pass only to get logits/output</span>
+                <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+
+                <span class="c1"># Get predictions from the maximum value</span>
+                <span class="n">_</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+                <span class="c1"># Total number of labels</span>
+                <span class="n">total</span> <span class="o">+=</span> <span class="n">labels</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+                <span class="c1"># Total correct predictions</span>
+                <span class="n">correct</span> <span class="o">+=</span> <span class="p">(</span><span class="n">predicted</span> <span class="o">==</span> <span class="n">labels</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+            <span class="n">accuracy</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">correct</span> <span class="o">/</span> <span class="n">total</span>
+
+            <span class="c1"># Print Loss</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Iteration: {}. Loss: {}. Accuracy: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">accuracy</span><span class="p">))</span>
+</pre></div>
+
+</div>
+<div class="codehilite"><pre><span></span><span class="n">Epoch</span><span class="p">:</span> <span class="mi">0</span> <span class="n">LR</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">]</span>
+<span class="n">Iteration</span><span class="p">:</span> <span class="mf">500.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.15292978286743164</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mi">96</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">1</span> <span class="n">LR</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">]</span>
+<span class="n">Iteration</span><span class="p">:</span> <span class="mf">1000.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.11253029108047485</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mi">96</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">2</span> <span class="n">LR</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.010000000000000002</span><span class="p">]</span>
+<span class="n">Iteration</span><span class="p">:</span> <span class="mf">1500.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.14498558640480042</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mi">97</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">3</span> <span class="n">LR</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.010000000000000002</span><span class="p">]</span>
+<span class="n">Iteration</span><span class="p">:</span> <span class="mf">2000.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.03691177815198898</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mi">97</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">4</span> <span class="n">LR</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0010000000000000002</span><span class="p">]</span>
+<span class="n">Iteration</span><span class="p">:</span> <span class="mf">2500.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.03511016443371773</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mi">97</span>
+<span class="n">Iteration</span><span class="p">:</span> <span class="mf">3000.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.029424520209431648</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mi">97</span>
+</pre></div>
+
+<h4 id="step-wise-decay-every-epoch-larger-gamma">Step-wise Decay: Every Epoch, Larger Gamma<a class="headerlink" href="#step-wise-decay-every-epoch-larger-gamma" title="Permanent link">&para;</a></h4>
+<ul>
+<li>At every epoch,<ul>
+<li><span><span class="MathJax_Preview">\eta_t = \eta_{t-1}\gamma</span><script type="math/tex">\eta_t = \eta_{t-1}\gamma</script></span></li>
+<li><span><span class="MathJax_Preview">\gamma = 0.96</span><script type="math/tex">\gamma = 0.96</script></span></li>
+</ul>
+</li>
+<li>Optimization Algorithm 4: SGD Nesterov<ul>
+<li>Modification of SGD Momentum <ul>
+<li><span><span class="MathJax_Preview">v_t = \gamma v_{t-1} + \eta \cdot  \nabla J(\theta - \gamma v_{t-1}, x^{i: i+n}, y^{i:i+n})</span><script type="math/tex">v_t = \gamma v_{t-1} + \eta \cdot  \nabla J(\theta - \gamma v_{t-1}, x^{i: i+n}, y^{i:i+n})</script></span></li>
+<li><span><span class="MathJax_Preview">\theta = \theta - v_t</span><script type="math/tex">\theta = \theta - v_t</script></span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Practical example<ul>
+<li>Given <span><span class="MathJax_Preview">\eta_t = 0.1</span><script type="math/tex">\eta_t = 0.1</script></span> and <span><span class="MathJax_Preview">\gamma = 0.96</span><script type="math/tex">\gamma = 0.96</script></span></li>
+<li>Epoch 1: <span><span class="MathJax_Preview">\eta_t = 0.1</span><script type="math/tex">\eta_t = 0.1</script></span></li>
+<li>Epoch 2: <span><span class="MathJax_Preview">\eta_{t+1} = 0.1 (0.96) =  0.096</span><script type="math/tex">\eta_{t+1} = 0.1 (0.96) =  0.096</script></span></li>
+<li>Epoch 3: <span><span class="MathJax_Preview">\eta_{t+2} = 0.1 (0.96)^2 =  0.092</span><script type="math/tex">\eta_{t+2} = 0.1 (0.96)^2 =  0.092</script></span></li>
+<li>Epoch n: <span><span class="MathJax_Preview">\eta_{t+n} = 0.1 (0.96)^n</span><script type="math/tex">\eta_{t+n} = 0.1 (0.96)^n</script></span></li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Code for step-wise learning rate decay at every epoch with larger gamma</p>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="kn">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torchvision.transforms</span> <span class="kn">as</span> <span class="nn">transforms</span>
+<span class="kn">import</span> <span class="nn">torchvision.datasets</span> <span class="kn">as</span> <span class="nn">dsets</span>
+
+<span class="c1"># Set seed</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Where to add a new import</span>
+<span class="kn">from</span> <span class="nn">torch.optim.lr_scheduler</span> <span class="kn">import</span> <span class="n">StepLR</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 1: LOADING DATASET</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">train_dataset</span> <span class="o">=</span> <span class="n">dsets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;./data&#39;</span><span class="p">,</span> 
+                            <span class="n">train</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> 
+                            <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+                            <span class="n">download</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">test_dataset</span> <span class="o">=</span> <span class="n">dsets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;./data&#39;</span><span class="p">,</span> 
+                           <span class="n">train</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> 
+                           <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">())</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 2: MAKING DATASET ITERABLE</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">n_iters</span> <span class="o">=</span> <span class="mi">3000</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="n">n_iters</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">)</span> <span class="o">/</span> <span class="n">batch_size</span><span class="p">)</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">)</span>
+
+<span class="n">train_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">train_dataset</span><span class="p">,</span> 
+                                           <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> 
+                                           <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">test_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">test_dataset</span><span class="p">,</span> 
+                                          <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> 
+                                          <span class="n">shuffle</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 3: CREATE MODEL CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="k">class</span> <span class="nc">FeedforwardNeuralNetModel</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">FeedforwardNeuralNetModel</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="c1"># Linear function</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">)</span> 
+        <span class="c1"># Non-linearity</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">relu</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+        <span class="c1"># Linear function (readout)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">)</span>  
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="c1"># Linear function</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="c1"># Non-linearity</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+        <span class="c1"># Linear function (readout)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">out</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 4: INSTANTIATE MODEL CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">input_dim</span> <span class="o">=</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span>
+<span class="n">hidden_dim</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">output_dim</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">FeedforwardNeuralNetModel</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 5: INSTANTIATE LOSS CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 6: INSTANTIATE OPTIMIZER CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">nesterov</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 7: INSTANTIATE STEP LEARNING SCHEDULER CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="c1"># step_size: at how many multiples of epoch you decay</span>
+<span class="c1"># step_size = 1, after every 2 epoch, new_lr = lr*gamma </span>
+<span class="c1"># step_size = 2, after every 2 epoch, new_lr = lr*gamma </span>
+
+<span class="c1"># gamma = decaying factor</span>
+<span class="n">scheduler</span> <span class="o">=</span> <span class="n">StepLR</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">step_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.96</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 7: TRAIN THE MODEL</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="nb">iter</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
+    <span class="c1"># Decay Learning Rate</span>
+    <span class="n">scheduler</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+    <span class="c1"># Print Learning Rate</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Epoch:&#39;</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span><span class="s1">&#39;LR:&#39;</span><span class="p">,</span> <span class="n">scheduler</span><span class="o">.</span><span class="n">get_lr</span><span class="p">())</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">train_loader</span><span class="p">):</span>
+        <span class="c1"># Load images as Variable</span>
+        <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">)</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">()</span>
+
+        <span class="c1"># Clear gradients w.r.t. parameters</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+
+        <span class="c1"># Forward pass to get output/logits</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+
+        <span class="c1"># Calculate Loss: softmax --&gt; cross entropy loss</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+
+        <span class="c1"># Getting gradients w.r.t. parameters</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+
+        <span class="c1"># Updating parameters</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+        <span class="nb">iter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="nb">iter</span> <span class="o">%</span> <span class="mi">500</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># Calculate Accuracy         </span>
+            <span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="c1"># Iterate through test dataset</span>
+            <span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">test_loader</span><span class="p">:</span>
+                <span class="c1"># Load images to a Torch Variable</span>
+                <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">)</span>
+
+                <span class="c1"># Forward pass only to get logits/output</span>
+                <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+
+                <span class="c1"># Get predictions from the maximum value</span>
+                <span class="n">_</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+                <span class="c1"># Total number of labels</span>
+                <span class="n">total</span> <span class="o">+=</span> <span class="n">labels</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+                <span class="c1"># Total correct predictions</span>
+                <span class="n">correct</span> <span class="o">+=</span> <span class="p">(</span><span class="n">predicted</span> <span class="o">==</span> <span class="n">labels</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+            <span class="n">accuracy</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">correct</span> <span class="o">/</span> <span class="n">total</span>
+
+            <span class="c1"># Print Loss</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Iteration: {}. Loss: {}. Accuracy: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">accuracy</span><span class="p">))</span>
+</pre></div>
+
+</div>
+<div class="codehilite"><pre><span></span><span class="n">Epoch</span><span class="p">:</span> <span class="mi">0</span> <span class="n">LR</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">]</span>
+<span class="n">Iteration</span><span class="p">:</span> <span class="mf">500.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.15292978286743164</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mi">96</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">1</span> <span class="n">LR</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">]</span>
+<span class="n">Iteration</span><span class="p">:</span> <span class="mf">1000.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.11253029108047485</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mi">96</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">2</span> <span class="n">LR</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.096</span><span class="p">]</span>
+<span class="n">Iteration</span><span class="p">:</span> <span class="mf">1500.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.11864850670099258</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mi">97</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">3</span> <span class="n">LR</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.096</span><span class="p">]</span>
+<span class="n">Iteration</span><span class="p">:</span> <span class="mf">2000.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.030942382290959358</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mi">97</span>
+<span class="n">Epoch</span><span class="p">:</span> <span class="mi">4</span> <span class="n">LR</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.09216</span><span class="p">]</span>
+<span class="n">Iteration</span><span class="p">:</span> <span class="mf">2500.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.04521659016609192</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mi">97</span>
+<span class="n">Iteration</span><span class="p">:</span> <span class="mf">3000.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.027839098125696182</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mi">97</span>
+</pre></div>
+
+<h4 id="pointers-on-step-wise-decay">Pointers on Step-wise Decay<a class="headerlink" href="#pointers-on-step-wise-decay" title="Permanent link">&para;</a></h4>
+<ul>
+<li>You would want to decay your LR gradually when you're training more epochs<ul>
+<li>Converge too fast, to a crappy loss/accuracy, if you decay rapidly</li>
+</ul>
+</li>
+<li>To decay slower<ul>
+<li>Larger <span><span class="MathJax_Preview">\gamma</span><script type="math/tex">\gamma</script></span></li>
+<li>Larger interval of decay</li>
+</ul>
+</li>
+</ul>
+<h3 id="reduce-on-loss-plateau-decay">Reduce on Loss Plateau Decay<a class="headerlink" href="#reduce-on-loss-plateau-decay" title="Permanent link">&para;</a></h3>
+<h4 id="reduce-on-loss-plateau-decay-patience0-factor01">Reduce on Loss Plateau Decay, Patience=0, Factor=0.1<a class="headerlink" href="#reduce-on-loss-plateau-decay-patience0-factor01" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Reduce learning rate whenever loss plateaus<ul>
+<li>Patience: number of epochs with no improvement after which learning rate will be reduced<ul>
+<li>Patience = 0</li>
+</ul>
+</li>
+<li>Factor: multiplier to decrease learning rate, <span><span class="MathJax_Preview">lr = lr*factor = \gamma</span><script type="math/tex">lr = lr*factor = \gamma</script></span><ul>
+<li>Factor = 0.1</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Optimization Algorithm: SGD Nesterov<ul>
+<li>Modification of SGD Momentum <ul>
+<li><span><span class="MathJax_Preview">v_t = \gamma v_{t-1} + \eta \cdot  \nabla J(\theta - \gamma v_{t-1}, x^{i: i+n}, y^{i:i+n})</span><script type="math/tex">v_t = \gamma v_{t-1} + \eta \cdot  \nabla J(\theta - \gamma v_{t-1}, x^{i: i+n}, y^{i:i+n})</script></span></li>
+<li><span><span class="MathJax_Preview">\theta = \theta - v_t</span><script type="math/tex">\theta = \theta - v_t</script></span></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Code for reduce on loss plateau learning rate decay of factor 0.1 and 0 patience</p>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="kn">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torchvision.transforms</span> <span class="kn">as</span> <span class="nn">transforms</span>
+<span class="kn">import</span> <span class="nn">torchvision.datasets</span> <span class="kn">as</span> <span class="nn">dsets</span>
+
+<span class="c1"># Set seed</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Where to add a new import</span>
+<span class="kn">from</span> <span class="nn">torch.optim.lr_scheduler</span> <span class="kn">import</span> <span class="n">ReduceLROnPlateau</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 1: LOADING DATASET</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">train_dataset</span> <span class="o">=</span> <span class="n">dsets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;./data&#39;</span><span class="p">,</span> 
+                            <span class="n">train</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> 
+                            <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+                            <span class="n">download</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">test_dataset</span> <span class="o">=</span> <span class="n">dsets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;./data&#39;</span><span class="p">,</span> 
+                           <span class="n">train</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> 
+                           <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">())</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 2: MAKING DATASET ITERABLE</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">n_iters</span> <span class="o">=</span> <span class="mi">6000</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="n">n_iters</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">)</span> <span class="o">/</span> <span class="n">batch_size</span><span class="p">)</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">)</span>
+
+<span class="n">train_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">train_dataset</span><span class="p">,</span> 
+                                           <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> 
+                                           <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">test_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">test_dataset</span><span class="p">,</span> 
+                                          <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> 
+                                          <span class="n">shuffle</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 3: CREATE MODEL CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="k">class</span> <span class="nc">FeedforwardNeuralNetModel</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">FeedforwardNeuralNetModel</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="c1"># Linear function</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">)</span> 
+        <span class="c1"># Non-linearity</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">relu</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+        <span class="c1"># Linear function (readout)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">)</span>  
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="c1"># Linear function</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="c1"># Non-linearity</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+        <span class="c1"># Linear function (readout)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">out</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 4: INSTANTIATE MODEL CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">input_dim</span> <span class="o">=</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span>
+<span class="n">hidden_dim</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">output_dim</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">FeedforwardNeuralNetModel</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 5: INSTANTIATE LOSS CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 6: INSTANTIATE OPTIMIZER CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">nesterov</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 7: INSTANTIATE STEP LEARNING SCHEDULER CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="c1"># lr = lr * factor </span>
+<span class="c1"># mode=&#39;max&#39;: look for the maximum validation accuracy to track</span>
+<span class="c1"># patience: number of epochs - 1 where loss plateaus before decreasing LR</span>
+        <span class="c1"># patience = 0, after 1 bad epoch, reduce LR</span>
+<span class="c1"># factor = decaying factor</span>
+<span class="n">scheduler</span> <span class="o">=</span> <span class="n">ReduceLROnPlateau</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">patience</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 7: TRAIN THE MODEL</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="nb">iter</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">train_loader</span><span class="p">):</span>
+        <span class="c1"># Load images as Variable</span>
+        <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">)</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">()</span>
+
+        <span class="c1"># Clear gradients w.r.t. parameters</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+
+        <span class="c1"># Forward pass to get output/logits</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+
+        <span class="c1"># Calculate Loss: softmax --&gt; cross entropy loss</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+
+        <span class="c1"># Getting gradients w.r.t. parameters</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+
+        <span class="c1"># Updating parameters</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+        <span class="nb">iter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="nb">iter</span> <span class="o">%</span> <span class="mi">500</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># Calculate Accuracy         </span>
+            <span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="c1"># Iterate through test dataset</span>
+            <span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">test_loader</span><span class="p">:</span>
+                <span class="c1"># Load images to a Torch Variable</span>
+                <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">)</span>
+
+                <span class="c1"># Forward pass only to get logits/output</span>
+                <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+
+                <span class="c1"># Get predictions from the maximum value</span>
+                <span class="n">_</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+                <span class="c1"># Total number of labels</span>
+                <span class="n">total</span> <span class="o">+=</span> <span class="n">labels</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+                <span class="c1"># Total correct predictions</span>
+                <span class="c1"># Without .item(), it is a uint8 tensor which will not work when you pass this number to the scheduler</span>
+                <span class="n">correct</span> <span class="o">+=</span> <span class="p">(</span><span class="n">predicted</span> <span class="o">==</span> <span class="n">labels</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+            <span class="n">accuracy</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">correct</span> <span class="o">/</span> <span class="n">total</span>
+
+            <span class="c1"># Print Loss</span>
+            <span class="c1"># print(&#39;Iteration: {}. Loss: {}. Accuracy: {}&#39;.format(iter, loss.data[0], accuracy))</span>
+
+    <span class="c1"># Decay Learning Rate, pass validation accuracy for tracking at every epoch</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Epoch {} completed&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">epoch</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Loss: {}. Accuracy: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">accuracy</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">scheduler</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">accuracy</span><span class="p">)</span>
+</pre></div>
+
+</div>
+<div class="codehilite"><pre><span></span><span class="n">Epoch</span> <span class="mi">0</span> <span class="n">completed</span>
+<span class="n">Loss</span><span class="p">:</span> <span class="mf">0.17087846994400024</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mf">96.26</span>
+<span class="o">--------------------</span>
+<span class="n">Epoch</span> <span class="mi">1</span> <span class="n">completed</span>
+<span class="n">Loss</span><span class="p">:</span> <span class="mf">0.11688263714313507</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mf">96.96</span>
+<span class="o">--------------------</span>
+<span class="n">Epoch</span> <span class="mi">2</span> <span class="n">completed</span>
+<span class="n">Loss</span><span class="p">:</span> <span class="mf">0.035437121987342834</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mf">96.78</span>
+<span class="o">--------------------</span>
+<span class="n">Epoch</span>     <span class="mi">2</span><span class="p">:</span> <span class="n">reducing</span> <span class="n">learning</span> <span class="n">rate</span> <span class="n">of</span> <span class="n">group</span> <span class="mi">0</span> <span class="n">to</span> <span class="mf">1.0000e-02</span><span class="o">.</span>
+<span class="n">Epoch</span> <span class="mi">3</span> <span class="n">completed</span>
+<span class="n">Loss</span><span class="p">:</span> <span class="mf">0.0324370414018631</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mf">97.7</span>
+<span class="o">--------------------</span>
+<span class="n">Epoch</span> <span class="mi">4</span> <span class="n">completed</span>
+<span class="n">Loss</span><span class="p">:</span> <span class="mf">0.022194599732756615</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mf">98.02</span>
+<span class="o">--------------------</span>
+<span class="n">Epoch</span> <span class="mi">5</span> <span class="n">completed</span>
+<span class="n">Loss</span><span class="p">:</span> <span class="mf">0.007145566865801811</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mf">98.03</span>
+<span class="o">--------------------</span>
+<span class="n">Epoch</span> <span class="mi">6</span> <span class="n">completed</span>
+<span class="n">Loss</span><span class="p">:</span> <span class="mf">0.01673538237810135</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mf">98.05</span>
+<span class="o">--------------------</span>
+<span class="n">Epoch</span> <span class="mi">7</span> <span class="n">completed</span>
+<span class="n">Loss</span><span class="p">:</span> <span class="mf">0.025424446910619736</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mf">98.01</span>
+<span class="o">--------------------</span>
+<span class="n">Epoch</span>     <span class="mi">7</span><span class="p">:</span> <span class="n">reducing</span> <span class="n">learning</span> <span class="n">rate</span> <span class="n">of</span> <span class="n">group</span> <span class="mi">0</span> <span class="n">to</span> <span class="mf">1.0000e-03</span><span class="o">.</span>
+<span class="n">Epoch</span> <span class="mi">8</span> <span class="n">completed</span>
+<span class="n">Loss</span><span class="p">:</span> <span class="mf">0.014696130529046059</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mf">98.05</span>
+<span class="o">--------------------</span>
+<span class="n">Epoch</span>     <span class="mi">8</span><span class="p">:</span> <span class="n">reducing</span> <span class="n">learning</span> <span class="n">rate</span> <span class="n">of</span> <span class="n">group</span> <span class="mi">0</span> <span class="n">to</span> <span class="mf">1.0000e-04</span><span class="o">.</span>
+<span class="n">Epoch</span> <span class="mi">9</span> <span class="n">completed</span>
+<span class="n">Loss</span><span class="p">:</span> <span class="mf">0.00573748117312789</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mf">98.04</span>
+<span class="o">--------------------</span>
+<span class="n">Epoch</span>     <span class="mi">9</span><span class="p">:</span> <span class="n">reducing</span> <span class="n">learning</span> <span class="n">rate</span> <span class="n">of</span> <span class="n">group</span> <span class="mi">0</span> <span class="n">to</span> <span class="mf">1.0000e-05</span><span class="o">.</span>
+</pre></div>
+
+<h4 id="reduce-on-loss-plateau-decay-patience0-factor05">Reduce on Loss Plateau Decay, Patience=0, Factor=0.5<a class="headerlink" href="#reduce-on-loss-plateau-decay-patience0-factor05" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Reduce learning rate whenever loss plateaus<ul>
+<li>Patience: number of epochs with no improvement after which learning rate will be reduced<ul>
+<li>Patience = 0</li>
+</ul>
+</li>
+<li>Factor: multiplier to decrease learning rate, <span><span class="MathJax_Preview">lr = lr*factor = \gamma</span><script type="math/tex">lr = lr*factor = \gamma</script></span><ul>
+<li>Factor = 0.5</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Optimization Algorithm 4: SGD Nesterov<ul>
+<li>Modification of SGD Momentum <ul>
+<li><span><span class="MathJax_Preview">v_t = \gamma v_{t-1} + \eta \cdot  \nabla J(\theta - \gamma v_{t-1}, x^{i: i+n}, y^{i:i+n})</span><script type="math/tex">v_t = \gamma v_{t-1} + \eta \cdot  \nabla J(\theta - \gamma v_{t-1}, x^{i: i+n}, y^{i:i+n})</script></span></li>
+<li><span><span class="MathJax_Preview">\theta = \theta - v_t</span><script type="math/tex">\theta = \theta - v_t</script></span></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Code for reduce on loss plateau learning rate decay with factor 0.5 and 0 patience</p>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="kn">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torchvision.transforms</span> <span class="kn">as</span> <span class="nn">transforms</span>
+<span class="kn">import</span> <span class="nn">torchvision.datasets</span> <span class="kn">as</span> <span class="nn">dsets</span>
+
+<span class="c1"># Set seed</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Where to add a new import</span>
+<span class="kn">from</span> <span class="nn">torch.optim.lr_scheduler</span> <span class="kn">import</span> <span class="n">ReduceLROnPlateau</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 1: LOADING DATASET</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">train_dataset</span> <span class="o">=</span> <span class="n">dsets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;./data&#39;</span><span class="p">,</span> 
+                            <span class="n">train</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> 
+                            <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+                            <span class="n">download</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">test_dataset</span> <span class="o">=</span> <span class="n">dsets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;./data&#39;</span><span class="p">,</span> 
+                           <span class="n">train</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> 
+                           <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">())</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 2: MAKING DATASET ITERABLE</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">n_iters</span> <span class="o">=</span> <span class="mi">6000</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="n">n_iters</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">)</span> <span class="o">/</span> <span class="n">batch_size</span><span class="p">)</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">)</span>
+
+<span class="n">train_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">train_dataset</span><span class="p">,</span> 
+                                           <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> 
+                                           <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">test_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">test_dataset</span><span class="p">,</span> 
+                                          <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> 
+                                          <span class="n">shuffle</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 3: CREATE MODEL CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="k">class</span> <span class="nc">FeedforwardNeuralNetModel</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">FeedforwardNeuralNetModel</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="c1"># Linear function</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">)</span> 
+        <span class="c1"># Non-linearity</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">relu</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+        <span class="c1"># Linear function (readout)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">)</span>  
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="c1"># Linear function</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="c1"># Non-linearity</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+        <span class="c1"># Linear function (readout)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">out</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 4: INSTANTIATE MODEL CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">input_dim</span> <span class="o">=</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span>
+<span class="n">hidden_dim</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">output_dim</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">FeedforwardNeuralNetModel</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 5: INSTANTIATE LOSS CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 6: INSTANTIATE OPTIMIZER CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">nesterov</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 7: INSTANTIATE STEP LEARNING SCHEDULER CLASS</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="c1"># lr = lr * factor </span>
+<span class="c1"># mode=&#39;max&#39;: look for the maximum validation accuracy to track</span>
+<span class="c1"># patience: number of epochs - 1 where loss plateaus before decreasing LR</span>
+        <span class="c1"># patience = 0, after 1 bad epoch, reduce LR</span>
+<span class="c1"># factor = decaying factor</span>
+<span class="n">scheduler</span> <span class="o">=</span> <span class="n">ReduceLROnPlateau</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">patience</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">STEP 7: TRAIN THE MODEL</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="nb">iter</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">train_loader</span><span class="p">):</span>
+        <span class="c1"># Load images as Variable</span>
+        <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">)</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">()</span>
+
+        <span class="c1"># Clear gradients w.r.t. parameters</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+
+        <span class="c1"># Forward pass to get output/logits</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+
+        <span class="c1"># Calculate Loss: softmax --&gt; cross entropy loss</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+
+        <span class="c1"># Getting gradients w.r.t. parameters</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+
+        <span class="c1"># Updating parameters</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+        <span class="nb">iter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="nb">iter</span> <span class="o">%</span> <span class="mi">500</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># Calculate Accuracy         </span>
+            <span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="c1"># Iterate through test dataset</span>
+            <span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">test_loader</span><span class="p">:</span>
+                <span class="c1"># Load images to a Torch Variable</span>
+                <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">)</span>
+
+                <span class="c1"># Forward pass only to get logits/output</span>
+                <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+
+                <span class="c1"># Get predictions from the maximum value</span>
+                <span class="n">_</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+                <span class="c1"># Total number of labels</span>
+                <span class="n">total</span> <span class="o">+=</span> <span class="n">labels</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+                <span class="c1"># Total correct predictions</span>
+                 <span class="c1"># Without .item(), it is a uint8 tensor which will not work when you pass this number to the scheduler</span>
+                <span class="n">correct</span> <span class="o">+=</span> <span class="p">(</span><span class="n">predicted</span> <span class="o">==</span> <span class="n">labels</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+            <span class="n">accuracy</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">correct</span> <span class="o">/</span> <span class="n">total</span>
+
+            <span class="c1"># Print Loss</span>
+            <span class="c1"># print(&#39;Iteration: {}. Loss: {}. Accuracy: {}&#39;.format(iter, loss.data[0], accuracy))</span>
+
+    <span class="c1"># Decay Learning Rate, pass validation accuracy for tracking at every epoch</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Epoch {} completed&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">epoch</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Loss: {}. Accuracy: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">accuracy</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">scheduler</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">accuracy</span><span class="p">)</span>
+</pre></div>
+
+</div>
+<div class="codehilite"><pre><span></span><span class="n">Epoch</span> <span class="mi">0</span> <span class="n">completed</span>
+<span class="n">Loss</span><span class="p">:</span> <span class="mf">0.17087846994400024</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mf">96.26</span>
+<span class="o">--------------------</span>
+<span class="n">Epoch</span> <span class="mi">1</span> <span class="n">completed</span>
+<span class="n">Loss</span><span class="p">:</span> <span class="mf">0.11688263714313507</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mf">96.96</span>
+<span class="o">--------------------</span>
+<span class="n">Epoch</span> <span class="mi">2</span> <span class="n">completed</span>
+<span class="n">Loss</span><span class="p">:</span> <span class="mf">0.035437121987342834</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mf">96.78</span>
+<span class="o">--------------------</span>
+<span class="n">Epoch</span>     <span class="mi">2</span><span class="p">:</span> <span class="n">reducing</span> <span class="n">learning</span> <span class="n">rate</span> <span class="n">of</span> <span class="n">group</span> <span class="mi">0</span> <span class="n">to</span> <span class="mf">5.0000e-02</span><span class="o">.</span>
+<span class="n">Epoch</span> <span class="mi">3</span> <span class="n">completed</span>
+<span class="n">Loss</span><span class="p">:</span> <span class="mf">0.04893001914024353</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mf">97.62</span>
+<span class="o">--------------------</span>
+<span class="n">Epoch</span> <span class="mi">4</span> <span class="n">completed</span>
+<span class="n">Loss</span><span class="p">:</span> <span class="mf">0.020584167912602425</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mf">97.86</span>
+<span class="o">--------------------</span>
+<span class="n">Epoch</span> <span class="mi">5</span> <span class="n">completed</span>
+<span class="n">Loss</span><span class="p">:</span> <span class="mf">0.006022400688380003</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mf">97.95</span>
+<span class="o">--------------------</span>
+<span class="n">Epoch</span> <span class="mi">6</span> <span class="n">completed</span>
+<span class="n">Loss</span><span class="p">:</span> <span class="mf">0.028374142944812775</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mf">97.87</span>
+<span class="o">--------------------</span>
+<span class="n">Epoch</span>     <span class="mi">6</span><span class="p">:</span> <span class="n">reducing</span> <span class="n">learning</span> <span class="n">rate</span> <span class="n">of</span> <span class="n">group</span> <span class="mi">0</span> <span class="n">to</span> <span class="mf">2.5000e-02</span><span class="o">.</span>
+<span class="n">Epoch</span> <span class="mi">7</span> <span class="n">completed</span>
+<span class="n">Loss</span><span class="p">:</span> <span class="mf">0.013204765506088734</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mf">98.0</span>
+<span class="o">--------------------</span>
+<span class="n">Epoch</span> <span class="mi">8</span> <span class="n">completed</span>
+<span class="n">Loss</span><span class="p">:</span> <span class="mf">0.010137186385691166</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mf">97.95</span>
+<span class="o">--------------------</span>
+<span class="n">Epoch</span>     <span class="mi">8</span><span class="p">:</span> <span class="n">reducing</span> <span class="n">learning</span> <span class="n">rate</span> <span class="n">of</span> <span class="n">group</span> <span class="mi">0</span> <span class="n">to</span> <span class="mf">1.2500e-02</span><span class="o">.</span>
+<span class="n">Epoch</span> <span class="mi">9</span> <span class="n">completed</span>
+<span class="n">Loss</span><span class="p">:</span> <span class="mf">0.0035198689438402653</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mf">98.01</span>
+<span class="o">--------------------</span>
+</pre></div>
+
+<h2 id="pointers-on-reduce-on-loss-pleateau-decay">Pointers on Reduce on Loss Pleateau Decay<a class="headerlink" href="#pointers-on-reduce-on-loss-pleateau-decay" title="Permanent link">&para;</a></h2>
+<ul>
+<li>In these examples, we used patience=1 because we are running few epochs<ul>
+<li>You should look at a larger patience such as 5 if for example you ran 500 epochs. </li>
+</ul>
+</li>
+<li>You should experiment with 2 properties <ul>
+<li>Patience</li>
+<li>Decay factor </li>
+</ul>
+</li>
+</ul>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>We've learnt...</p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Learning Rate Intuition<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Update parameters so model can churn output closer to labels</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Gradual parameter updates</li>
+</ul>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Learning Rate Pointers<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> If we set <span><span class="MathJax_Preview">\eta</span><script type="math/tex">\eta</script></span> to be a <strong>large value</strong> <span><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> learn too much (rapid learning)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> If we set <span><span class="MathJax_Preview">\eta</span><script type="math/tex">\eta</script></span> to be a <strong>small value</strong> <span><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> learn too little (slow learning)</li>
+</ul>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Learning Rate Schedules<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Step-wise Decay</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Reduce on Loss Plateau Decay</li>
+</ul>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Step-wise Decay<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Every 1 epoch</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Every 2 epoch</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Every 1 epoch, larger gamma</li>
+</ul>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Step-wise Decay Pointers<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Decay LR gradually<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Larger <span><span class="MathJax_Preview">\gamma</span><script type="math/tex">\gamma</script></span></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Larger interval of decay (increase epoch)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Reduce on Loss Plateau Decay<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Patience=0, Factor=1</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Patience=0, Factor=0.5</li>
+</ul>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Pointers on Reduce on Loss Plateau Decay<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Larger patience with more epochs</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> 2 hyperparameters to experiment<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Patience</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Decay factor</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="citation">Citation<a class="headerlink" href="#citation" title="Permanent link">&para;</a></h2>
+<p>If you have found these useful in your research, presentations, school work, projects or workshops, feel free to cite using this DOI.</p>
+<p><a href="https://zenodo.org/badge/latestdoi/139945544"><img alt="DOI" src="https://zenodo.org/badge/139945544.svg" /></a> </p>
+                
+                  
+                
+              
+              
+                
+
+
+  <h2 id="__comments">Comments</h2>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://www.deeplearningwizard.com/deep_learning/boosting_models_pytorch/lr_scheduling/";
+      this.page.identifier =
+        "deep_learning/boosting_models_pytorch/lr_scheduling/";
+    };
+    (function() {
+      var d = document, s = d.createElement("script");
+      s.src = "//deep-learning-wizard.disqus.com/embed.js";
+      s.setAttribute("data-timestamp", +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="deep_learning/boosting_models_pytorch/forwardpropagation_backpropagation_gradientdescent/" title="Forward- and Backward-propagation and Gradient Descent" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Forward- and Backward-propagation and Gradient Descent
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="news/news/" title="Welcome" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Welcome
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2018 Deep Learning Wizard
+          </div>
+        
+        proudly an
+        <a href="http://www.nvidia.com/page/home.html">NVIDIA Inception Partner</a>
+        based in Singapore by
+        <a href="https://www.ritchieng.com/">
+          Ritchie Ng (NVIDIA Deep Learning Institute Instructor)</a>
+      </div>
+      
+        
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/ritchieng" class="md-footer-social__link fa fa-github"></a>
+    
+      <a href="https://www.facebook.com/DeepLearningWizard/" class="md-footer-social__link fa fa-facebook"></a>
+    
+      <a href="https://www.linkedin.com/company/deeplearningwizard/" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.583bbe55.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+    
+      
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-122083328-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+      
+    
+  </body>
+</html>
