@@ -22,6 +22,7 @@ pages:
       - Long Short Term Memory Neural Networks: deep_learning/practical_pytorch/pytorch_lstm_neuralnetwork.md
       - Derivative, Gradient and Jacobian: deep_learning/boosting_models_pytorch/derivative_gradient_jacobian.md
       - Forward- and Backward-propagation and Gradient Descent: deep_learning/boosting_models_pytorch/forwardpropagation_backpropagation_gradientdescent.md
+      - Learning Rate Scheduling: deep_learning/boosting_models_pytorch/lr_scheduling.md
 
     - News:
       - Welcome: news/news.md

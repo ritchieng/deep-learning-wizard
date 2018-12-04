@@ -1,5 +1,6 @@
+# Forwardpropagation, Backpropagation and Gradient Descent with PyTorch
 
-#### Transiting to Backpropagation
+## Transiting to Backpropagation
 - Let's go back to our simple FNN to put things in perspective
     - Let us ignore non-linearities for now to keep it simpler, but it's just a tiny change subsequently
     - Given a linear transformation on our input (for simplicity instead of an affine transformation that includes a bias): $\hat y = \theta x$
@@ -13,7 +14,7 @@
         - $\frac{\delta \hat y}{\delta \theta}$ is our partial derivatives of $y$ w.r.t. our parameters (our gradient) as we have covered previously
         
 
-#### Forward Propagation, Backward Propagation and Gradient Descent
+## Forward Propagation, Backward Propagation and Gradient Descent
 - All right, now let's put together what we have learnt on backpropagation and apply it on a simple feedforward neural network (FNN)
 - Let us assume the following simple FNN architecture and take note that we do not have bias here to keep things simple
     - FNN architecture
