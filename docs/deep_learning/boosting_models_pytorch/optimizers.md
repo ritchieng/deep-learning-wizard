@@ -2,8 +2,8 @@
 
 ## Introduction to Gradient-descent Optimizers
 
-### Model: 1 Hidden Layer Feedforward Neural Network (ReLU Activation)
-<img src="./images/nn1.png" alt="deeplearningwizard" style="width: 900px;"/>
+### Model Recap: 1 Hidden Layer Feedforward Neural Network (ReLU Activation)
+![](./images/nn1.png)
 
 ### Steps
 - Step 1: Load Dataset
@@ -164,22 +164,20 @@ for epoch in range(num_epochs):
 2. Clear gradient buffers
 3. Get output given inputs 
 4. Get loss by comparing with labels
-5. Get gradients w.r.t. parameters
-6. **Update parameters using gradients**
+5. Get gradients w.r.t. parameters (backpropagation)
+6. **Update parameters using gradients (gradient descent)**
     - `parameters = parameters - learning_rate * parameters_gradients`
 7. REPEAT
 
 ### Why is it called Gradient Descent? 
-- Use gradients (error signals) $\rightarrow$ update parameters to minimize our loss (descent) $\rightarrow$ better predictive accuracy
-
+- Use gradients (calculated through backpropagation) $\rightarrow$ update parameters to minimize our loss (descent) $\rightarrow$ better predictive accuracy
 
 ### Mathematical Interpretation of Gradient Descent
 - Model's parameters: $\theta \in ℝ^d$
 - Loss function: $J(\theta)$
-- Gradient w.r.t. parameters: $ \nabla J(\theta)$
+- Gradient w.r.t. parameters: $\nabla J(\theta)$
 - Learning rate: $\eta$
 - Batch Gradient descent: $\theta = \theta - \eta \cdot  \nabla J(\theta)$
-
 
 ## Optimization Algorithm 1: Batch Gradient Descent
 - What we've covered so far: batch gradient descent
@@ -189,7 +187,7 @@ for epoch in range(num_epochs):
     - Use this to update our parameters at every iteration
 - Problems
     - Unable to fit whole datasets in memory 
-    - Computationally slow as we attempt to compute a large Jacobian matrix $\rightarrow$ first order derivative, $\nabla J(\theta)$
+    - Computationally slow as we attempt to compute a large gradient matrix $\rightarrow$ first order derivative, $\nabla J(\theta)$
 - Conceptually easy to understand $\rightarrow$ rarely used
 
 ## Optimization Algorithm 2: Stochastic Gradient Descent 
@@ -215,7 +213,7 @@ for epoch in range(num_epochs):
     - Able to fit large datasets
     - Computationally faster $\rightarrow$ instead gradients w.r.t to the whole training data, we get the gradients w.r.t. training sample
     - Lower variance of parameter updates
-- This is often called SGD in deep learning frameworks .__.  
+- This is often called SGD in deep learning frameworks .__. 
 
 
 ```python
@@ -688,8 +686,8 @@ for epoch in range(num_epochs):
         - Estimate of the variance of gradients
     - When $m_t, v_t$ initializes as 0, $m_t, v_t \rightarrow 0$ initially when decay rates small, $\beta_1, \beta_2 \rightarrow 1$  
         - Need to correct this with:
-        - $ \hat m_t = \frac{m_t}{1- \beta_1}$
-        - $ \hat v_t = \frac{v_t}{1- \beta_2}$
+        - $\hat m_t = \frac{m_t}{1- \beta_1}$
+        - $\hat v_t = \frac{v_t}{1- \beta_2}$
     - $\theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{\hat v_t} + \epsilon}\hat m_t$
     - Default recommended values
         - $\beta_1 = 0.9$
@@ -1448,6 +1446,7 @@ for epoch in range(num_epochs):
     
     There are a lot of other factors like how Adam and SGD Momentum may have different ideal starting learning rates and require different learning rate scheduling. But off the hand, SGD and Adam are very robust optimization algorithms that you can rely on. 
     
+    Subsequently, we will look into more advanced optimization algorithms that are based mainly on SGD and Adam.
    
 ## Simple Suggestions
 - Momentum/Nesterov
@@ -1456,40 +1455,35 @@ for epoch in range(num_epochs):
     - Lazy to control the learning rate schedule
 
 ## Summary
-- **Recap of 7 step process**
-    - Step 1: Load Dataset
-    - Step 2: Make Dataset Iterable
-    - Step 3: Create Model Class
-    - Step 4: Instantiate Model Class
-    - Step 5: Instantiate Loss Class
-    - **Step 6: Instantiate Optimizer Class**
-    - Step 7: Train Model
-- **Step 6**
-    - Update parameters using gradients
-    - `parameters = parameters - learning_rate * parameters_gradients`
-- **Gradient descent**
-    - Using gradients (error signals from loss class) to update parameters
-- **Mathematical** interpretation: $\theta = \theta - \eta \cdot  \nabla J(\theta)$
-- **Optimisation Algorithms**
-    - Batch gradient descent
-    - Stochastic gradient descent
-    - Mini-batch gradient descent (SGD)
-    - SGD + Momentum
-    - SGD + Nesterov
-    - Adam
-    - Other adaptive algorithms: adagrad, adamax, adadelta, RMSProp
-- **Recommendations**
-    - SGD+M
-    - SGD+N
-    - Adam
-
-## Summary
 We've learnt...
 
 !!! success
-    * [x] Learning Rate Intuition
-        * [x] Update parameters so model can churn output closer to labels
-        * [x] Gradual parameter updates
+    * [x]  **Recap of 7 step process**
+        * [x]  Step 1: Load Dataset
+        * [x]  Step 2: Make Dataset Iterable
+        * [x]  Step 3: Create Model Class
+        * [x]  Step 4: Instantiate Model Class
+        * [x]  Step 5: Instantiate Loss Class
+        * [x]  **Step 6: Instantiate Optimizer Class**
+        * [x]  Step 7: Train Model
+    * [x]  **Step 6**
+        * [x]  Update parameters using gradients
+        * [x]  `parameters = parameters - learning_rate * parameters_gradients`
+    * [x]  **Gradient descent**
+        * [x]  Using gradients (error signals from loss class) to update parameters
+    * [x]  **Mathematical** interpretation: $\theta = \theta - \eta \cdot  \nabla J(\theta)$
+    * [x]  **Optimisation Algorithms**
+        * [x]  Batch gradient descent
+        * [x]  Stochastic gradient descent
+        * [x]  Mini-batch gradient descent (SGD)
+        * [x]  SGD + Momentum
+        * [x]  SGD + Nesterov
+        * [x]  Adam
+        * [x]  Other adaptive algorithms: adagrad, adamax, adadelta, RMSProp
+    * [x]  **Recommendations**
+        * [x]  SGD+M
+        * [x]  SGD+N
+        * [x]  Adam
 
     
 ## Citation
