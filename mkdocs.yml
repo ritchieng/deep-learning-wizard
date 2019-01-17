@@ -9,7 +9,7 @@ pages:
     - Home: index.md
     - Supporters: supporters.md
     - Reviews: review.md
-    - Deep Learning Wiki:
+    - Deep Learning Tutorials:
       - Introduction: deep_learning/intro.md
       - Course Progression: deep_learning/course_progression.md
       - Matrices: deep_learning/practical_pytorch/pytorch_matrices.md
