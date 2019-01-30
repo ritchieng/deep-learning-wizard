@@ -25,6 +25,10 @@ pages:
       - Learning Rate Scheduling: deep_learning/boosting_models_pytorch/lr_scheduling.md
       - Optimization Algorithms: deep_learning/boosting_models_pytorch/optimizers.md
 
+    - Scalable Database Tutorials:
+      - Welcome: database/intro.md
+      - Cassandra Cluster Setup: database/setting_up_cluster.md
+
     - News:
       - Welcome: news/news.md
       - AMMI (AIMS) supported by Facebook and Google, November 2018: news/ammi_facebook_google_recap_2018_11_21.md
