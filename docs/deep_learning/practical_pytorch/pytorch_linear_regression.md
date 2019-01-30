@@ -218,7 +218,7 @@
     - Even simplier equation
         - `parameters = parameters - learning_rate * parameters_gradients`
             - parameters: $\alpha$ and $\beta$ in $y = \alpha x + \beta$
-            - desired parameters: $\alpha = 2$ and $\beta = 1$ in $ y = 2x + 1$ 
+            - desired parameters: $\alpha = 2$ and $\beta = 1$ in $y = 2x + 1$ 
 
     ```python
     learning_rate = 0.01
