@@ -1,0 +1,1354 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="We deploy a top-down approach that enables you to grasp deep learning theories and code easily and quickly. Used by thousands of students and professionals from top tech companies, research institutions.">
+      
+      
+        <link rel="canonical" href="https://www.deeplearningwizard.com/database/setting_up_cluster/">
+      
+      
+        <meta name="author" content="Ritchie Ng">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+    
+    
+      
+        <title>Cassandra Cluster Setup - Deep Learning Wizard</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#546e7a">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue-grey" data-md-color-accent="blue">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../../#setting-up-cassandra-multi-node-cluster" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://www.deeplearningwizard.com/" title="Deep Learning Wizard" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">whatshot</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Deep Learning Wizard
+              </span>
+              <span class="md-header-nav__topic">
+                Cassandra Cluster Setup
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." title="Home" class="md-tabs__link">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../deep_learning/intro/" title="Deep Learning Tutorials" class="md-tabs__link">
+          Deep Learning Tutorials
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../intro/" title="Scalable Database Tutorials" class="md-tabs__link md-tabs__link--active">
+          Scalable Database Tutorials
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../news/news/" title="News" class="md-tabs__link">
+          News
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://www.deeplearningwizard.com/" title="Deep Learning Wizard" class="md-nav__button md-logo">
+      
+        <i class="md-icon">whatshot</i>
+      
+    </a>
+    Deep Learning Wizard
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../supporters/" title="Supporters" class="md-nav__link">
+      Supporters
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../review/" title="Reviews" class="md-nav__link">
+      Reviews
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Deep Learning Tutorials
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Deep Learning Tutorials
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../deep_learning/intro/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../deep_learning/course_progression/" title="Course Progression" class="md-nav__link">
+      Course Progression
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../deep_learning/practical_pytorch/pytorch_matrices/" title="Matrices" class="md-nav__link">
+      Matrices
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../deep_learning/practical_pytorch/pytorch_gradients/" title="Gradients" class="md-nav__link">
+      Gradients
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../deep_learning/practical_pytorch/pytorch_linear_regression/" title="Linear Regression" class="md-nav__link">
+      Linear Regression
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../deep_learning/practical_pytorch/pytorch_logistic_regression/" title="Logistic Regression" class="md-nav__link">
+      Logistic Regression
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../deep_learning/practical_pytorch/pytorch_feedforward_neuralnetwork/" title="Feedforward Neural Networks" class="md-nav__link">
+      Feedforward Neural Networks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../deep_learning/practical_pytorch/pytorch_convolutional_neuralnetwork/" title="Convolutional Neural Networks" class="md-nav__link">
+      Convolutional Neural Networks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../deep_learning/practical_pytorch/pytorch_recurrent_neuralnetwork/" title="Recurrent Neural Networks" class="md-nav__link">
+      Recurrent Neural Networks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../deep_learning/practical_pytorch/pytorch_lstm_neuralnetwork/" title="Long Short Term Memory Neural Networks" class="md-nav__link">
+      Long Short Term Memory Neural Networks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../deep_learning/boosting_models_pytorch/derivative_gradient_jacobian/" title="Derivative, Gradient and Jacobian" class="md-nav__link">
+      Derivative, Gradient and Jacobian
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../deep_learning/boosting_models_pytorch/forwardpropagation_backpropagation_gradientdescent/" title="Forward- and Backward-propagation and Gradient Descent" class="md-nav__link">
+      Forward- and Backward-propagation and Gradient Descent
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../deep_learning/boosting_models_pytorch/lr_scheduling/" title="Learning Rate Scheduling" class="md-nav__link">
+      Learning Rate Scheduling
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../deep_learning/boosting_models_pytorch/optimizers/" title="Optimization Algorithms" class="md-nav__link">
+      Optimization Algorithms
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+    
+    <label class="md-nav__link" for="nav-5">
+      Scalable Database Tutorials
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Scalable Database Tutorials
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../intro/" title="Welcome" class="md-nav__link">
+      Welcome
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Cassandra Cluster Setup
+      </label>
+    
+    <a href="./" title="Cassandra Cluster Setup" class="md-nav__link md-nav__link--active">
+      Cassandra Cluster Setup
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#install-apache-cassandra" title="Install Apache Cassandra" class="md-nav__link">
+    Install Apache Cassandra
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-datastax-python-cassandra-driver" title="Install DataStax Python Cassandra Driver" class="md-nav__link">
+    Install DataStax Python Cassandra Driver
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#single-node-cassandra-cluster" title="Single Node Cassandra Cluster" class="md-nav__link">
+    Single Node Cassandra Cluster
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-node-cassandra-cluster" title="Multi-node Cassandra Cluster" class="md-nav__link">
+    Multi-node Cassandra Cluster
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steps-per-node" title="Steps Per Node" class="md-nav__link">
+    Steps Per Node
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-modify-cassandra-configuration-settings" title="Step 1: Modify Cassandra Configuration Settings" class="md-nav__link">
+    Step 1: Modify Cassandra Configuration Settings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-modify-rack-details" title="Step 2: Modify Rack Details" class="md-nav__link">
+    Step 2: Modify Rack Details
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-check-status" title="Step 3: Check Status" class="md-nav__link">
+    Step 3: Check Status
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-configure-firewall-ip-settings" title="Step 4: Configure Firewall IP Settings" class="md-nav__link">
+    Step 4: Configure Firewall IP Settings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repeat-steps-1-to-4" title="Repeat Steps 1 to 4" class="md-nav__link">
+    Repeat Steps 1 to 4
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#server-2-example-for-step-2" title="Server 2 Example for Step 2" class="md-nav__link">
+    Server 2 Example for Step 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#server-3-example-for-step-2" title="Server 3 Example for Step 2" class="md-nav__link">
+    Server 3 Example for Step 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#server-2-example-for-step-4" title="Server 2 Example for Step 4" class="md-nav__link">
+    Server 2 Example for Step 4
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#server-3-example-for-step-4" title="Server 3 Example for Step 4" class="md-nav__link">
+    Server 3 Example for Step 4
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dead-node-fix" title="Dead Node Fix" class="md-nav__link">
+    Dead Node Fix
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" title="Summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="Comments" class="md-nav__link md-nav__link--active">
+            Comments
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      News
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        News
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../news/news/" title="Welcome" class="md-nav__link">
+      Welcome
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../news/ammi_facebook_google_recap_2018_11_21/" title="AMMI (AIMS) supported by Facebook and Google, November 2018" class="md-nav__link">
+      AMMI (AIMS) supported by Facebook and Google, November 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../news/nanjing_next_nus_tsinghua_ai_finance_healthcare_2018_11_01/" title="NExT++ AI in Healthcare and Finance, Nanjing, November 2018" class="md-nav__link">
+      NExT++ AI in Healthcare and Finance, Nanjing, November 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../news/facebook_pytorch_devcon_recap_2018_10_02/" title="Recap of Facebook PyTorch Developer Conference, San Francisco, September 2018" class="md-nav__link">
+      Recap of Facebook PyTorch Developer Conference, San Francisco, September 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../news/facebook_pytorch_developer_conference_2018_09_05/" title="Facebook PyTorch Developer Conference, San Francisco, September 2018" class="md-nav__link">
+      Facebook PyTorch Developer Conference, San Francisco, September 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../news/nvidia_nus_mit_datathon_2018_07_05/" title="NUS-MIT-NUHS NVIDIA Image Recognition Workshop, Singapore, July 2018" class="md-nav__link">
+      NUS-MIT-NUHS NVIDIA Image Recognition Workshop, Singapore, July 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../news/deep_learning_wizard_1y_2018_06_01/" title="Featured on PyTorch Website 2018" class="md-nav__link">
+      Featured on PyTorch Website 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../news/nvidia_self_driving_cars_talk_2017_06_21/" title="NVIDIA Self Driving Cars & Healthcare Talk, Singapore, June 2017" class="md-nav__link">
+      NVIDIA Self Driving Cars & Healthcare Talk, Singapore, June 2017
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../news/deep_learning_wizard_nvidia_inception_2018_05_01/" title="NVIDIA Inception Partner Status, Singapore, May 2017" class="md-nav__link">
+      NVIDIA Inception Partner Status, Singapore, May 2017
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#install-apache-cassandra" title="Install Apache Cassandra" class="md-nav__link">
+    Install Apache Cassandra
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-datastax-python-cassandra-driver" title="Install DataStax Python Cassandra Driver" class="md-nav__link">
+    Install DataStax Python Cassandra Driver
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#single-node-cassandra-cluster" title="Single Node Cassandra Cluster" class="md-nav__link">
+    Single Node Cassandra Cluster
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-node-cassandra-cluster" title="Multi-node Cassandra Cluster" class="md-nav__link">
+    Multi-node Cassandra Cluster
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steps-per-node" title="Steps Per Node" class="md-nav__link">
+    Steps Per Node
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-modify-cassandra-configuration-settings" title="Step 1: Modify Cassandra Configuration Settings" class="md-nav__link">
+    Step 1: Modify Cassandra Configuration Settings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-modify-rack-details" title="Step 2: Modify Rack Details" class="md-nav__link">
+    Step 2: Modify Rack Details
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-check-status" title="Step 3: Check Status" class="md-nav__link">
+    Step 3: Check Status
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-configure-firewall-ip-settings" title="Step 4: Configure Firewall IP Settings" class="md-nav__link">
+    Step 4: Configure Firewall IP Settings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repeat-steps-1-to-4" title="Repeat Steps 1 to 4" class="md-nav__link">
+    Repeat Steps 1 to 4
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#server-2-example-for-step-2" title="Server 2 Example for Step 2" class="md-nav__link">
+    Server 2 Example for Step 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#server-3-example-for-step-2" title="Server 3 Example for Step 2" class="md-nav__link">
+    Server 3 Example for Step 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#server-2-example-for-step-4" title="Server 2 Example for Step 4" class="md-nav__link">
+    Server 2 Example for Step 4
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#server-3-example-for-step-4" title="Server 3 Example for Step 4" class="md-nav__link">
+    Server 3 Example for Step 4
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dead-node-fix" title="Dead Node Fix" class="md-nav__link">
+    Dead Node Fix
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" title="Summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="Comments" class="md-nav__link md-nav__link--active">
+            Comments
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="setting-up-cassandra-multi-node-cluster">Setting up Cassandra Multi-node Cluster<a class="headerlink" href="#setting-up-cassandra-multi-node-cluster" title="Permanent link">&para;</a></h1>
+<h2 id="install-apache-cassandra">Install Apache Cassandra<a class="headerlink" href="#install-apache-cassandra" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Patience is key initially</p>
+<p>It will be quite tedious to many people in setting up a multi-node Cassandra cluster. You are likely to face a lot of problems. But with a strong community and this tried-and-proven guide, you should be ok! Just be patient.</p>
+<p>Remember when you're asking for help on StackOverflow, here or anywhere else, do paste the logs to make everyone's life easier to help you debug quickly. </p>
+<p>All you need to do is to run this base command and paste the logs.</p>
+<div class="codehilite"><pre><span></span>cat /var/log/cassandra/system.log
+</pre></div>
+
+</div>
+<p>Here, we will install all of the required Debian packages. To ensure you've the latest version of Cassandra, please use the official link at <a href="http://cassandra.apache.org/">cassandra.apache.org/download</a>.</p>
+<p>Bash Commands
+<div class="codehilite"><pre><span></span>echo &quot;deb http://www.apache.org/dist/cassandra/debian 311x main&quot; | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
+
+curl https://www.apache.org/dist/cassandra/KEYS | sudo apt-key add -
+
+sudo apt-get update
+
+sudo apt-get install cassandra
+</pre></div></p>
+<p>This would get you up and running with Cassandra v3.11.</p>
+<h2 id="install-datastax-python-cassandra-driver">Install DataStax Python Cassandra Driver<a class="headerlink" href="#install-datastax-python-cassandra-driver" title="Permanent link">&para;</a></h2>
+<p>We need to install the Python Cassandra Driver so we can easily interact with our Cassandra Database without using the CQLSH (this is Cassandra's shell to run CQL commands to perform CRUD operations) commandline directly.</p>
+<div class="admonition question">
+<p class="admonition-title">What is CRUD?</p>
+<p>CRUD is the acronym of CREATE, READ, UPDATE, and DELETE. For databases, we typically have these 4 categories of operations so we can create new data points, update, read or delete them in our database.</p>
+</div>
+<p>Bash Commands
+<div class="codehilite"><pre><span></span>pip install cassandra-driver
+</pre></div></p>
+<p>This is strictly for installation on Linux platforms, refer to the <a href="https://datastax.github.io/python-driver/installation.html">official website</a> for more details.</p>
+<h2 id="single-node-cassandra-cluster">Single Node Cassandra Cluster<a class="headerlink" href="#single-node-cassandra-cluster" title="Permanent link">&para;</a></h2>
+<p>Before we venture into the cool world of multi-node cluster requiring many servers, we will start with a single node cluster that only requires a single server (desktop/laptop).</p>
+<p>Once you've installed everything so far, you should run the following.</p>
+<p>Bash commands</p>
+<div class="codehilite"><pre><span></span>sudo service cassandra start
+sudo nodetool status
+</pre></div>
+
+<p>And this will print out something like that:</p>
+<div class="codehilite"><pre><span></span><span class="n">Datacenter</span><span class="o">:</span> <span class="n">datacenter1</span>
+<span class="o">=============================</span>
+<span class="n">Status</span><span class="o">=</span><span class="n">Up</span><span class="o">/</span><span class="n">Down</span>
+<span class="o">|/</span> <span class="n">State</span><span class="o">=</span><span class="n">Normal</span><span class="sr">/Leaving/Joining/</span><span class="n">Moving</span>
+<span class="o">--</span>  <span class="n">Address</span>       <span class="n">Load</span>       <span class="n">Tokens</span>       <span class="n">Owns</span> <span class="o">(</span><span class="n">effective</span><span class="o">)</span>  <span class="n">Host</span> <span class="n">ID</span>                               <span class="n">Rack</span>
+<span class="n">UN</span>  <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span>     <span class="mf">318.78</span> <span class="n">KiB</span>  <span class="mi">256</span>          <span class="mf">100.0</span><span class="o">%</span>            <span class="n">g5ac4c9</span><span class="o">-</span><span class="mi">99</span><span class="n">b7</span><span class="o">-</span><span class="mi">65</span><span class="n">d</span><span class="o">-</span><span class="mi">24</span><span class="n">cfd82524f9</span>      <span class="n">rack1</span>
+</pre></div>
+
+<p>That's it, we've built our single node Cassandra database.</p>
+<h2 id="multi-node-cassandra-cluster">Multi-node Cassandra Cluster<a class="headerlink" href="#multi-node-cassandra-cluster" title="Permanent link">&para;</a></h2>
+<p>Remember it's standard to have at least 3 nodes, and in a basic 3 separate server configuration (3 separate desktops for non-enterprise users). Because of this, we will base this tutorial on setting up a 3-node cluster. But the same steps apply if you want to even do 10000 nodes.</p>
+<div class="admonition tip">
+<p class="admonition-title">Installing Sublime critical</p>
+<p>Sublime is a text editor, and it would help if you're not familiar with VIM which I use frequently. Honestly using Sublime to edit all the following files we will edit is much easier, trust me! </p>
+<p>To install Sublime run the following bash commands in sequence:
+<div class="codehilite"><pre><span></span>wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+
+echo &quot;deb https://download.sublimetext.com/ apt/stable/&quot; | sudo tee /etc/apt/sources.list.d/sublime-text.list
+
+sudo apt-get update
+
+sudo apt-get install sublime-text
+</pre></div></p>
+<p>Now check if it works by running this command in your bash:
+<div class="codehilite"><pre><span></span>subl
+</pre></div></p>
+<p>This should open Sublime text editor! You're now ready.</p>
+</div>
+<p>Before we move on to the steps to set up each node, we need the IP address of all 3 servers. This is simple, just run the following bash command:</p>
+<div class="codehilite"><pre><span></span>ifconfig | sed -En &#39;s/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p&#39;
+</pre></div>
+
+<p>This would return the server's IP address that we need for example:</p>
+<div class="codehilite"><pre><span></span><span class="n">server_1_ip</span><span class="o">:</span> <span class="mf">112.522</span><span class="o">.</span><span class="mf">6.61</span>
+<span class="n">server_2_ip</span><span class="o">:</span> <span class="mf">112.522</span><span class="o">.</span><span class="mf">6.62</span>
+<span class="n">server_3_ip</span><span class="o">:</span> <span class="mf">112.522</span><span class="o">.</span><span class="mf">6.63</span>
+</pre></div>
+
+<p>We will be using these IPs as a base for configuration in the subsequent sections. Take note yours would differ and you need to change accordingly.</p>
+<h3 id="steps-per-node">Steps Per Node<a class="headerlink" href="#steps-per-node" title="Permanent link">&para;</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Critical Section You Need To Repeat</p>
+<p>This is a critcal section. On <strong>EVERY</strong> server, you need to repeat all the steps shown in this section. In our case of a 3 node cluster, using 3 servers, we need to repeat this 3 times.</p>
+</div>
+<h4 id="step-1-modify-cassandra-configuration-settings">Step 1: Modify Cassandra Configuration Settings<a class="headerlink" href="#step-1-modify-cassandra-configuration-settings" title="Permanent link">&para;</a></h4>
+<p>Run the following bash to edit the configuration file for server 1 (112.522.6.61):</p>
+<div class="codehilite"><pre><span></span>cd /etc/cassandra
+subl cassandra.yaml
+</pre></div>
+
+<p>Now you need to find the following fields and change them accordingly.</p>
+<div class="codehilite"><pre><span></span>cluster_name: &#39;CassandraDBCluster&#39;
+
+
+seed_provider:
+  - class_name: org.apache.cassandra.locator.SimpleSeedProvider
+    parameters:
+         - seeds: &quot;112.522.6.61, 112.522.6.62, 112.522.6.63&quot;
+
+
+listen_address: 112.522.6.61
+
+
+rpc_address: 112.522.6.61
+
+
+endpoint_snitch: GossipingPropertyFileSnitch
+
+auto_bootstrap: true
+</pre></div>
+
+<h4 id="step-2-modify-rack-details">Step 2: Modify Rack Details<a class="headerlink" href="#step-2-modify-rack-details" title="Permanent link">&para;</a></h4>
+<p>Run the following bash command to edit the rack details:</p>
+<div class="codehilite"><pre><span></span>cd /etc/cassandra
+subl cassandra-rackdc.properties
+</pre></div>
+
+<p>And change the following fields to this:
+<div class="codehilite"><pre><span></span>dc=datacenter1
+</pre></div></p>
+<h4 id="step-3-check-status">Step 3: Check Status<a class="headerlink" href="#step-3-check-status" title="Permanent link">&para;</a></h4>
+<p>Restart service with the following bash commands:</p>
+<div class="codehilite"><pre><span></span>sudo rm -rf /var/lib/cassandra/data/system/*
+sudo service cassandra restart
+sudo nodetool status
+</pre></div>
+
+<p>Here you would see an output like this:</p>
+<div class="codehilite"><pre><span></span><span class="n">Datacenter</span><span class="o">:</span> <span class="n">datacenter</span>
+<span class="o">=============================</span>
+<span class="n">Status</span><span class="o">=</span><span class="n">Up</span><span class="o">/</span><span class="n">Down</span>
+<span class="o">|/</span> <span class="n">State</span><span class="o">=</span><span class="n">Normal</span><span class="sr">/Leaving/Joining/</span><span class="n">Moving</span>
+<span class="o">--</span>  <span class="n">Address</span>       <span class="n">Load</span>       <span class="n">Tokens</span>       <span class="n">Owns</span> <span class="o">(</span><span class="n">effective</span><span class="o">)</span>  <span class="n">Host</span> <span class="n">ID</span>                               <span class="n">Rack</span>
+<span class="n">UN</span>  <span class="mf">112.522</span><span class="o">.</span><span class="mf">6.61</span>  <span class="mf">318.78</span> <span class="n">KiB</span>  <span class="mi">256</span>          <span class="mf">100.0</span><span class="o">%</span>            <span class="n">f5c84c9</span><span class="o">-</span><span class="mi">99</span><span class="n">b7</span><span class="o">-</span><span class="mi">45</span><span class="n">d</span><span class="o">-</span><span class="mi">8856</span><span class="o">-</span><span class="mi">24</span><span class="n">cfd82523f9</span>  <span class="n">rack1</span>
+<span class="n">UN</span>  <span class="mf">112.522</span><span class="o">.</span><span class="mf">6.62</span>  <span class="mf">206.42</span> <span class="n">KiB</span>  <span class="mi">256</span>          <span class="mf">100.0</span><span class="o">%</span>            <span class="n">ac2f24da</span><span class="o">-</span><span class="mi">1</span><span class="n">b2c</span><span class="o">-</span><span class="mi">4</span><span class="n">e3</span><span class="o">-</span><span class="mi">8</span><span class="n">a75</span><span class="o">-</span><span class="mi">0</span><span class="n">e28ec366a4</span>  <span class="n">rack1</span>
+<span class="n">UN</span>  <span class="mf">112.522</span><span class="o">.</span><span class="mf">6.63</span>  <span class="mf">338.34</span> <span class="n">KiB</span>  <span class="mi">256</span>          <span class="mf">100.0</span><span class="o">%</span>            <span class="mi">55</span><span class="n">a227d</span><span class="o">-</span><span class="n">ffbe</span><span class="o">-</span><span class="mi">45</span><span class="n">d5</span><span class="o">-</span><span class="mi">8698</span><span class="o">-</span><span class="mi">60</span><span class="n">c374b3a6b</span>  <span class="n">rack1</span>
+</pre></div>
+
+<h4 id="step-4-configure-firewall-ip-settings">Step 4: Configure Firewall IP Settings<a class="headerlink" href="#step-4-configure-firewall-ip-settings" title="Permanent link">&para;</a></h4>
+<p>Run the following bash commands</p>
+<div class="codehilite"><pre><span></span>sudo apt-get install iptables-persistent
+
+sudo iptables -A INPUT -p tcp -s 112.522.6.62 -m multiport --dports 7000,9042 -m state --state NEW,ESTABLISHED -j ACCEPT
+sudo iptables -A INPUT -p tcp -s 112.522.6.63 -m multiport --dports 7000,9042 -m state --state NEW,ESTABLISHED -j ACCEPT
+
+sudo bash -c &quot;iptables-save &gt; /etc/iptables/rules.v4&quot;
+
+sudo netfilter-persistent reload
+
+sudo nodetool status
+</pre></div>
+
+<h3 id="repeat-steps-1-to-4">Repeat Steps 1 to 4<a class="headerlink" href="#repeat-steps-1-to-4" title="Permanent link">&para;</a></h3>
+<p>You have to repeat all 4 steps for the other 2 servers but <strong>step 1</strong> and <strong>step 4</strong> requires slightly different settings. For the other servers, you need to basically change the IP to the server's IP. And for the IP firewall settings, you need to allow entry from the other 2 servers instead of itself.</p>
+<h4 id="server-2-example-for-step-2">Server 2 Example for Step 2<a class="headerlink" href="#server-2-example-for-step-2" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span>cluster_name: &#39;CassandraDBCluster&#39;
+
+
+seed_provider:
+  - class_name: org.apache.cassandra.locator.SimpleSeedProvider
+    parameters:
+         - seeds: &quot;112.522.6.61, 112.522.6.62, 112.522.6.63&quot;
+
+
+# ONLY THIS LINE CHANGES
+listen_address: 112.522.6.62
+
+# ONLY THIS LINE CHANGES
+rpc_address: 112.522.6.62
+
+
+endpoint_snitch: GossipingPropertyFileSnitch
+
+auto_bootstrap: true
+</pre></div>
+
+<h4 id="server-3-example-for-step-2">Server 3 Example for Step 2<a class="headerlink" href="#server-3-example-for-step-2" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span>cluster_name: &#39;CassandraDBCluster&#39;
+
+
+seed_provider:
+  - class_name: org.apache.cassandra.locator.SimpleSeedProvider
+    parameters:
+         - seeds: &quot;112.522.6.61, 112.522.6.62, 112.522.6.63&quot;
+
+
+# ONLY THIS LINE CHANGES
+listen_address: 112.522.6.63
+
+# ONLY THIS LINE CHANGES
+rpc_address: 112.522.6.63
+
+
+endpoint_snitch: GossipingPropertyFileSnitch
+
+auto_bootstrap: true
+</pre></div>
+
+<h4 id="server-2-example-for-step-4">Server 2 Example for Step 4<a class="headerlink" href="#server-2-example-for-step-4" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span>sudo apt-get install iptables-persistent
+
+# ONLY THESE LINES CHANGE TO ALLOW COMMUNICATION WITH SERVER 1 AND 3
+sudo iptables -A INPUT -p tcp -s 112.522.6.61 -m multiport --dports 7000,9042 -m state --state NEW,ESTABLISHED -j ACCEPT
+sudo iptables -A INPUT -p tcp -s 112.522.6.63 -m multiport --dports 7000,9042 -m state --state NEW,ESTABLISHED -j ACCEPT
+
+sudo bash -c &quot;iptables-save &gt; /etc/iptables/rules.v4&quot;
+
+sudo netfilter-persistent reload
+
+sudo nodetool status
+</pre></div>
+
+<h4 id="server-3-example-for-step-4">Server 3 Example for Step 4<a class="headerlink" href="#server-3-example-for-step-4" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span>sudo apt-get install iptables-persistent
+
+# ONLY THESE LINES CHANGE TO ALLOW COMMUNICATION WITH SERVER 1 AND 2
+sudo iptables -A INPUT -p tcp -s 112.522.6.61 -m multiport --dports 7000,9042 -m state --state NEW,ESTABLISHED -j ACCEPT
+sudo iptables -A INPUT -p tcp -s 112.522.6.62 -m multiport --dports 7000,9042 -m state --state NEW,ESTABLISHED -j ACCEPT
+
+sudo bash -c &quot;iptables-save &gt; /etc/iptables/rules.v4&quot;
+
+sudo netfilter-persistent reload
+
+sudo nodetool status
+</pre></div>
+
+<h2 id="dead-node-fix">Dead Node Fix<a class="headerlink" href="#dead-node-fix" title="Permanent link">&para;</a></h2>
+<p>When your server/desktop restarts, you may face a dead node. You need replace the address with the same IP for it to work.</p>
+<div class="codehilite"><pre><span></span>cd /etc/cassandra
+subtl cassandra-env.sh
+</pre></div>
+
+<p>Add the following line in the last row assuming server 1 is dead where the IP is 112.522.6.61
+<div class="codehilite"><pre><span></span>JVM_OPTS=&quot;$JVM_OPTS -Dcassandra.replace_address=112.522.6.61&quot;
+</pre></div></p>
+<p>Then run the following bash commands</p>
+<div class="codehilite"><pre><span></span>sudo rm -rf /var/lib/cassandra/data/system/*
+sudo service cassandra restart
+sudo nodetool status
+</pre></div>
+
+<p>You might have to wait awhile and re-run <code class="codehilite">sudo nodetool status</code> for the DB to get up and running.</p>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>We have successfully set up a 3-node Cassandra cluster DB after all these steps. We will move on to interacting with the cluster with CQLSH and the Python Driver in subsequent guides.</p>
+                
+                  
+                
+              
+              
+                
+
+
+  <h2 id="__comments">Comments</h2>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://www.deeplearningwizard.com/database/setting_up_cluster/";
+      this.page.identifier =
+        "database/setting_up_cluster/";
+    };
+    (function() {
+      var d = document, s = d.createElement("script");
+      s.src = "//deep-learning-wizard.disqus.com/embed.js";
+      s.setAttribute("data-timestamp", +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="database/intro/" title="Welcome" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Welcome
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="news/news/" title="Welcome" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Welcome
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2018 Deep Learning Wizard
+          </div>
+        
+        proudly an
+        <a href="http://www.nvidia.com/page/home.html">NVIDIA Inception Partner</a>
+        based in Singapore by
+        <a href="https://www.ritchieng.com/">
+          Ritchie Ng (NVIDIA Deep Learning Institute Instructor)</a>
+      </div>
+      
+        
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/ritchieng" class="md-footer-social__link fa fa-github"></a>
+    
+      <a href="https://www.facebook.com/DeepLearningWizard/" class="md-footer-social__link fa fa-facebook"></a>
+    
+      <a href="https://www.linkedin.com/company/deeplearningwizard/" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.583bbe55.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+    
+      
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-122083328-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+      
+    
+  </body>
+</html>

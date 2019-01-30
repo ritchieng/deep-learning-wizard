@@ -86,6 +86,16 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>https://www.deeplearningwizard.com/database/intro/</loc>
+     <lastmod>2019-01-30</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://www.deeplearningwizard.com/database/setting_up_cluster/</loc>
+     <lastmod>2019-01-30</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>https://www.deeplearningwizard.com/news/news/</loc>
      <lastmod>2019-01-30</lastmod>
      <changefreq>daily</changefreq>
