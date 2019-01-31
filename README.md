@@ -4,15 +4,30 @@
 ## Start Learning Now
 Please head to [www.deeplearningwizard.com](https://www.deeplearningwizard.com/) to start learning!
 
-## About This Repository
-After careful deliberation, I have decided to gradually open-source our written deep learning materials that I have used to teach more than 3000 students worldwide across 120 countries through my [video course, Practical Deep Learning with Pytorch](https://www.udemy.com/practical-deep-learning-with-pytorch/?couponCode=DEEPWIZARD).
+## Repository Details
+This repository contains all the notesbooks and mkdocs markdown files of the tutorials covering machine learning, deep learning, scalable database, programming, data processing and data visualization.
 
-As this is a very new effort to open-source my materials, it's still a work-in-progress. Please bear with me while I clean it up.
-
-This repository powers the main open-source Deep Learning Wizard website [www.deeplearningwizard.com](https://www.deeplearningwizard.com/).
-
+## Sections and Subsections
+- [Deep Learning Tutorials](https://www.deeplearningwizard.com/deep_learning/intro/)
+    - [Course Progression](https://www.deeplearningwizard.com/deep_learning/course_progression/)
+    - [Matrices](https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_matrices/)
+    - [Gradients](https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_gradients/)
+    - [Linear Regression](https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_linear_regression/)
+    - [Logistic Regression](https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_logistic_regression/)
+    - [Feedforward Neural Network](https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_feedforward_neuralnetwork/)
+    - [Convolutional Neural Network (CNN)](https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_convolutional_neuralnetwork/)
+    - [Recurrent Neural Network (RNN)](https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_recurrent_neuralnetwork/)
+    - [Long Short-Term Memory (LSTM) network](https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_lstm_neuralnetwork/)
+    - [Derivative, Gradient and Jacobian](https://www.deeplearningwizard.com/deep_learning/boosting_models_pytorch/derivative_gradient_jacobian/)
+    - [Forwardpropagation, Backpropagation and Gradient Descent](https://www.deeplearningwizard.com/deep_learning/boosting_models_pytorch/forwardpropagation_backpropagation_gradientdescent/)
+    - [Learning Rate Scheduling](https://www.deeplearningwizard.com/deep_learning/boosting_models_pytorch/lr_scheduling/)
+    - [Optimization Algorithms](https://www.deeplearningwizard.com/deep_learning/boosting_models_pytorch/optimizers/)
+    - [Weight Initialization and Activation Functions](https://www.deeplearningwizard.com/deep_learning/boosting_models_pytorch/weight_initialization_activation_functions/)
+- [Scalable Database Tutorials](https://www.deeplearningwizard.com/database/intro/)
+    - [Apache Cassandra Cluster Setup](https://www.deeplearningwizard.com/database/setting_up_cluster/)
+    
 ## Always Latest PyTorch Version
-We always provide the latest PyTorch version (currently 0.4 or 1.0 pre-release) so that you will be learning up-to-date code! 
+We always provide the latest PyTorch version (0.4/1.0) so that you will be learning up-to-date code! 
 
 ## About Deep Learning Wizard
 We deploy a top-down approach that enables you to grasp deep learning theories and code easily and quickly. We have open-sourced all our materials through our Deep Learning Wizard Wikipedia. For visual learners, feel free to sign up for our video course and join over 2300 deep learning wizards.
