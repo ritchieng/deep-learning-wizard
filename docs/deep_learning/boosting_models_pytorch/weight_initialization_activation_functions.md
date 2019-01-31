@@ -128,7 +128,7 @@ plt.plot(x,relu, linewidth=3.0)
 - Look at a simple feedforward neural network
 ![](./images/nn2.png)
 
-**Some equations to explain**
+##### Equations for Lecun Initialization
 - $Y = AX + B$
 - $y = a_1x_1 + a_2x_2 + \cdot + a_n x_n + b$
 - $Var(y) = Var(a_1x_1 + a_2x_2 + \cdot + a_n x_n + b)$
@@ -140,11 +140,11 @@ plt.plot(x,relu, linewidth=3.0)
 - Assuming inputs/weights drawn i.i.d. with Gaussian distribution of mean=0
     - $E(x_i) = E(a_i) = 0$
     - $Var(a_i x_i) = Var(a_i)Var(x_i)$
-- $Var(y) = Var(a_1)Var(x_1) + \cdot + Var(a_n)Var(x_n) $
+- $Var(y) = Var(a_1)Var(x_1) + \cdot + Var(a_n)Var(x_n)$
     - Since the bias, b, is a constant, $Var(b) = 0$
 - Since i.i.d.
-    - $Var(y) = n \times Var(a_i)Var(x_i) $
-- Since we want constant variance where $ Var(y) = Var(x_i) $
+    - $Var(y) = n \times Var(a_i)Var(x_i)$
+- Since we want constant variance where $Var(y) = Var(x_i)$
     - $1 = nVar(a_i)$
     - $Var(a_i) = \frac{1}{n}$
 - This is essentially [Lecun initialization, from his paper titled "Efficient Backpropagation"](http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf)
