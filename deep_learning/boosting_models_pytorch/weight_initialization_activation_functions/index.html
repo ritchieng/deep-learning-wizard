@@ -607,6 +607,19 @@
     Lecun Initialization: normalize variance
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#equations-for-lecun-initialization" title="Equations for Lecun Initialization" class="md-nav__link">
+    Equations for Lecun Initialization
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -1028,6 +1041,19 @@
     Lecun Initialization: normalize variance
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#equations-for-lecun-initialization" title="Equations for Lecun Initialization" class="md-nav__link">
+    Equations for Lecun Initialization
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -1308,28 +1334,44 @@
 <li>Look at a simple feedforward neural network
 <img alt="" src="../images/nn2.png" /></li>
 </ul>
-<p><strong>Some equations to explain</strong>
-- <span><span class="MathJax_Preview">Y = AX + B</span><script type="math/tex">Y = AX + B</script></span>
-- <span><span class="MathJax_Preview">y = a_1x_1 + a_2x_2 + \cdot + a_n x_n + b</span><script type="math/tex">y = a_1x_1 + a_2x_2 + \cdot + a_n x_n + b</script></span>
-- <span><span class="MathJax_Preview">Var(y) = Var(a_1x_1 + a_2x_2 + \cdot + a_n x_n + b)</span><script type="math/tex">Var(y) = Var(a_1x_1 + a_2x_2 + \cdot + a_n x_n + b)</script></span>
-- <span><span class="MathJax_Preview">Var(a_i x_i) = E(x_i)^2 Var(a_i) + E(a_i)^2Var(x_i) + Var(a_i)Var(x_i)</span><script type="math/tex">Var(a_i x_i) = E(x_i)^2 Var(a_i) + E(a_i)^2Var(x_i) + Var(a_i)Var(x_i)</script></span>
-    - General term, you might be more familiar with the following
-        - <span><span class="MathJax_Preview">Var(XY) = E(X)^2 Var(Y) + E(Y)^2Var(X) + Var(X)Var(Y)</span><script type="math/tex">Var(XY) = E(X)^2 Var(Y) + E(Y)^2Var(X) + Var(X)Var(Y)</script></span>
-    - <span><span class="MathJax_Preview">E(x_i)</span><script type="math/tex">E(x_i)</script></span>: expectation/mean of <span><span class="MathJax_Preview">x_i</span><script type="math/tex">x_i</script></span>
-    - <span><span class="MathJax_Preview">E(a_i)</span><script type="math/tex">E(a_i)</script></span>: expectation/mean of <span><span class="MathJax_Preview">a_i</span><script type="math/tex">a_i</script></span>
-- Assuming inputs/weights drawn i.i.d. with Gaussian distribution of mean=0
-    - <span><span class="MathJax_Preview">E(x_i) = E(a_i) = 0</span><script type="math/tex">E(x_i) = E(a_i) = 0</script></span>
-    - <span><span class="MathJax_Preview">Var(a_i x_i) = Var(a_i)Var(x_i)</span><script type="math/tex">Var(a_i x_i) = Var(a_i)Var(x_i)</script></span>
-- $Var(y) = Var(a_1)Var(x_1) + \cdot + Var(a_n)Var(x_n) $
-    - Since the bias, b, is a constant, <span><span class="MathJax_Preview">Var(b) = 0</span><script type="math/tex">Var(b) = 0</script></span>
-- Since i.i.d.
-    - $Var(y) = n \times Var(a_i)Var(x_i) $
-- Since we want constant variance where $ Var(y) = Var(x_i) $
-    - <span><span class="MathJax_Preview">1 = nVar(a_i)</span><script type="math/tex">1 = nVar(a_i)</script></span>
-    - <span><span class="MathJax_Preview">Var(a_i) = \frac{1}{n}</span><script type="math/tex">Var(a_i) = \frac{1}{n}</script></span>
-- This is essentially <a href="http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf">Lecun initialization, from his paper titled "Efficient Backpropagation"</a>
-    - We draw our weights i.i.d. with mean=0 and variance = <span><span class="MathJax_Preview">\frac{1}{n}</span><script type="math/tex">\frac{1}{n}</script></span>
-    - Where <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> is the number of <strong>input units</strong> in the weight tensor</p>
+<h5 id="equations-for-lecun-initialization">Equations for Lecun Initialization<a class="headerlink" href="#equations-for-lecun-initialization" title="Permanent link">&para;</a></h5>
+<ul>
+<li><span><span class="MathJax_Preview">Y = AX + B</span><script type="math/tex">Y = AX + B</script></span></li>
+<li><span><span class="MathJax_Preview">y = a_1x_1 + a_2x_2 + \cdot + a_n x_n + b</span><script type="math/tex">y = a_1x_1 + a_2x_2 + \cdot + a_n x_n + b</script></span></li>
+<li><span><span class="MathJax_Preview">Var(y) = Var(a_1x_1 + a_2x_2 + \cdot + a_n x_n + b)</span><script type="math/tex">Var(y) = Var(a_1x_1 + a_2x_2 + \cdot + a_n x_n + b)</script></span></li>
+<li><span><span class="MathJax_Preview">Var(a_i x_i) = E(x_i)^2 Var(a_i) + E(a_i)^2Var(x_i) + Var(a_i)Var(x_i)</span><script type="math/tex">Var(a_i x_i) = E(x_i)^2 Var(a_i) + E(a_i)^2Var(x_i) + Var(a_i)Var(x_i)</script></span><ul>
+<li>General term, you might be more familiar with the following<ul>
+<li><span><span class="MathJax_Preview">Var(XY) = E(X)^2 Var(Y) + E(Y)^2Var(X) + Var(X)Var(Y)</span><script type="math/tex">Var(XY) = E(X)^2 Var(Y) + E(Y)^2Var(X) + Var(X)Var(Y)</script></span></li>
+</ul>
+</li>
+<li><span><span class="MathJax_Preview">E(x_i)</span><script type="math/tex">E(x_i)</script></span>: expectation/mean of <span><span class="MathJax_Preview">x_i</span><script type="math/tex">x_i</script></span></li>
+<li><span><span class="MathJax_Preview">E(a_i)</span><script type="math/tex">E(a_i)</script></span>: expectation/mean of <span><span class="MathJax_Preview">a_i</span><script type="math/tex">a_i</script></span></li>
+</ul>
+</li>
+<li>Assuming inputs/weights drawn i.i.d. with Gaussian distribution of mean=0<ul>
+<li><span><span class="MathJax_Preview">E(x_i) = E(a_i) = 0</span><script type="math/tex">E(x_i) = E(a_i) = 0</script></span></li>
+<li><span><span class="MathJax_Preview">Var(a_i x_i) = Var(a_i)Var(x_i)</span><script type="math/tex">Var(a_i x_i) = Var(a_i)Var(x_i)</script></span></li>
+</ul>
+</li>
+<li><span><span class="MathJax_Preview">Var(y) = Var(a_1)Var(x_1) + \cdot + Var(a_n)Var(x_n)</span><script type="math/tex">Var(y) = Var(a_1)Var(x_1) + \cdot + Var(a_n)Var(x_n)</script></span><ul>
+<li>Since the bias, b, is a constant, <span><span class="MathJax_Preview">Var(b) = 0</span><script type="math/tex">Var(b) = 0</script></span></li>
+</ul>
+</li>
+<li>Since i.i.d.<ul>
+<li><span><span class="MathJax_Preview">Var(y) = n \times Var(a_i)Var(x_i)</span><script type="math/tex">Var(y) = n \times Var(a_i)Var(x_i)</script></span></li>
+</ul>
+</li>
+<li>Since we want constant variance where <span><span class="MathJax_Preview">Var(y) = Var(x_i)</span><script type="math/tex">Var(y) = Var(x_i)</script></span><ul>
+<li><span><span class="MathJax_Preview">1 = nVar(a_i)</span><script type="math/tex">1 = nVar(a_i)</script></span></li>
+<li><span><span class="MathJax_Preview">Var(a_i) = \frac{1}{n}</span><script type="math/tex">Var(a_i) = \frac{1}{n}</script></span></li>
+</ul>
+</li>
+<li>This is essentially <a href="http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf">Lecun initialization, from his paper titled "Efficient Backpropagation"</a><ul>
+<li>We draw our weights i.i.d. with mean=0 and variance = <span><span class="MathJax_Preview">\frac{1}{n}</span><script type="math/tex">\frac{1}{n}</script></span></li>
+<li>Where <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> is the number of <strong>input units</strong> in the weight tensor</li>
+</ul>
+</li>
+</ul>
 <h4 id="improvements-to-lecun-intialization">Improvements to Lecun Intialization<a class="headerlink" href="#improvements-to-lecun-intialization" title="Permanent link">&para;</a></h4>
 <ul>
 <li>They are essentially slight modifications to Lecun'98 initialization</li>
