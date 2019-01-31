@@ -856,7 +856,7 @@ for epoch in range(num_epochs):
     Iteration: 3000. Loss: 0.056865859776735306. Accuracy: 97.48
 
 
-## He Initialization: ReLU Activation
+### He Initialization: ReLU Activation
 
 
 ```python
