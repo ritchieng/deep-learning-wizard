@@ -326,3 +326,8 @@ You might have to wait awhile and re-run `sudo nodetool status` for the DB to ge
 ## Summary
 
 We have successfully set up a 3-node Cassandra cluster DB after all these steps. We will move on to interacting with the cluster with CQLSH and the Python Driver in subsequent guides.
+
+## Citation
+If you have found these useful in your research, presentations, school work, projects or workshops, feel free to cite using this DOI.
+
+[![DOI](https://zenodo.org/badge/139945544.svg)](https://zenodo.org/badge/latestdoi/139945544) 
