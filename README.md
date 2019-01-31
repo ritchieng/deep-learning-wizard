@@ -2,10 +2,10 @@
 [![DOI](https://zenodo.org/badge/139945544.svg)](https://zenodo.org/badge/latestdoi/139945544)
 
 ## Start Learning Now
-Please head to [www.deeplearningwizard.com](https://www.deeplearningwizard.com/) to start learning!
+Please head to [www.deeplearningwizard.com](https://www.deeplearningwizard.com/) to start learning! It is mobile and tablet friendly!
 
 ## Repository Details
-This repository contains all the notesbooks and mkdocs markdown files of the tutorials covering machine learning, deep learning, scalable database, programming, data processing and data visualization.
+This repository contains all the notesbooks and mkdocs markdown files of the tutorials covering machine learning, deep learning, scalable database, programming, data processing and data visualization powering the website.
 
 ## Sections and Subsections
 - [Deep Learning Tutorials](https://www.deeplearningwizard.com/deep_learning/intro/)
