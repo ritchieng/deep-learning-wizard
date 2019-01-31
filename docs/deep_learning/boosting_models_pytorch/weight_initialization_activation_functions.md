@@ -1,5 +1,4 @@
-
-# 6. Weight Initializations & Activation Functions
+# Weight Initializations & Activation Functions
 
 ## Recap of Logistic Regression
 ![](./images/cross_entropy_final_4.png)
