@@ -25,3 +25,5 @@ If you would like a smooth transition in learning deep learning concepts, you ne
 * [x] Weight Initializations and Activation Functions
 * [x] Overfitting Prevention
 * [x] Loss, Accuracy and Weight Visualizations
+* [x] Data Preprocessing for Images and Videos
+* [x] Data Preprocessing for Time Series
