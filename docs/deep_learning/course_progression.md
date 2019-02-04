@@ -27,3 +27,6 @@ If you would like a smooth transition in learning deep learning concepts, you ne
 * [x] Loss, Accuracy and Weight Visualizations
 * [x] Data Preprocessing for Images and Videos
 * [x] Data Preprocessing for Time Series
+
+## 3. Deep Reinforcement Learning with PyTorch
+* [x] Pending...
