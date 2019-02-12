@@ -1,5 +1,5 @@
 # Course Progression
-If you would like a smooth transition in learning deep learning concepts, you need to follow the materials in a sequential order. Some sections are still pending as I am working on them.
+If you would like a smooth transition in learning deep learning concepts, you need to follow the materials in a sequential order. Some sections are still pending as I am working on them, and they will have the :hourglass_flowing_sand: icon beside them.
 
 
 ## 1. Practical Deep Learning with PyTorch
@@ -11,10 +11,10 @@ If you would like a smooth transition in learning deep learning concepts, you ne
 * [x] Convolutional Neural Networks (CNN)
 * [x] Recurrent Neural Networks (RNN)
 * [x] Long Short Term Memory Neural Networks (LSTM)
-* [x] Autoencoders (AE)
-* [x] Variational Autoencoders (VAEs)
-* [x] Adversarial Autoencoders (AAEs)
-* [x] Generative Adversarial Networks (GANs)
+* [x] :hourglass_flowing_sand: Autoencoders (AE)
+* [x] :hourglass_flowing_sand: Variational Autoencoders (VAEs)
+* [x] :hourglass_flowing_sand: Adversarial Autoencoders (AAEs)
+* [x] :hourglass_flowing_sand: Generative Adversarial Networks (GANs)
 
 ## 2. Boosting Deep Learning Models with PyTorch
 * [x] Derivatives, Gradients and Jacobian
@@ -23,10 +23,10 @@ If you would like a smooth transition in learning deep learning concepts, you ne
 * [x] Optimizers
 * [x] Advanced Learning Rate Optimization
 * [x] Weight Initializations and Activation Functions
-* [x] Overfitting Prevention
-* [x] Loss, Accuracy and Weight Visualizations
-* [x] Data Preprocessing for Images and Videos
-* [x] Data Preprocessing for Time Series
+* [x] :hourglass_flowing_sand: Overfitting Prevention
+* [x] :hourglass_flowing_sand: Loss, Accuracy and Weight Visualizations
+* [x] :hourglass_flowing_sand: Data Preprocessing for Images and Videos
+* [x] :hourglass_flowing_sand: Data Preprocessing for Time Series
 
 ## 3. Deep Model-Free Reinforcement Learning with PyTorch
 * [x] Supervised Learning to Reinforcement Learning
