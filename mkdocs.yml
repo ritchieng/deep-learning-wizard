@@ -24,7 +24,8 @@ pages:
       - Forward- and Backward-propagation and Gradient Descent: deep_learning/boosting_models_pytorch/forwardpropagation_backpropagation_gradientdescent.md
       - Learning Rate Scheduling: deep_learning/boosting_models_pytorch/lr_scheduling.md
       - Optimization Algorithms: deep_learning/boosting_models_pytorch/optimizers.md
-      - Weight Initialization & Activation Functions: deep_learning/boosting_models_pytorch/weight_initialization_activation_functions.md
+      - Weight Initialization and Activation Functions: deep_learning/boosting_models_pytorch/weight_initialization_activation_functions.md
+      - Supervised Learning to Reinforcement Learning: deep_learning/deep_reinforcement_learning_pytorch/supervised_to_rl.md
 
     - Scalable Database Tutorials:
       - Welcome: database/intro.md

@@ -28,5 +28,6 @@ If you would like a smooth transition in learning deep learning concepts, you ne
 * [x] Data Preprocessing for Images and Videos
 * [x] Data Preprocessing for Time Series
 
-## 3. Deep Reinforcement Learning with PyTorch
-* [x] Pending...
+## 3. Deep Model-Free Reinforcement Learning with PyTorch
+* [x] Supervised Learning to Reinforcement Learning
+* [x] TBC...
