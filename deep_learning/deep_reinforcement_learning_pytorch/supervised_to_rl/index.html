@@ -13,7 +13,7 @@
         <meta name="description" content="We deploy a top-down approach that enables you to grasp deep learning theories and code easily and quickly. Used by thousands of students and professionals from top tech companies, research institutions.">
       
       
-        <link rel="canonical" href="https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_gradients/">
+        <link rel="canonical" href="https://www.deeplearningwizard.com/deep_learning/deep_reinforcement_learning_pytorch/supervised_to_rl/">
       
       
         <meta name="author" content="Ritchie Ng">
@@ -42,7 +42,7 @@
     
     
       
-        <title>Gradients - Deep Learning Wizard</title>
+        <title>Supervised Learning to Reinforcement Learning - Deep Learning Wizard</title>
       
     
     
@@ -85,7 +85,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="../../../#gradients-with-pytorch" tabindex="1" class="md-skip">
+      <a href="../../../#supervised-learning-to-reinforcement-learning" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -111,7 +111,7 @@
                 Deep Learning Wizard
               </span>
               <span class="md-header-nav__topic">
-                Gradients
+                Supervised Learning to Reinforcement Learning
               </span>
             
           
@@ -328,7 +328,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../pytorch_matrices/" title="Matrices" class="md-nav__link">
+    <a href="../../practical_pytorch/pytorch_matrices/" title="Matrices" class="md-nav__link">
       Matrices
     </a>
   </li>
@@ -338,75 +338,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Gradients
-      </label>
-    
-    <a href="./" title="Gradients" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../practical_pytorch/pytorch_gradients/" title="Gradients" class="md-nav__link">
       Gradients
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#tensors-with-gradients" title="Tensors with Gradients" class="md-nav__link">
-    Tensors with Gradients
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#creating-tensors-with-gradients" title="Creating Tensors with Gradients" class="md-nav__link">
-    Creating Tensors with Gradients
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#manually-and-automatically-calculating-gradients" title="Manually and Automatically Calculating Gradients" class="md-nav__link">
-    Manually and Automatically Calculating Gradients
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-      
-      
-      
-      
-        <li class="md-nav__item">
-          <a href="#__comments" title="Comments" class="md-nav__link md-nav__link--active">
-            Comments
-          </a>
-        </li>
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -416,7 +352,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../pytorch_linear_regression/" title="Linear Regression" class="md-nav__link">
+    <a href="../../practical_pytorch/pytorch_linear_regression/" title="Linear Regression" class="md-nav__link">
       Linear Regression
     </a>
   </li>
@@ -428,7 +364,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../pytorch_logistic_regression/" title="Logistic Regression" class="md-nav__link">
+    <a href="../../practical_pytorch/pytorch_logistic_regression/" title="Logistic Regression" class="md-nav__link">
       Logistic Regression
     </a>
   </li>
@@ -440,7 +376,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../pytorch_feedforward_neuralnetwork/" title="Feedforward Neural Networks" class="md-nav__link">
+    <a href="../../practical_pytorch/pytorch_feedforward_neuralnetwork/" title="Feedforward Neural Networks" class="md-nav__link">
       Feedforward Neural Networks
     </a>
   </li>
@@ -452,7 +388,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../pytorch_convolutional_neuralnetwork/" title="Convolutional Neural Networks" class="md-nav__link">
+    <a href="../../practical_pytorch/pytorch_convolutional_neuralnetwork/" title="Convolutional Neural Networks" class="md-nav__link">
       Convolutional Neural Networks
     </a>
   </li>
@@ -464,7 +400,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../pytorch_recurrent_neuralnetwork/" title="Recurrent Neural Networks" class="md-nav__link">
+    <a href="../../practical_pytorch/pytorch_recurrent_neuralnetwork/" title="Recurrent Neural Networks" class="md-nav__link">
       Recurrent Neural Networks
     </a>
   </li>
@@ -476,7 +412,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../pytorch_lstm_neuralnetwork/" title="Long Short Term Memory Neural Networks" class="md-nav__link">
+    <a href="../../practical_pytorch/pytorch_lstm_neuralnetwork/" title="Long Short Term Memory Neural Networks" class="md-nav__link">
       Long Short Term Memory Neural Networks
     </a>
   </li>
@@ -546,11 +482,69 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../deep_reinforcement_learning_pytorch/supervised_to_rl/" title="Supervised Learning to Reinforcement Learning" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Supervised Learning to Reinforcement Learning
+      </label>
+    
+    <a href="./" title="Supervised Learning to Reinforcement Learning" class="md-nav__link md-nav__link--active">
       Supervised Learning to Reinforcement Learning
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#supervised-learning" title="Supervised Learning" class="md-nav__link">
+    Supervised Learning
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reinforcement-learning-is-not-supervised-learning" title="Reinforcement learning is not supervised learning" class="md-nav__link">
+    Reinforcement learning is not supervised learning
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-distinguishing-properties-of-reinforcement-learning" title="2 Distinguishing Properties of reinforcement learning" class="md-nav__link">
+    2 Distinguishing Properties of reinforcement learning
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="Comments" class="md-nav__link md-nav__link--active">
+            Comments
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -760,29 +754,23 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#tensors-with-gradients" title="Tensors with Gradients" class="md-nav__link">
-    Tensors with Gradients
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#creating-tensors-with-gradients" title="Creating Tensors with Gradients" class="md-nav__link">
-    Creating Tensors with Gradients
+  <a href="#supervised-learning" title="Supervised Learning" class="md-nav__link">
+    Supervised Learning
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#manually-and-automatically-calculating-gradients" title="Manually and Automatically Calculating Gradients" class="md-nav__link">
-    Manually and Automatically Calculating Gradients
+      
+        <li class="md-nav__item">
+  <a href="#reinforcement-learning-is-not-supervised-learning" title="Reinforcement learning is not supervised learning" class="md-nav__link">
+    Reinforcement learning is not supervised learning
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#2-distinguishing-properties-of-reinforcement-learning" title="2 Distinguishing Properties of reinforcement learning" class="md-nav__link">
+    2 Distinguishing Properties of reinforcement learning
+  </a>
   
 </li>
       
@@ -809,205 +797,106 @@
               
                 
                 
-                <h1 id="gradients-with-pytorch">Gradients with PyTorch<a class="headerlink" href="#gradients-with-pytorch" title="Permanent link">&para;</a></h1>
-<h2 id="tensors-with-gradients">Tensors with Gradients<a class="headerlink" href="#tensors-with-gradients" title="Permanent link">&para;</a></h2>
-<h3 id="creating-tensors-with-gradients">Creating Tensors with Gradients<a class="headerlink" href="#creating-tensors-with-gradients" title="Permanent link">&para;</a></h3>
+                <h1 id="supervised-learning-to-reinforcement-learning">Supervised Learning to Reinforcement Learning<a class="headerlink" href="#supervised-learning-to-reinforcement-learning" title="Permanent link">&para;</a></h1>
+<h2 id="supervised-learning">Supervised Learning<a class="headerlink" href="#supervised-learning" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Allows accumulation of gradients</li>
+<li>The tasks we've covered so far fall under the category of supervised learning<ul>
+<li><strong>Before, we have gone through 2 major tasks: classification and regression with labels</strong></li>
+<li><strong>Classification</strong>: we've a number of MNIST images, we take them as input and we use a neural network for a classification task where we use the ground truth (whether the digits are 0-9) to construct our cross entropy loss<ul>
+<li><a href="https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_logistic_regression/#cross-entropy-function-d-for-more-than-2-class">Classification loss</a> function (cross entropy loss): <span><span class="MathJax_Preview">- \sum^K_1 L_i log(S_i)</span><script type="math/tex">- \sum^K_1 L_i log(S_i)</script></span><ul>
+<li><span><span class="MathJax_Preview">K</span><script type="math/tex">K</script></span>: number of classes</li>
+<li><span><span class="MathJax_Preview">L_i</span><script type="math/tex">L_i</script></span>: ground truth (label/target) of i-th class</li>
+<li><span><span class="MathJax_Preview">S_i</span><script type="math/tex">S_i</script></span>: output of softmax for i-th class</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Regression</strong>: alternatively we go through a regression task of say, predicting a time-series, but we still have the ground truth we use to construct our loss function<ul>
+<li><a href="https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_linear_regression/#building-a-linear-regression-model-with-pytorch">Regression loss</a> function (mean squared error): <span><span class="MathJax_Preview">\frac{1}{n} \sum_{i=1}^n(\hat y_i - y_i)^2</span><script type="math/tex">\frac{1}{n} \sum_{i=1}^n(\hat y_i - y_i)^2</script></span><ul>
+<li><span><span class="MathJax_Preview">\hat{y}</span><script type="math/tex">\hat{y}</script></span>: prediction</li>
+<li><span><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span>: ground truth (label/target)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>The key emphasis here is that we have mainly gone through supervised learning tasks that requires labels. Without them, we would not be able to properly construct our loss functions for us to do 2 critical steps (1) <a href="https://www.deeplearningwizard.com/deep_learning/boosting_models_pytorch/derivative_gradient_jacobian/">backpropagate to get our gradients</a> and (2) <a href="https://www.deeplearningwizard.com/deep_learning/boosting_models_pytorch/forwardpropagation_backpropagation_gradientdescent/">gradient descent to update our weights with our gradients</a></li>
 </ul>
 <div class="admonition note">
-<p class="admonition-title">Method 1: Create tensor with gradients</p>
-<p>It is very similar to creating a tensor, all you need to do is to add an additional argument.</p>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
-</pre></div>
-
-<div class="codehilite"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">a</span>
-</pre></div>
-
+<p class="admonition-title">Loss functions</p>
+<p>We have covered 2 basic loss functions such as cross entropy loss (classification task) and mean squared error (regression task).</p>
+<p>However there are many more loss functions for both classification and regression task that will be covered in a separate section. </p>
+<p>For example, there are alternatives to mean squared error (MSE) like mean absolute error (MAE or L1 Loss), Smooth L1 Loss (less sensitive to outliers), quantile regression loss function (allowing confidence intervals) and many more.</p>
 </div>
-<div class="codehilite"><pre><span></span><span class="n">tensor</span><span class="p">([[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">],</span>
-        <span class="p">[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">]])</span>
-</pre></div>
-
-<div class="admonition note">
-<p class="admonition-title">Check if tensor requires gradients</p>
-<p>This should return True otherwise you've not done it right.
-<div class="codehilite"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">requires_grad</span>
-</pre></div></p>
-</div>
-<div class="codehilite"><pre><span></span><span class="bp">True</span>
-</pre></div>
-
-<div class="admonition note">
-<p class="admonition-title">Method 2: Create tensor with gradients</p>
-<p>This allows you to create a tensor as usual then an additional line to allow it to accumulate gradients.</p>
-<div class="codehilite"><pre><span></span><span class="c1"># Normal way of creating gradients</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-
-<span class="c1"># Requires gradient</span>
-<span class="n">a</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">()</span>
-
-<span class="c1"># Check if requires gradient</span>
-<span class="n">a</span><span class="o">.</span><span class="n">requires_grad</span>
-</pre></div>
-
-</div>
-<div class="codehilite"><pre><span></span><span class="bp">True</span>
-</pre></div>
-
-<div class="admonition note">
-<p class="admonition-title">A tensor without gradients just for comparison</p>
-<p>If you do not do either of the methods above, you'll realize you will get False for checking for gradients.
-<div class="codehilite"><pre><span></span><span class="c1"># Not a variable</span>
-<span class="n">no_gradient</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-</pre></div></p>
-<div class="codehilite"><pre><span></span><span class="n">no_gradient</span><span class="o">.</span><span class="n">requires_grad</span>
-</pre></div>
-
-</div>
-<div class="codehilite"><pre><span></span><span class="bp">False</span>
-</pre></div>
-
-<div class="admonition note">
-<p class="admonition-title">Tensor with gradients addition operation</p>
-<div class="codehilite"><pre><span></span><span class="c1"># Behaves similarly to tensors</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
-</pre></div>
-
-</div>
-<div class="codehilite"><pre><span></span><span class="n">tensor</span><span class="p">([[</span> <span class="mf">2.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">],</span>
-        <span class="p">[</span> <span class="mf">2.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">]])</span>
-
-<span class="n">tensor</span><span class="p">([[</span> <span class="mf">2.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">],</span>
-        <span class="p">[</span> <span class="mf">2.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">]])</span>
-</pre></div>
-
-<div class="admonition note">
-<p class="admonition-title">Tensor with gradients multiplication operation</p>
-<p>As usual, the operations we learnt previously for tensors apply for tensors with gradients. Feel free to try divisions, mean or standard deviation!
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
-</pre></div></p>
-</div>
-<div class="codehilite"><pre><span></span><span class="n">tensor</span><span class="p">([[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">],</span>
-        <span class="p">[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">]])</span>
-<span class="n">tensor</span><span class="p">([[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">],</span>
-        <span class="p">[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">]])</span>
-</pre></div>
-
-<h3 id="manually-and-automatically-calculating-gradients">Manually and Automatically Calculating Gradients<a class="headerlink" href="#manually-and-automatically-calculating-gradients" title="Permanent link">&para;</a></h3>
-<p><strong>What exactly is <code class="codehilite">requires_grad</code>?</strong>
-- Allows calculation of gradients w.r.t. the tensor that all allows gradients accumulation</p>
-<div>
-<div class="MathJax_Preview">y_i = 5(x_i+1)^2</div>
-<script type="math/tex; mode=display">y_i = 5(x_i+1)^2</script>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Create tensor of size 2x1 filled with 1's that requires gradient</p>
-<div class="codehilite"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">x</span>
-</pre></div>
-
-</div>
-<div class="codehilite"><pre><span></span><span class="n">tensor</span><span class="p">([</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">])</span>
-</pre></div>
-
-<div class="admonition note">
-<p class="admonition-title">Simple linear equation with x tensor created</p>
-<div>
-<div class="MathJax_Preview">y_i\bigr\rvert_{x_i=1} = 5(1 + 1)^2 = 5(2)^2 = 5(4) = 20</div>
-<script type="math/tex; mode=display">y_i\bigr\rvert_{x_i=1} = 5(1 + 1)^2 = 5(2)^2 = 5(4) = 20</script>
-</div>
-<p>We should get a value of 20 by replicating this simple equation </p>
-<div class="codehilite"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
-<span class="n">y</span>
-</pre></div>
-
-</div>
-<div class="codehilite"><pre><span></span><span class="n">tensor</span><span class="p">([</span> <span class="mf">20.</span><span class="p">,</span>  <span class="mf">20.</span><span class="p">])</span>
-</pre></div>
-
-<div class="admonition note">
-<p class="admonition-title">Simple equation with y tensor</p>
-<p>Backward should be called only on a scalar (i.e. 1-element tensor) or with gradient w.r.t. the variable</p>
-<p>Let's reduce y to a scalar then...</p>
-<div>
-<div class="MathJax_Preview">o = \frac{1}{2}\sum_i y_i</div>
-<script type="math/tex; mode=display">o = \frac{1}{2}\sum_i y_i</script>
-</div>
-<p>As you can see above, we've a tensor filled with 20's, so average them would return 20</p>
-<div class="codehilite"><pre><span></span><span class="n">o</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-<span class="n">o</span>
-</pre></div>
-
-</div>
-<div class="codehilite"><pre><span></span><span class="n">tensor</span><span class="p">(</span><span class="mf">20.</span><span class="p">)</span>
-</pre></div>
-
-<div class="admonition note">
-<p class="admonition-title">Calculating first derivative</p>
-<p><center> <strong>Recap <code class="codehilite">y</code> equation</strong>: <span><span class="MathJax_Preview">y_i = 5(x_i+1)^2</span><script type="math/tex">y_i = 5(x_i+1)^2</script></span> </center></p>
-<p><center> <strong>Recap <code class="codehilite">o</code> equation</strong>: <span><span class="MathJax_Preview">o = \frac{1}{2}\sum_i y_i</span><script type="math/tex">o = \frac{1}{2}\sum_i y_i</script></span> </center></p>
-<p><center> <strong>Substitute <code class="codehilite">y</code> into <code class="codehilite">o</code> equation</strong>: <span><span class="MathJax_Preview">o = \frac{1}{2} \sum_i 5(x_i+1)^2</span><script type="math/tex">o = \frac{1}{2} \sum_i 5(x_i+1)^2</script></span> </center></p>
-<div>
-<div class="MathJax_Preview">\frac{\partial o}{\partial x_i} = \frac{1}{2}[10(x_i+1)]</div>
-<script type="math/tex; mode=display">\frac{\partial o}{\partial x_i} = \frac{1}{2}[10(x_i+1)]</script>
-</div>
-<div>
-<div class="MathJax_Preview">\frac{\partial o}{\partial x_i}\bigr\rvert_{x_i=1} = \frac{1}{2}[10(1 + 1)] = \frac{10}{2}(2) = 10</div>
-<script type="math/tex; mode=display">\frac{\partial o}{\partial x_i}\bigr\rvert_{x_i=1} = \frac{1}{2}[10(1 + 1)] = \frac{10}{2}(2) = 10</script>
-</div>
-<p>We should expect to get 10, and it's so simple to do this with PyTorch with the following line...</p>
-<p>Get first derivative:
-<div class="codehilite"><pre><span></span><span class="n">o</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
-</pre></div></p>
-<p>Print out first derivative:</p>
-<div class="codehilite"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">grad</span>
-</pre></div>
-
-</div>
-<div class="codehilite"><pre><span></span><span class="n">tensor</span><span class="p">([</span> <span class="mf">10.</span><span class="p">,</span>  <span class="mf">10.</span><span class="p">])</span>
-</pre></div>
-
-<div class="admonition note">
-<p class="admonition-title">If x requires gradient and you create new objects with it, you get all gradients</p>
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">)</span>
-</pre></div>
-
-</div>
-<div class="codehilite"><pre><span></span><span class="bp">True</span>
-<span class="bp">True</span>
-<span class="bp">True</span>
-</pre></div>
-
+<h2 id="reinforcement-learning-is-not-supervised-learning">Reinforcement learning is not supervised learning<a class="headerlink" href="#reinforcement-learning-is-not-supervised-learning" title="Permanent link">&para;</a></h2>
+<ul>
+<li>One difference is that there is no ground truth (label/target)<ul>
+<li>There is typically no label as to what is the definitively right prediction, we have to explore to find out what's "right" (essentially, the best possible prediction)</li>
+</ul>
+</li>
+<li>Instead of minimizing a loss function comprising a target and a prediction (as with supervised learning), in reinforcement learning we are typically concerned with maximizing our reward function by trying different actions and exploring what those actions yield in an environment<ul>
+<li>Let's use a simple game example of driving and not colliding with puppies crossing the road<ul>
+<li><strong>Agent</strong><ul>
+<li>Driver</li>
+</ul>
+</li>
+<li><strong>Environment</strong><ul>
+<li>3 lane road, puppies crossing and the agent</li>
+</ul>
+</li>
+<li><strong>States</strong><ul>
+<li>Left, center or right lane</li>
+</ul>
+</li>
+<li><strong>Actions</strong><ul>
+<li>To move from one state to another</li>
+<li>Turn left, center or right</li>
+</ul>
+</li>
+<li><strong>Reward</strong><ul>
+<li>Feedback on whether action is good/bad, essentially the goal of the problem</li>
+<li>Colliding with the puppy": -10 points</li>
+<li>Too close to the puppy (scares the puppy): -2 points</li>
+<li>Safe distance from the puppy: 10 points</li>
+</ul>
+</li>
+<li><strong>Value function</strong><ul>
+<li>Defines what is good in the long-run as compared to rewards which is immediate after an action takes the agent to another state</li>
+<li>It's somewhat the discounted sum of the rewards the agent is expected to get</li>
+</ul>
+</li>
+<li><strong>Policy</strong><ul>
+<li>This defines how the agent acts in its states</li>
+</ul>
+</li>
+<li>In this case, the <strong>agent</strong> might first collide with the puppy and learn it's bad (-10 points), then try not collide as the second action and still learn it's bad to be too close (-2 points) and finally as the third action learn to steer clear of puppies (+10 points) as it yields the largest <strong>reward</strong><ul>
+<li>Gradually it'll learn to drive at a safe distance from puppies to collect points (+10 points for safe distance)</li>
+<li>To do this, the agent needs to go try different actions and learn from its mistakes (trial and error), attempting to maximize its long-term</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-distinguishing-properties-of-reinforcement-learning">2 Distinguishing Properties of reinforcement learning<a class="headerlink" href="#2-distinguishing-properties-of-reinforcement-learning" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Essentially, 2 distinguishing properties of reinforcement learning are: <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup><ul>
+<li>(1) "Trial-and-error search"</li>
+<li>(2) "Delayed reward"</li>
+</ul>
+</li>
+</ul>
+<p>In the next section, we'll be covering the terms we've mentioned like Reward, Value Function and Policy in detail.</p>
+<div class="footnote">
 <hr />
-<h1 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h1>
-<p>We've learnt to...</p>
-<div class="admonition success">
-<p class="admonition-title">Success</p>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Tensor with Gradients<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Wraps a tensor for gradient accumulation</li>
-</ul>
+<ol>
+<li id="fn:1">
+<p>Richard S. Sutton and Andrew G. Barto. <a href="http://incompleteideas.net/book/the-book.html">Reinforcement Learning: An Introduction; 2<sup>nd</sup> Edition</a>. 2017.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Gradients<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Define original equation</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Substitute equation with <code class="codehilite">x</code> values</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Reduce to scalar output, <code class="codehilite">o</code> through <code class="codehilite">mean</code></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Calculate gradients with <code class="codehilite">o.backward()</code></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Then access gradients of the <code class="codehilite">x</code> tensor with <code class="codehilite">requires_grad</code> through <code class="codehilite">x.grad</code></li>
-</ul>
-</li>
-</ul>
+</ol>
 </div>
-<h2 id="citation">Citation<a class="headerlink" href="#citation" title="Permanent link">&para;</a></h2>
-<p>If you have found these useful in your research, presentations, school work, projects or workshops, feel free to cite using this DOI.</p>
-<p><a href="https://zenodo.org/badge/latestdoi/139945544"><img alt="DOI" src="https://zenodo.org/badge/139945544.svg" /></a></p>
                 
                   
                 
@@ -1020,9 +909,9 @@
   <div id="disqus_thread"></div>
   <script>
     var disqus_config = function () {
-      this.page.url = "https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_gradients/";
+      this.page.url = "https://www.deeplearningwizard.com/deep_learning/deep_reinforcement_learning_pytorch/supervised_to_rl/";
       this.page.identifier =
-        "deep_learning/practical_pytorch/pytorch_gradients/";
+        "deep_learning/deep_reinforcement_learning_pytorch/supervised_to_rl/";
     };
     (function() {
       var d = document, s = d.createElement("script");
@@ -1044,7 +933,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="deep_learning/practical_pytorch/pytorch_matrices/" title="Matrices" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="deep_learning/boosting_models_pytorch/weight_initialization_activation_functions/" title="Weight Initialization and Activation Functions" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1053,19 +942,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Matrices
+                Weight Initialization and Activation Functions
               </span>
             </div>
           </a>
         
         
-          <a href="deep_learning/practical_pytorch/pytorch_linear_regression/" title="Linear Regression" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="database/intro/" title="Welcome" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Linear Regression
+                Welcome
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
