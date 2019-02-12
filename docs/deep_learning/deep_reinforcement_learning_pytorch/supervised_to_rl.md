@@ -37,7 +37,7 @@
 			- Turn left, center or right
 		- **Reward**
 			- Feedback on whether action is good/bad, essentially the goal of the problem
-			- Colliding with the puppy": -10 points
+			- Colliding with the puppy: -10 points
 			- Too close to the puppy (scares the puppy): -2 points
 			- Safe distance from the puppy: 10 points
 		- **Value function**
