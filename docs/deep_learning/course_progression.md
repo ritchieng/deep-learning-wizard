@@ -36,6 +36,9 @@ If you would like a smooth transition in learning deep learning concepts, you ne
 * [x] :hourglass_flowing_sand: Temporal-Difference
 * [x] :hourglass_flowing_sand: Policy Gradient: REINFORCE
 * [x] :hourglass_flowing_sand: Policy Gradient: Actor-Critic
-* [x] :hourglass_flowing_sand: Policy Gradient: PPO
+* [x] :hourglass_flowing_sand: Policy Gradient: A2C/A3C
 * [x] :hourglass_flowing_sand: Policy Gradient: ACKTR
+* [x] :hourglass_flowing_sand: Policy Gradient: PPO
+* [x] :hourglass_flowing_sand: Policy Gradient: DPG
+* [x] :hourglass_flowing_sand: Policy Gradient: DDPG (DQN & DPG)
 * [x] TBC...
