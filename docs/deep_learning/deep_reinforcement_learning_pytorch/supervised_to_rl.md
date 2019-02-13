@@ -55,6 +55,6 @@
 	- (2) "Delayed reward"
 
 
-In the next section, we'll be covering the terms we've mentioned like Reward, Value Function and Policy in detail.
+In the next section, we'll be covering the terms we'll dive into these key terms through the lens of Markov Decision Processes (MDPs) and Bellman Equations.
 
 [^1]: Richard S. Sutton and Andrew G. Barto. [Reinforcement Learning: An Introduction; 2nd Edition](http://incompleteideas.net/book/the-book.html). 2017.
