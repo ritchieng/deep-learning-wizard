@@ -13,7 +13,7 @@
         <meta name="description" content="We deploy a top-down approach that enables you to grasp deep learning theories and code easily and quickly. Used by thousands of students and professionals from top tech companies, research institutions.">
       
       
-        <link rel="canonical" href="https://www.deeplearningwizard.com/deep_learning/deep_reinforcement_learning_pytorch/rl_notes/">
+        <link rel="canonical" href="https://www.deeplearningwizard.com/deep_learning/deep_reinforcement_learning_pytorch/bellman_mdp/">
       
       
         <meta name="author" content="Ritchie Ng">
@@ -42,7 +42,7 @@
     
     
       
-        <title>Rl notes - Deep Learning Wizard</title>
+        <title>Markov Decision Processes and Bellman Equations - Deep Learning Wizard</title>
       
     
     
@@ -85,6 +85,10 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
+      <a href="../../../#markov-decision-processes-mdps" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -107,7 +111,7 @@
                 Deep Learning Wizard
               </span>
               <span class="md-header-nav__topic">
-                Rl notes
+                Markov Decision Processes and Bellman Equations
               </span>
             
           
@@ -155,14 +159,16 @@
       
         
 
-<nav class="md-tabs" data-md-component="tabs">
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
         
   <li class="md-tabs__item">
     
-      <a href="../../.." title="Home" class="md-tabs__link md-tabs__link--active">
+      <a href="../../.." title="Home" class="md-tabs__link">
         Home
       </a>
     
@@ -178,7 +184,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../intro/" title="Deep Learning Tutorials" class="md-tabs__link">
+        <a href="../../intro/" title="Deep Learning Tutorials" class="md-tabs__link md-tabs__link--active">
           Deep Learning Tutorials
         </a>
       
@@ -275,10 +281,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
     
     <label class="md-nav__link" for="nav-4">
       Deep Learning Tutorials
@@ -486,11 +494,92 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../bellman_mdp/" title="Markov Decision Processes and Bellman Equations" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Markov Decision Processes and Bellman Equations
+      </label>
+    
+    <a href="./" title="Markov Decision Processes and Bellman Equations" class="md-nav__link md-nav__link--active">
       Markov Decision Processes and Bellman Equations
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#markov-decision-processes-mdps" title="Markov Decision Processes (MDPs)" class="md-nav__link">
+    Markov Decision Processes (MDPs)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#two-main-characteristics-for-mdps" title="Two main characteristics for MDPs" class="md-nav__link">
+    Two main characteristics for MDPs
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#types-of-markov-models" title="Types of Markov Models" class="md-nav__link">
+    Types of Markov Models
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-components-of-mdps" title="5 Components of MDPs" class="md-nav__link">
+    5 Components of MDPs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#moving-from-mdps-to-optimal-policy" title="Moving From MDPs to Optimal Policy" class="md-nav__link">
+    Moving From MDPs to Optimal Policy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optimal-policy-pi_pi_" title="Optimal Policy \pi_*\pi_*" class="md-nav__link">
+    Optimal Policy \pi_*\pi_*
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="Comments" class="md-nav__link md-nav__link--active">
+            Comments
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -698,15 +787,198 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#markov-decision-processes-mdps" title="Markov Decision Processes (MDPs)" class="md-nav__link">
+    Markov Decision Processes (MDPs)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#two-main-characteristics-for-mdps" title="Two main characteristics for MDPs" class="md-nav__link">
+    Two main characteristics for MDPs
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#types-of-markov-models" title="Types of Markov Models" class="md-nav__link">
+    Types of Markov Models
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-components-of-mdps" title="5 Components of MDPs" class="md-nav__link">
+    5 Components of MDPs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#moving-from-mdps-to-optimal-policy" title="Moving From MDPs to Optimal Policy" class="md-nav__link">
+    Moving From MDPs to Optimal Policy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optimal-policy-pi_pi_" title="Optimal Policy \pi_*\pi_*" class="md-nav__link">
+    Optimal Policy \pi_*\pi_*
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="Comments" class="md-nav__link md-nav__link--active">
+            Comments
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
                 
                 
-                  <h1>Rl notes</h1>
+                  <h1>Markov Decision Processes and Bellman Equations</h1>
                 
-                
+                <h2 id="markov-decision-processes-mdps">Markov Decision Processes (MDPs)<a class="headerlink" href="#markov-decision-processes-mdps" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Typically we can <strong>frame all RL tasks as MDPs</strong><ul>
+<li>Intuitively, it's sort of a way to frame RL tasks such that we can solve them in a "principled" manner. We will go into the specifics throughout this tutorial</li>
+</ul>
+</li>
+<li>The key in MDPs is the <strong>Markov Property</strong><ul>
+<li>Essentially the future depends on the present and not the past<ul>
+<li>More specifically, the future is independent of the past given the present</li>
+<li>There's an assumption the present state encapsulates past information. This is not always true, see the note below.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Putting into the context of what we have covered so far: our agent can (1) <strong>control its action</strong> based on its current (2) <strong>completely known state</strong><ul>
+<li>Back to the "driving to avoid puppy" example: given we know there is a dog in front of the car as the current state, the agent can decide to take a left/right turn to avoid colliding with the puppy</li>
+</ul>
+</li>
+</ul>
+<h2 id="two-main-characteristics-for-mdps">Two main characteristics for MDPs<a class="headerlink" href="#two-main-characteristics-for-mdps" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Control over state transitions</li>
+<li>States completely observable</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Other Markov Models</p>
+<p>Permutations of whether there is presence of the two main characteristics would lead to different Markov models. These are not important now, but it gives you an idea of what other frameworks we can use besides MDPs.</p>
+<h6 id="types-of-markov-models">Types of Markov Models<a class="headerlink" href="#types-of-markov-models" title="Permanent link">&para;</a></h6>
+<ol>
+<li><ins class="critic">Control</ins> over state transitions and <ins class="critic">completely observable</ins> states: <strong>MDPs</strong></li>
+<li><ins class="critic">Control</ins> over state transitions and <mark>partially observable states</mark>: <strong>Partially Observable MDPs (POMDPs)</strong></li>
+<li><mark>No control</mark> over state transitions and <ins class="critic">completely observable</ins> states: <strong>Markov Chain</strong></li>
+<li><mark>No control</mark> over state transitions and <mark>partially observable</mark> states: <strong>Hidden Markov Model</strong></li>
+</ol>
+</div>
+<h2 id="5-components-of-mdps">5 Components of MDPs<a class="headerlink" href="#5-components-of-mdps" title="Permanent link">&para;</a></h2>
+<ol>
+<li><span><span class="MathJax_Preview">\mathcal{S}</span><script type="math/tex">\mathcal{S}</script></span>: set of states</li>
+<li><span><span class="MathJax_Preview">\mathcal{A}</span><script type="math/tex">\mathcal{A}</script></span>: set of actions</li>
+<li><span><span class="MathJax_Preview">\mathcal{R}</span><script type="math/tex">\mathcal{R}</script></span>: reward function</li>
+<li><span><span class="MathJax_Preview">\mathcal{P}</span><script type="math/tex">\mathcal{P}</script></span>: transition probability function</li>
+<li><span><span class="MathJax_Preview">\gamma</span><script type="math/tex">\gamma</script></span>: discount for future rewards</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Remembering 5 components with a mnemonic</p>
+<p>A mnemonic I use to remember the 5 components is the acronym "SARPY" (sar-py). I know <span><span class="MathJax_Preview">\gamma</span><script type="math/tex">\gamma</script></span> is not <span><span class="MathJax_Preview">\mathcal{Y}</span><script type="math/tex">\mathcal{Y}</script></span> but it looks like a <code class="codehilite">y</code> so there's that.</p>
+</div>
+<h2 id="moving-from-mdps-to-optimal-policy">Moving From MDPs to Optimal Policy<a class="headerlink" href="#moving-from-mdps-to-optimal-policy" title="Permanent link">&para;</a></h2>
+<ul>
+<li>We have an <strong>agent</strong> acting in an <strong>environment</strong></li>
+<li>The way the <strong>environment</strong> reacts to the agent's <strong>actions (<span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>)</strong> is dictated by a <strong>model</strong></li>
+<li>The agent can take <strong>actions (<span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>)</strong> to move from one <strong>state (<span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>)</strong> to another <strong>new state (<span><span class="MathJax_Preview">s')</span><script type="math/tex">s')</script></span></strong></li>
+<li>When the agent has transited to a <strong>new state (<span><span class="MathJax_Preview">s')</span><script type="math/tex">s')</script></span></strong>, there will a <strong>reward (<span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>)</strong></li>
+<li>We may or may not know our <strong>model</strong><ol>
+<li><strong>Model-based RL</strong>: this is where we can <ins class="critic">clearly define</ins> our (1) transition probabilities and/or (2) reward function<ul>
+<li>A global minima can somehow be attained via Dynamic Programming(DP)</li>
+</ul>
+</li>
+<li><strong>Model-free RL</strong>: this is where we <mark>cannot clearly define</mark> our (1) transition probabilities and/or (2) reward function</li>
+</ol>
+</li>
+<li>How the agent <strong>acts (<span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>)</strong> in its current <strong>state (<span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>)</strong> is specified by its <strong>policy (<span><span class="MathJax_Preview">\pi(s)</span><script type="math/tex">\pi(s)</script></span>)</strong><ul>
+<li>It can either be deterministic or stochastic<ol>
+<li><strong>Deterministic policy</strong>: <span><span class="MathJax_Preview">a = \pi(s)</span><script type="math/tex">a = \pi(s)</script></span></li>
+<li><strong>Stochastic policy</strong>: <span><span class="MathJax_Preview">\mathbb{P}_\pi [A=a \vert S=s] = \pi(a | s)</span><script type="math/tex">\mathbb{P}_\pi [A=a \vert S=s] = \pi(a | s)</script></span><ul>
+<li>This is the proability of taking an action given the current state under the policy</li>
+<li><span><span class="MathJax_Preview">\mathcal{A}</span><script type="math/tex">\mathcal{A}</script></span>: set of all actions</li>
+<li><span><span class="MathJax_Preview">\mathcal{S}</span><script type="math/tex">\mathcal{S}</script></span>: set of all states</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>When the agent acts given its state under the <strong>policy (<span><span class="MathJax_Preview">\pi(a | s)</span><script type="math/tex">\pi(a | s)</script></span>)</strong>, the <strong>transition probability function <span><span class="MathJax_Preview">\mathcal{P}</span><script type="math/tex">\mathcal{P}</script></span></strong> determines the subsequent <strong>state (<span><span class="MathJax_Preview">s'</span><script type="math/tex">s'</script></span>)</strong><ul>
+<li><span><span class="MathJax_Preview">\mathcal{P}_{ss'}^a = \mathcal{P}(s' \vert s, a)  = \mathbb{P} [S_{t+1} = s' \vert S_t = s, A_t = a]</span><script type="math/tex">\mathcal{P}_{ss'}^a = \mathcal{P}(s' \vert s, a)  = \mathbb{P} [S_{t+1} = s' \vert S_t = s, A_t = a]</script></span></li>
+</ul>
+</li>
+<li>When the agent act based on its <strong>policy (<span><span class="MathJax_Preview">\pi(a | s)</span><script type="math/tex">\pi(a | s)</script></span>)</strong> and transited to the new state determined by the transition probability function <span><span class="MathJax_Preview">\mathcal{P}_{ss'}^a</span><script type="math/tex">\mathcal{P}_{ss'}^a</script></span> it gets a reward based on the <strong>reward function</strong> as a feedback<ul>
+<li><span><span class="MathJax_Preview">\mathcal{R}_s^a = \mathbb{E} [\mathcal{R}_{t+1} \vert S_t = s, A_t = a]</span><script type="math/tex">\mathcal{R}_s^a = \mathbb{E} [\mathcal{R}_{t+1} \vert S_t = s, A_t = a]</script></span></li>
+</ul>
+</li>
+<li>Rewards are short-term, given as feedback after the agent takes an action and transits to a new state. Summing all future rewards and discounting them would lead to our <strong>return <span><span class="MathJax_Preview">\mathcal{G}</span><script type="math/tex">\mathcal{G}</script></span></strong><ul>
+<li><span><span class="MathJax_Preview">\mathcal{G}_t = \sum_{i=0}^{N} \gamma^k \mathcal{R}_{t+1+i}</span><script type="math/tex">\mathcal{G}_t = \sum_{i=0}^{N} \gamma^k \mathcal{R}_{t+1+i}</script></span><ul>
+<li><span><span class="MathJax_Preview">\gamma</span><script type="math/tex">\gamma</script></span>, our discount factor which ranges from 0 to 1 (inclusive) reduces the weightage of future rewards allowing us to balance between short-term and long-term goals</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>With our <strong>return <span><span class="MathJax_Preview">\mathcal{G}</span><script type="math/tex">\mathcal{G}</script></span></strong>, we then have our <strong>state-value function <span><span class="MathJax_Preview">\mathcal{V}_{\pi}</span><script type="math/tex">\mathcal{V}_{\pi}</script></span></strong> (how good to stay in that state) and our <strong>action-value or q-value function <span><span class="MathJax_Preview">\mathcal{Q}_{\pi}</span><script type="math/tex">\mathcal{Q}_{\pi}</script></span></strong> (how good to take the action)<ul>
+<li><span><span class="MathJax_Preview">\mathcal{V}_{\pi}(s) = \mathbb{E}_{\pi}[\mathcal{G}_t \vert \mathcal{S}_t = s]</span><script type="math/tex">\mathcal{V}_{\pi}(s) = \mathbb{E}_{\pi}[\mathcal{G}_t \vert \mathcal{S}_t = s]</script></span></li>
+<li><span><span class="MathJax_Preview">\mathcal{Q}_{\pi}(s, a) = \mathbb{E}_{\pi}[\mathcal{G}_t \vert \mathcal{S}_t = s, \mathcal{A}_t = a]</span><script type="math/tex">\mathcal{Q}_{\pi}(s, a) = \mathbb{E}_{\pi}[\mathcal{G}_t \vert \mathcal{S}_t = s, \mathcal{A}_t = a]</script></span></li>
+<li>The advantage function is simply the difference between the two functions <span><span class="MathJax_Preview">\mathcal{A}_{\pi}(s, a) = \mathcal{Q}_{\pi}(s, a) - \mathcal{V}_{\pi}(s)</span><script type="math/tex">\mathcal{A}_{\pi}(s, a) = \mathcal{Q}_{\pi}(s, a) - \mathcal{V}_{\pi}(s)</script></span><ul>
+<li>Seems useless at this stage, but this advantage function will be used in some key algorithms we are covering</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Since our policy determines how our agent acts given its state, achieving an <strong>optimal policy <span><span class="MathJax_Preview">\pi_*</span><script type="math/tex">\pi_*</script></span></strong> would mean achieving optimal actions that is exactly what we want!</li>
+</ul>
+<h2 id="optimal-policy-pi_pi_">Optimal Policy <span><span class="MathJax_Preview">\pi_*</span><script type="math/tex">\pi_*</script></span><a class="headerlink" href="#optimal-policy-pi_pi_" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Optimal policy &rarr; optimal state-value and action-value functions &rarr; max return &rarr; argmax of those functions<ul>
+<li><span><span class="MathJax_Preview">\pi_{*} = \arg\max_{\pi} \mathcal{V}_{\pi}(s) = \arg\max_{\pi} \mathcal{Q}_{\pi}(s, a)</span><script type="math/tex">\pi_{*} = \arg\max_{\pi} \mathcal{V}_{\pi}(s) = \arg\max_{\pi} \mathcal{Q}_{\pi}(s, a)</script></span></li>
+</ul>
+</li>
+</ul>
+<p>To be continued...</p>
                 
                   
                 
@@ -719,9 +991,9 @@
   <div id="disqus_thread"></div>
   <script>
     var disqus_config = function () {
-      this.page.url = "https://www.deeplearningwizard.com/deep_learning/deep_reinforcement_learning_pytorch/rl_notes/";
+      this.page.url = "https://www.deeplearningwizard.com/deep_learning/deep_reinforcement_learning_pytorch/bellman_mdp/";
       this.page.identifier =
-        "deep_learning/deep_reinforcement_learning_pytorch/rl_notes/";
+        "deep_learning/deep_reinforcement_learning_pytorch/bellman_mdp/";
     };
     (function() {
       var d = document, s = d.createElement("script");
@@ -739,6 +1011,41 @@
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="deep_learning/deep_reinforcement_learning_pytorch/supervised_to_rl/" title="Supervised Learning to Reinforcement Learning" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Supervised Learning to Reinforcement Learning
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="deep_learning/readings/" title="Additional Readings" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Additional Readings
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
