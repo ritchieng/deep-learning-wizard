@@ -62,6 +62,7 @@
 - Since our policy determines how our agent acts given its state, achieving an **optimal policy $\pi_*$** would mean achieving optimal actions that is exactly what we want!
 
 ## Optimal Policy $\pi_*$
-- Optimal policy = optimal state-value and action-value functions = max return
-	- Essentially we want the maximum expected returns!
-- $\pi_{*} = \arg\max_{\pi} \mathcal{V}_{\pi}(s) = \arg\max_{\pi} \mathcal{Q}_{\pi}(s, a)$
+- Optimal policy --> optimal state-value and action-value functions --> max return --> argmax of those functions
+	- $\pi_{*} = \arg\max_{\pi} \mathcal{V}_{\pi}(s) = \arg\max_{\pi} \mathcal{Q}_{\pi}(s, a)$
+
+To be continued...
