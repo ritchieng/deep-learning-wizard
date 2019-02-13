@@ -26,6 +26,7 @@ pages:
       - Optimization Algorithms: deep_learning/boosting_models_pytorch/optimizers.md
       - Weight Initialization and Activation Functions: deep_learning/boosting_models_pytorch/weight_initialization_activation_functions.md
       - Supervised Learning to Reinforcement Learning: deep_learning/deep_reinforcement_learning_pytorch/supervised_to_rl.md
+      - Additional Readings: deep_learning/readings.md
 
     - Scalable Database Tutorials:
       - Welcome: database/intro.md
