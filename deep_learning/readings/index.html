@@ -537,6 +537,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#optimization" title="Optimization" class="md-nav__link">
+    Optimization
+  </a>
+  
+</li>
+      
       
       
       
@@ -764,6 +771,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#optimization" title="Optimization" class="md-nav__link">
+    Optimization
+  </a>
+  
+</li>
+      
       
       
       
@@ -795,6 +809,16 @@
 <li>Shows 2 SOTA for deep RL currently (2018 / early 2019): PPO and ACKTR</li>
 <li>Attempts to combined PPO objective with K-FAC natural gradient optimization: PPOKFAC</li>
 <li>Does not improve sample complexity, stick with either PPO/ACKTR for now</li>
+</ul>
+</li>
+</ul>
+<h2 id="optimization">Optimization<a class="headerlink" href="#optimization" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://arxiv.org/abs/1703.04782">Online Learning Rate Adaptation with Hypergradient Descent</a><ul>
+<li>Reduces the need for learning rate scheduling for SGD, SGD and nesterov momentum, and Adam,</li>
+<li>Uses the concept of hypergradients (gradients w.r.t. learning rate) obtained via reverse-mode automatic differentiation to dynamically update learning rates in real-time alongside weight updates</li>
+<li>Little additional computation because just needs just one additional copy of original gradients store in memory</li>
+<li>Severely under-appreciated paper</li>
 </ul>
 </li>
 </ul>

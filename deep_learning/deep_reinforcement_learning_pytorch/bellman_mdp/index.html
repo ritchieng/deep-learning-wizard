@@ -540,6 +540,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#pomdps" title="POMDPs" class="md-nav__link">
+    POMDPs
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -557,11 +564,38 @@
     Moving From MDPs to Optimal Policy
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#categories-of-design" title="Categories of Design" class="md-nav__link">
+    Categories of Design
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#optimal-policy-pi_pi_" title="Optimal Policy \pi_*\pi_*" class="md-nav__link">
-    Optimal Policy \pi_*\pi_*
+  <a href="#optimal-policy" title="Optimal Policy" class="md-nav__link">
+    Optimal Policy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bellman-equation" title="Bellman Equation" class="md-nav__link">
+    Bellman Equation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diving-into-the-bellman-equation" title="Diving into the Bellman Equation" class="md-nav__link">
+    Diving into the Bellman Equation
   </a>
   
 </li>
@@ -820,6 +854,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#pomdps" title="POMDPs" class="md-nav__link">
+    POMDPs
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -837,11 +878,38 @@
     Moving From MDPs to Optimal Policy
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#categories-of-design" title="Categories of Design" class="md-nav__link">
+    Categories of Design
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#optimal-policy-pi_pi_" title="Optimal Policy \pi_*\pi_*" class="md-nav__link">
-    Optimal Policy \pi_*\pi_*
+  <a href="#optimal-policy" title="Optimal Policy" class="md-nav__link">
+    Optimal Policy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bellman-equation" title="Bellman Equation" class="md-nav__link">
+    Bellman Equation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diving-into-the-bellman-equation" title="Diving into the Bellman Equation" class="md-nav__link">
+    Diving into the Bellman Equation
   </a>
   
 </li>
@@ -873,7 +941,7 @@
                 
                 <h2 id="markov-decision-processes-mdps">Markov Decision Processes (MDPs)<a class="headerlink" href="#markov-decision-processes-mdps" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Typically we can <strong>frame all RL tasks as MDPs</strong><ul>
+<li>Typically we can <strong>frame all RL tasks as MDPs</strong><sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup><ul>
 <li>Intuitively, it's sort of a way to frame RL tasks such that we can solve them in a "principled" manner. We will go into the specifics throughout this tutorial</li>
 </ul>
 </li>
@@ -886,7 +954,7 @@
 </ul>
 </li>
 <li>Putting into the context of what we have covered so far: our agent can (1) <strong>control its action</strong> based on its current (2) <strong>completely known state</strong><ul>
-<li>Back to the "driving to avoid puppy" example: given we know there is a dog in front of the car as the current state, the agent can decide to take a left/right turn to avoid colliding with the puppy</li>
+<li>Back to the "driving to avoid puppy" example: given we know there is a dog in front of the car as the current state and the car is always moving forward (no reverse driving), the agent can decide to take a left/right turn to avoid colliding with the puppy in front</li>
 </ul>
 </li>
 </ul>
@@ -905,6 +973,16 @@
 <li><mark>No control</mark> over state transitions and <ins class="critic">completely observable</ins> states: <strong>Markov Chain</strong></li>
 <li><mark>No control</mark> over state transitions and <mark>partially observable</mark> states: <strong>Hidden Markov Model</strong></li>
 </ol>
+<h6 id="pomdps">POMDPs<a class="headerlink" href="#pomdps" title="Permanent link">&para;</a></h6>
+<ul>
+<li>Imagine our driving example where we don't know if the car is going forward/backward in its state, but only know there is a puppy in the center lane in front, this is a partially observable state</li>
+<li>There are ways to counter this<ol>
+<li>Use the <strong>complete history</strong> to construct the current state</li>
+<li>Represent the current state as a probability distribution (<strong>bayesian approach</strong>) of what the agent perceives of the current state</li>
+<li>Using a <strong>RNN</strong> to form the current state that encapsulates the past<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></li>
+</ol>
+</li>
+</ul>
 </div>
 <h2 id="5-components-of-mdps">5 Components of MDPs<a class="headerlink" href="#5-components-of-mdps" title="Permanent link">&para;</a></h2>
 <ol>
@@ -926,10 +1004,13 @@
 <li>When the agent has transited to a <strong>new state (<span><span class="MathJax_Preview">s')</span><script type="math/tex">s')</script></span></strong>, there will a <strong>reward (<span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>)</strong></li>
 <li>We may or may not know our <strong>model</strong><ol>
 <li><strong>Model-based RL</strong>: this is where we can <ins class="critic">clearly define</ins> our (1) transition probabilities and/or (2) reward function<ul>
-<li>A global minima can somehow be attained via Dynamic Programming(DP)</li>
+<li>A global minima can be attained via Dynamic Programming (DP)</li>
 </ul>
 </li>
-<li><strong>Model-free RL</strong>: this is where we <mark>cannot clearly define</mark> our (1) transition probabilities and/or (2) reward function</li>
+<li><strong>Model-free RL</strong>: this is where we <mark>cannot clearly define</mark> our (1) transition probabilities and/or (2) reward function<ul>
+<li>Most real-world problems are under this category so we will mostly place our attention on this category</li>
+</ul>
+</li>
 </ol>
 </li>
 <li>How the agent <strong>acts (<span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>)</strong> in its current <strong>state (<span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>)</strong> is specified by its <strong>policy (<span><span class="MathJax_Preview">\pi(s)</span><script type="math/tex">\pi(s)</script></span>)</strong><ul>
@@ -971,14 +1052,77 @@
 </li>
 <li>Since our policy determines how our agent acts given its state, achieving an <strong>optimal policy <span><span class="MathJax_Preview">\pi_*</span><script type="math/tex">\pi_*</script></span></strong> would mean achieving optimal actions that is exactly what we want!</li>
 </ul>
-<h2 id="optimal-policy-pi_pi_">Optimal Policy <span><span class="MathJax_Preview">\pi_*</span><script type="math/tex">\pi_*</script></span><a class="headerlink" href="#optimal-policy-pi_pi_" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Basic Categories of Approaches</p>
+<p>We've covered state-value functions, action-value functions, model-free RL and model-based RL. They form general overarching categories of how we design our agent.</p>
+<h4 id="categories-of-design">Categories of Design<a class="headerlink" href="#categories-of-design" title="Permanent link">&para;</a></h4>
+<ol>
+<li>State-value based: search for the optimal state-value function (goodness of action in the state)</li>
+<li>Action-value based: search for the optimal action-value function (goodness of policy)</li>
+<li>Actor-critic based: using both state-value and action-value function </li>
+<li>Model based: attempts ot model the environment to find the best policy</li>
+<li>Model-free based: trial and error to optimize for the best policy to get the most rewards instead of modelling the environment explicitly</li>
+</ol>
+</div>
+<h2 id="optimal-policy">Optimal Policy<a class="headerlink" href="#optimal-policy" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Optimal policy &rarr; optimal state-value and action-value functions &rarr; max return &rarr; argmax of those functions<ul>
+<li>Optimal policy <span><span class="MathJax_Preview">\pi_*</span><script type="math/tex">\pi_*</script></span> &rarr; optimal state-value and action-value functions &rarr; max return &rarr; argmax of value functions<ul>
 <li><span><span class="MathJax_Preview">\pi_{*} = \arg\max_{\pi} \mathcal{V}_{\pi}(s) = \arg\max_{\pi} \mathcal{Q}_{\pi}(s, a)</span><script type="math/tex">\pi_{*} = \arg\max_{\pi} \mathcal{V}_{\pi}(s) = \arg\max_{\pi} \mathcal{Q}_{\pi}(s, a)</script></span></li>
 </ul>
 </li>
+<li>To calculate argmax of value functions &rarr; we need max return <span><span class="MathJax_Preview">\mathcal{G}_t</span><script type="math/tex">\mathcal{G}_t</script></span> &rarr; need max sum of rewards <span><span class="MathJax_Preview">\mathcal{R}_s^a</span><script type="math/tex">\mathcal{R}_s^a</script></span></li>
+<li>To get max sum of rewards <span><span class="MathJax_Preview">\mathcal{R}_s^a</span><script type="math/tex">\mathcal{R}_s^a</script></span>, we will rely on the Bellman Equations.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup></li>
 </ul>
-<p>To be continued...</p>
+<h2 id="bellman-equation">Bellman Equation<a class="headerlink" href="#bellman-equation" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Essentially, the Bellman Equation breaks down our value functions into two parts<ol>
+<li>Immediate reward</li>
+<li>Discounted future value function</li>
+</ol>
+</li>
+<li>State-value function can be broken into:<ul>
+<li><span><span class="MathJax_Preview">\begin{aligned}
+    \mathcal{V}_{\pi}(s) &amp;= \mathbb{E}[\mathcal{G}_t \vert \mathcal{S}_t = s] \\
+    &amp;= \mathbb{E} [\mathcal{R}_{t+1} + \gamma \mathcal{R}_{t+2} + \gamma^2 \mathcal{R}_{t+3} + \dots \vert \mathcal{S}_t = s] \\
+    &amp;= \mathbb{E} [\mathcal{R}_{t+1} + \gamma (\mathcal{R}_{t+2} + \gamma \mathcal{R}_{t+3} + \dots) \vert \mathcal{S}_t = s] \\
+    &amp;= \mathbb{E} [\mathcal{R}_{t+1} + \gamma \mathcal{G}_{t+1} \vert \mathcal{S}_t = s] \\
+    &amp;= \mathbb{E} [\mathcal{R}_{t+1} + \gamma \mathcal{V}_{\pi}(\mathcal{s}_{t+1}) \vert \mathcal{S}_t = s]
+    \end{aligned}</span><script type="math/tex">\begin{aligned}
+    \mathcal{V}_{\pi}(s) &= \mathbb{E}[\mathcal{G}_t \vert \mathcal{S}_t = s] \\
+    &= \mathbb{E} [\mathcal{R}_{t+1} + \gamma \mathcal{R}_{t+2} + \gamma^2 \mathcal{R}_{t+3} + \dots \vert \mathcal{S}_t = s] \\
+    &= \mathbb{E} [\mathcal{R}_{t+1} + \gamma (\mathcal{R}_{t+2} + \gamma \mathcal{R}_{t+3} + \dots) \vert \mathcal{S}_t = s] \\
+    &= \mathbb{E} [\mathcal{R}_{t+1} + \gamma \mathcal{G}_{t+1} \vert \mathcal{S}_t = s] \\
+    &= \mathbb{E} [\mathcal{R}_{t+1} + \gamma \mathcal{V}_{\pi}(\mathcal{s}_{t+1}) \vert \mathcal{S}_t = s]
+    \end{aligned}</script></span></li>
+</ul>
+</li>
+<li>Action-value function can be broken into:<ul>
+<li><span><span class="MathJax_Preview">\mathcal{Q}_{\pi}(s, a) = \mathbb{E} [\mathcal{R}_{t+1} + \gamma \mathcal{Q}_{\pi}(\mathcal{s}_{t+1}, \mathcal{a}_{t+1}) \vert \mathcal{S}_t = s, \mathcal{A} = a]</span><script type="math/tex">\mathcal{Q}_{\pi}(s, a) = \mathbb{E} [\mathcal{R}_{t+1} + \gamma \mathcal{Q}_{\pi}(\mathcal{s}_{t+1}, \mathcal{a}_{t+1}) \vert \mathcal{S}_t = s, \mathcal{A} = a]</script></span></li>
+</ul>
+</li>
+</ul>
+<h2 id="diving-into-the-bellman-equation">Diving into the Bellman Equation<a class="headerlink" href="#diving-into-the-bellman-equation" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Logic flow<ul>
+<li>Current state <span><span class="MathJax_Preview">\mathcal{S}</span><script type="math/tex">\mathcal{S}</script></span> &rarr; Action <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> &rarr; Reward <span><span class="MathJax_Preview">\mathcal{R}_{t+1}</span><script type="math/tex">\mathcal{R}_{t+1}</script></span> &rarr; New state <span><span class="MathJax_Preview">\mathcal{S}_{t+1}</span><script type="math/tex">\mathcal{S}_{t+1}</script></span> &rarr; Multiple possible actions determined by stochastic policy <span><span class="MathJax_Preview">\pi(a | s)</span><script type="math/tex">\pi(a | s)</script></span></li>
+</ul>
+</li>
+</ul>
+<p>To be completed...</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Bellman, R. A Markovian Decision Process. Journal of Mathematics and Mechanics. 1957.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>Matthew J. Hausknecht and Peter Stone. <a href="https://arxiv.org/abs/1507.06527">Deep Recurrent Q-Learning for Partially Observable MDPs</a>. 2015.&#160;<a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>R Bellman. On the Theory of Dynamic Programming.Proceedings of the National Academy of Sciences. 1952.&#160;<a class="footnote-backref" href="#fnref:3" rev="footnote" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
                 
                   
                 
