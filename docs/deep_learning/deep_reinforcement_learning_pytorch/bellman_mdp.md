@@ -76,7 +76,7 @@
 	1. State-value based: search for the optimal state-value function (goodness of action in the state)
 	2. Action-value based: search for the optimal action-value function (goodness of policy)
 	3. Actor-critic based: using both state-value and action-value function 
-	4. Model based: attempts ot model the environment to find the best policy
+	4. Model based: attempts to model the environment to find the best policy
 	5. Model-free based: trial and error to optimize for the best policy to get the most rewards instead of modelling the environment explicitly
 
 ## Optimal Policy
@@ -102,11 +102,34 @@
 	- $\mathcal{Q}_{\pi}(s, a) = \mathbb{E} [\mathcal{R}_{t+1} + \gamma \mathcal{Q}_{\pi}(\mathcal{s}_{t+1}, \mathcal{a}_{t+1}) \vert \mathcal{S}_t = s, \mathcal{A} = a]$
 
 
-## Diving into the Bellman Equation
-- Logic flow
-	- Current state $\mathcal{S}$ --> Action $a$ --> Reward $\mathcal{R}_{t+1}$ --> New state $\mathcal{S}_{t+1}$ --> Multiple possible actions determined by stochastic policy $\pi(a | s)$
+## Key Recap on Value Functions
+- $\mathcal{V}_{\pi}(s) = \mathbb{E}_{\pi}[\mathcal{G}_t \vert \mathcal{S}_t = s]$
+	- State-value function: tells us how good to be in that state
+- $\mathcal{Q}_{\pi}(s, a) = \mathbb{E}_{\pi}[\mathcal{G}_t \vert \mathcal{S}_t = s, \mathcal{A}_t = a]$
+	- Action-value function: tells us how good to take actions given state
 
-To be completed...
+
+## Bellman Expectation Equations
+- Now we can move from Bellman Equations into Bellman Expectation Equations
+- Basic: State value-function $\mathcal{V}_{\pi}(s)$
+	1. Current state $\mathcal{S}$
+	2. Multiple possible actions determined by stochastic policy $\pi(a | s)$
+	3. Each possible action is associated with a action-value function $\mathcal{Q}_{\pi}(s, a)$ returning a value of that particular action
+	4. Multiplying the possible actions with the action-value function and summing them gives us an indication of how good it is to be in that state
+		- $\mathcal{V}_{\pi}(s) = \sum \pi(a | s) \mathcal{Q}(s, a)$
+- Basic: Action value-function $\mathcal{Q}_{\pi}(s, a)$
+	1. With a list of possible multiple actions, there is a list of possible subsequent states $s'$ associated with:
+		1. state value function $\mathcal{V}_{\pi}(s')$ 
+		2. transition probability function $\mathcal{P}_{ss'}^a$ determining where the agent could land in
+		3. reward $\mathcal{R}_s^a$ for taking the action
+	2. Summing the reward and the transition probability function associated with the state-value function gives us an indication of how good it is to take that the actions given state
+		- $\mathcal{Q}_{\pi}(s, a) = \mathcal{R}_s^a + \gamma \sum \mathcal{P}_{ss'}^a {V}_{\pi}(s')$
+- Expanded functions (substitution)
+	- Substituting action-value function into the **state-value function**
+		- $\mathcal{V}_{\pi}(s) = \sum \pi(s | a) (\mathcal{R}_s^a + \gamma \sum \mathcal{P}_{ss'}^a {V}_{\pi}(s'))$
+	- Substituting  state-value function into **action-value function**
+		- $\mathcal{Q}_{\pi}(s, a) = \mathcal{R}_s^a + \gamma \sum \mathcal{P}_{ss'}^a \sum \pi(a' | s') \mathcal{Q}(s', a')$
+
 
 [^1]: Bellman, R. A Markovian Decision Process. Journal of Mathematics and Mechanics. 1957.
 [^2]: Matthew J. Hausknecht and Peter Stone. [Deep Recurrent Q-Learning for Partially Observable MDPs](https://arxiv.org/abs/1507.06527). 2015.
