@@ -594,8 +594,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#diving-into-the-bellman-equation" title="Diving into the Bellman Equation" class="md-nav__link">
-    Diving into the Bellman Equation
+  <a href="#key-recap-on-value-functions" title="Key Recap on Value Functions" class="md-nav__link">
+    Key Recap on Value Functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bellman-expectation-equations" title="Bellman Expectation Equations" class="md-nav__link">
+    Bellman Expectation Equations
   </a>
   
 </li>
@@ -908,8 +915,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#diving-into-the-bellman-equation" title="Diving into the Bellman Equation" class="md-nav__link">
-    Diving into the Bellman Equation
+  <a href="#key-recap-on-value-functions" title="Key Recap on Value Functions" class="md-nav__link">
+    Key Recap on Value Functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bellman-expectation-equations" title="Bellman Expectation Equations" class="md-nav__link">
+    Bellman Expectation Equations
   </a>
   
 </li>
@@ -1060,7 +1074,7 @@
 <li>State-value based: search for the optimal state-value function (goodness of action in the state)</li>
 <li>Action-value based: search for the optimal action-value function (goodness of policy)</li>
 <li>Actor-critic based: using both state-value and action-value function </li>
-<li>Model based: attempts ot model the environment to find the best policy</li>
+<li>Model based: attempts to model the environment to find the best policy</li>
 <li>Model-free based: trial and error to optimize for the best policy to get the most rewards instead of modelling the environment explicitly</li>
 </ol>
 </div>
@@ -1101,14 +1115,55 @@
 </ul>
 </li>
 </ul>
-<h2 id="diving-into-the-bellman-equation">Diving into the Bellman Equation<a class="headerlink" href="#diving-into-the-bellman-equation" title="Permanent link">&para;</a></h2>
+<h2 id="key-recap-on-value-functions">Key Recap on Value Functions<a class="headerlink" href="#key-recap-on-value-functions" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Logic flow<ul>
-<li>Current state <span><span class="MathJax_Preview">\mathcal{S}</span><script type="math/tex">\mathcal{S}</script></span> &rarr; Action <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> &rarr; Reward <span><span class="MathJax_Preview">\mathcal{R}_{t+1}</span><script type="math/tex">\mathcal{R}_{t+1}</script></span> &rarr; New state <span><span class="MathJax_Preview">\mathcal{S}_{t+1}</span><script type="math/tex">\mathcal{S}_{t+1}</script></span> &rarr; Multiple possible actions determined by stochastic policy <span><span class="MathJax_Preview">\pi(a | s)</span><script type="math/tex">\pi(a | s)</script></span></li>
+<li><span><span class="MathJax_Preview">\mathcal{V}_{\pi}(s) = \mathbb{E}_{\pi}[\mathcal{G}_t \vert \mathcal{S}_t = s]</span><script type="math/tex">\mathcal{V}_{\pi}(s) = \mathbb{E}_{\pi}[\mathcal{G}_t \vert \mathcal{S}_t = s]</script></span><ul>
+<li>State-value function: tells us how good to be in that state</li>
+</ul>
+</li>
+<li><span><span class="MathJax_Preview">\mathcal{Q}_{\pi}(s, a) = \mathbb{E}_{\pi}[\mathcal{G}_t \vert \mathcal{S}_t = s, \mathcal{A}_t = a]</span><script type="math/tex">\mathcal{Q}_{\pi}(s, a) = \mathbb{E}_{\pi}[\mathcal{G}_t \vert \mathcal{S}_t = s, \mathcal{A}_t = a]</script></span><ul>
+<li>Action-value function: tells us how good to take actions given state</li>
 </ul>
 </li>
 </ul>
-<p>To be completed...</p>
+<h2 id="bellman-expectation-equations">Bellman Expectation Equations<a class="headerlink" href="#bellman-expectation-equations" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Now we can move from Bellman Equations into Bellman Expectation Equations</li>
+<li>Basic: State value-function <span><span class="MathJax_Preview">\mathcal{V}_{\pi}(s)</span><script type="math/tex">\mathcal{V}_{\pi}(s)</script></span><ol>
+<li>Current state <span><span class="MathJax_Preview">\mathcal{S}</span><script type="math/tex">\mathcal{S}</script></span></li>
+<li>Multiple possible actions determined by stochastic policy <span><span class="MathJax_Preview">\pi(a | s)</span><script type="math/tex">\pi(a | s)</script></span></li>
+<li>Each possible action is associated with a action-value function <span><span class="MathJax_Preview">\mathcal{Q}_{\pi}(s, a)</span><script type="math/tex">\mathcal{Q}_{\pi}(s, a)</script></span> returning a value of that particular action</li>
+<li>Multiplying the possible actions with the action-value function and summing them gives us an indication of how good it is to be in that state<ul>
+<li><span><span class="MathJax_Preview">\mathcal{V}_{\pi}(s) = \sum \pi(a | s) \mathcal{Q}(s, a)</span><script type="math/tex">\mathcal{V}_{\pi}(s) = \sum \pi(a | s) \mathcal{Q}(s, a)</script></span></li>
+</ul>
+</li>
+</ol>
+</li>
+<li>Basic: Action value-function <span><span class="MathJax_Preview">\mathcal{Q}_{\pi}(s, a)</span><script type="math/tex">\mathcal{Q}_{\pi}(s, a)</script></span><ol>
+<li>With a list of possible multiple actions, there is a list of possible subsequent states <span><span class="MathJax_Preview">s'</span><script type="math/tex">s'</script></span> associated with:<ol>
+<li>state value function <span><span class="MathJax_Preview">\mathcal{V}_{\pi}(s')</span><script type="math/tex">\mathcal{V}_{\pi}(s')</script></span> </li>
+<li>transition probability function <span><span class="MathJax_Preview">\mathcal{P}_{ss'}^a</span><script type="math/tex">\mathcal{P}_{ss'}^a</script></span> determining where the agent could land in</li>
+<li>reward <span><span class="MathJax_Preview">\mathcal{R}_s^a</span><script type="math/tex">\mathcal{R}_s^a</script></span> for taking the action</li>
+</ol>
+</li>
+<li>Summing the reward and the transition probability function associated with the state-value function gives us an indication of how good it is to take that the actions given state<ul>
+<li><span><span class="MathJax_Preview">\mathcal{Q}_{\pi}(s, a) = \mathcal{R}_s^a + \gamma \sum \mathcal{P}_{ss'}^a {V}_{\pi}(s')</span><script type="math/tex">\mathcal{Q}_{\pi}(s, a) = \mathcal{R}_s^a + \gamma \sum \mathcal{P}_{ss'}^a {V}_{\pi}(s')</script></span></li>
+</ul>
+</li>
+</ol>
+</li>
+<li>Expanded functions (substitution)<ul>
+<li>Substituting action-value function into the <strong>state-value function</strong><ul>
+<li><span><span class="MathJax_Preview">\mathcal{V}_{\pi}(s) = \sum \pi(s | a) (\mathcal{R}_s^a + \gamma \sum \mathcal{P}_{ss'}^a {V}_{\pi}(s'))</span><script type="math/tex">\mathcal{V}_{\pi}(s) = \sum \pi(s | a) (\mathcal{R}_s^a + \gamma \sum \mathcal{P}_{ss'}^a {V}_{\pi}(s'))</script></span></li>
+</ul>
+</li>
+<li>Substituting  state-value function into <strong>action-value function</strong><ul>
+<li><span><span class="MathJax_Preview">\mathcal{Q}_{\pi}(s, a) = \mathcal{R}_s^a + \gamma \sum \mathcal{P}_{ss'}^a \sum \pi(a' | s') \mathcal{Q}(s', a')</span><script type="math/tex">\mathcal{Q}_{\pi}(s, a) = \mathcal{R}_s^a + \gamma \sum \mathcal{P}_{ss'}^a \sum \pi(a' | s') \mathcal{Q}(s', a')</script></span></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <div class="footnote">
 <hr />
 <ol>
