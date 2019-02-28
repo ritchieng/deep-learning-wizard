@@ -83,7 +83,7 @@
 - Optimal policy $\pi_*$ --> optimal state-value and action-value functions --> max return --> argmax of value functions
 	- $\pi_{*} = \arg\max_{\pi} \mathcal{V}_{\pi}(s) = \arg\max_{\pi} \mathcal{Q}_{\pi}(s, a)$
 - To calculate argmax of value functions --> we need max return $\mathcal{G}_t$ --> need max sum of rewards $\mathcal{R}_s^a$
-- To get max sum of rewards $\mathcal{R}_s^a$, we will rely on the Bellman Equations.[^3]
+- To get max sum of rewards $\mathcal{R}_s^a$ we will rely on the Bellman Equations.[^3]
 
 
 ## Bellman Equation
@@ -111,28 +111,71 @@
 
 ## Bellman Expectation Equations
 - Now we can move from Bellman Equations into Bellman Expectation Equations
-- Basic: State value-function $\mathcal{V}_{\pi}(s)$
+- **Basic: State-value function $\mathcal{V}_{\pi}(s)$**
 	1. Current state $\mathcal{S}$
 	2. Multiple possible actions determined by stochastic policy $\pi(a | s)$
 	3. Each possible action is associated with a action-value function $\mathcal{Q}_{\pi}(s, a)$ returning a value of that particular action
 	4. Multiplying the possible actions with the action-value function and summing them gives us an indication of how good it is to be in that state
-		- $\mathcal{V}_{\pi}(s) = \sum \pi(a | s) \mathcal{Q}(s, a)$
-- Basic: Action value-function $\mathcal{Q}_{\pi}(s, a)$
+		- **Final equation: $\mathcal{V}_{\pi}(s) = \sum_{a \in \mathcal{A}} \pi(a | s) \mathcal{Q}(s, a)$**
+		- **Loose intuitive interpretation**: 
+			- state-value = sum(policy determining actions * respective action-values)
+- **Basic: Action-value function $\mathcal{Q}_{\pi}(s, a)$**
 	1. With a list of possible multiple actions, there is a list of possible subsequent states $s'$ associated with:
 		1. state value function $\mathcal{V}_{\pi}(s')$ 
-		2. transition probability function $\mathcal{P}_{ss'}^a$ determining where the agent could land in
+		2. transition probability function $\mathcal{P}_{ss'}^a$ determining where the agent could land in based on the action
 		3. reward $\mathcal{R}_s^a$ for taking the action
-	2. Summing the reward and the transition probability function associated with the state-value function gives us an indication of how good it is to take that the actions given state
-		- $\mathcal{Q}_{\pi}(s, a) = \mathcal{R}_s^a + \gamma \sum \mathcal{P}_{ss'}^a {V}_{\pi}(s')$
-- Expanded functions (substitution)
+	2. Summing the reward and the transition probability function associated with the state-value function gives us an indication of how good it is to take the actions given our state
+		- **Final equation: $\mathcal{Q}_{\pi}(s, a) = \mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{\pi}(s')$**
+		- **Loose intuitive interpretation**: 
+			- action-value = reward + sum(transition outcomes determining states * respective state-values)
+- **Expanded functions (substitution)**
 	- Substituting action-value function into the **state-value function**
-		- $\mathcal{V}_{\pi}(s) = \sum \pi(s | a) (\mathcal{R}_s^a + \gamma \sum \mathcal{P}_{ss'}^a {V}_{\pi}(s'))$
+		- $\mathcal{V}_{\pi}(s) = \sum_{a \in \mathcal{A}} \pi(s | a) (\mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{\pi}(s'))$
 	- Substituting  state-value function into **action-value function**
-		- $\mathcal{Q}_{\pi}(s, a) = \mathcal{R}_s^a + \gamma \sum \mathcal{P}_{ss'}^a \sum \pi(a' | s') \mathcal{Q}(s', a')$
+		- $\mathcal{Q}_{\pi}(s, a) = \mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a \sum_{a' \in \mathcal{A}} \pi(a' | s') \mathcal{Q}(s', a')$
 
+## Bellman Optimality Equations
+- Remember optimal policy $\pi_*$ --> optimal state-value and action-value functions --> argmax of value functions
+	- $\pi_{*} = \arg\max_{\pi} \mathcal{V}_{\pi}(s) = \arg\max_{\pi} \mathcal{Q}_{\pi}(s, a)$
+- Finally with Bellman Expectation Equations derived from Bellman Equations, we can derive the equations for the argmax of our value functions
+- **Optimal state-value function**
+	- $\mathcal{V}_*(s) = \arg\max_{\pi} \mathcal{V}_{\pi}(s)$
+	- Given $\mathcal{V}_{\pi}(s) = \sum_{a \in \mathcal{A}} \pi(s | a) (\mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{\pi}(s'))$
+	- We have $\mathcal{V}_*(s) = \max_{a \in \mathcal{A}} (\mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{*}(s')))$
+- **Optimal action-value function**
+	- $\mathcal{Q}_*(s) = \arg\max_{\pi} \mathcal{Q}_{\pi}(s)$
+	- Given $\mathcal{Q}_{\pi}(s, a) = \mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a \sum_{a' \in \mathcal{A}} \pi(a' | s') \mathcal{Q}(s', a')$
+	- We have $\mathcal{Q}_{*}(s, a) = \mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a max_{a' \in \mathcal{A}} \mathcal{Q}_{*}(s', a')$
+
+
+## Optimal Action-value and State-value functions
+1. If the entire environment is known, such that we know our reward function and transition probability function, then we can solve for the optimal action-value and state-value functions via **Dynamic Programming** like
+	- Policy evaluation, policy improvement, and policy iteration
+2. However, typically we don't know the environment entirely then there is not closed form solution in getting optimal action-value and state-value functions. Hence, we need other iterative approaches like
+	1. **Monte-Carlo methods**
+	2. **Temporal difference learning** (model-free and learns with episodes)
+		1. On-policy TD: SARSA
+		2. Off-policy TD: Q-Learning and Deep Q-Learning (DQN)
+	3. **Policy gradient**
+		- REINFORCE
+		- Actor-Critic
+		- A2C/A3C
+		- ACKTR
+		- PPO
+		- DPG
+		- DDPG (DQN + DPG)
+
+!!! note "Closed form solution"
+	If there is a closed form solution, then the variables' values can be obtained with a finite number of mathematical operations (for example add, subtract, divide, and multiply).
+
+	For example, solving $2x = 8 - 6x$ would yield $8x = 8$ by adding $6x$ on both sides of the equation and finally yielding the value of $x=1$ by dividing both sides of the equation by $8$. 
+
+	These finite 2 steps of mathematical operations allowed us to solve for the value of x as the equation has a closed-form solution.
+
+	However, many cases in deep learning and reinforcement learning there are no closed-form solutions which requires all the iterative methods mentioned above.
 
 [^1]: Bellman, R. A Markovian Decision Process. Journal of Mathematics and Mechanics. 1957.
 [^2]: Matthew J. Hausknecht and Peter Stone. [Deep Recurrent Q-Learning for Partially Observable MDPs](https://arxiv.org/abs/1507.06527). 2015.
-[^3]: R Bellman. On the Theory of Dynamic Programming.Proceedings of the National Academy of Sciences. 1952.
+[^3]: R Bellman. On the Theory of Dynamic Programming. Proceedings of the National Academy of Sciences. 1952.
 
 
