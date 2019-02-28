@@ -607,6 +607,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#bellman-optimality-equations" title="Bellman Optimality Equations" class="md-nav__link">
+    Bellman Optimality Equations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optimal-action-value-and-state-value-functions" title="Optimal Action-value and State-value functions" class="md-nav__link">
+    Optimal Action-value and State-value functions
+  </a>
+  
+</li>
+      
       
       
       
@@ -928,6 +942,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#bellman-optimality-equations" title="Bellman Optimality Equations" class="md-nav__link">
+    Bellman Optimality Equations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optimal-action-value-and-state-value-functions" title="Optimal Action-value and State-value functions" class="md-nav__link">
+    Optimal Action-value and State-value functions
+  </a>
+  
+</li>
+      
       
       
       
@@ -1085,7 +1113,7 @@
 </ul>
 </li>
 <li>To calculate argmax of value functions &rarr; we need max return <span><span class="MathJax_Preview">\mathcal{G}_t</span><script type="math/tex">\mathcal{G}_t</script></span> &rarr; need max sum of rewards <span><span class="MathJax_Preview">\mathcal{R}_s^a</span><script type="math/tex">\mathcal{R}_s^a</script></span></li>
-<li>To get max sum of rewards <span><span class="MathJax_Preview">\mathcal{R}_s^a</span><script type="math/tex">\mathcal{R}_s^a</script></span>, we will rely on the Bellman Equations.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup></li>
+<li>To get max sum of rewards <span><span class="MathJax_Preview">\mathcal{R}_s^a</span><script type="math/tex">\mathcal{R}_s^a</script></span> we will rely on the Bellman Equations.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup></li>
 </ul>
 <h2 id="bellman-equation">Bellman Equation<a class="headerlink" href="#bellman-equation" title="Permanent link">&para;</a></h2>
 <ul>
@@ -1129,41 +1157,102 @@
 <h2 id="bellman-expectation-equations">Bellman Expectation Equations<a class="headerlink" href="#bellman-expectation-equations" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Now we can move from Bellman Equations into Bellman Expectation Equations</li>
-<li>Basic: State value-function <span><span class="MathJax_Preview">\mathcal{V}_{\pi}(s)</span><script type="math/tex">\mathcal{V}_{\pi}(s)</script></span><ol>
+<li><strong>Basic: State-value function <span><span class="MathJax_Preview">\mathcal{V}_{\pi}(s)</span><script type="math/tex">\mathcal{V}_{\pi}(s)</script></span></strong><ol>
 <li>Current state <span><span class="MathJax_Preview">\mathcal{S}</span><script type="math/tex">\mathcal{S}</script></span></li>
 <li>Multiple possible actions determined by stochastic policy <span><span class="MathJax_Preview">\pi(a | s)</span><script type="math/tex">\pi(a | s)</script></span></li>
 <li>Each possible action is associated with a action-value function <span><span class="MathJax_Preview">\mathcal{Q}_{\pi}(s, a)</span><script type="math/tex">\mathcal{Q}_{\pi}(s, a)</script></span> returning a value of that particular action</li>
 <li>Multiplying the possible actions with the action-value function and summing them gives us an indication of how good it is to be in that state<ul>
-<li><span><span class="MathJax_Preview">\mathcal{V}_{\pi}(s) = \sum \pi(a | s) \mathcal{Q}(s, a)</span><script type="math/tex">\mathcal{V}_{\pi}(s) = \sum \pi(a | s) \mathcal{Q}(s, a)</script></span></li>
+<li><strong>Final equation: <span><span class="MathJax_Preview">\mathcal{V}_{\pi}(s) = \sum_{a \in \mathcal{A}} \pi(a | s) \mathcal{Q}(s, a)</span><script type="math/tex">\mathcal{V}_{\pi}(s) = \sum_{a \in \mathcal{A}} \pi(a | s) \mathcal{Q}(s, a)</script></span></strong></li>
+<li><strong>Loose intuitive interpretation</strong>: <ul>
+<li>state-value = sum(policy determining actions * respective action-values)</li>
+</ul>
+</li>
 </ul>
 </li>
 </ol>
 </li>
-<li>Basic: Action value-function <span><span class="MathJax_Preview">\mathcal{Q}_{\pi}(s, a)</span><script type="math/tex">\mathcal{Q}_{\pi}(s, a)</script></span><ol>
+<li><strong>Basic: Action-value function <span><span class="MathJax_Preview">\mathcal{Q}_{\pi}(s, a)</span><script type="math/tex">\mathcal{Q}_{\pi}(s, a)</script></span></strong><ol>
 <li>With a list of possible multiple actions, there is a list of possible subsequent states <span><span class="MathJax_Preview">s'</span><script type="math/tex">s'</script></span> associated with:<ol>
 <li>state value function <span><span class="MathJax_Preview">\mathcal{V}_{\pi}(s')</span><script type="math/tex">\mathcal{V}_{\pi}(s')</script></span> </li>
-<li>transition probability function <span><span class="MathJax_Preview">\mathcal{P}_{ss'}^a</span><script type="math/tex">\mathcal{P}_{ss'}^a</script></span> determining where the agent could land in</li>
+<li>transition probability function <span><span class="MathJax_Preview">\mathcal{P}_{ss'}^a</span><script type="math/tex">\mathcal{P}_{ss'}^a</script></span> determining where the agent could land in based on the action</li>
 <li>reward <span><span class="MathJax_Preview">\mathcal{R}_s^a</span><script type="math/tex">\mathcal{R}_s^a</script></span> for taking the action</li>
 </ol>
 </li>
-<li>Summing the reward and the transition probability function associated with the state-value function gives us an indication of how good it is to take that the actions given state<ul>
-<li><span><span class="MathJax_Preview">\mathcal{Q}_{\pi}(s, a) = \mathcal{R}_s^a + \gamma \sum \mathcal{P}_{ss'}^a {V}_{\pi}(s')</span><script type="math/tex">\mathcal{Q}_{\pi}(s, a) = \mathcal{R}_s^a + \gamma \sum \mathcal{P}_{ss'}^a {V}_{\pi}(s')</script></span></li>
+<li>Summing the reward and the transition probability function associated with the state-value function gives us an indication of how good it is to take the actions given our state<ul>
+<li><strong>Final equation: <span><span class="MathJax_Preview">\mathcal{Q}_{\pi}(s, a) = \mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{\pi}(s')</span><script type="math/tex">\mathcal{Q}_{\pi}(s, a) = \mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{\pi}(s')</script></span></strong></li>
+<li><strong>Loose intuitive interpretation</strong>: <ul>
+<li>action-value = reward + sum(transition outcomes determining states * respective state-values)</li>
+</ul>
+</li>
 </ul>
 </li>
 </ol>
 </li>
-<li>Expanded functions (substitution)<ul>
+<li><strong>Expanded functions (substitution)</strong><ul>
 <li>Substituting action-value function into the <strong>state-value function</strong><ul>
-<li><span><span class="MathJax_Preview">\mathcal{V}_{\pi}(s) = \sum \pi(s | a) (\mathcal{R}_s^a + \gamma \sum \mathcal{P}_{ss'}^a {V}_{\pi}(s'))</span><script type="math/tex">\mathcal{V}_{\pi}(s) = \sum \pi(s | a) (\mathcal{R}_s^a + \gamma \sum \mathcal{P}_{ss'}^a {V}_{\pi}(s'))</script></span></li>
+<li><span><span class="MathJax_Preview">\mathcal{V}_{\pi}(s) = \sum_{a \in \mathcal{A}} \pi(s | a) (\mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{\pi}(s'))</span><script type="math/tex">\mathcal{V}_{\pi}(s) = \sum_{a \in \mathcal{A}} \pi(s | a) (\mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{\pi}(s'))</script></span></li>
 </ul>
 </li>
 <li>Substituting  state-value function into <strong>action-value function</strong><ul>
-<li><span><span class="MathJax_Preview">\mathcal{Q}_{\pi}(s, a) = \mathcal{R}_s^a + \gamma \sum \mathcal{P}_{ss'}^a \sum \pi(a' | s') \mathcal{Q}(s', a')</span><script type="math/tex">\mathcal{Q}_{\pi}(s, a) = \mathcal{R}_s^a + \gamma \sum \mathcal{P}_{ss'}^a \sum \pi(a' | s') \mathcal{Q}(s', a')</script></span></li>
+<li><span><span class="MathJax_Preview">\mathcal{Q}_{\pi}(s, a) = \mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a \sum_{a' \in \mathcal{A}} \pi(a' | s') \mathcal{Q}(s', a')</span><script type="math/tex">\mathcal{Q}_{\pi}(s, a) = \mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a \sum_{a' \in \mathcal{A}} \pi(a' | s') \mathcal{Q}(s', a')</script></span></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
+<h2 id="bellman-optimality-equations">Bellman Optimality Equations<a class="headerlink" href="#bellman-optimality-equations" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Remember optimal policy <span><span class="MathJax_Preview">\pi_*</span><script type="math/tex">\pi_*</script></span> &rarr; optimal state-value and action-value functions &rarr; argmax of value functions<ul>
+<li><span><span class="MathJax_Preview">\pi_{*} = \arg\max_{\pi} \mathcal{V}_{\pi}(s) = \arg\max_{\pi} \mathcal{Q}_{\pi}(s, a)</span><script type="math/tex">\pi_{*} = \arg\max_{\pi} \mathcal{V}_{\pi}(s) = \arg\max_{\pi} \mathcal{Q}_{\pi}(s, a)</script></span></li>
+</ul>
+</li>
+<li>Finally with Bellman Expectation Equations derived from Bellman Equations, we can derive the equations for the argmax of our value functions</li>
+<li><strong>Optimal state-value function</strong><ul>
+<li><span><span class="MathJax_Preview">\mathcal{V}_*(s) = \arg\max_{\pi} \mathcal{V}_{\pi}(s)</span><script type="math/tex">\mathcal{V}_*(s) = \arg\max_{\pi} \mathcal{V}_{\pi}(s)</script></span></li>
+<li>Given <span><span class="MathJax_Preview">\mathcal{V}_{\pi}(s) = \sum_{a \in \mathcal{A}} \pi(s | a) (\mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{\pi}(s'))</span><script type="math/tex">\mathcal{V}_{\pi}(s) = \sum_{a \in \mathcal{A}} \pi(s | a) (\mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{\pi}(s'))</script></span></li>
+<li>We have <span><span class="MathJax_Preview">\mathcal{V}_*(s) = \max_{a \in \mathcal{A}} (\mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{*}(s')))</span><script type="math/tex">\mathcal{V}_*(s) = \max_{a \in \mathcal{A}} (\mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{*}(s')))</script></span></li>
+</ul>
+</li>
+<li><strong>Optimal action-value function</strong><ul>
+<li><span><span class="MathJax_Preview">\mathcal{Q}_*(s) = \arg\max_{\pi} \mathcal{Q}_{\pi}(s)</span><script type="math/tex">\mathcal{Q}_*(s) = \arg\max_{\pi} \mathcal{Q}_{\pi}(s)</script></span></li>
+<li>Given <span><span class="MathJax_Preview">\mathcal{Q}_{\pi}(s, a) = \mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a \sum_{a' \in \mathcal{A}} \pi(a' | s') \mathcal{Q}(s', a')</span><script type="math/tex">\mathcal{Q}_{\pi}(s, a) = \mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a \sum_{a' \in \mathcal{A}} \pi(a' | s') \mathcal{Q}(s', a')</script></span></li>
+<li>We have <span><span class="MathJax_Preview">\mathcal{Q}_{*}(s, a) = \mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a max_{a' \in \mathcal{A}} \mathcal{Q}_{*}(s', a')</span><script type="math/tex">\mathcal{Q}_{*}(s, a) = \mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a max_{a' \in \mathcal{A}} \mathcal{Q}_{*}(s', a')</script></span></li>
+</ul>
+</li>
+</ul>
+<h2 id="optimal-action-value-and-state-value-functions">Optimal Action-value and State-value functions<a class="headerlink" href="#optimal-action-value-and-state-value-functions" title="Permanent link">&para;</a></h2>
+<ol>
+<li>If the entire environment is known, such that we know our reward function and transition probability function, then we can solve for the optimal action-value and state-value functions via <strong>Dynamic Programming</strong> like<ul>
+<li>Policy evaluation, policy improvement, and policy iteration</li>
+</ul>
+</li>
+<li>However, typically we don't know the environment entirely then there is not closed form solution in getting optimal action-value and state-value functions. Hence, we need other iterative approaches like<ol>
+<li><strong>Monte-Carlo methods</strong></li>
+<li><strong>Temporal difference learning</strong> (model-free and learns with episodes)<ol>
+<li>On-policy TD: SARSA</li>
+<li>Off-policy TD: Q-Learning and Deep Q-Learning (DQN)</li>
+</ol>
+</li>
+<li><strong>Policy gradient</strong><ul>
+<li>REINFORCE</li>
+<li>Actor-Critic</li>
+<li>A2C/A3C</li>
+<li>ACKTR</li>
+<li>PPO</li>
+<li>DPG</li>
+<li>DDPG (DQN + DPG)</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Closed form solution</p>
+<p>If there is a closed form solution, then the variables' values can be obtained with a finite number of mathematical operations (for example add, subtract, divide, and multiply).</p>
+<p>For example, solving <span><span class="MathJax_Preview">2x = 8 - 6x</span><script type="math/tex">2x = 8 - 6x</script></span> would yield <span><span class="MathJax_Preview">8x = 8</span><script type="math/tex">8x = 8</script></span> by adding <span><span class="MathJax_Preview">6x</span><script type="math/tex">6x</script></span> on both sides of the equation and finally yielding the value of <span><span class="MathJax_Preview">x=1</span><script type="math/tex">x=1</script></span> by dividing both sides of the equation by <span><span class="MathJax_Preview">8</span><script type="math/tex">8</script></span>. </p>
+<p>These finite 2 steps of mathematical operations allowed us to solve for the value of x as the equation has a closed-form solution.</p>
+<p>However, many cases in deep learning and reinforcement learning there are no closed-form solutions which requires all the iterative methods mentioned above.</p>
+</div>
 <div class="footnote">
 <hr />
 <ol>
@@ -1174,7 +1263,7 @@
 <p>Matthew J. Hausknecht and Peter Stone. <a href="https://arxiv.org/abs/1507.06527">Deep Recurrent Q-Learning for Partially Observable MDPs</a>. 2015.&#160;<a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 <li id="fn:3">
-<p>R Bellman. On the Theory of Dynamic Programming.Proceedings of the National Academy of Sciences. 1952.&#160;<a class="footnote-backref" href="#fnref:3" rev="footnote" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+<p>R Bellman. On the Theory of Dynamic Programming. Proceedings of the National Academy of Sciences. 1952.&#160;<a class="footnote-backref" href="#fnref:3" rev="footnote" title="Jump back to footnote 3 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
