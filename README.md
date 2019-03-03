@@ -23,6 +23,8 @@ This repository contains all the notesbooks and mkdocs markdown files of the tut
     - [Learning Rate Scheduling](https://www.deeplearningwizard.com/deep_learning/boosting_models_pytorch/lr_scheduling/)
     - [Optimization Algorithms](https://www.deeplearningwizard.com/deep_learning/boosting_models_pytorch/optimizers/)
     - [Weight Initialization and Activation Functions](https://www.deeplearningwizard.com/deep_learning/boosting_models_pytorch/weight_initialization_activation_functions/)
+    - [Supervised to Reinforcement Learning](https://www.deeplearningwizard.com/deep_learning/deep_reinforcement_learning_pytorch/supervised_to_rl/)
+    - [Markov Decision Processes and Bellman Equations](https://www.deeplearningwizard.com/deep_learning/deep_reinforcement_learning_pytorch/bellman_mdp/)
 - [Scalable Database Tutorials](https://www.deeplearningwizard.com/database/intro/)
     - [Apache Cassandra Cluster Setup](https://www.deeplearningwizard.com/database/setting_up_cluster/)
     
