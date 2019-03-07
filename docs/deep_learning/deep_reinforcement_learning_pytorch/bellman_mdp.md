@@ -130,7 +130,7 @@
 			- action-value = reward + sum(transition outcomes determining states * respective state-values)
 - **Expanded functions (substitution)**
 	- Substituting action-value function into the **state-value function**
-		- $\mathcal{V}_{\pi}(s) = \sum_{a \in \mathcal{A}} \pi(s | a) (\mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{\pi}(s'))$
+		- $\mathcal{V}_{\pi}(s) = \sum_{a \in \mathcal{A}} \pi(a | s) (\mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{\pi}(s'))$
 	- Substituting  state-value function into **action-value function**
 		- $\mathcal{Q}_{\pi}(s, a) = \mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a \sum_{a' \in \mathcal{A}} \pi(a' | s') \mathcal{Q}(s', a')$
 
@@ -140,7 +140,7 @@
 - Finally with Bellman Expectation Equations derived from Bellman Equations, we can derive the equations for the argmax of our value functions
 - **Optimal state-value function**
 	- $\mathcal{V}_*(s) = \arg\max_{\pi} \mathcal{V}_{\pi}(s)$
-	- Given $\mathcal{V}_{\pi}(s) = \sum_{a \in \mathcal{A}} \pi(s | a) (\mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{\pi}(s'))$
+	- Given $\mathcal{V}_{\pi}(s) = \sum_{a \in \mathcal{A}} \pi(a | s) (\mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{\pi}(s'))$
 	- We have $\mathcal{V}_*(s) = \max_{a \in \mathcal{A}} (\mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{*}(s')))$
 - **Optimal action-value function**
 	- $\mathcal{Q}_*(s) = \arg\max_{\pi} \mathcal{Q}_{\pi}(s)$
