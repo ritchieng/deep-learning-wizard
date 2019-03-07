@@ -644,6 +644,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../dynamic_programming_frozenlake/" title="Dynamic Programming" class="md-nav__link">
+      Dynamic Programming
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../readings/" title="Additional Readings" class="md-nav__link">
       Additional Readings
     </a>
@@ -1190,7 +1202,7 @@
 </li>
 <li><strong>Expanded functions (substitution)</strong><ul>
 <li>Substituting action-value function into the <strong>state-value function</strong><ul>
-<li><span><span class="MathJax_Preview">\mathcal{V}_{\pi}(s) = \sum_{a \in \mathcal{A}} \pi(s | a) (\mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{\pi}(s'))</span><script type="math/tex">\mathcal{V}_{\pi}(s) = \sum_{a \in \mathcal{A}} \pi(s | a) (\mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{\pi}(s'))</script></span></li>
+<li><span><span class="MathJax_Preview">\mathcal{V}_{\pi}(s) = \sum_{a \in \mathcal{A}} \pi(a | s) (\mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{\pi}(s'))</span><script type="math/tex">\mathcal{V}_{\pi}(s) = \sum_{a \in \mathcal{A}} \pi(a | s) (\mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{\pi}(s'))</script></span></li>
 </ul>
 </li>
 <li>Substituting  state-value function into <strong>action-value function</strong><ul>
@@ -1209,7 +1221,7 @@
 <li>Finally with Bellman Expectation Equations derived from Bellman Equations, we can derive the equations for the argmax of our value functions</li>
 <li><strong>Optimal state-value function</strong><ul>
 <li><span><span class="MathJax_Preview">\mathcal{V}_*(s) = \arg\max_{\pi} \mathcal{V}_{\pi}(s)</span><script type="math/tex">\mathcal{V}_*(s) = \arg\max_{\pi} \mathcal{V}_{\pi}(s)</script></span></li>
-<li>Given <span><span class="MathJax_Preview">\mathcal{V}_{\pi}(s) = \sum_{a \in \mathcal{A}} \pi(s | a) (\mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{\pi}(s'))</span><script type="math/tex">\mathcal{V}_{\pi}(s) = \sum_{a \in \mathcal{A}} \pi(s | a) (\mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{\pi}(s'))</script></span></li>
+<li>Given <span><span class="MathJax_Preview">\mathcal{V}_{\pi}(s) = \sum_{a \in \mathcal{A}} \pi(a | s) (\mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{\pi}(s'))</span><script type="math/tex">\mathcal{V}_{\pi}(s) = \sum_{a \in \mathcal{A}} \pi(a | s) (\mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{\pi}(s'))</script></span></li>
 <li>We have <span><span class="MathJax_Preview">\mathcal{V}_*(s) = \max_{a \in \mathcal{A}} (\mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{*}(s')))</span><script type="math/tex">\mathcal{V}_*(s) = \max_{a \in \mathcal{A}} (\mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{*}(s')))</script></span></li>
 </ul>
 </li>
@@ -1318,13 +1330,13 @@
           </a>
         
         
-          <a href="deep_learning/readings/" title="Additional Readings" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="deep_learning/deep_reinforcement_learning_pytorch/dynamic_programming_frozenlake/" title="Dynamic Programming" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Additional Readings
+                Dynamic Programming
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
