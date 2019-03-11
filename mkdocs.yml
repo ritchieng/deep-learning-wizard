@@ -36,6 +36,7 @@ pages:
 
     - News:
       - Welcome: news/news.md
+      - IT Youth Leader of The Year 2019, March 2019: news/it_youth_leader_2019_03_11.md
       - AMMI (AIMS) supported by Facebook and Google, November 2018: news/ammi_facebook_google_recap_2018_11_21.md
       - NExT++ AI in Healthcare and Finance, Nanjing, November 2018: news/nanjing_next_nus_tsinghua_ai_finance_healthcare_2018_11_01.md
       - Recap of Facebook PyTorch Developer Conference, San Francisco, September 2018: news/facebook_pytorch_devcon_recap_2018_10_02.md
