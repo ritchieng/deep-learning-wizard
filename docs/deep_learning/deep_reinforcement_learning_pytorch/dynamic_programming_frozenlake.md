@@ -1,4 +1,3 @@
-
 ## Frozen Lake Introduction
 - [Fronze Lake](https://gym.openai.com/envs/FrozenLake-v0/) is a simple game where you are on a frozen lake and you need to retrieve an item on the frozen lake where some parts are frozen and some parts are holes (if you walk into them you die)
 - Actions: $\mathcal{A} = \{0, 1, 2, 3\}$

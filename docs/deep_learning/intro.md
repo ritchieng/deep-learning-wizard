@@ -1,5 +1,13 @@
-# Deep Learning Theory and Programming Tutorials
-Our main open-source programming languages and libraries are Python, PyTorch, NumPy and C++. If you would like a more visual and guided experience, feel free to take our [video course](https://www.udemy.com/practical-deep-learning-with-pytorch/?couponCode=DEEPWIZARD).
+# Deep Learning and Deep Reinforcement Learning Theory and Programming Tutorials
+Our main open-source programming languages and libraries are:
+
+<button class="button" onClick="window.open('https://www.python.org/');" data-md-color-primary="indigo">Python</button>
+<button class="button" onClick="window.open('https://pytorch.org/');" data-md-color-primary="red">PyTorch</button>
+<button class="button" onClick="window.open('http://www.numpy.org/');" data-md-color-primary="yellow">NumPy</button>
+<button class="button" onClick="window.open('https://gym.openai.com/');" data-md-color-primary="teal">Gym</button>
+
+
+If you would like a more visual and guided experience, feel free to take our [video course](https://www.udemy.com/practical-deep-learning-with-pytorch/?couponCode=DEEPWIZARD).
 
 ## Paths
 !!! info "Work in progress"

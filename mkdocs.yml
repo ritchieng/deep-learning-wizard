@@ -1,15 +1,15 @@
 # Project information
 site_name: 'Deep Learning Wizard'
-site_description: 'We deploy a top-down approach that enables you to grasp deep learning theories and code easily and quickly. Used by thousands of students and professionals from top tech companies, research institutions.'
+site_description: 'Learn deep learning theories and code easily and quickly. Used by thousands of students and professionals from top tech companies and research institutions.'
 site_author: 'Ritchie Ng'
 site_url: 'https://www.deeplearningwizard.com/'
 
 # Navigation
 pages:
     - Home: index.md
-    - Supporters: supporters.md
+    - About Us: about.md
     - Reviews: review.md
-    - Deep Learning Tutorials:
+    - Deep Learning Tutorials (CPU/GPU):
       - Introduction: deep_learning/intro.md
       - Course Progression: deep_learning/course_progression.md
       - Matrices: deep_learning/practical_pytorch/pytorch_matrices.md
@@ -111,4 +111,4 @@ google_analytics:
   - 'auto'
 
 # Copyright
-copyright: 'Copyright &copy; 2018 Deep Learning Wizard'
+copyright: 'Copyright &copy; 2019 Deep Learning Wizard'
