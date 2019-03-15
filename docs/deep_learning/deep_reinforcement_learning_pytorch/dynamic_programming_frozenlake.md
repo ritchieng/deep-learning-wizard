@@ -965,6 +965,7 @@ sns.heatmap(rand_policy,  cmap="YlGnBu", annot=True, cbar=False);
 - Aim: improve policy until convergence
     - Convergence: difference of state values between old and new policies is very small (less than theta, a very small positive number)
 
+![](./images/policy_iteration.png)
 
 ```python
 import copy
@@ -1024,6 +1025,7 @@ sns.heatmap(V.reshape(4, 4),  cmap="YlGnBu", annot=True, cbar=False);
 - Aim: improve value function until convergence
     - Convergence: until difference in new and old state values are small (smaller than theta, small positive number)
 
+![](./images/value_iteration.png)
 
 ```python
 def value_iteration(env, gamma=1, theta=1e-8):
