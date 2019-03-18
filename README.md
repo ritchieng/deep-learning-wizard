@@ -8,7 +8,7 @@ Please head to [www.deeplearningwizard.com](https://www.deeplearningwizard.com/)
 This repository contains all the notesbooks and mkdocs markdown files of the tutorials covering machine learning, deep learning, scalable database, programming, data processing and data visualization powering the website.
 
 ## Sections and Subsections
-- [Deep Learning Tutorials (Libaries: Python, PyTorch, Gym, NumPy and Matplotlib)](https://www.deeplearningwizard.com/deep_learning/intro/)
+- [Deep Learning Tutorials (Libraries: Python, PyTorch, Gym, NumPy and Matplotlib)](https://www.deeplearningwizard.com/deep_learning/intro/)
     - [Course Progression](https://www.deeplearningwizard.com/deep_learning/course_progression/)
     - [Matrices](https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_matrices/)
     - [Gradients](https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_gradients/)
@@ -26,7 +26,7 @@ This repository contains all the notesbooks and mkdocs markdown files of the tut
     - [Supervised to Reinforcement Learning](https://www.deeplearningwizard.com/deep_learning/deep_reinforcement_learning_pytorch/supervised_to_rl/)
     - [Markov Decision Processes and Bellman Equations](https://www.deeplearningwizard.com/deep_learning/deep_reinforcement_learning_pytorch/bellman_mdp/)
     - [Dynamic Programming](https://www.deeplearningwizard.com/deep_learning/deep_reinforcement_learning_pytorch/dynamic_programming_frozenlake/)
-- [Scalable Database Tutorials (Libaries: Apache Cassandra, Bash and Python)](https://www.deeplearningwizard.com/database/intro/)
+- [Scalable Database Tutorials (Libraries: Apache Cassandra, Bash and Python)](https://www.deeplearningwizard.com/database/intro/)
     - [Apache Cassandra Cluster Setup](https://www.deeplearningwizard.com/database/setting_up_cluster/)
     
 ## Always Latest PyTorch Version
