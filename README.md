@@ -8,7 +8,7 @@ Please head to [www.deeplearningwizard.com](https://www.deeplearningwizard.com/)
 This repository contains all the notesbooks and mkdocs markdown files of the tutorials covering machine learning, deep learning, scalable database, programming, data processing and data visualization powering the website.
 
 ## Sections and Subsections
-- [Deep Learning Tutorials (Libraries: Python, PyTorch, Gym, NumPy and Matplotlib)](https://www.deeplearningwizard.com/deep_learning/intro/)
+- [Deep Learning and Deep Reinforcement Learning Tutorials (Libraries: Python, PyTorch, Gym, NumPy and Matplotlib)](https://www.deeplearningwizard.com/deep_learning/intro/)
     - [Course Progression](https://www.deeplearningwizard.com/deep_learning/course_progression/)
     - [Matrices](https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_matrices/)
     - [Gradients](https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_gradients/)
