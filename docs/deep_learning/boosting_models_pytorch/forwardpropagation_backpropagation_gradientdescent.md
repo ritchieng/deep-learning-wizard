@@ -1,5 +1,8 @@
 # Forwardpropagation, Backpropagation and Gradient Descent with PyTorch
 
+!!! tip "Run Jupyter Notebook"
+    You can run the code for this section in this [jupyter notebook link](https://github.com/ritchieng/deep-learning-wizard/blob/master/docs/deep_learning/boosting_models_pytorch/forwardpropagation_backpropagation_gradientdescent.ipynb).
+    
 ## Transiting to Backpropagation
 - Let's go back to our simple FNN to put things in perspective
     - Let us ignore non-linearities for now to keep it simpler, but it's just a tiny change subsequently

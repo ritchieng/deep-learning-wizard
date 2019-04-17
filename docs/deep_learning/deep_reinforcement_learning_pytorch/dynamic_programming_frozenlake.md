@@ -1,4 +1,7 @@
 ## Frozen Lake Introduction
+!!! tip "Run Jupyter Notebook"
+    You can run the code for this section in this [jupyter notebook link](https://github.com/ritchieng/deep-learning-wizard/blob/master/docs/deep_learning/deep_reinforcement_learning_pytorch/dynamic_programming_frozenlake.ipynb).
+    
 - [Fronze Lake](https://gym.openai.com/envs/FrozenLake-v0/) is a simple game where you are on a frozen lake and you need to retrieve an item on the frozen lake where some parts are frozen and some parts are holes (if you walk into them you die)
 - Actions: $\mathcal{A} = \{0, 1, 2, 3\}$
     1. LEFT: 0

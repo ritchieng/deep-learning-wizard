@@ -1,5 +1,9 @@
 # Learning Rate Scheduling
 
+!!! tip "Run Jupyter Notebook"
+    You can run the code for this section in this [jupyter notebook link](https://github.com/ritchieng/deep-learning-wizard/blob/master/docs/deep_learning/boosting_models_pytorch/lr_scheduling.md).
+    
+    
 ## Optimization Algorithm: Mini-batch Stochastic Gradient Descent (SGD)
 - We will be using mini-batch gradient descent in all our examples here when scheduling our learning rate
 - Combination of batch gradient descent & stochastic gradient descent

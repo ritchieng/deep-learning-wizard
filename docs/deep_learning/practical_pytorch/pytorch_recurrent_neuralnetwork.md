@@ -1,4 +1,8 @@
 # Recurrent Neural Network with PyTorch
+
+!!! tip "Run Jupyter Notebook"
+    You can run the code for this section in this [jupyter notebook link](https://github.com/ritchieng/deep-learning-wizard/blob/master/docs/deep_learning/practical_pytorch/pytorch_recurrent_neuralnetwork.ipynb).
+    
 ## About Recurrent Neural Network
 
 ### Feedforward Neural Networks Transition to 1 Layer Recurrent Neural Networks (RNN)

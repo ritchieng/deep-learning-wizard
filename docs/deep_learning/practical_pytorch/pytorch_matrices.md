@@ -1,7 +1,9 @@
 # Matrices with PyTorch 
 
+!!! tip "Run Jupyter Notebook"
+    You can run the code for this section in this [jupyter notebook link](https://github.com/ritchieng/deep-learning-wizard/blob/master/docs/deep_learning/practical_pytorch/pytorch_matrices.ipynb).
+    
 ## Matrices
-
 
 ### Matrices Brief Introduction
 * [x] Basic definition: rectangular array of numbers.
@@ -956,12 +958,11 @@ torch.Size([2, 10])
 #### Tensor Standard Deviation
 
 !!! note "Get standard deviation of tensor"
-
-```python
-
-a = torch.Tensor([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-a.std(dim=0)
-```
+    ```python
+    
+    a = torch.Tensor([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+    a.std(dim=0)
+    ```
 
 
 ```python

@@ -1,5 +1,8 @@
 # Feedforward Neural Network with PyTorch
 
+!!! tip "Run Jupyter Notebook"
+    You can run the code for this section in this [jupyter notebook link](https://github.com/ritchieng/deep-learning-wizard/blob/master/docs/deep_learning/practical_pytorch/pytorch_feedforward_neuralnetwork.ipynb).
+    
 ## About Feedforward Neural Network
 
 ### Logistic Regression Transition to Neural Networks

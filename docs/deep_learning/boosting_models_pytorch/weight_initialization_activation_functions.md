@@ -1,5 +1,8 @@
 # Weight Initializations & Activation Functions
 
+!!! tip "Run Jupyter Notebook"
+    You can run the code for this section in this [jupyter notebook link](https://github.com/ritchieng/deep-learning-wizard/blob/master/docs/deep_learning/boosting_models_pytorch/weight_initialization_activation_functions.ipynb).
+    
 ## Recap of Logistic Regression
 ![](./images/cross_entropy_final_4.png)
 

@@ -1,6 +1,9 @@
 # Linear Regression with PyTorch
-## About Linear Regression
 
+!!! tip "Run Jupyter Notebook"
+    You can run the code for this section in this [jupyter notebook link](https://github.com/ritchieng/deep-learning-wizard/blob/master/docs/deep_learning/practical_pytorch/pytorch_linear_regression.ipynb).
+    
+## About Linear Regression
 
 ### Simple Linear Regression Basics
 - Allows us to understand **relationship** between two **continuous variables**

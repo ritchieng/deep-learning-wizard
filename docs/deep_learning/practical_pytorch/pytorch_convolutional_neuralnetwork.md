@@ -1,4 +1,8 @@
 # Convolutional Neural Network with PyTorch
+
+!!! tip "Run Jupyter Notebook"
+    You can run the code for this section in this [jupyter notebook link](https://github.com/ritchieng/deep-learning-wizard/blob/master/docs/deep_learning/practical_pytorch/pytorch_convolutional_neuralnetwork.ipynb).
+    
 ## About Convolutional Neural Network
 
 ### Transition From Feedforward Neural Network

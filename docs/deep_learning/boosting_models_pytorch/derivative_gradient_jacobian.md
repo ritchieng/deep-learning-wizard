@@ -1,5 +1,8 @@
 # Derivative, Gradient and Jacobian
 
+!!! tip "Run Jupyter Notebook"
+    You can run the code for this section in this [jupyter notebook link](https://github.com/ritchieng/deep-learning-wizard/blob/master/docs/deep_learning/boosting_models_pytorch/derivative_gradient_jacobian.md).
+    
 ## Simplified Equation
 - This is the simplified equation we have been using on how we update our parameters to reach good values (good local or global minima)
 - $\theta = \theta - \eta \cdot \nabla_\theta$

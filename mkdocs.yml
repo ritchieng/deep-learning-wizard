@@ -57,8 +57,8 @@ theme:
   logo:
     icon: 'whatshot'
   palette:
-    primary: 'blue-grey'
-    accent: 'blue'
+    primary: 'teal'
+    accent: 'teal'
   font:
     text: 'Roboto'
     code: 'Roboto Mono'
