@@ -31,8 +31,11 @@ pages:
       - Dynamic Programming: deep_learning/deep_reinforcement_learning_pytorch/dynamic_programming_frozenlake.md
       - Additional Readings: deep_learning/readings.md
 
+    - Programming Tutorials:
+      - Introduction: programming/intro.md
+
     - Scalable Database Tutorials:
-      - Welcome: database/intro.md
+      - Introduction: database/intro.md
       - Cassandra Cluster Setup: database/setting_up_cluster.md
 
     - News:
