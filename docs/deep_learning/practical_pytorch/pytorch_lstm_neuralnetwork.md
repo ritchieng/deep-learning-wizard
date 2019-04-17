@@ -184,7 +184,7 @@ torch.Size([10000])
 
 #### Step 6: Instantiate Optimizer Class
 - Simplified equation
-    - $\theta = \theta - \eta \cdot \nabla_\theta $
+    - $\theta = \theta - \eta \cdot \nabla_\theta$
         - $\theta$: parameters (our variables)
         - $\eta$: learning rate (how fast we want to learn)
         - $\nabla_\theta$: parameters' gradients
