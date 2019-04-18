@@ -33,6 +33,7 @@ pages:
 
     - Programming Tutorials:
       - Introduction: programming/intro.md
+      - C++: programming/cpp/cpp.md
 
     - Scalable Database Tutorials:
       - Introduction: database/intro.md
