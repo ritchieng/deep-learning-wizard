@@ -29,6 +29,7 @@ Take note this is an early work in progress, do be patient as we gradually uploa
     - [Markov Decision Processes and Bellman Equations](https://www.deeplearningwizard.com/deep_learning/deep_reinforcement_learning_pytorch/bellman_mdp/)
     - [Dynamic Programming](https://www.deeplearningwizard.com/deep_learning/deep_reinforcement_learning_pytorch/dynamic_programming_frozenlake/)
 - [Programming Tutorials (Libraries: C++, Python, Bash and more)](https://www.deeplearningwizard.com/programming/intro/)
+    - [C++](https://www.deeplearningwizard.com/programming/cpp/cpp/)
 - [Scalable Database Tutorials (Libraries: Apache Cassandra, Bash and Python)](https://www.deeplearningwizard.com/database/intro/)
     - [Apache Cassandra Cluster Setup](https://www.deeplearningwizard.com/database/setting_up_cluster/)
     
