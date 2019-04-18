@@ -772,6 +772,33 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#constants" title="Constants" class="md-nav__link">
+    Constants
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#literal-constants" title="Literal Constants" class="md-nav__link">
+    Literal Constants
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enumerated-constants" title="Enumerated Constants" class="md-nav__link">
+    Enumerated Constants
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#functions" title="Functions" class="md-nav__link">
     Functions
   </a>
@@ -1250,6 +1277,33 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#constants" title="Constants" class="md-nav__link">
+    Constants
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#literal-constants" title="Literal Constants" class="md-nav__link">
+    Literal Constants
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enumerated-constants" title="Enumerated Constants" class="md-nav__link">
+    Enumerated Constants
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#functions" title="Functions" class="md-nav__link">
     Functions
   </a>
@@ -1587,6 +1641,31 @@ Three hundred:  300
 </pre></div>
 
 <div class="codehilite"><pre><span></span>Size of an unsigned long integer: 8
+</pre></div>
+
+
+<h2 id="constants">Constants<a class="headerlink" href="#constants" title="Permanent link">&para;</a></h2>
+<h3 id="literal-constants">Literal Constants<a class="headerlink" href="#literal-constants" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="kt">int</span> <span class="n">varOne</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">varOne</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>20
+</pre></div>
+
+
+<h3 id="enumerated-constants">Enumerated Constants<a class="headerlink" href="#enumerated-constants" title="Permanent link">&para;</a></h3>
+<p>This enables you to create a new type! In this example we create a new type <code class="codehilite">directions</code> containing <code class="codehilite">Up</code>, <code class="codehilite">Down</code>, <code class="codehilite">Left</code>, and <code class="codehilite">Right</code>.</p>
+<div class="codehilite"><pre><span></span><span class="k">enum</span> <span class="n">directions</span> <span class="p">{</span><span class="n">Up</span><span class="p">,</span> <span class="n">Down</span><span class="p">,</span> <span class="n">Left</span><span class="p">,</span> <span class="n">Right</span><span class="p">};</span>
+
+<span class="n">directions</span> <span class="n">goWhere</span><span class="p">;</span>
+<span class="n">goWhere</span> <span class="o">=</span> <span class="n">Right</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">goWhere</span> <span class="o">==</span> <span class="n">Right</span><span class="p">)</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Go right&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>Go right
 </pre></div>
 
 
