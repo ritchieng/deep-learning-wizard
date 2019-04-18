@@ -7,6 +7,8 @@ Please head to [www.deeplearningwizard.com](https://www.deeplearningwizard.com/)
 ## Repository Details
 This repository contains all the notesbooks and mkdocs markdown files of the tutorials covering machine learning, deep learning, scalable database, programming, data processing and data visualization powering the website.
 
+Take note this is an early work in progress, do be patient as we gradually upload our guides.
+
 ## Sections and Subsections
 - [Deep Learning and Deep Reinforcement Learning Tutorials (Libraries: Python, PyTorch, Gym, NumPy and Matplotlib)](https://www.deeplearningwizard.com/deep_learning/intro/)
     - [Course Progression](https://www.deeplearningwizard.com/deep_learning/course_progression/)
@@ -26,12 +28,10 @@ This repository contains all the notesbooks and mkdocs markdown files of the tut
     - [Supervised to Reinforcement Learning](https://www.deeplearningwizard.com/deep_learning/deep_reinforcement_learning_pytorch/supervised_to_rl/)
     - [Markov Decision Processes and Bellman Equations](https://www.deeplearningwizard.com/deep_learning/deep_reinforcement_learning_pytorch/bellman_mdp/)
     - [Dynamic Programming](https://www.deeplearningwizard.com/deep_learning/deep_reinforcement_learning_pytorch/dynamic_programming_frozenlake/)
+- [Programming Tutorials (Libraries: C++, Python, Bash and more)](https://www.deeplearningwizard.com/programming/intro/)
 - [Scalable Database Tutorials (Libraries: Apache Cassandra, Bash and Python)](https://www.deeplearningwizard.com/database/intro/)
     - [Apache Cassandra Cluster Setup](https://www.deeplearningwizard.com/database/setting_up_cluster/)
     
-## Always Latest PyTorch Version
-We always provide the latest PyTorch version (0.4/1.0) so that you will be learning up-to-date code! 
-
 ## About Deep Learning Wizard
 We deploy a top-down approach that enables you to grasp deep learning theories and code easily and quickly. We have open-sourced all our materials through our Deep Learning Wizard Wikipedia. For visual learners, feel free to sign up for our video course and join over 2300 deep learning wizards.
 

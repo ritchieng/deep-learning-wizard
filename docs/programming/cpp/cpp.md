@@ -262,7 +262,7 @@ MultiplyTwoNumbersWithAlias(1000, 65)
 
 
 #### Multiply Two Numbers 1000 and 67
-- Notice how you don't get 66,000? This is because our variable `value` of `ushortint` type can only hold values up to the integer 65,536.
+- Notice how you don't get 67,000? This is because our variable `value` of `ushortint` type can only hold values up to the integer 65,536.
 - What this returns is the remainder of 67,000 - 65,536 = 1464
 
 
