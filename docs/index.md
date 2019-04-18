@@ -7,10 +7,13 @@ To this date, we have taught thousands of students across more than 120+ countri
 Learn CPU and GPU-accelerated deep learning and deep reinforcement learning with
 
 <button class="button" onClick="window.open('https://www.python.org/');" data-md-color-primary="indigo">Python</button>
+<button class="button" onClick="window.open('http://www.cplusplus.org/');" data-md-color-primary="blue">C++</button>
 <button class="button" onClick="window.open('https://pytorch.org/');" data-md-color-primary="red">PyTorch</button>
+<button class="button" onClick="window.open('https://pandas.pydata.org/');" data-md-color-primary="blue-grey">Pandas</button>
 <button class="button" onClick="window.open('http://www.numpy.org/');" data-md-color-primary="yellow">NumPy</button>
 <button class="button" onClick="window.open('https://gym.openai.com/');" data-md-color-primary="teal">Gym</button>
-<button class="button" onClick="window.open('https://gym.openai.com/');" data-md-color-primary="blue-grey">Matplotlib</button>
+<button class="button" onClick="window.open('https://scikit-learn.org/');" data-md-color-primary="orange">Scikit-learn</button>
+<button class="button" onClick="window.open('https://plot.ly/');" data-md-color-primary="light-blue">Plotly</button>
 
 !!! tip ""NVIDIA Inception Partner"
     <center><img src="https://res.cloudinary.com/ritchieng/image/upload/v1532596192/deeplearningwizard.com/nvidia_inception.png" style="width:200px"/></center>
