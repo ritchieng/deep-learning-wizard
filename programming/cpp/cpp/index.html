@@ -1,0 +1,1831 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Learn deep learning theories and code easily and quickly. Used by thousands of students and professionals from top tech companies and research institutions.">
+      
+      
+        <link rel="canonical" href="https://www.deeplearningwizard.com/programming/cpp/cpp/">
+      
+      
+        <meta name="author" content="Ritchie Ng">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../../assets/images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+    
+    
+      
+        <title>C++ - Deep Learning Wizard</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.451f80e5.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#009688">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../../../#c" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://www.deeplearningwizard.com/" title="Deep Learning Wizard" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">whatshot</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Deep Learning Wizard
+              </span>
+              <span class="md-header-nav__topic">
+                C++
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../../.." title="Home" class="md-tabs__link">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../deep_learning/intro/" title="Deep Learning Tutorials (CPU/GPU)" class="md-tabs__link">
+          Deep Learning Tutorials (CPU/GPU)
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../intro/" title="Programming Tutorials" class="md-tabs__link md-tabs__link--active">
+          Programming Tutorials
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../database/intro/" title="Scalable Database Tutorials" class="md-tabs__link">
+          Scalable Database Tutorials
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../news/news/" title="News" class="md-tabs__link">
+          News
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://www.deeplearningwizard.com/" title="Deep Learning Wizard" class="md-nav__button md-logo">
+      
+        <i class="md-icon">whatshot</i>
+      
+    </a>
+    Deep Learning Wizard
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../about/" title="About Us" class="md-nav__link">
+      About Us
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../review/" title="Reviews" class="md-nav__link">
+      Reviews
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../pipeline/" title="AI Pipeline" class="md-nav__link">
+      AI Pipeline
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Deep Learning Tutorials (CPU/GPU)
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Deep Learning Tutorials (CPU/GPU)
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/intro/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/course_progression/" title="Course Progression" class="md-nav__link">
+      Course Progression
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/practical_pytorch/pytorch_matrices/" title="Matrices" class="md-nav__link">
+      Matrices
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/practical_pytorch/pytorch_gradients/" title="Gradients" class="md-nav__link">
+      Gradients
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/practical_pytorch/pytorch_linear_regression/" title="Linear Regression" class="md-nav__link">
+      Linear Regression
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/practical_pytorch/pytorch_logistic_regression/" title="Logistic Regression" class="md-nav__link">
+      Logistic Regression
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/practical_pytorch/pytorch_feedforward_neuralnetwork/" title="Feedforward Neural Networks" class="md-nav__link">
+      Feedforward Neural Networks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/practical_pytorch/pytorch_convolutional_neuralnetwork/" title="Convolutional Neural Networks" class="md-nav__link">
+      Convolutional Neural Networks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/practical_pytorch/pytorch_recurrent_neuralnetwork/" title="Recurrent Neural Networks" class="md-nav__link">
+      Recurrent Neural Networks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/practical_pytorch/pytorch_lstm_neuralnetwork/" title="Long Short Term Memory Neural Networks" class="md-nav__link">
+      Long Short Term Memory Neural Networks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/boosting_models_pytorch/derivative_gradient_jacobian/" title="Derivative, Gradient and Jacobian" class="md-nav__link">
+      Derivative, Gradient and Jacobian
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/boosting_models_pytorch/forwardpropagation_backpropagation_gradientdescent/" title="Forward- and Backward-propagation and Gradient Descent" class="md-nav__link">
+      Forward- and Backward-propagation and Gradient Descent
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/boosting_models_pytorch/lr_scheduling/" title="Learning Rate Scheduling" class="md-nav__link">
+      Learning Rate Scheduling
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/boosting_models_pytorch/optimizers/" title="Optimization Algorithms" class="md-nav__link">
+      Optimization Algorithms
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/boosting_models_pytorch/weight_initialization_activation_functions/" title="Weight Initialization and Activation Functions" class="md-nav__link">
+      Weight Initialization and Activation Functions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/deep_reinforcement_learning_pytorch/supervised_to_rl/" title="Supervised Learning to Reinforcement Learning" class="md-nav__link">
+      Supervised Learning to Reinforcement Learning
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/deep_reinforcement_learning_pytorch/bellman_mdp/" title="Markov Decision Processes and Bellman Equations" class="md-nav__link">
+      Markov Decision Processes and Bellman Equations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/deep_reinforcement_learning_pytorch/dynamic_programming_frozenlake/" title="Dynamic Programming" class="md-nav__link">
+      Dynamic Programming
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/readings/" title="Additional Readings" class="md-nav__link">
+      Additional Readings
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+    
+    <label class="md-nav__link" for="nav-6">
+      Programming Tutorials
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Programming Tutorials
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../intro/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        C++
+      </label>
+    
+    <a href="./" title="C++" class="md-nav__link md-nav__link--active">
+      C++
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation-of-interactive-c17" title="Installation of Interactive C++17" class="md-nav__link">
+    Installation of Interactive C++17
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#printing" title="Printing" class="md-nav__link">
+    Printing
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#printing-single-line" title="Printing Single Line" class="md-nav__link">
+    Printing Single Line
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#printing-2-lines" title="Printing 2 Lines" class="md-nav__link">
+    Printing 2 Lines
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#printing-with-tabs" title="Printing with Tabs" class="md-nav__link">
+    Printing with Tabs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#easier-printing-subjective-with-namespaces" title="Easier Printing (subjective) with Namespaces" class="md-nav__link">
+    Easier Printing (subjective) with Namespaces
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables" title="Variables" class="md-nav__link">
+    Variables
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general-memory-management" title="General memory management" class="md-nav__link">
+    General memory management
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-of-variables" title="Types of Variables" class="md-nav__link">
+    Types of Variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integer-sizes" title="Integer sizes" class="md-nav__link">
+    Integer sizes
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#integer-size" title="Integer size" class="md-nav__link">
+    Integer size
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#short-integer-size" title="Short integer size" class="md-nav__link">
+    Short integer size
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#long-integer-size" title="Long integer size" class="md-nav__link">
+    Long integer size
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unsigned-or-signed-integers" title="Unsigned or signed integers" class="md-nav__link">
+    Unsigned or signed integers
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#signed-short-integer" title="Signed short integer" class="md-nav__link">
+    Signed short integer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unsigned-short-integer" title="Unsigned short integer" class="md-nav__link">
+    Unsigned short integer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signed-long-integer" title="Signed long integer" class="md-nav__link">
+    Signed long integer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unsigned-long-integer" title="Unsigned long integer" class="md-nav__link">
+    Unsigned long integer
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions" title="Functions" class="md-nav__link">
+    Functions
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-without-return-value" title="Function Without Return Value" class="md-nav__link">
+    Function Without Return Value
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multiply-two-numbers-3-and-2" title="Multiply Two Numbers 3 and 2" class="md-nav__link">
+    Multiply Two Numbers 3 and 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiply-two-numbers-6-and-2" title="Multiply Two Numbers 6 and 2" class="md-nav__link">
+    Multiply Two Numbers 6 and 2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aliases-function" title="Aliases Function" class="md-nav__link">
+    Aliases Function
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multiply-two-numbers-10-and-10" title="Multiply Two Numbers 10 and 10" class="md-nav__link">
+    Multiply Two Numbers 10 and 10
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiply-two-numbers-1000-and-65" title="Multiply Two Numbers 1000 and 65" class="md-nav__link">
+    Multiply Two Numbers 1000 and 65
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiply-two-numbers-1000-and-67" title="Multiply Two Numbers 1000 and 67" class="md-nav__link">
+    Multiply Two Numbers 1000 and 67
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-with-return-value" title="Function with Return Value" class="md-nav__link">
+    Function with Return Value
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#call-function" title="Call Function" class="md-nav__link">
+    Call Function
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="Comments" class="md-nav__link md-nav__link--active">
+            Comments
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Scalable Database Tutorials
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        Scalable Database Tutorials
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/intro/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/setting_up_cluster/" title="Cassandra Cluster Setup" class="md-nav__link">
+      Cassandra Cluster Setup
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      News
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        News
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/news/" title="Welcome" class="md-nav__link">
+      Welcome
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/it_youth_leader_2019_03_11/" title="IT Youth Leader of The Year 2019, March 2019" class="md-nav__link">
+      IT Youth Leader of The Year 2019, March 2019
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/ammi_facebook_google_recap_2018_11_21/" title="AMMI (AIMS) supported by Facebook and Google, November 2018" class="md-nav__link">
+      AMMI (AIMS) supported by Facebook and Google, November 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/nanjing_next_nus_tsinghua_ai_finance_healthcare_2018_11_01/" title="NExT++ AI in Healthcare and Finance, Nanjing, November 2018" class="md-nav__link">
+      NExT++ AI in Healthcare and Finance, Nanjing, November 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/facebook_pytorch_devcon_recap_2018_10_02/" title="Recap of Facebook PyTorch Developer Conference, San Francisco, September 2018" class="md-nav__link">
+      Recap of Facebook PyTorch Developer Conference, San Francisco, September 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/facebook_pytorch_developer_conference_2018_09_05/" title="Facebook PyTorch Developer Conference, San Francisco, September 2018" class="md-nav__link">
+      Facebook PyTorch Developer Conference, San Francisco, September 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/nvidia_nus_mit_datathon_2018_07_05/" title="NUS-MIT-NUHS NVIDIA Image Recognition Workshop, Singapore, July 2018" class="md-nav__link">
+      NUS-MIT-NUHS NVIDIA Image Recognition Workshop, Singapore, July 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/deep_learning_wizard_1y_2018_06_01/" title="Featured on PyTorch Website 2018" class="md-nav__link">
+      Featured on PyTorch Website 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/nvidia_self_driving_cars_talk_2017_06_21/" title="NVIDIA Self Driving Cars & Healthcare Talk, Singapore, June 2017" class="md-nav__link">
+      NVIDIA Self Driving Cars & Healthcare Talk, Singapore, June 2017
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/deep_learning_wizard_nvidia_inception_2018_05_01/" title="NVIDIA Inception Partner Status, Singapore, May 2017" class="md-nav__link">
+      NVIDIA Inception Partner Status, Singapore, May 2017
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation-of-interactive-c17" title="Installation of Interactive C++17" class="md-nav__link">
+    Installation of Interactive C++17
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#printing" title="Printing" class="md-nav__link">
+    Printing
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#printing-single-line" title="Printing Single Line" class="md-nav__link">
+    Printing Single Line
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#printing-2-lines" title="Printing 2 Lines" class="md-nav__link">
+    Printing 2 Lines
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#printing-with-tabs" title="Printing with Tabs" class="md-nav__link">
+    Printing with Tabs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#easier-printing-subjective-with-namespaces" title="Easier Printing (subjective) with Namespaces" class="md-nav__link">
+    Easier Printing (subjective) with Namespaces
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variables" title="Variables" class="md-nav__link">
+    Variables
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general-memory-management" title="General memory management" class="md-nav__link">
+    General memory management
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-of-variables" title="Types of Variables" class="md-nav__link">
+    Types of Variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integer-sizes" title="Integer sizes" class="md-nav__link">
+    Integer sizes
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#integer-size" title="Integer size" class="md-nav__link">
+    Integer size
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#short-integer-size" title="Short integer size" class="md-nav__link">
+    Short integer size
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#long-integer-size" title="Long integer size" class="md-nav__link">
+    Long integer size
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unsigned-or-signed-integers" title="Unsigned or signed integers" class="md-nav__link">
+    Unsigned or signed integers
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#signed-short-integer" title="Signed short integer" class="md-nav__link">
+    Signed short integer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unsigned-short-integer" title="Unsigned short integer" class="md-nav__link">
+    Unsigned short integer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signed-long-integer" title="Signed long integer" class="md-nav__link">
+    Signed long integer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unsigned-long-integer" title="Unsigned long integer" class="md-nav__link">
+    Unsigned long integer
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions" title="Functions" class="md-nav__link">
+    Functions
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-without-return-value" title="Function Without Return Value" class="md-nav__link">
+    Function Without Return Value
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multiply-two-numbers-3-and-2" title="Multiply Two Numbers 3 and 2" class="md-nav__link">
+    Multiply Two Numbers 3 and 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiply-two-numbers-6-and-2" title="Multiply Two Numbers 6 and 2" class="md-nav__link">
+    Multiply Two Numbers 6 and 2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aliases-function" title="Aliases Function" class="md-nav__link">
+    Aliases Function
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multiply-two-numbers-10-and-10" title="Multiply Two Numbers 10 and 10" class="md-nav__link">
+    Multiply Two Numbers 10 and 10
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiply-two-numbers-1000-and-65" title="Multiply Two Numbers 1000 and 65" class="md-nav__link">
+    Multiply Two Numbers 1000 and 65
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiply-two-numbers-1000-and-67" title="Multiply Two Numbers 1000 and 67" class="md-nav__link">
+    Multiply Two Numbers 1000 and 67
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-with-return-value" title="Function with Return Value" class="md-nav__link">
+    Function with Return Value
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#call-function" title="Call Function" class="md-nav__link">
+    Call Function
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="Comments" class="md-nav__link md-nav__link--active">
+            Comments
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="c">C++<a class="headerlink" href="#c" title="Permanent link">&para;</a></h1>
+<div class="admonition tip">
+<p class="admonition-title">Run Jupyter Notebook</p>
+<p>You can run the code for this section in this <a href="https://github.com/ritchieng/deep-learning-wizard/blob/master/docs/programming/cpp/cpp.ipynb">jupyter notebook link</a>.</p>
+</div>
+<h2 id="installation-of-interactive-c17">Installation of Interactive C++17<a class="headerlink" href="#installation-of-interactive-c17" title="Permanent link">&para;</a></h2>
+<p>Xeus-Cling is a game-changer where similar to Python Jupyter Notebooks, we can run C++ Jupyter Notebooks now. Run the following bash commands in sequence to create a C++ kernel for Jupyter Notebook.</p>
+<div class="codehilite"><pre><span></span>conda create -n cpp
+<span class="nb">source</span> activate cpp
+conda install -c conda-forge xeus-cling
+jupyter kernelspec install --user /home/ritchie/miniconda3/envs/cpp/share/jupyter/kernels/xcpp17
+jupyter notebook
+</pre></div>
+
+<h2 id="printing">Printing<a class="headerlink" href="#printing" title="Permanent link">&para;</a></h2>
+<h3 id="printing-single-line">Printing Single Line<a class="headerlink" href="#printing-single-line" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="c1">// When you compile, the preprocessor runs and acts on all line with the pound key first</span>
+
+<span class="c1">// This is a preprocessor instruction that</span>
+<span class="c1">// essentially places the file with the name iostream into this spot</span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span><span class="c1">// Print one line</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Using Xeus Cling&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>Using Xeus Cling
+</pre></div>
+
+
+<h3 id="printing-2-lines">Printing 2 Lines<a class="headerlink" href="#printing-2-lines" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="c1">// Print two lines</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;First Line </span><span class="se">\n</span><span class="s">Second Line&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>First Line 
+Second Line
+</pre></div>
+
+
+<h3 id="printing-with-tabs">Printing with Tabs<a class="headerlink" href="#printing-with-tabs" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="c1">// Print numbers with nicely formatted tabs</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;One hundred:</span><span class="se">\t</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span> <span class="mi">1000</span><span class="o">/</span><span class="mi">10</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Two hundred:</span><span class="se">\t</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="kt">double</span><span class="p">)</span> <span class="mi">2000</span><span class="o">/</span><span class="mi">10</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Three hundred:</span><span class="se">\t</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="kt">double</span><span class="p">)</span> <span class="mi">3000</span><span class="o">/</span><span class="mi">10</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>One hundred:    100
+Two hundred:    200
+Three hundred:  300
+</pre></div>
+
+
+<h3 id="easier-printing-subjective-with-namespaces">Easier Printing (subjective) with Namespaces<a class="headerlink" href="#easier-printing-subjective-with-namespaces" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Gets irritating to use <code class="codehilite">std</code> in front of <code class="codehilite">cout</code> and <code class="codehilite">endl</code> to keep printing so we can use namespaces</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;No need for messy std::&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>No need for messy std::
+</pre></div>
+
+
+<h2 id="variables">Variables<a class="headerlink" href="#variables" title="Permanent link">&para;</a></h2>
+<h3 id="general-memory-management">General memory management<a class="headerlink" href="#general-memory-management" title="Permanent link">&para;</a></h3>
+<p>In C++, you always need to determine each variable's type so the compiler will know how much memory (RAM) to allocate to the variable</p>
+<h3 id="types-of-variables">Types of Variables<a class="headerlink" href="#types-of-variables" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Bytes (Size)</th>
+<th>Range of Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>char</td>
+<td>1</td>
+<td>0 to 255 or -127 to 127</td>
+</tr>
+<tr>
+<td>unsigned char</td>
+<td>1</td>
+<td>-127 to 127</td>
+</tr>
+<tr>
+<td>signed char</td>
+<td>1</td>
+<td>0 to 255</td>
+</tr>
+<tr>
+<td>bool</td>
+<td>1</td>
+<td>True or False</td>
+</tr>
+<tr>
+<td>int</td>
+<td>4</td>
+<td>-2,147,483,648 to 2,147,483,647</td>
+</tr>
+<tr>
+<td>unsigned int</td>
+<td>4</td>
+<td>0 to 4,294,967,295</td>
+</tr>
+<tr>
+<td>signed int</td>
+<td>4</td>
+<td>-2,147,483,648 to 2,147,483,647</td>
+</tr>
+<tr>
+<td>short int</td>
+<td>2</td>
+<td>-32,768 to 32,767</td>
+</tr>
+<tr>
+<td>long int</td>
+<td>4</td>
+<td>-2,147,483,648 to 2,147,483,647</td>
+</tr>
+<tr>
+<td>float</td>
+<td>4</td>
+<td>3.4e-38 to 3.4e38</td>
+</tr>
+<tr>
+<td>double</td>
+<td>8</td>
+<td>1.7e-308 to 1.7e-08</td>
+</tr>
+<tr>
+<td>long double</td>
+<td>8</td>
+<td>1.7e-308 to 1.7e-08</td>
+</tr>
+</tbody>
+</table>
+<h3 id="integer-sizes">Integer sizes<a class="headerlink" href="#integer-sizes" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Typical sizes<ul>
+<li>Short integer: 2 bytes (will be smaller than long)<ul>
+<li>Limitation is that the value of this short integer has a max value, you should be cautious of using short integers</li>
+</ul>
+</li>
+<li>Long integer: 4 bytes</li>
+<li>Integer: 2 or 4 bytes</li>
+</ul>
+</li>
+<li>Notes<ul>
+<li>Technically these sizes can vary depending on your processor (32/64 bit) and compiler</li>
+<li>You should not assume the sizes but the hierarchy of sizes will not change (short memory &lt; long memory)</li>
+</ul>
+</li>
+</ul>
+<h4 id="integer-size">Integer size<a class="headerlink" href="#integer-size" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Size of an integer: &quot;</span> <span class="o">&lt;&lt;</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">int</span><span class="p">);</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>Size of an integer: 4
+</pre></div>
+
+
+<h4 id="short-integer-size">Short integer size<a class="headerlink" href="#short-integer-size" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Size of a short integer: &quot;</span> <span class="o">&lt;&lt;</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">short</span> <span class="kt">int</span><span class="p">);</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>Size of a short integer: 2
+</pre></div>
+
+
+<h4 id="long-integer-size">Long integer size<a class="headerlink" href="#long-integer-size" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Size of an long integer: &quot;</span> <span class="o">&lt;&lt;</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">long</span> <span class="kt">int</span><span class="p">);</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>Size of an long integer: 8
+</pre></div>
+
+
+<h3 id="unsigned-or-signed-integers">Unsigned or signed integers<a class="headerlink" href="#unsigned-or-signed-integers" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Unsigned integers: only can hold positive integers</li>
+<li>Signed integers: can hold positive/negative integers</li>
+</ul>
+<h4 id="signed-short-integer">Signed short integer<a class="headerlink" href="#signed-short-integer" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Size of an signed short integer: &quot;</span> <span class="o">&lt;&lt;</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">signed</span> <span class="kt">short</span> <span class="kt">int</span><span class="p">);</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>Size of an signed short integer: 2
+</pre></div>
+
+
+<h4 id="unsigned-short-integer">Unsigned short integer<a class="headerlink" href="#unsigned-short-integer" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Size of an unsigned short integer: &quot;</span> <span class="o">&lt;&lt;</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">short</span> <span class="kt">int</span><span class="p">);</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>Size of an unsigned short integer: 2
+</pre></div>
+
+
+<h4 id="signed-long-integer">Signed long integer<a class="headerlink" href="#signed-long-integer" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Size of an signed long integer: &quot;</span> <span class="o">&lt;&lt;</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">signed</span> <span class="kt">long</span> <span class="kt">int</span><span class="p">);</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>Size of an signed long integer: 8
+</pre></div>
+
+
+<h4 id="unsigned-long-integer">Unsigned long integer<a class="headerlink" href="#unsigned-long-integer" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Size of an unsigned long integer: &quot;</span> <span class="o">&lt;&lt;</span> <span class="k">sizeof</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">int</span><span class="p">);</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>Size of an unsigned long integer: 8
+</pre></div>
+
+
+<h2 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">&para;</a></h2>
+<h3 id="function-without-return-value">Function Without Return Value<a class="headerlink" href="#function-without-return-value" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="c1">// Usage of void when the function does not return anything</span>
+<span class="c1">// In this exmaple, this function prints out the multiplication result of two given numbers</span>
+<span class="kt">void</span> <span class="nf">MultiplyTwoNumbers</span><span class="p">(</span><span class="kt">int</span> <span class="n">firstNum</span><span class="p">,</span> <span class="kt">int</span> <span class="n">secondNum</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Define variable as integer type</span>
+    <span class="kt">long</span> <span class="kt">int</span> <span class="n">value</span><span class="p">;</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">firstNum</span> <span class="o">*</span> <span class="n">secondNum</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">value</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span> 
+<span class="p">}</span>
+</pre></div>
+
+<h4 id="multiply-two-numbers-3-and-2">Multiply Two Numbers 3 and 2<a class="headerlink" href="#multiply-two-numbers-3-and-2" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="n">MultiplyTwoNumbers</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>6
+</pre></div>
+
+
+<h4 id="multiply-two-numbers-6-and-2">Multiply Two Numbers 6 and 2<a class="headerlink" href="#multiply-two-numbers-6-and-2" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="n">MultiplyTwoNumbers</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>12
+</pre></div>
+
+
+<h3 id="aliases-function">Aliases Function<a class="headerlink" href="#aliases-function" title="Permanent link">&para;</a></h3>
+<p>Say we want the variable <code class="codehilite">value</code> to be of type <code class="codehilite">unsigned short int</code> such that it's 2 bytes and can hold 2x the range of values compared to just <code class="codehilite">short int</code>. We can use <code class="codehilite">typedef</code> as an alias.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Bytes (Size)</th>
+<th>Range of Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>short int</td>
+<td>2</td>
+<td>-32,768 to 32,767</td>
+</tr>
+<tr>
+<td>unsigned short int</td>
+<td>2</td>
+<td>0 to 65,536</td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><span class="c1">// Usage of void when the function does not return anything</span>
+<span class="c1">// In this exmaple, this function prints out the multiplication result of two given numbers</span>
+<span class="kt">void</span> <span class="nf">MultiplyTwoNumbersWithAlias</span><span class="p">(</span><span class="kt">int</span> <span class="n">firstNum</span><span class="p">,</span> <span class="kt">int</span> <span class="n">secondNum</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Using an alias</span>
+    <span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">short</span> <span class="kt">int</span> <span class="n">ushortint</span><span class="p">;</span>
+    <span class="c1">// initializing value variable with ushortint type</span>
+    <span class="n">ushortint</span> <span class="n">value</span><span class="p">;</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">firstNum</span> <span class="o">*</span> <span class="n">secondNum</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">value</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span> 
+<span class="p">}</span>
+</pre></div>
+
+<h4 id="multiply-two-numbers-10-and-10">Multiply Two Numbers 10 and 10<a class="headerlink" href="#multiply-two-numbers-10-and-10" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="n">MultiplyTwoNumbersWithAlias</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>100
+</pre></div>
+
+
+<h4 id="multiply-two-numbers-1000-and-65">Multiply Two Numbers 1000 and 65<a class="headerlink" href="#multiply-two-numbers-1000-and-65" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="n">MultiplyTwoNumbersWithAlias</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">65</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>65000
+</pre></div>
+
+
+<h4 id="multiply-two-numbers-1000-and-67">Multiply Two Numbers 1000 and 67<a class="headerlink" href="#multiply-two-numbers-1000-and-67" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Notice how you don't get 66,000? This is because our variable <code class="codehilite">value</code> of <code class="codehilite">ushortint</code> type can only hold values up to the integer 65,536.</li>
+<li>What this returns is the remainder of 67,000 - 65,536 = 1464</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="n">MultiplyTwoNumbersWithAlias</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">67</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>1464
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="mi">67</span> <span class="o">*</span> <span class="mi">1000</span> <span class="o">-</span> <span class="mi">65536</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>1464
+</pre></div>
+
+
+<h3 id="function-with-return-value">Function with Return Value<a class="headerlink" href="#function-with-return-value" title="Permanent link">&para;</a></h3>
+<p>Unlike functions without return values where we use <code class="codehilite">void</code> to declare the function, here we use <code class="codehilite">int</code> to declare our function that returns values.</p>
+<div class="codehilite"><pre><span></span><span class="c1">// In this exmaple, this function returns the value of the multiplication of two numbers</span>
+<span class="kt">int</span> <span class="nf">MultiplyTwoNumbersNoPrint</span><span class="p">(</span><span class="kt">int</span> <span class="n">firstNum</span><span class="p">,</span> <span class="kt">int</span> <span class="n">secondNum</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Define variable as integer type</span>
+    <span class="kt">long</span> <span class="kt">int</span> <span class="n">value</span><span class="p">;</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">firstNum</span> <span class="o">*</span> <span class="n">secondNum</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">value</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<h4 id="call-function">Call Function<a class="headerlink" href="#call-function" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="c1">// Declare variable with type</span>
+<span class="kt">long</span> <span class="kt">int</span> <span class="n">returnValue</span><span class="p">;</span>
+<span class="c1">// Call function</span>
+<span class="n">returnValue</span> <span class="o">=</span> <span class="n">MultiplyTwoNumbersNoPrint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="c1">// Print variable</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">returnValue</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>20
+</pre></div>
+                
+                  
+                
+              
+              
+                
+
+
+  <h2 id="__comments">Comments</h2>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://www.deeplearningwizard.com/programming/cpp/cpp/";
+      this.page.identifier =
+        "programming/cpp/cpp/";
+    };
+    (function() {
+      var d = document, s = d.createElement("script");
+      s.src = "//deep-learning-wizard.disqus.com/embed.js";
+      s.setAttribute("data-timestamp", +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="programming/intro/" title="Introduction" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Introduction
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="database/intro/" title="Introduction" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Introduction
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 Deep Learning Wizard
+          </div>
+        
+        proudly an
+        <a href="http://www.nvidia.com/page/home.html">NVIDIA Inception Partner</a>
+        based in Singapore by
+        <a href="https://www.ritchieng.com/">
+          Ritchie Ng (NVIDIA Deep Learning Institute Instructor)</a>
+      </div>
+      
+        
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/ritchieng" class="md-footer-social__link fa fa-github"></a>
+    
+      <a href="https://www.facebook.com/DeepLearningWizard/" class="md-footer-social__link fa fa-facebook"></a>
+    
+      <a href="https://www.linkedin.com/company/deeplearningwizard/" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.583bbe55.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+    
+      
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-122083328-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+      
+    
+  </body>
+</html>
