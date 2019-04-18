@@ -180,6 +180,36 @@ cout << "Size of an unsigned long integer: " << sizeof (unsigned long int);
 
     Size of an unsigned long integer: 8
 
+## Constants
+
+### Literal Constants
+
+
+```c++
+int varOne = 20;
+std::cout << varOne << std::endl;
+```
+
+    20
+
+
+### Enumerated Constants
+This enables you to create a new type! In this example we create a new type `directions` containing `Up`, `Down`, `Left`, and `Right`.
+
+
+```c++
+enum directions {Up, Down, Left, Right};
+    
+directions goWhere;
+goWhere = Right;
+
+if (goWhere == Right)
+    std::cout << "Go right" << std::endl;
+```
+
+    Go right
+
+
 ## Functions
 
 ### Function Without Return Value
