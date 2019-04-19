@@ -892,6 +892,80 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#arrays" title="Arrays" class="md-nav__link">
+    Arrays
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-an-array" title="Creating an Array" class="md-nav__link">
+    Creating an Array
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#accessing-arrays-elements" title="Accessing Array's Elements" class="md-nav__link">
+    Accessing Array's Elements
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#first-element" title="First Element" class="md-nav__link">
+    First Element
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#last-element" title="Last Element" class="md-nav__link">
+    Last Element
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#first-10-elements" title="First 10 Elements" class="md-nav__link">
+    First 10 Elements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#going-beyond-the-arrays-length" title="Going Beyond The Array's Length" class="md-nav__link">
+    Going Beyond The Array's Length
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arrays-with-enumeration" title="Arrays with Enumeration" class="md-nav__link">
+    Arrays with Enumeration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
       
       
       
@@ -1397,6 +1471,80 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#arrays" title="Arrays" class="md-nav__link">
+    Arrays
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-an-array" title="Creating an Array" class="md-nav__link">
+    Creating an Array
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#accessing-arrays-elements" title="Accessing Array's Elements" class="md-nav__link">
+    Accessing Array's Elements
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#first-element" title="First Element" class="md-nav__link">
+    First Element
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#last-element" title="Last Element" class="md-nav__link">
+    Last Element
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#first-10-elements" title="First 10 Elements" class="md-nav__link">
+    First 10 Elements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#going-beyond-the-arrays-length" title="Going Beyond The Array's Length" class="md-nav__link">
+    Going Beyond The Array's Length
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arrays-with-enumeration" title="Arrays with Enumeration" class="md-nav__link">
+    Arrays with Enumeration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
       
       
       
@@ -1791,6 +1939,85 @@ Three hundred:  300
 </pre></div>
 
 <div class="codehilite"><pre><span></span>20
+</pre></div>
+
+
+<h2 id="arrays">Arrays<a class="headerlink" href="#arrays" title="Permanent link">&para;</a></h2>
+<p>An array contains a sequence of elements with the same data type. </p>
+<h3 id="creating-an-array">Creating an Array<a class="headerlink" href="#creating-an-array" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="c1">// This is how you declare an array of 50 elements each of type double</span>
+<span class="kt">double</span> <span class="n">DoubleArray</span><span class="p">[</span><span class="mi">50</span><span class="p">];</span>
+</pre></div>
+
+<h4 id="accessing-arrays-elements">Accessing Array's Elements<a class="headerlink" href="#accessing-arrays-elements" title="Permanent link">&para;</a></h4>
+<h5 id="first-element">First Element<a class="headerlink" href="#first-element" title="Permanent link">&para;</a></h5>
+<div class="codehilite"><pre><span></span><span class="c1">// This access the first array </span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">DoubleArray</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>0
+</pre></div>
+
+
+<h5 id="last-element">Last Element<a class="headerlink" href="#last-element" title="Permanent link">&para;</a></h5>
+<div class="codehilite"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">DoubleArray</span><span class="p">[</span><span class="mi">49</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>0
+</pre></div>
+
+
+<h5 id="first-10-elements">First 10 Elements<a class="headerlink" href="#first-10-elements" title="Permanent link">&para;</a></h5>
+<div class="codehilite"><pre><span></span><span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="c1">// This is how you print a mix of characters and declared variables</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Element &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; contains &quot;</span> <span class="o">&lt;&lt;</span>  <span class="n">DoubleArray</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>Element 0 contains 0
+Element 1 contains 0
+Element 2 contains 0
+Element 3 contains 0
+Element 4 contains 0
+Element 5 contains 0
+Element 6 contains 0
+Element 7 contains 0
+Element 8 contains 0
+Element 9 contains 0
+</pre></div>
+
+
+<h5 id="going-beyond-the-arrays-length">Going Beyond The Array's Length<a class="headerlink" href="#going-beyond-the-arrays-length" title="Permanent link">&para;</a></h5>
+<p>This will return a warning that it's past the end of the array</p>
+<p><div class="codehilite"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">DoubleArray</span><span class="p">[</span><span class="mi">50</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</pre></div>
+<div class="codehilite"><pre><span></span>input_line_36:2:15: warning: array index <span class="m">50</span> is past the end of the array <span class="o">(</span>which contains <span class="m">50</span> elements<span class="o">)</span>
+      <span class="o">[</span>-Warray-bounds<span class="o">]</span>
+ std::cout <span class="s">&lt;&lt; DoubleArray[50] &lt;&lt; std::endl;</span>
+<span class="s">              ^           ~~</span>
+<span class="s">input_line_32:3:1: note: array &#39;DoubleArray</span><span class="err">&#39;</span> declared here
+double DoubleArray<span class="o">[</span><span class="m">50</span><span class="o">]</span><span class="p">;</span>
+^
+<span class="m">4</span>.94066e-323
+</pre></div></p>
+<h3 id="arrays-with-enumeration">Arrays with Enumeration<a class="headerlink" href="#arrays-with-enumeration" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="k">enum</span> <span class="n">directionsNew</span> <span class="p">{</span><span class="n">up</span><span class="p">,</span> <span class="n">down</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">individualDirections</span><span class="p">};</span>
+
+<span class="kt">int</span> <span class="n">directionsArray</span><span class="p">[</span><span class="n">individualDirections</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Up value:</span><span class="se">\t</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">directionsArray</span><span class="p">[</span><span class="n">up</span><span class="p">];</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">Down value:</span><span class="se">\t</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">directionsArray</span><span class="p">[</span><span class="n">down</span><span class="p">];</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">Left value:</span><span class="se">\t</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">directionsArray</span><span class="p">[</span><span class="n">left</span><span class="p">];</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">Right value:</span><span class="se">\t</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">directionsArray</span><span class="p">[</span><span class="n">right</span><span class="p">];</span>
+<span class="c1">// This is the number of elements in the array</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">Num value:</span><span class="se">\t</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">directionsArray</span><span class="p">)</span> <span class="o">/</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">directionsArray</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>Up value:   1
+Down value: 2
+Left value: 3
+Right value:    4
+Num value:  4
 </pre></div>
                 
                   
