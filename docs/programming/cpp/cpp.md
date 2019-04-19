@@ -340,3 +340,100 @@ std::cout << returnValue << std::endl;
 
     20
 
+
+## Arrays
+
+An array contains a sequence of elements with the same data type. 
+
+### Creating an Array
+
+
+```c++
+// This is how you declare an array of 50 elements each of type double
+double DoubleArray[50];
+```
+
+#### Accessing Array's Elements
+
+##### First Element
+
+
+```c++
+// This access the first array 
+std::cout << DoubleArray[0] << std::endl;
+```
+
+    0
+
+
+##### Last Element
+
+
+```c++
+std::cout << DoubleArray[49] << std::endl;
+```
+
+    0
+
+
+##### First 10 Elements
+
+
+```c++
+int i;
+for (i=0; i<10; i++)
+    // This is how you print a mix of characters and declared variables
+    std::cout << "Element " << i << " contains " <<  DoubleArray[i] << std::endl;
+```
+
+    Element 0 contains 0
+    Element 1 contains 0
+    Element 2 contains 0
+    Element 3 contains 0
+    Element 4 contains 0
+    Element 5 contains 0
+    Element 6 contains 0
+    Element 7 contains 0
+    Element 8 contains 0
+    Element 9 contains 0
+
+
+##### Going Beyond The Array's Length
+This will return a warning that it's past the end of the array
+
+```c++
+std::cout << DoubleArray[50] << std::endl;
+```
+```bash
+input_line_36:2:15: warning: array index 50 is past the end of the array (which contains 50 elements)
+      [-Warray-bounds]
+ std::cout << DoubleArray[50] << std::endl;
+              ^           ~~
+input_line_32:3:1: note: array 'DoubleArray' declared here
+double DoubleArray[50];
+^
+4.94066e-323
+```
+
+### Arrays with Enumeration
+
+
+```c++
+enum directionsNew {up, down, left, right, individualDirections};
+    
+int directionsArray[individualDirections] = {1, 2, 3, 4};
+
+std::cout << "Up value:\t" << directionsArray[up];
+std::cout << "\nDown value:\t" << directionsArray[down];
+std::cout << "\nLeft value:\t" << directionsArray[left];
+std::cout << "\nRight value:\t" << directionsArray[right];
+// This is the number of elements in the array
+std::cout << "\nNum value:\t" << sizeof(directionsArray) / sizeof(directionsArray[0]) << std::endl;
+```
+
+    Up value:	1
+    Down value:	2
+    Left value:	3
+    Right value:	4
+    Num value:	4
+
