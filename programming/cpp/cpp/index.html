@@ -961,6 +961,33 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#arrays-with-1-dimension-tensors" title="Arrays with &gt;1 Dimension (Tensors)" class="md-nav__link">
+    Arrays with &gt;1 Dimension (Tensors)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multi-dimension-array-with-numbers" title="Multi Dimension Array with Numbers" class="md-nav__link">
+    Multi Dimension Array with Numbers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-dimension-array-with-characters" title="Multi Dimension Array with Characters" class="md-nav__link">
+    Multi Dimension Array with Characters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1540,6 +1567,33 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#arrays-with-1-dimension-tensors" title="Arrays with &gt;1 Dimension (Tensors)" class="md-nav__link">
+    Arrays with &gt;1 Dimension (Tensors)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multi-dimension-array-with-numbers" title="Multi Dimension Array with Numbers" class="md-nav__link">
+    Multi Dimension Array with Numbers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-dimension-array-with-characters" title="Multi Dimension Array with Characters" class="md-nav__link">
+    Multi Dimension Array with Characters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1968,10 +2022,11 @@ Three hundred:  300
 
 
 <h5 id="first-10-elements">First 10 Elements<a class="headerlink" href="#first-10-elements" title="Permanent link">&para;</a></h5>
-<div class="codehilite"><pre><span></span><span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
-<span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
     <span class="c1">// This is how you print a mix of characters and declared variables</span>
     <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Element &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; contains &quot;</span> <span class="o">&lt;&lt;</span>  <span class="n">DoubleArray</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 
 <div class="codehilite"><pre><span></span>Element 0 contains 0
@@ -2018,6 +2073,73 @@ Down value: 2
 Left value: 3
 Right value:    4
 Num value:  4
+</pre></div>
+
+
+<h3 id="arrays-with-1-dimension-tensors">Arrays with &gt;1 Dimension (Tensors)<a class="headerlink" href="#arrays-with-1-dimension-tensors" title="Permanent link">&para;</a></h3>
+<h4 id="multi-dimension-array-with-numbers">Multi Dimension Array with Numbers<a class="headerlink" href="#multi-dimension-array-with-numbers" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="c1">// This is how you declare a multi-dimensional array of 5x5 elements each of type double</span>
+<span class="kt">double</span> <span class="n">multiDimArray</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">},</span>
+    <span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">},</span>
+    <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">},</span>
+    <span class="p">{</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">},</span>
+    <span class="p">{</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="c1">// Print each row of our 5x5 multi-dimensional array</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">multiDimArray</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+    <span class="p">};</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>12345
+
+22345
+
+32345
+
+42345
+
+52345
+</pre></div>
+
+
+<h4 id="multi-dimension-array-with-characters">Multi Dimension Array with Characters<a class="headerlink" href="#multi-dimension-array-with-characters" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="c1">// This is how you declare a multi-dimensional array of 5x5 elements each of type char</span>
+<span class="kt">char</span> <span class="n">multiDimArrayChars</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">{</span><span class="sc">&#39;a&#39;</span><span class="p">,</span> <span class="sc">&#39;b&#39;</span><span class="p">,</span> <span class="sc">&#39;c&#39;</span><span class="p">,</span> <span class="sc">&#39;d&#39;</span><span class="p">,</span> <span class="sc">&#39;e&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="sc">&#39;b&#39;</span><span class="p">,</span> <span class="sc">&#39;b&#39;</span><span class="p">,</span> <span class="sc">&#39;c&#39;</span><span class="p">,</span> <span class="sc">&#39;d&#39;</span><span class="p">,</span> <span class="sc">&#39;e&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="sc">&#39;c&#39;</span><span class="p">,</span> <span class="sc">&#39;b&#39;</span><span class="p">,</span> <span class="sc">&#39;c&#39;</span><span class="p">,</span> <span class="sc">&#39;d&#39;</span><span class="p">,</span> <span class="sc">&#39;e&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="sc">&#39;d&#39;</span><span class="p">,</span> <span class="sc">&#39;b&#39;</span><span class="p">,</span> <span class="sc">&#39;c&#39;</span><span class="p">,</span> <span class="sc">&#39;d&#39;</span><span class="p">,</span> <span class="sc">&#39;e&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="sc">&#39;e&#39;</span><span class="p">,</span> <span class="sc">&#39;b&#39;</span><span class="p">,</span> <span class="sc">&#39;c&#39;</span><span class="p">,</span> <span class="sc">&#39;d&#39;</span><span class="p">,</span> <span class="sc">&#39;e&#39;</span><span class="p">},</span>
+<span class="p">};</span>
+
+<span class="c1">// Print each row of our 5x5 multi-dimensional array</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">multiDimArrayChars</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+    <span class="p">};</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>abcde
+
+bbcde
+
+cbcde
+
+dbcde
+
+ebcde
 </pre></div>
                 
                   
