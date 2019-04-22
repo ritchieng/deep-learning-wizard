@@ -380,10 +380,11 @@ std::cout << DoubleArray[49] << std::endl;
 
 
 ```c++
-int i;
-for (i=0; i<10; i++)
+for (int i=0; i<10; i++)
+{
     // This is how you print a mix of characters and declared variables
     std::cout << "Element " << i << " contains " <<  DoubleArray[i] << std::endl;
+}
 ```
 
     Element 0 contains 0
@@ -436,4 +437,78 @@ std::cout << "\nNum value:\t" << sizeof(directionsArray) / sizeof(directionsArra
     Left value:	3
     Right value:	4
     Num value:	4
+
+
+### Arrays with >1 Dimension (Tensors)
+
+#### Multi Dimension Array with Numbers
+
+
+```c++
+// This is how you declare a multi-dimensional array of 5x5 elements each of type double
+double multiDimArray[5][5] = {
+    {1, 2, 3, 4, 5},
+    {2, 2, 3, 4, 5},
+    {3, 2, 3, 4, 5},
+    {4, 2, 3, 4, 5},
+    {5, 2, 3, 4, 5}
+};
+
+// Print each row of our 5x5 multi-dimensional array
+for (int i=0; i<5; i++)
+{
+    for (int j=0; j<5; j++)
+    {
+        std::cout << multiDimArray[i][j];
+    };
+    std::cout << "\n" << std::endl;
+};
+```
+
+    12345
+    
+    22345
+    
+    32345
+    
+    42345
+    
+    52345
+    
+
+
+#### Multi Dimension Array with Characters
+
+
+```c++
+// This is how you declare a multi-dimensional array of 5x5 elements each of type char
+char multiDimArrayChars[5][5] = {
+    {'a', 'b', 'c', 'd', 'e'},
+    {'b', 'b', 'c', 'd', 'e'},
+    {'c', 'b', 'c', 'd', 'e'},
+    {'d', 'b', 'c', 'd', 'e'},
+    {'e', 'b', 'c', 'd', 'e'},
+};
+
+// Print each row of our 5x5 multi-dimensional array
+for (int i=0; i<5; i++)
+{
+    for (int j=0; j<5; j++)
+    {
+        std::cout << multiDimArrayChars[i][j];
+    };
+    std::cout << "\n" << std::endl;
+};
+```
+
+    abcde
+    
+    bbcde
+    
+    cbcde
+    
+    dbcde
+    
+    ebcde
+    
 
