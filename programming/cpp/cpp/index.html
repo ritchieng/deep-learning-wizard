@@ -988,6 +988,33 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#copy-arrays" title="Copy Arrays" class="md-nav__link">
+    Copy Arrays
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#copy-number-arrays" title="Copy Number Arrays" class="md-nav__link">
+    Copy Number Arrays
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copy-string-arrays" title="Copy String Arrays" class="md-nav__link">
+    Copy String Arrays
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1594,6 +1621,33 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#copy-arrays" title="Copy Arrays" class="md-nav__link">
+    Copy Arrays
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#copy-number-arrays" title="Copy Number Arrays" class="md-nav__link">
+    Copy Number Arrays
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copy-string-arrays" title="Copy String Arrays" class="md-nav__link">
+    Copy String Arrays
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2140,6 +2194,51 @@ cbcde
 dbcde
 
 ebcde
+</pre></div>
+
+
+<h3 id="copy-arrays">Copy Arrays<a class="headerlink" href="#copy-arrays" title="Permanent link">&para;</a></h3>
+<h4 id="copy-number-arrays">Copy Number Arrays<a class="headerlink" href="#copy-number-arrays" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="kt">double</span> <span class="n">ArrayNumOne</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">};</span>
+<span class="kt">double</span> <span class="n">ArrayNumTwo</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+
+<span class="c1">// Use namespace std so it&#39;s cleaner</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="c1">// Copy array with copy()</span>
+<span class="n">copy</span><span class="p">(</span><span class="n">begin</span><span class="p">(</span><span class="n">ArrayNumOne</span><span class="p">),</span> <span class="n">end</span><span class="p">(</span><span class="n">ArrayNumOne</span><span class="p">),</span> <span class="n">begin</span><span class="p">(</span><span class="n">ArrayNumTwo</span><span class="p">));</span>
+
+<span class="c1">// Print double type array with copy()</span>
+<span class="n">copy</span><span class="p">(</span><span class="n">begin</span><span class="p">(</span><span class="n">ArrayNumTwo</span><span class="p">),</span> <span class="n">end</span><span class="p">(</span><span class="n">ArrayNumTwo</span><span class="p">),</span> <span class="n">ostream_iterator</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="n">cout</span><span class="p">,</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">));</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>1
+2
+3
+4
+5
+</pre></div>
+
+
+<h4 id="copy-string-arrays">Copy String Arrays<a class="headerlink" href="#copy-string-arrays" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="kt">char</span> <span class="n">ArrayCharOne</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="sc">&#39;a&#39;</span><span class="p">,</span> <span class="sc">&#39;b&#39;</span><span class="p">,</span> <span class="sc">&#39;c&#39;</span><span class="p">,</span> <span class="sc">&#39;d&#39;</span><span class="p">,</span> <span class="sc">&#39;e&#39;</span><span class="p">};</span>
+<span class="kt">char</span> <span class="n">ArrayCharTwo</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+
+<span class="c1">// Use namespace std so it&#39;s cleaner</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="c1">// Copy array with copy()</span>
+<span class="n">copy</span><span class="p">(</span><span class="n">begin</span><span class="p">(</span><span class="n">ArrayCharOne</span><span class="p">),</span> <span class="n">end</span><span class="p">(</span><span class="n">ArrayCharOne</span><span class="p">),</span> <span class="n">begin</span><span class="p">(</span><span class="n">ArrayCharTwo</span><span class="p">));</span>
+
+<span class="c1">// Print char type array with copy()</span>
+<span class="n">copy</span><span class="p">(</span><span class="n">begin</span><span class="p">(</span><span class="n">ArrayCharTwo</span><span class="p">),</span> <span class="n">end</span><span class="p">(</span><span class="n">ArrayCharTwo</span><span class="p">),</span> <span class="n">ostream_iterator</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span><span class="p">(</span><span class="n">cout</span><span class="p">,</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">));</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>a
+b
+c
+d
+e
 </pre></div>
                 
                   
