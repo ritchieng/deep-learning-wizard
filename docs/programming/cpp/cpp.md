@@ -512,3 +512,53 @@ for (int i=0; i<5; i++)
     ebcde
     
 
+
+### Copy Arrays
+
+#### Copy Number Arrays
+
+
+```c++
+double ArrayNumOne[] = {1, 2, 3, 4, 5};
+double ArrayNumTwo[5];
+
+// Use namespace std so it's cleaner
+using namespace std;
+
+// Copy array with copy()
+copy(begin(ArrayNumOne), end(ArrayNumOne), begin(ArrayNumTwo));
+
+// Print double type array with copy()
+copy(begin(ArrayNumTwo), end(ArrayNumTwo), ostream_iterator<double>(cout, "\n"));
+```
+
+    1
+    2
+    3
+    4
+    5
+
+
+#### Copy String Arrays
+
+
+```c++
+char ArrayCharOne[] = {'a', 'b', 'c', 'd', 'e'};
+char ArrayCharTwo[5];
+
+// Use namespace std so it's cleaner
+using namespace std;
+
+// Copy array with copy()
+copy(begin(ArrayCharOne), end(ArrayCharOne), begin(ArrayCharTwo));
+
+// Print char type array with copy()
+copy(begin(ArrayCharTwo), end(ArrayCharTwo), ostream_iterator<char>(cout, "\n"));
+```
+
+    a
+    b
+    c
+    d
+    e
+
