@@ -1,7 +1,8 @@
 
 # RAPIDS cuDF
 
-Run this notebook on Google Colab, by copying the notebook to your google drive.
+!!! tip "Run Jupyter Notebook"
+    You can run the code for this section in this [jupyter notebook link](https://github.com/ritchieng/deep-learning-wizard/blob/master/docs/machine_learning/gpu/rapids_cudf.ipynb) on Google Colab. Simply copy the notebook into your Google Drive and run with Google Colab.
 
 ## Environment Setup
 
