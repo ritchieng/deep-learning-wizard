@@ -1,0 +1,1671 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Learn deep learning theories and code easily and quickly. Used by thousands of students and professionals from top tech companies and research institutions.">
+      
+      
+        <link rel="canonical" href="https://www.deeplearningwizard.com/machine_learning/gpu/rapids_cudf/">
+      
+      
+        <meta name="author" content="Ritchie Ng">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../../docs/assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+    
+    
+      
+        <title>GPU DataFrames - Deep Learning Wizard</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.451f80e5.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#009688">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../../../#rapids-cudf" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://www.deeplearningwizard.com/" title="Deep Learning Wizard" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">whatshot</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Deep Learning Wizard
+              </span>
+              <span class="md-header-nav__topic">
+                GPU DataFrames
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../../.." title="Home" class="md-tabs__link">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../deep_learning/intro/" title="Deep Learning Tutorials (CPU/GPU)" class="md-tabs__link">
+          Deep Learning Tutorials (CPU/GPU)
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../intro/" title="Machine Learning Tutorials" class="md-tabs__link md-tabs__link--active">
+          Machine Learning Tutorials
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../programming/intro/" title="Programming Tutorials" class="md-tabs__link">
+          Programming Tutorials
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../database/intro/" title="Scalable Database Tutorials" class="md-tabs__link">
+          Scalable Database Tutorials
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../news/news/" title="News" class="md-tabs__link">
+          News
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://www.deeplearningwizard.com/" title="Deep Learning Wizard" class="md-nav__button md-logo">
+      
+        <i class="md-icon">whatshot</i>
+      
+    </a>
+    Deep Learning Wizard
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../about/" title="About Us" class="md-nav__link">
+      About Us
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../review/" title="Reviews" class="md-nav__link">
+      Reviews
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../pipeline/" title="AI Pipeline" class="md-nav__link">
+      AI Pipeline
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Deep Learning Tutorials (CPU/GPU)
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Deep Learning Tutorials (CPU/GPU)
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/intro/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/course_progression/" title="Course Progression" class="md-nav__link">
+      Course Progression
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/practical_pytorch/pytorch_matrices/" title="Matrices" class="md-nav__link">
+      Matrices
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/practical_pytorch/pytorch_gradients/" title="Gradients" class="md-nav__link">
+      Gradients
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/practical_pytorch/pytorch_linear_regression/" title="Linear Regression" class="md-nav__link">
+      Linear Regression
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/practical_pytorch/pytorch_logistic_regression/" title="Logistic Regression" class="md-nav__link">
+      Logistic Regression
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/practical_pytorch/pytorch_feedforward_neuralnetwork/" title="Feedforward Neural Networks" class="md-nav__link">
+      Feedforward Neural Networks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/practical_pytorch/pytorch_convolutional_neuralnetwork/" title="Convolutional Neural Networks" class="md-nav__link">
+      Convolutional Neural Networks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/practical_pytorch/pytorch_recurrent_neuralnetwork/" title="Recurrent Neural Networks" class="md-nav__link">
+      Recurrent Neural Networks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/practical_pytorch/pytorch_lstm_neuralnetwork/" title="Long Short Term Memory Neural Networks" class="md-nav__link">
+      Long Short Term Memory Neural Networks
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/boosting_models_pytorch/derivative_gradient_jacobian/" title="Derivative, Gradient and Jacobian" class="md-nav__link">
+      Derivative, Gradient and Jacobian
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/boosting_models_pytorch/forwardpropagation_backpropagation_gradientdescent/" title="Forward- and Backward-propagation and Gradient Descent" class="md-nav__link">
+      Forward- and Backward-propagation and Gradient Descent
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/boosting_models_pytorch/lr_scheduling/" title="Learning Rate Scheduling" class="md-nav__link">
+      Learning Rate Scheduling
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/boosting_models_pytorch/optimizers/" title="Optimization Algorithms" class="md-nav__link">
+      Optimization Algorithms
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/boosting_models_pytorch/weight_initialization_activation_functions/" title="Weight Initialization and Activation Functions" class="md-nav__link">
+      Weight Initialization and Activation Functions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/deep_reinforcement_learning_pytorch/supervised_to_rl/" title="Supervised Learning to Reinforcement Learning" class="md-nav__link">
+      Supervised Learning to Reinforcement Learning
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/deep_reinforcement_learning_pytorch/bellman_mdp/" title="Markov Decision Processes and Bellman Equations" class="md-nav__link">
+      Markov Decision Processes and Bellman Equations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/deep_reinforcement_learning_pytorch/dynamic_programming_frozenlake/" title="Dynamic Programming" class="md-nav__link">
+      Dynamic Programming
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/readings/" title="Additional Readings" class="md-nav__link">
+      Additional Readings
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+    
+    <label class="md-nav__link" for="nav-6">
+      Machine Learning Tutorials
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Machine Learning Tutorials
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../intro/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        GPU DataFrames
+      </label>
+    
+    <a href="./" title="GPU DataFrames" class="md-nav__link md-nav__link--active">
+      GPU DataFrames
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#environment-setup" title="Environment Setup" class="md-nav__link">
+    Environment Setup
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-version" title="Check Version" class="md-nav__link">
+    Check Version
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python-version" title="Python Version" class="md-nav__link">
+    Python Version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ubuntu-version" title="Ubuntu Version" class="md-nav__link">
+    Ubuntu Version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-cuda-version" title="Check CUDA Version" class="md-nav__link">
+    Check CUDA Version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-gpu-version" title="Check GPU Version" class="md-nav__link">
+    Check GPU Version
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installation-of-cudfcuml" title="Installation of cuDF/cuML" class="md-nav__link">
+    Installation of cuDF/cuML
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installation-of-nvidia-toolkit-and-numba" title="Installation of NVIDIA Toolkit and Numba" class="md-nav__link">
+    Installation of NVIDIA Toolkit and Numba
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#critical-imports" title="Critical Imports" class="md-nav__link">
+    Critical Imports
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dataframe-operations" title="DataFrame Operations" class="md-nav__link">
+    DataFrame Operations
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-single-column-dataframe-of-floats" title="Create a single column dataframe of floats" class="md-nav__link">
+    Create a single column dataframe of floats
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-three-column-dataframe-of-dates-integers-and-floats" title="Create three column dataframe of dates, integers and floats" class="md-nav__link">
+    Create three column dataframe of dates, integers and floats
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-dataframe-of-alphabets-a-b-and-c-strings" title="Create a dataframe of alphabets a, b and c (strings)" class="md-nav__link">
+    Create a dataframe of alphabets a, b and c (strings)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-2-column-dataframe-of-integers-and-string-category" title="Create a 2 Column Dataframe of integers and string category" class="md-nav__link">
+    Create a 2 Column Dataframe of integers and string category
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#printing-column-names" title="Printing Column Names" class="md-nav__link">
+    Printing Column Names
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtering-integersfloats-by-column-values-method-1" title="Filtering Integers/Floats by Column Values (Method 1" class="md-nav__link">
+    Filtering Integers/Floats by Column Values (Method 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtering-strings-by-column-values-method-1" title="Filtering Strings by Column Values (Method 1)" class="md-nav__link">
+    Filtering Strings by Column Values (Method 1)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtering-strings-by-column-values-method-2" title="Filtering Strings by Column Values (Method 2)" class="md-nav__link">
+    Filtering Strings by Column Values (Method 2)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtering-integersfloats-by-column-values-method-2" title="Filtering Integers/Floats by Column Values (Method 2)" class="md-nav__link">
+    Filtering Integers/Floats by Column Values (Method 2)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="Comments" class="md-nav__link md-nav__link--active">
+            Comments
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Programming Tutorials
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        Programming Tutorials
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../programming/intro/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../programming/cpp/cpp/" title="C++" class="md-nav__link">
+      C++
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Scalable Database Tutorials
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        Scalable Database Tutorials
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/intro/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/setting_up_cluster/" title="Cassandra Cluster Setup" class="md-nav__link">
+      Cassandra Cluster Setup
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      News
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        News
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/news/" title="Welcome" class="md-nav__link">
+      Welcome
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/it_youth_leader_2019_03_11/" title="IT Youth Leader of The Year 2019, March 2019" class="md-nav__link">
+      IT Youth Leader of The Year 2019, March 2019
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/ammi_facebook_google_recap_2018_11_21/" title="AMMI (AIMS) supported by Facebook and Google, November 2018" class="md-nav__link">
+      AMMI (AIMS) supported by Facebook and Google, November 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/nanjing_next_nus_tsinghua_ai_finance_healthcare_2018_11_01/" title="NExT++ AI in Healthcare and Finance, Nanjing, November 2018" class="md-nav__link">
+      NExT++ AI in Healthcare and Finance, Nanjing, November 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/facebook_pytorch_devcon_recap_2018_10_02/" title="Recap of Facebook PyTorch Developer Conference, San Francisco, September 2018" class="md-nav__link">
+      Recap of Facebook PyTorch Developer Conference, San Francisco, September 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/facebook_pytorch_developer_conference_2018_09_05/" title="Facebook PyTorch Developer Conference, San Francisco, September 2018" class="md-nav__link">
+      Facebook PyTorch Developer Conference, San Francisco, September 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/nvidia_nus_mit_datathon_2018_07_05/" title="NUS-MIT-NUHS NVIDIA Image Recognition Workshop, Singapore, July 2018" class="md-nav__link">
+      NUS-MIT-NUHS NVIDIA Image Recognition Workshop, Singapore, July 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/deep_learning_wizard_1y_2018_06_01/" title="Featured on PyTorch Website 2018" class="md-nav__link">
+      Featured on PyTorch Website 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/nvidia_self_driving_cars_talk_2017_06_21/" title="NVIDIA Self Driving Cars & Healthcare Talk, Singapore, June 2017" class="md-nav__link">
+      NVIDIA Self Driving Cars & Healthcare Talk, Singapore, June 2017
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/deep_learning_wizard_nvidia_inception_2018_05_01/" title="NVIDIA Inception Partner Status, Singapore, May 2017" class="md-nav__link">
+      NVIDIA Inception Partner Status, Singapore, May 2017
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#environment-setup" title="Environment Setup" class="md-nav__link">
+    Environment Setup
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-version" title="Check Version" class="md-nav__link">
+    Check Version
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python-version" title="Python Version" class="md-nav__link">
+    Python Version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ubuntu-version" title="Ubuntu Version" class="md-nav__link">
+    Ubuntu Version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-cuda-version" title="Check CUDA Version" class="md-nav__link">
+    Check CUDA Version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-gpu-version" title="Check GPU Version" class="md-nav__link">
+    Check GPU Version
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installation-of-cudfcuml" title="Installation of cuDF/cuML" class="md-nav__link">
+    Installation of cuDF/cuML
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installation-of-nvidia-toolkit-and-numba" title="Installation of NVIDIA Toolkit and Numba" class="md-nav__link">
+    Installation of NVIDIA Toolkit and Numba
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#critical-imports" title="Critical Imports" class="md-nav__link">
+    Critical Imports
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dataframe-operations" title="DataFrame Operations" class="md-nav__link">
+    DataFrame Operations
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-single-column-dataframe-of-floats" title="Create a single column dataframe of floats" class="md-nav__link">
+    Create a single column dataframe of floats
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-three-column-dataframe-of-dates-integers-and-floats" title="Create three column dataframe of dates, integers and floats" class="md-nav__link">
+    Create three column dataframe of dates, integers and floats
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-dataframe-of-alphabets-a-b-and-c-strings" title="Create a dataframe of alphabets a, b and c (strings)" class="md-nav__link">
+    Create a dataframe of alphabets a, b and c (strings)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-2-column-dataframe-of-integers-and-string-category" title="Create a 2 Column Dataframe of integers and string category" class="md-nav__link">
+    Create a 2 Column Dataframe of integers and string category
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#printing-column-names" title="Printing Column Names" class="md-nav__link">
+    Printing Column Names
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtering-integersfloats-by-column-values-method-1" title="Filtering Integers/Floats by Column Values (Method 1" class="md-nav__link">
+    Filtering Integers/Floats by Column Values (Method 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtering-strings-by-column-values-method-1" title="Filtering Strings by Column Values (Method 1)" class="md-nav__link">
+    Filtering Strings by Column Values (Method 1)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtering-strings-by-column-values-method-2" title="Filtering Strings by Column Values (Method 2)" class="md-nav__link">
+    Filtering Strings by Column Values (Method 2)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtering-integersfloats-by-column-values-method-2" title="Filtering Integers/Floats by Column Values (Method 2)" class="md-nav__link">
+    Filtering Integers/Floats by Column Values (Method 2)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="Comments" class="md-nav__link md-nav__link--active">
+            Comments
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="rapids-cudf">RAPIDS cuDF<a class="headerlink" href="#rapids-cudf" title="Permanent link">&para;</a></h1>
+<div class="admonition tip">
+<p class="admonition-title">Run Jupyter Notebook</p>
+<p>You can run the code for this section in this <a href="https://github.com/ritchieng/deep-learning-wizard/blob/master/docs/machine_learning/gpu/rapids_cudf.ipynb">jupyter notebook link</a> on Google Colab. Simply copy the notebook into your Google Drive and run with Google Colab.</p>
+</div>
+<h2 id="environment-setup">Environment Setup<a class="headerlink" href="#environment-setup" title="Permanent link">&para;</a></h2>
+<h3 id="check-version">Check Version<a class="headerlink" href="#check-version" title="Permanent link">&para;</a></h3>
+<h4 id="python-version">Python Version<a class="headerlink" href="#python-version" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="c1"># Check Python Version</span>
+<span class="err">!</span><span class="n">python</span> <span class="o">--</span><span class="n">version</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>Python 3.6.7
+</pre></div>
+
+
+<h4 id="ubuntu-version">Ubuntu Version<a class="headerlink" href="#ubuntu-version" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="c1"># Check Ubuntu Version</span>
+<span class="err">!</span><span class="n">lsb_release</span> <span class="o">-</span><span class="n">a</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>No LSB modules are available.
+Distributor ID: Ubuntu
+Description:    Ubuntu 18.04.2 LTS
+Release:    18.04
+Codename:   bionic
+</pre></div>
+
+
+<h4 id="check-cuda-version">Check CUDA Version<a class="headerlink" href="#check-cuda-version" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="c1"># Check CUDA/cuDNN Version</span>
+<span class="err">!</span><span class="n">nvcc</span> <span class="o">-</span><span class="n">V</span> <span class="o">&amp;&amp;</span> <span class="n">which</span> <span class="n">nvcc</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span><span class="n">nvcc</span><span class="o">:</span> <span class="n">NVIDIA</span> <span class="o">(</span><span class="n">R</span><span class="o">)</span> <span class="n">Cuda</span> <span class="n">compiler</span> <span class="n">driver</span>
+<span class="n">Copyright</span> <span class="o">(</span><span class="n">c</span><span class="o">)</span> <span class="mi">2005</span><span class="o">-</span><span class="mi">2018</span> <span class="n">NVIDIA</span> <span class="n">Corporation</span>
+<span class="n">Built</span> <span class="n">on</span> <span class="n">Sat_Aug_25_21</span><span class="o">:</span><span class="mi">08</span><span class="o">:</span><span class="mi">01</span><span class="n">_CDT_2018</span>
+<span class="n">Cuda</span> <span class="n">compilation</span> <span class="n">tools</span><span class="o">,</span> <span class="n">release</span> <span class="mf">10.0</span><span class="o">,</span> <span class="n">V10</span><span class="o">.</span><span class="mf">0.130</span>
+<span class="sr">/usr/local/cuda/bin/</span><span class="n">nvcc</span>
+</pre></div>
+
+
+<h4 id="check-gpu-version">Check GPU Version<a class="headerlink" href="#check-gpu-version" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="c1"># Check GPU</span>
+<span class="err">!</span><span class="n">nvidia</span><span class="o">-</span><span class="n">smi</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>Wed Apr 24 07:41:30 2019       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 418.56       Driver Version: 410.79       CUDA Version: 10.0     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|===============================+======================+======================|
+|   0  Tesla T4            Off  | 00000000:00:04.0 Off |                    0 |
+| N/A   75C    P8    18W /  70W |      0MiB / 15079MiB |      0%      Default |
++-------------------------------+----------------------+----------------------+
+
++-----------------------------------------------------------------------------+
+| Processes:                                                       GPU Memory |
+|  GPU       PID   Type   Process name                             Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+</pre></div>
+
+
+<h3 id="installation-of-cudfcuml">Installation of cuDF/cuML<a class="headerlink" href="#installation-of-cudfcuml" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="err">!</span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">cudf</span><span class="o">-</span><span class="n">cuda100</span><span class="o">==</span><span class="mf">0.6</span><span class="o">.</span><span class="mi">1</span> <span class="n">cuml</span><span class="o">-</span><span class="n">cuda100</span><span class="o">==</span><span class="mf">0.6</span><span class="o">.</span><span class="mi">1</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>Requirement already satisfied: cudf-cuda100==0.6.1 in /usr/local/lib/python3.6/dist-packages (0.6.1)
+Requirement already satisfied: cuml-cuda100==0.6.1 in /usr/local/lib/python3.6/dist-packages (0.6.1)
+Requirement already satisfied: numpy&gt;=1.14 in /usr/local/lib/python3.6/dist-packages (from cudf-cuda100==0.6.1) (1.16.2)
+Requirement already satisfied: numba&lt;0.42,&gt;=0.40.0 in /usr/local/lib/python3.6/dist-packages (from cudf-cuda100==0.6.1) (0.40.1)
+Requirement already satisfied: pyarrow==0.12.1 in /usr/local/lib/python3.6/dist-packages (from cudf-cuda100==0.6.1) (0.12.1)
+Requirement already satisfied: cffi&gt;=1.0.0 in /usr/local/lib/python3.6/dist-packages (from cudf-cuda100==0.6.1) (1.12.3)
+Requirement already satisfied: pandas&gt;=0.23.4 in /usr/local/lib/python3.6/dist-packages (from cudf-cuda100==0.6.1) (0.24.2)
+Requirement already satisfied: pycparser==2.19 in /usr/local/lib/python3.6/dist-packages (from cudf-cuda100==0.6.1) (2.19)
+Requirement already satisfied: nvstrings-cuda100 in /usr/local/lib/python3.6/dist-packages (from cudf-cuda100==0.6.1) (0.3.0.post1)
+Requirement already satisfied: cython&lt;0.30,&gt;=0.29 in /usr/local/lib/python3.6/dist-packages (from cudf-cuda100==0.6.1) (0.29.7)
+Requirement already satisfied: llvmlite&gt;=0.25.0dev0 in /usr/local/lib/python3.6/dist-packages (from numba&lt;0.42,&gt;=0.40.0-&gt;cudf-cuda100==0.6.1) (0.28.0)
+Requirement already satisfied: six&gt;=1.0.0 in /usr/local/lib/python3.6/dist-packages (from pyarrow==0.12.1-&gt;cudf-cuda100==0.6.1) (1.12.0)
+Requirement already satisfied: pytz&gt;=2011k in /usr/local/lib/python3.6/dist-packages (from pandas&gt;=0.23.4-&gt;cudf-cuda100==0.6.1) (2018.9)
+Requirement already satisfied: python-dateutil&gt;=2.5.0 in /usr/local/lib/python3.6/dist-packages (from pandas&gt;=0.23.4-&gt;cudf-cuda100==0.6.1) (2.5.3)
+</pre></div>
+
+
+<h3 id="installation-of-nvidia-toolkit-and-numba">Installation of NVIDIA Toolkit and Numba<a class="headerlink" href="#installation-of-nvidia-toolkit-and-numba" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="c1"># Install CUDA toolkit</span>
+<span class="err">!</span><span class="n">apt</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">install</span><span class="o">-</span><span class="n">recommends</span> <span class="o">-</span><span class="n">q</span> <span class="n">nvidia</span><span class="o">-</span><span class="n">cuda</span><span class="o">-</span><span class="n">toolkit</span>
+<span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">numba</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;NUMBAPRO_LIBDEVICE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;/usr/lib/nvidia-cuda-toolkit/libdevice&quot;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;NUMBAPRO_NVVM&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;/usr/lib/x86_64-linux-gnu/libnvvm.so&quot;</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>Reading package lists...
+Building dependency tree...
+Reading state information...
+nvidia-cuda-toolkit is already the newest version (9.1.85-3ubuntu1).
+The following package was automatically installed and is no longer required:
+  libnvidia-common-410
+Use &#39;apt autoremove&#39; to remove it.
+0 upgraded, 0 newly installed, 0 to remove and 6 not upgraded.
+Requirement already satisfied: numba in /usr/local/lib/python3.6/dist-packages (0.40.1)
+Requirement already satisfied: llvmlite&gt;=0.25.0dev0 in /usr/local/lib/python3.6/dist-packages (from numba) (0.28.0)
+Requirement already satisfied: numpy in /usr/local/lib/python3.6/dist-packages (from numba) (1.16.2)
+</pre></div>
+
+
+<h2 id="critical-imports">Critical Imports<a class="headerlink" href="#critical-imports" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><span class="c1"># Critical imports</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">cudf</span>
+</pre></div>
+
+<h2 id="dataframe-operations">DataFrame Operations<a class="headerlink" href="#dataframe-operations" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">cudf</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>0    1
+1    2
+2    3
+3    4
+4    5
+5    6
+dtype: int64
+&lt;class &#39;cudf.dataframe.series.Series&#39;&gt;
+</pre></div>
+
+
+<h3 id="create-a-single-column-dataframe-of-floats">Create a single column dataframe of floats<a class="headerlink" href="#create-a-single-column-dataframe-of-floats" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">cudf</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">,</span> <span class="mf">6.</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>0    1.0
+1    2.0
+2    3.0
+3    4.0
+4    5.0
+5    6.0
+dtype: float64
+</pre></div>
+
+
+<h3 id="create-three-column-dataframe-of-dates-integers-and-floats">Create three column dataframe of dates, integers and floats<a class="headerlink" href="#create-three-column-dataframe-of-dates-integers-and-floats" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="c1"># Import</span>
+<span class="kn">import</span> <span class="nn">datetime</span> <span class="kn">as</span> <span class="nn">dt</span>
+
+<span class="c1"># Create blank cudf dataframe</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">cudf</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
+<span class="c1"># Create 10 busindates ess from 1st January 2019 via pandas</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;dates&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;1/1/2019&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>
+
+<span class="c1"># Integers</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;integers&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+
+<span class="c1"># Floats</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;floats&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+
+<span class="c1"># Print dataframe</span>
+<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>                     dates  integers  floats
+0 2019-01-01T00:00:00.000         0     0.0
+1 2019-01-02T00:00:00.000         1     1.0
+2 2019-01-03T00:00:00.000         2     2.0
+3 2019-01-04T00:00:00.000         3     3.0
+4 2019-01-07T00:00:00.000         4     4.0
+5 2019-01-08T00:00:00.000         5     5.0
+6 2019-01-09T00:00:00.000         6     6.0
+7 2019-01-10T00:00:00.000         7     7.0
+8 2019-01-11T00:00:00.000         8     8.0
+9 2019-01-14T00:00:00.000         9     9.0
+</pre></div>
+
+
+<h3 id="create-a-dataframe-of-alphabets-a-b-and-c-strings">Create a dataframe of alphabets a, b and c (strings)<a class="headerlink" href="#create-a-dataframe-of-alphabets-a-b-and-c-strings" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">cudf</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>0    a
+1    b
+2    c
+dtype: object
+</pre></div>
+
+
+<h3 id="create-a-2-column-dataframe-of-integers-and-string-category">Create a 2 Column Dataframe of integers and string category<a class="headerlink" href="#create-a-2-column-dataframe-of-integers-and-string-category" title="Permanent link">&para;</a></h3>
+<ul>
+<li>For all string columns, you must convert them to type <code class="codehilite">category</code> for filtering functions to work intuitively (for now)</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="c1"># Create pandas dataframe</span>
+<span class="n">pandas_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;integers&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> 
+    <span class="s1">&#39;strings&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="c1"># Convert string column to category format</span>
+<span class="n">pandas_df</span><span class="p">[</span><span class="s1">&#39;strings&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pandas_df</span><span class="p">[</span><span class="s1">&#39;strings&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+
+<span class="c1"># Bridge from pandas to cudf</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">cudf</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_pandas</span><span class="p">(</span><span class="n">pandas_df</span><span class="p">)</span>
+
+<span class="c1"># Print dataframe</span>
+<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>   integers  strings
+0         1        a
+1         2        b
+2         3        c
+3         4        d
+</pre></div>
+
+
+<h3 id="printing-column-names">Printing Column Names<a class="headerlink" href="#printing-column-names" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>Index([&#39;integers&#39;, &#39;strings&#39;], dtype=&#39;object&#39;)
+</pre></div>
+
+
+<h3 id="filtering-integersfloats-by-column-values-method-1">Filtering Integers/Floats by Column Values (Method 1<a class="headerlink" href="#filtering-integersfloats-by-column-values-method-1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>This only works for floats and integers, not for strings</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;integers == 1&#39;</span><span class="p">))</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>   integers  strings
+0         1        a
+</pre></div>
+
+
+<h3 id="filtering-strings-by-column-values-method-1">Filtering Strings by Column Values (Method 1)<a class="headerlink" href="#filtering-strings-by-column-values-method-1" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;strings == a&#39;</span><span class="p">))</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>---------------------------------------------------------------------------
+
+KeyError                                  Traceback (most recent call last)
+
+&lt;ipython-input-15-8bd9757c1b26&gt; in &lt;module&gt;()
+----&gt; 1 print(df.query(&#39;strings == a&#39;))
+
+
+/usr/local/lib/python3.6/dist-packages/cudf/dataframe/dataframe.py in query(self, expr)
+   1787         }
+   1788         # Run query
+-&gt; 1789         boolmask = queryutils.query_execute(self, expr, callenv)
+   1790 
+   1791         selected = Series(boolmask)
+
+
+/usr/local/lib/python3.6/dist-packages/cudf/utils/queryutils.py in query_execute(df, expr, callenv)
+    214             envargs.append(val)
+    215     # prepare col args
+--&gt; 216     colarrays = [df[col].to_gpu_array() for col in compiled[&#39;colnames&#39;]]
+    217     # allocate output buffer
+    218     nrows = len(df)
+
+
+/usr/local/lib/python3.6/dist-packages/cudf/utils/queryutils.py in &lt;listcomp&gt;(.0)
+    214             envargs.append(val)
+    215     # prepare col args
+--&gt; 216     colarrays = [df[col].to_gpu_array() for col in compiled[&#39;colnames&#39;]]
+    217     # allocate output buffer
+    218     nrows = len(df)
+
+
+/usr/local/lib/python3.6/dist-packages/cudf/dataframe/dataframe.py in __getitem__(self, arg)
+    212         if isinstance(arg, str) or isinstance(arg, numbers.Integral) or \
+    213            isinstance(arg, tuple):
+--&gt; 214             s = self._cols[arg]
+    215             s.name = arg
+    216             return s
+
+
+KeyError: &#39;a&#39;
+</pre></div>
+
+
+<h3 id="filtering-strings-by-column-values-method-2">Filtering Strings by Column Values (Method 2)<a class="headerlink" href="#filtering-strings-by-column-values-method-2" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="c1"># Filtering based on the string column</span>
+<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">strings</span> <span class="o">==</span> <span class="s1">&#39;b&#39;</span><span class="p">])</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>   integers  strings
+1         2        b
+</pre></div>
+
+
+<h3 id="filtering-integersfloats-by-column-values-method-2">Filtering Integers/Floats by Column Values (Method 2)<a class="headerlink" href="#filtering-integersfloats-by-column-values-method-2" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="c1"># Filtering based on the string column</span>
+<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">integers</span> <span class="o">==</span> <span class="mi">2</span><span class="p">])</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>   integers  strings
+1         2        b
+</pre></div>
+                
+                  
+                
+              
+              
+                
+
+
+  <h2 id="__comments">Comments</h2>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://www.deeplearningwizard.com/machine_learning/gpu/rapids_cudf/";
+      this.page.identifier =
+        "machine_learning/gpu/rapids_cudf/";
+    };
+    (function() {
+      var d = document, s = d.createElement("script");
+      s.src = "//deep-learning-wizard.disqus.com/embed.js";
+      s.setAttribute("data-timestamp", +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="machine_learning/intro/" title="Introduction" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Introduction
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="programming/intro/" title="Introduction" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Introduction
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 Deep Learning Wizard
+          </div>
+        
+        proudly an
+        <a href="http://www.nvidia.com/page/home.html">NVIDIA Inception Partner</a>
+        based in Singapore by
+        <a href="https://www.ritchieng.com/">
+          Ritchie Ng (NVIDIA Deep Learning Institute Instructor)</a>
+      </div>
+      
+        
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/ritchieng" class="md-footer-social__link fa fa-github"></a>
+    
+      <a href="https://www.facebook.com/DeepLearningWizard/" class="md-footer-social__link fa fa-facebook"></a>
+    
+      <a href="https://www.linkedin.com/company/deeplearningwizard/" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.583bbe55.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+    
+      
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-122083328-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+      
+    
+  </body>
+</html>
