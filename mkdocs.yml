@@ -31,6 +31,20 @@ pages:
       - Dynamic Programming: deep_learning/deep_reinforcement_learning_pytorch/dynamic_programming_frozenlake.md
       - Additional Readings: deep_learning/readings.md
 
+    - Machine Learning Tutorials:
+      - Introduction: machine_learning/intro.md
+      - GPU DataFrames: machine_learning/gpu/rapids_cudf.md
+#      - Linear Regression: machine_learning/gpu/rapids_cudf.md
+#      - Ridge Regression: machine_learning/gpu/rapids_cudf.md
+#      - Kalman Filter: machine_learning/gpu/rapids_cudf.md
+#      - Stochastic Gradient Descent: machine_learning/gpu/rapids_cudf.md
+#      - K-nearest Neighbours Classification: machine_learning/gpu/rapids_cudf.md
+#      - K-Means Clustering: machine_learning/gpu/rapids_cudf.md
+#      - Density-Based Spatial Clustering of Applications with Noise (DBSCAN): machine_learning/gpu/rapids_cudf.md
+#      - Singular Value Decomposition (SVD), Dimensionality Reduction: machine_learning/gpu/rapids_cudf.md
+#      - Principal Component Analysis (PCA), Dimensionality Reduction: machine_learning/gpu/rapids_cudf.md
+#      - Uniform Manifold Approximation and Projection (UMAP), Dimensionality Reduction: machine_learning/gpu/rapids_cudf.md
+
     - Programming Tutorials:
       - Introduction: programming/intro.md
       - C++: programming/cpp/cpp.md

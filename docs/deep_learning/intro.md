@@ -1,11 +1,11 @@
 # Deep Learning and Deep Reinforcement Learning Theory and Programming Tutorials
-Our main open-source programming languages and libraries are:
+
+We'll be covering both CPU and GPU implementations of deep learning and deep reinforcement learning algorithms
 
 <button class="button" onClick="window.open('https://www.python.org/');" data-md-color-primary="indigo">Python</button>
 <button class="button" onClick="window.open('https://pytorch.org/');" data-md-color-primary="red">PyTorch</button>
 <button class="button" onClick="window.open('http://www.numpy.org/');" data-md-color-primary="yellow">NumPy</button>
 <button class="button" onClick="window.open('https://gym.openai.com/');" data-md-color-primary="teal">Gym</button>
-
 
 If you would like a more visual and guided experience, feel free to take our [video course](https://www.udemy.com/practical-deep-learning-with-pytorch/?couponCode=DEEPWIZARD).
 
@@ -22,7 +22,7 @@ If you would like a more visual and guided experience, feel free to take our [vi
 !!! warning "Errors to be corrected"
     As we are rapidly prototyping there may be some errors. For these errors stated here, they will be corrected very soon.
     
-    Feel free to report bugs, corrections or improvements on our [Github repositor](https://github.com/ritchieng/deep-learning-wizard). 
+    Feel free to report bugs, corrections or improvements on our [Github repository](https://github.com/ritchieng/deep-learning-wizard). 
     
     If you did not go through all the materials, you would not be familiar with these, so go through them and come back to review these changes.
     

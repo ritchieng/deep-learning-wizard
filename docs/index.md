@@ -2,6 +2,7 @@
 
 <button class="button" onClick="window.open('https://www.python.org/');" data-md-color-primary="indigo">Python</button>
 <button class="button" onClick="window.open('http://www.cplusplus.org/');" data-md-color-primary="blue">C++</button>
+<button class="button" onClick="window.open('https://en.wikipedia.org/wiki/Bash_(Unix_shell)');" data-md-color-primary="grey">Bash</button>
 <button class="button" onClick="window.open('https://pytorch.org/');" data-md-color-primary="red">PyTorch</button>
 <button class="button" onClick="window.open('https://pandas.pydata.org/');" data-md-color-primary="blue-grey">Pandas</button>
 <button class="button" onClick="window.open('http://www.numpy.org/');" data-md-color-primary="yellow">NumPy</button>
