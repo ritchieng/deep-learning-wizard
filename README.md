@@ -10,7 +10,7 @@ This repository contains all the notesbooks and mkdocs markdown files of the tut
 Take note this is an early work in progress, do be patient as we gradually upload our guides.
 
 ## Sections and Subsections
-- [Deep Learning and Deep Reinforcement Learning Tutorials (Libraries: Python, PyTorch, Gym, NumPy and Matplotlib)](https://www.deeplearningwizard.com/deep_learning/intro/)
+- [Deep Learning and Deep Reinforcement Learning Tutorials (Libraries: Python, PyTorch, Gym, NumPy, Matplotlib and more)](https://www.deeplearningwizard.com/deep_learning/intro/)
     - [Course Progression](https://www.deeplearningwizard.com/deep_learning/course_progression/)
     - [Matrices](https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_matrices/)
     - [Gradients](https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_gradients/)
@@ -28,9 +28,11 @@ Take note this is an early work in progress, do be patient as we gradually uploa
     - [Supervised to Reinforcement Learning](https://www.deeplearningwizard.com/deep_learning/deep_reinforcement_learning_pytorch/supervised_to_rl/)
     - [Markov Decision Processes and Bellman Equations](https://www.deeplearningwizard.com/deep_learning/deep_reinforcement_learning_pytorch/bellman_mdp/)
     - [Dynamic Programming](https://www.deeplearningwizard.com/deep_learning/deep_reinforcement_learning_pytorch/dynamic_programming_frozenlake/)
+- [Machine Learning Tutorials (Libraries: Python, cuDF RAPIDS, cuML RAPIDS, pandas, numpy, scikit-learn and more)](https://www.deeplearningwizard.com/machine_learning/intro/)
+    - [GPU DataFrames](https://www.deeplearningwizard.com/machine_learning/gpu/rapids_cudf/)
 - [Programming Tutorials (Libraries: C++, Python, Bash and more)](https://www.deeplearningwizard.com/programming/intro/)
     - [C++](https://www.deeplearningwizard.com/programming/cpp/cpp/)
-- [Scalable Database Tutorials (Libraries: Apache Cassandra, Bash and Python)](https://www.deeplearningwizard.com/database/intro/)
+- [Scalable Database Tutorials (Libraries: Apache Cassandra, Bash, Python and more)](https://www.deeplearningwizard.com/database/intro/)
     - [Apache Cassandra Cluster Setup](https://www.deeplearningwizard.com/database/setting_up_cluster/)
     
 ## About Deep Learning Wizard
