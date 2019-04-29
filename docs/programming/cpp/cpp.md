@@ -562,3 +562,152 @@ copy(begin(ArrayCharTwo), end(ArrayCharTwo), ostream_iterator<char>(cout, "\n"))
     d
     e
 
+
+## Mathematical Operators
+- Add, subtract, multiply, divide and modulus
+
+### Add
+
+
+```c++
+double addStatement = 5 + 5;
+std::cout << addStatement;
+```
+
+    10
+
+### Subtract
+
+
+```c++
+double subtractStatement = 5 - 5;
+std::cout << subtractStatement;
+```
+
+    0
+
+### Divide
+
+
+```c++
+double divideStatement = 5 / 5;
+std::cout << divideStatement;
+```
+
+    1
+
+### Multiply
+
+
+```c++
+double multiplyStatement = 5 * 5;
+std::cout << multiplyStatement;
+```
+
+    25
+
+### Modulus
+- Gets the remainder of the division
+
+
+```c++
+double modulusStatement = 8 % 5;
+std::cout << modulusStatement;
+```
+
+    3
+
+### Incrementing/Decrementing
+- 3 ways to do this, from least to most verbose
+
+#### Methods
+
+##### Method 1
+
+
+```c++
+double idx = 1;
+idx++;
+std::cout << idx;
+```
+
+    2
+
+##### Method 2
+
+
+```c++
+idx += 1;
+std::cout << idx;
+```
+
+    3
+
+##### Method 3
+
+
+```c++
+idx = idx + 1;
+std::cout << idx;
+```
+
+    4
+
+#### Prefix/Postfix
+
+
+##### Prefix
+- This will change both incremented variable and the new variable you assign the incremented variable to
+- Summary: both variables will have the same values
+
+
+```c++
+// Instantiate
+double a = 1;
+double b = 1;
+
+// Print original values
+cout << "Old a:\t" << a << "\n";
+cout << "Old b:\t" << b << "\n";
+
+// Prefix increment
+a = ++b;
+
+// Print new values
+cout << "New a:\t" << a << "\n";
+cout << "New b:\t" << b << "\n";
+```
+
+    Old a:	1
+    Old b:	1
+    New a:	2
+    New b:	2
+
+
+##### Postfix
+- This will change only the incremented variable but not the variable it's assigned to
+- Summary: incremented variable will change but not the variable it was assigned to
+
+
+```c++
+// Instantiate
+double c = 2;
+double d = 2;
+
+// Print original values
+cout << "Old c:\t" << c << "\n";
+cout << "Old d:\t" << d << "\n";
+
+// Prefix increment
+c = d--;
+
+// Print new values, notice how only d decremented? c which is what d is assigned to doesn't change.
+cout << "New c:\t" << c << "\n";
+cout << "New d:\t" << d << "\n";
+```
+
+    Old c:	2
+    Old d:	2
+    New c:	2
+    New d:	1
+
