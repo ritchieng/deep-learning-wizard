@@ -596,6 +596,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#network-pruning" title="Network Pruning" class="md-nav__link">
+    Network Pruning
+  </a>
+  
+</li>
+      
       
       
       
@@ -938,6 +945,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#network-pruning" title="Network Pruning" class="md-nav__link">
+    Network Pruning
+  </a>
+  
+</li>
+      
       
       
       
@@ -963,7 +977,11 @@
                 
                   <h1>Additional Readings</h1>
                 
-                <h2 id="deep-reinforcement-learning">Deep Reinforcement Learning<a class="headerlink" href="#deep-reinforcement-learning" title="Permanent link">&para;</a></h2>
+                <div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>This is a list of papers I think are interesting.</p>
+</div>
+<h2 id="deep-reinforcement-learning">Deep Reinforcement Learning<a class="headerlink" href="#deep-reinforcement-learning" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://arxiv.org/pdf/1801.05566.pdf">An Empirical Analysis of Proximal Policy Optimization with Kronecker-factored Natural Gradients</a><ul>
 <li>Shows 2 SOTA for deep RL currently (2018 / early 2019): PPO and ACKTR</li>
@@ -979,6 +997,14 @@
 <li>Uses the concept of hypergradients (gradients w.r.t. learning rate) obtained via reverse-mode automatic differentiation to dynamically update learning rates in real-time alongside weight updates</li>
 <li>Little additional computation because just needs just one additional copy of original gradients store in memory</li>
 <li>Severely under-appreciated paper</li>
+</ul>
+</li>
+</ul>
+<h2 id="network-pruning">Network Pruning<a class="headerlink" href="#network-pruning" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://arxiv.org/abs/1905.05934">EigenDamage: Structured Pruning in the Kronecker-Factored Eigenbasis</a><ul>
+<li>Compared to existing Hessian-based methods, this works on the KFE</li>
+<li>Reported 10x reduction in model size and 8x reduction in FLOPs on Wide ResNet32 (WRN32)</li>
 </ul>
 </li>
 </ul>
