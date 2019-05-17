@@ -25,3 +25,8 @@
     - "SHAP assigns each feature an importance value for a particular prediction"
         - Higher positive SHAP values (red) = increase the probability of the class
         - Higher negative SHAP values (blue) = decrease the probability of the class
+
+## Cautious
+- [Same Stats, Different Graphs: Generating Datasets with Varied Appearance and Identical Statistics through Simulated Annealing](https://www.autodeskresearch.com/publications/samestats)
+    - Shows through scatterplots that multiple toy datasets although visually very different can have similar summary statistics like mean, standard deviation and pearson correlation
+    - This paper emphasises the need to always visualize your data
