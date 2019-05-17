@@ -19,3 +19,9 @@
     - Compared to existing Hessian-based methods, this works on the KFE
     - Reported 10x reduction in model size and 8x reduction in FLOPs on Wide ResNet32 (WRN32)
 
+## Explainability
+- [A Unified Approach to Intepreting Model Predictions](https://arxiv.org/pdf/1705.07874.pdf)
+    - Introduces SHAP (SHapley Additive exPlanations)
+    - "SHAP assigns each feature an importance value for a particular prediction"
+        - Higher positive SHAP values (red) = increase the probability of the class
+        - Higher negative SHAP values (blue) = decrease the probability of the class
