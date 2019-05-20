@@ -1,5 +1,5 @@
 !!! info
-    This is a list of papers I think are interesting.
+    This is a list of growing number of papers and implementations I think are interesting.
 
 ## Deep Reinforcement Learning
 - [An Empirical Analysis of Proximal Policy Optimization with Kronecker-factored Natural Gradients](https://arxiv.org/pdf/1801.05566.pdf)
@@ -30,3 +30,8 @@
 - [Same Stats, Different Graphs: Generating Datasets with Varied Appearance and Identical Statistics through Simulated Annealing](https://www.autodeskresearch.com/publications/samestats)
     - Shows through scatterplots that multiple toy datasets although visually very different can have similar summary statistics like mean, standard deviation and pearson correlation
     - This paper emphasises the need to always visualize your data
+    
+## Visualization
+- [Netron](https://github.com/lutzroeder/netron)
+    - Easily visualize your saved deep learning models (PyTorch .pth, TensorFlow .pb, MXNet .model, ONNX, and more)
+    - You can even check out each node's documentation quickly in the interface
