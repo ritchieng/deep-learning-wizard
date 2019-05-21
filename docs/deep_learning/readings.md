@@ -1,6 +1,12 @@
 !!! info
     This is a list of growing number of papers and implementations I think are interesting.
 
+## Long Tailed Recognition
+- [Large-Scale Long-Tailed Recognition in an Open World](https://arxiv.org/abs/1904.05160)
+    - Frequently in real world scenario there're new unseen classes or samples within the tail classes
+    - This tackles the problem with dynamic embedding to bring associative memory to aid prediction of long-tailed classes
+    - The model essentially combines direct image features with embeddings from other classes
+    
 ## Deep Reinforcement Learning
 - [An Empirical Analysis of Proximal Policy Optimization with Kronecker-factored Natural Gradients](https://arxiv.org/pdf/1801.05566.pdf)
 	- Shows 2 SOTA for deep RL currently (2018 / early 2019): PPO and ACKTR
@@ -35,3 +41,5 @@
 - [Netron](https://github.com/lutzroeder/netron)
     - Easily visualize your saved deep learning models (PyTorch .pth, TensorFlow .pb, MXNet .model, ONNX, and more)
     - You can even check out each node's documentation quickly in the interface
+    
+    
