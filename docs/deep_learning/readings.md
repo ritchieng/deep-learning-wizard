@@ -41,5 +41,7 @@
 - [Netron](https://github.com/lutzroeder/netron)
     - Easily visualize your saved deep learning models (PyTorch .pth, TensorFlow .pb, MXNet .model, ONNX, and more)
     - You can even check out each node's documentation quickly in the interface
-    
-    
+
+## Missing Values
+- [BRITS](https://arxiv.org/abs/1805.10572)
+    - If you face problems in missing data in your time series and you use existing imputation methods, there is an alternative called BRITS where it learns missing values in time series via a bidirectional recurrency dynamical system
