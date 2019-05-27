@@ -19,6 +19,11 @@
 	- Uses the concept of hypergradients (gradients w.r.t. learning rate) obtained via reverse-mode automatic differentiation to dynamically update learning rates in real-time alongside weight updates
 	- Little additional computation because just needs just one additional copy of original gradients store in memory
 	- Severely under-appreciated paper
+
+## Architecture Search
+- [DARTS: Differentiable Architecture Search](https://arxiv.org/abs/1806.09055)
+    - Neural search algorithm based on gradient descent and continuous relaxation in the architecture space. 
+    - A good move towards automatic architecture designs of neural networks.
 	
 ## Network Pruning
 - [EigenDamage: Structured Pruning in the Kronecker-Factored Eigenbasis](https://arxiv.org/abs/1905.05934)
