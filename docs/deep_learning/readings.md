@@ -29,6 +29,13 @@
 - [EigenDamage: Structured Pruning in the Kronecker-Factored Eigenbasis](https://arxiv.org/abs/1905.05934)
     - Compared to existing Hessian-based methods, this works on the KFE
     - Reported 10x reduction in model size and 8x reduction in FLOPs on Wide ResNet32 (WRN32)
+    
+    
+## Bayesian Deep Learning
+- [Fast and Scalable Bayesian Deep Learning by Weight-Perturbation in Adam](https://arxiv.org/abs/1806.04854)
+    - Variational Adam (Vadam), an alternative to varianal inference via dropout.
+    - Vadam perturbs the network's weights when backpropagating, allowing low computation cost uncertainty estimates. 
+    - Not as good as dropout in terms of performance, but a good direction for computationally cheaper options.
 
 ## Explainability
 - [A Unified Approach to Intepreting Model Predictions](https://arxiv.org/pdf/1705.07874.pdf)
