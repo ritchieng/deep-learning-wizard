@@ -5,6 +5,7 @@ Here, we post news related to Deep Learning Wizard's releases, features and achi
 
 ## Notable News
 
+* [x] Oral Presentation for AI for Social Good Workshop ICML, Long Beach, Los Angeles, USA, June 2019
 * [x] IT Youth Leader of The Year, Singapore Computer Society (SCS), Singapore, March 2019
 * [x] Foundations of Deep Learning, African Masters of Machine Intelligence (AMMI), Google & Facebook, Kigali, Rwanda, November 2018
 * [x] Invited to Facebook PyTorch Developer Conference, San Francisco, USA, September 2018

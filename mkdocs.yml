@@ -31,7 +31,7 @@ pages:
       - Dynamic Programming: deep_learning/deep_reinforcement_learning_pytorch/dynamic_programming_frozenlake.md
       - Additional Readings: deep_learning/readings.md
 
-    - Machine Learning Tutorials:
+    - Machine Learning Tutorials (CPU/GPU):
       - Introduction: machine_learning/intro.md
       - GPU DataFrames: machine_learning/gpu/rapids_cudf.md
 #      - Linear Regression: machine_learning/gpu/rapids_cudf.md
@@ -56,6 +56,7 @@ pages:
 
     - News:
       - Welcome: news/news.md
+      - Oral Presentation for AI for Social Good Workshop ICML, June 2019: news/detect_waterbone_debris_ai_for_social_good_icml_2019_06.md
       - IT Youth Leader of The Year 2019, March 2019: news/it_youth_leader_2019_03_11.md
       - AMMI (AIMS) supported by Facebook and Google, November 2018: news/ammi_facebook_google_recap_2018_11_21.md
       - NExT++ AI in Healthcare and Finance, Nanjing, November 2018: news/nanjing_next_nus_tsinghua_ai_finance_healthcare_2018_11_01.md

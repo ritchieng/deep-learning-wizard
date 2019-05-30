@@ -32,6 +32,7 @@ Take note this is an early work in progress, do be patient as we gradually uploa
     - [GPU DataFrames](https://www.deeplearningwizard.com/machine_learning/gpu/rapids_cudf/)
 - [Programming Tutorials (Libraries: C++, Python, Bash and more)](https://www.deeplearningwizard.com/programming/intro/)
     - [C++](https://www.deeplearningwizard.com/programming/cpp/cpp/)
+    - [Bash](https://www.deeplearningwizard.com/programming/bash/bash/)
 - [Scalable Database Tutorials (Libraries: Apache Cassandra, Bash, Python and more)](https://www.deeplearningwizard.com/database/intro/)
     - [Apache Cassandra Cluster Setup](https://www.deeplearningwizard.com/database/setting_up_cluster/)
     
