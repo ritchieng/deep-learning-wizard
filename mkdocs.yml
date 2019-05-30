@@ -49,6 +49,7 @@ pages:
       - Introduction: programming/intro.md
       - C++: programming/cpp/cpp.md
       - Bash: programming/bash/bash.md
+      - Python: programming/python/python.md
 
     - Scalable Database Tutorials:
       - Introduction: database/intro.md
