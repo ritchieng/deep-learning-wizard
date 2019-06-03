@@ -41,7 +41,6 @@
     - Compared to existing Hessian-based methods, this works on the KFE
     - Reported 10x reduction in model size and 8x reduction in FLOPs on Wide ResNet32 (WRN32)
     
-    
 ## Bayesian Deep Learning
 - [Fast and Scalable Bayesian Deep Learning by Weight-Perturbation in Adam](https://arxiv.org/abs/1806.04854)
     - Variational Adam (Vadam), an alternative to varianal inference via dropout.

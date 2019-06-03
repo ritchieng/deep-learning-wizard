@@ -54,6 +54,47 @@ echo $((10%10))
 0
 ```
 
+## Getting Date
+
+```bash
+DATE=`date +%Y-%m-%d`
+echo $DATE
+```
+
+## Loops and Conditional
+
+### For Loop
+
+```bash
+for i in 'A' 'B' 'C'
+    do
+        echo $i
+    done
+```
+
+```bash
+A
+B
+C
+```
+
+### If Else Conditional
+
+This is a simple if-else to check if the day of the week is 5, meaning if it is a Friday.
+
+```bash
+day=$(date +%u)
+
+if [ $day == 5 ];
+    then
+        echo "Friday is here!"
+
+    else
+        echo "Friday is not here :("
+        echo "Today is day $day of the week"
+    fi
+```
+
 ## Bash Convenient Commands
 
 ### List directories only
