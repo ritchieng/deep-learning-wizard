@@ -604,6 +604,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#network-compression" title="Network Compression" class="md-nav__link">
+    Network Compression
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#architecture-search" title="Architecture Search" class="md-nav__link">
     Architecture Search
   </a>
@@ -1038,6 +1045,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#network-compression" title="Network Compression" class="md-nav__link">
+    Network Compression
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#architecture-search" title="Architecture Search" class="md-nav__link">
     Architecture Search
   </a>
@@ -1136,10 +1150,21 @@
 <h2 id="optimization">Optimization<a class="headerlink" href="#optimization" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://arxiv.org/abs/1703.04782">Online Learning Rate Adaptation with Hypergradient Descent</a><ul>
-<li>Reduces the need for learning rate scheduling for SGD, SGD and nesterov momentum, and Adam,</li>
+<li>Reduces the need for learning rate scheduling for SGD, SGD and nesterov momentum, and Adam</li>
 <li>Uses the concept of hypergradients (gradients w.r.t. learning rate) obtained via reverse-mode automatic differentiation to dynamically update learning rates in real-time alongside weight updates</li>
 <li>Little additional computation because just needs just one additional copy of original gradients store in memory</li>
 <li>Severely under-appreciated paper</li>
+</ul>
+</li>
+</ul>
+<h2 id="network-compression">Network Compression<a class="headerlink" href="#network-compression" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://arxiv.org/abs/1806.04321">Energy-constrained Compression for Deep Neural Networks via Weighted Sparse Projection and Layer Input Masking</a><ul>
+<li>More production applications of DNN require low-energy consumption environment like self-driving cars, VR goggles, and drones</li>
+<li>As such it's critical to optimize DNN not for its primary performance (accuracy etc.) but for its energy consumption performance too </li>
+<li>In the DNN training, this paper introduces an energy budget constraint on top of other optimization objectives</li>
+<li>This allows optimization of multiple objectives simultaneously (top-1 accuracy and energy consumption for example)</li>
+<li>It's done through weighted sparse projection and layer input masking </li>
 </ul>
 </li>
 </ul>
@@ -1148,6 +1173,11 @@
 <li><a href="https://arxiv.org/abs/1806.09055">DARTS: Differentiable Architecture Search</a><ul>
 <li>Neural search algorithm based on gradient descent and continuous relaxation in the architecture space. </li>
 <li>A good move towards automatic architecture designs of neural networks.</li>
+</ul>
+</li>
+<li><a href="https://arxiv.org/abs/1905.11946">EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks</a><ul>
+<li>Scales all dimensions of a CNN, resolution/depth/width using compound coefficient</li>
+<li>Uses neural architecture search</li>
 </ul>
 </li>
 </ul>

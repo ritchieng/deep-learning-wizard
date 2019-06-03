@@ -736,6 +736,60 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#getting-dates" title="Getting Dates" class="md-nav__link">
+    Getting Dates
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getting-current-date" title="Getting Current Date" class="md-nav__link">
+    Getting Current Date
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getting-current-day-of-week" title="Getting Current Day of Week" class="md-nav__link">
+    Getting Current Day of Week
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loops-and-conditional" title="Loops and Conditional" class="md-nav__link">
+    Loops and Conditional
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-loop" title="For Loop" class="md-nav__link">
+    For Loop
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-else-conditional" title="If Else Conditional" class="md-nav__link">
+    If Else Conditional
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#bash-convenient-commands" title="Bash Convenient Commands" class="md-nav__link">
     Bash Convenient Commands
   </a>
@@ -1181,6 +1235,60 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#getting-dates" title="Getting Dates" class="md-nav__link">
+    Getting Dates
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getting-current-date" title="Getting Current Date" class="md-nav__link">
+    Getting Current Date
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getting-current-day-of-week" title="Getting Current Day of Week" class="md-nav__link">
+    Getting Current Day of Week
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loops-and-conditional" title="Loops and Conditional" class="md-nav__link">
+    Loops and Conditional
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-loop" title="For Loop" class="md-nav__link">
+    For Loop
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-else-conditional" title="If Else Conditional" class="md-nav__link">
+    If Else Conditional
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#bash-convenient-commands" title="Bash Convenient Commands" class="md-nav__link">
     Bash Convenient Commands
   </a>
@@ -1393,6 +1501,46 @@
 <span class="m">1</span>
 <span class="m">100</span>
 <span class="m">0</span>
+</pre></div>
+
+<h2 id="getting-dates">Getting Dates<a class="headerlink" href="#getting-dates" title="Permanent link">&para;</a></h2>
+<h3 id="getting-current-date">Getting Current Date<a class="headerlink" href="#getting-current-date" title="Permanent link">&para;</a></h3>
+<p>This will return the date in the format YYYY-MM-DD for example 2019-06-03.</p>
+<div class="codehilite"><pre><span></span><span class="nv">DATE</span><span class="o">=</span><span class="sb">`</span>date +%Y-%m-%d<span class="sb">`</span>
+<span class="nb">echo</span> <span class="nv">$DATE</span>
+</pre></div>
+
+<h3 id="getting-current-day-of-week">Getting Current Day of Week<a class="headerlink" href="#getting-current-day-of-week" title="Permanent link">&para;</a></h3>
+<p>This will return 1, 2, 3, 4, 5, 6, 7 depending on the day of the week.</p>
+<div class="codehilite"><pre><span></span><span class="nv">DAY</span><span class="o">=</span><span class="k">$(</span>date +%u<span class="k">)</span>
+<span class="nb">echo</span> <span class="nv">$DAY</span>
+</pre></div>
+
+<h2 id="loops-and-conditional">Loops and Conditional<a class="headerlink" href="#loops-and-conditional" title="Permanent link">&para;</a></h2>
+<h3 id="for-loop">For Loop<a class="headerlink" href="#for-loop" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="k">for</span> i in <span class="s1">&#39;A&#39;</span> <span class="s1">&#39;B&#39;</span> <span class="s1">&#39;C&#39;</span>
+    <span class="k">do</span>
+        <span class="nb">echo</span> <span class="nv">$i</span>
+    <span class="k">done</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>A
+B
+C
+</pre></div>
+
+<h3 id="if-else-conditional">If Else Conditional<a class="headerlink" href="#if-else-conditional" title="Permanent link">&para;</a></h3>
+<p>This is a simple if-else to check if the day of the week is 5, meaning if it is a Friday.</p>
+<div class="codehilite"><pre><span></span><span class="nv">day</span><span class="o">=</span><span class="k">$(</span>date +%u<span class="k">)</span>
+
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$day</span> <span class="o">==</span> <span class="m">5</span> <span class="o">]</span><span class="p">;</span>
+    <span class="k">then</span>
+        <span class="nb">echo</span> <span class="s2">&quot;Friday is here!&quot;</span>
+
+    <span class="k">else</span>
+        <span class="nb">echo</span> <span class="s2">&quot;Friday is not here :(&quot;</span>
+        <span class="nb">echo</span> <span class="s2">&quot;Today is day </span><span class="nv">$day</span><span class="s2"> of the week&quot;</span>
+    <span class="k">fi</span>
 </pre></div>
 
 <h2 id="bash-convenient-commands">Bash Convenient Commands<a class="headerlink" href="#bash-convenient-commands" title="Permanent link">&para;</a></h2>
