@@ -54,11 +54,23 @@ echo $((10%10))
 0
 ```
 
-## Getting Date
+## Getting Dates
+
+
+### Getting Current Date
+This will return the date in the format YYYY-MM-DD for example 2019-06-03.
 
 ```bash
 DATE=`date +%Y-%m-%d`
 echo $DATE
+```
+
+### Getting Current Day of Week
+This will return 1, 2, 3, 4, 5, 6, 7 depending on the day of the week.
+
+```bash
+DAY=$(date +%u)
+echo $DAY
 ```
 
 ## Loops and Conditional
