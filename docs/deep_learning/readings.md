@@ -15,16 +15,27 @@
 
 ## Optimization
 - [Online Learning Rate Adaptation with Hypergradient Descent](https://arxiv.org/abs/1703.04782)
-	- Reduces the need for learning rate scheduling for SGD, SGD and nesterov momentum, and Adam,
+	- Reduces the need for learning rate scheduling for SGD, SGD and nesterov momentum, and Adam
 	- Uses the concept of hypergradients (gradients w.r.t. learning rate) obtained via reverse-mode automatic differentiation to dynamically update learning rates in real-time alongside weight updates
 	- Little additional computation because just needs just one additional copy of original gradients store in memory
 	- Severely under-appreciated paper
 
+## Network Compression 
+- [Energy-constrained Compression for Deep Neural Networks via Weighted Sparse Projection and Layer Input Masking](https://arxiv.org/abs/1806.04321)
+    - More production applications of DNN require low-energy consumption environment like self-driving cars, VR goggles, and drones
+    - As such it's critical to optimize DNN not for its primary performance (accuracy etc.) but for its energy consumption performance too 
+    - In the DNN training, this paper introduces an energy budget constraint on top of other optimization objectives
+    - This allows optimization of multiple objectives simultaneously (top-1 accuracy and energy consumption for example)
+    - It's done through weighted sparse projection and layer input masking 
+    
 ## Architecture Search
 - [DARTS: Differentiable Architecture Search](https://arxiv.org/abs/1806.09055)
     - Neural search algorithm based on gradient descent and continuous relaxation in the architecture space. 
     - A good move towards automatic architecture designs of neural networks.
-	
+- [EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks](https://arxiv.org/abs/1905.11946)
+    - Scales all dimensions of a CNN, resolution/depth/width using compound coefficient
+    - Uses neural architecture search
+   
 ## Network Pruning
 - [EigenDamage: Structured Pruning in the Kronecker-Factored Eigenbasis](https://arxiv.org/abs/1905.05934)
     - Compared to existing Hessian-based methods, this works on the KFE
