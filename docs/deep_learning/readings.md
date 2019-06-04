@@ -53,6 +53,9 @@
     - "SHAP assigns each feature an importance value for a particular prediction"
         - Higher positive SHAP values (red) = increase the probability of the class
         - Higher negative SHAP values (blue) = decrease the probability of the class
+- [Hierarchical interpretations for neural network predictions](https://openreview.net/pdf?id=SkEqro0ctQ)
+    - Given a prediction from the deep neural network, agglomerative contextual decomposition (ACD) produces a hierarchical clusters of input features alongside cluster-wise contribution to the final prediction.
+    - The hierarchical clustering is then optimized to identify learned clusters driving the DNN's predictions.
 
 ## Cautious
 - [Same Stats, Different Graphs: Generating Datasets with Varied Appearance and Identical Statistics through Simulated Annealing](https://www.autodeskresearch.com/publications/samestats)
