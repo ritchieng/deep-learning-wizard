@@ -107,6 +107,14 @@ if [ $day == 5 ];
     fi
 ```
 
+
+## Jupyter Utility Commands
+
+### Convert Notebook to HTML/Markdown
+```bash
+jupyter nbconvert --to markdown python.ipynb
+jupyter nbconvert --to html python.ipynb
+``` 
 ## Bash Convenient Commands
 
 ### List directories only
