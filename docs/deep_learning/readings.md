@@ -70,3 +70,9 @@
 ## Missing Values
 - [BRITS](https://arxiv.org/abs/1805.10572)
     - If you face problems in missing data in your time series and you use existing imputation methods, there is an alternative called BRITS where it learns missing values in time series via a bidirectional recurrency dynamical system
+
+## Correlation 
+- [DCCA: Deep Canonical Correlation Analysis](http://proceedings.mlr.press/v28/andrew13.pdf)
+    - Learn non-linear complex transformations such that resulting transformed data have high linear correlation
+    - Alternative to non-parametric methods like kernel canonical correlation analysis (KCCA) and non-linear extension of canonical correlation analysis (CCA)
+    - Shown to learn higher correlation representations than CCA/KCCA
