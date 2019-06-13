@@ -1667,14 +1667,22 @@ ls: cannot access &#39;*/&#39;: No such file or directory
 </li>
 </ul>
 <h3 id="asynchronous-key-components">Asynchronous Key Components<a class="headerlink" href="#asynchronous-key-components" title="Permanent link">&para;</a></h3>
-<p>The three main parts are (1) coroutines and subroutines, (2) event loops, and (3) future.
-- Co-routine and subroutines
-    - Subroutine: the usual function
-    - Coroutine: this allows us to maintain states with memory of where things stopped so we can swap amongst subroutines
-        - <code class="codehilite">async</code> declares a function as a coroutine
-        - <code class="codehilite">await</code> to call a coroutine
-- Event loops
-- Future</p>
+<ul>
+<li>The three main parts are (1) coroutines and subroutines, (2) event loops, and (3) future.<ul>
+<li>Co-routine and subroutines<ul>
+<li>Subroutine: the usual function</li>
+<li>Coroutine: this allows us to maintain states with memory of where things stopped so we can swap amongst subroutines<ul>
+<li><code class="codehilite">async</code> declares a function as a coroutine</li>
+<li><code class="codehilite">await</code> to call a coroutine</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Event loops</li>
+<li>Future</li>
+</ul>
+</li>
+</ul>
 <h3 id="synchronous-2-function-calls">Synchronous 2 Function Calls<a class="headerlink" href="#synchronous-2-function-calls" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">add_numbers</span><span class="p">(</span><span class="n">num_1</span><span class="p">,</span> <span class="n">num_2</span><span class="p">):</span>
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Adding&#39;</span><span class="p">)</span>
@@ -1769,10 +1777,6 @@ Adding
 Total sum 4
 Total sum 4
 Total time 1.0008s
-</pre></div>
-
-
-<div class="codehilite"><pre><span></span>
 </pre></div>
                 
                   
