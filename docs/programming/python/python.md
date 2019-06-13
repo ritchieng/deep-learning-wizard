@@ -238,14 +238,14 @@ if not os.path.exists(directory):
             - In the sense that everything operates sequentially in the same memory space
 
 ### Asynchronous Key Components
-The three main parts are (1) coroutines and subroutines, (2) event loops, and (3) future.
-- Co-routine and subroutines
-    - Subroutine: the usual function
-    - Coroutine: this allows us to maintain states with memory of where things stopped so we can swap amongst subroutines
-        - `async` declares a function as a coroutine
-        - `await` to call a coroutine
-- Event loops
-- Future
+- The three main parts are (1) coroutines and subroutines, (2) event loops, and (3) future.
+    - Co-routine and subroutines
+        - Subroutine: the usual function
+        - Coroutine: this allows us to maintain states with memory of where things stopped so we can swap amongst subroutines
+            - `async` declares a function as a coroutine
+            - `await` to call a coroutine
+    - Event loops
+    - Future
 
 ### Synchronous 2 Function Calls
 
@@ -349,8 +349,3 @@ print(f'Total time {total_time:.4f}s')
     Total sum 4
     Total time 1.0008s
 
-
-
-```python
-
-```
