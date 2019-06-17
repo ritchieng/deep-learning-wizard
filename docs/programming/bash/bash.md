@@ -144,25 +144,6 @@ jupyter nbconvert --to html python.ipynb
 ### Check cuDNN version
 `cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2`
 
-### Check conda environment
-`conda env list`
-
-### Create conda kernel
-```bash
-conda create -n kernel_name python=3.6
-source activate kernel_name
-```
-
-### Install conda kernel
-```bash
-conda install ipykernel
-source activate kernel_name
-python -m ipykernel install --user --name kernel_name --display-name kernel_name
-```
-
-### Remove conda kernel
-`conda env remove -n kernel_name`
-
 ### Untar file
 `tar -xvzf file_name`
 
@@ -182,4 +163,42 @@ python -m ipykernel install --user --name kernel_name --display-name kernel_name
 ```bash
 sudo apt-get install trash-cli
 thrash-empty
+```
+
+## Conda Commands
+
+### Check conda environment
+`conda env list`
+
+### Create conda kernel
+```bash
+conda create -n kernel_name python=3.6
+source activate kernel_name
+```
+
+### Install conda kernel
+```bash
+conda install ipykernel
+source activate kernel_name
+python -m ipykernel install --user --name kernel_name --display-name kernel_name
+```
+
+### Remove conda kernel
+`conda env remove -n kernel_name`
+
+### Recovering problematic conda installation
+```bash
+
+# Download miniconda according to your environment
+# Link: https://docs.conda.io/en/latest/miniconda.html
+
+# Backup existing miniconda environment that may have problems
+mv miniconda3 miniconda3_backup
+
+# Install miniconda
+bash Miniconda3-latest-Linux-x86_64.sh
+
+# Restore old environment settings
+rsync -a miniconda3_backup/ miniconda3/
+
 ```
