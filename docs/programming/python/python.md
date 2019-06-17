@@ -78,7 +78,7 @@ lst_3 = [3, 6, 9, 12]
 
 
 ```python
-add_elements = map(lambda x, y ,z : x + y + z, lst_1, lst_2, lst_3)
+add_elements = map(lambda x, y, z : x + y + z, lst_1, lst_2, lst_3)
 print(list(add_elements))
 ```
 
@@ -123,6 +123,117 @@ print(1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9)
 
     45
     45
+
+
+## Decorators
+- This allows us to to modify our original function or even entirely replace it without changing the function's code. 
+- It sounds mind-boggling, but a simple case I would like to illustrate here is using decorators for consistent logging (formatted print statements).
+- For us to understand decorators, we'll first need to understand:
+    - `first class objects`
+    - `*args`
+    - `*kwargs`
+
+### First Class Objects
+
+
+```python
+def outer():
+    def inner():
+        print('Inside inner() function.')
+        
+    # This returns a function.
+    return inner
+
+# Here, we are assigning `outer()` function to the object `call_outer`.
+call_outer = outer()
+
+# Then we call `call_outer()` 
+call_outer()
+```
+
+    Inside inner() function.
+
+
+### *args
+-  This is used to indicate that positional arguments should be stored in the variable args
+- `*` is for iterables and positional parameters
+
+
+```python
+# Define dummy function
+def dummy_func(*args):
+    print(args)
+    
+# * allows us to extract positional variables from an iterable when we are calling a function
+dummy_func(*range(10))
+
+# If we do not use *, this would happen
+dummy_func(range(10))
+
+# See how we can have varying arguments?
+dummy_func(*range(2))
+```
+
+    (0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+    (range(0, 10),)
+    (0, 1)
+
+
+### **kwargs
+- `**` is for dictionaries & key/value pairs
+
+
+```python
+# New dummy function
+def dummy_func_new(**kwargs):
+    print(kwargs)
+    
+# Call function with no arguments
+dummy_func_new()
+
+# Call function with 2 arguments
+dummy_func_new(a=0, b=1)
+
+# Again, there's no limit to the number of arguments.
+dummy_func_new(a=0, b=1, c=2)
+
+# Or we can just pass the whole dictionary object if we want
+new_dict = {'a': 0, 'b': 1, 'c': 2, 'd': 3}
+dummy_func_new(**new_dict)
+```
+
+    {}
+    {'a': 0, 'b': 1}
+    {'a': 0, 'b': 1, 'c': 2}
+    {'a': 0, 'b': 1, 'c': 2, 'd': 3}
+
+
+### Decorators as Logger and Debugging
+
+
+```python
+# Create a nested function that will be our decorator
+def function_inspector(func):
+    def inner(*args, **kwargs):
+        result = func(*args, **kwargs)
+        print(f'Function args: {args}')
+        print(f'Function kwargs: {kwargs}')
+        print(f'Function return result: {result}')
+        return result
+    return inner
+
+# Decorate our multiply function with our logger for easy logging
+# Of arguments pass to the function and results returned
+@function_inspector
+def multiply_func(num_one, num_two):
+    return num_one * num_two
+
+multiply_result = multiply_func(num_one=1, num_two=2)
+```
+
+    Function args: ()
+    Function kwargs: {'num_one': 1, 'num_two': 2}
+    Function return result: 2
 
 
 ## Dates
