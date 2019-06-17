@@ -1724,6 +1724,14 @@
 
 
 <h3 id="decorators-as-logger-and-debugging">Decorators as Logger and Debugging<a class="headerlink" href="#decorators-as-logger-and-debugging" title="Permanent link">&para;</a></h3>
+<ul>
+<li>A simple way to remember the power of decorators is that the decorator (the nested function illustrated below) can<ul>
+<li>(1) access the passed arguments of the decorated function and</li>
+<li>(2) access the decorated function</li>
+</ul>
+</li>
+<li>Therefore this allows us to modify the decorated function without changing the decorated function</li>
+</ul>
 <div class="codehilite"><pre><span></span><span class="c1"># Create a nested function that will be our decorator</span>
 <span class="k">def</span> <span class="nf">function_inspector</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
