@@ -57,6 +57,7 @@ pages:
 
     - News:
       - Welcome: news/news.md
+      - Deep Learning Introduction, Defence and Science Technology Agency (DSTA) and NVIDIA, June 2019: news/defence_and_science_technology_agency_dsta_nvidia_talk_2016_06.md
       - Oral Presentation for AI for Social Good Workshop ICML, June 2019: news/detect_waterbone_debris_ai_for_social_good_icml_2019_06.md
       - IT Youth Leader of The Year 2019, March 2019: news/it_youth_leader_2019_03_11.md
       - AMMI (AIMS) supported by Facebook and Google, November 2018: news/ammi_facebook_google_recap_2018_11_21.md
