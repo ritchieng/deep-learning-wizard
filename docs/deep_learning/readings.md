@@ -6,6 +6,12 @@
     - Frequently in real world scenario there're new unseen classes or samples within the tail classes
     - This tackles the problem with dynamic embedding to bring associative memory to aid prediction of long-tailed classes
     - The model essentially combines direct image features with embeddings from other classes
+
+## Better Generalization (Overfitting Prevention or Regularization)
+- [Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World](https://arxiv.org/abs/1703.06907)
+    - They propose to use domain randomization to train deep learning algorithms on synthetic data and transferring to real-world data
+    - The idea is that with sufficient variability in the textures of synthetic data, real-world data becomes another variation of the synthetic data
+    - It works surprisingly well and it's a simple technique of varying image textures essentially enabling CNNs to be more robust to variations in image textures
     
 ## Deep Reinforcement Learning
 - [An Empirical Analysis of Proximal Policy Optimization with Kronecker-factored Natural Gradients](https://arxiv.org/pdf/1801.05566.pdf)
