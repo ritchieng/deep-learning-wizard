@@ -209,6 +209,10 @@ dummy_func_new(**new_dict)
 
 
 ### Decorators as Logger and Debugging
+- A simple way to remember the power of decorators is that the decorator (the nested function illustrated below) can
+    - (1) access the passed arguments of the decorated function and
+    - (2) access the decorated function
+- Therefore this allows us to modify the decorated function without changing the decorated function
 
 
 ```python
