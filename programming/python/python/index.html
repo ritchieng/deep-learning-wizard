@@ -822,6 +822,47 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#decorators" title="Decorators" class="md-nav__link">
+    Decorators
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#first-class-objects" title="First Class Objects" class="md-nav__link">
+    First Class Objects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#args" title="*args" class="md-nav__link">
+    *args
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kwargs" title="**kwargs" class="md-nav__link">
+    **kwargs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decorators-as-logger-and-debugging" title="Decorators as Logger and Debugging" class="md-nav__link">
+    Decorators as Logger and Debugging
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#dates" title="Dates" class="md-nav__link">
     Dates
   </a>
@@ -1312,6 +1353,47 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#decorators" title="Decorators" class="md-nav__link">
+    Decorators
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#first-class-objects" title="First Class Objects" class="md-nav__link">
+    First Class Objects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#args" title="*args" class="md-nav__link">
+    *args
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kwargs" title="**kwargs" class="md-nav__link">
+    **kwargs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decorators-as-logger-and-debugging" title="Decorators as Logger and Debugging" class="md-nav__link">
+    Decorators as Logger and Debugging
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#dates" title="Dates" class="md-nav__link">
     Dates
   </a>
@@ -1516,7 +1598,7 @@
 </pre></div>
 
 <h4 id="map-add-function-to-multiple-lists">Map Add Function to Multiple Lists<a class="headerlink" href="#map-add-function-to-multiple-lists" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><span class="n">add_elements</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="p">,</span><span class="n">z</span> <span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">+</span> <span class="n">z</span><span class="p">,</span> <span class="n">lst_1</span><span class="p">,</span> <span class="n">lst_2</span><span class="p">,</span> <span class="n">lst_3</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="n">add_elements</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">+</span> <span class="n">z</span><span class="p">,</span> <span class="n">lst_1</span><span class="p">,</span> <span class="n">lst_2</span><span class="p">,</span> <span class="n">lst_3</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">add_elements</span><span class="p">))</span>
 </pre></div>
 
@@ -1554,6 +1636,116 @@
 
 <div class="codehilite"><pre><span></span>45
 45
+</pre></div>
+
+
+<h2 id="decorators">Decorators<a class="headerlink" href="#decorators" title="Permanent link">&para;</a></h2>
+<ul>
+<li>This allows us to to modify our original function or even entirely replace it without changing the function's code. </li>
+<li>It sounds mind-boggling, but a simple case I would like to illustrate here is using decorators for consistent logging (formatted print statements).</li>
+<li>For us to understand decorators, we'll first need to understand:<ul>
+<li><code class="codehilite">first class objects</code></li>
+<li><code class="codehilite">*args</code></li>
+<li><code class="codehilite">*kwargs</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="first-class-objects">First Class Objects<a class="headerlink" href="#first-class-objects" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">outer</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">inner</span><span class="p">():</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Inside inner() function.&#39;</span><span class="p">)</span>
+
+    <span class="c1"># This returns a function.</span>
+    <span class="k">return</span> <span class="n">inner</span>
+
+<span class="c1"># Here, we are assigning `outer()` function to the object `call_outer`.</span>
+<span class="n">call_outer</span> <span class="o">=</span> <span class="n">outer</span><span class="p">()</span>
+
+<span class="c1"># Then we call `call_outer()` </span>
+<span class="n">call_outer</span><span class="p">()</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>Inside inner() function.
+</pre></div>
+
+
+<h3 id="args">*args<a class="headerlink" href="#args" title="Permanent link">&para;</a></h3>
+<ul>
+<li>This is used to indicate that positional arguments should be stored in the variable args</li>
+<li><code class="codehilite">*</code> is for iterables and positional parameters</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="c1"># Define dummy function</span>
+<span class="k">def</span> <span class="nf">dummy_func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+
+<span class="c1"># * allows us to extract positional variables from an iterable when we are calling a function</span>
+<span class="n">dummy_func</span><span class="p">(</span><span class="o">*</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+
+<span class="c1"># If we do not use *, this would happen</span>
+<span class="n">dummy_func</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+
+<span class="c1"># See how we can have varying arguments?</span>
+<span class="n">dummy_func</span><span class="p">(</span><span class="o">*</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+(range(0, 10),)
+(0, 1)
+</pre></div>
+
+
+<h3 id="kwargs">**kwargs<a class="headerlink" href="#kwargs" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code class="codehilite">**</code> is for dictionaries &amp; key/value pairs</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="c1"># New dummy function</span>
+<span class="k">def</span> <span class="nf">dummy_func_new</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="c1"># Call function with no arguments</span>
+<span class="n">dummy_func_new</span><span class="p">()</span>
+
+<span class="c1"># Call function with 2 arguments</span>
+<span class="n">dummy_func_new</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Again, there&#39;s no limit to the number of arguments.</span>
+<span class="n">dummy_func_new</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Or we can just pass the whole dictionary object if we want</span>
+<span class="n">new_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="n">dummy_func_new</span><span class="p">(</span><span class="o">**</span><span class="n">new_dict</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>{}
+{&#39;a&#39;: 0, &#39;b&#39;: 1}
+{&#39;a&#39;: 0, &#39;b&#39;: 1, &#39;c&#39;: 2}
+{&#39;a&#39;: 0, &#39;b&#39;: 1, &#39;c&#39;: 2, &#39;d&#39;: 3}
+</pre></div>
+
+
+<h3 id="decorators-as-logger-and-debugging">Decorators as Logger and Debugging<a class="headerlink" href="#decorators-as-logger-and-debugging" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="c1"># Create a nested function that will be our decorator</span>
+<span class="k">def</span> <span class="nf">function_inspector</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Function args: {args}&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Function kwargs: {kwargs}&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Function return result: {result}&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
+    <span class="k">return</span> <span class="n">inner</span>
+
+<span class="c1"># Decorate our multiply function with our logger for easy logging</span>
+<span class="c1"># Of arguments pass to the function and results returned</span>
+<span class="nd">@function_inspector</span>
+<span class="k">def</span> <span class="nf">multiply_func</span><span class="p">(</span><span class="n">num_one</span><span class="p">,</span> <span class="n">num_two</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">num_one</span> <span class="o">*</span> <span class="n">num_two</span>
+
+<span class="n">multiply_result</span> <span class="o">=</span> <span class="n">multiply_func</span><span class="p">(</span><span class="n">num_one</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_two</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>Function args: ()
+Function kwargs: {&#39;num_one&#39;: 1, &#39;num_two&#39;: 2}
+Function return result: 2
 </pre></div>
 
 
