@@ -10,6 +10,7 @@ I'm really excited for Singapore's progress in leveraging on deep learning for t
 ![](https://res.cloudinary.com/ritchieng/image/upload/v1560766275/deeplearningwizard.com/dstar2.jpg)
 ![](https://res.cloudinary.com/ritchieng/image/upload/v1560766275/deeplearningwizard.com/dstar1.jpg)
 
+Special thanks to DSTA, NVIDIA and ensemblecap.ai
 
 Cheers,
 <br />Ritchie
