@@ -944,6 +944,33 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#exception-handling" title="Exception Handling" class="md-nav__link">
+    Exception Handling
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#try-except-finally-error" title="Try, Except, Finally: Error" class="md-nav__link">
+    Try, Except, Finally: Error
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#try-except-finally-no-error" title="Try, Except, Finally: No Error" class="md-nav__link">
+    Try, Except, Finally: No Error
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#asynchronous" title="Asynchronous" class="md-nav__link">
     Asynchronous
   </a>
@@ -1487,6 +1514,33 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#exception-handling" title="Exception Handling" class="md-nav__link">
+    Exception Handling
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#try-except-finally-error" title="Try, Except, Finally: Error" class="md-nav__link">
+    Try, Except, Finally: Error
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#try-except-finally-no-error" title="Try, Except, Finally: No Error" class="md-nav__link">
+    Try, Except, Finally: No Error
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#asynchronous" title="Asynchronous" class="md-nav__link">
     Asynchronous
   </a>
@@ -1847,6 +1901,56 @@ ls: cannot access &#39;*/&#39;: No such file or directory
 </pre></div>
 
 <div class="codehilite"><pre><span></span>new_dir/
+</pre></div>
+
+
+<h2 id="exception-handling">Exception Handling<a class="headerlink" href="#exception-handling" title="Permanent link">&para;</a></h2>
+<h3 id="try-except-finally-error">Try, Except, Finally: Error<a class="headerlink" href="#try-except-finally-error" title="Permanent link">&para;</a></h3>
+<ul>
+<li>This is very handy and often exploited to patch up (save) poorly written code</li>
+<li>You can use general exceptions or specific ones like <code class="codehilite">ValueError</code>, <code class="codehilite">KeyboardInterrupt</code> and <code class="codehilite">MemoryError</code> to name a few</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="n">value_one</span> <span class="o">=</span> <span class="s1">&#39;a&#39;</span>
+<span class="n">value_two</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="c1"># Try the following line of code</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">final_sum</span> <span class="o">=</span> <span class="n">value_one</span> <span class="o">/</span> <span class="n">value_two</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Code passed!&#39;</span><span class="p">)</span>
+<span class="c1"># If the code above fails, code nested under except will be executed</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Code failed!&#39;</span><span class="p">)</span>
+<span class="c1"># This will run no matter whether the nested code in try or except is executed</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Ran code block regardless of error or not.&#39;</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>Code failed!
+Ran code block regardless of error or not.
+</pre></div>
+
+
+<h3 id="try-except-finally-no-error">Try, Except, Finally: No Error<a class="headerlink" href="#try-except-finally-no-error" title="Permanent link">&para;</a></h3>
+<ul>
+<li>There won't be errors because you can divide 4 with 2</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="n">value_one</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">value_two</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="c1"># Try the following line of code</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">final_sum</span> <span class="o">=</span> <span class="n">value_one</span> <span class="o">/</span> <span class="n">value_two</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Code passed!&#39;</span><span class="p">)</span>
+<span class="c1"># If the code above fails, code nested under except will be executed</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Code failed!&#39;</span><span class="p">)</span>
+<span class="c1"># This will run no matter whether the nested code in try or except is executed</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Ran code block regardless of error or not.&#39;</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>Code passed!
+Ran code block regardless of error or not.
 </pre></div>
 
 
