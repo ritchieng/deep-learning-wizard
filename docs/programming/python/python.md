@@ -336,6 +336,57 @@ if not os.path.exists(directory):
     new_dir/
 
 
+## Exception Handling
+
+### Try, Except, Finally: Error
+- This is very handy and often exploited to patch up (save) poorly written code
+- You can use general exceptions or specific ones like `ValueError`, `KeyboardInterrupt` and `MemoryError` to name a few
+
+
+```python
+value_one = 'a'
+value_two = 2
+
+# Try the following line of code
+try:
+    final_sum = value_one / value_two
+    print('Code passed!')
+# If the code above fails, code nested under except will be executed
+except:
+    print('Code failed!')
+# This will run no matter whether the nested code in try or except is executed
+finally:
+    print('Ran code block regardless of error or not.')
+```
+
+    Code failed!
+    Ran code block regardless of error or not.
+
+
+### Try, Except, Finally: No Error
+- There won't be errors because you can divide 4 with 2
+
+
+```python
+value_one = 4
+value_two = 2
+
+# Try the following line of code
+try:
+    final_sum = value_one / value_two
+    print('Code passed!')
+# If the code above fails, code nested under except will be executed
+except:
+    print('Code failed!')
+# This will run no matter whether the nested code in try or except is executed
+finally:
+    print('Ran code block regardless of error or not.')
+```
+
+    Code passed!
+    Ran code block regardless of error or not.
+
+
 ## Asynchronous
 
 ### Concurrency, Parallelism, Asynchronous
