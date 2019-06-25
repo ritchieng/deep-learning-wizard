@@ -54,25 +54,6 @@ echo $((10%10))
 0
 ```
 
-## Getting Dates
-
-
-### Getting Current Date
-This will return the date in the format YYYY-MM-DD for example 2019-06-03.
-
-```bash
-DATE=`date +%Y-%m-%d`
-echo $DATE
-```
-
-### Getting Current Day of Week
-This will return 1, 2, 3, 4, 5, 6, 7 depending on the day of the week.
-
-```bash
-DAY=$(date +%u)
-echo $DAY
-```
-
 ## Loops and Conditional
 
 ### For Loop
@@ -107,6 +88,31 @@ if [ $day == 5 ];
     fi
 ```
 
+## Date Operations
+
+### Getting Current Date
+This will return the date in the format YYYY-MM-DD for example 2019-06-03.
+
+```bash
+DATE=`date +%Y-%m-%d`
+echo $DATE
+```
+
+### Getting Current Day of Week
+This will return 1, 2, 3, 4, 5, 6, 7 depending on the day of the week.
+
+```bash
+DAY=$(date +%u)
+echo $DAY
+```
+
+### Changing System Dates By 1 Day
+You can change system dates based on this. Surprisingly, you'll find it useful for testing an environment for deployments in the next day and then shifting it back to the actual day.
+
+```bash
+date -s 'next day'
+date -s 'yesterday'
+```
 
 ## Jupyter Utility Commands
 
@@ -115,6 +121,7 @@ if [ $day == 5 ];
 jupyter nbconvert --to markdown python.ipynb
 jupyter nbconvert --to html python.ipynb
 ``` 
+
 ## Bash Convenient Commands
 
 ### List directories only
@@ -201,4 +208,21 @@ bash Miniconda3-latest-Linux-x86_64.sh
 # Restore old environment settings
 rsync -a miniconda3_backup/ miniconda3/
 
+```
+
+## Internet Operations
+
+### Checking Internet Availability
+
+This script will return whether your internet is fine or not without using pings.
+ 
+Pings can often be rendered unusable when the network administrator disables ICMP to prevent the origination of ping floods from the data centre.
+
+```bash
+if nc -zw1 google.com 443;
+    then
+        echo "INTERNET: OK"
+    else
+        echo "INTERNET: NOT OK"
+    fi
 ```
