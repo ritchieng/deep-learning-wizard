@@ -44,6 +44,9 @@ echo $((10*10))
 
 # Modulo
 echo $((10%10))
+
+# Multiple Operations: Divide and Add
+echo $((10/10 + 10))
 ```
 
 ```bash
@@ -52,6 +55,7 @@ echo $((10%10))
 1
 100
 0
+11
 ```
 
 ## Loops and Conditional
