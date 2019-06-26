@@ -75,6 +75,31 @@ B
 C
 ```
 
+## For Loop With Range
+
+This will echo the digits 0 to 10 without explicitly requiring to define the whole range of numbers/alphabets like above.
+
+```bash
+for ((i=0; i<=10; i++));
+    do
+        echo $i
+    done
+```
+
+```bash
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+```
+
 ### If Else Conditional
 
 This is a simple if-else to check if the day of the week is 5, meaning if it is a Friday.
@@ -91,6 +116,63 @@ if [ $day == 5 ];
         echo "Today is day $day of the week"
     fi
 ```
+
+### Sequentially Running of Python Scripts
+
+This snippet allows you to to run 3 python scripts sequentially, waiting for each to finish before proceeding to the next.
+
+```bash
+python script_1.py
+wait
+
+python script_2.py 
+wait
+
+python script_3.py
+wait
+
+echo "Finished running all 3 scripts in sequence!"
+``` 
+
+### Parallel Running of Python Scripts
+
+```bash
+python script_1.py && script_2.py && script_3.py
+wait
+
+echo "Finished running all 3 scripts in parallel in sequence"
+```
+
+## Reading and Writing Operations
+
+
+### Reading logs and texts
+Create a text file called `random_text.txt` with the following contents
+
+```text
+Row 1
+Row 2
+Row 3
+Row 4
+Row 5
+Row 6
+Row 7
+Row 8
+Row 9
+Row 10
+```
+
+Then run the following command to read it in bash then print it.
+
+```bash
+text_file=$(cat random_text.txt)
+echo $text_file
+```
+
+```text
+Row 1 Row 2 Row 3 Row 4 Row 5 Row 6 Row 7 Row 8 Row 9 Row 10
+```
+
 
 ## Date Operations
 
