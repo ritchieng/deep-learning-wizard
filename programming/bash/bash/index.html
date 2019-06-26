@@ -750,9 +750,56 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#for-loop-with-range" title="For Loop With Range" class="md-nav__link">
+    For Loop With Range
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
   <a href="#if-else-conditional" title="If Else Conditional" class="md-nav__link">
     If Else Conditional
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sequentially-running-of-python-scripts" title="Sequentially Running of Python Scripts" class="md-nav__link">
+    Sequentially Running of Python Scripts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parallel-running-of-python-scripts" title="Parallel Running of Python Scripts" class="md-nav__link">
+    Parallel Running of Python Scripts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reading-and-writing-operations" title="Reading and Writing Operations" class="md-nav__link">
+    Reading and Writing Operations
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reading-logs-and-texts" title="Reading logs and texts" class="md-nav__link">
+    Reading logs and texts
   </a>
   
 </li>
@@ -1328,9 +1375,56 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#for-loop-with-range" title="For Loop With Range" class="md-nav__link">
+    For Loop With Range
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
   <a href="#if-else-conditional" title="If Else Conditional" class="md-nav__link">
     If Else Conditional
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sequentially-running-of-python-scripts" title="Sequentially Running of Python Scripts" class="md-nav__link">
+    Sequentially Running of Python Scripts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parallel-running-of-python-scripts" title="Parallel Running of Python Scripts" class="md-nav__link">
+    Parallel Running of Python Scripts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reading-and-writing-operations" title="Reading and Writing Operations" class="md-nav__link">
+    Reading and Writing Operations
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reading-logs-and-texts" title="Reading logs and texts" class="md-nav__link">
+    Reading logs and texts
   </a>
   
 </li>
@@ -1666,6 +1760,27 @@ B
 C
 </pre></div>
 
+<h2 id="for-loop-with-range">For Loop With Range<a class="headerlink" href="#for-loop-with-range" title="Permanent link">&para;</a></h2>
+<p>This will echo the digits 0 to 10 without explicitly requiring to define the whole range of numbers/alphabets like above.</p>
+<div class="codehilite"><pre><span></span><span class="k">for</span> <span class="o">((</span><span class="nv">i</span><span class="o">=</span><span class="m">0</span><span class="p">;</span> i&lt;<span class="o">=</span><span class="m">10</span><span class="p">;</span> i++<span class="o">))</span><span class="p">;</span>
+    <span class="k">do</span>
+        <span class="nb">echo</span> <span class="nv">$i</span>
+    <span class="k">done</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span><span class="m">0</span>
+<span class="m">1</span>
+<span class="m">2</span>
+<span class="m">3</span>
+<span class="m">4</span>
+<span class="m">5</span>
+<span class="m">6</span>
+<span class="m">7</span>
+<span class="m">8</span>
+<span class="m">9</span>
+<span class="m">10</span>
+</pre></div>
+
 <h3 id="if-else-conditional">If Else Conditional<a class="headerlink" href="#if-else-conditional" title="Permanent link">&para;</a></h3>
 <p>This is a simple if-else to check if the day of the week is 5, meaning if it is a Friday.</p>
 <div class="codehilite"><pre><span></span><span class="nv">day</span><span class="o">=</span><span class="k">$(</span>date +%u<span class="k">)</span>
@@ -1678,6 +1793,50 @@ C
         <span class="nb">echo</span> <span class="s2">&quot;Friday is not here :(&quot;</span>
         <span class="nb">echo</span> <span class="s2">&quot;Today is day </span><span class="nv">$day</span><span class="s2"> of the week&quot;</span>
     <span class="k">fi</span>
+</pre></div>
+
+<h3 id="sequentially-running-of-python-scripts">Sequentially Running of Python Scripts<a class="headerlink" href="#sequentially-running-of-python-scripts" title="Permanent link">&para;</a></h3>
+<p>This snippet allows you to to run 3 python scripts sequentially, waiting for each to finish before proceeding to the next.</p>
+<div class="codehilite"><pre><span></span>python script_1.py
+<span class="nb">wait</span>
+
+python script_2.py 
+<span class="nb">wait</span>
+
+python script_3.py
+<span class="nb">wait</span>
+
+<span class="nb">echo</span> <span class="s2">&quot;Finished running all 3 scripts in sequence!&quot;</span>
+</pre></div>
+
+<h3 id="parallel-running-of-python-scripts">Parallel Running of Python Scripts<a class="headerlink" href="#parallel-running-of-python-scripts" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span>python script_1.py <span class="o">&amp;&amp;</span> script_2.py <span class="o">&amp;&amp;</span> script_3.py
+<span class="nb">wait</span>
+
+<span class="nb">echo</span> <span class="s2">&quot;Finished running all 3 scripts in parallel in sequence&quot;</span>
+</pre></div>
+
+<h2 id="reading-and-writing-operations">Reading and Writing Operations<a class="headerlink" href="#reading-and-writing-operations" title="Permanent link">&para;</a></h2>
+<h3 id="reading-logs-and-texts">Reading logs and texts<a class="headerlink" href="#reading-logs-and-texts" title="Permanent link">&para;</a></h3>
+<p>Create a text file called <code class="codehilite">random_text.txt</code> with the following contents</p>
+<div class="codehilite"><pre><span></span>Row 1
+Row 2
+Row 3
+Row 4
+Row 5
+Row 6
+Row 7
+Row 8
+Row 9
+Row 10
+</pre></div>
+
+<p>Then run the following command to read it in bash then print it.</p>
+<div class="codehilite"><pre><span></span><span class="nv">text_file</span><span class="o">=</span><span class="k">$(</span>cat random_text.txt<span class="k">)</span>
+<span class="nb">echo</span> <span class="nv">$text_file</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>Row 1 Row 2 Row 3 Row 4 Row 5 Row 6 Row 7 Row 8 Row 9 Row 10
 </pre></div>
 
 <h2 id="date-operations">Date Operations<a class="headerlink" href="#date-operations" title="Permanent link">&para;</a></h2>
