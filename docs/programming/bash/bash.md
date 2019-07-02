@@ -237,6 +237,9 @@ jupyter nbconvert --to html python.ipynb
 ### Check cuDNN version
 `cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2`
 
+### Check username
+`whoami`
+
 ### Untar file
 `tar -xvzf file_name`
 
