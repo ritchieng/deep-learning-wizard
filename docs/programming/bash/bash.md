@@ -196,9 +196,18 @@ echo $DAY
 You can change system dates based on this. Surprisingly, you'll find it useful for testing an environment for deployments in the next day and then shifting it back to the actual day.
 
 ```bash
-date -s 'next day'
-date -s 'yesterday'
+sudo date -s 'next day'
+sudo date -s 'yesterday'
 ```
+
+If you are running some tests via bash and want to disable typing in password you can edit the sudoer file via `sudo visudo` and adding the following line. Only use `sudo visudo` and nothing else, as they've a special syntax.
+
+```bash
+<username> ALL=(ALL) NOPASSWD: /bin/date
+```
+
+To find out your username, simply just run the command `whoami`.
+
 
 ## Jupyter Utility Commands
 
