@@ -935,6 +935,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#check-username" title="Check username" class="md-nav__link">
+    Check username
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#untar-file" title="Untar file" class="md-nav__link">
     Untar file
   </a>
@@ -1560,6 +1567,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#check-username" title="Check username" class="md-nav__link">
+    Check username
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#untar-file" title="Untar file" class="md-nav__link">
     Untar file
   </a>
@@ -1854,10 +1868,15 @@ Row 10
 
 <h3 id="changing-system-dates-by-1-day">Changing System Dates By 1 Day<a class="headerlink" href="#changing-system-dates-by-1-day" title="Permanent link">&para;</a></h3>
 <p>You can change system dates based on this. Surprisingly, you'll find it useful for testing an environment for deployments in the next day and then shifting it back to the actual day.</p>
-<div class="codehilite"><pre><span></span>date -s <span class="s1">&#39;next day&#39;</span>
-date -s <span class="s1">&#39;yesterday&#39;</span>
+<div class="codehilite"><pre><span></span>sudo date -s <span class="s1">&#39;next day&#39;</span>
+sudo date -s <span class="s1">&#39;yesterday&#39;</span>
 </pre></div>
 
+<p>If you are running some tests via bash and want to disable typing in password you can edit the sudoer file via <code class="codehilite">sudo visudo</code> and adding the following line. Only use <code class="codehilite">sudo visudo</code> and nothing else, as they've a special syntax.</p>
+<div class="codehilite"><pre><span></span>&lt;username&gt; <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span> NOPASSWD: /bin/date
+</pre></div>
+
+<p>To find out your username, simply just run the command <code class="codehilite">whoami</code>.</p>
 <h2 id="jupyter-utility-commands">Jupyter Utility Commands<a class="headerlink" href="#jupyter-utility-commands" title="Permanent link">&para;</a></h2>
 <h3 id="convert-notebook-to-htmlmarkdown">Convert Notebook to HTML/Markdown<a class="headerlink" href="#convert-notebook-to-htmlmarkdown" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span>jupyter nbconvert --to markdown python.ipynb
@@ -1883,6 +1902,8 @@ jupyter nbconvert --to html python.ipynb
 <p><code class="codehilite">nvcc -V</code></p>
 <h3 id="check-cudnn-version">Check cuDNN version<a class="headerlink" href="#check-cudnn-version" title="Permanent link">&para;</a></h3>
 <p><code class="codehilite">cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2</code></p>
+<h3 id="check-username">Check username<a class="headerlink" href="#check-username" title="Permanent link">&para;</a></h3>
+<p><code class="codehilite">whoami</code></p>
 <h3 id="untar-file">Untar file<a class="headerlink" href="#untar-file" title="Permanent link">&para;</a></h3>
 <p><code class="codehilite">tar -xvzf file_name</code></p>
 <h3 id="open-pdf-file">Open PDF file<a class="headerlink" href="#open-pdf-file" title="Permanent link">&para;</a></h3>
