@@ -327,10 +327,16 @@ if nc -zw1 google.com 443;
 ## Cron Operations
 
 ### Edit Cron
-Formatting follows this syntax:
+Formatting follows this syntax with full credits on this beautiful diagram to [fedorqui from Stack Overflow](https://stackoverflow.com/questions/18919151/crontab-day-of-the-week-syntax):
 ```text
-minute(0-59) hour(0-23) day(1-31) month(1-12) weekday(0-6) command
-
+ ┌────────── minute (0 - 59)
+ │ ┌──────── hour (0 - 23)
+ │ │ ┌────── day of month (1 - 31)
+ │ │ │ ┌──── month (1 - 12)
+ │ │ │ │ ┌── day of week (0 - 6 => Sunday - Saturday, or
+ │ │ │ │ │                1 - 7 => Monday - Sunday)
+ ↓ ↓ ↓ ↓ ↓
+ * * * * * command to be executed
 ```
 
 Edit cron with this command:
