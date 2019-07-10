@@ -32,7 +32,7 @@
     - As such it's critical to optimize DNN not for its primary performance (accuracy etc.) but for its energy consumption performance too 
     - In the DNN training, this paper introduces an energy budget constraint on top of other optimization objectives
     - This allows optimization of multiple objectives simultaneously (top-1 accuracy and energy consumption for example)
-    - It's done through weighted sparse projection and layer input masking 
+    - It's done through weighted sparse projection and layer input masking
     
 ## Architecture Search
 - [DARTS: Differentiable Architecture Search](https://arxiv.org/abs/1806.09055)

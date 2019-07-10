@@ -208,7 +208,6 @@ If you are running some tests via bash and want to disable typing in password yo
 
 To find out your username, simply just run the command `whoami`.
 
-
 ## Jupyter Utility Commands
 
 ### Convert Notebook to HTML/Markdown
@@ -323,4 +322,66 @@ if nc -zw1 google.com 443;
     else
         echo "INTERNET: NOT OK"
     fi
+```
+
+## Cron Operations
+
+### Edit Cron
+Formatting follows this syntax:
+```text
+minute(0-59) hour(0-23) day(1-31) month(1-12) weekday(0-6) command
+
+```
+
+Edit cron with this command:
+```bash
+sudo crontab -e
+```
+
+### List Cron
+```bash
+sudo crontab -l
+```
+
+### Status, Start, Stop and Restart
+```bash
+sudo service cron status
+sudo service cron stop
+sudo service cron start
+sudo service cron restart
+```
+
+### Cron Debugging
+
+Install postfix for local routing of errors (choose local option):
+```bash
+sudo apt-get install postfix
+```
+
+Restart cron to see for any errors posted (if not errors, there will be no file, be patient before errors are posted):
+```bash
+sudo cat /var/mail/root
+```
+
+### Cron Bash Fix
+Cron uses `/bin/sh` as the default shell. Typically you would realize you're using `/bin/bash` as your shell, so this typically needs to be rectified before you can use cron to schedule commands as if it were your usual bash.
+
+Edit your cron file via `sudo crontab -e` and paste the following lines at the end of the file prior to your command like so. Take note for `PATH`, you've to paste the output of `echo PATH=$PATH` in there instead!
+
+```text
+SHELL=/bin/bash
+PATH=/usr/lib....
+# Your command schedule here!
+``` 
+
+### Cron Conda Environment
+
+This is an example of enabling an anaconda environment, for example the default `base`, and running a python script. 
+
+Take note you need to put your python script in the right directory or simply navigate to that path with `cd` prior to `"$(conda shell.bash hook)"`. 
+
+```text
+SHELL=/bin/bash
+PATH=/usr/lib....
+* * * * 1-5 eval "$(conda shell.bash hook)" && conda activate base && python python_script_name.py
 ```
