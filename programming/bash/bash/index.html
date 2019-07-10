@@ -2073,8 +2073,15 @@ rsync -a miniconda3_backup/ miniconda3/
 
 <h2 id="cron-operations">Cron Operations<a class="headerlink" href="#cron-operations" title="Permanent link">&para;</a></h2>
 <h3 id="edit-cron">Edit Cron<a class="headerlink" href="#edit-cron" title="Permanent link">&para;</a></h3>
-<p>Formatting follows this syntax:
-<div class="codehilite"><pre><span></span>minute(0-59) hour(0-23) day(1-31) month(1-12) weekday(0-6) command
+<p>Formatting follows this syntax with full credits on this beautiful diagram to <a href="https://stackoverflow.com/questions/18919151/crontab-day-of-the-week-syntax">fedorqui from Stack Overflow</a>:
+<div class="codehilite"><pre><span></span> ┌────────── minute (0 - 59)
+ │ ┌──────── hour (0 - 23)
+ │ │ ┌────── day of month (1 - 31)
+ │ │ │ ┌──── month (1 - 12)
+ │ │ │ │ ┌── day of week (0 - 6 =&gt; Sunday - Saturday, or
+ │ │ │ │ │                1 - 7 =&gt; Monday - Sunday)
+ ↓ ↓ ↓ ↓ ↓
+ * * * * * command to be executed
 </pre></div></p>
 <p>Edit cron with this command:
 <div class="codehilite"><pre><span></span>sudo crontab -e
