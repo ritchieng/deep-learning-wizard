@@ -391,3 +391,12 @@ SHELL=/bin/bash
 PATH=/usr/lib....
 * * * * 1-5 eval "$(conda shell.bash hook)" && conda activate base && python python_script_name.py
 ```
+
+### Cron Running Processes
+Some times you want to see the status of running tasks and may want to get the PID to end it. This is a very handy command.
+
+```python
+ps -o pid,sess,cmd afx | egrep -A20 "( |/)cron( -f)?$"
+```
+
+You can get the PID of the cron process and then end it with `sudo pkill -s <PID>`
