@@ -1056,6 +1056,61 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#cron-operations" title="Cron Operations" class="md-nav__link">
+    Cron Operations
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#edit-cron" title="Edit Cron" class="md-nav__link">
+    Edit Cron
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-cron" title="List Cron" class="md-nav__link">
+    List Cron
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status-start-stop-and-restart" title="Status, Start, Stop and Restart" class="md-nav__link">
+    Status, Start, Stop and Restart
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cron-debugging" title="Cron Debugging" class="md-nav__link">
+    Cron Debugging
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cron-bash-fix" title="Cron Bash Fix" class="md-nav__link">
+    Cron Bash Fix
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cron-conda-environment" title="Cron Conda Environment" class="md-nav__link">
+    Cron Conda Environment
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
       
       
       
@@ -1688,6 +1743,61 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#cron-operations" title="Cron Operations" class="md-nav__link">
+    Cron Operations
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#edit-cron" title="Edit Cron" class="md-nav__link">
+    Edit Cron
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-cron" title="List Cron" class="md-nav__link">
+    List Cron
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status-start-stop-and-restart" title="Status, Start, Stop and Restart" class="md-nav__link">
+    Status, Start, Stop and Restart
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cron-debugging" title="Cron Debugging" class="md-nav__link">
+    Cron Debugging
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cron-bash-fix" title="Cron Bash Fix" class="md-nav__link">
+    Cron Bash Fix
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cron-conda-environment" title="Cron Conda Environment" class="md-nav__link">
+    Cron Conda Environment
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
       
       
       
@@ -1959,6 +2069,48 @@ rsync -a miniconda3_backup/ miniconda3/
     <span class="k">else</span>
         <span class="nb">echo</span> <span class="s2">&quot;INTERNET: NOT OK&quot;</span>
     <span class="k">fi</span>
+</pre></div>
+
+<h2 id="cron-operations">Cron Operations<a class="headerlink" href="#cron-operations" title="Permanent link">&para;</a></h2>
+<h3 id="edit-cron">Edit Cron<a class="headerlink" href="#edit-cron" title="Permanent link">&para;</a></h3>
+<p>Formatting follows this syntax:
+<div class="codehilite"><pre><span></span>minute(0-59) hour(0-23) day(1-31) month(1-12) weekday(0-6) command
+</pre></div></p>
+<p>Edit cron with this command:
+<div class="codehilite"><pre><span></span>sudo crontab -e
+</pre></div></p>
+<h3 id="list-cron">List Cron<a class="headerlink" href="#list-cron" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span>sudo crontab -l
+</pre></div>
+
+<h3 id="status-start-stop-and-restart">Status, Start, Stop and Restart<a class="headerlink" href="#status-start-stop-and-restart" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span>sudo service cron status
+sudo service cron stop
+sudo service cron start
+sudo service cron restart
+</pre></div>
+
+<h3 id="cron-debugging">Cron Debugging<a class="headerlink" href="#cron-debugging" title="Permanent link">&para;</a></h3>
+<p>Install postfix for local routing of errors (choose local option):
+<div class="codehilite"><pre><span></span>sudo apt-get install postfix
+</pre></div></p>
+<p>Restart cron to see for any errors posted (if not errors, there will be no file, be patient before errors are posted):
+<div class="codehilite"><pre><span></span>sudo cat /var/mail/root
+</pre></div></p>
+<h3 id="cron-bash-fix">Cron Bash Fix<a class="headerlink" href="#cron-bash-fix" title="Permanent link">&para;</a></h3>
+<p>Cron uses <code class="codehilite">/bin/sh</code> as the default shell. Typically you would realize you're using <code class="codehilite">/bin/bash</code> as your shell, so this typically needs to be rectified before you can use cron to schedule commands as if it were your usual bash.</p>
+<p>Edit your cron file via <code class="codehilite">sudo crontab -e</code> and paste the following lines at the end of the file prior to your command like so. Take note for <code class="codehilite">PATH</code>, you've to paste the output of <code class="codehilite">echo PATH=$PATH</code> in there instead!</p>
+<div class="codehilite"><pre><span></span>SHELL=/bin/bash
+PATH=/usr/lib....
+# Your command schedule here!
+</pre></div>
+
+<h3 id="cron-conda-environment">Cron Conda Environment<a class="headerlink" href="#cron-conda-environment" title="Permanent link">&para;</a></h3>
+<p>This is an example of enabling an anaconda environment, for example the default <code class="codehilite">base</code>, and running a python script. </p>
+<p>Take note you need to put your python script in the right directory or simply navigate to that path with <code class="codehilite">cd</code> prior to <code class="codehilite">&quot;$(conda shell.bash hook)&quot;</code>. </p>
+<div class="codehilite"><pre><span></span>SHELL=/bin/bash
+PATH=/usr/lib....
+* * * * 1-5 eval &quot;$(conda shell.bash hook)&quot; &amp;&amp; conda activate base &amp;&amp; python python_script_name.py
 </pre></div>
                 
                   
