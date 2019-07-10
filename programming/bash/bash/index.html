@@ -1106,6 +1106,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#cron-running-processes" title="Cron Running Processes" class="md-nav__link">
+    Cron Running Processes
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1793,6 +1800,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#cron-running-processes" title="Cron Running Processes" class="md-nav__link">
+    Cron Running Processes
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2119,6 +2133,13 @@ PATH=/usr/lib....
 PATH=/usr/lib....
 * * * * 1-5 eval &quot;$(conda shell.bash hook)&quot; &amp;&amp; conda activate base &amp;&amp; python python_script_name.py
 </pre></div>
+
+<h3 id="cron-running-processes">Cron Running Processes<a class="headerlink" href="#cron-running-processes" title="Permanent link">&para;</a></h3>
+<p>Some times you want to see the status of running tasks and may want to get the PID to end it. This is a very handy command.</p>
+<div class="codehilite"><pre><span></span><span class="n">ps</span> <span class="o">-</span><span class="n">o</span> <span class="n">pid</span><span class="p">,</span><span class="n">sess</span><span class="p">,</span><span class="n">cmd</span> <span class="n">afx</span> <span class="o">|</span> <span class="n">egrep</span> <span class="o">-</span><span class="n">A20</span> <span class="s2">&quot;( |/)cron( -f)?$&quot;</span>
+</pre></div>
+
+<p>You can get the PID of the cron process and then end it with <code class="codehilite">sudo pkill -s &lt;PID&gt;</code></p>
                 
                   
                 
