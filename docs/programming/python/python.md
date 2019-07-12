@@ -1,9 +1,61 @@
 
 # Python
 
+## Lists
+
+### Creating List: Manual Fill
+
+
+```python
+lst = [0, 1, 2 ,3]
+print(lst)
+```
+
+    [0, 1, 2, 3]
+
+
+### Creating List: List Comprehension
+
+
+```python
+lst = [i for i in range(4)]
+print(lst)
+```
+
+    [0, 1, 2, 3]
+
+
+### Joining List with Blanks
+
+
+```python
+# To use .join(), your list needs to be of type string
+lst_to_string = list(map(str, lst))
+
+# Join the list of strings
+lst_join = ' '.join(lst_to_string)
+print(lst_join)
+```
+
+    0 1 2 3
+
+
+### Joining List with Comma
+
+
+```python
+# Join the list of strings
+lst_join = ', '.join(lst_to_string)
+print(lst_join)
+```
+
+    0, 1, 2, 3
+
+
 ## Lambda, map, filter, reduce
 
 ### Lambda
+The syntax is simple `lambda your_variables: your_operation`
 
 #### Add Function
 
@@ -123,6 +175,118 @@ print(1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9)
 
     45
     45
+
+
+## Generators
+- Why: `generators` are typically more memory-efficient than using simple `for loops`
+    - Imagine wanting to sum digits 0 to 1 trillion, using a list containing those numbers and summing them would be very RAM memory-inefficient.
+    - Using a generator would allow you to sum one digit sequentially, staggering the RAM memory usage in steps.
+
+- What: `generator` basically a function that returns an iterable object where we can iterate one bye one
+- Types: generator functions and generator expressions
+- Dependencies: we need to install a memory profiler, so install via `pip install memory_profiler`
+
+### Simple custom generator function example: sum 1 to 1,000,000
+- What: let's create a simple generator, allowing us to iterate through the digits 1 to 1,000,000 (inclusive) one by one with an increment of 1 at each step and summing them
+- How: 2 step process with a `while` and a `yield`
+
+
+```python
+# Load memory profiler
+# %load_ext memory_profiler
+
+# Here we take a step from 1
+def create_numbers(end_number):
+    current_number = 1
+    
+    # Step 1: while
+    while current_number <= end_number:
+        # Step 2: yield
+        yield current_number
+        
+        # Add to current number
+        current_number += 1
+        
+# Here we sum the digits 1 to 100 (inclusive) and time it
+%memit total = sum(create_numbers(1e6))
+print(total)
+```
+
+    peak memory: 46.61 MiB, increment: 0.00 MiB
+    500000500000
+
+
+#### Without generator function: sum with list
+- Say we don't use a generator, and have a list of digits 0 to 1,000,000 (inclusive) in memory then sum them. 
+- Notice how this is double the memory than using a generator!
+
+
+```python
+%memit total = sum(list(range(int(1e6) + 1)))
+print(total)
+```
+
+    peak memory: 84.08 MiB, increment: 37.47 MiB
+    500000500000
+
+
+#### Without generator function: sum with for loop
+- Say we don't use a generator and don't put all our numbers into a list 
+- Notiice how this is much better than summing a list but still worst than a generator in terms of memory?
+
+
+```python
+def sum_with_loop(end_number):
+    total = 0
+    for i in range(end_number + 1):
+        i += 1
+        total += i
+    
+    return total
+
+%memit total = sum_with_loop(int(1e6))
+print(total)
+```
+
+    peak memory: 54.34 MiB, increment: 0.01 MiB
+    500001500001
+
+
+### Generator expression
+- Like list/dictionary expressions, we can have generator expressions too
+- We can quickly create generators this way, allowing us to make computations on the fly rather than pre-compute on a whole list/array of numbers
+    - This is more memory efficient
+
+
+
+```python
+# Define the list
+list_of_numbers = list(range(10))
+
+# Find square root using the list comprehension
+list_of_results = [number ** 2 for number in list_of_numbers]
+print(list_of_results)
+
+# Use generator expression to calculate the square root
+generator_of_results = (number ** 2 for number in list_of_numbers)
+print(generator_of_results)
+
+for idx in range(10):
+    print(next(generator_of_results))
+```
+
+    [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+    <generator object <genexpr> at 0x7fec703ff570>
+    0
+    1
+    4
+    9
+    16
+    25
+    36
+    49
+    64
+    81
 
 
 ## Decorators
