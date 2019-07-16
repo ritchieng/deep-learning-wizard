@@ -20,6 +20,7 @@ Take note this is an early work in progress, do be patient as we gradually uploa
     - [Convolutional Neural Network (CNN)](https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_convolutional_neuralnetwork/)
     - [Recurrent Neural Network (RNN)](https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_recurrent_neuralnetwork/)
     - [Long Short-Term Memory (LSTM) network](https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_lstm_neuralnetwork/)
+    - [Undercomplete and Overcomplete Autoencoders](https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_autoencoder/)
     - [Derivative, Gradient and Jacobian](https://www.deeplearningwizard.com/deep_learning/boosting_models_pytorch/derivative_gradient_jacobian/)
     - [Forwardpropagation, Backpropagation and Gradient Descent](https://www.deeplearningwizard.com/deep_learning/boosting_models_pytorch/forwardpropagation_backpropagation_gradientdescent/)
     - [Learning Rate Scheduling](https://www.deeplearningwizard.com/deep_learning/boosting_models_pytorch/lr_scheduling/)
