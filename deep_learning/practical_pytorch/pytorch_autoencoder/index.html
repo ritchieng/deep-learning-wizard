@@ -42,7 +42,7 @@
     
     
       
-        <title>Undercomplete and Overcomplete Autoencoders - Deep Learning Wizard</title>
+        <title>Autoencoders (AE) - Deep Learning Wizard</title>
       
     
     
@@ -111,7 +111,7 @@
                 Deep Learning Wizard
               </span>
               <span class="md-header-nav__topic">
-                Undercomplete and Overcomplete Autoencoders
+                Autoencoders (AE)
               </span>
             
           
@@ -416,8 +416,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../pytorch_feedforward_neuralnetwork/" title="Feedforward Neural Networks" class="md-nav__link">
-      Feedforward Neural Networks
+    <a href="../pytorch_feedforward_neuralnetwork/" title="Feedforward Neural Networks (FNN)" class="md-nav__link">
+      Feedforward Neural Networks (FNN)
     </a>
   </li>
 
@@ -428,8 +428,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../pytorch_convolutional_neuralnetwork/" title="Convolutional Neural Networks" class="md-nav__link">
-      Convolutional Neural Networks
+    <a href="../pytorch_convolutional_neuralnetwork/" title="Convolutional Neural Networks (CNN)" class="md-nav__link">
+      Convolutional Neural Networks (CNN)
     </a>
   </li>
 
@@ -440,8 +440,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../pytorch_recurrent_neuralnetwork/" title="Recurrent Neural Networks" class="md-nav__link">
-      Recurrent Neural Networks
+    <a href="../pytorch_recurrent_neuralnetwork/" title="Recurrent Neural Networks (RNN)" class="md-nav__link">
+      Recurrent Neural Networks (RNN)
     </a>
   </li>
 
@@ -452,8 +452,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../pytorch_lstm_neuralnetwork/" title="Long Short Term Memory Neural Networks" class="md-nav__link">
-      Long Short Term Memory Neural Networks
+    <a href="../pytorch_lstm_neuralnetwork/" title="Long Short Term Memory Neural Networks (LSTM)" class="md-nav__link">
+      Long Short Term Memory Neural Networks (LSTM)
     </a>
   </li>
 
@@ -473,11 +473,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Undercomplete and Overcomplete Autoencoders
+        Autoencoders (AE)
       </label>
     
-    <a href="./" title="Undercomplete and Overcomplete Autoencoders" class="md-nav__link md-nav__link--active">
-      Undercomplete and Overcomplete Autoencoders
+    <a href="./" title="Autoencoders (AE)" class="md-nav__link md-nav__link--active">
+      Autoencoders (AE)
     </a>
     
       
@@ -512,8 +512,22 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#fully-connected-and-convolutional-autoencoders" title="Fully-connected and Convolutional Autoencoders" class="md-nav__link">
+    Fully-connected and Convolutional Autoencoders
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#autoencoders-series" title="Autoencoders Series" class="md-nav__link">
+    Autoencoders Series
+  </a>
   
 </li>
       
@@ -600,8 +614,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../deep_reinforcement_learning_pytorch/supervised_to_rl/" title="Supervised Learning to Reinforcement Learning" class="md-nav__link">
-      Supervised Learning to Reinforcement Learning
+    <a href="../../deep_reinforcement_learning_pytorch/supervised_to_rl/" title="Supervised Learning to Reinforcement Learning (RL)" class="md-nav__link">
+      Supervised Learning to Reinforcement Learning (RL)
     </a>
   </li>
 
@@ -612,8 +626,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../deep_reinforcement_learning_pytorch/bellman_mdp/" title="Markov Decision Processes and Bellman Equations" class="md-nav__link">
-      Markov Decision Processes and Bellman Equations
+    <a href="../../deep_reinforcement_learning_pytorch/bellman_mdp/" title="Markov Decision Processes (MDP) and Bellman Equations" class="md-nav__link">
+      Markov Decision Processes (MDP) and Bellman Equations
     </a>
   </li>
 
@@ -1025,8 +1039,22 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#fully-connected-and-convolutional-autoencoders" title="Fully-connected and Convolutional Autoencoders" class="md-nav__link">
+    Fully-connected and Convolutional Autoencoders
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#autoencoders-series" title="Autoencoders Series" class="md-nav__link">
+    Autoencoders Series
+  </a>
   
 </li>
       
@@ -1106,6 +1134,28 @@
 </ul>
 </li>
 </ul>
+<h3 id="fully-connected-and-convolutional-autoencoders">Fully-connected and Convolutional Autoencoders<a class="headerlink" href="#fully-connected-and-convolutional-autoencoders" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Another important point is that, in our diagram we've used the example of our Feedforward Neural Networks (FNN) where we use fully-connected layers. <ul>
+<li>This is called Fully-connected AE.</li>
+</ul>
+</li>
+<li>However, we can easily swap those fully-connected layers with convolutional layers.<ul>
+<li>This is called Convolutional AE.</li>
+</ul>
+</li>
+</ul>
+<h2 id="autoencoders-series">Autoencoders Series<a class="headerlink" href="#autoencoders-series" title="Permanent link">&para;</a></h2>
+<ul>
+<li>We'll be covering a series of autoencoders in this order<ul>
+<li>Fully-connected Overcomplete Autoencoder (AEs): Denoising Images</li>
+<li>Fully-connected Undercomplete Autoencoder (AEs): Credit Card Fraud Detection</li>
+<li>Convolutional Overcomplete Variational Autoencoder (VAEs): Generate Fake Human Faces</li>
+<li>Convolutional Overcomplete Adversarial Autoencoder (AAEs): Generate Fake Human Faces</li>
+<li>Generative Adversarial Networks (GANs): Generate Better Fake Human Faces</li>
+</ul>
+</li>
+</ul>
                 
                   
                 
@@ -1142,7 +1192,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="deep_learning/practical_pytorch/pytorch_lstm_neuralnetwork/" title="Long Short Term Memory Neural Networks" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="deep_learning/practical_pytorch/pytorch_lstm_neuralnetwork/" title="Long Short Term Memory Neural Networks (LSTM)" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1151,7 +1201,7 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Long Short Term Memory Neural Networks
+                Long Short Term Memory Neural Networks (LSTM)
               </span>
             </div>
           </a>
