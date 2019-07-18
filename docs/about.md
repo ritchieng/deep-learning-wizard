@@ -1,6 +1,6 @@
 # About Us
 
-We deploy a top-down approach that enables you to grasp deep learning and deep reinforcement learning theories and code easily and quickly. We have open-sourced all our materials through our [Deep Learning Wizard Tutorials](https://www.deeplearningwizard.com/deep_learning/course_progression/). For visual learners, feel free to sign up for our [video course](https://www.udemy.com/practical-deep-learning-with-pytorch/?couponCode=DEEPWIZARD) and join over 3000 deep learning wizards.
+We deploy a top-down approach that enables you to grasp deep learning and deep reinforcement learning theories and code easily and quickly. We have open-sourced all our materials through our [Deep Learning Wizard Tutorials](https://www.deeplearningwizard.com/deep_learning/course_progression/). For visual learners, feel free to sign up for our [video course](https://www.udemy.com/practical-deep-learning-with-pytorch/?couponCode=DEEPWIZARD) and join over 6000 deep learning wizards.
 
 To this date, we have taught thousands of students across more than 120+ countries from students in high school to postgraduates and professionals in leading MNCs and research institutions around the world.
 
@@ -53,7 +53,12 @@ To this date, we have taught thousands of students across more than 120+ countri
 !!! tip ""NVIDIA Inception Partner"
     <center><img src="https://res.cloudinary.com/ritchieng/image/upload/v1532596192/deeplearningwizard.com/nvidia_inception.png" style="width:200px"/></center>
     
-    Deep Learning Wizard is proudly an NVIDIA Inception Partner, empowering people across the world to leverage on deep learning via open-source programming languages and frameworks to solve problems. 
+    Deep Learning Wizard is proudly an NVIDIA Inception Partner, empowering people across the world to leverage on deep learning via open-source programming languages and frameworks to solve problems.
+    
+!!! warning "Amazon AWS Activate Programme Startup"
+    <center><img src="https://res.cloudinary.com/ritchieng/image/upload/v1563421301/logos/aws_activate.png" style="width:200px"/></center>
+    
+    Deep Learning Wizard is also supported by the Amazon AWS Activate Programme, Portfolio Plus, allowing us to have the infrastructure to scale and grow.   
     
 ## Citation
 If you have found these useful in your research, presentations, school work, projects or workshops, feel free to cite using this DOI.
