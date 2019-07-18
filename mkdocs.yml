@@ -17,21 +17,23 @@ pages:
       - Gradients: deep_learning/practical_pytorch/pytorch_gradients.md
       - Linear Regression: deep_learning/practical_pytorch/pytorch_linear_regression.md
       - Logistic Regression: deep_learning/practical_pytorch/pytorch_logistic_regression.md
-      - Feedforward Neural Networks: deep_learning/practical_pytorch/pytorch_feedforward_neuralnetwork.md
-      - Convolutional Neural Networks: deep_learning/practical_pytorch/pytorch_convolutional_neuralnetwork.md
-      - Recurrent Neural Networks: deep_learning/practical_pytorch/pytorch_recurrent_neuralnetwork.md
-      - Long Short Term Memory Neural Networks: deep_learning/practical_pytorch/pytorch_lstm_neuralnetwork.md
-      - Undercomplete and Overcomplete Autoencoders: deep_learning/practical_pytorch/pytorch_autoencoder.md
-#      - Variational Autoencoders: deep_learning/practical_pytorch/pytorch_autoencoder.md
-#      - Adversarial Autoencoders: deep_learning/practical_pytorch/pytorch_autoencoder.md
-#      - Generative Adversarial Networks: deep_learning/practical_pytorch/pytorch_autoencoder.md
+      - Feedforward Neural Networks (FNN): deep_learning/practical_pytorch/pytorch_feedforward_neuralnetwork.md
+      - Convolutional Neural Networks (CNN): deep_learning/practical_pytorch/pytorch_convolutional_neuralnetwork.md
+      - Recurrent Neural Networks (RNN): deep_learning/practical_pytorch/pytorch_recurrent_neuralnetwork.md
+      - Long Short Term Memory Neural Networks (LSTM): deep_learning/practical_pytorch/pytorch_lstm_neuralnetwork.md
+      - Autoencoders (AE): deep_learning/practical_pytorch/pytorch_autoencoder.md
+#      - Fully-connected Overcomplete Autoencoder (AE): deep_learning/practical_pytorch/pytorch_fc_overcomplete_ae.md
+#      - Fully-connected Undercomplete Autoencoder (AE): deep_learning/practical_pytorch/pytorch_fc_undercomplete_ae.md
+#      - Convolutional Overcomplete Variational Autoencoder (VAE): deep_learning/practical_pytorch/pytorch_autoencoder.md
+#      - Convolutional Overcomplete Adversarial Autoencoder (AAE): deep_learning/practical_pytorch/pytorch_autoencoder.md
+#      - Generative Adversarial Networks (GAN): deep_learning/practical_pytorch/pytorch_autoencoder.md
       - Derivative, Gradient and Jacobian: deep_learning/boosting_models_pytorch/derivative_gradient_jacobian.md
       - Forward- and Backward-propagation and Gradient Descent: deep_learning/boosting_models_pytorch/forwardpropagation_backpropagation_gradientdescent.md
       - Learning Rate Scheduling: deep_learning/boosting_models_pytorch/lr_scheduling.md
       - Optimization Algorithms: deep_learning/boosting_models_pytorch/optimizers.md
       - Weight Initialization and Activation Functions: deep_learning/boosting_models_pytorch/weight_initialization_activation_functions.md
-      - Supervised Learning to Reinforcement Learning: deep_learning/deep_reinforcement_learning_pytorch/supervised_to_rl.md
-      - Markov Decision Processes and Bellman Equations: deep_learning/deep_reinforcement_learning_pytorch/bellman_mdp.md
+      - Supervised Learning to Reinforcement Learning (RL): deep_learning/deep_reinforcement_learning_pytorch/supervised_to_rl.md
+      - Markov Decision Processes (MDP) and Bellman Equations: deep_learning/deep_reinforcement_learning_pytorch/bellman_mdp.md
       - Dynamic Programming: deep_learning/deep_reinforcement_learning_pytorch/dynamic_programming_frozenlake.md
       - Additional Readings: deep_learning/readings.md
 

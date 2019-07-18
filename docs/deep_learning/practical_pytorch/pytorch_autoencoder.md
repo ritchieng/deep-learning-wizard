@@ -31,3 +31,17 @@
 - **Overcomplete AEs: larger**
 	- This is when our encoding output's dimension is **larger** than our input's dimension
 		- Essentially we increased the dimension of our data with an overcomplete AE
+        
+### Fully-connected and Convolutional Autoencoders
+- Another important point is that, in our diagram we've used the example of our Feedforward Neural Networks (FNN) where we use fully-connected layers. 
+	- This is called Fully-connected AE.
+- However, we can easily swap those fully-connected layers with convolutional layers.
+	- This is called Convolutional AE.
+
+## Autoencoders Series
+- We'll be covering a series of autoencoders in this order
+	- Fully-connected Overcomplete Autoencoder (AEs): Denoising Images
+	- Fully-connected Undercomplete Autoencoder (AEs): Credit Card Fraud Detection
+	- Convolutional Overcomplete Variational Autoencoder (VAEs): Generate Fake Human Faces
+	- Convolutional Overcomplete Adversarial Autoencoder (AAEs): Generate Fake Human Faces
+	- Generative Adversarial Networks (GANs): Generate Better Fake Human Faces
