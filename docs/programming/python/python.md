@@ -55,6 +55,26 @@ print(lst_join)
     0, 1, 2, 3
 
 
+## Sets
+
+### Removing Duplicate from List
+Sets can be very useful for quickly removing duplicates from a list, essentially finding unique values
+
+
+```python
+lst_one = [1, 2, 3, 5]
+lst_two = [1, 1, 2, 4]
+lst_both = lst_one + lst_two
+lst_no_duplicate = list(set(lst_both))
+
+print(f'Original Combined List {lst_both}')
+print(f'No Duplicated Combined List {lst_no_duplicate}')
+```
+
+    Original Combined List [1, 2, 3, 5, 1, 1, 2, 4]
+    No Duplicated Combined List [1, 2, 3, 4, 5]
+
+
 ## Lambda, map, filter, reduce
 
 ### Lambda
@@ -116,7 +136,7 @@ print(square_element)
 print(list(square_element))
 ```
 
-    <map object at 0x7f9cd4399a58>
+    <map object at 0x7f08c8620438>
     [0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
 
 
@@ -196,7 +216,7 @@ print(1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9)
 
 ```python
 # Load memory profiler
-# %load_ext memory_profiler
+%load_ext memory_profiler
 
 # Here we take a step from 1
 def create_numbers(end_number):
@@ -215,7 +235,7 @@ def create_numbers(end_number):
 print(total)
 ```
 
-    peak memory: 46.61 MiB, increment: 0.00 MiB
+    peak memory: 46.50 MiB, increment: 0.28 MiB
     500000500000
 
 
@@ -229,7 +249,7 @@ print(total)
 print(total)
 ```
 
-    peak memory: 84.08 MiB, increment: 37.47 MiB
+    peak memory: 85.14 MiB, increment: 38.38 MiB
     500000500000
 
 
@@ -251,7 +271,7 @@ def sum_with_loop(end_number):
 print(total)
 ```
 
-    peak memory: 54.34 MiB, increment: 0.01 MiB
+    peak memory: 54.49 MiB, increment: 0.00 MiB
     500001500001
 
 
@@ -279,7 +299,7 @@ for idx in range(10):
 ```
 
     [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
-    <generator object <genexpr> at 0x7fec703ff570>
+    <generator object <genexpr> at 0x7f08c85aa4f8>
     0
     1
     4
@@ -418,7 +438,7 @@ now = datetime.datetime.now()
 print(now)
 ```
 
-    2019-06-06 11:26:47.843927
+    2019-08-12 14:20:45.604849
 
 
 ### Get Clean String Current Date
@@ -432,7 +452,7 @@ now.date().strftime('20%y-%m-%d')
 
 
 
-    '2019-06-06'
+    '2019-08-12'
 
 
 
@@ -463,7 +483,7 @@ for i in tqdm(range(100)):
     pass
 ```
 
-    100%|██████████| 100/100 [00:10<00:00,  9.86it/s]
+    100%|██████████| 100/100 [00:10<00:00,  9.91it/s]
 
 
 ## Check Paths
@@ -584,6 +604,7 @@ finally:
 
 
 ```python
+import timeit
 def add_numbers(num_1, num_2):
     print('Adding')
     time.sleep(1)
@@ -636,7 +657,7 @@ print(f'Total time {total_time:.2f}s')
     Adding
     Total sum 4
     Total sum 4
-    Total time 1.12s
+    Total time 1.08s
 
 
 ### Asynchronous 2 Function Calls
@@ -680,5 +701,5 @@ print(f'Total time {total_time:.4f}s')
     Adding
     Total sum 4
     Total sum 4
-    Total time 1.0008s
+    Total time 1.0021s
 
