@@ -760,6 +760,26 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#sets" title="Sets" class="md-nav__link">
+    Sets
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#removing-duplicate-from-list" title="Removing Duplicate from List" class="md-nav__link">
+    Removing Duplicate from List
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#lambda-map-filter-reduce" title="Lambda, map, filter, reduce" class="md-nav__link">
     Lambda, map, filter, reduce
   </a>
@@ -1135,6 +1155,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../plotting/matplotlib.md" title="Matplotlib" class="md-nav__link">
+      Matplotlib
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1408,6 +1440,26 @@
           <li class="md-nav__item">
   <a href="#joining-list-with-comma" title="Joining List with Comma" class="md-nav__link">
     Joining List with Comma
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sets" title="Sets" class="md-nav__link">
+    Sets
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#removing-duplicate-from-list" title="Removing Duplicate from List" class="md-nav__link">
+    Removing Duplicate from List
   </a>
   
 </li>
@@ -1846,6 +1898,23 @@
 </pre></div>
 
 
+<h2 id="sets">Sets<a class="headerlink" href="#sets" title="Permanent link">&para;</a></h2>
+<h3 id="removing-duplicate-from-list">Removing Duplicate from List<a class="headerlink" href="#removing-duplicate-from-list" title="Permanent link">&para;</a></h3>
+<p>Sets can be very useful for quickly removing duplicates from a list, essentially finding unique values</p>
+<div class="codehilite"><pre><span></span><span class="n">lst_one</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">lst_two</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">lst_both</span> <span class="o">=</span> <span class="n">lst_one</span> <span class="o">+</span> <span class="n">lst_two</span>
+<span class="n">lst_no_duplicate</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">lst_both</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Original Combined List {lst_both}&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;No Duplicated Combined List {lst_no_duplicate}&#39;</span><span class="p">)</span>
+</pre></div>
+
+<div class="codehilite"><pre><span></span>Original Combined List [1, 2, 3, 5, 1, 1, 2, 4]
+No Duplicated Combined List [1, 2, 3, 4, 5]
+</pre></div>
+
+
 <h2 id="lambda-map-filter-reduce">Lambda, map, filter, reduce<a class="headerlink" href="#lambda-map-filter-reduce" title="Permanent link">&para;</a></h2>
 <h3 id="lambda">Lambda<a class="headerlink" href="#lambda" title="Permanent link">&para;</a></h3>
 <p>The syntax is simple <code class="codehilite">lambda your_variables: your_operation</code></p>
@@ -1887,7 +1956,7 @@
 <span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">square_element</span><span class="p">))</span>
 </pre></div>
 
-<div class="codehilite"><pre><span></span>&lt;map object at 0x7f9cd4399a58&gt;
+<div class="codehilite"><pre><span></span>&lt;map object at 0x7f08c8620438&gt;
 [0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
 </pre></div>
 
@@ -1961,7 +2030,7 @@
 <li>How: 2 step process with a <code class="codehilite">while</code> and a <code class="codehilite">yield</code></li>
 </ul>
 <div class="codehilite"><pre><span></span><span class="c1"># Load memory profiler</span>
-<span class="c1"># %load_ext memory_profiler</span>
+<span class="o">%</span><span class="n">load_ext</span> <span class="n">memory_profiler</span>
 
 <span class="c1"># Here we take a step from 1</span>
 <span class="k">def</span> <span class="nf">create_numbers</span><span class="p">(</span><span class="n">end_number</span><span class="p">):</span>
@@ -1980,7 +2049,7 @@
 <span class="k">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
 </pre></div>
 
-<div class="codehilite"><pre><span></span>peak memory: 46.61 MiB, increment: 0.00 MiB
+<div class="codehilite"><pre><span></span>peak memory: 46.50 MiB, increment: 0.28 MiB
 500000500000
 </pre></div>
 
@@ -1994,7 +2063,7 @@
 <span class="k">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
 </pre></div>
 
-<div class="codehilite"><pre><span></span>peak memory: 84.08 MiB, increment: 37.47 MiB
+<div class="codehilite"><pre><span></span>peak memory: 85.14 MiB, increment: 38.38 MiB
 500000500000
 </pre></div>
 
@@ -2016,7 +2085,7 @@
 <span class="k">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
 </pre></div>
 
-<div class="codehilite"><pre><span></span>peak memory: 54.34 MiB, increment: 0.01 MiB
+<div class="codehilite"><pre><span></span>peak memory: 54.49 MiB, increment: 0.00 MiB
 500001500001
 </pre></div>
 
@@ -2045,7 +2114,7 @@
 </pre></div>
 
 <div class="codehilite"><pre><span></span><span class="k">[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</span>
-<span class="na">&lt;generator object &lt;genexpr&gt; at 0x7fec703ff570&gt;</span>
+<span class="na">&lt;generator object &lt;genexpr&gt; at 0x7f08c85aa4f8&gt;</span>
 <span class="na">0</span>
 <span class="na">1</span>
 <span class="na">4</span>
@@ -2184,7 +2253,7 @@ Function return result: 2
 <span class="k">print</span><span class="p">(</span><span class="n">now</span><span class="p">)</span>
 </pre></div>
 
-<div class="codehilite"><pre><span></span>2019-06-06 11:26:47.843927
+<div class="codehilite"><pre><span></span>2019-08-12 14:20:45.604849
 </pre></div>
 
 
@@ -2193,7 +2262,7 @@ Function return result: 2
 <span class="n">now</span><span class="o">.</span><span class="n">date</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;20%y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 
-<div class="codehilite"><pre><span></span>&#39;2019-06-06&#39;
+<div class="codehilite"><pre><span></span>&#39;2019-08-12&#39;
 </pre></div>
 
 
@@ -2218,7 +2287,7 @@ Function return result: 2
     <span class="k">pass</span>
 </pre></div>
 
-<div class="codehilite"><pre><span></span>100%|██████████| 100/100 [00:10&lt;00:00,  9.86it/s]
+<div class="codehilite"><pre><span></span>100%|██████████| 100/100 [00:10&lt;00:00,  9.91it/s]
 </pre></div>
 
 
@@ -2354,7 +2423,8 @@ Ran code block regardless of error or not.
 </li>
 </ul>
 <h3 id="synchronous-2-function-calls">Synchronous 2 Function Calls<a class="headerlink" href="#synchronous-2-function-calls" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">add_numbers</span><span class="p">(</span><span class="n">num_1</span><span class="p">,</span> <span class="n">num_2</span><span class="p">):</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">timeit</span>
+<span class="k">def</span> <span class="nf">add_numbers</span><span class="p">(</span><span class="n">num_1</span><span class="p">,</span> <span class="n">num_2</span><span class="p">):</span>
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Adding&#39;</span><span class="p">)</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">num_1</span> <span class="o">+</span> <span class="n">num_2</span>
@@ -2404,7 +2474,7 @@ Total time 2.00s
 Adding
 Total sum 4
 Total sum 4
-Total time 1.12s
+Total time 1.08s
 </pre></div>
 
 
@@ -2446,7 +2516,7 @@ Total time 1.12s
 Adding
 Total sum 4
 Total sum 4
-Total time 1.0008s
+Total time 1.0021s
 </pre></div>
                 
                   
