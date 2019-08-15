@@ -1,4 +1,6 @@
 # Deep Learning Materials by Deep Learning Wizard
+<img src="https://img.shields.io/badge/license-MIT-green.svg"/>
+
 [![DOI](https://zenodo.org/badge/139945544.svg)](https://zenodo.org/badge/latestdoi/139945544)
 
 ## Start Learning Now
