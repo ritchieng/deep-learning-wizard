@@ -40,7 +40,7 @@ pages:
     - Machine Learning Tutorials (CPU/GPU):
       - Introduction: machine_learning/intro.md
       - GPU DataFrames: machine_learning/gpu/rapids_cudf.md
-      - Fractional Differencing: machine_learning/gpu/gpu_fractional_differencing.md
+      - GPU/CPU Fractional Differencing: machine_learning/gpu/gpu_fractional_differencing.md
 #      - Linear Regression: machine_learning/gpu/rapids_cudf.md
 #      - Ridge Regression: machine_learning/gpu/rapids_cudf.md
 #      - Kalman Filter: machine_learning/gpu/rapids_cudf.md
