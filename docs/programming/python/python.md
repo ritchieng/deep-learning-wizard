@@ -1,8 +1,8 @@
 
 # Python
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ritchieng/deep-learning-wizard/blob/master/docs/programming/python/python.ipynb)
+    
 
-!!! tip "Run Jupyter Notebook"
-    You can run the code for this section in this [jupyter notebook link](https://github.com/ritchieng/deep-learning-wizard/blob/master/docs/programming/python/python.ipynb).
 
 ## Lists
 

@@ -1,8 +1,7 @@
 
 # RAPIDS cuDF
 
-!!! tip "Run Jupyter Notebook"
-    You can run the code for this section in this [jupyter notebook link](https://github.com/ritchieng/deep-learning-wizard/blob/master/docs/machine_learning/gpu/rapids_cudf.ipynb) on Google Colab. Simply copy the notebook into your Google Drive and run with Google Colab.
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ritchieng/deep-learning-wizard/blob/master/docs/machine_learning/gpu/rapids_cudf.ipynb)
 
 ## Environment Setup
 
@@ -574,7 +573,7 @@ print(gdf[gdf.strings == 'b'])
     1         2        b
 
 
-### Filtering Integers/Floats by Column Values
+####Filtering Integers/Floats by Column Values
 
 
 ```python
