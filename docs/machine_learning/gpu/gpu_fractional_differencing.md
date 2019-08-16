@@ -537,7 +537,7 @@ df_wk.iloc[:, 1]
 
 
 
-#### For $d = 1 $ (integer differencing)
+#### For $d = 1$ (integer differencing)
 
 
 ```python
