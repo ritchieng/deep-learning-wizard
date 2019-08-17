@@ -1,4 +1,3 @@
-
 # GFD: GPU Fractional Differencing
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ritchieng/fractional_differencing_gpu/blob/master/notebooks/gpu_fractional_differencing.ipynb)
 
@@ -76,9 +75,9 @@ for fn in ['libcudf.so', 'librmm.so']:
     shutil.copy('/usr/local/lib/'+fn, os.getcwd())
 ```
 
-    --2019-08-13 02:56:34--  https://repo.continuum.io/miniconda/Miniconda3-4.5.4-Linux-x86_64.sh
-    Resolving repo.continuum.io (repo.continuum.io)... 104.18.201.79, 104.18.200.79, 2606:4700::6812:c94f, ...
-    Connecting to repo.continuum.io (repo.continuum.io)|104.18.201.79|:443... connected.
+    --2019-08-17 14:20:46--  https://repo.continuum.io/miniconda/Miniconda3-4.5.4-Linux-x86_64.sh
+    Resolving repo.continuum.io (repo.continuum.io)... 104.18.200.79, 104.18.201.79, 2606:4700::6812:c84f, ...
+    Connecting to repo.continuum.io (repo.continuum.io)|104.18.200.79|:443... connected.
     HTTP request sent, awaiting response... 416 Requested Range Not Satisfiable
     
         The file is already fully retrieved; nothing to do.
@@ -159,32 +158,32 @@ for fn in ['libcudf.so', 'librmm.so']:
     
         package                    |            build
         ---------------------------|-----------------
-        nvstrings-0.9.0a1          |          py36_64         124 KB  rapidsai-nightly/label/cuda10.0
-        cudf-0.9.0a                |        py36_2593         4.9 MB  rapidsai-nightly/label/cuda10.0
-        lzo-2.10                   |    h14c3975_1000         319 KB  conda-forge
-        tqdm-4.33.0                |             py_0          41 KB  conda-forge
-        certifi-2019.6.16          |           py36_1         149 KB  conda-forge
-        cuml-0.9.0a1               |cuda10.0_py36_800         5.2 MB  rapidsai-nightly/label/cuda10.0
-        libarchive-3.3.3           |    hb44662c_1005         1.4 MB  conda-forge
-        cryptography-2.7           |   py36h72c5cf5_0         607 KB  conda-forge
-        arrow-cpp-0.14.1           |   py36h6b969ab_0        17.3 MB  conda-forge
-        pandas-0.24.2              |   py36hb3f55d8_0        11.1 MB  conda-forge
-        pyarrow-0.14.1             |   py36h8b68381_0         2.8 MB  conda-forge
-        cython-0.29.13             |   py36he1b5a44_0         2.2 MB  conda-forge
-        python-3.6.7               |    h381d211_1004        34.5 MB  conda-forge
-        fastavro-0.22.3            |   py36h516909a_0         408 KB  conda-forge
-        llvmlite-0.29.0            |   py36hfd453ef_1        19.9 MB  conda-forge
-        rmm-0.9.0a1                |           py36_7          14 KB  rapidsai-nightly/label/cuda10.0
-        numba-0.44.1               |   py36hb3f55d8_0         3.0 MB  conda-forge
-        libxml2-2.9.9              |       hee79883_2         1.3 MB  conda-forge
-        conda-4.7.11               |           py36_0         3.0 MB  conda-forge
-        libiconv-1.15              |    h516909a_1005         2.0 MB  conda-forge
-        conda-package-handling-1.4.1|           py36_0         262 KB  conda-forge
         python-libarchive-c-2.8    |        py36_1004          21 KB  conda-forge
-        numpy-1.17.0               |   py36h95a1406_0         5.2 MB  conda-forge
         sqlite-3.28.0              |       h8b20d00_0         1.9 MB  conda-forge
+        libxml2-2.9.9              |       hee79883_2         1.3 MB  conda-forge
+        llvmlite-0.29.0            |   py36hfd453ef_1        19.9 MB  conda-forge
+        tqdm-4.33.0                |             py_0          41 KB  conda-forge
+        numba-0.45.1               |   py36hb3f55d8_0         3.1 MB  conda-forge
+        certifi-2019.6.16          |           py36_1         149 KB  conda-forge
+        libiconv-1.15              |    h516909a_1005         2.0 MB  conda-forge
+        fastavro-0.22.3            |   py36h516909a_0         408 KB  conda-forge
+        libarchive-3.3.3           |    hb44662c_1005         1.4 MB  conda-forge
+        arrow-cpp-0.14.1           |   py36h6b969ab_0        17.3 MB  conda-forge
+        cuml-0.9.0a1               |cuda10.0_py36_950         5.9 MB  rapidsai-nightly/label/cuda10.0
+        conda-4.7.11               |           py36_0         3.0 MB  conda-forge
+        cryptography-2.7           |   py36h72c5cf5_0         607 KB  conda-forge
+        cython-0.29.13             |   py36he1b5a44_0         2.2 MB  conda-forge
+        lzo-2.10                   |    h14c3975_1000         319 KB  conda-forge
+        numpy-1.17.0               |   py36h95a1406_0         5.2 MB  conda-forge
+        conda-package-handling-1.4.1|           py36_0         262 KB  conda-forge
+        cudf-0.9.0a                |        py36_2790         4.8 MB  rapidsai-nightly/label/cuda10.0
+        pyarrow-0.14.1             |   py36h8b68381_0         2.8 MB  conda-forge
+        rmm-0.9.0a1                |          py36_14          14 KB  rapidsai-nightly/label/cuda10.0
+        nvstrings-0.9.0a1          |          py36_64         124 KB  rapidsai-nightly/label/cuda10.0
+        python-3.6.7               |    h381d211_1004        34.5 MB  conda-forge
+        pandas-0.24.2              |   py36hb3f55d8_0        11.1 MB  conda-forge
         ------------------------------------------------------------
-                                               Total:       117.7 MB
+                                               Total:       118.5 MB
     
     The following NEW packages will be INSTALLED:
     
@@ -203,21 +202,21 @@ for fn in ['libcudf.so', 'librmm.so']:
         certifi:                2018.4.16-py36_0                                          --> 2019.6.16-py36_1          conda-forge                    
         conda:                  4.5.4-py36_0                                              --> 4.7.11-py36_0             conda-forge                    
         cryptography:           2.2.2-py36h14c3975_0                                      --> 2.7-py36h72c5cf5_0        conda-forge                    
-        cudf:                   0.9.0a-py37_2593          rapidsai-nightly/label/cuda10.0 --> 0.9.0a-py36_2593          rapidsai-nightly/label/cuda10.0
-        cuml:                   0.9.0a1-cuda10.0_py37_800 rapidsai-nightly/label/cuda10.0 --> 0.9.0a1-cuda10.0_py36_800 rapidsai-nightly/label/cuda10.0
+        cudf:                   0.9.0a-py37_2790          rapidsai-nightly/label/cuda10.0 --> 0.9.0a-py36_2790          rapidsai-nightly/label/cuda10.0
+        cuml:                   0.9.0a1-cuda10.0_py37_950 rapidsai-nightly/label/cuda10.0 --> 0.9.0a1-cuda10.0_py36_950 rapidsai-nightly/label/cuda10.0
         cython:                 0.29.13-py37he1b5a44_0    conda-forge                     --> 0.29.13-py36he1b5a44_0    conda-forge                    
         fastavro:               0.22.3-py37h516909a_0     conda-forge                     --> 0.22.3-py36h516909a_0     conda-forge                    
         libgcc-ng:              7.2.0-hdf63c60_3                                          --> 9.1.0-hdf63c60_0                                         
         libstdcxx-ng:           7.2.0-hdf63c60_3                                          --> 9.1.0-hdf63c60_0                                         
         llvmlite:               0.29.0-py37hfd453ef_1     conda-forge                     --> 0.29.0-py36hfd453ef_1     conda-forge                    
-        numba:                  0.44.1-py37hb3f55d8_0     conda-forge                     --> 0.44.1-py36hb3f55d8_0     conda-forge                    
+        numba:                  0.45.1-py37hb3f55d8_0     conda-forge                     --> 0.45.1-py36hb3f55d8_0     conda-forge                    
         numpy:                  1.17.0-py37h95a1406_0     conda-forge                     --> 1.17.0-py36h95a1406_0     conda-forge                    
         nvstrings:              0.9.0a1-py37_64           rapidsai-nightly/label/cuda10.0 --> 0.9.0a1-py36_64           rapidsai-nightly/label/cuda10.0
         openssl:                1.0.2o-h20670df_0                                         --> 1.1.1c-h516909a_0         conda-forge                    
         pandas:                 0.24.2-py37hb3f55d8_0     conda-forge                     --> 0.24.2-py36hb3f55d8_0     conda-forge                    
         pyarrow:                0.14.1-py37h8b68381_0     conda-forge                     --> 0.14.1-py36h8b68381_0     conda-forge                    
         python:                 3.6.5-hc3d631a_2                                          --> 3.6.7-h381d211_1004       conda-forge                    
-        rmm:                    0.9.0a1-py37_7            rapidsai-nightly/label/cuda10.0 --> 0.9.0a1-py36_7            rapidsai-nightly/label/cuda10.0
+        rmm:                    0.9.0a1-py37_14           rapidsai-nightly/label/cuda10.0 --> 0.9.0a1-py36_14           rapidsai-nightly/label/cuda10.0
         sqlite:                 3.23.1-he433501_0                                         --> 3.28.0-h8b20d00_0         conda-forge                    
         tk:                     8.6.7-hc745277_3                                          --> 8.6.9-hed695b0_1002       conda-forge                    
     
@@ -282,7 +281,7 @@ plt.title('S&P 500 Absolute Levels');
 ```
 
 
-![png](gpu_fractional_differencing_files/gpu_fractional_differencing_17_0.png)
+![png](gpu_fractional_differencing_files/gpu_fractional_differencing_18_0.png)
 
 
 ### Integer Differencing (1 Day Returns) SPX Time Series
@@ -299,7 +298,7 @@ plt.title(f'{asset_name} Daily Returns via Differencing 1 Day');
 ```
 
 
-![png](gpu_fractional_differencing_files/gpu_fractional_differencing_19_0.png)
+![png](gpu_fractional_differencing_files/gpu_fractional_differencing_20_0.png)
 
 
 ### Integer Differencing Causes Unnecessary Memory Loss
@@ -372,7 +371,7 @@ df_wk = plot_weights(range_d=[0, 1], num_k=7, num_d_interval=6)
 ```
 
 
-![png](gpu_fractional_differencing_files/gpu_fractional_differencing_23_0.png)
+![png](gpu_fractional_differencing_files/gpu_fractional_differencing_24_0.png)
 
 
 ###  Fractional Differencing Weight Function Table
@@ -579,7 +578,7 @@ plt.xlabel('Lag (k)');
 ```
 
 
-![png](gpu_fractional_differencing_files/gpu_fractional_differencing_34_0.png)
+![png](gpu_fractional_differencing_files/gpu_fractional_differencing_35_0.png)
 
 
 ## Fixed Window Fractional Differencing (CPU)
@@ -633,7 +632,7 @@ plt.xlabel('Lag (k)');
 ```
 
 
-![png](gpu_fractional_differencing_files/gpu_fractional_differencing_37_0.png)
+![png](gpu_fractional_differencing_files/gpu_fractional_differencing_38_0.png)
 
 
 ### Fixed Window Fractional Differencing Function (CPU)
@@ -654,6 +653,9 @@ def frac_diff(df, d, floor=1e-3):
     # Get weights window
     weights = get_weights_floored(d=d, num_k=len(df), floor=floor)
     weights_window_size = len(weights)
+    
+    # Reverse weights
+    weights = weights[::-1]
     
     # Blank fractionally differenced series to be filled
     df_fd = pd.Series()
@@ -684,11 +686,11 @@ print(f'Time {end-start} s')
 df_raw_fd.plot(figsize=figsize);
 ```
 
-    Time 3.053557872772217 s
+    Time 2.886362075805664 s
 
 
 
-![png](gpu_fractional_differencing_files/gpu_fractional_differencing_39_1.png)
+![png](gpu_fractional_differencing_files/gpu_fractional_differencing_40_1.png)
 
 
 
@@ -749,9 +751,13 @@ def frac_diff_gpu(df, d, floor=1e-3):
     # Get weights window
     weights = get_weights_floored(d=d, num_k=len(gdf_raw), floor=floor)
     weights_window_size = len(weights)
+    
+    # Reverse weights and as contiguous
+    weights = np.ascontiguousarray(weights[::-1])
+    
     # Bring weights to GPU
     gdf_weights = cudf.DataFrame()
-    gdf_weights[gdf_raw.columns[0]] = weights.reshape(-1,)
+    gdf_weights[gdf_raw.columns[0]] = weights.reshape(-1)
 
     # Length of data
     data_length = len(gdf_raw)
@@ -794,11 +800,11 @@ print(f'Time {end-start} s')
 df_raw_fd_from_gpu.plot(figsize=figsize);
 ```
 
-    Time 0.3530001640319824 s
+    Time 0.3211708068847656 s
 
 
 
-![png](gpu_fractional_differencing_files/gpu_fractional_differencing_43_1.png)
+![png](gpu_fractional_differencing_files/gpu_fractional_differencing_44_1.png)
 
 
 ### Check Values 
@@ -812,8 +818,8 @@ print(df_raw_fd.tail().values)
 ```
 
     Tail values check
-    [81.39556027 96.9161575  55.25931352 46.48580715 74.28853901]
-    [81.39556027 96.9161575  55.25931352 46.48580715 74.28853901]
+    [107.00340988 133.85520208 117.92878691 109.44132697  79.32562638]
+    [107.00340988 133.85520208 117.92878691 109.44132697  79.32562638]
 
 
 
@@ -825,8 +831,8 @@ print(df_raw_fd.head().values)
 ```
 
     Head values check
-    [33.36928193 36.19407302 34.58719884 38.05313633 41.71899615]
-    [33.36928193 36.19407302 34.58719884 38.05313633 41.71899615]
+    [56.74989213 52.56766288 47.32421832 45.89772154 37.74401501]
+    [56.74989213 52.56766288 47.32421832 45.89772154 37.74401501]
 
 
 
@@ -954,7 +960,7 @@ for key, value in result[4].items():
     Stationarity Test (ADF) for SPX Fractionally Differenced (d=0.5)
     --------------------------------------------------
     t-stat 
-    	-4.38
+    	-3.86
     p-value 
     	0.00
     Critical Values
