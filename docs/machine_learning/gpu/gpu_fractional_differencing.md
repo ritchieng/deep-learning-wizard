@@ -714,8 +714,8 @@ Existing CPU-based implementations are inefficient for running fractional differ
 - This gives more than 7x speed-up on an NVIDIA T4 on Google Colab. 
 - If you've the best GPUs with an accompanying machine, you can easily substantially increase the speed-up.
 - This code can be optimized further but it'll be too complicated for most users to quickly grasp the idea of speeding up existing CPU-based implementations which is the point of this lesson. So try to improve this further yourself and maybe ping me, I'll post the best speed-up solution!
-
-
+- Note: this has been tested to be stable up to 10.24k data points (trunk size of 10, 240) per function call (essentially per dataframe)
+    - Please refer to the "large scale GFD function"  that will be released shortly for anything beyond 10.24k data points per dataframe.
 
 ```python
 def moving_dot_product_kernel(in_data, out, window_size, weights):
@@ -768,9 +768,6 @@ def frac_diff_gpu(df, d, floor=1e-3):
 
     # Chunk size split
     trunk_size = 10240
-
-    df = cudf.DataFrame()
-    df['in_data'] = np.arange(data_length, dtype=np.float64)
         
     # Get fractionally differenced time series through GPU function
     gdf_raw_fd = gdf_raw.apply_chunks(moving_dot_product_kernel,
