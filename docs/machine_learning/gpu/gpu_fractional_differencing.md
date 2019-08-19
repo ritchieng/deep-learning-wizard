@@ -1,3 +1,4 @@
+
 # GFD: GPU Fractional Differencing
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ritchieng/fractional_differencing_gpu/blob/master/notebooks/gpu_fractional_differencing.ipynb)
 
@@ -75,7 +76,7 @@ for fn in ['libcudf.so', 'librmm.so']:
     shutil.copy('/usr/local/lib/'+fn, os.getcwd())
 ```
 
-    --2019-08-17 14:20:46--  https://repo.continuum.io/miniconda/Miniconda3-4.5.4-Linux-x86_64.sh
+    --2019-08-19 05:36:25--  https://repo.continuum.io/miniconda/Miniconda3-4.5.4-Linux-x86_64.sh
     Resolving repo.continuum.io (repo.continuum.io)... 104.18.200.79, 104.18.201.79, 2606:4700::6812:c84f, ...
     Connecting to repo.continuum.io (repo.continuum.io)|104.18.200.79|:443... connected.
     HTTP request sent, awaiting response... 416 Requested Range Not Satisfiable
@@ -118,24 +119,15 @@ for fn in ['libcudf.so', 'librmm.so']:
     installing: requests-2.18.4-py36he2e5f8d_1 ...
     installing: conda-4.5.4-py36_0 ...
     unlinking: ca-certificates-2019.6.16-hecc5488_0
-    unlinking: certifi-2019.6.16-py37_1
-    unlinking: cffi-1.12.3-py37h8022711_0
-    unlinking: libffi-3.2.1-he1b5a44_1006
+    unlinking: certifi-2019.6.16-py36_1
+    unlinking: conda-4.7.11-py36_0
+    unlinking: cryptography-2.7-py36h72c5cf5_0
     unlinking: libgcc-ng-9.1.0-hdf63c60_0
     unlinking: libstdcxx-ng-9.1.0-hdf63c60_0
-    unlinking: ncurses-6.1-hf484d3e_1002
     unlinking: openssl-1.1.1c-h516909a_0
-    unlinking: pip-19.2.2-py37_0
-    unlinking: pycparser-2.19-py37_1
-    unlinking: python-3.7.3-h33d41f4_1
-    unlinking: readline-8.0-hf8c457e_0
-    unlinking: setuptools-41.0.1-py37_0
-    unlinking: six-1.12.0-py37_1000
-    unlinking: sqlite-3.29.0-hcee41ef_0
+    unlinking: python-3.6.7-h381d211_1004
+    unlinking: sqlite-3.28.0-h8b20d00_0
     unlinking: tk-8.6.9-hed695b0_1002
-    unlinking: wheel-0.33.4-py37_0
-    unlinking: xz-5.2.4-h14c3975_1001
-    unlinking: zlib-1.2.11-h516909a_1005
     installation finished.
     WARNING:
         You currently have a PYTHONPATH environment variable set. This may cause
@@ -154,71 +146,18 @@ for fn in ['libcudf.so', 'librmm.so']:
         - cuml
     
     
-    The following packages will be downloaded:
-    
-        package                    |            build
-        ---------------------------|-----------------
-        python-libarchive-c-2.8    |        py36_1004          21 KB  conda-forge
-        sqlite-3.28.0              |       h8b20d00_0         1.9 MB  conda-forge
-        libxml2-2.9.9              |       hee79883_2         1.3 MB  conda-forge
-        llvmlite-0.29.0            |   py36hfd453ef_1        19.9 MB  conda-forge
-        tqdm-4.33.0                |             py_0          41 KB  conda-forge
-        numba-0.45.1               |   py36hb3f55d8_0         3.1 MB  conda-forge
-        certifi-2019.6.16          |           py36_1         149 KB  conda-forge
-        libiconv-1.15              |    h516909a_1005         2.0 MB  conda-forge
-        fastavro-0.22.3            |   py36h516909a_0         408 KB  conda-forge
-        libarchive-3.3.3           |    hb44662c_1005         1.4 MB  conda-forge
-        arrow-cpp-0.14.1           |   py36h6b969ab_0        17.3 MB  conda-forge
-        cuml-0.9.0a1               |cuda10.0_py36_950         5.9 MB  rapidsai-nightly/label/cuda10.0
-        conda-4.7.11               |           py36_0         3.0 MB  conda-forge
-        cryptography-2.7           |   py36h72c5cf5_0         607 KB  conda-forge
-        cython-0.29.13             |   py36he1b5a44_0         2.2 MB  conda-forge
-        lzo-2.10                   |    h14c3975_1000         319 KB  conda-forge
-        numpy-1.17.0               |   py36h95a1406_0         5.2 MB  conda-forge
-        conda-package-handling-1.4.1|           py36_0         262 KB  conda-forge
-        cudf-0.9.0a                |        py36_2790         4.8 MB  rapidsai-nightly/label/cuda10.0
-        pyarrow-0.14.1             |   py36h8b68381_0         2.8 MB  conda-forge
-        rmm-0.9.0a1                |          py36_14          14 KB  rapidsai-nightly/label/cuda10.0
-        nvstrings-0.9.0a1          |          py36_64         124 KB  rapidsai-nightly/label/cuda10.0
-        python-3.6.7               |    h381d211_1004        34.5 MB  conda-forge
-        pandas-0.24.2              |   py36hb3f55d8_0        11.1 MB  conda-forge
-        ------------------------------------------------------------
-                                               Total:       118.5 MB
-    
-    The following NEW packages will be INSTALLED:
-    
-        conda-package-handling: 1.4.1-py36_0              conda-forge                    
-        libarchive:             3.3.3-hb44662c_1005       conda-forge                    
-        libiconv:               1.15-h516909a_1005        conda-forge                    
-        libxml2:                2.9.9-hee79883_2          conda-forge                    
-        lzo:                    2.10-h14c3975_1000        conda-forge                    
-        python-libarchive-c:    2.8-py36_1004             conda-forge                    
-        tqdm:                   4.33.0-py_0               conda-forge                    
-    
     The following packages will be UPDATED:
     
-        arrow-cpp:              0.14.1-py37h6b969ab_0     conda-forge                     --> 0.14.1-py36h6b969ab_0     conda-forge                    
-        ca-certificates:        2018.03.07-0                                              --> 2019.6.16-hecc5488_0      conda-forge                    
-        certifi:                2018.4.16-py36_0                                          --> 2019.6.16-py36_1          conda-forge                    
-        conda:                  4.5.4-py36_0                                              --> 4.7.11-py36_0             conda-forge                    
-        cryptography:           2.2.2-py36h14c3975_0                                      --> 2.7-py36h72c5cf5_0        conda-forge                    
-        cudf:                   0.9.0a-py37_2790          rapidsai-nightly/label/cuda10.0 --> 0.9.0a-py36_2790          rapidsai-nightly/label/cuda10.0
-        cuml:                   0.9.0a1-cuda10.0_py37_950 rapidsai-nightly/label/cuda10.0 --> 0.9.0a1-cuda10.0_py36_950 rapidsai-nightly/label/cuda10.0
-        cython:                 0.29.13-py37he1b5a44_0    conda-forge                     --> 0.29.13-py36he1b5a44_0    conda-forge                    
-        fastavro:               0.22.3-py37h516909a_0     conda-forge                     --> 0.22.3-py36h516909a_0     conda-forge                    
-        libgcc-ng:              7.2.0-hdf63c60_3                                          --> 9.1.0-hdf63c60_0                                         
-        libstdcxx-ng:           7.2.0-hdf63c60_3                                          --> 9.1.0-hdf63c60_0                                         
-        llvmlite:               0.29.0-py37hfd453ef_1     conda-forge                     --> 0.29.0-py36hfd453ef_1     conda-forge                    
-        numba:                  0.45.1-py37hb3f55d8_0     conda-forge                     --> 0.45.1-py36hb3f55d8_0     conda-forge                    
-        numpy:                  1.17.0-py37h95a1406_0     conda-forge                     --> 1.17.0-py36h95a1406_0     conda-forge                    
-        nvstrings:              0.9.0a1-py37_64           rapidsai-nightly/label/cuda10.0 --> 0.9.0a1-py36_64           rapidsai-nightly/label/cuda10.0
-        openssl:                1.0.2o-h20670df_0                                         --> 1.1.1c-h516909a_0         conda-forge                    
-        pandas:                 0.24.2-py37hb3f55d8_0     conda-forge                     --> 0.24.2-py36hb3f55d8_0     conda-forge                    
-        pyarrow:                0.14.1-py37h8b68381_0     conda-forge                     --> 0.14.1-py36h8b68381_0     conda-forge                    
-        python:                 3.6.5-hc3d631a_2                                          --> 3.6.7-h381d211_1004       conda-forge                    
-        rmm:                    0.9.0a1-py37_14           rapidsai-nightly/label/cuda10.0 --> 0.9.0a1-py36_14           rapidsai-nightly/label/cuda10.0
-        sqlite:                 3.23.1-he433501_0                                         --> 3.28.0-h8b20d00_0         conda-forge                    
-        tk:                     8.6.7-hc745277_3                                          --> 8.6.9-hed695b0_1002       conda-forge                    
+        ca-certificates: 2018.03.07-0         --> 2019.6.16-hecc5488_0 conda-forge
+        certifi:         2018.4.16-py36_0     --> 2019.6.16-py36_1     conda-forge
+        conda:           4.5.4-py36_0         --> 4.7.11-py36_0        conda-forge
+        cryptography:    2.2.2-py36h14c3975_0 --> 2.7-py36h72c5cf5_0   conda-forge
+        libgcc-ng:       7.2.0-hdf63c60_3     --> 9.1.0-hdf63c60_0                
+        libstdcxx-ng:    7.2.0-hdf63c60_3     --> 9.1.0-hdf63c60_0                
+        openssl:         1.0.2o-h20670df_0    --> 1.1.1c-h516909a_0    conda-forge
+        python:          3.6.5-hc3d631a_2     --> 3.6.7-h381d211_1004  conda-forge
+        sqlite:          3.23.1-he433501_0    --> 3.28.0-h8b20d00_0    conda-forge
+        tk:              8.6.7-hc745277_3     --> 8.6.9-hed695b0_1002  conda-forge
     
     Preparing transaction: ...working... done
     Verifying transaction: ...working... done
@@ -241,7 +180,6 @@ import nvstrings, nvcategory, cudf
 import numpy as np
 import pandas as pd
 import time
-import seaborn as sns
 import pandas_datareader.data as web
 from datetime import datetime
 from matplotlib import pyplot as plt
@@ -658,7 +596,7 @@ def frac_diff(df, d, floor=1e-3):
     weights = weights[::-1]
     
     # Blank fractionally differenced series to be filled
-    df_fd = pd.Series()
+    df_fd = []
 
     # Slide window of time series, to calculated fractionally differenced values
     # per window
@@ -666,11 +604,12 @@ def frac_diff(df, d, floor=1e-3):
         # Dot product of weights and original values
         # to get fractionally differenced values
         date_idx = df.index[idx]
-        df_fd[date_idx] = np.dot(weights.T, df.iloc[idx - weights_window_size:idx]).item()
+        df_fd.append(np.dot(weights.T, df.iloc[idx - weights_window_size:idx]).item())
     
     # Return FD values and weights
+    df_fd = pd.DataFrame(df_fd)
+    
     return df_fd, weights
-
 
 # Start timer
 start = time.time()
@@ -686,7 +625,7 @@ print(f'Time {end-start} s')
 df_raw_fd.plot(figsize=figsize);
 ```
 
-    Time 2.886362075805664 s
+    Time 0.5417799949645996 s
 
 
 
@@ -702,7 +641,7 @@ multiprocessing.cpu_count()
 
 
 
-    2
+    4
 
 
 
@@ -710,12 +649,10 @@ Existing CPU-based implementations are inefficient for running fractional differ
 
 
 
-### Fixed Window Fractional Differencing Function (GPU) >7x Speedup
-- This gives more than 7x speed-up on an NVIDIA T4 on Google Colab. 
-- If you've the best GPUs with an accompanying machine, you can easily substantially increase the speed-up.
-- This code can be optimized further but it'll be too complicated for most users to quickly grasp the idea of speeding up existing CPU-based implementations which is the point of this lesson. So try to improve this further yourself and maybe ping me, I'll post the best speed-up solution!
-- Note: this has been tested to be stable up to 10.24k data points (trunk size of 10, 240) per function call (essentially per dataframe)
-    - Please refer to the "large scale GFD function"  that will be released shortly for anything beyond 10.24k data points per dataframe.
+### Fixed Window Fractional Differencing Function (GPU)
+- This gives a slight 1.5x to 2x speed-up on an NVIDIA T4 on Google Colab for this tiny dataset
+    - For larger time series in line with real-world situations,  it can easily be up to 100x to 1000x dataset (shown below).
+
 
 ```python
 def moving_dot_product_kernel(in_data, out, window_size, weights):
@@ -762,13 +699,15 @@ def frac_diff_gpu(df, d, floor=1e-3):
     # Length of data
     data_length = len(gdf_raw)
 
-    # It seems here, T4 supports max of 518 threads per block.
-    # For other GPUs, it might be higher at 1024 to 2048 like the V100s
+    # T4: max of 518 threads per block.
+    # V100: max 1024 threads per block
     threads_per_block = 518
 
     # Chunk size split
-    trunk_size = 10240
-        
+    # This has to be improved, but as a v0.1, it's sufficient to show speed-up
+    # Up to easily 100 million data points
+    trunk_size = data_length
+
     # Get fractionally differenced time series through GPU function
     gdf_raw_fd = gdf_raw.apply_chunks(moving_dot_product_kernel,
                                  incols=['in_data'],
@@ -797,7 +736,7 @@ print(f'Time {end-start} s')
 df_raw_fd_from_gpu.plot(figsize=figsize);
 ```
 
-    Time 0.3211708068847656 s
+    Time 0.27262187004089355 s
 
 
 
@@ -811,7 +750,7 @@ df_raw_fd_from_gpu.plot(figsize=figsize);
 # Compare tail values
 print('Tail values check')
 print(df_raw_fd_from_gpu.tail().values)
-print(df_raw_fd.tail().values)
+print(df_raw_fd.tail().values.reshape(-1,))
 ```
 
     Tail values check
@@ -824,7 +763,7 @@ print(df_raw_fd.tail().values)
 # Compare tail values
 print('Head values check')
 print(df_raw_fd_from_gpu.head().values)
-print(df_raw_fd.head().values)
+print(df_raw_fd.head().values.reshape(-1,))
 ```
 
     Head values check
@@ -964,4 +903,70 @@ for key, value in result[4].items():
     	1%: -3.43
     	5%: -2.86
     	10%: -2.57
+
+
+## Large-scale Rapid Fractional Differencing
+- Here we test on a 100k, 1m, 10m and 100m datapoint dataframe.
+
+
+```python
+# Create 100m data points
+large_time_series_length = int(1e6)
+print(large_time_series_length)
+```
+
+    1000000
+
+
+
+```python
+# Start timer
+start = time.time()
+
+df_raw = pd.DataFrame(np.arange(large_time_series_length) * np.random.rand(large_time_series_length))
+
+df_raw_fd_from_gpu, weights = frac_diff_gpu(df_raw, d=0.5, floor=5e-5)
+
+# End timer
+end = time.time()
+
+print(f'Time {end-start} s')
+
+# Check
+print('FD Shape', df_raw_fd_from_gpu.shape[0])
+print('Correct Shape', df_raw.shape[0] - weights.shape[0])
+print('Original Shape', df_raw.shape[0])
+```
+
+    Time 0.4671785831451416 s
+    FD Shape 999682
+    Correct Shape 999682
+    Original Shape 1000000
+
+
+
+```python
+# Start timer
+start = time.time()
+
+# Create 100m data points
+df_raw = pd.DataFrame(np.arange(large_time_series_length) * np.random.rand(large_time_series_length))
+
+df_raw_fd, weights = frac_diff(df_raw, d=0.5, floor=5e-5)
+
+# End timer
+end = time.time()
+
+print(f'Time {end-start} s')
+    
+# Check
+print('FD Shape', df_raw_fd_from_gpu.shape[0])
+print('Correct Shape', df_raw.shape[0] - weights.shape[0])
+print('Original Shape', df_raw.shape[0])
+```
+
+    Time 128.29733324050903 s
+    FD Shape 999682
+    Correct Shape 999682
+    Original Shape 1000000
 
