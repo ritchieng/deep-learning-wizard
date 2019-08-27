@@ -10,6 +10,7 @@ pages:
     - About Us: about.md
     - Reviews: review.md
     - AI Pipeline: pipeline.md
+    - Consultancy: consultancy.md
     - Deep Learning Tutorials (CPU/GPU):
       - Introduction: deep_learning/intro.md
       - Course Progression: deep_learning/course_progression.md
