@@ -26,8 +26,8 @@ If you would like a more visual and guided experience, feel free to take our [vi
     * [x] For all diagrams that says valid padding, they refer to no padding such that your output size will be smaller than your input size.
     * [x] For all diagrams that says same padding, they refer to zero padding (padding your input with zeroes) such that your output size will be equal to your input size.
     
-!!! warning "Errors to be corrected"
-    As we are rapidly prototyping there may be some errors. For these errors stated here, they will be corrected very soon.
+!!! bug "Errors to be corrected"
+    As we are rapidly prototyping there may be some errors. For these errors stated here, they will be corrected soon.
     
     Feel free to report bugs, corrections or improvements on our [Github repository](https://github.com/ritchieng/deep-learning-wizard). 
     
