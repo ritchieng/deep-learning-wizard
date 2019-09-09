@@ -17,7 +17,14 @@ If you would like a more visual and guided experience, feel free to take our [vi
     
     All of our code allows you to run in a notebook for this deep learning section. Please use a `jupyter notebook` and run the examples from the start of the page to the end.
     
-    Remember to use `CTRL +` if you would like to zoom into the diagrams if you find them too small or blur. You can also just right click and open the image in a new tab if you prefer.
+    Remember to `Right mouse click > Open image in new tab` if you would like to zoom into the diagrams if you find them too small.
+    
+!!! question "Clarifications"
+    These are some clarifications we would like to highlight. 
+    
+    * [x] When we state linear function, more specifically we meant affine function that comprises a linear function and a constant. We did this initially to make it easier as "linear function" was easier to digest.
+    * [x] For all diagrams that says valid padding, they refer to no padding such that your output size will be smaller than your input size.
+    * [x] For all diagrams that says same padding, they refer to zero padding (padding your input with zeroes) such that your output size will be equal to your input size.
     
 !!! warning "Errors to be corrected"
     As we are rapidly prototyping there may be some errors. For these errors stated here, they will be corrected very soon.
@@ -27,7 +34,4 @@ If you would like a more visual and guided experience, feel free to take our [vi
     If you did not go through all the materials, you would not be familiar with these, so go through them and come back to review these changes.
     
     * [x] For all diagrams that says dot product, they refer to matrix product. 
-    * [x] For all diagrams that says valid padding, they refer to no padding such that your output size will be smaller than your input size.
-    * [x] For all diagrams that says same padding, they refer to zero padding (padding your input with zeroes) such that your output size will be equal to your input size.
-    * [x] When we state linear function, more specifically we meant affine function that comprises a linear function and a constant.
     
