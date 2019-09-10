@@ -5,3 +5,4 @@
 *-ubyte
 *-ubyte.gz
 site/
+/docs/programming/electron/app/node_modules/*
