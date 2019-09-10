@@ -58,6 +58,7 @@ pages:
       - C++: programming/cpp/cpp.md
       - Bash: programming/bash/bash.md
       - Python: programming/python/python.md
+      - Javascript: programming/javascript/javascript.md
 #      - Matplotlib: programming/plotting/matplotlib.md
 
     - Scalable Database Tutorials:
