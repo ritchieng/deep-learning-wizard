@@ -22,3 +22,6 @@ sudo rm -rf docs-prog-deploy
 
 echo Reverting to original directory
 cd docs-prog
+
+echo Emptied thrash
+emptytrash
