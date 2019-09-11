@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
-echo Cleaning files for deploy...
+
+echo Creating deployment folder
+cd ..
+sudo cp -rf docs-prog docs-prog-deploy
+cd docs-prog-deploy
+
+echo Cleaning files for deployment...
 sudo find . -name "*.pt" -exec rm {} \;
 sudo find . -name "*-ubyte" -exec rm {} \;
 sudo find . -name "*.ipynb" -exec rm {} \;
@@ -10,5 +16,9 @@ sudo rm -rf ./docs/programming/electron/app/node_modules/
 echo Deploy to pages branch
 mkdocs gh-deploy --force
 
-echo Reset file deletes
-git stash
+echo Removing files
+cd ..
+sudo rm -rf docs-prog-deploy
+
+echo Reverting to original directory
+cd docs-prog
