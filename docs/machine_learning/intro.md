@@ -1,3 +1,5 @@
+disqus:
+
 # Machine Learning
 
 We'll be covering both CPU and GPU implementations of machine learning algorithms and data wrangling libraries. 

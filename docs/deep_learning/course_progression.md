@@ -1,3 +1,5 @@
+disqus:
+
 # Course Progression
 If you would like a smooth transition in learning deep learning concepts, you need to follow the materials in a sequential order. Some sections are still pending as I am working on them, and they will have the :hourglass_flowing_sand: icon beside them.
 
