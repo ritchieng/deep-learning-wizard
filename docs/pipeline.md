@@ -1,3 +1,5 @@
+disqus:
+
 # CPU to GPU Production-level Pipeline for AI
 At Deep Learning Wizard, we cover the basics of some parts of the whole tech stack for production-level CPU/GPU-powered AI.
 

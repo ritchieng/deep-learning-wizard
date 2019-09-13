@@ -1,3 +1,5 @@
+disqus:
+
 # Reviews
 To this date, we have taught thousands of students across more than 120+ countries from students as young as 15 to postgraduates and professionals in leading MNCs and research institutions around the world.
 

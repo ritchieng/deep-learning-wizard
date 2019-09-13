@@ -1,3 +1,5 @@
+disqus:
+
 # About Us
 
 We deploy a top-down approach that enables you to grasp deep learning and deep reinforcement learning theories and code easily and quickly. We have open-sourced all our materials through our [Deep Learning Wizard Tutorials](https://www.deeplearningwizard.com/deep_learning/course_progression/). For visual learners, feel free to sign up for our [video course](https://www.udemy.com/practical-deep-learning-with-pytorch/?couponCode=DEEPWIZARD) and join over 6000 deep learning wizards.
