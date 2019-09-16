@@ -1,8 +1,6 @@
 
 # Python
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ritchieng/deep-learning-wizard/blob/master/docs/programming/python/python.ipynb)
-    
-
 
 ## Lists
 
@@ -53,6 +51,79 @@ print(lst_join)
 ```
 
     0, 1, 2, 3
+
+
+### Checking Lists Equal: Method 1
+Returns `True` if equal, and `False` if unequal
+
+
+```python
+lst_unequal = [1, 1, 2, 3, 4, 4]
+lst_equal = [0, 0, 0, 0, 0, 0]
+
+print('-'*50)
+print('Unequal List')
+print('-'*50)
+
+print(lst_unequal[1:])
+print(lst_unequal[:-1])
+bool_equal = lst_unequal[1:] == lst_unequal[:-1]
+print(bool_equal)
+
+print('-'*50)
+print('Equal List')
+print('-'*50)
+
+print(lst_equal[1:])
+print(lst_equal[:-1])
+bool_equal = lst_equal[1:] == lst_equal[:-1]
+print(bool_equal)
+```
+
+    --------------------------------------------------
+    Unequal List
+    --------------------------------------------------
+    [1, 2, 3, 4, 4]
+    [1, 1, 2, 3, 4]
+    False
+    --------------------------------------------------
+    Equal List
+    --------------------------------------------------
+    [0, 0, 0, 0, 0]
+    [0, 0, 0, 0, 0]
+    True
+
+
+### Checking Lists Equal: Method 2
+Returns `True` if equal, and `False` if unequal. Here, `all` essentially checks that there is no `False` in the list. 
+
+
+```python
+print('-'*50)
+print('Unequal List')
+print('-'*50)
+
+lst_check = [i == lst_unequal[0] for i in lst_unequal]
+bool_equal = all(lst_check)
+print(bool_equal)
+
+print('-'*50)
+print('Equal List')
+print('-'*50)
+
+lst_check = [i == lst_equal[0] for i in lst_equal]
+bool_equal = all(lst_check)
+print(bool_equal)
+```
+
+    --------------------------------------------------
+    Unequal List
+    --------------------------------------------------
+    False
+    --------------------------------------------------
+    Equal List
+    --------------------------------------------------
+    True
 
 
 ## Sets
@@ -703,3 +774,8 @@ print(f'Total time {total_time:.4f}s')
     Total sum 4
     Total time 1.0021s
 
+
+
+```python
+
+```
