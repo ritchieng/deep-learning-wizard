@@ -180,3 +180,70 @@ This packages the application churning the necessary files and the executable `a
 ```bash
 electron-packager ./app app --platform=win32 --arch=x64
 ```
+
+## Python Scripts
+
+### Installing Python Node Package
+
+So we want to easily create Python scripts and run through Javascript in the Electron application. This can be done via `python-shell` npm package.
+
+```bash
+sudo npm install --save python-shell 
+```
+
+### Creating "Hello from JS"
+
+#### Javascript
+
+In your `main.js` file, you would want to add the following code. 
+
+This leverages on the `python-shell` package to send a message to `hello_world.py` and receive the message subsequently.
+
+```javascript
+
+// Start Python shell
+let {PythonShell} = require('python-shell')
+
+// Start shell for specific script for communicating
+let pyshell = new PythonShell('./scripts/hello_world.py');
+
+// Send a message to the Python script via stdin
+pyshell.send('Hello from JS');
+
+// Receive message from Python script
+pyshell.on('message', function (message) {
+  console.log(message);
+
+});
+
+// End the input stream and allow the process to exit
+pyshell.end(function (err, code, signal) {
+  if (err) throw err;
+//  console.log('The exit code was: ' + code);
+//  console.log('The exit signal was: ' + signal);
+  console.log('finished');
+});
+
+```
+
+#### Python
+
+Create a folder `scripts` to hold all your Python scripts. Then create a Python file named `hello_world.py` with the following content.
+
+```python
+import sys
+
+msg_from_js = sys.stdin.read()
+
+print(msg_from_js)
+```
+
+#### Run App
+
+Run via `npm start` and you'll see this in your bash output. Viola! We managed to call `hello_world.py` via `main.js` through the `python-shell` package. Next task, we will be passing this message to `index.html`.
+
+```bash
+Hello from JS
+
+finished
+```

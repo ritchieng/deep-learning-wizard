@@ -18,7 +18,7 @@ function createWindow () {
   win.loadFile('index.html')
 
   // Open the DevTools.
-  // win.webContents.openDevTools()
+  win.webContents.openDevTools()
 
   // Emitted when the window is closed.
   win.on('closed', () => {
@@ -53,3 +53,47 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+//let {PythonShell} = require('python-shell')
+//
+//
+//// Hello world python
+//let options = {
+//  mode: 'text',
+//  pythonOptions: ['-u'], // get print results in real-time
+//  scriptPath: 'scripts/',
+//  args: ['value1', 'value2', 'value3']
+//};
+//
+//PythonShell.run(
+//  'hello_world.py',
+//  options,
+//  function (err, results) {
+//    if (err) throw err;
+//    console.log(results);
+//  }
+//);
+
+
+// Start Python shell
+let {PythonShell} = require('python-shell')
+
+// Start shell for specific script for communicating
+let pyshell = new PythonShell('./scripts/hello_world.py');
+
+// Send a message to the Python script via stdin
+pyshell.send('Hello from JS');
+
+// Receive message from Python script
+pyshell.on('message', function (message) {
+  console.log(message);
+
+});
+
+// End the input stream and allow the process to exit
+pyshell.end(function (err, code, signal) {
+  if (err) throw err;
+//  console.log('The exit code was: ' + code);
+//  console.log('The exit signal was: ' + signal);
+  console.log('finished');
+});
