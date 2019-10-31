@@ -645,6 +645,38 @@ finally:
     Ran code block regardless of error or not.
 
 
+### Assertion
+- This comes in handy when you want to enforce strict requirmenets of a certain value, shape, value type, or others
+
+
+```python
+for i in range(10):
+    assert i <= 5, 'Value is more than 5, rejected'
+    print(f'Passed assertion for value {i}')
+```
+
+    Passed assertion for value 0
+    Passed assertion for value 1
+    Passed assertion for value 2
+    Passed assertion for value 3
+    Passed assertion for value 4
+    Passed assertion for value 5
+
+
+
+    ---------------------------------------------------------------------------
+
+    AssertionError                            Traceback (most recent call last)
+
+    <ipython-input-2-d9d077e139a9> in <module>
+          1 for i in range(10):
+    ----> 2     assert i <= 5, 'Value is more than 5, rejected'
+          3     print(f'Passed assertion for value {i}')
+
+
+    AssertionError: Value is more than 5, rejected
+
+
 ## Asynchronous
 
 ### Concurrency, Parallelism, Asynchronous
@@ -774,8 +806,3 @@ print(f'Total time {total_time:.4f}s')
     Total sum 4
     Total time 1.0021s
 
-
-
-```python
-
-```
