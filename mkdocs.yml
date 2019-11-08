@@ -23,7 +23,7 @@ pages:
       - Recurrent Neural Networks (RNN): deep_learning/practical_pytorch/pytorch_recurrent_neuralnetwork.md
       - Long Short Term Memory Neural Networks (LSTM): deep_learning/practical_pytorch/pytorch_lstm_neuralnetwork.md
       - Autoencoders (AE): deep_learning/practical_pytorch/pytorch_autoencoder.md
-#      - Fully-connected Overcomplete Autoencoder (AE): deep_learning/practical_pytorch/pytorch_fc_overcomplete_ae.md
+      - Fully-connected Overcomplete Autoencoder (AE): deep_learning/practical_pytorch/pytorch_fc_overcomplete_ae.md
 #      - Fully-connected Undercomplete Autoencoder (AE): deep_learning/practical_pytorch/pytorch_fc_undercomplete_ae.md
 #      - Convolutional Overcomplete Variational Autoencoder (VAE): deep_learning/practical_pytorch/pytorch_autoencoder.md
 #      - Convolutional Overcomplete Adversarial Autoencoder (AAE): deep_learning/practical_pytorch/pytorch_autoencoder.md
