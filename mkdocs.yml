@@ -36,7 +36,7 @@ pages:
       - Supervised Learning to Reinforcement Learning (RL): deep_learning/deep_reinforcement_learning_pytorch/supervised_to_rl.md
       - Markov Decision Processes (MDP) and Bellman Equations: deep_learning/deep_reinforcement_learning_pytorch/bellman_mdp.md
       - Dynamic Programming: deep_learning/deep_reinforcement_learning_pytorch/dynamic_programming_frozenlake.md
-      - Speed Optimization Basics - Numba: deep_learning/production_pytorch/speed_optimization_basics_numba.md
+      - Speed Optimization Basics Numba: deep_learning/production_pytorch/speed_optimization_basics_numba.md
       - Additional Readings: deep_learning/readings.md
 
     - Machine Learning Tutorials (CPU/GPU):
