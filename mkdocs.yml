@@ -30,6 +30,7 @@ pages:
 #      - Generative Adversarial Networks (GAN): deep_learning/practical_pytorch/pytorch_autoencoder.md
       - Derivative, Gradient and Jacobian: deep_learning/boosting_models_pytorch/derivative_gradient_jacobian.md
       - Forward- and Backward-propagation and Gradient Descent: deep_learning/boosting_models_pytorch/forwardpropagation_backpropagation_gradientdescent.md
+      - From Scratch Logistic Regression: deep_learning/boosting_models_pytorch/fromscratch_logistic_regression.md
       - Learning Rate Scheduling: deep_learning/boosting_models_pytorch/lr_scheduling.md
       - Optimization Algorithms: deep_learning/boosting_models_pytorch/optimizers.md
       - Weight Initialization and Activation Functions: deep_learning/boosting_models_pytorch/weight_initialization_activation_functions.md
