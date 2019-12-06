@@ -116,7 +116,7 @@ print(Counter(y_train))
         - $P(y=0 \mid x;\theta) = 1 - \hat y$
     - Simplified further:
         - $p(y \mid x; \theta) = (\hat y)^y(1 - \hat y)^{1-y}$
-    - Given n training samples, the likelihood is simply the product of probabilities:
+    - Given m training samples, the likelihood is simply the product of probabilities:
         - $L(\theta) = \displaystyle \prod_{i=1}^{m} p(y^i \mid x^i; \theta)$
         - $L(\theta) = \displaystyle \prod_{i=1}^{m} (\hat y^{i})^{y^i}(1 - \hat y^{i})^{1-y^{i}}$
     - But it's easier to maximize the log likelihood, so we take the natural logarithm. 
