@@ -88,17 +88,17 @@ print(Counter(y_train))
 
 
 ## Python Implementation
-- 1. Forwardpropagation:
+- Forwardpropagation:
     - Affine function/transformation: $z = wx + b$
     - Sigmoid/logistic function: $\hat y = \frac{1}{1 + e^{-z}}$
-- 2. Backwardpropagation:
+- Backwardpropagation:
     - Loss: $l = ylog(\hat y) + (1-y) log (1 - \hat y)$
     - Partial derivative of loss w.r.t weights: $\frac{\delta L}{\delta w} =\frac{\delta L}{\delta z} \frac{\delta z}{\delta w} = (\hat y - y)(x^T)$
     - Partial derivative of loss w.r.t. bias: $\frac{\delta L}{\delta b} = \frac{\delta L}{\delta z} \frac{\delta z}{\delta b} = (\hat y - y)(1)$
     - $\frac{\delta L}{\delta z} = \hat y - y$
     - $\frac{\delta z}{\delta w} = x$
     - $\frac{\delta z}{\delta b} = 1$
-- 3. Gradient descent: updating weights
+- Gradient descent: updating weights
     - $w = w - \alpha (\hat y - y)(x^T)$
     - $b = b - \alpha (\hat y - y).1$
 
