@@ -1,4 +1,3 @@
-
 # Logistic Regression from Scratch
 
 This is an implementation of a simple logistic regression for binary class labels. We will be attempting to classify 2 flowers based on their petal width and height: setosa and versicolor.
@@ -32,6 +31,9 @@ iris = datasets.load_iris()
 # Load features and target
 # Take only 2 classes, and 2 features (sepal length/width)
 X = iris.data[:-50, :2]
+# For teaching the math rather than preprocessing techniques,
+# we'll be using this simple scaling method. However, you must
+# be cautious to scale your training/testing sets subsequently.
 X = preprocessing.scale(X)
 y = iris.target[:-50] 
 ```
@@ -87,38 +89,51 @@ print(Counter(y_train))
     Counter({0: 41, 1: 39})
 
 
-## Python Implementation
-- Forwardpropagation:
-    - Affine function/transformation: $z = wx + b$
-    - Sigmoid/logistic function: $\hat y = \frac{1}{1 + e^{-z}}$
-- Backwardpropagation:
-    - Loss: $l = ylog(\hat y) + (1-y) log (1 - \hat y)$
-    - Partial derivative of loss w.r.t weights: $\frac{\delta L}{\delta w} =\frac{\delta L}{\delta z} \frac{\delta z}{\delta w} = (\hat y - y)(x^T)$
-    - Partial derivative of loss w.r.t. bias: $\frac{\delta L}{\delta b} = \frac{\delta L}{\delta z} \frac{\delta z}{\delta b} = (\hat y - y)(1)$
+## Math
+
+### 1. Forwardpropagation
+- **Get our logits and probabilities**
+- Affine function/transformation: $z = \theta x + b$
+- Sigmoid/logistic function: $\hat y = \frac{1}{1 + e^{-z}}$
+
+### 2. Backwardpropagation
+- **Calculate gradients / partial derivatives w.r.t. weights and bias**
+- Loss: $L = ylog(\hat y) + (1-y) log (1 - \hat y)$
+- Partial derivative of loss w.r.t weights: $\frac{\delta L}{\delta w} =\frac{\delta L}{\delta z} \frac{\delta z}{\delta w} = (\hat y - y)(x^T)$
+- Partial derivative of loss w.r.t. bias: $\frac{\delta L}{\delta b} = \frac{\delta L}{\delta z} \frac{\delta z}{\delta b} = (\hat y - y)(1)$
     - $\frac{\delta L}{\delta z} = \hat y - y$
     - $\frac{\delta z}{\delta w} = x$
     - $\frac{\delta z}{\delta b} = 1$
-- Gradient descent: updating weights
-    - $w = w - \alpha (\hat y - y)(x^T)$
-    - $b = b - \alpha (\hat y - y).1$
+
+#### 2a. Loss function clarification
+- Actually, why is our loss equation $L = ylog(\hat y) + (1-y) log (1 - \hat y)$?
+    - We have given the intuition in the [Logistic Regression tutorial](https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_logistic_regression/#cross-entropy-function-d-for-2-class) on why it works.
+    - Here we will cover the derivation which essentially is merely maximizing the log likelihood.
+    - Given:
+        - $\hat y = \frac{1}{1 + e^{-z}}$.
+    - Then:
+        - $P(y=1 \mid x;\theta) = \hat y$
+        - $P(y=0 \mid x;\theta) = 1 - \hat y$
+    - Simplified further:
+        - $p(y \mid x; \theta) = (\hat y)^y(1 - \hat y)^{1-y}$
+    - Given n training samples, the likelihood is simply the product of probabilities:
+        - $L(\theta) = \displaystyle \prod_{i=1}^{m} p(y^i \mid x^i; \theta)$
+        - $L(\theta) = \displaystyle \prod_{i=1}^{m} (\hat y^{i})^{y^i}(1 - \hat y^{i})^{1-y^{i}}$
+    - But it's easier to maximize the log likelihood, so we take the natural logarithm. 
+        - $L(\theta) = \displaystyle \sum_{i=1}^{m} y^{i}log (\hat y^{i}) + (1 - y^{i})log(1 - \hat y^{i})$
+    - Why is is easier to maximize the log likelihood?
+        - The natural logarithm is a function that monotonically increases.
+        - This allows us to find the "max" of the log likelihood easier compared to a non-monotonically increasing function (like a wave up and down).
+
+### 3. Gradient descent: updating weights**
+- $w = w - \alpha (\hat y - y)(x^T)$
+- $b = b - \alpha (\hat y - y).1$
 
 
-### Training
+## Training from Scratch
 
 
 ```python
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
-print(f'X train size: {X_train.shape}')
-print(f'X test size: {X_test.shape}')
-print(f'y train size: {y_train.shape}')
-print(f'y test size: {y_test.shape}')
-
-# Distribution of both classes are roughly equal using train_test_split function
-print(Counter(y_train))
-
-#### REMOVE ABOVE
-
-num_epochs = 20
 learning_rate = 0.1
 num_features = X.shape[1]
 weights = torch.zeros(num_features, 1, dtype=torch.float32)
@@ -129,7 +144,7 @@ y_train = torch.from_numpy(y_train).type(torch.float32)
 
 for epoch in range(num_epochs):        
     # 1. Forwardpropagation:
-    # 1a. Affine Transformation: z = ax + b
+    # 1a. Affine Transformation: z = \theta x + b
     z = torch.add(torch.mm(X_train, weights), bias)
     # 2a. Sigmoid/Logistic Function: y_hat = 1 / (1 + e^{-z})
     y_hat = 1. / (1. + torch.exp(-z))
@@ -195,7 +210,7 @@ print(f'Bias \n {bias.data}')
      tensor([0.5570])
 
 
-### Inference
+## Inference
 
 
 ```python
