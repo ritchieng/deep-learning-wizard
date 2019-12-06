@@ -125,7 +125,7 @@ print(Counter(y_train))
         - The natural logarithm is a function that monotonically increases.
         - This allows us to find the "max" of the log likelihood easier compared to a non-monotonically increasing function (like a wave up and down).
 
-### 3. Gradient descent: updating weights**
+### 3. Gradient descent: updating weights
 - $w = w - \alpha (\hat y - y)(x^T)$
 - $b = b - \alpha (\hat y - y).1$
 
