@@ -108,7 +108,7 @@ print(Counter(y_train))
 #### 2a. Loss function clarification
 - Actually, why is our loss equation $L = ylog(\hat y) + (1-y) log (1 - \hat y)$?
     - We have given the intuition in the [Logistic Regression tutorial](https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_logistic_regression/#cross-entropy-function-d-for-2-class) on why it works.
-    - Here we will cover the derivation which essentially is merely maximizing the log likelihood.
+    - Here we will cover the derivation which essentially is merely maximizing the log likelihood of the parameters (maximizing the probability of our predicted output given our input and parameters
     - Given:
         - $\hat y = \frac{1}{1 + e^{-z}}$.
     - Then:
@@ -116,9 +116,10 @@ print(Counter(y_train))
         - $P(y=0 \mid x;\theta) = 1 - \hat y$
     - Simplified further:
         - $p(y \mid x; \theta) = (\hat y)^y(1 - \hat y)^{1-y}$
-    - Given m training samples, the likelihood is simply the product of probabilities:
+    - Given m training samples, the likelihood of the parameters is simply the product of probabilities:
         - $L(\theta) = \displaystyle \prod_{i=1}^{m} p(y^i \mid x^i; \theta)$
         - $L(\theta) = \displaystyle \prod_{i=1}^{m} (\hat y^{i})^{y^i}(1 - \hat y^{i})^{1-y^{i}}$
+        - Essentially, we want to maximize the probability of our ouput given our input and parameters
     - But it's easier to maximize the log likelihood, so we take the natural logarithm. 
         - $L(\theta) = \displaystyle \sum_{i=1}^{m} y^{i}log (\hat y^{i}) + (1 - y^{i})log(1 - \hat y^{i})$
     - Why is is easier to maximize the log likelihood?
