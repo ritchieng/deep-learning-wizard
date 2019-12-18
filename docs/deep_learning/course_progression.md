@@ -13,14 +13,15 @@ If you would like a smooth transition in learning deep learning concepts, you ne
 * [x] Convolutional Neural Networks (CNN)
 * [x] Recurrent Neural Networks (RNN)
 * [x] Long Short Term Memory Neural Networks (LSTM)
-* [x] :hourglass_flowing_sand: Autoencoders (AE)
-* [x] :hourglass_flowing_sand: Variational Autoencoders (VAEs)
-* [x] :hourglass_flowing_sand: Adversarial Autoencoders (AAEs)
-* [x] :hourglass_flowing_sand: Generative Adversarial Networks (GANs)
+* [x] Autoencoders (AE)
+* [x] Fully-connected Overcomplete Autoencoder (AE)
+* [x] :hourglass_flowing_sand: Variational Autoencoders (VAE)
+* [x] :hourglass_flowing_sand: Adversarial Autoencoders (AAE)
+* [x] :hourglass_flowing_sand: Generative Adversarial Networks (GAN)
 
 ## 2. Boosting Deep Learning Models with PyTorch
 * [x] Derivatives, Gradients and Jacobian
-* [x] Gradient Descent and Backpropagation
+* [x] Gradient Descent and Backpropagation (From Scratch FNN Regression)
 * [x] Learning Rate Scheduling
 * [x] Optimizers
 * [x] Advanced Learning Rate Optimization
@@ -32,8 +33,8 @@ If you would like a smooth transition in learning deep learning concepts, you ne
 
 ## 3. Deep Model-Free Reinforcement Learning with PyTorch
 * [x] Supervised Learning to Reinforcement Learning
-* [x] :hourglass_flowing_sand: Markov Decision Processes and Bellman Equations
-* [x] :hourglass_flowing_sand: Dynamic Programming
+* [x] Markov Decision Processes and Bellman Equations
+* [x] Dynamic Programming
 * [x] :hourglass_flowing_sand: Monte Carlo Approach
 * [x] :hourglass_flowing_sand: Temporal-Difference
 * [x] :hourglass_flowing_sand: Policy Gradient: REINFORCE
@@ -43,4 +44,11 @@ If you would like a smooth transition in learning deep learning concepts, you ne
 * [x] :hourglass_flowing_sand: Policy Gradient: PPO
 * [x] :hourglass_flowing_sand: Policy Gradient: DPG
 * [x] :hourglass_flowing_sand: Policy Gradient: DDPG (DQN & DPG)
-* [x] TBC...
+
+## 4. From Scratch with Python and PyTorch
+* [x] From Scratch Logistic Regression Classification
+* [x] :hourglass_flowing_sand: From Scratch FNN Classification
+* [x] :hourglass_flowing_sand: From Scratch CNN Classification
+* [x] :hourglass_flowing_sand: From Scratch RNN Classification
+* [x] :hourglass_flowing_sand: From Scratch LSTM Classification
+* [x] :hourglass_flowing_sand: From Scratch AE
