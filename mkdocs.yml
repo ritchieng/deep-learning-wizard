@@ -1,6 +1,6 @@
 # Project information
 site_name: 'Deep Learning Wizard'
-site_description: 'Learn deep learning and deep reinforcement learning theories and code easily and quickly. Used by thousands of students and professionals from top tech companies and research institutions.'
+site_description: 'Learn deep learning and deep reinforcement learning math and code easily and quickly. Used by thousands of students and professionals from top tech companies and research institutions.'
 site_author: 'Ritchie Ng'
 site_url: 'https://www.deeplearningwizard.com/'
 
@@ -29,8 +29,13 @@ pages:
 #      - Convolutional Overcomplete Adversarial Autoencoder (AAE): deep_learning/practical_pytorch/pytorch_autoencoder.md
 #      - Generative Adversarial Networks (GAN): deep_learning/practical_pytorch/pytorch_autoencoder.md
       - Derivative, Gradient and Jacobian: deep_learning/boosting_models_pytorch/derivative_gradient_jacobian.md
-      - Forward- and Backward-propagation and Gradient Descent: deep_learning/boosting_models_pytorch/forwardpropagation_backpropagation_gradientdescent.md
-      - From Scratch Logistic Regression: deep_learning/boosting_models_pytorch/fromscratch_logistic_regression.md
+      - Forward- and Backward-propagation and Gradient Descent (From Scratch FNN Regression): deep_learning/boosting_models_pytorch/forwardpropagation_backpropagation_gradientdescent.md
+      - From Scratch Logistic Regression Classification: deep_learning/fromscratch/fromscratch_logistic_regression.md
+#       - From Scratch FNN Classification: deep_learning/fromscratch/fromscratch_fnn_classification.md
+#       - From Scratch CNN Classification: deep_learning/fromscratch/fromscratch_cnn_classification.md
+#       - From Scratch RNN Classification: deep_learning/fromscratch/fromscratch_rnn_classification.md
+#       - From Scratch LSTM Classification: deep_learning/fromscratch/fromscratch_lstm_classification.md
+#       - From Scratch AE: deep_learning/fromscratch/fromscratch_ae_classification.md
       - Learning Rate Scheduling: deep_learning/boosting_models_pytorch/lr_scheduling.md
       - Optimization Algorithms: deep_learning/boosting_models_pytorch/optimizers.md
       - Weight Initialization and Activation Functions: deep_learning/boosting_models_pytorch/weight_initialization_activation_functions.md
