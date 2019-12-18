@@ -18,6 +18,7 @@ If you would like a smooth transition in learning deep learning concepts, you ne
 * [x] :hourglass_flowing_sand: Variational Autoencoders (VAE)
 * [x] :hourglass_flowing_sand: Adversarial Autoencoders (AAE)
 * [x] :hourglass_flowing_sand: Generative Adversarial Networks (GAN)
+* [x] :hourglass_flowing_sand: Transformers
 
 ## 2. Boosting Deep Learning Models with PyTorch
 * [x] Derivatives, Gradients and Jacobian
