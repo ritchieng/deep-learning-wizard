@@ -1040,7 +1040,7 @@ Iteration: 3000. Loss: 0.16750787198543549. Accuracy: 96
 !!! tip "More Efficient Convolutions via Toeplitz Matrices"
     This is beyond the scope of this particular lesson. But now that we understand how convolutions work, it is critical to know that it is quite an inefficient operation if we use for-loops to perform our 2D convolutions (5 x 5 convolution kernel size for example) on our 2D images (28 x 28 MNIST image for example).
     
-    A more efficient implementation is in converting our convolution kernel into a Toeplitz matrix and our image into a vector. Then, we will do just one matrix operation using our Toeplitz matrix and vector.
+    A more efficient implementation is in converting our convolution kernel into a doubly block circulant/Toeplitz matrix (special case Toeplitz matrix) and our image (input) into a vector. Then, we will do just one matrix operation using our doulby block Toeplitz matrix and our input vector.
     
     There will be a whole lesson dedicated to this operation released down the road. 
     
