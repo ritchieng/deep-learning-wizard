@@ -276,10 +276,9 @@ print('='*50)
 print(f'Probas: {pd.DataFrame(output.numpy()).to_string(index=False, header=False)}')
 ```
 
-!!! note Dot Product, Matrix Multiplication, and Hadamard Product
-    - Hadamard product: element-wise multiplicaton of 2 matrices.
-    - Matrix Multiplication: take the first row of the first matrix and perform dot product with each of the N columns in the second matrix to form N columns in the first row of the new matrix. Repeat for remaining rows for the first matrix.
-    
+!!! note "Dot Product, Matrix Multiplication, and Hadamard Product"
+    Hadamard product: element-wise multiplicaton of 2 matrices.
+    Matrix Multiplication: take the first row of the first matrix and perform dot product with each of the N columns in the second matrix to form N columns in the first row of the new matrix. Repeat for remaining rows for the first matrix.    
 
 
 ```python
