@@ -400,3 +400,43 @@ ps -o pid,sess,cmd afx | egrep -A20 "( |/)cron( -f)?$"
 ```
 
 You can get the PID of the cron process and then end it with `sudo pkill -s <PID>`
+
+
+## Hardware Information
+
+### Comprehensive CPU Information
+
+```bash
+cat /proc/cpuinfo
+```
+
+### Number of CPU Threads
+
+```bash
+!grep -c ^processor /proc/cpuinfo
+```
+
+or 
+
+```bash
+nproc
+```
+
+### CPU Model Name
+
+```bash
+!cat /proc/cpuinfo | grep "model name" 
+```
+### Check Available RAM
+
+#### In MB
+
+```bash
+free -m
+```
+
+#### In GB 
+
+```bash
+free -g
+```
