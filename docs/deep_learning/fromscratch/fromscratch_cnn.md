@@ -91,10 +91,7 @@ print(f'Testing shape {X_test.shape}')
 
 ## Forwardpropagation
 
-
-```python
 ### Convolutional Layer
-```
 
 
 ```python
@@ -175,6 +172,19 @@ print(f'Conv (f) shape: \t {list(output.shape)}')
 print('='*50)
 ```
 
+    ==================================================
+    Input shape: 	 [28, 28]
+    ==================================================
+    Padding shape: 	 0
+    Output shape: 	 24
+    Region shape: 	 [5, 5]
+    Kernel shape: 	 [8, 5, 5]
+    Single Slide: 	 [8]
+    ==================================================
+    Conv (f) shape: 	 [24, 24, 8]
+    ==================================================
+
+
 ### Max Pooling Layer
 
 
@@ -229,6 +239,14 @@ print(f'Pool (f) shape: \t {list(output.shape)}')
 print('='*50)
 ```
 
+    ==================================================
+    Input shape: 	 [24, 24, 8]
+    ==================================================
+    ==================================================
+    Pool (f) shape: 	 [12, 12, 8]
+    ==================================================
+
+
 ### Affine and Soft(arg)max Layer
 
 
@@ -276,9 +294,22 @@ print('='*50)
 print(f'Probas: {pd.DataFrame(output.numpy()).to_string(index=False, header=False)}')
 ```
 
+    ==================================================
+    Input shape: 	 [12, 12, 8]
+    ==================================================
+    Lecun initialization SD: 0.1
+    input shape: 	 torch.Size([1, 1152])
+    weight shape: 	 torch.Size([1152, 10])
+    bias shape: 	 torch.Size([10])
+    ==================================================
+    Affine & Soft(arg)max (f) shape: 	 [1, 10]
+    ==================================================
+    Probas:  0.72574  0.001391  0.000083  0.202983  0.000503  0.037023  0.000428  0.000144  0.031293  0.000412
+
+
 !!! note "Dot Product, Matrix Multiplication, and Hadamard Product"
-    Hadamard product: element-wise multiplicaton of 2 matrices.
-    Matrix Multiplication: take the first row of the first matrix and perform dot product with each of the N columns in the second matrix to form N columns in the first row of the new matrix. Repeat for remaining rows for the first matrix.    
+    **Hadamard product**: element-wise multiplicaton of 2 matrices.
+    </br>**Matrix Multiplication**: take the first row of the first matrix and perform dot product with each of the N columns in the second matrix to form N columns in the first row of the new matrix. Repeat for remaining rows for the first matrix.    
 
 
 ```python
