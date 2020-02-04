@@ -1,4 +1,3 @@
-
 # Python
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ritchieng/deep-learning-wizard/blob/master/docs/programming/python/python.ipynb)
 
@@ -146,7 +145,7 @@ print(f'No Duplicated Combined List {lst_no_duplicate}')
     No Duplicated Combined List [1, 2, 3, 4, 5]
 
 
-## Lambda, map, filter, reduce
+## Lambda, map, filter, reduce, partial
 
 ### Lambda
 The syntax is simple `lambda your_variables: your_operation`
@@ -269,6 +268,60 @@ print(1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9)
 
     45
     45
+
+
+### Partial
+Allows us to predefine and freeze a function's argument. Combined with lambda, it allows us to have more flexibility beyond lambda's restriction of a single line.
+
+
+```python
+from functools import partial
+
+def display_sum_three(a, b, c):
+    sum_all = a + b + c
+    print(f'Sum is {sum_all}')
+
+fixed_args_func = partial(display_sum_three, b=3, c=4)
+
+# Given fixed arguments b=3 and c=4
+# We add the new variable against the fixed arguments
+var_int = 1
+fixed_args_func(var_int)
+
+# More advanced mapping with partial
+# Add a variable from 0 to 9 to the constants
+print('-'*50)
+_ = list(map(fixed_args_func, list(range(10))))
+
+# How about using with lambda to modifying constants without
+# declaring your function again?
+print('-'*50)
+_ = list(map(lambda x: fixed_args_func(x, b=2), list(range(10))))
+```
+
+    Sum is 8
+    --------------------------------------------------
+    Sum is 7
+    Sum is 8
+    Sum is 9
+    Sum is 10
+    Sum is 11
+    Sum is 12
+    Sum is 13
+    Sum is 14
+    Sum is 15
+    Sum is 16
+    --------------------------------------------------
+    Sum is 6
+    Sum is 7
+    Sum is 8
+    Sum is 9
+    Sum is 10
+    Sum is 11
+    Sum is 12
+    Sum is 13
+    Sum is 14
+    Sum is 15
 
 
 ## Generators
