@@ -217,7 +217,7 @@ if (goWhere == Right)
 
 ```c++
 // Usage of void when the function does not return anything
-// In this exmaple, this function prints out the multiplication result of two given numbers
+// In this example, this function prints out the multiplication result of two given numbers
 void MultiplyTwoNumbers(int firstNum, int secondNum)
 {
     // Define variable as integer type
@@ -380,6 +380,7 @@ std::cout << DoubleArray[49] << std::endl;
 
 
 ```c++
+// In steps of 1
 for (int i=0; i<10; i++)
 {
     // This is how you print a mix of characters and declared variables
@@ -397,6 +398,23 @@ for (int i=0; i<10; i++)
     Element 7 contains 0
     Element 8 contains 0
     Element 9 contains 0
+
+
+
+```c++
+// In steps of 2
+for (int i=0; i<10; i+=2)
+{
+    // This is how you print a mix of characters and declared variables
+    std::cout << "Element " << i << " contains " <<  DoubleArray[i] << std::endl;
+}
+```
+
+    Element 0 contains 0
+    Element 2 contains 0
+    Element 4 contains 0
+    Element 6 contains 0
+    Element 8 contains 0
 
 
 ##### Going Beyond The Array's Length
@@ -710,4 +728,65 @@ cout << "New d:\t" << d << "\n";
     Old d:	2
     New c:	2
     New d:	1
+
+
+### Conditional Statements
+
+#### If
+
+
+```c++
+int maxValue = 10;
+    
+// Increment till 10
+for (int i=0; i<=10; i+=2)
+{
+    // Stop if the number reaches 10 (inclusive)
+    if (i == maxValue)
+    {
+        cout << "Reached max value!";
+        cout << "\nValue is " << i << endl;
+    };
+};
+```
+
+    Reached max value!
+    Value is 10
+
+
+#### Else
+
+
+```c++
+int newMaxValue = 20;
+    
+// Increment till 10
+for (int i=0; i<=10; i+=2)
+{
+    // Stop if the number reaches 10 (inclusive)
+    if (i == newMaxValue)
+    {
+        cout << "Reached max value!";
+        cout << "\nValue is " << i << endl;
+    }
+    // Else print current value
+    else
+    {
+        cout << "\nCurrent Value is " << i << endl;
+    }
+}
+```
+
+    
+    Current Value is 0
+    
+    Current Value is 2
+    
+    Current Value is 4
+    
+    Current Value is 6
+    
+    Current Value is 8
+    
+    Current Value is 10
 
