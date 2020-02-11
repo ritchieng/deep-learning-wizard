@@ -730,7 +730,7 @@ cout << "New d:\t" << d << "\n";
     New d:	1
 
 
-### Conditional Statements
+## Conditional Statements
 
 #### If
 
@@ -789,4 +789,60 @@ for (int i=0; i<=10; i+=2)
     Current Value is 8
     
     Current Value is 10
+
+
+## Logical Operators
+
+#### And
+
+
+```c++
+int varOneNew = 10;
+int varTwo = 10;
+int varCheckOne = 10;
+int varCheckTwo = 5;
+
+// This should print out
+if ((varOneNew == varCheckOne) && (varTwo == varCheckOne))
+{
+    std::cout << "Both values equal to 10!" << std::endl;
+}
+
+// This should not print out as varTwo does not equal to 5
+if ((varOneNew == varCheckOne) && (varTwo == varCheckTwo))
+{
+    std::cout << "VarOneNew equals to 10, VarTwo equals to 5" << std::endl;
+}
+```
+
+    Both values equal to 10!
+
+
+#### Or
+
+
+```c++
+// On the contrary, this exact same statement would print out
+// as VarOne is equal to 10 and we are using an OR operator
+if ((varOneNew == varCheckOne) || (varTwo == varCheckTwo))
+{
+    std::cout << "VarOneNew equals to 10 or VarTwo equals to 5" << std::endl;
+}
+```
+
+    VarOneNew equals to 10 or VarTwo equals to 5
+
+
+#### Not
+
+
+```c++
+// This would print out as VarTwo is not equal to 5
+if (varTwo != varCheckTwo)
+{
+    std::cout << "VarTwo (10) is not equal to VarCheckTwo (5)." << std::endl;
+}
+```
+
+    VarTwo (10) is not equal to VarCheckTwo (5).
 
