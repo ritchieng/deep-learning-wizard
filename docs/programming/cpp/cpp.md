@@ -846,3 +846,25 @@ if (varTwo != varCheckTwo)
 
     VarTwo (10) is not equal to VarCheckTwo (5).
 
+
+## Getting User Input
+
+
+```c++
+using namespace std;
+long double inputOne, inputTwo;
+cout << "This program multiplies 2 given numbers\n";
+cout << "Enter first number: \n";
+cin >> inputOne;
+cout << "Enter second number: \n";
+cin >> inputTwo;
+cout << "Multiplication value: " << inputOne * inputTwo << endl;
+```
+
+    This program multiplies 2 given numbers
+    Enter first number: 
+    100
+    Enter second number: 
+    200
+    Multiplication value: 20000
+
