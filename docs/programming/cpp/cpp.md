@@ -213,6 +213,7 @@ if (goWhere == Right)
 ## Functions
 
 ### Function Without Return Value
+Syntax generally follows `void FunctionName(argOne, argTwo)` to define the function followed by `FuntionName()` to call the function.
 
 
 ```c++
@@ -340,6 +341,9 @@ std::cout << returnValue << std::endl;
 
     20
 
+
+###  Function using Global Variables
+This is normally forbidden in C++ as debugging can be challenging in large code bases.
 
 ## Arrays
 
@@ -635,6 +639,27 @@ std::cout << modulusStatement;
 
     3
 
+### Exponent
+- Base to the power of something, this requires a new package called `<cmath>` that we want to include.
+
+
+```c++
+#include <cmath>
+
+void SquareNumber(int baseNum, int exponentNum)
+{
+    // Square the locally scoped variable with 2
+    int squaredNumber;
+    squaredNumber = pow(baseNum, exponentNum);
+    std::cout << "Base of 2 with exponent of 2 gives: " << squaredNumber << std::endl;
+}
+
+SquareNumber(2, 2)
+```
+
+    Base of 2 with exponent of 2 gives: 4
+
+
 ### Incrementing/Decrementing
 - 3 ways to do this, from least to most verbose
 
@@ -865,6 +890,6 @@ cout << "Multiplication value: " << inputOne * inputTwo << endl;
     Enter first number: 
     100
     Enter second number: 
-    200
-    Multiplication value: 20000
+    100
+    Multiplication value: 10000
 
