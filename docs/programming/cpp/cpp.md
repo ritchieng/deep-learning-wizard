@@ -342,8 +342,27 @@ std::cout << returnValue << std::endl;
     20
 
 
-###  Function using Global Variables
-This is normally forbidden in C++ as debugging can be challenging in large code bases.
+###  Function Inner Workings
+- Essentially our lines of codes translates to instruction pointers with unique memory addresses.
+- Execution of instruction pointers operates on a "LIFO" basis, last in first out.
+    - Oversimplifying here, in our example, the last line is taken off first and it follows up
+
+
+```c++
+// Code Space
+int varOneTest = 10; // Instruction pointer 100
+std::cout << varOneTest << std::endl; // Instruction Pointer 102
+```
+
+    10
+
+
+
+
+
+    @0x7fa6b7de5460
+
+
 
 ## Arrays
 
@@ -888,8 +907,90 @@ cout << "Multiplication value: " << inputOne * inputTwo << endl;
 
     This program multiplies 2 given numbers
     Enter first number: 
-    100
+    10
     Enter second number: 
-    100
-    Multiplication value: 10000
+    10
+    Multiplication value: 100
+
+
+## Loops
+
+### For Loop
+
+
+```c++
+for (int i=0; i<10; i+=1)
+{
+    cout << "Value of i is: " << i << endl;
+}
+```
+
+    Value of i is: 0
+    Value of i is: 1
+    Value of i is: 2
+    Value of i is: 3
+    Value of i is: 4
+    Value of i is: 5
+    Value of i is: 6
+    Value of i is: 7
+    Value of i is: 8
+    Value of i is: 9
+
+
+### While Loop
+
+
+```c++
+int idxWhile = 0;
+
+while (idxWhile < 10)
+{
+    idxWhile += 1;
+    cout << "Value of while loop i is: " << idxWhile << endl;
+}
+```
+
+    Value of while loop i is: 1
+    Value of while loop i is: 2
+    Value of while loop i is: 3
+    Value of while loop i is: 4
+    Value of while loop i is: 5
+    Value of while loop i is: 6
+    Value of while loop i is: 7
+    Value of while loop i is: 8
+    Value of while loop i is: 9
+    Value of while loop i is: 10
+
+
+### While Loop with Continue/Break
+
+
+
+```c++
+int idxWhileNew = 0;
+
+while (idxWhileNew < 100)
+{
+    idxWhileNew += 1;
+    cout << "Value of while loop i is: " << idxWhile << endl;
+    
+    if (idxWhileNew == 10)
+    {
+        cout << "Max value of 10 reached!" << endl;
+        break;
+    }
+}
+```
+
+    Value of while loop i is: 10
+    Value of while loop i is: 10
+    Value of while loop i is: 10
+    Value of while loop i is: 10
+    Value of while loop i is: 10
+    Value of while loop i is: 10
+    Value of while loop i is: 10
+    Value of while loop i is: 10
+    Value of while loop i is: 10
+    Value of while loop i is: 10
+    Max value of 10 reached!
 
