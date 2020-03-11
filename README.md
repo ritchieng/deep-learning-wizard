@@ -47,7 +47,6 @@ Take note this is an early work in progress, do be patient as we gradually uploa
 - [Scalable Database Tutorials (Libraries: Apache Cassandra, Bash, Python and more)](https://www.deeplearningwizard.com/database/intro/)
     - [Apache Cassandra Cluster Setup](https://www.deeplearningwizard.com/database/setting_up_cluster/)
     
-
 ## CPU to GPU Production-level Pipeline for AI
 At Deep Learning Wizard, we cover the basics of some parts of the whole tech stack for production-level CPU/GPU-powered AI.
 
