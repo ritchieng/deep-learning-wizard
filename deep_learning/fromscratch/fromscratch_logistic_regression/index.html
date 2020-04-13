@@ -1,0 +1,1748 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Learn deep learning and deep reinforcement learning math and code easily and quickly. Used by thousands of students and professionals from top tech companies and research institutions.">
+      
+      
+        <link rel="canonical" href="https://www.deeplearningwizard.com/deep_learning/fromscratch/fromscratch_logistic_regression/">
+      
+      
+        <meta name="author" content="Ritchie Ng">
+      
+      <link rel="shortcut icon" href="../../../docs/assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.0">
+    
+    
+      
+        <title>From Scratch Logistic Regression Classification - Deep Learning Wizard</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.89dc9fe3.min.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ecd4686e.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#546e7a">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+        
+<link rel="preconnect dns-prefetch" href="https://www.google-analytics.com">
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-122083328-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview")})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue-grey" data-md-color-accent="indigo">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#logistic-regression-from-scratch" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://www.deeplearningwizard.com/" title="Deep Learning Wizard" class="md-header-nav__button md-logo" aria-label="Deep Learning Wizard">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.35,10.03C18.67,6.59 15.64,4 12,4C9.11,4 6.6,5.64 5.35,8.03C2.34,8.36 0,10.9 0,14A6,6 0 0,0 6,20H19A5,5 0 0,0 24,15C24,12.36 21.95,10.22 19.35,10.03Z" /></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Deep Learning Wizard
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              From Scratch Logistic Regression Classification
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/ritchieng/deep-learning-wizard/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ritchieng/deep-learning-wizard
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../../.." class="md-tabs__link">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../intro/" class="md-tabs__link md-tabs__link--active">
+          Deep Learning Tutorials (CPU/GPU)
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../machine_learning/intro/" class="md-tabs__link">
+          Machine Learning Tutorials (CPU/GPU)
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../programming/intro/" class="md-tabs__link">
+          Programming Tutorials
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../database/intro/" class="md-tabs__link">
+          Scalable Database Tutorials
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../news/news/" class="md-tabs__link">
+          News
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://www.deeplearningwizard.com/" title="Deep Learning Wizard" class="md-nav__button md-logo" aria-label="Deep Learning Wizard">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.35,10.03C18.67,6.59 15.64,4 12,4C9.11,4 6.6,5.64 5.35,8.03C2.34,8.36 0,10.9 0,14A6,6 0 0,0 6,20H19A5,5 0 0,0 24,15C24,12.36 21.95,10.22 19.35,10.03Z" /></svg>
+
+    </a>
+    Deep Learning Wizard
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/ritchieng/deep-learning-wizard/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ritchieng/deep-learning-wizard
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../about/" title="About Us" class="md-nav__link">
+      About Us
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../review/" title="Reviews" class="md-nav__link">
+      Reviews
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../pipeline/" title="AI Pipeline" class="md-nav__link">
+      AI Pipeline
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../consultancy/" title="Consultancy" class="md-nav__link">
+      Consultancy
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+    
+    <label class="md-nav__link" for="nav-6">
+      Deep Learning Tutorials (CPU/GPU)
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Deep Learning Tutorials (CPU/GPU)" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Deep Learning Tutorials (CPU/GPU)
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../intro/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../course_progression/" title="Course Progression" class="md-nav__link">
+      Course Progression
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../practical_pytorch/pytorch_matrices/" title="Matrices" class="md-nav__link">
+      Matrices
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../practical_pytorch/pytorch_gradients/" title="Gradients" class="md-nav__link">
+      Gradients
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../practical_pytorch/pytorch_linear_regression/" title="Linear Regression" class="md-nav__link">
+      Linear Regression
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../practical_pytorch/pytorch_logistic_regression/" title="Logistic Regression" class="md-nav__link">
+      Logistic Regression
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../practical_pytorch/pytorch_feedforward_neuralnetwork/" title="Feedforward Neural Networks (FNN)" class="md-nav__link">
+      Feedforward Neural Networks (FNN)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../practical_pytorch/pytorch_convolutional_neuralnetwork/" title="Convolutional Neural Networks (CNN)" class="md-nav__link">
+      Convolutional Neural Networks (CNN)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../practical_pytorch/pytorch_recurrent_neuralnetwork/" title="Recurrent Neural Networks (RNN)" class="md-nav__link">
+      Recurrent Neural Networks (RNN)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../practical_pytorch/pytorch_lstm_neuralnetwork/" title="Long Short Term Memory Neural Networks (LSTM)" class="md-nav__link">
+      Long Short Term Memory Neural Networks (LSTM)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../practical_pytorch/pytorch_autoencoder/" title="Autoencoders (AE)" class="md-nav__link">
+      Autoencoders (AE)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../practical_pytorch/pytorch_fc_overcomplete_ae/" title="Fully-connected Overcomplete Autoencoder (AE)" class="md-nav__link">
+      Fully-connected Overcomplete Autoencoder (AE)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../boosting_models_pytorch/derivative_gradient_jacobian/" title="Derivative, Gradient and Jacobian" class="md-nav__link">
+      Derivative, Gradient and Jacobian
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../boosting_models_pytorch/forwardpropagation_backpropagation_gradientdescent/" title="Forward- and Backward-propagation and Gradient Descent (From Scratch FNN Regression)" class="md-nav__link">
+      Forward- and Backward-propagation and Gradient Descent (From Scratch FNN Regression)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        From Scratch Logistic Regression Classification
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,9H17V7H3V9M3,13H17V11H3V13M3,17H17V15H3V17M19,17H21V15H19V17M19,7V9H21V7H19M19,13H21V11H19V13Z" /></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="From Scratch Logistic Regression Classification" class="md-nav__link md-nav__link--active">
+      From Scratch Logistic Regression Classification
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#imports" class="md-nav__link">
+    Imports
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparing-a-custom-2-class-iris-dataset" class="md-nav__link">
+    Preparing a custom 2-class IRIS dataset
+  </a>
+  
+    <nav class="md-nav" aria-label="Preparing a custom 2-class IRIS dataset">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#load-data" class="md-nav__link">
+    Load Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#print-data-details" class="md-nav__link">
+    Print Data Details
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scatterplot-2-classes" class="md-nav__link">
+    Scatterplot 2 Classes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#traintest-split" class="md-nav__link">
+    Train/Test Split
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#math" class="md-nav__link">
+    Math
+  </a>
+  
+    <nav class="md-nav" aria-label="Math">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-forwardpropagation" class="md-nav__link">
+    1. Forwardpropagation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-backwardpropagation" class="md-nav__link">
+    2. Backwardpropagation
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Backwardpropagation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2a-loss-function-clarification" class="md-nav__link">
+    2a. Loss function clarification
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-gradient-descent-updating-weights" class="md-nav__link">
+    3. Gradient descent: updating weights
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#training-from-scratch" class="md-nav__link">
+    Training from Scratch
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inference" class="md-nav__link">
+    Inference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../fromscratch_cnn/" title="From Scratch CNN Classification" class="md-nav__link">
+      From Scratch CNN Classification
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../boosting_models_pytorch/lr_scheduling/" title="Learning Rate Scheduling" class="md-nav__link">
+      Learning Rate Scheduling
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../boosting_models_pytorch/optimizers/" title="Optimization Algorithms" class="md-nav__link">
+      Optimization Algorithms
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../boosting_models_pytorch/weight_initialization_activation_functions/" title="Weight Initialization and Activation Functions" class="md-nav__link">
+      Weight Initialization and Activation Functions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../deep_reinforcement_learning_pytorch/supervised_to_rl/" title="Supervised Learning to Reinforcement Learning (RL)" class="md-nav__link">
+      Supervised Learning to Reinforcement Learning (RL)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../deep_reinforcement_learning_pytorch/bellman_mdp/" title="Markov Decision Processes (MDP) and Bellman Equations" class="md-nav__link">
+      Markov Decision Processes (MDP) and Bellman Equations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../deep_reinforcement_learning_pytorch/dynamic_programming_frozenlake/" title="Dynamic Programming" class="md-nav__link">
+      Dynamic Programming
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../production_pytorch/speed_optimization_basics_numba/" title="Speed Optimization Basics Numba" class="md-nav__link">
+      Speed Optimization Basics Numba
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../readings/" title="Additional Readings" class="md-nav__link">
+      Additional Readings
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Machine Learning Tutorials (CPU/GPU)
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Machine Learning Tutorials (CPU/GPU)" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Machine Learning Tutorials (CPU/GPU)
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../machine_learning/intro/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../machine_learning/gpu/rapids_cudf/" title="GPU DataFrames" class="md-nav__link">
+      GPU DataFrames
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../machine_learning/gpu/gpu_fractional_differencing/" title="GPU/CPU Fractional Differencing" class="md-nav__link">
+      GPU/CPU Fractional Differencing
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Programming Tutorials
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Programming Tutorials" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Programming Tutorials
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../programming/intro/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../programming/cpp/cpp/" title="C++" class="md-nav__link">
+      C++
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../programming/bash/bash/" title="Bash" class="md-nav__link">
+      Bash
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../programming/python/python/" title="Python" class="md-nav__link">
+      Python
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../programming/javascript/javascript/" title="Javascript" class="md-nav__link">
+      Javascript
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../programming/electron/electron/" title="Electron" class="md-nav__link">
+      Electron
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      Scalable Database Tutorials
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Scalable Database Tutorials" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Scalable Database Tutorials
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/intro/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/setting_up_cluster/" title="Cassandra Cluster Setup" class="md-nav__link">
+      Cassandra Cluster Setup
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      News
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="News" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        News
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/news/" title="Welcome" class="md-nav__link">
+      Welcome
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/dbs_gpu_rapids_nvidia_ensemble_frac_diff/" title="Fractional Differencing with GPU (GFD), DBS and NVIDIA, September 2019" class="md-nav__link">
+      Fractional Differencing with GPU (GFD), DBS and NVIDIA, September 2019
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/defence_and_science_technology_agency_dsta_nvidia_talk_2016_06/" title="Deep Learning Introduction, Defence and Science Technology Agency (DSTA) and NVIDIA, June 2019" class="md-nav__link">
+      Deep Learning Introduction, Defence and Science Technology Agency (DSTA) and NVIDIA, June 2019
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/detect_waterbone_debris_ai_for_social_good_icml_2019_06/" title="Oral Presentation for AI for Social Good Workshop ICML, June 2019" class="md-nav__link">
+      Oral Presentation for AI for Social Good Workshop ICML, June 2019
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/it_youth_leader_2019_03_11/" title="IT Youth Leader of The Year 2019, March 2019" class="md-nav__link">
+      IT Youth Leader of The Year 2019, March 2019
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/ammi_facebook_google_recap_2018_11_21/" title="AMMI (AIMS) supported by Facebook and Google, November 2018" class="md-nav__link">
+      AMMI (AIMS) supported by Facebook and Google, November 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/nanjing_next_nus_tsinghua_ai_finance_healthcare_2018_11_01/" title="NExT++ AI in Healthcare and Finance, Nanjing, November 2018" class="md-nav__link">
+      NExT++ AI in Healthcare and Finance, Nanjing, November 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/facebook_pytorch_devcon_recap_2018_10_02/" title="Recap of Facebook PyTorch Developer Conference, San Francisco, September 2018" class="md-nav__link">
+      Recap of Facebook PyTorch Developer Conference, San Francisco, September 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/facebook_pytorch_developer_conference_2018_09_05/" title="Facebook PyTorch Developer Conference, San Francisco, September 2018" class="md-nav__link">
+      Facebook PyTorch Developer Conference, San Francisco, September 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/nvidia_nus_mit_datathon_2018_07_05/" title="NUS-MIT-NUHS NVIDIA Image Recognition Workshop, Singapore, July 2018" class="md-nav__link">
+      NUS-MIT-NUHS NVIDIA Image Recognition Workshop, Singapore, July 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/deep_learning_wizard_1y_2018_06_01/" title="Featured on PyTorch Website 2018" class="md-nav__link">
+      Featured on PyTorch Website 2018
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/nvidia_self_driving_cars_talk_2017_06_21/" title="NVIDIA Self Driving Cars & Healthcare Talk, Singapore, June 2017" class="md-nav__link">
+      NVIDIA Self Driving Cars & Healthcare Talk, Singapore, June 2017
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/deep_learning_wizard_nvidia_inception_2018_05_01/" title="NVIDIA Inception Partner Status, Singapore, May 2017" class="md-nav__link">
+      NVIDIA Inception Partner Status, Singapore, May 2017
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#imports" class="md-nav__link">
+    Imports
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparing-a-custom-2-class-iris-dataset" class="md-nav__link">
+    Preparing a custom 2-class IRIS dataset
+  </a>
+  
+    <nav class="md-nav" aria-label="Preparing a custom 2-class IRIS dataset">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#load-data" class="md-nav__link">
+    Load Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#print-data-details" class="md-nav__link">
+    Print Data Details
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scatterplot-2-classes" class="md-nav__link">
+    Scatterplot 2 Classes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#traintest-split" class="md-nav__link">
+    Train/Test Split
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#math" class="md-nav__link">
+    Math
+  </a>
+  
+    <nav class="md-nav" aria-label="Math">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-forwardpropagation" class="md-nav__link">
+    1. Forwardpropagation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-backwardpropagation" class="md-nav__link">
+    2. Backwardpropagation
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Backwardpropagation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2a-loss-function-clarification" class="md-nav__link">
+    2a. Loss function clarification
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-gradient-descent-updating-weights" class="md-nav__link">
+    3. Gradient descent: updating weights
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#training-from-scratch" class="md-nav__link">
+    Training from Scratch
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inference" class="md-nav__link">
+    Inference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/ritchieng/deep-learning-wizard/edit/master/docs/deep_learning/fromscratch/fromscratch_logistic_regression.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" /></svg>
+                  </a>
+                
+                
+                  
+                
+                
+                <h1 id="logistic-regression-from-scratch">Logistic Regression from Scratch<a class="headerlink" href="#logistic-regression-from-scratch" title="Permanent link">&para;</a></h1>
+<p><a href="https://colab.research.google.com/github/ritchieng/deep-learning-wizard/blob/master/docs/deep_learning/fromscratch/fromscratch_logistic_regression.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<p>This is an implementation of a simple logistic regression for binary class labels. We will be attempting to classify 2 flowers based on their petal width and height: setosa and versicolor.</p>
+<h2 id="imports">Imports<a class="headerlink" href="#imports" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">preprocessing</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+</code></pre></div>
+
+<h2 id="preparing-a-custom-2-class-iris-dataset">Preparing a custom 2-class IRIS dataset<a class="headerlink" href="#preparing-a-custom-2-class-iris-dataset" title="Permanent link">&para;</a></h2>
+<h3 id="load-data">Load Data<a class="headerlink" href="#load-data" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Instantiate dataset class and assign to object</span>
+<span class="n">iris</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
+
+<span class="c1"># Load features and target</span>
+<span class="c1"># Take only 2 classes, and 2 features (sepal length/width)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">[:</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+<span class="c1"># For teaching the math rather than preprocessing techniques,</span>
+<span class="c1"># we&#39;ll be using this simple scaling method. However, you must</span>
+<span class="c1"># be cautious to scale your training/testing sets subsequently.</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span><span class="p">[:</span><span class="o">-</span><span class="mi">50</span><span class="p">]</span> 
+</code></pre></div>
+
+<h3 id="print-data-details">Print Data Details<a class="headerlink" href="#print-data-details" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 50 of each iris flower</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+
+<span class="c1"># Type of flower</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">target_names</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+
+<span class="c1"># Shape of features</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="err">Counter({0: 50, 1: 50})</span>
+<span class="err">[&#39;setosa&#39;, &#39;versicolor&#39;]</span>
+<span class="err">(100, 2)</span>
+</code></pre></div>
+
+
+<h3 id="scatterplot-2-classes">Scatterplot 2 Classes<a class="headerlink" href="#scatterplot-2-classes" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">);</span>
+</code></pre></div>
+
+<p><img alt="png" src="../fromscratch_logistic_regression_files/fromscratch_logistic_regression_10_0.png" /></p>
+<h3 id="traintest-split">Train/Test Split<a class="headerlink" href="#traintest-split" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;X train size: </span><span class="si">{</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;X test size: </span><span class="si">{</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;y train size: </span><span class="si">{</span><span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;y test size: </span><span class="si">{</span><span class="n">y_test</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Distribution of both classes are roughly equal using train_test_split function</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">y_train</span><span class="p">))</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="err">X train size: (80, 2)</span>
+<span class="err">X test size: (20, 2)</span>
+<span class="err">y train size: (80,)</span>
+<span class="err">y test size: (20,)</span>
+<span class="err">Counter({0: 41, 1: 39})</span>
+</code></pre></div>
+
+
+<h2 id="math">Math<a class="headerlink" href="#math" title="Permanent link">&para;</a></h2>
+<h3 id="1-forwardpropagation">1. Forwardpropagation<a class="headerlink" href="#1-forwardpropagation" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Get our logits and probabilities</strong></li>
+<li>Affine function/transformation: <span><span class="MathJax_Preview">z = \theta x + b</span><script type="math/tex">z = \theta x + b</script></span></li>
+<li>Sigmoid/logistic function: <span><span class="MathJax_Preview">\hat y = \frac{1}{1 + e^{-z}}</span><script type="math/tex">\hat y = \frac{1}{1 + e^{-z}}</script></span></li>
+</ul>
+<h3 id="2-backwardpropagation">2. Backwardpropagation<a class="headerlink" href="#2-backwardpropagation" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Calculate gradients / partial derivatives w.r.t. weights and bias</strong></li>
+<li>Loss: <span><span class="MathJax_Preview">L = ylog(\hat y) + (1-y) log (1 - \hat y)</span><script type="math/tex">L = ylog(\hat y) + (1-y) log (1 - \hat y)</script></span></li>
+<li>Partial derivative of loss w.r.t weights: <span><span class="MathJax_Preview">\frac{\delta L}{\delta w} =\frac{\delta L}{\delta z} \frac{\delta z}{\delta w} = (\hat y - y)(x^T)</span><script type="math/tex">\frac{\delta L}{\delta w} =\frac{\delta L}{\delta z} \frac{\delta z}{\delta w} = (\hat y - y)(x^T)</script></span></li>
+<li>Partial derivative of loss w.r.t. bias: <span><span class="MathJax_Preview">\frac{\delta L}{\delta b} = \frac{\delta L}{\delta z} \frac{\delta z}{\delta b} = (\hat y - y)(1)</span><script type="math/tex">\frac{\delta L}{\delta b} = \frac{\delta L}{\delta z} \frac{\delta z}{\delta b} = (\hat y - y)(1)</script></span><ul>
+<li><span><span class="MathJax_Preview">\frac{\delta L}{\delta z} = \hat y - y</span><script type="math/tex">\frac{\delta L}{\delta z} = \hat y - y</script></span></li>
+<li><span><span class="MathJax_Preview">\frac{\delta z}{\delta w} = x</span><script type="math/tex">\frac{\delta z}{\delta w} = x</script></span></li>
+<li><span><span class="MathJax_Preview">\frac{\delta z}{\delta b} = 1</span><script type="math/tex">\frac{\delta z}{\delta b} = 1</script></span></li>
+</ul>
+</li>
+</ul>
+<h4 id="2a-loss-function-clarification">2a. Loss function clarification<a class="headerlink" href="#2a-loss-function-clarification" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Actually, why is our loss equation <span><span class="MathJax_Preview">L = ylog(\hat y) + (1-y) log (1 - \hat y)</span><script type="math/tex">L = ylog(\hat y) + (1-y) log (1 - \hat y)</script></span>?<ul>
+<li>We have given the intuition in the <a href="https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_logistic_regression/#cross-entropy-function-d-for-2-class">Logistic Regression tutorial</a> on why it works.</li>
+<li>Here we will cover the derivation which essentially is merely maximizing the log likelihood of the parameters (maximizing the probability of our predicted output given our input and parameters</li>
+<li>Given:<ul>
+<li><span><span class="MathJax_Preview">\hat y = \frac{1}{1 + e^{-z}}</span><script type="math/tex">\hat y = \frac{1}{1 + e^{-z}}</script></span>.</li>
+</ul>
+</li>
+<li>Then:<ul>
+<li><span><span class="MathJax_Preview">P(y=1 \mid x;\theta) = \hat y</span><script type="math/tex">P(y=1 \mid x;\theta) = \hat y</script></span></li>
+<li><span><span class="MathJax_Preview">P(y=0 \mid x;\theta) = 1 - \hat y</span><script type="math/tex">P(y=0 \mid x;\theta) = 1 - \hat y</script></span></li>
+</ul>
+</li>
+<li>Simplified further:<ul>
+<li><span><span class="MathJax_Preview">p(y \mid x; \theta) = (\hat y)^y(1 - \hat y)^{1-y}</span><script type="math/tex">p(y \mid x; \theta) = (\hat y)^y(1 - \hat y)^{1-y}</script></span></li>
+</ul>
+</li>
+<li>Given m training samples, the likelihood of the parameters is simply the product of probabilities:<ul>
+<li><span><span class="MathJax_Preview">L(\theta) = \displaystyle \prod_{i=1}^{m} p(y^i \mid x^i; \theta)</span><script type="math/tex">L(\theta) = \displaystyle \prod_{i=1}^{m} p(y^i \mid x^i; \theta)</script></span></li>
+<li><span><span class="MathJax_Preview">L(\theta) = \displaystyle \prod_{i=1}^{m} (\hat y^{i})^{y^i}(1 - \hat y^{i})^{1-y^{i}}</span><script type="math/tex">L(\theta) = \displaystyle \prod_{i=1}^{m} (\hat y^{i})^{y^i}(1 - \hat y^{i})^{1-y^{i}}</script></span></li>
+<li>Essentially, we want to maximize the probability of our ouput given our input and parameters</li>
+</ul>
+</li>
+<li>But it's easier to maximize the log likelihood, so we take the natural logarithm. <ul>
+<li><span><span class="MathJax_Preview">L(\theta) = \displaystyle \sum_{i=1}^{m} y^{i}log (\hat y^{i}) + (1 - y^{i})log(1 - \hat y^{i})</span><script type="math/tex">L(\theta) = \displaystyle \sum_{i=1}^{m} y^{i}log (\hat y^{i}) + (1 - y^{i})log(1 - \hat y^{i})</script></span></li>
+</ul>
+</li>
+<li>Why is is easier to maximize the log likelihood?<ul>
+<li>The natural logarithm is a function that monotonically increases.</li>
+<li>This allows us to find the "max" of the log likelihood easier compared to a non-monotonically increasing function (like a wave up and down).</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-gradient-descent-updating-weights">3. Gradient descent: updating weights<a class="headerlink" href="#3-gradient-descent-updating-weights" title="Permanent link">&para;</a></h3>
+<ul>
+<li><span><span class="MathJax_Preview">w = w - \alpha (\hat y - y)(x^T)</span><script type="math/tex">w = w - \alpha (\hat y - y)(x^T)</script></span></li>
+<li><span><span class="MathJax_Preview">b = b - \alpha (\hat y - y).1</span><script type="math/tex">b = b - \alpha (\hat y - y).1</script></span></li>
+</ul>
+<h2 id="training-from-scratch">Training from Scratch<a class="headerlink" href="#training-from-scratch" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">num_features</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">weights</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_features</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">bias</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>        
+    <span class="c1"># 1. Forwardpropagation:</span>
+    <span class="c1"># 1a. Affine Transformation: z = \theta x + b</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">weights</span><span class="p">),</span> <span class="n">bias</span><span class="p">)</span>
+    <span class="c1"># 2a. Sigmoid/Logistic Function: y_hat = 1 / (1 + e^{-z})</span>
+    <span class="n">y_hat</span> <span class="o">=</span> <span class="mf">1.</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">z</span><span class="p">))</span>
+
+    <span class="c1"># Backpropagation:</span>
+    <span class="c1"># 1. Calculate binary cross entropy </span>
+    <span class="n">l</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="o">-</span><span class="n">y_train</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">y_hat</span><span class="p">))</span> <span class="o">-</span> <span class="n">torch</span><span class="o">.</span><span class="n">mm</span><span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">y_hat</span><span class="p">))</span>
+
+    <span class="c1"># 2. Calculate dl/dz</span>
+    <span class="n">dl_dz</span> <span class="o">=</span> <span class="n">y_train</span> <span class="o">-</span> <span class="n">y_hat</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># 2. Calculate partial derivative of cost w.r.t weights (gradients)</span>
+    <span class="c1"># dl_dw = dl_dz dz_dw = (y_hat - y)(x^T)</span>
+    <span class="n">grad</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dl_dz</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+    <span class="c1"># Gradient descent:</span>
+    <span class="c1"># update our weights and bias with our gradients</span>
+    <span class="n">weights</span> <span class="o">+=</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="n">grad</span>
+    <span class="n">bias</span> <span class="o">+=</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dl_dz</span><span class="p">)</span>
+
+    <span class="c1"># Accuracy</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">y_hat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">predicted</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_hat</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+    <span class="n">correct</span> <span class="o">=</span> <span class="p">(</span><span class="n">predicted</span> <span class="o">==</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">acc</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">correct</span> <span class="o">/</span> <span class="n">total</span> 
+
+    <span class="c1"># Print accuracy and cost</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Epoch: </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s1"> | Accuracy: </span><span class="si">{</span><span class="n">acc</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1"> | Cost: </span><span class="si">{</span><span class="n">l</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Weights </span><span class="se">\n</span><span class="s1"> </span><span class="si">{</span><span class="n">weights</span><span class="o">.</span><span class="n">data</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Bias </span><span class="se">\n</span><span class="s1"> </span><span class="si">{</span><span class="n">bias</span><span class="o">.</span><span class="n">data</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="err">X train size: (80, 2)</span>
+<span class="err">X test size: (20, 2)</span>
+<span class="err">y train size: (80,)</span>
+<span class="err">y test size: (20,)</span>
+<span class="err">Counter({1: 41, 0: 39})</span>
+<span class="c">Epoch: 0 | Accuracy: 48.0000 | Cost: 55.4518</span>
+<span class="c">Epoch: 1 | Accuracy: 100.0000 | Cost: 5.6060</span>
+<span class="c">Epoch: 2 | Accuracy: 100.0000 | Cost: 5.0319</span>
+<span class="c">Epoch: 3 | Accuracy: 100.0000 | Cost: 4.6001</span>
+<span class="c">Epoch: 4 | Accuracy: 100.0000 | Cost: 4.2595</span>
+<span class="c">Epoch: 5 | Accuracy: 100.0000 | Cost: 3.9819</span>
+<span class="c">Epoch: 6 | Accuracy: 100.0000 | Cost: 3.7498</span>
+<span class="c">Epoch: 7 | Accuracy: 100.0000 | Cost: 3.5521</span>
+<span class="c">Epoch: 8 | Accuracy: 100.0000 | Cost: 3.3810</span>
+<span class="c">Epoch: 9 | Accuracy: 100.0000 | Cost: 3.2310</span>
+<span class="c">Epoch: 10 | Accuracy: 100.0000 | Cost: 3.0981</span>
+<span class="c">Epoch: 11 | Accuracy: 100.0000 | Cost: 2.9794</span>
+<span class="c">Epoch: 12 | Accuracy: 100.0000 | Cost: 2.8724</span>
+<span class="c">Epoch: 13 | Accuracy: 100.0000 | Cost: 2.7754</span>
+<span class="c">Epoch: 14 | Accuracy: 100.0000 | Cost: 2.6869</span>
+<span class="c">Epoch: 15 | Accuracy: 100.0000 | Cost: 2.6057</span>
+<span class="c">Epoch: 16 | Accuracy: 100.0000 | Cost: 2.5308</span>
+<span class="c">Epoch: 17 | Accuracy: 100.0000 | Cost: 2.4616</span>
+<span class="c">Epoch: 18 | Accuracy: 100.0000 | Cost: 2.3973</span>
+<span class="c">Epoch: 19 | Accuracy: 100.0000 | Cost: 2.3374</span>
+<span class="err">Weights </span>
+<span class="err"> tensor([[ 4.9453],</span>
+<span class="err">        [-3.6849]])</span>
+<span class="err">Bias </span>
+<span class="err"> tensor([0.5570])</span>
+</code></pre></div>
+
+
+<h2 id="inference">Inference<a class="headerlink" href="#inference" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Port to tensors</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="c1"># 1. Forwardpropagation:</span>
+<span class="c1"># 1a. Affine Transformation: z = ax + b</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">weights</span><span class="p">),</span> <span class="n">bias</span><span class="p">)</span>
+<span class="c1"># 2a. Sigmoid/Logistic Function: y_hat = 1 / (1 + e^{-z})</span>
+<span class="n">y_hat</span> <span class="o">=</span> <span class="mf">1.</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">z</span><span class="p">))</span>
+
+<span class="n">total</span> <span class="o">=</span> <span class="n">y_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">predicted</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_hat</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+<span class="n">correct</span> <span class="o">=</span> <span class="p">(</span><span class="n">predicted</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">acc</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">correct</span> <span class="o">/</span> <span class="n">total</span> 
+
+<span class="c1"># Print accuracy</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Validation Accuracy: </span><span class="si">{</span><span class="n">acc</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="err">Validation Accuracy: 100.0000</span>
+</code></pre></div>
+                
+              
+              
+                
+
+
+  <h2 id="__comments">Comments</h2>
+  <div id="disqus_thread"></div>
+  <script>var disqus_config=function(){this.page.url="https://www.deeplearningwizard.com/deep_learning/fromscratch/fromscratch_logistic_regression/",this.page.identifier="deep_learning/fromscratch/fromscratch_logistic_regression/"};!function(){var e=document,i=e.createElement("script");i.src="//deep-learning-wizard.disqus.com/embed.js",i.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(i)}()</script>
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+
+<!-- Application footer -->
+<footer class="md-footer">
+
+  <!-- Link to previous and/or next page -->
+  
+    <div class="md-footer-nav">
+      <nav
+        class="md-footer-nav__inner md-grid"
+        aria-label="Footer"
+      >
+
+        <!-- Link to previous page -->
+        
+          <a
+            href="../../boosting_models_pytorch/forwardpropagation_backpropagation_gradientdescent/"
+            title="Forward- and Backward-propagation and Gradient Descent (From Scratch FNN Regression)"
+            class="md-footer-nav__link md-footer-nav__link--prev"
+            rel="prev"
+          >
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Forward- and Backward-propagation and Gradient Descent (From Scratch FNN Regression)
+              </div>
+            </div>
+          </a>
+        
+
+        <!-- Link to next page -->
+        
+          <a
+            href="../fromscratch_cnn/"
+            title="From Scratch CNN Classification"
+            class="md-footer-nav__link md-footer-nav__link--next"
+            rel="next"
+          >
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                From Scratch CNN Classification
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+
+  <!-- Further information -->
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+
+      <!-- Copyright and theme information -->
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020 Deep Learning Wizard by Ritchie Ng
+          </div>
+        
+        proudly an
+        <a href="http://www.nvidia.com/page/home.html">NVIDIA Inception Partner</a> and supported by the
+        <a href="https://aws.amazon.com/activate/">Amazon AWS Activate Programme</a> by
+        <a href="https://www.ritchieng.com/">
+          Ritchie Ng</a>
+        </a>
+      </div>
+
+      <!-- Social links -->
+      
+  <div class="md-footer-social">
+    
+      
+      
+      <a href="https://github.com/ritchieng" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+      
+      
+      <a href="https://www.facebook.com/DeepLearningWizard/" target="_blank" rel="noopener" title="www.facebook.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+      </a>
+    
+      
+      
+      <a href="https://www.linkedin.com/company/deeplearningwizard/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/vendor.36cbf620.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.00c583dd.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../../..",
+          features: ["tabs", "instant"],
+          search: Object.assign({
+            worker: "../../../assets/javascripts/worker/search.7f7c8775.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

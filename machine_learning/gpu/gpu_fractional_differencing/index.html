@@ -1,16 +1,14 @@
 
 
 
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="no-js">
   <head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
-      <meta http-equiv="x-ua-compatible" content="ie=edge">
       
-        <meta name="description" content="Learn deep learning and deep reinforcement learning theories and code easily and quickly. Used by thousands of students and professionals from top tech companies and research institutions.">
+        <meta name="description" content="Learn deep learning and deep reinforcement learning math and code easily and quickly. Used by thousands of students and professionals from top tech companies and research institutions.">
       
       
         <link rel="canonical" href="https://www.deeplearningwizard.com/machine_learning/gpu/gpu_fractional_differencing/">
@@ -18,27 +16,8 @@
       
         <meta name="author" content="Ritchie Ng">
       
-      
-        <meta name="lang:clipboard.copy" content="Copy to clipboard">
-      
-        <meta name="lang:clipboard.copied" content="Copied to clipboard">
-      
-        <meta name="lang:search.language" content="en">
-      
-        <meta name="lang:search.pipeline.stopwords" content="True">
-      
-        <meta name="lang:search.pipeline.trimmer" content="True">
-      
-        <meta name="lang:search.result.none" content="No matching documents">
-      
-        <meta name="lang:search.result.one" content="1 matching document">
-      
-        <meta name="lang:search.result.other" content="# matching documents">
-      
-        <meta name="lang:search.tokenizer" content="[\s\-]+">
-      
       <link rel="shortcut icon" href="../../../docs/assets/favicon.ico">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.0">
     
     
       
@@ -46,95 +25,103 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/application.451f80e5.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.89dc9fe3.min.css">
       
-        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.22915126.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ecd4686e.min.css">
       
       
         
         
-        <meta name="theme-color" content="#009688">
+        <meta name="theme-color" content="#546e7a">
       
     
-    
-      <script src="../../../assets/javascripts/modernizr.1aa3b519.js"></script>
     
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
-        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
       
     
-    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+        
+<link rel="preconnect dns-prefetch" href="https://www.google-analytics.com">
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-122083328-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview")})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
     
     
   </head>
   
-    
-    
-    <body dir="ltr" data-md-color-primary="teal" data-md-color-accent="teal">
   
-    <svg class="md-svg">
-      <defs>
-        
-        
-      </defs>
-    </svg>
+    
+    
+    <body dir="ltr" data-md-color-primary="blue-grey" data-md-color-accent="indigo">
+  
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
-    
-      <a href="../../../#gfd-gpu-fractional-differencing" tabindex="1" class="md-skip">
-        Skip to content
-      </a>
-    
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#gfd-gpu-fractional-differencing" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
     
       <header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid">
-    <div class="md-flex">
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://www.deeplearningwizard.com/" title="Deep Learning Wizard" class="md-header-nav__button md-logo">
-          
-            <i class="md-icon">whatshot</i>
-          
-        </a>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
-      </div>
-      <div class="md-flex__cell md-flex__cell--stretch">
-        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://www.deeplearningwizard.com/" title="Deep Learning Wizard" class="md-header-nav__button md-logo" aria-label="Deep Learning Wizard">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.35,10.03C18.67,6.59 15.64,4 12,4C9.11,4 6.6,5.64 5.35,8.03C2.34,8.36 0,10.9 0,14A6,6 0 0,0 6,20H19A5,5 0 0,0 24,15C24,12.36 21.95,10.22 19.35,10.03Z" /></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Deep Learning Wizard
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
             
-              <span class="md-header-nav__topic">
-                Deep Learning Wizard
-              </span>
-              <span class="md-header-nav__topic">
-                GPU/CPU Fractional Differencing
-              </span>
+              GPU/CPU Fractional Differencing
             
-          
+          </span>
         </div>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        
-          
-            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
-            
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+      </label>
+      
 <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
-      <label class="md-icon md-search__icon" for="__search"></label>
-      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
-        &#xE5CD;
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
       </button>
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result">
+        <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Type to start searching
           </div>
@@ -144,31 +131,42 @@
     </div>
   </div>
 </div>
-          
+    
+    
+      <div class="md-header-nav__source">
         
+<a href="https://github.com/ritchieng/deep-learning-wizard/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ritchieng/deep-learning-wizard
+  </div>
+</a>
       </div>
-      
-    </div>
+    
   </nav>
 </header>
     
-    <div class="md-container">
+    <div class="md-container" data-md-component="container">
       
         
       
       
         
+          
 
   
 
-<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
         
   <li class="md-tabs__item">
     
-      <a href="../../.." title="Home" class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         Home
       </a>
     
@@ -188,7 +186,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../../deep_learning/intro/" title="Deep Learning Tutorials (CPU/GPU)" class="md-tabs__link">
+        <a href="../../../deep_learning/intro/" class="md-tabs__link">
           Deep Learning Tutorials (CPU/GPU)
         </a>
       
@@ -201,7 +199,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../intro/" title="Machine Learning Tutorials (CPU/GPU)" class="md-tabs__link md-tabs__link--active">
+        <a href="../../intro/" class="md-tabs__link md-tabs__link--active">
           Machine Learning Tutorials (CPU/GPU)
         </a>
       
@@ -214,7 +212,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../../programming/intro/" title="Programming Tutorials" class="md-tabs__link">
+        <a href="../../../programming/intro/" class="md-tabs__link">
           Programming Tutorials
         </a>
       
@@ -227,7 +225,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../../database/intro/" title="Scalable Database Tutorials" class="md-tabs__link">
+        <a href="../../../database/intro/" class="md-tabs__link">
           Scalable Database Tutorials
         </a>
       
@@ -240,7 +238,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../../news/news/" title="News" class="md-tabs__link">
+        <a href="../../../news/news/" class="md-tabs__link">
           News
         </a>
       
@@ -251,23 +249,38 @@
     </ul>
   </div>
 </nav>
+        
       
-      <main class="md-main">
-        <div class="md-main__inner md-grid" data-md-component="container">
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
           
             
               <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="https://www.deeplearningwizard.com/" title="Deep Learning Wizard" class="md-nav__button md-logo">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://www.deeplearningwizard.com/" title="Deep Learning Wizard" class="md-nav__button md-logo" aria-label="Deep Learning Wizard">
       
-        <i class="md-icon">whatshot</i>
-      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.35,10.03C18.67,6.59 15.64,4 12,4C9.11,4 6.6,5.64 5.35,8.03C2.34,8.36 0,10.9 0,14A6,6 0 0,0 6,20H19A5,5 0 0,0 24,15C24,12.36 21.95,10.22 19.35,10.03Z" /></svg>
+
     </a>
     Deep Learning Wizard
   </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/ritchieng/deep-learning-wizard/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ritchieng/deep-learning-wizard
+  </div>
+</a>
+    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -338,13 +351,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
     
     <label class="md-nav__link" for="nav-6">
       Deep Learning Tutorials (CPU/GPU)
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Deep Learning Tutorials (CPU/GPU)" data-md-level="1">
       <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Deep Learning Tutorials (CPU/GPU)
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -488,6 +507,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../../deep_learning/practical_pytorch/pytorch_fc_overcomplete_ae/" title="Fully-connected Overcomplete Autoencoder (AE)" class="md-nav__link">
+      Fully-connected Overcomplete Autoencoder (AE)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../../deep_learning/boosting_models_pytorch/derivative_gradient_jacobian/" title="Derivative, Gradient and Jacobian" class="md-nav__link">
       Derivative, Gradient and Jacobian
     </a>
@@ -500,8 +531,32 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../deep_learning/boosting_models_pytorch/forwardpropagation_backpropagation_gradientdescent/" title="Forward- and Backward-propagation and Gradient Descent" class="md-nav__link">
-      Forward- and Backward-propagation and Gradient Descent
+    <a href="../../../deep_learning/boosting_models_pytorch/forwardpropagation_backpropagation_gradientdescent/" title="Forward- and Backward-propagation and Gradient Descent (From Scratch FNN Regression)" class="md-nav__link">
+      Forward- and Backward-propagation and Gradient Descent (From Scratch FNN Regression)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/fromscratch/fromscratch_logistic_regression/" title="From Scratch Logistic Regression Classification" class="md-nav__link">
+      From Scratch Logistic Regression Classification
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../deep_learning/fromscratch/fromscratch_cnn/" title="From Scratch CNN Classification" class="md-nav__link">
+      From Scratch CNN Classification
     </a>
   </li>
 
@@ -584,6 +639,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../../deep_learning/production_pytorch/speed_optimization_basics_numba/" title="Speed Optimization Basics Numba" class="md-nav__link">
+      Speed Optimization Basics Numba
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../../deep_learning/readings/" title="Additional Readings" class="md-nav__link">
       Additional Readings
     </a>
@@ -604,13 +671,19 @@
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" checked>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" checked>
     
     <label class="md-nav__link" for="nav-7">
       Machine Learning Tutorials (CPU/GPU)
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Machine Learning Tutorials (CPU/GPU)" data-md-level="1">
       <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Machine Learning Tutorials (CPU/GPU)
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -649,13 +722,16 @@
 
   <li class="md-nav__item md-nav__item--active">
     
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
       
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
         GPU/CPU Fractional Differencing
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,9H17V7H3V9M3,13H17V11H3V13M3,17H17V15H3V17M19,17H21V15H19V17M19,7V9H21V7H19M19,13H21V11H19V13Z" /></svg>
+        </span>
       </label>
     
     <a href="./" title="GPU/CPU Fractional Differencing" class="md-nav__link md-nav__link--active">
@@ -663,81 +739,86 @@
     </a>
     
       
-<nav class="md-nav md-nav--secondary">
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
     
   
   
-    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#summary" title="Summary" class="md-nav__link">
+  <a href="#summary" class="md-nav__link">
     Summary
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#credits" title="Credits" class="md-nav__link">
+  <a href="#credits" class="md-nav__link">
     Credits
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#links" title="Links" class="md-nav__link">
+  <a href="#links" class="md-nav__link">
     Links
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#installation-of-libraries-optional" title="Installation of Libraries (Optional)" class="md-nav__link">
+  <a href="#installation-of-libraries-optional" class="md-nav__link">
     Installation of Libraries (Optional)
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#imports" title="Imports" class="md-nav__link">
+  <a href="#imports" class="md-nav__link">
     Imports
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#plotting-style" title="Plotting Style" class="md-nav__link">
+  <a href="#plotting-style" class="md-nav__link">
     Plotting Style
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#necessity-of-fractional-differencing" title="Necessity of Fractional Differencing" class="md-nav__link">
+  <a href="#necessity-of-fractional-differencing" class="md-nav__link">
     Necessity of Fractional Differencing
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="Necessity of Fractional Differencing">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#pulling-processing-plotting-spx-time-series" title="Pulling, Processing &amp; Plotting SPX Time Series" class="md-nav__link">
+  <a href="#pulling-processing-plotting-spx-time-series" class="md-nav__link">
     Pulling, Processing &amp; Plotting SPX Time Series
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#integer-differencing-1-day-returns-spx-time-series" title="Integer Differencing (1 Day Returns) SPX Time Series" class="md-nav__link">
+  <a href="#integer-differencing-1-day-returns-spx-time-series" class="md-nav__link">
     Integer Differencing (1 Day Returns) SPX Time Series
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#integer-differencing-causes-unnecessary-memory-loss" title="Integer Differencing Causes Unnecessary Memory Loss" class="md-nav__link">
+  <a href="#integer-differencing-causes-unnecessary-memory-loss" class="md-nav__link">
     Integer Differencing Causes Unnecessary Memory Loss
   </a>
   
@@ -749,51 +830,51 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#basic-fractional-differencing" title="Basic Fractional Differencing" class="md-nav__link">
+  <a href="#basic-fractional-differencing" class="md-nav__link">
     Basic Fractional Differencing
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="Basic Fractional Differencing">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#fractional-differencing-weight-function-and-plot" title="Fractional Differencing Weight Function and Plot" class="md-nav__link">
+  <a href="#fractional-differencing-weight-function-and-plot" class="md-nav__link">
     Fractional Differencing Weight Function and Plot
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#fractional-differencing-weight-function-table" title="Fractional Differencing Weight Function Table" class="md-nav__link">
+  <a href="#fractional-differencing-weight-function-table" class="md-nav__link">
     Fractional Differencing Weight Function Table
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#fractional-differencing-value-calculation-toy-example" title="Fractional Differencing Value Calculation Toy Example" class="md-nav__link">
+  <a href="#fractional-differencing-value-calculation-toy-example" class="md-nav__link">
     Fractional Differencing Value Calculation Toy Example
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="Fractional Differencing Value Calculation Toy Example">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#for-d-0d-0-no-differencing" title="For d = 0d = 0 (no differencing)" class="md-nav__link">
+  <a href="#for-d-0d-0-no-differencing" class="md-nav__link">
     For d = 0d = 0 (no differencing)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#for-d-04d-04-fractional-differencing" title="For d = 0.4d = 0.4 (fractional differencing)" class="md-nav__link">
+  <a href="#for-d-04d-04-fractional-differencing" class="md-nav__link">
     For d = 0.4d = 0.4 (fractional differencing)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#for-d-1d-1-integer-differencing" title="For d = 1d = 1 (integer differencing)" class="md-nav__link">
+  <a href="#for-d-1d-1-integer-differencing" class="md-nav__link">
     For d = 1d = 1 (integer differencing)
   </a>
   
@@ -805,7 +886,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#cumulative-sum-of-weights-behavior" title="Cumulative Sum of Weights Behavior" class="md-nav__link">
+  <a href="#cumulative-sum-of-weights-behavior" class="md-nav__link">
     Cumulative Sum of Weights Behavior
   </a>
   
@@ -817,36 +898,36 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#fixed-window-fractional-differencing-cpu" title="Fixed Window Fractional Differencing (CPU)" class="md-nav__link">
+  <a href="#fixed-window-fractional-differencing-cpu" class="md-nav__link">
     Fixed Window Fractional Differencing (CPU)
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="Fixed Window Fractional Differencing (CPU)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#floored-weights-function" title="Floored Weights Function" class="md-nav__link">
+  <a href="#floored-weights-function" class="md-nav__link">
     Floored Weights Function
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#fixed-window-fractional-differencing-function-cpu" title="Fixed Window Fractional Differencing Function (CPU)" class="md-nav__link">
+  <a href="#fixed-window-fractional-differencing-function-cpu" class="md-nav__link">
     Fixed Window Fractional Differencing Function (CPU)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#fixed-window-fractional-differencing-function-gpu" title="Fixed Window Fractional Differencing Function (GPU)" class="md-nav__link">
+  <a href="#fixed-window-fractional-differencing-function-gpu" class="md-nav__link">
     Fixed Window Fractional Differencing Function (GPU)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#check-values" title="Check Values" class="md-nav__link">
+  <a href="#check-values" class="md-nav__link">
     Check Values
   </a>
   
@@ -858,37 +939,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#stationarity" title="Stationarity" class="md-nav__link">
+  <a href="#stationarity" class="md-nav__link">
     Stationarity
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="Stationarity">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#adf-test" title="ADF Test" class="md-nav__link">
+  <a href="#adf-test" class="md-nav__link">
     ADF Test
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="ADF Test">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#adf-raw-data-d0" title="ADF: raw data (d=0)" class="md-nav__link">
+  <a href="#adf-raw-data-d0" class="md-nav__link">
     ADF: raw data (d=0)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#adf-daily-return-data-d1" title="ADF: daily return data (d=1)" class="md-nav__link">
+  <a href="#adf-daily-return-data-d1" class="md-nav__link">
     ADF: daily return data (d=1)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#adf-fractionally-differenced-data-d05" title="ADF: fractionally differenced data (d=0.5)" class="md-nav__link">
+  <a href="#adf-fractionally-differenced-data-d05" class="md-nav__link">
     ADF: fractionally differenced data (d=0.5)
   </a>
   
@@ -905,21 +986,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#large-scale-rapid-fractional-differencing" title="Large-scale Rapid Fractional Differencing" class="md-nav__link">
+  <a href="#large-scale-rapid-fractional-differencing" class="md-nav__link">
     Large-scale Rapid Fractional Differencing
   </a>
   
 </li>
-      
-      
-      
-      
-      
-        <li class="md-nav__item">
-          <a href="#__comments" title="Comments" class="md-nav__link md-nav__link--active">
-            Comments
-          </a>
-        </li>
       
     </ul>
   
@@ -940,13 +1011,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
     
     <label class="md-nav__link" for="nav-8">
       Programming Tutorials
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Programming Tutorials" data-md-level="1">
       <label class="md-nav__title" for="nav-8">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Programming Tutorials
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1012,6 +1089,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../programming/electron/electron/" title="Electron" class="md-nav__link">
+      Electron
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1024,13 +1113,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
     
     <label class="md-nav__link" for="nav-9">
       Scalable Database Tutorials
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Scalable Database Tutorials" data-md-level="1">
       <label class="md-nav__title" for="nav-9">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Scalable Database Tutorials
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1072,13 +1167,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
     
     <label class="md-nav__link" for="nav-10">
       News
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="News" data-md-level="1">
       <label class="md-nav__title" for="nav-10">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         News
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1092,6 +1193,18 @@
   <li class="md-nav__item">
     <a href="../../../news/news/" title="Welcome" class="md-nav__link">
       Welcome
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/dbs_gpu_rapids_nvidia_ensemble_frac_diff/" title="Fractional Differencing with GPU (GFD), DBS and NVIDIA, September 2019" class="md-nav__link">
+      Fractional Differencing with GPU (GFD), DBS and NVIDIA, September 2019
     </a>
   </li>
 
@@ -1244,81 +1357,86 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
-<nav class="md-nav md-nav--secondary">
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
     
   
   
-    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#summary" title="Summary" class="md-nav__link">
+  <a href="#summary" class="md-nav__link">
     Summary
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#credits" title="Credits" class="md-nav__link">
+  <a href="#credits" class="md-nav__link">
     Credits
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#links" title="Links" class="md-nav__link">
+  <a href="#links" class="md-nav__link">
     Links
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#installation-of-libraries-optional" title="Installation of Libraries (Optional)" class="md-nav__link">
+  <a href="#installation-of-libraries-optional" class="md-nav__link">
     Installation of Libraries (Optional)
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#imports" title="Imports" class="md-nav__link">
+  <a href="#imports" class="md-nav__link">
     Imports
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#plotting-style" title="Plotting Style" class="md-nav__link">
+  <a href="#plotting-style" class="md-nav__link">
     Plotting Style
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#necessity-of-fractional-differencing" title="Necessity of Fractional Differencing" class="md-nav__link">
+  <a href="#necessity-of-fractional-differencing" class="md-nav__link">
     Necessity of Fractional Differencing
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="Necessity of Fractional Differencing">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#pulling-processing-plotting-spx-time-series" title="Pulling, Processing &amp; Plotting SPX Time Series" class="md-nav__link">
+  <a href="#pulling-processing-plotting-spx-time-series" class="md-nav__link">
     Pulling, Processing &amp; Plotting SPX Time Series
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#integer-differencing-1-day-returns-spx-time-series" title="Integer Differencing (1 Day Returns) SPX Time Series" class="md-nav__link">
+  <a href="#integer-differencing-1-day-returns-spx-time-series" class="md-nav__link">
     Integer Differencing (1 Day Returns) SPX Time Series
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#integer-differencing-causes-unnecessary-memory-loss" title="Integer Differencing Causes Unnecessary Memory Loss" class="md-nav__link">
+  <a href="#integer-differencing-causes-unnecessary-memory-loss" class="md-nav__link">
     Integer Differencing Causes Unnecessary Memory Loss
   </a>
   
@@ -1330,51 +1448,51 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#basic-fractional-differencing" title="Basic Fractional Differencing" class="md-nav__link">
+  <a href="#basic-fractional-differencing" class="md-nav__link">
     Basic Fractional Differencing
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="Basic Fractional Differencing">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#fractional-differencing-weight-function-and-plot" title="Fractional Differencing Weight Function and Plot" class="md-nav__link">
+  <a href="#fractional-differencing-weight-function-and-plot" class="md-nav__link">
     Fractional Differencing Weight Function and Plot
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#fractional-differencing-weight-function-table" title="Fractional Differencing Weight Function Table" class="md-nav__link">
+  <a href="#fractional-differencing-weight-function-table" class="md-nav__link">
     Fractional Differencing Weight Function Table
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#fractional-differencing-value-calculation-toy-example" title="Fractional Differencing Value Calculation Toy Example" class="md-nav__link">
+  <a href="#fractional-differencing-value-calculation-toy-example" class="md-nav__link">
     Fractional Differencing Value Calculation Toy Example
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="Fractional Differencing Value Calculation Toy Example">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#for-d-0d-0-no-differencing" title="For d = 0d = 0 (no differencing)" class="md-nav__link">
+  <a href="#for-d-0d-0-no-differencing" class="md-nav__link">
     For d = 0d = 0 (no differencing)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#for-d-04d-04-fractional-differencing" title="For d = 0.4d = 0.4 (fractional differencing)" class="md-nav__link">
+  <a href="#for-d-04d-04-fractional-differencing" class="md-nav__link">
     For d = 0.4d = 0.4 (fractional differencing)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#for-d-1d-1-integer-differencing" title="For d = 1d = 1 (integer differencing)" class="md-nav__link">
+  <a href="#for-d-1d-1-integer-differencing" class="md-nav__link">
     For d = 1d = 1 (integer differencing)
   </a>
   
@@ -1386,7 +1504,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#cumulative-sum-of-weights-behavior" title="Cumulative Sum of Weights Behavior" class="md-nav__link">
+  <a href="#cumulative-sum-of-weights-behavior" class="md-nav__link">
     Cumulative Sum of Weights Behavior
   </a>
   
@@ -1398,36 +1516,36 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#fixed-window-fractional-differencing-cpu" title="Fixed Window Fractional Differencing (CPU)" class="md-nav__link">
+  <a href="#fixed-window-fractional-differencing-cpu" class="md-nav__link">
     Fixed Window Fractional Differencing (CPU)
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="Fixed Window Fractional Differencing (CPU)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#floored-weights-function" title="Floored Weights Function" class="md-nav__link">
+  <a href="#floored-weights-function" class="md-nav__link">
     Floored Weights Function
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#fixed-window-fractional-differencing-function-cpu" title="Fixed Window Fractional Differencing Function (CPU)" class="md-nav__link">
+  <a href="#fixed-window-fractional-differencing-function-cpu" class="md-nav__link">
     Fixed Window Fractional Differencing Function (CPU)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#fixed-window-fractional-differencing-function-gpu" title="Fixed Window Fractional Differencing Function (GPU)" class="md-nav__link">
+  <a href="#fixed-window-fractional-differencing-function-gpu" class="md-nav__link">
     Fixed Window Fractional Differencing Function (GPU)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#check-values" title="Check Values" class="md-nav__link">
+  <a href="#check-values" class="md-nav__link">
     Check Values
   </a>
   
@@ -1439,37 +1557,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#stationarity" title="Stationarity" class="md-nav__link">
+  <a href="#stationarity" class="md-nav__link">
     Stationarity
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="Stationarity">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#adf-test" title="ADF Test" class="md-nav__link">
+  <a href="#adf-test" class="md-nav__link">
     ADF Test
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="ADF Test">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#adf-raw-data-d0" title="ADF: raw data (d=0)" class="md-nav__link">
+  <a href="#adf-raw-data-d0" class="md-nav__link">
     ADF: raw data (d=0)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#adf-daily-return-data-d1" title="ADF: daily return data (d=1)" class="md-nav__link">
+  <a href="#adf-daily-return-data-d1" class="md-nav__link">
     ADF: daily return data (d=1)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#adf-fractionally-differenced-data-d05" title="ADF: fractionally differenced data (d=0.5)" class="md-nav__link">
+  <a href="#adf-fractionally-differenced-data-d05" class="md-nav__link">
     ADF: fractionally differenced data (d=0.5)
   </a>
   
@@ -1486,21 +1604,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#large-scale-rapid-fractional-differencing" title="Large-scale Rapid Fractional Differencing" class="md-nav__link">
+  <a href="#large-scale-rapid-fractional-differencing" class="md-nav__link">
     Large-scale Rapid Fractional Differencing
   </a>
   
 </li>
-      
-      
-      
-      
-      
-        <li class="md-nav__item">
-          <a href="#__comments" title="Comments" class="md-nav__link md-nav__link--active">
-            Comments
-          </a>
-        </li>
       
     </ul>
   
@@ -1513,6 +1621,13 @@
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
+                
+                  <a href="https://github.com/ritchieng/deep-learning-wizard/edit/master/docs/machine_learning/gpu/gpu_fractional_differencing.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" /></svg>
+                  </a>
+                
+                
+                  
                 
                 
                 <h1 id="gfd-gpu-fractional-differencing">GFD: GPU Fractional Differencing<a class="headerlink" href="#gfd-gpu-fractional-differencing" title="Permanent link">&para;</a></h1>
@@ -1534,13 +1649,13 @@
 <ul>
 <li>These steps are for easily running RAPIDS in Google Colab. You can skip this section if you've <a href="https://rapids.ai/">RAPIDS</a> installed.</li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">pynvml</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pynvml</span>
 
 <span class="n">pynvml</span><span class="o">.</span><span class="n">nvmlInit</span><span class="p">()</span>
 <span class="n">handle</span> <span class="o">=</span> <span class="n">pynvml</span><span class="o">.</span><span class="n">nvmlDeviceGetHandleByIndex</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">device_name</span> <span class="o">=</span> <span class="n">pynvml</span><span class="o">.</span><span class="n">nvmlDeviceGetName</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Currently running on {device_name}&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Currently running on </span><span class="si">{</span><span class="n">device_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="n">device_name</span> <span class="o">!=</span> <span class="sa">b</span><span class="s1">&#39;Tesla T4&#39;</span><span class="p">:</span>
     <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
@@ -1553,15 +1668,15 @@
 <span class="s2">    If you get a K80 GPU, try Runtime -&gt; Reset all runtimes -&gt; Keep trying!</span>
 <span class="s2">  &quot;&quot;&quot;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Woo! You got the right kind of GPU, a Tesla T4!&#39;</span><span class="p">)</span>
-</pre></div>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Woo! You got the right kind of GPU, a Tesla T4!&#39;</span><span class="p">)</span>
+</code></pre></div>
 
-<div class="codehilite"><pre><span></span>Currently running on b&#39;Tesla T4&#39;
-Woo! You got the right kind of GPU, a Tesla T4!
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">Currently running on b&#39;Tesla T4&#39;</span>
+<span class="err">Woo! You got the right kind of GPU, a Tesla T4!</span>
+</code></pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="c1"># intall miniconda</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># intall miniconda</span>
 <span class="err">!</span><span class="n">wget</span> <span class="o">-</span><span class="n">c</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">repo</span><span class="o">.</span><span class="n">continuum</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">Miniconda3</span><span class="o">-</span><span class="mf">4.5</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span>
 <span class="err">!</span><span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="n">Miniconda3</span><span class="o">-</span><span class="mf">4.5</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span>
 <span class="err">!</span><span class="n">bash</span> <span class="o">./</span><span class="n">Miniconda3</span><span class="o">-</span><span class="mf">4.5</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">b</span> <span class="o">-</span><span class="n">f</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span>
@@ -1580,127 +1695,127 @@ Woo! You got the right kind of GPU, a Tesla T4!
 <span class="c1"># copy .so files to current working dir</span>
 <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;libcudf.so&#39;</span><span class="p">,</span> <span class="s1">&#39;librmm.so&#39;</span><span class="p">]:</span>
     <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="s1">&#39;/usr/local/lib/&#39;</span><span class="o">+</span><span class="n">fn</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
-</pre></div>
+</code></pre></div>
 
-<div class="codehilite"><pre><span></span>--2019-08-19 05:36:25--  https://repo.continuum.io/miniconda/Miniconda3-4.5.4-Linux-x86_64.sh
-Resolving repo.continuum.io (repo.continuum.io)... 104.18.200.79, 104.18.201.79, 2606:4700::6812:c84f, ...
-Connecting to repo.continuum.io (repo.continuum.io)|104.18.200.79|:443... connected.
-HTTP request sent, awaiting response... 416 Requested Range Not Satisfiable
+<div class="codehilite"><pre><span></span><code><span class="c1">--2019-08-19 05:36:25--  https://repo.continuum.io/miniconda/Miniconda3-4.5.4-Linux-x86_64.sh</span>
+<span class="n">Resolving</span> <span class="n">repo</span><span class="p">.</span><span class="n">continuum</span><span class="p">.</span><span class="n">io</span> <span class="p">(</span><span class="n">repo</span><span class="p">.</span><span class="n">continuum</span><span class="p">.</span><span class="n">io</span><span class="p">)...</span> <span class="mi">104</span><span class="p">.</span><span class="mi">18</span><span class="p">.</span><span class="mi">200</span><span class="p">.</span><span class="mi">79</span><span class="p">,</span> <span class="mi">104</span><span class="p">.</span><span class="mi">18</span><span class="p">.</span><span class="mi">201</span><span class="p">.</span><span class="mi">79</span><span class="p">,</span> <span class="mi">2606</span><span class="p">:</span><span class="mi">4700</span><span class="p">::</span><span class="mi">6812</span><span class="p">:</span><span class="n">c84f</span><span class="p">,</span> <span class="p">...</span>
+<span class="n">Connecting</span> <span class="k">to</span> <span class="n">repo</span><span class="p">.</span><span class="n">continuum</span><span class="p">.</span><span class="n">io</span> <span class="p">(</span><span class="n">repo</span><span class="p">.</span><span class="n">continuum</span><span class="p">.</span><span class="n">io</span><span class="p">)</span><span class="o">|</span><span class="mi">104</span><span class="p">.</span><span class="mi">18</span><span class="p">.</span><span class="mi">200</span><span class="p">.</span><span class="mi">79</span><span class="o">|</span><span class="p">:</span><span class="mi">443</span><span class="p">...</span> <span class="n">connected</span><span class="p">.</span>
+<span class="n">HTTP</span> <span class="n">request</span> <span class="n">sent</span><span class="p">,</span> <span class="n">awaiting</span> <span class="n">response</span><span class="p">...</span> <span class="mi">416</span> <span class="n">Requested</span> <span class="n">Range</span> <span class="k">Not</span> <span class="n">Satisfiable</span>
 
-    The file is already fully retrieved; nothing to do.
+    <span class="n">The</span> <span class="n">file</span> <span class="k">is</span> <span class="n">already</span> <span class="n">fully</span> <span class="n">retrieved</span><span class="p">;</span> <span class="k">nothing</span> <span class="k">to</span> <span class="k">do</span><span class="p">.</span>
 
-PREFIX=/usr/local
-installing: python-3.6.5-hc3d631a_2 ...
-Python 3.6.5 :: Anaconda, Inc.
-installing: ca-certificates-2018.03.07-0 ...
-installing: conda-env-2.6.0-h36134e3_1 ...
-installing: libgcc-ng-7.2.0-hdf63c60_3 ...
-installing: libstdcxx-ng-7.2.0-hdf63c60_3 ...
-installing: libffi-3.2.1-hd88cf55_4 ...
-installing: ncurses-6.1-hf484d3e_0 ...
-installing: openssl-1.0.2o-h20670df_0 ...
-installing: tk-8.6.7-hc745277_3 ...
-installing: xz-5.2.4-h14c3975_4 ...
-installing: yaml-0.1.7-had09818_2 ...
-installing: zlib-1.2.11-ha838bed_2 ...
-installing: libedit-3.1.20170329-h6b74fdf_2 ...
-installing: readline-7.0-ha6073c6_4 ...
-installing: sqlite-3.23.1-he433501_0 ...
-installing: asn1crypto-0.24.0-py36_0 ...
-installing: certifi-2018.4.16-py36_0 ...
-installing: chardet-3.0.4-py36h0f667ec_1 ...
-installing: idna-2.6-py36h82fb2a8_1 ...
-installing: pycosat-0.6.3-py36h0a5515d_0 ...
-installing: pycparser-2.18-py36hf9f622e_1 ...
-installing: pysocks-1.6.8-py36_0 ...
-installing: ruamel_yaml-0.15.37-py36h14c3975_2 ...
-installing: six-1.11.0-py36h372c433_1 ...
-installing: cffi-1.11.5-py36h9745a5d_0 ...
-installing: setuptools-39.2.0-py36_0 ...
-installing: cryptography-2.2.2-py36h14c3975_0 ...
-installing: wheel-0.31.1-py36_0 ...
-installing: pip-10.0.1-py36_0 ...
-installing: pyopenssl-18.0.0-py36_0 ...
-installing: urllib3-1.22-py36hbe7ace6_0 ...
-installing: requests-2.18.4-py36he2e5f8d_1 ...
-installing: conda-4.5.4-py36_0 ...
-unlinking: ca-certificates-2019.6.16-hecc5488_0
-unlinking: certifi-2019.6.16-py36_1
-unlinking: conda-4.7.11-py36_0
-unlinking: cryptography-2.7-py36h72c5cf5_0
-unlinking: libgcc-ng-9.1.0-hdf63c60_0
-unlinking: libstdcxx-ng-9.1.0-hdf63c60_0
-unlinking: openssl-1.1.1c-h516909a_0
-unlinking: python-3.6.7-h381d211_1004
-unlinking: sqlite-3.28.0-h8b20d00_0
-unlinking: tk-8.6.9-hed695b0_1002
-installation finished.
-WARNING:
-    You currently have a PYTHONPATH environment variable set. This may cause
-    unexpected behavior when running the Python interpreter in Miniconda3.
-    For best results, please verify that your PYTHONPATH only points to
-    directories of packages that are compatible with the Python interpreter
-    in Miniconda3: /usr/local
-Solving environment: ...working... done
+<span class="k">PREFIX</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span>
+<span class="n">installing</span><span class="p">:</span> <span class="n">python</span><span class="o">-</span><span class="mi">3</span><span class="p">.</span><span class="mi">6</span><span class="p">.</span><span class="mi">5</span><span class="o">-</span><span class="n">hc3d631a_2</span> <span class="p">...</span>
+<span class="n">Python</span> <span class="mi">3</span><span class="p">.</span><span class="mi">6</span><span class="p">.</span><span class="mi">5</span> <span class="p">::</span> <span class="n">Anaconda</span><span class="p">,</span> <span class="n">Inc</span><span class="p">.</span>
+<span class="n">installing</span><span class="p">:</span> <span class="n">ca</span><span class="o">-</span><span class="n">certificates</span><span class="o">-</span><span class="mi">2018</span><span class="p">.</span><span class="mi">03</span><span class="p">.</span><span class="mi">07</span><span class="o">-</span><span class="mi">0</span> <span class="p">...</span>
+<span class="n">installing</span><span class="p">:</span> <span class="n">conda</span><span class="o">-</span><span class="n">env</span><span class="o">-</span><span class="mi">2</span><span class="p">.</span><span class="mi">6</span><span class="p">.</span><span class="mi">0</span><span class="o">-</span><span class="n">h36134e3_1</span> <span class="p">...</span>
+<span class="n">installing</span><span class="p">:</span> <span class="n">libgcc</span><span class="o">-</span><span class="n">ng</span><span class="o">-</span><span class="mi">7</span><span class="p">.</span><span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="o">-</span><span class="n">hdf63c60_3</span> <span class="p">...</span>
+<span class="n">installing</span><span class="p">:</span> <span class="n">libstdcxx</span><span class="o">-</span><span class="n">ng</span><span class="o">-</span><span class="mi">7</span><span class="p">.</span><span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="o">-</span><span class="n">hdf63c60_3</span> <span class="p">...</span>
+<span class="n">installing</span><span class="p">:</span> <span class="n">libffi</span><span class="o">-</span><span class="mi">3</span><span class="p">.</span><span class="mi">2</span><span class="p">.</span><span class="mi">1</span><span class="o">-</span><span class="n">hd88cf55_4</span> <span class="p">...</span>
+<span class="n">installing</span><span class="p">:</span> <span class="n">ncurses</span><span class="o">-</span><span class="mi">6</span><span class="p">.</span><span class="mi">1</span><span class="o">-</span><span class="n">hf484d3e_0</span> <span class="p">...</span>
+<span class="n">installing</span><span class="p">:</span> <span class="n">openssl</span><span class="o">-</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">2</span><span class="n">o</span><span class="o">-</span><span class="n">h20670df_0</span> <span class="p">...</span>
+<span class="n">installing</span><span class="p">:</span> <span class="n">tk</span><span class="o">-</span><span class="mi">8</span><span class="p">.</span><span class="mi">6</span><span class="p">.</span><span class="mi">7</span><span class="o">-</span><span class="n">hc745277_3</span> <span class="p">...</span>
+<span class="n">installing</span><span class="p">:</span> <span class="n">xz</span><span class="o">-</span><span class="mi">5</span><span class="p">.</span><span class="mi">2</span><span class="p">.</span><span class="mi">4</span><span class="o">-</span><span class="n">h14c3975_4</span> <span class="p">...</span>
+<span class="n">installing</span><span class="p">:</span> <span class="n">yaml</span><span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span><span class="p">.</span><span class="mi">7</span><span class="o">-</span><span class="n">had09818_2</span> <span class="p">...</span>
+<span class="n">installing</span><span class="p">:</span> <span class="n">zlib</span><span class="o">-</span><span class="mi">1</span><span class="p">.</span><span class="mi">2</span><span class="p">.</span><span class="mi">11</span><span class="o">-</span><span class="n">ha838bed_2</span> <span class="p">...</span>
+<span class="n">installing</span><span class="p">:</span> <span class="n">libedit</span><span class="o">-</span><span class="mi">3</span><span class="p">.</span><span class="mi">1</span><span class="p">.</span><span class="mi">20170329</span><span class="o">-</span><span class="n">h6b74fdf_2</span> <span class="p">...</span>
+<span class="n">installing</span><span class="p">:</span> <span class="n">readline</span><span class="o">-</span><span class="mi">7</span><span class="p">.</span><span class="mi">0</span><span class="o">-</span><span class="n">ha6073c6_4</span> <span class="p">...</span>
+<span class="n">installing</span><span class="p">:</span> <span class="n">sqlite</span><span class="o">-</span><span class="mi">3</span><span class="p">.</span><span class="mi">23</span><span class="p">.</span><span class="mi">1</span><span class="o">-</span><span class="n">he433501_0</span> <span class="p">...</span>
+<span class="n">installing</span><span class="p">:</span> <span class="n">asn1crypto</span><span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">24</span><span class="p">.</span><span class="mi">0</span><span class="o">-</span><span class="n">py36_0</span> <span class="p">...</span>
+<span class="n">installing</span><span class="p">:</span> <span class="n">certifi</span><span class="o">-</span><span class="mi">2018</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">16</span><span class="o">-</span><span class="n">py36_0</span> <span class="p">...</span>
+<span class="n">installing</span><span class="p">:</span> <span class="n">chardet</span><span class="o">-</span><span class="mi">3</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">4</span><span class="o">-</span><span class="n">py36h0f667ec_1</span> <span class="p">...</span>
+<span class="n">installing</span><span class="p">:</span> <span class="n">idna</span><span class="o">-</span><span class="mi">2</span><span class="p">.</span><span class="mi">6</span><span class="o">-</span><span class="n">py36h82fb2a8_1</span> <span class="p">...</span>
+<span class="n">installing</span><span class="p">:</span> <span class="n">pycosat</span><span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">6</span><span class="p">.</span><span class="mi">3</span><span class="o">-</span><span class="n">py36h0a5515d_0</span> <span class="p">...</span>
+<span class="n">installing</span><span class="p">:</span> <span class="n">pycparser</span><span class="o">-</span><span class="mi">2</span><span class="p">.</span><span class="mi">18</span><span class="o">-</span><span class="n">py36hf9f622e_1</span> <span class="p">...</span>
+<span class="n">installing</span><span class="p">:</span> <span class="n">pysocks</span><span class="o">-</span><span class="mi">1</span><span class="p">.</span><span class="mi">6</span><span class="p">.</span><span class="mi">8</span><span class="o">-</span><span class="n">py36_0</span> <span class="p">...</span>
+<span class="n">installing</span><span class="p">:</span> <span class="n">ruamel_yaml</span><span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">15</span><span class="p">.</span><span class="mi">37</span><span class="o">-</span><span class="n">py36h14c3975_2</span> <span class="p">...</span>
+<span class="n">installing</span><span class="p">:</span> <span class="n">six</span><span class="o">-</span><span class="mi">1</span><span class="p">.</span><span class="mi">11</span><span class="p">.</span><span class="mi">0</span><span class="o">-</span><span class="n">py36h372c433_1</span> <span class="p">...</span>
+<span class="n">installing</span><span class="p">:</span> <span class="n">cffi</span><span class="o">-</span><span class="mi">1</span><span class="p">.</span><span class="mi">11</span><span class="p">.</span><span class="mi">5</span><span class="o">-</span><span class="n">py36h9745a5d_0</span> <span class="p">...</span>
+<span class="n">installing</span><span class="p">:</span> <span class="n">setuptools</span><span class="o">-</span><span class="mi">39</span><span class="p">.</span><span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="o">-</span><span class="n">py36_0</span> <span class="p">...</span>
+<span class="n">installing</span><span class="p">:</span> <span class="n">cryptography</span><span class="o">-</span><span class="mi">2</span><span class="p">.</span><span class="mi">2</span><span class="p">.</span><span class="mi">2</span><span class="o">-</span><span class="n">py36h14c3975_0</span> <span class="p">...</span>
+<span class="n">installing</span><span class="p">:</span> <span class="n">wheel</span><span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">31</span><span class="p">.</span><span class="mi">1</span><span class="o">-</span><span class="n">py36_0</span> <span class="p">...</span>
+<span class="n">installing</span><span class="p">:</span> <span class="n">pip</span><span class="o">-</span><span class="mi">10</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span><span class="o">-</span><span class="n">py36_0</span> <span class="p">...</span>
+<span class="n">installing</span><span class="p">:</span> <span class="n">pyopenssl</span><span class="o">-</span><span class="mi">18</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="o">-</span><span class="n">py36_0</span> <span class="p">...</span>
+<span class="n">installing</span><span class="p">:</span> <span class="n">urllib3</span><span class="o">-</span><span class="mi">1</span><span class="p">.</span><span class="mi">22</span><span class="o">-</span><span class="n">py36hbe7ace6_0</span> <span class="p">...</span>
+<span class="n">installing</span><span class="p">:</span> <span class="n">requests</span><span class="o">-</span><span class="mi">2</span><span class="p">.</span><span class="mi">18</span><span class="p">.</span><span class="mi">4</span><span class="o">-</span><span class="n">py36he2e5f8d_1</span> <span class="p">...</span>
+<span class="n">installing</span><span class="p">:</span> <span class="n">conda</span><span class="o">-</span><span class="mi">4</span><span class="p">.</span><span class="mi">5</span><span class="p">.</span><span class="mi">4</span><span class="o">-</span><span class="n">py36_0</span> <span class="p">...</span>
+<span class="n">unlinking</span><span class="p">:</span> <span class="n">ca</span><span class="o">-</span><span class="n">certificates</span><span class="o">-</span><span class="mi">2019</span><span class="p">.</span><span class="mi">6</span><span class="p">.</span><span class="mi">16</span><span class="o">-</span><span class="n">hecc5488_0</span>
+<span class="n">unlinking</span><span class="p">:</span> <span class="n">certifi</span><span class="o">-</span><span class="mi">2019</span><span class="p">.</span><span class="mi">6</span><span class="p">.</span><span class="mi">16</span><span class="o">-</span><span class="n">py36_1</span>
+<span class="n">unlinking</span><span class="p">:</span> <span class="n">conda</span><span class="o">-</span><span class="mi">4</span><span class="p">.</span><span class="mi">7</span><span class="p">.</span><span class="mi">11</span><span class="o">-</span><span class="n">py36_0</span>
+<span class="n">unlinking</span><span class="p">:</span> <span class="n">cryptography</span><span class="o">-</span><span class="mi">2</span><span class="p">.</span><span class="mi">7</span><span class="o">-</span><span class="n">py36h72c5cf5_0</span>
+<span class="n">unlinking</span><span class="p">:</span> <span class="n">libgcc</span><span class="o">-</span><span class="n">ng</span><span class="o">-</span><span class="mi">9</span><span class="p">.</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="o">-</span><span class="n">hdf63c60_0</span>
+<span class="n">unlinking</span><span class="p">:</span> <span class="n">libstdcxx</span><span class="o">-</span><span class="n">ng</span><span class="o">-</span><span class="mi">9</span><span class="p">.</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="o">-</span><span class="n">hdf63c60_0</span>
+<span class="n">unlinking</span><span class="p">:</span> <span class="n">openssl</span><span class="o">-</span><span class="mi">1</span><span class="p">.</span><span class="mi">1</span><span class="p">.</span><span class="mi">1</span><span class="k">c</span><span class="o">-</span><span class="n">h516909a_0</span>
+<span class="n">unlinking</span><span class="p">:</span> <span class="n">python</span><span class="o">-</span><span class="mi">3</span><span class="p">.</span><span class="mi">6</span><span class="p">.</span><span class="mi">7</span><span class="o">-</span><span class="n">h381d211_1004</span>
+<span class="n">unlinking</span><span class="p">:</span> <span class="n">sqlite</span><span class="o">-</span><span class="mi">3</span><span class="p">.</span><span class="mi">28</span><span class="p">.</span><span class="mi">0</span><span class="o">-</span><span class="n">h8b20d00_0</span>
+<span class="n">unlinking</span><span class="p">:</span> <span class="n">tk</span><span class="o">-</span><span class="mi">8</span><span class="p">.</span><span class="mi">6</span><span class="p">.</span><span class="mi">9</span><span class="o">-</span><span class="n">hed695b0_1002</span>
+<span class="n">installation</span> <span class="n">finished</span><span class="p">.</span>
+<span class="n">WARNING</span><span class="p">:</span>
+    <span class="n">You</span> <span class="n">currently</span> <span class="n">have</span> <span class="n">a</span> <span class="n">PYTHONPATH</span> <span class="n">environment</span> <span class="k">variable</span> <span class="k">set</span><span class="p">.</span> <span class="n">This</span> <span class="n">may</span> <span class="n">cause</span>
+    <span class="n">unexpected</span> <span class="n">behavior</span> <span class="k">when</span> <span class="n">running</span> <span class="n">the</span> <span class="n">Python</span> <span class="n">interpreter</span> <span class="k">in</span> <span class="n">Miniconda3</span><span class="p">.</span>
+    <span class="k">For</span> <span class="n">best</span> <span class="n">results</span><span class="p">,</span> <span class="n">please</span> <span class="n">verify</span> <span class="n">that</span> <span class="n">your</span> <span class="n">PYTHONPATH</span> <span class="k">only</span> <span class="n">points</span> <span class="k">to</span>
+    <span class="n">directories</span> <span class="k">of</span> <span class="n">packages</span> <span class="n">that</span> <span class="k">are</span> <span class="n">compatible</span> <span class="k">with</span> <span class="n">the</span> <span class="n">Python</span> <span class="n">interpreter</span>
+    <span class="k">in</span> <span class="n">Miniconda3</span><span class="p">:</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span>
+<span class="n">Solving</span> <span class="n">environment</span><span class="p">:</span> <span class="p">...</span><span class="n">working</span><span class="p">...</span> <span class="n">done</span>
 
-## Package Plan ##
+<span class="o">##</span> <span class="n">Package</span> <span class="n">Plan</span> <span class="o">##</span>
 
-  environment location: /usr/local
+  <span class="n">environment</span> <span class="k">location</span><span class="p">:</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span>
 
-  added / updated specs: 
-    - cudf
-    - cuml
-
-
-The following packages will be UPDATED:
-
-    ca-certificates: 2018.03.07-0         --&gt; 2019.6.16-hecc5488_0 conda-forge
-    certifi:         2018.4.16-py36_0     --&gt; 2019.6.16-py36_1     conda-forge
-    conda:           4.5.4-py36_0         --&gt; 4.7.11-py36_0        conda-forge
-    cryptography:    2.2.2-py36h14c3975_0 --&gt; 2.7-py36h72c5cf5_0   conda-forge
-    libgcc-ng:       7.2.0-hdf63c60_3     --&gt; 9.1.0-hdf63c60_0                
-    libstdcxx-ng:    7.2.0-hdf63c60_3     --&gt; 9.1.0-hdf63c60_0                
-    openssl:         1.0.2o-h20670df_0    --&gt; 1.1.1c-h516909a_0    conda-forge
-    python:          3.6.5-hc3d631a_2     --&gt; 3.6.7-h381d211_1004  conda-forge
-    sqlite:          3.23.1-he433501_0    --&gt; 3.28.0-h8b20d00_0    conda-forge
-    tk:              8.6.7-hc745277_3     --&gt; 8.6.9-hed695b0_1002  conda-forge
-
-Preparing transaction: ...working... done
-Verifying transaction: ...working... done
-Executing transaction: ...working... done
-</pre></div>
+  <span class="n">added</span> <span class="o">/</span> <span class="n">updated</span> <span class="n">specs</span><span class="p">:</span> 
+    <span class="o">-</span> <span class="n">cudf</span>
+    <span class="o">-</span> <span class="n">cuml</span>
 
 
-<p><strong>You would need to do a <code class="codehilite">Runtime &gt; Restart and Run All</code> on your Google Colab notebook at this step.</strong></p>
+<span class="n">The</span> <span class="n">following</span> <span class="n">packages</span> <span class="n">will</span> <span class="n">be</span> <span class="n">UPDATED</span><span class="p">:</span>
+
+    <span class="n">ca</span><span class="o">-</span><span class="n">certificates</span><span class="p">:</span> <span class="mi">2018</span><span class="p">.</span><span class="mi">03</span><span class="p">.</span><span class="mi">07</span><span class="o">-</span><span class="mi">0</span>         <span class="c1">--&gt; 2019.6.16-hecc5488_0 conda-forge</span>
+    <span class="n">certifi</span><span class="p">:</span>         <span class="mi">2018</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">16</span><span class="o">-</span><span class="n">py36_0</span>     <span class="c1">--&gt; 2019.6.16-py36_1     conda-forge</span>
+    <span class="n">conda</span><span class="p">:</span>           <span class="mi">4</span><span class="p">.</span><span class="mi">5</span><span class="p">.</span><span class="mi">4</span><span class="o">-</span><span class="n">py36_0</span>         <span class="c1">--&gt; 4.7.11-py36_0        conda-forge</span>
+    <span class="n">cryptography</span><span class="p">:</span>    <span class="mi">2</span><span class="p">.</span><span class="mi">2</span><span class="p">.</span><span class="mi">2</span><span class="o">-</span><span class="n">py36h14c3975_0</span> <span class="c1">--&gt; 2.7-py36h72c5cf5_0   conda-forge</span>
+    <span class="n">libgcc</span><span class="o">-</span><span class="n">ng</span><span class="p">:</span>       <span class="mi">7</span><span class="p">.</span><span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="o">-</span><span class="n">hdf63c60_3</span>     <span class="c1">--&gt; 9.1.0-hdf63c60_0                </span>
+    <span class="n">libstdcxx</span><span class="o">-</span><span class="n">ng</span><span class="p">:</span>    <span class="mi">7</span><span class="p">.</span><span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="o">-</span><span class="n">hdf63c60_3</span>     <span class="c1">--&gt; 9.1.0-hdf63c60_0                </span>
+    <span class="n">openssl</span><span class="p">:</span>         <span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">2</span><span class="n">o</span><span class="o">-</span><span class="n">h20670df_0</span>    <span class="c1">--&gt; 1.1.1c-h516909a_0    conda-forge</span>
+    <span class="n">python</span><span class="p">:</span>          <span class="mi">3</span><span class="p">.</span><span class="mi">6</span><span class="p">.</span><span class="mi">5</span><span class="o">-</span><span class="n">hc3d631a_2</span>     <span class="c1">--&gt; 3.6.7-h381d211_1004  conda-forge</span>
+    <span class="n">sqlite</span><span class="p">:</span>          <span class="mi">3</span><span class="p">.</span><span class="mi">23</span><span class="p">.</span><span class="mi">1</span><span class="o">-</span><span class="n">he433501_0</span>    <span class="c1">--&gt; 3.28.0-h8b20d00_0    conda-forge</span>
+    <span class="n">tk</span><span class="p">:</span>              <span class="mi">8</span><span class="p">.</span><span class="mi">6</span><span class="p">.</span><span class="mi">7</span><span class="o">-</span><span class="n">hc745277_3</span>     <span class="c1">--&gt; 8.6.9-hed695b0_1002  conda-forge</span>
+
+<span class="n">Preparing</span> <span class="n">transaction</span><span class="p">:</span> <span class="p">...</span><span class="n">working</span><span class="p">...</span> <span class="n">done</span>
+<span class="n">Verifying</span> <span class="n">transaction</span><span class="p">:</span> <span class="p">...</span><span class="n">working</span><span class="p">...</span> <span class="n">done</span>
+<span class="n">Executing</span> <span class="n">transaction</span><span class="p">:</span> <span class="p">...</span><span class="n">working</span><span class="p">...</span> <span class="n">done</span>
+</code></pre></div>
+
+
+<p><strong>You would need to do a <code>Runtime &gt; Restart and Run All</code> on your Google Colab notebook at this step.</strong></p>
 <h2 id="imports">Imports<a class="headerlink" href="#imports" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><span class="c1"># Critical imports for GPU cuDF</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Critical imports for GPU cuDF</span>
 <span class="kn">import</span> <span class="nn">nvstrings</span><span class="o">,</span> <span class="nn">nvcategory</span><span class="o">,</span> <span class="nn">cudf</span>
-</pre></div>
+</code></pre></div>
 
-<div class="codehilite"><pre><span></span><span class="c1"># Other imports</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Other imports</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">pandas_datareader.data</span> <span class="kn">as</span> <span class="nn">web</span>
+<span class="kn">import</span> <span class="nn">pandas_datareader.data</span> <span class="k">as</span> <span class="nn">web</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">cuda</span>
-</pre></div>
+</code></pre></div>
 
 <h2 id="plotting-style">Plotting Style<a class="headerlink" href="#plotting-style" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><span class="c1"># Display settings: just to make it slightly prettier</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Display settings: just to make it slightly prettier</span>
 <span class="c1"># There&#39;ll be a separate post on beautiful plots</span>
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;fivethirtyeight&#39;</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
 <h2 id="necessity-of-fractional-differencing">Necessity of Fractional Differencing<a class="headerlink" href="#necessity-of-fractional-differencing" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Before we get into why fractional differencing is critical, let us inspect a simple time series pulled from the Fed's database: S&amp;P 500.</li>
 </ul>
 <h3 id="pulling-processing-plotting-spx-time-series">Pulling, Processing &amp; Plotting SPX Time Series<a class="headerlink" href="#pulling-processing-plotting-spx-time-series" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><span class="c1"># Read SPX data 2010-2019 from FED database: https://fred.stlouisfed.org/categories/94</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Read SPX data 2010-2019 from FED database: https://fred.stlouisfed.org/categories/94</span>
 <span class="n">asset_name</span> <span class="o">=</span> <span class="s1">&#39;SPX&#39;</span>
 <span class="n">start</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2010</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">end</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2019</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -1712,7 +1827,7 @@ Executing transaction: ...working... done
 
 <span class="n">df_raw</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;S&amp;P 500 Absolute Levels&#39;</span><span class="p">);</span>
-</pre></div>
+</code></pre></div>
 
 <p><img alt="png" src="../gpu_fractional_differencing_files/gpu_fractional_differencing_18_0.png" /></p>
 <h3 id="integer-differencing-1-day-returns-spx-time-series">Integer Differencing (1 Day Returns) SPX Time Series<a class="headerlink" href="#integer-differencing-1-day-returns-spx-time-series" title="Permanent link">&para;</a></h3>
@@ -1720,12 +1835,12 @@ Executing transaction: ...working... done
 <li>Traditionally we typically might difference our time series by one day (daily returns) or more to reach some form of stationarity via tests like ADF, KPSS, PP and more.</li>
 <li>However, these forms of integer differencing causes more information than needed to be lost.</li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="c1"># One day returns calculation through differencing by 1</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># One day returns calculation through differencing by 1</span>
 <span class="n">differencing_factor</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">df_daily_returns</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_raw</span> <span class="o">-</span> <span class="n">df_raw</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">differencing_factor</span><span class="p">))</span> <span class="o">/</span> <span class="n">df_raw</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">differencing_factor</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
 <span class="n">df_daily_returns</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;{asset_name} Daily Returns via Differencing 1 Day&#39;</span><span class="p">);</span>
-</pre></div>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">asset_name</span><span class="si">}</span><span class="s1"> Daily Returns via Differencing 1 Day&#39;</span><span class="p">);</span>
+</code></pre></div>
 
 <p><img alt="png" src="../gpu_fractional_differencing_files/gpu_fractional_differencing_20_0.png" /></p>
 <h3 id="integer-differencing-causes-unnecessary-memory-loss">Integer Differencing Causes Unnecessary Memory Loss<a class="headerlink" href="#integer-differencing-causes-unnecessary-memory-loss" title="Permanent link">&para;</a></h3>
@@ -1741,7 +1856,7 @@ Recently, fractional differencing was introduced for financial time series throu
 <li>Weights formula: <span><span class="MathJax_Preview">w_k = -w_{k-1} \frac{d - k + 1}{k}</span><script type="math/tex">w_k = -w_{k-1} \frac{d - k + 1}{k}</script></span></li>
 <li>Weight converges to zero: <span><span class="MathJax_Preview">w_k \rightarrow 0</span><script type="math/tex">w_k \rightarrow 0</script></span></li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">get_weights</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">num_k</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_weights</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">num_k</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Calculate weights ($w$) for each lag ($k$) through</span>
 <span class="sd">    $w_k = -w_{k-1} \frac{d - k + 1}{k}$.</span>
 
@@ -1791,13 +1906,13 @@ Recently, fractional differencing was introduced for financial time series throu
     <span class="k">return</span> <span class="n">df_wk</span>
 
 <span class="n">df_wk</span> <span class="o">=</span> <span class="n">plot_weights</span><span class="p">(</span><span class="n">range_d</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">num_k</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">num_d_interval</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
 <p><img alt="png" src="../gpu_fractional_differencing_files/gpu_fractional_differencing_24_0.png" /></p>
 <h3 id="fractional-differencing-weight-function-table">Fractional Differencing Weight Function Table<a class="headerlink" href="#fractional-differencing-weight-function-table" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><span class="c1"># Dataframe for lag weights (w) for various differencing values (d)</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Dataframe for lag weights (w) for various differencing values (d)</span>
 <span class="n">df_wk</span>
-</pre></div>
+</code></pre></div>
 
 <div>
 <style scoped>
@@ -1898,72 +2013,72 @@ Recently, fractional differencing was introduced for financial time series throu
 <li>Assume spot have values 100, 99, 98, 97, 96, 95, 94 from k=0 to k=6</li>
 </ul>
 <h4 id="for-d-0d-0-no-differencing">For <span><span class="MathJax_Preview">d = 0</span><script type="math/tex">d = 0</script></span> (no differencing)<a class="headerlink" href="#for-d-0d-0-no-differencing" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><span class="n">differenced_value</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">99</span> <span class="o">*</span> <span class="mi">0</span> <span class="o">+</span> <span class="mi">98</span> <span class="o">*</span> <span class="mi">0</span> <span class="o">+</span> <span class="mi">97</span> <span class="o">*</span> <span class="mi">0</span> <span class="o">+</span> <span class="mi">96</span> <span class="o">*</span> <span class="mi">0</span> <span class="o">+</span> <span class="mi">95</span> <span class="o">*</span> <span class="mi">0</span> <span class="o">+</span> <span class="mi">94</span> <span class="o">*</span> <span class="mi">0</span>
-<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Differenced value: {differenced_value}&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">differenced_value</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">99</span> <span class="o">*</span> <span class="mi">0</span> <span class="o">+</span> <span class="mi">98</span> <span class="o">*</span> <span class="mi">0</span> <span class="o">+</span> <span class="mi">97</span> <span class="o">*</span> <span class="mi">0</span> <span class="o">+</span> <span class="mi">96</span> <span class="o">*</span> <span class="mi">0</span> <span class="o">+</span> <span class="mi">95</span> <span class="o">*</span> <span class="mi">0</span> <span class="o">+</span> <span class="mi">94</span> <span class="o">*</span> <span class="mi">0</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Differenced value: </span><span class="si">{</span><span class="n">differenced_value</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">df_wk</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
-</pre></div>
+</code></pre></div>
 
-<div class="codehilite"><pre><span></span>Differenced value: 100
-
-
+<div class="codehilite"><pre><span></span><code><span class="n">Differenced</span> <span class="n">value</span><span class="p">:</span> <span class="mi">100</span>
 
 
 
-0    1.0
-1   -0.0
-2   -0.0
-3   -0.0
-4   -0.0
-5   -0.0
-6   -0.0
-Name: 0.0, dtype: float64
-</pre></div>
+
+
+<span class="mi">0</span>    <span class="mi">1</span><span class="p">.</span><span class="mi">0</span>
+<span class="mi">1</span>   <span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
+<span class="mi">2</span>   <span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
+<span class="mi">3</span>   <span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
+<span class="mi">4</span>   <span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
+<span class="mi">5</span>   <span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
+<span class="mi">6</span>   <span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
+<span class="n">Name</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+</code></pre></div>
 
 
 <h4 id="for-d-04d-04-fractional-differencing">For <span><span class="MathJax_Preview">d = 0.4</span><script type="math/tex">d = 0.4</script></span> (fractional differencing)<a class="headerlink" href="#for-d-04d-04-fractional-differencing" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><span class="n">differenced_value</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">99</span> <span class="o">*</span> <span class="o">-</span><span class="mf">0.400000</span> <span class="o">+</span> <span class="mi">98</span> <span class="o">*</span> <span class="o">-</span><span class="mf">0.120000</span> <span class="o">+</span> <span class="mi">97</span> <span class="o">*</span> <span class="o">-</span><span class="mf">0.064000</span> <span class="o">+</span> <span class="mi">96</span> <span class="o">*</span> <span class="o">-</span><span class="mf">0.041600</span> <span class="o">+</span> <span class="mi">95</span> <span class="o">*</span> <span class="o">-</span><span class="mf">0.041600</span> <span class="o">+</span> <span class="mi">94</span> <span class="o">*</span> <span class="o">-</span><span class="mf">0.041600</span>
-<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Differenced value: {differenced_value}&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">differenced_value</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">99</span> <span class="o">*</span> <span class="o">-</span><span class="mf">0.400000</span> <span class="o">+</span> <span class="mi">98</span> <span class="o">*</span> <span class="o">-</span><span class="mf">0.120000</span> <span class="o">+</span> <span class="mi">97</span> <span class="o">*</span> <span class="o">-</span><span class="mf">0.064000</span> <span class="o">+</span> <span class="mi">96</span> <span class="o">*</span> <span class="o">-</span><span class="mf">0.041600</span> <span class="o">+</span> <span class="mi">95</span> <span class="o">*</span> <span class="o">-</span><span class="mf">0.041600</span> <span class="o">+</span> <span class="mi">94</span> <span class="o">*</span> <span class="o">-</span><span class="mf">0.041600</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Differenced value: </span><span class="si">{</span><span class="n">differenced_value</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">df_wk</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
-</pre></div>
+</code></pre></div>
 
-<div class="codehilite"><pre><span></span>Differenced value: 30.576000000000004
-
-
+<div class="codehilite"><pre><span></span><code><span class="n">Differenced</span> <span class="n">value</span><span class="p">:</span> <span class="mi">30</span><span class="p">.</span><span class="mi">576000000000004</span>
 
 
 
-0    1.000000
-1   -0.200000
-2   -0.080000
-3   -0.048000
-4   -0.033600
-5   -0.025536
-6   -0.020429
-Name: 0.2, dtype: float64
-</pre></div>
+
+
+<span class="mi">0</span>    <span class="mi">1</span><span class="p">.</span><span class="mi">000000</span>
+<span class="mi">1</span>   <span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">200000</span>
+<span class="mi">2</span>   <span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">080000</span>
+<span class="mi">3</span>   <span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">048000</span>
+<span class="mi">4</span>   <span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">033600</span>
+<span class="mi">5</span>   <span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">025536</span>
+<span class="mi">6</span>   <span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">020429</span>
+<span class="n">Name</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">2</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+</code></pre></div>
 
 
 <h4 id="for-d-1d-1-integer-differencing">For <span><span class="MathJax_Preview">d = 1</span><script type="math/tex">d = 1</script></span> (integer differencing)<a class="headerlink" href="#for-d-1d-1-integer-differencing" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><span class="n">differenced_value</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">99</span> <span class="o">*</span> <span class="o">-</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">98</span> <span class="o">*</span> <span class="mi">0</span> <span class="o">+</span> <span class="mi">97</span> <span class="o">*</span> <span class="mi">0</span> <span class="o">+</span> <span class="mi">96</span> <span class="o">*</span> <span class="mi">0</span> <span class="o">+</span> <span class="mi">95</span> <span class="o">*</span> <span class="mi">0</span> <span class="o">+</span> <span class="mi">94</span> <span class="o">*</span> <span class="mi">0</span>
-<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Differenced value: {differenced_value}&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">differenced_value</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">99</span> <span class="o">*</span> <span class="o">-</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">98</span> <span class="o">*</span> <span class="mi">0</span> <span class="o">+</span> <span class="mi">97</span> <span class="o">*</span> <span class="mi">0</span> <span class="o">+</span> <span class="mi">96</span> <span class="o">*</span> <span class="mi">0</span> <span class="o">+</span> <span class="mi">95</span> <span class="o">*</span> <span class="mi">0</span> <span class="o">+</span> <span class="mi">94</span> <span class="o">*</span> <span class="mi">0</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Differenced value: </span><span class="si">{</span><span class="n">differenced_value</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">df_wk</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-</pre></div>
+</code></pre></div>
 
-<div class="codehilite"><pre><span></span>Differenced value: 1
-
-
+<div class="codehilite"><pre><span></span><code><span class="n">Differenced</span> <span class="n">value</span><span class="p">:</span> <span class="mi">1</span>
 
 
 
-0    1.0
-1   -1.0
-2    0.0
-3    0.0
-4    0.0
-5    0.0
-6    0.0
-Name: 1.0, dtype: float64
-</pre></div>
+
+
+<span class="mi">0</span>    <span class="mi">1</span><span class="p">.</span><span class="mi">0</span>
+<span class="mi">1</span>   <span class="o">-</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span>
+<span class="mi">2</span>    <span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
+<span class="mi">3</span>    <span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
+<span class="mi">4</span>    <span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
+<span class="mi">5</span>    <span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
+<span class="mi">6</span>    <span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
+<span class="n">Name</span><span class="p">:</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+</code></pre></div>
 
 
 <h3 id="cumulative-sum-of-weights-behavior">Cumulative Sum of Weights Behavior<a class="headerlink" href="#cumulative-sum-of-weights-behavior" title="Permanent link">&para;</a></h3>
@@ -1975,12 +2090,12 @@ Name: 1.0, dtype: float64
 </ol>
 </li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="n">df_wk</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">df_wk</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Cumulative Sum of Lag weights ($\sum_0^k w_k$) for various differencing values (d)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Differencing value ($d$)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Cumulative Sum of Weights ($\sum_0^k w_k$)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Lag (k)&#39;</span><span class="p">);</span>
-</pre></div>
+</code></pre></div>
 
 <p><img alt="png" src="../gpu_fractional_differencing_files/gpu_fractional_differencing_35_0.png" /></p>
 <h2 id="fixed-window-fractional-differencing-cpu">Fixed Window Fractional Differencing (CPU)<a class="headerlink" href="#fixed-window-fractional-differencing-cpu" title="Permanent link">&para;</a></h2>
@@ -1992,7 +2107,7 @@ Name: 1.0, dtype: float64
 </ul>
 </li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">get_weights_floored</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">num_k</span><span class="p">,</span> <span class="n">floor</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_weights_floored</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">num_k</span><span class="p">,</span> <span class="n">floor</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Calculate weights ($w$) for each lag ($k$) through</span>
 <span class="sd">    $w_k = -w_{k-1} \frac{d - k + 1}{k}$ provided weight above a minimum value</span>
 <span class="sd">    (floor) for the weights to prevent computation of weights for the entire</span>
@@ -2024,13 +2139,13 @@ Name: 1.0, dtype: float64
 <span class="n">d</span> <span class="o">=</span> <span class="mf">0.5</span>
 <span class="n">num_k</span> <span class="o">=</span> <span class="mi">1000</span>
 <span class="n">weights</span> <span class="o">=</span> <span class="n">get_weights_floored</span><span class="p">(</span><span class="n">d</span><span class="o">=</span><span class="n">d</span><span class="p">,</span> <span class="n">num_k</span><span class="o">=</span><span class="n">num_k</span><span class="p">)</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">legend</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
 
 <span class="c1"># Plot</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Lag weights ($w_k$) for differencing value $d={d}$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Lag weights ($w_k$) for differencing value $d=</span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s1">$&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Weights (w)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Lag (k)&#39;</span><span class="p">);</span>
-</pre></div>
+</code></pre></div>
 
 <p><img alt="png" src="../gpu_fractional_differencing_files/gpu_fractional_differencing_38_0.png" /></p>
 <h3 id="fixed-window-fractional-differencing-function-cpu">Fixed Window Fractional Differencing Function (CPU)<a class="headerlink" href="#fixed-window-fractional-differencing-function-cpu" title="Permanent link">&para;</a></h3>
@@ -2041,7 +2156,7 @@ Name: 1.0, dtype: float64
 </ul>
 </li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">frac_diff</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">floor</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">frac_diff</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">floor</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Fractionally difference time series via CPU.</span>
 
 <span class="sd">    Args:</span>
@@ -2080,23 +2195,23 @@ Name: 1.0, dtype: float64
 <span class="c1"># End timer</span>
 <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Time {end-start} s&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Time </span><span class="si">{</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="si">}</span><span class="s1"> s&#39;</span><span class="p">)</span>
 
 <span class="c1"># Plot</span>
 <span class="n">df_raw_fd</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">);</span>
-</pre></div>
+</code></pre></div>
 
-<div class="codehilite"><pre><span></span>Time 0.5417799949645996 s
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">Time 0.5417799949645996 s</span>
+</code></pre></div>
 
 
 <p><img alt="png" src="../gpu_fractional_differencing_files/gpu_fractional_differencing_40_1.png" /></p>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">multiprocessing</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">multiprocessing</span>
 <span class="n">multiprocessing</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span>
-</pre></div>
+</code></pre></div>
 
-<div class="codehilite"><pre><span></span>4
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">4</span>
+</code></pre></div>
 
 
 <p>Existing CPU-based implementations are inefficient for running fractional differencing on many large-scale time-series. GPU-based implementations provide an avenue to adapt to this century’s big data requirements.</p>
@@ -2107,7 +2222,7 @@ Name: 1.0, dtype: float64
 </ul>
 </li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">moving_dot_product_kernel</span><span class="p">(</span><span class="n">in_data</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">weights</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">moving_dot_product_kernel</span><span class="p">(</span><span class="n">in_data</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">weights</span><span class="p">):</span>
     <span class="c1"># Set the first window_size-1 rows in each chunk to np.nan due </span>
     <span class="c1"># insufficient history</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">cuda</span><span class="o">.</span><span class="n">threadIdx</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">window_size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">cuda</span><span class="o">.</span><span class="n">blockDim</span><span class="o">.</span><span class="n">x</span><span class="p">):</span>
@@ -2134,7 +2249,7 @@ Name: 1.0, dtype: float64
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1"># Bring dataframe to GPU, reset index for GPU dot product kernel</span>
-    <span class="n">gdf_raw</span> <span class="o">=</span> <span class="n">cudf</span><span class="o">.</span><span class="n">from_pandas</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">gdf_raw</span> <span class="o">=</span> <span class="n">cudf</span><span class="o">.</span><span class="n">from_pandas</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">gdf_raw</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;in_data&#39;</span><span class="p">]</span>
 
     <span class="c1"># Get weights window</span>
@@ -2182,52 +2297,52 @@ Name: 1.0, dtype: float64
 <span class="c1"># End timer</span>
 <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Time {end-start} s&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Time </span><span class="si">{</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="si">}</span><span class="s1"> s&#39;</span><span class="p">)</span>
 
 <span class="c1"># Plot</span>
 <span class="n">df_raw_fd_from_gpu</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">);</span>
-</pre></div>
+</code></pre></div>
 
-<div class="codehilite"><pre><span></span>Time 0.27262187004089355 s
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">Time 0.27262187004089355 s</span>
+</code></pre></div>
 
 
 <p><img alt="png" src="../gpu_fractional_differencing_files/gpu_fractional_differencing_44_1.png" /></p>
 <h3 id="check-values">Check Values<a class="headerlink" href="#check-values" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><span class="c1"># Compare tail values</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Tail values check&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">df_raw_fd_from_gpu</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">df_raw_fd</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,))</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Compare tail values</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tail values check&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_raw_fd_from_gpu</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_raw_fd</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,))</span>
+</code></pre></div>
 
-<div class="codehilite"><pre><span></span>Tail values check
-[107.00340988 133.85520208 117.92878691 109.44132697  79.32562638]
-[107.00340988 133.85520208 117.92878691 109.44132697  79.32562638]
-</pre></div>
-
-
-<div class="codehilite"><pre><span></span><span class="c1"># Compare tail values</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Head values check&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">df_raw_fd_from_gpu</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">df_raw_fd</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,))</span>
-</pre></div>
-
-<div class="codehilite"><pre><span></span>Head values check
-[56.74989213 52.56766288 47.32421832 45.89772154 37.74401501]
-[56.74989213 52.56766288 47.32421832 45.89772154 37.74401501]
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">Tail values check</span>
+<span class="err">[107.00340988 133.85520208 117.92878691 109.44132697  79.32562638]</span>
+<span class="err">[107.00340988 133.85520208 117.92878691 109.44132697  79.32562638]</span>
+</code></pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="n">num_rows_true</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_raw_fd</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">==</span> <span class="n">df_raw_fd_from_gpu</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Compare tail values</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Head values check&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_raw_fd_from_gpu</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_raw_fd</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,))</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="err">Head values check</span>
+<span class="err">[56.74989213 52.56766288 47.32421832 45.89772154 37.74401501]</span>
+<span class="err">[56.74989213 52.56766288 47.32421832 45.89772154 37.74401501]</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="n">num_rows_true</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_raw_fd</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">==</span> <span class="n">df_raw_fd_from_gpu</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="n">total_rows</span> <span class="o">=</span> <span class="n">df_raw_fd</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Number of rows equal: {num_rows_true}&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Total number of rows: {total_rows}&#39;</span><span class="p">)</span>
-</pre></div>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Number of rows equal: </span><span class="si">{</span><span class="n">num_rows_true</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Total number of rows: </span><span class="si">{</span><span class="n">total_rows</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
 
-<div class="codehilite"><pre><span></span>Number of rows equal: 2093
-Total number of rows: 2093
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">Number of rows equal: 2093</span>
+<span class="err">Total number of rows: 2093</span>
+</code></pre></div>
 
 
 <h2 id="stationarity">Stationarity<a class="headerlink" href="#stationarity" title="Permanent link">&para;</a></h2>
@@ -2240,124 +2355,124 @@ Total number of rows: 2093
 </li>
 </ul>
 <h3 id="adf-test">ADF Test<a class="headerlink" href="#adf-test" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><span class="c1"># Import adf/kpss</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Import adf/kpss</span>
 <span class="kn">from</span> <span class="nn">statsmodels.tsa.stattools</span> <span class="kn">import</span> <span class="n">adfuller</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>  <span class="c1"># Ignore deprecations for cleaner output</span>
-</pre></div>
+</code></pre></div>
 
 <h4 id="adf-raw-data-d0">ADF: raw data (d=0)<a class="headerlink" href="#adf-raw-data-d0" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><span class="c1"># ADF on raw data</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># ADF on raw data</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Stationarity Test for SPX Absolute Levels (d=0)&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Stationarity Test for SPX Absolute Levels (d=0)&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">adfuller</span><span class="p">(</span><span class="n">df_raw</span><span class="p">[</span><span class="s1">&#39;SPX&#39;</span><span class="p">],</span> <span class="n">regression</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;t-stat </span><span class="se">\n\t</span><span class="s1">{result[0]:.2f}&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;p-value </span><span class="se">\n\t</span><span class="s1">{result[1]:.2f}&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Critical Values&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;t-stat </span><span class="se">\n\t</span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;p-value </span><span class="se">\n\t</span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Critical Values&#39;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">result</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">{key}: {value:.2f}&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\t</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">value</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
 <span class="c1"># test statistic &gt; test statistic (1%) AND p-value &gt; 0.01</span>
 <span class="c1"># Fail to reject the null hypothesis that there&#39;s unit root at the 1% significance level</span>
 <span class="c1"># ==&gt; Fail to reject H0 ==&gt; Unit root ==&gt; Non-stationary</span>
-</pre></div>
+</code></pre></div>
 
-<div class="codehilite"><pre><span></span>Stationarity Test for SPX Absolute Levels (d=0)
---------------------------------------------------
-t-stat 
-    -0.11
-p-value 
-    0.95
-Critical Values
-    1%: -3.43
-    5%: -2.86
-    10%: -2.57
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">Stationarity Test for SPX Absolute Levels (d=0)</span>
+<span class="err">--------------------------------------------------</span>
+<span class="err">t-stat </span>
+<span class="err">    -0.11</span>
+<span class="err">p-value </span>
+<span class="err">    0.95</span>
+<span class="err">Critical Values</span>
+<span class="err">    1%: -3.43</span>
+<span class="err">    5%: -2.86</span>
+<span class="err">    10%: -2.57</span>
+</code></pre></div>
 
 
 <h4 id="adf-daily-return-data-d1">ADF: daily return data (d=1)<a class="headerlink" href="#adf-daily-return-data-d1" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><span class="c1"># ADF on 1 day returns (d=1)</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># ADF on 1 day returns (d=1)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Stationarity Test for SPX Daily Returns (d=1)&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Stationarity Test for SPX Daily Returns (d=1)&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">adfuller</span><span class="p">(</span><span class="n">df_raw</span><span class="p">[</span><span class="s1">&#39;SPX&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">regression</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;t-stat </span><span class="se">\n\t</span><span class="s1">{result[0]:.2f}&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;p-value </span><span class="se">\n\t</span><span class="s1">{result[1]:.2f}&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Critical Values&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;t-stat </span><span class="se">\n\t</span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;p-value </span><span class="se">\n\t</span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Critical Values&#39;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">result</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">{key}: {value:.2f}&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\t</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">value</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
 <span class="c1"># test statistic &lt; test statistic (1%) AND p-value &lt; 0.01</span>
 <span class="c1"># Reject the null hypothesis that there&#39;s unit root at the 1% significance level</span>
 <span class="c1"># ==&gt; Reject H0 ==&gt; No unit root ==&gt; Stationary</span>
-</pre></div>
+</code></pre></div>
 
-<div class="codehilite"><pre><span></span>Stationarity Test for SPX Daily Returns (d=1)
---------------------------------------------------
-t-stat 
-    -11.12
-p-value 
-    0.00
-Critical Values
-    1%: -3.43
-    5%: -2.86
-    10%: -2.57
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">Stationarity Test for SPX Daily Returns (d=1)</span>
+<span class="err">--------------------------------------------------</span>
+<span class="err">t-stat </span>
+<span class="err">    -11.12</span>
+<span class="err">p-value </span>
+<span class="err">    0.00</span>
+<span class="err">Critical Values</span>
+<span class="err">    1%: -3.43</span>
+<span class="err">    5%: -2.86</span>
+<span class="err">    10%: -2.57</span>
+</code></pre></div>
 
 
 <h4 id="adf-fractionally-differenced-data-d05">ADF: fractionally differenced data (d=0.5)<a class="headerlink" href="#adf-fractionally-differenced-data-d05" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><span class="c1"># ADF on fractionally differenced values</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># ADF on fractionally differenced values</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Stationarity Test (ADF) for SPX Fractionally Differenced (d=0.5)&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Stationarity Test (ADF) for SPX Fractionally Differenced (d=0.5)&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
 
 
 <span class="n">df_raw_fd_from_gpu</span><span class="p">,</span> <span class="n">weights</span> <span class="o">=</span> <span class="n">frac_diff_gpu</span><span class="p">(</span><span class="n">df_raw</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">floor</span><span class="o">=</span><span class="mf">5e-5</span><span class="p">)</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">adfuller</span><span class="p">(</span><span class="n">df_raw_fd_from_gpu</span><span class="p">,</span> <span class="n">regression</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;t-stat </span><span class="se">\n\t</span><span class="s1">{result[0]:.2f}&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;p-value </span><span class="se">\n\t</span><span class="s1">{result[1]:.2f}&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Critical Values&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;t-stat </span><span class="se">\n\t</span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;p-value </span><span class="se">\n\t</span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Critical Values&#39;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">result</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">{key}: {value:.2f}&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\t</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">value</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
 <span class="c1"># test statistic &lt; test statistic (1%) AND p-value &lt; 0.01</span>
 <span class="c1"># Reject the null hypothesis that there&#39;s unit root at the 1% significance level</span>
 <span class="c1"># ==&gt; Reject H0 ==&gt; No unit root ==&gt; Stationary</span>
-</pre></div>
+</code></pre></div>
 
-<div class="codehilite"><pre><span></span>Stationarity Test (ADF) for SPX Fractionally Differenced (d=0.5)
---------------------------------------------------
-t-stat 
-    -3.86
-p-value 
-    0.00
-Critical Values
-    1%: -3.43
-    5%: -2.86
-    10%: -2.57
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">Stationarity Test (ADF) for SPX Fractionally Differenced (d=0.5)</span>
+<span class="err">--------------------------------------------------</span>
+<span class="err">t-stat </span>
+<span class="err">    -3.86</span>
+<span class="err">p-value </span>
+<span class="err">    0.00</span>
+<span class="err">Critical Values</span>
+<span class="err">    1%: -3.43</span>
+<span class="err">    5%: -2.86</span>
+<span class="err">    10%: -2.57</span>
+</code></pre></div>
 
 
 <h2 id="large-scale-rapid-fractional-differencing">Large-scale Rapid Fractional Differencing<a class="headerlink" href="#large-scale-rapid-fractional-differencing" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Here we test on a 100k, 1m, 10m and 100m datapoint dataframe.</li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="c1"># Create 100m data points</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create 100m data points</span>
 <span class="n">large_time_series_length</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">1e6</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">large_time_series_length</span><span class="p">)</span>
-</pre></div>
+<span class="nb">print</span><span class="p">(</span><span class="n">large_time_series_length</span><span class="p">)</span>
+</code></pre></div>
 
-<div class="codehilite"><pre><span></span>1000000
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">1000000</span>
+</code></pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="c1"># Start timer</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Start timer</span>
 <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 
 <span class="n">df_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">large_time_series_length</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">large_time_series_length</span><span class="p">))</span>
@@ -2367,22 +2482,22 @@ Critical Values
 <span class="c1"># End timer</span>
 <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Time {end-start} s&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Time </span><span class="si">{</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="si">}</span><span class="s1"> s&#39;</span><span class="p">)</span>
 
 <span class="c1"># Check</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;FD Shape&#39;</span><span class="p">,</span> <span class="n">df_raw_fd_from_gpu</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Correct Shape&#39;</span><span class="p">,</span> <span class="n">df_raw</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">weights</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Original Shape&#39;</span><span class="p">,</span> <span class="n">df_raw</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</pre></div>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;FD Shape&#39;</span><span class="p">,</span> <span class="n">df_raw_fd_from_gpu</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Correct Shape&#39;</span><span class="p">,</span> <span class="n">df_raw</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">weights</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Original Shape&#39;</span><span class="p">,</span> <span class="n">df_raw</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</code></pre></div>
 
-<div class="codehilite"><pre><span></span>Time 0.4671785831451416 s
-FD Shape 999682
-Correct Shape 999682
-Original Shape 1000000
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="err">Time 0.4671785831451416 s</span>
+<span class="err">FD Shape 999682</span>
+<span class="err">Correct Shape 999682</span>
+<span class="err">Original Shape 1000000</span>
+</code></pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="c1"># Start timer</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Start timer</span>
 <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 
 <span class="c1"># Create 100m data points</span>
@@ -2393,21 +2508,19 @@ Original Shape 1000000
 <span class="c1"># End timer</span>
 <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Time {end-start} s&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Time </span><span class="si">{</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="si">}</span><span class="s1"> s&#39;</span><span class="p">)</span>
 
 <span class="c1"># Check</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;FD Shape&#39;</span><span class="p">,</span> <span class="n">df_raw_fd_from_gpu</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Correct Shape&#39;</span><span class="p">,</span> <span class="n">df_raw</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">weights</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Original Shape&#39;</span><span class="p">,</span> <span class="n">df_raw</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</pre></div>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;FD Shape&#39;</span><span class="p">,</span> <span class="n">df_raw_fd_from_gpu</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Correct Shape&#39;</span><span class="p">,</span> <span class="n">df_raw</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">weights</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Original Shape&#39;</span><span class="p">,</span> <span class="n">df_raw</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</code></pre></div>
 
-<div class="codehilite"><pre><span></span>Time 128.29733324050903 s
-FD Shape 999682
-Correct Shape 999682
-Original Shape 1000000
-</pre></div>
-                
-                  
+<div class="codehilite"><pre><span></span><code><span class="err">Time 128.29733324050903 s</span>
+<span class="err">FD Shape 999682</span>
+<span class="err">Correct Shape 999682</span>
+<span class="err">Original Shape 1000000</span>
+</code></pre></div>
                 
               
               
@@ -2416,19 +2529,7 @@ Original Shape 1000000
 
   <h2 id="__comments">Comments</h2>
   <div id="disqus_thread"></div>
-  <script>
-    var disqus_config = function () {
-      this.page.url = "https://www.deeplearningwizard.com/machine_learning/gpu/gpu_fractional_differencing/";
-      this.page.identifier =
-        "machine_learning/gpu/gpu_fractional_differencing/";
-    };
-    (function() {
-      var d = document, s = d.createElement("script");
-      s.src = "//deep-learning-wizard.disqus.com/embed.js";
-      s.setAttribute("data-timestamp", +new Date());
-      (d.head || d.body).appendChild(s);
-    })();
-  </script>
+  <script>var disqus_config=function(){this.page.url="https://www.deeplearningwizard.com/machine_learning/gpu/gpu_fractional_differencing/",this.page.identifier="machine_learning/gpu/gpu_fractional_differencing/"};!function(){var e=document,i=e.createElement("script");i.src="//deep-learning-wizard.disqus.com/embed.js",i.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(i)}()</script>
 
               
             </article>
@@ -2437,49 +2538,74 @@ Original Shape 1000000
       </main>
       
         
+
+<!-- Application footer -->
 <footer class="md-footer">
+
+  <!-- Link to previous and/or next page -->
   
     <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
+      <nav
+        class="md-footer-nav__inner md-grid"
+        aria-label="Footer"
+      >
+
+        <!-- Link to previous page -->
         
-          <a href="machine_learning/gpu/rapids_cudf/" title="GPU DataFrames" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+          <a
+            href="../rapids_cudf/"
+            title="GPU DataFrames"
+            class="md-footer-nav__link md-footer-nav__link--prev"
+            rel="prev"
+          >
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
             </div>
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
                 GPU DataFrames
-              </span>
+              </div>
             </div>
           </a>
         
+
+        <!-- Link to next page -->
         
-          <a href="programming/intro/" title="Introduction" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
+          <a
+            href="../../../programming/intro/"
+            title="Introduction"
+            class="md-footer-nav__link md-footer-nav__link--next"
+            rel="next"
+          >
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
                 Introduction
-              </span>
+              </div>
             </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>
             </div>
           </a>
         
       </nav>
     </div>
   
+
+  <!-- Further information -->
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
+
+      <!-- Copyright and theme information -->
       <div class="md-footer-copyright">
         
           <div class="md-footer-copyright__highlight">
-            Copyright &copy; 2019 Deep Learning Wizard
+            Copyright &copy; 2020 Deep Learning Wizard by Ritchie Ng
           </div>
         
         proudly an
@@ -2487,37 +2613,53 @@ Original Shape 1000000
         <a href="https://aws.amazon.com/activate/">Amazon AWS Activate Programme</a> by
         <a href="https://www.ritchieng.com/">
           Ritchie Ng</a>
+        </a>
       </div>
+
+      <!-- Social links -->
       
-        
   <div class="md-footer-social">
-    <link rel="stylesheet" href="../../../assets/fonts/font-awesome.css">
     
-      <a href="https://github.com/ritchieng" class="md-footer-social__link fa fa-github"></a>
+      
+      
+      <a href="https://github.com/ritchieng" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
     
-      <a href="https://www.facebook.com/DeepLearningWizard/" class="md-footer-social__link fa fa-facebook"></a>
+      
+      
+      <a href="https://www.facebook.com/DeepLearningWizard/" target="_blank" rel="noopener" title="www.facebook.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+      </a>
     
-      <a href="https://www.linkedin.com/company/deeplearningwizard/" class="md-footer-social__link fa fa-linkedin"></a>
+      
+      
+      <a href="https://www.linkedin.com/company/deeplearningwizard/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+      </a>
     
   </div>
 
-      
     </div>
   </div>
 </footer>
       
     </div>
     
-      <script src="../../../assets/javascripts/application.583bbe55.js"></script>
+      <script src="../../../assets/javascripts/vendor.36cbf620.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.00c583dd.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      <script>
+        app = initialize({
+          base: "../../..",
+          features: ["tabs", "instant"],
+          search: Object.assign({
+            worker: "../../../assets/javascripts/worker/search.7f7c8775.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-      
-    
-    
-      
-        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-122083328-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
       
     
   </body>

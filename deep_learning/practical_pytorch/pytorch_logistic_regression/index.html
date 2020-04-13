@@ -1,16 +1,14 @@
 
 
 
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="no-js">
   <head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
-      <meta http-equiv="x-ua-compatible" content="ie=edge">
       
-        <meta name="description" content="Learn deep learning and deep reinforcement learning theories and code easily and quickly. Used by thousands of students and professionals from top tech companies and research institutions.">
+        <meta name="description" content="Learn deep learning and deep reinforcement learning math and code easily and quickly. Used by thousands of students and professionals from top tech companies and research institutions.">
       
       
         <link rel="canonical" href="https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_logistic_regression/">
@@ -18,27 +16,8 @@
       
         <meta name="author" content="Ritchie Ng">
       
-      
-        <meta name="lang:clipboard.copy" content="Copy to clipboard">
-      
-        <meta name="lang:clipboard.copied" content="Copied to clipboard">
-      
-        <meta name="lang:search.language" content="en">
-      
-        <meta name="lang:search.pipeline.stopwords" content="True">
-      
-        <meta name="lang:search.pipeline.trimmer" content="True">
-      
-        <meta name="lang:search.result.none" content="No matching documents">
-      
-        <meta name="lang:search.result.one" content="1 matching document">
-      
-        <meta name="lang:search.result.other" content="# matching documents">
-      
-        <meta name="lang:search.tokenizer" content="[\s\-]+">
-      
       <link rel="shortcut icon" href="../../../docs/assets/favicon.ico">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.0">
     
     
       
@@ -46,95 +25,103 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/application.451f80e5.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.89dc9fe3.min.css">
       
-        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.22915126.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ecd4686e.min.css">
       
       
         
         
-        <meta name="theme-color" content="#009688">
+        <meta name="theme-color" content="#546e7a">
       
     
-    
-      <script src="../../../assets/javascripts/modernizr.1aa3b519.js"></script>
     
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
-        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
       
     
-    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+        
+<link rel="preconnect dns-prefetch" href="https://www.google-analytics.com">
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-122083328-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview")})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
     
     
   </head>
   
-    
-    
-    <body dir="ltr" data-md-color-primary="teal" data-md-color-accent="teal">
   
-    <svg class="md-svg">
-      <defs>
-        
-        
-      </defs>
-    </svg>
+    
+    
+    <body dir="ltr" data-md-color-primary="blue-grey" data-md-color-accent="indigo">
+  
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
-    
-      <a href="../../../#logistic-regression-with-pytorch" tabindex="1" class="md-skip">
-        Skip to content
-      </a>
-    
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#logistic-regression-with-pytorch" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
     
       <header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid">
-    <div class="md-flex">
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://www.deeplearningwizard.com/" title="Deep Learning Wizard" class="md-header-nav__button md-logo">
-          
-            <i class="md-icon">whatshot</i>
-          
-        </a>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
-      </div>
-      <div class="md-flex__cell md-flex__cell--stretch">
-        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://www.deeplearningwizard.com/" title="Deep Learning Wizard" class="md-header-nav__button md-logo" aria-label="Deep Learning Wizard">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.35,10.03C18.67,6.59 15.64,4 12,4C9.11,4 6.6,5.64 5.35,8.03C2.34,8.36 0,10.9 0,14A6,6 0 0,0 6,20H19A5,5 0 0,0 24,15C24,12.36 21.95,10.22 19.35,10.03Z" /></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Deep Learning Wizard
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
             
-              <span class="md-header-nav__topic">
-                Deep Learning Wizard
-              </span>
-              <span class="md-header-nav__topic">
-                Logistic Regression
-              </span>
+              Logistic Regression
             
-          
+          </span>
         </div>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        
-          
-            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
-            
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+      </label>
+      
 <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
-      <label class="md-icon md-search__icon" for="__search"></label>
-      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
-        &#xE5CD;
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
       </button>
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result">
+        <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Type to start searching
           </div>
@@ -144,31 +131,42 @@
     </div>
   </div>
 </div>
-          
+    
+    
+      <div class="md-header-nav__source">
         
+<a href="https://github.com/ritchieng/deep-learning-wizard/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ritchieng/deep-learning-wizard
+  </div>
+</a>
       </div>
-      
-    </div>
+    
   </nav>
 </header>
     
-    <div class="md-container">
+    <div class="md-container" data-md-component="container">
       
         
       
       
         
+          
 
   
 
-<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
         
   <li class="md-tabs__item">
     
-      <a href="../../.." title="Home" class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         Home
       </a>
     
@@ -188,7 +186,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../intro/" title="Deep Learning Tutorials (CPU/GPU)" class="md-tabs__link md-tabs__link--active">
+        <a href="../../intro/" class="md-tabs__link md-tabs__link--active">
           Deep Learning Tutorials (CPU/GPU)
         </a>
       
@@ -201,7 +199,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../../machine_learning/intro/" title="Machine Learning Tutorials (CPU/GPU)" class="md-tabs__link">
+        <a href="../../../machine_learning/intro/" class="md-tabs__link">
           Machine Learning Tutorials (CPU/GPU)
         </a>
       
@@ -214,7 +212,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../../programming/intro/" title="Programming Tutorials" class="md-tabs__link">
+        <a href="../../../programming/intro/" class="md-tabs__link">
           Programming Tutorials
         </a>
       
@@ -227,7 +225,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../../database/intro/" title="Scalable Database Tutorials" class="md-tabs__link">
+        <a href="../../../database/intro/" class="md-tabs__link">
           Scalable Database Tutorials
         </a>
       
@@ -240,7 +238,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../../news/news/" title="News" class="md-tabs__link">
+        <a href="../../../news/news/" class="md-tabs__link">
           News
         </a>
       
@@ -251,23 +249,38 @@
     </ul>
   </div>
 </nav>
+        
       
-      <main class="md-main">
-        <div class="md-main__inner md-grid" data-md-component="container">
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
           
             
               <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="https://www.deeplearningwizard.com/" title="Deep Learning Wizard" class="md-nav__button md-logo">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://www.deeplearningwizard.com/" title="Deep Learning Wizard" class="md-nav__button md-logo" aria-label="Deep Learning Wizard">
       
-        <i class="md-icon">whatshot</i>
-      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.35,10.03C18.67,6.59 15.64,4 12,4C9.11,4 6.6,5.64 5.35,8.03C2.34,8.36 0,10.9 0,14A6,6 0 0,0 6,20H19A5,5 0 0,0 24,15C24,12.36 21.95,10.22 19.35,10.03Z" /></svg>
+
     </a>
     Deep Learning Wizard
   </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/ritchieng/deep-learning-wizard/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ritchieng/deep-learning-wizard
+  </div>
+</a>
+    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -340,13 +353,19 @@
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
     
     <label class="md-nav__link" for="nav-6">
       Deep Learning Tutorials (CPU/GPU)
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Deep Learning Tutorials (CPU/GPU)" data-md-level="1">
       <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Deep Learning Tutorials (CPU/GPU)
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -421,13 +440,16 @@
 
   <li class="md-nav__item md-nav__item--active">
     
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
       
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
         Logistic Regression
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,9H17V7H3V9M3,13H17V11H3V13M3,17H17V15H3V17M19,17H21V15H19V17M19,7V9H21V7H19M19,13H21V11H19V13Z" /></svg>
+        </span>
       </label>
     
     <a href="./" title="Logistic Regression" class="md-nav__link md-nav__link--active">
@@ -435,47 +457,52 @@
     </a>
     
       
-<nav class="md-nav md-nav--secondary">
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
     
   
   
-    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#about-logistic-regression" title="About Logistic Regression" class="md-nav__link">
+  <a href="#about-logistic-regression" class="md-nav__link">
     About Logistic Regression
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="About Logistic Regression">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#logistic-regression-basics" title="Logistic Regression Basics" class="md-nav__link">
+  <a href="#logistic-regression-basics" class="md-nav__link">
     Logistic Regression Basics
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="Logistic Regression Basics">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#classification-algorithm" title="Classification algorithm" class="md-nav__link">
+  <a href="#classification-algorithm" class="md-nav__link">
     Classification algorithm
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#basic-comparison" title="Basic Comparison" class="md-nav__link">
+  <a href="#basic-comparison" class="md-nav__link">
     Basic Comparison
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#inputoutput-comparison" title="Input/Output Comparison" class="md-nav__link">
+  <a href="#inputoutput-comparison" class="md-nav__link">
     Input/Output Comparison
   </a>
   
@@ -487,57 +514,57 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#problems-of-linear-regression" title="Problems of Linear Regression" class="md-nav__link">
+  <a href="#problems-of-linear-regression" class="md-nav__link">
     Problems of Linear Regression
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#logistic-regression-in-depth" title="Logistic Regression In-Depth" class="md-nav__link">
+  <a href="#logistic-regression-in-depth" class="md-nav__link">
     Logistic Regression In-Depth
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="Logistic Regression In-Depth">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#predicting-probability" title="Predicting Probability" class="md-nav__link">
+  <a href="#predicting-probability" class="md-nav__link">
     Predicting Probability
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#logistic-function-g" title="Logistic Function g()" class="md-nav__link">
+  <a href="#logistic-function-g" class="md-nav__link">
     Logistic Function g()
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#softmax-function-g" title="Softmax Function g()" class="md-nav__link">
+  <a href="#softmax-function-g" class="md-nav__link">
     Softmax Function g()
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#cross-entropy-function-d-for-2-class" title="Cross Entropy Function D() for 2 Class" class="md-nav__link">
+  <a href="#cross-entropy-function-d-for-2-class" class="md-nav__link">
     Cross Entropy Function D() for 2 Class
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#cross-entropy-function-d-for-more-than-2-class" title="Cross Entropy Function D() for More Than 2 Class" class="md-nav__link">
+  <a href="#cross-entropy-function-d-for-more-than-2-class" class="md-nav__link">
     Cross Entropy Function D() for More Than 2 Class
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#cross-entropy-loss-over-n-samples" title="Cross Entropy Loss over N samples" class="md-nav__link">
+  <a href="#cross-entropy-loss-over-n-samples" class="md-nav__link">
     Cross Entropy Loss over N samples
   </a>
   
@@ -554,30 +581,30 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#building-a-logistic-regression-model-with-pytorch" title="Building a Logistic Regression Model with PyTorch" class="md-nav__link">
+  <a href="#building-a-logistic-regression-model-with-pytorch" class="md-nav__link">
     Building a Logistic Regression Model with PyTorch
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="Building a Logistic Regression Model with PyTorch">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#steps" title="Steps" class="md-nav__link">
+  <a href="#steps" class="md-nav__link">
     Steps
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-1a-loading-mnist-train-dataset" title="Step 1a: Loading MNIST Train Dataset" class="md-nav__link">
+  <a href="#step-1a-loading-mnist-train-dataset" class="md-nav__link">
     Step 1a: Loading MNIST Train Dataset
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="Step 1a: Loading MNIST Train Dataset">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#displaying-mnist" title="Displaying MNIST" class="md-nav__link">
+  <a href="#displaying-mnist" class="md-nav__link">
     Displaying MNIST
   </a>
   
@@ -589,64 +616,64 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-1b-loading-mnist-test-dataset" title="Step 1b: Loading MNIST Test Dataset" class="md-nav__link">
+  <a href="#step-1b-loading-mnist-test-dataset" class="md-nav__link">
     Step 1b: Loading MNIST Test Dataset
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-2-make-dataset-iterable" title="Step 2: Make Dataset Iterable" class="md-nav__link">
+  <a href="#step-2-make-dataset-iterable" class="md-nav__link">
     Step 2: Make Dataset Iterable
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-3-building-model" title="Step 3: Building Model" class="md-nav__link">
+  <a href="#step-3-building-model" class="md-nav__link">
     Step 3: Building Model
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-4-instantiate-model-class" title="Step 4: Instantiate Model Class" class="md-nav__link">
+  <a href="#step-4-instantiate-model-class" class="md-nav__link">
     Step 4: Instantiate Model Class
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-5-instantiate-loss-class" title="Step 5: Instantiate Loss Class" class="md-nav__link">
+  <a href="#step-5-instantiate-loss-class" class="md-nav__link">
     Step 5: Instantiate Loss Class
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-6-instantiate-optimizer-class" title="Step 6: Instantiate Optimizer Class" class="md-nav__link">
+  <a href="#step-6-instantiate-optimizer-class" class="md-nav__link">
     Step 6: Instantiate Optimizer Class
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-7-train-model" title="Step 7: Train Model" class="md-nav__link">
+  <a href="#step-7-train-model" class="md-nav__link">
     Step 7: Train Model
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="Step 7: Train Model">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#break-down-accuracy-calculation" title="Break Down Accuracy Calculation" class="md-nav__link">
+  <a href="#break-down-accuracy-calculation" class="md-nav__link">
     Break Down Accuracy Calculation
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#saving-model" title="Saving Model" class="md-nav__link">
+  <a href="#saving-model" class="md-nav__link">
     Saving Model
   </a>
   
@@ -663,35 +690,25 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#building-a-logistic-regression-model-with-pytorch-gpu" title="Building a Logistic Regression Model with PyTorch (GPU)" class="md-nav__link">
+  <a href="#building-a-logistic-regression-model-with-pytorch-gpu" class="md-nav__link">
     Building a Logistic Regression Model with PyTorch (GPU)
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#summary" title="Summary" class="md-nav__link">
+  <a href="#summary" class="md-nav__link">
     Summary
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#citation" title="Citation" class="md-nav__link">
+  <a href="#citation" class="md-nav__link">
     Citation
   </a>
   
 </li>
-      
-      
-      
-      
-      
-        <li class="md-nav__item">
-          <a href="#__comments" title="Comments" class="md-nav__link md-nav__link--active">
-            Comments
-          </a>
-        </li>
       
     </ul>
   
@@ -766,6 +783,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../pytorch_fc_overcomplete_ae/" title="Fully-connected Overcomplete Autoencoder (AE)" class="md-nav__link">
+      Fully-connected Overcomplete Autoencoder (AE)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../boosting_models_pytorch/derivative_gradient_jacobian/" title="Derivative, Gradient and Jacobian" class="md-nav__link">
       Derivative, Gradient and Jacobian
     </a>
@@ -778,8 +807,32 @@
 
 
   <li class="md-nav__item">
-    <a href="../../boosting_models_pytorch/forwardpropagation_backpropagation_gradientdescent/" title="Forward- and Backward-propagation and Gradient Descent" class="md-nav__link">
-      Forward- and Backward-propagation and Gradient Descent
+    <a href="../../boosting_models_pytorch/forwardpropagation_backpropagation_gradientdescent/" title="Forward- and Backward-propagation and Gradient Descent (From Scratch FNN Regression)" class="md-nav__link">
+      Forward- and Backward-propagation and Gradient Descent (From Scratch FNN Regression)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../fromscratch/fromscratch_logistic_regression/" title="From Scratch Logistic Regression Classification" class="md-nav__link">
+      From Scratch Logistic Regression Classification
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../fromscratch/fromscratch_cnn/" title="From Scratch CNN Classification" class="md-nav__link">
+      From Scratch CNN Classification
     </a>
   </li>
 
@@ -862,6 +915,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../production_pytorch/speed_optimization_basics_numba/" title="Speed Optimization Basics Numba" class="md-nav__link">
+      Speed Optimization Basics Numba
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../readings/" title="Additional Readings" class="md-nav__link">
       Additional Readings
     </a>
@@ -880,13 +945,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
     
     <label class="md-nav__link" for="nav-7">
       Machine Learning Tutorials (CPU/GPU)
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Machine Learning Tutorials (CPU/GPU)" data-md-level="1">
       <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Machine Learning Tutorials (CPU/GPU)
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -940,13 +1011,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
     
     <label class="md-nav__link" for="nav-8">
       Programming Tutorials
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Programming Tutorials" data-md-level="1">
       <label class="md-nav__title" for="nav-8">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Programming Tutorials
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1012,6 +1089,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../programming/electron/electron/" title="Electron" class="md-nav__link">
+      Electron
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1024,13 +1113,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
     
     <label class="md-nav__link" for="nav-9">
       Scalable Database Tutorials
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Scalable Database Tutorials" data-md-level="1">
       <label class="md-nav__title" for="nav-9">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Scalable Database Tutorials
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1072,13 +1167,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
     
     <label class="md-nav__link" for="nav-10">
       News
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="News" data-md-level="1">
       <label class="md-nav__title" for="nav-10">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         News
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1092,6 +1193,18 @@
   <li class="md-nav__item">
     <a href="../../../news/news/" title="Welcome" class="md-nav__link">
       Welcome
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../news/dbs_gpu_rapids_nvidia_ensemble_frac_diff/" title="Fractional Differencing with GPU (GFD), DBS and NVIDIA, September 2019" class="md-nav__link">
+      Fractional Differencing with GPU (GFD), DBS and NVIDIA, September 2019
     </a>
   </li>
 
@@ -1244,47 +1357,52 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
-<nav class="md-nav md-nav--secondary">
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
     
   
   
-    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#about-logistic-regression" title="About Logistic Regression" class="md-nav__link">
+  <a href="#about-logistic-regression" class="md-nav__link">
     About Logistic Regression
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="About Logistic Regression">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#logistic-regression-basics" title="Logistic Regression Basics" class="md-nav__link">
+  <a href="#logistic-regression-basics" class="md-nav__link">
     Logistic Regression Basics
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="Logistic Regression Basics">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#classification-algorithm" title="Classification algorithm" class="md-nav__link">
+  <a href="#classification-algorithm" class="md-nav__link">
     Classification algorithm
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#basic-comparison" title="Basic Comparison" class="md-nav__link">
+  <a href="#basic-comparison" class="md-nav__link">
     Basic Comparison
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#inputoutput-comparison" title="Input/Output Comparison" class="md-nav__link">
+  <a href="#inputoutput-comparison" class="md-nav__link">
     Input/Output Comparison
   </a>
   
@@ -1296,57 +1414,57 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#problems-of-linear-regression" title="Problems of Linear Regression" class="md-nav__link">
+  <a href="#problems-of-linear-regression" class="md-nav__link">
     Problems of Linear Regression
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#logistic-regression-in-depth" title="Logistic Regression In-Depth" class="md-nav__link">
+  <a href="#logistic-regression-in-depth" class="md-nav__link">
     Logistic Regression In-Depth
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="Logistic Regression In-Depth">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#predicting-probability" title="Predicting Probability" class="md-nav__link">
+  <a href="#predicting-probability" class="md-nav__link">
     Predicting Probability
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#logistic-function-g" title="Logistic Function g()" class="md-nav__link">
+  <a href="#logistic-function-g" class="md-nav__link">
     Logistic Function g()
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#softmax-function-g" title="Softmax Function g()" class="md-nav__link">
+  <a href="#softmax-function-g" class="md-nav__link">
     Softmax Function g()
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#cross-entropy-function-d-for-2-class" title="Cross Entropy Function D() for 2 Class" class="md-nav__link">
+  <a href="#cross-entropy-function-d-for-2-class" class="md-nav__link">
     Cross Entropy Function D() for 2 Class
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#cross-entropy-function-d-for-more-than-2-class" title="Cross Entropy Function D() for More Than 2 Class" class="md-nav__link">
+  <a href="#cross-entropy-function-d-for-more-than-2-class" class="md-nav__link">
     Cross Entropy Function D() for More Than 2 Class
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#cross-entropy-loss-over-n-samples" title="Cross Entropy Loss over N samples" class="md-nav__link">
+  <a href="#cross-entropy-loss-over-n-samples" class="md-nav__link">
     Cross Entropy Loss over N samples
   </a>
   
@@ -1363,30 +1481,30 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#building-a-logistic-regression-model-with-pytorch" title="Building a Logistic Regression Model with PyTorch" class="md-nav__link">
+  <a href="#building-a-logistic-regression-model-with-pytorch" class="md-nav__link">
     Building a Logistic Regression Model with PyTorch
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="Building a Logistic Regression Model with PyTorch">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#steps" title="Steps" class="md-nav__link">
+  <a href="#steps" class="md-nav__link">
     Steps
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-1a-loading-mnist-train-dataset" title="Step 1a: Loading MNIST Train Dataset" class="md-nav__link">
+  <a href="#step-1a-loading-mnist-train-dataset" class="md-nav__link">
     Step 1a: Loading MNIST Train Dataset
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="Step 1a: Loading MNIST Train Dataset">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#displaying-mnist" title="Displaying MNIST" class="md-nav__link">
+  <a href="#displaying-mnist" class="md-nav__link">
     Displaying MNIST
   </a>
   
@@ -1398,64 +1516,64 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-1b-loading-mnist-test-dataset" title="Step 1b: Loading MNIST Test Dataset" class="md-nav__link">
+  <a href="#step-1b-loading-mnist-test-dataset" class="md-nav__link">
     Step 1b: Loading MNIST Test Dataset
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-2-make-dataset-iterable" title="Step 2: Make Dataset Iterable" class="md-nav__link">
+  <a href="#step-2-make-dataset-iterable" class="md-nav__link">
     Step 2: Make Dataset Iterable
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-3-building-model" title="Step 3: Building Model" class="md-nav__link">
+  <a href="#step-3-building-model" class="md-nav__link">
     Step 3: Building Model
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-4-instantiate-model-class" title="Step 4: Instantiate Model Class" class="md-nav__link">
+  <a href="#step-4-instantiate-model-class" class="md-nav__link">
     Step 4: Instantiate Model Class
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-5-instantiate-loss-class" title="Step 5: Instantiate Loss Class" class="md-nav__link">
+  <a href="#step-5-instantiate-loss-class" class="md-nav__link">
     Step 5: Instantiate Loss Class
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-6-instantiate-optimizer-class" title="Step 6: Instantiate Optimizer Class" class="md-nav__link">
+  <a href="#step-6-instantiate-optimizer-class" class="md-nav__link">
     Step 6: Instantiate Optimizer Class
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-7-train-model" title="Step 7: Train Model" class="md-nav__link">
+  <a href="#step-7-train-model" class="md-nav__link">
     Step 7: Train Model
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="Step 7: Train Model">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#break-down-accuracy-calculation" title="Break Down Accuracy Calculation" class="md-nav__link">
+  <a href="#break-down-accuracy-calculation" class="md-nav__link">
     Break Down Accuracy Calculation
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#saving-model" title="Saving Model" class="md-nav__link">
+  <a href="#saving-model" class="md-nav__link">
     Saving Model
   </a>
   
@@ -1472,35 +1590,25 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#building-a-logistic-regression-model-with-pytorch-gpu" title="Building a Logistic Regression Model with PyTorch (GPU)" class="md-nav__link">
+  <a href="#building-a-logistic-regression-model-with-pytorch-gpu" class="md-nav__link">
     Building a Logistic Regression Model with PyTorch (GPU)
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#summary" title="Summary" class="md-nav__link">
+  <a href="#summary" class="md-nav__link">
     Summary
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#citation" title="Citation" class="md-nav__link">
+  <a href="#citation" class="md-nav__link">
     Citation
   </a>
   
 </li>
-      
-      
-      
-      
-      
-        <li class="md-nav__item">
-          <a href="#__comments" title="Comments" class="md-nav__link md-nav__link--active">
-            Comments
-          </a>
-        </li>
       
     </ul>
   
@@ -1513,6 +1621,13 @@
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
+                
+                  <a href="https://github.com/ritchieng/deep-learning-wizard/edit/master/docs/deep_learning/practical_pytorch/pytorch_logistic_regression.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" /></svg>
+                  </a>
+                
+                
+                  
                 
                 
                 <h1 id="logistic-regression-with-pytorch">Logistic Regression with PyTorch<a class="headerlink" href="#logistic-regression-with-pytorch" title="Permanent link">&para;</a></h1>
@@ -1552,7 +1667,7 @@
 <li>Output: 4</li>
 </ul>
 </li>
-<li>Trying to model the relationship <code class="codehilite">y = 2x</code></li>
+<li>Trying to model the relationship <code>y = 2x</code></li>
 </ul>
 </li>
 <li><strong>Logistic regression: Spam</strong><ul>
@@ -1584,8 +1699,8 @@
 <div class="admonition bug">
 <p class="admonition-title">Linear Regression Problem 1: Fever value can go negative (below 0) and positive (above 1)</p>
 <p>If you simply tried to do a simple linear regression on this fever problem, you would realize an apparent error. Fever can go beyond 1 and below 0 which does not make sense in this context.
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">100</span><span class="p">,]</span>
@@ -1598,14 +1713,14 @@
 
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div></p>
+</code></pre></div></p>
 </div>
 <p><img alt="png" src="../pytorch_logistic_regression_files/pytorch_logistic_regression_5_1.png" /></p>
 <div class="admonition bug">
 <p class="admonition-title">Linear Regression Problem 2: Fever points are not predicted with the presence of outliers</p>
 <p>Previously at least some points could be properly predicted. However, with the presence of outliers, everything goes wonky for simple linear regression, having no predictive capacity at all.
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">300</span><span class="p">]</span>
 <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
@@ -1617,7 +1732,7 @@
 
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div></p>
+</code></pre></div></p>
 </div>
 <p><img alt="png" src="../pytorch_logistic_regression_files/pytorch_logistic_regression_5_0.png" /></p>
 <h3 id="logistic-regression-in-depth">Logistic Regression In-Depth<a class="headerlink" href="#logistic-regression-in-depth" title="Permanent link">&para;</a></h3>
@@ -1709,24 +1824,24 @@
 <div class="admonition note">
 <p class="admonition-title">Numerical example of bigger or small loss</p>
 <p>You get a small error of 1e-5 if your label = 0 and your S is closer to 0 (very correct prediction).
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
-<span class="k">print</span><span class="p">(</span><span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mf">0.00001</span><span class="p">))</span>
-</pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">math</span>
+<span class="nb">print</span><span class="p">(</span><span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mf">0.00001</span><span class="p">))</span>
+</code></pre></div></p>
 <p>You get a large error of 11.51 if your label is 0 and S is near to 1 (very wrong prediction).
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mf">0.99999</span><span class="p">))</span> 
-</pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mf">0.99999</span><span class="p">))</span> 
+</code></pre></div></p>
 <p>You get a small error of -1e-5 if your label is 1 and S is near 1 (very correct prediction).
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">0.99999</span><span class="p">))</span>
-</pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">0.99999</span><span class="p">))</span>
+</code></pre></div></p>
 <p>You get a big error of -11.51 if your label is 1 and S is near 0 (very wrong prediction).
-<div class="codehilite"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">0.00001</span><span class="p">))</span>
-</pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">0.00001</span><span class="p">))</span>
+</code></pre></div></p>
 </div>
-<div class="codehilite"><pre><span></span><span class="mf">1.0000050000287824e-05</span>
+<div class="highlight"><pre><span></span><code><span class="mf">1.0000050000287824e-05</span>
 <span class="mf">11.51292546497478</span>
 <span class="mf">1.0000050000287824e-05</span>
 <span class="mf">11.512925464970229</span>
-</pre></div>
+</code></pre></div>
 
 <h4 id="cross-entropy-function-d-for-more-than-2-class">Cross Entropy Function D() for More Than 2 Class<a class="headerlink" href="#cross-entropy-function-d-for-more-than-2-class" title="Permanent link">&para;</a></h4>
 <ul>
@@ -1765,31 +1880,31 @@
 <div class="admonition note">
 <p class="admonition-title">Inspect length of training dataset</p>
 <p>You can easily load MNIST dataset with PyTorch. Here we inspect the training set, where our algorithms will learn from, and you will discover it is made up of 60,000 images.
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="kn">as</span> <span class="nn">nn</span>
-<span class="kn">import</span> <span class="nn">torchvision.transforms</span> <span class="kn">as</span> <span class="nn">transforms</span>
-<span class="kn">import</span> <span class="nn">torchvision.datasets</span> <span class="kn">as</span> <span class="nn">dsets</span>
-</pre></div></p>
-<div class="codehilite"><pre><span></span><span class="n">train_dataset</span> <span class="o">=</span> <span class="n">dsets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;./data&#39;</span><span class="p">,</span> 
-                            <span class="n">train</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> 
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torchvision.transforms</span> <span class="k">as</span> <span class="nn">transforms</span>
+<span class="kn">import</span> <span class="nn">torchvision.datasets</span> <span class="k">as</span> <span class="nn">dsets</span>
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="n">train_dataset</span> <span class="o">=</span> <span class="n">dsets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;./data&#39;</span><span class="p">,</span> 
+                            <span class="n">train</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
                             <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
-                            <span class="n">download</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-</pre></div>
+                            <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
 
-<div class="codehilite"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">)</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="nb">len</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">)</span>
+</code></pre></div>
 
 </div>
-<div class="codehilite"><pre><span></span><span class="mi">60000</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="mi">60000</span>
+</code></pre></div>
 
 <div class="admonition note">
 <p class="admonition-title">Inspecting a single image</p>
 <p>So this is how a single image is represented in numbers. It's actually a 28 pixel x 28 pixel image which is why you would end up with this 28x28 matrix of numbers.
-<div class="codehilite"><pre><span></span><span class="n">train_dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="n">train_dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div></p>
 </div>
-<div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">tensor</span><span class="p">([[[</span> <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">tensor</span><span class="p">([[[</span> <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>
             <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>
             <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>
             <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">],</span>
@@ -1902,96 +2017,96 @@
             <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>
             <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">]]]),</span>
  <span class="n">tensor</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
-</pre></div>
+</code></pre></div>
 
 <div class="admonition note">
 <p class="admonition-title">Inspecting a single data point in the training dataset</p>
 <p>When you load MNIST dataset, each data point is actually a tuple containing the image matrix and the label.</p>
-<div class="codehilite"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="nb">type</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</code></pre></div>
 
 </div>
-<div class="codehilite"><pre><span></span><span class="nb">tuple</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="nb">tuple</span>
+</code></pre></div>
 
 <div class="admonition note">
 <p class="admonition-title">Inspecting training dataset first element of tuple</p>
 <p>This means to access the image, you need to access the first element in the tuple.</p>
-<div class="codehilite"><pre><span></span><span class="c1"># Input Matrix</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Input Matrix</span>
 <span class="n">train_dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
-</pre></div>
+</code></pre></div>
 
 </div>
-<div class="codehilite"><pre><span></span><span class="c1"># A 28x28 sized image of a digit</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># A 28x28 sized image of a digit</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">])</span>
-</pre></div>
+</code></pre></div>
 
 <div class="admonition note">
 <p class="admonition-title">Inspecting training dataset second element of tuple</p>
 <p>The second element actually represents the image's label. Meaning if the second element says 5, it means the 28x28 matrix of numbers represent a digit 5.</p>
-<div class="codehilite"><pre><span></span><span class="c1"># Label</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Label</span>
 <span class="n">train_dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
-</pre></div>
+</code></pre></div>
 
 </div>
-<div class="codehilite"><pre><span></span><span class="n">tensor</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">tensor</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div>
 
 <h4 id="displaying-mnist">Displaying MNIST<a class="headerlink" href="#displaying-mnist" title="Permanent link">&para;</a></h4>
 <div class="admonition note">
 <p class="admonition-title">Verifying shape of MNIST image</p>
 <p>As mentioned, a single MNIST image is of the shape 28 pixel x 28 pixel.</p>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>  
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-</pre></div>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</code></pre></div>
 
-<div class="codehilite"><pre><span></span><span class="n">train_dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">train_dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span>
+</code></pre></div>
 
 </div>
-<div class="codehilite"><pre><span></span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
+</code></pre></div>
 
 <div class="admonition note">
 <p class="admonition-title">Plot image of MNIST image</p>
-<div class="codehilite"><pre><span></span><span class="n">show_img</span> <span class="o">=</span> <span class="n">train_dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">show_img</span> <span class="o">=</span> <span class="n">train_dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
+</code></pre></div>
 
-<div class="codehilite"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">show_img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">show_img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+</code></pre></div>
 
 </div>
 <p><img alt="png" src="../pytorch_logistic_regression_files/pytorch_logistic_regression_24_1.png" /></p>
 <div class="admonition note">
 <p class="admonition-title">Second element of tuple shows label</p>
 <p>As you would expect, the label is 5.
-<div class="codehilite"><pre><span></span><span class="c1"># Label</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Label</span>
 <span class="n">train_dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
-</pre></div></p>
+</code></pre></div></p>
 </div>
-<div class="codehilite"><pre><span></span><span class="n">tensor</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">tensor</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div>
 
 <div class="admonition note">
 <p class="admonition-title">Plot second image of MNIST image</p>
-<div class="codehilite"><pre><span></span><span class="n">show_img</span> <span class="o">=</span> <span class="n">train_dataset</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">show_img</span> <span class="o">=</span> <span class="n">train_dataset</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
+</code></pre></div>
 
-<div class="codehilite"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">show_img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">show_img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+</code></pre></div>
 
 </div>
 <p><img alt="png" src="../pytorch_logistic_regression_files/pytorch_logistic_regression_27_1.png" /></p>
 <div class="admonition note">
 <p class="admonition-title">Second element of tuple shows label</p>
 <p>We should see 0 here as the label.
-<div class="codehilite"><pre><span></span><span class="c1"># Label</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Label</span>
 <span class="n">train_dataset</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
-</pre></div></p>
+</code></pre></div></p>
 </div>
-<div class="codehilite"><pre><span></span><span class="n">tensor</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">tensor</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
 
 <h3 id="step-1b-loading-mnist-test-dataset">Step 1b: Loading MNIST Test Dataset<a class="headerlink" href="#step-1b-loading-mnist-test-dataset" title="Permanent link">&para;</a></h3>
 <ul>
@@ -2001,53 +2116,53 @@
 <div class="admonition note">
 <p class="admonition-title">Load test dataset</p>
 <p>Compared to the 60k images in the training set, the testing set where the model will not be trained on has 10k images to check for its out-of-sample performance.
-<div class="codehilite"><pre><span></span><span class="n">test_dataset</span> <span class="o">=</span> <span class="n">dsets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;./data&#39;</span><span class="p">,</span> 
-                           <span class="n">train</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> 
+<div class="highlight"><pre><span></span><code><span class="n">test_dataset</span> <span class="o">=</span> <span class="n">dsets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;./data&#39;</span><span class="p">,</span> 
+                           <span class="n">train</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
                            <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">())</span>
-</pre></div></p>
-<div class="codehilite"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">)</span>
-</pre></div>
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="nb">len</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">)</span>
+</code></pre></div>
 
 </div>
-<div class="codehilite"><pre><span></span><span class="mi">10000</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="mi">10000</span>
+</code></pre></div>
 
 <div class="admonition note">
 <p class="admonition-title">Test dataset elements</p>
 <p>Exactly like the training set, the testing set has 10k tuples containing the 28x28 matrices and their respective labels.
-<div class="codehilite"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="nb">type</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</code></pre></div></p>
 </div>
-<div class="codehilite"><pre><span></span><span class="nb">tuple</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="nb">tuple</span>
+</code></pre></div>
 
 <div class="admonition note">
 <p class="admonition-title">Test dataset first element in tuple</p>
 <p>This contains the image matrix, similar to the training set.
-<div class="codehilite"><pre><span></span><span class="c1"># Image matrix</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Image matrix</span>
 <span class="n">test_dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
-</pre></div></p>
+</code></pre></div></p>
 </div>
-<div class="codehilite"><pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">])</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">])</span>
+</code></pre></div>
 
 <div class="admonition note">
 <p class="admonition-title">Plot image sample from test dataset</p>
-<div class="codehilite"><pre><span></span><span class="n">show_img</span> <span class="o">=</span> <span class="n">test_dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">show_img</span> <span class="o">=</span> <span class="n">test_dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">show_img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
 </div>
 <p><img alt="png" src="../pytorch_logistic_regression_files/pytorch_logistic_regression_34_1.png" /></p>
 <div class="admonition note">
 <p class="admonition-title">Test dataset second element in tuple</p>
-<div class="codehilite"><pre><span></span><span class="c1"># Label</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Label</span>
 <span class="n">test_dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
-</pre></div>
+</code></pre></div>
 
 </div>
-<div class="codehilite"><pre><span></span><span class="n">tensor</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">tensor</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+</code></pre></div>
 
 <h3 id="step-2-make-dataset-iterable">Step 2: Make Dataset Iterable<a class="headerlink" href="#step-2-make-dataset-iterable" title="Permanent link">&para;</a></h3>
 <ul>
@@ -2070,92 +2185,92 @@
 <div class="admonition note">
 <p class="admonition-title">Recap training dataset</p>
 <p>Remember training dataset has 60k images and testing dataset has 10k images.
-<div class="codehilite"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">)</span>
-</pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="nb">len</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">)</span>
+</code></pre></div></p>
 </div>
-<div class="codehilite"><pre><span></span><span class="mi">60000</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="mi">60000</span>
+</code></pre></div>
 
 <div class="admonition note">
 <p class="admonition-title">Defining epochs</p>
 <p>When the model goes through the whole 60k images once, learning how to classify 0-9, it's consider 1 epoch. </p>
 <p>However, there's a concept of batch size where it means the model would look at 100 images before updating the model's weights, thereby learning. When the model updates its weights (parameters) after looking at all the images, this is considered 1 iteration.</p>
-<div class="codehilite"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">100</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">100</span>
+</code></pre></div>
 
 <p>We arbitrarily set 3000 iterations here which means the model would update 3000 times.
-<div class="codehilite"><pre><span></span><span class="n">n_iters</span> <span class="o">=</span> <span class="mi">3000</span>
-</pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="n">n_iters</span> <span class="o">=</span> <span class="mi">3000</span>
+</code></pre></div></p>
 <p>One epoch consists of 60,000 / 100 = 600 iterations. Because we would like to go through 3000 iterations, this implies we would have 3000 / 600 = 5 epochs as each epoch has 600 iterations. </p>
-<div class="codehilite"><pre><span></span><span class="n">num_epochs</span> <span class="o">=</span> <span class="n">n_iters</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">)</span> <span class="o">/</span> <span class="n">batch_size</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">num_epochs</span> <span class="o">=</span> <span class="n">n_iters</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">)</span> <span class="o">/</span> <span class="n">batch_size</span><span class="p">)</span>
 <span class="n">num_epochs</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">)</span>
 <span class="n">num_epochs</span>
-</pre></div>
+</code></pre></div>
 
 </div>
-<div class="codehilite"><pre><span></span><span class="mi">5</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="mi">5</span>
+</code></pre></div>
 
 <div class="admonition note">
 <p class="admonition-title">Create Iterable Object: Training Dataset</p>
-<div class="codehilite"><pre><span></span><span class="n">train_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">train_dataset</span><span class="p">,</span> 
+<div class="highlight"><pre><span></span><code><span class="n">train_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">train_dataset</span><span class="p">,</span> 
                                            <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> 
-                                           <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-</pre></div>
+                                           <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
 
 </div>
 <div class="admonition note">
 <p class="admonition-title">Check Iterability</p>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">collections</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">collections</span>
 <span class="nb">isinstance</span><span class="p">(</span><span class="n">train_loader</span><span class="p">,</span> <span class="n">collections</span><span class="o">.</span><span class="n">Iterable</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
 </div>
-<div class="codehilite"><pre><span></span><span class="bp">True</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="kc">True</span>
+</code></pre></div>
 
 <div class="admonition note">
 <p class="admonition-title">Create Iterable Object: Testing Dataset</p>
-<div class="codehilite"><pre><span></span><span class="c1"># Iterable object</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Iterable object</span>
 <span class="n">test_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">test_dataset</span><span class="p">,</span> 
                                           <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> 
-                                          <span class="n">shuffle</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-</pre></div>
+                                          <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
 
 </div>
 <div class="admonition note">
 <p class="admonition-title">Check iterability of testing dataset</p>
-<div class="codehilite"><pre><span></span><span class="nb">isinstance</span><span class="p">(</span><span class="n">test_loader</span><span class="p">,</span> <span class="n">collections</span><span class="o">.</span><span class="n">Iterable</span><span class="p">)</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="nb">isinstance</span><span class="p">(</span><span class="n">test_loader</span><span class="p">,</span> <span class="n">collections</span><span class="o">.</span><span class="n">Iterable</span><span class="p">)</span>
+</code></pre></div>
 
 </div>
-<div class="codehilite"><pre><span></span><span class="bp">True</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="kc">True</span>
+</code></pre></div>
 
 <div class="admonition note">
 <p class="admonition-title">Iterate through dataset</p>
-<p>This is just a simplified example of what we're doing above where we're creating an iterable object <code class="codehilite">lst</code> to loop through so we can access all the images <code class="codehilite">img_1</code> and <code class="codehilite">img_2</code>.</p>
-<p>Above, the equivalent of <code class="codehilite">lst</code> is <code class="codehilite">train_loader</code> and <code class="codehilite">test_loader</code>.</p>
-<div class="codehilite"><pre><span></span><span class="n">img_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">))</span>
+<p>This is just a simplified example of what we're doing above where we're creating an iterable object <code>lst</code> to loop through so we can access all the images <code>img_1</code> and <code>img_2</code>.</p>
+<p>Above, the equivalent of <code>lst</code> is <code>train_loader</code> and <code>test_loader</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">img_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">))</span>
 <span class="n">img_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">))</span>
 <span class="n">lst</span> <span class="o">=</span> <span class="p">[</span><span class="n">img_1</span><span class="p">,</span> <span class="n">img_2</span><span class="p">]</span>
-</pre></div>
+</code></pre></div>
 
-<div class="codehilite"><pre><span></span><span class="c1"># Need to iterate</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Need to iterate</span>
 <span class="c1"># Think of numbers as the images</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-</pre></div>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</code></pre></div>
 
 </div>
-<div class="codehilite"><pre><span></span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
 <span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
 <h3 id="step-3-building-model">Step 3: Building Model<a class="headerlink" href="#step-3-building-model" title="Permanent link">&para;</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Create model class</p>
-<div class="codehilite"><pre><span></span><span class="c1"># Same as linear regression! </span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Same as linear regression! </span>
 <span class="k">class</span> <span class="nc">LogisticRegressionModel</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">LogisticRegressionModel</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -2164,7 +2279,7 @@
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
         <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">out</span>
-</pre></div>
+</code></pre></div>
 
 </div>
 <h3 id="step-4-instantiate-model-class">Step 4: Instantiate Model Class<a class="headerlink" href="#step-4-instantiate-model-class" title="Permanent link">&para;</a></h3>
@@ -2182,22 +2297,22 @@
 <div class="admonition note">
 <p class="admonition-title">Check size of dataset</p>
 <p>This should be 28x28.
-<div class="codehilite"><pre><span></span><span class="c1"># Size of images</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Size of images</span>
 <span class="n">train_dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
-</pre></div></p>
+</code></pre></div></p>
 </div>
-<div class="codehilite"><pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">])</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">])</span>
+</code></pre></div>
 
 <div class="admonition note">
 <p class="admonition-title">Instantiate model class based on input and out dimensions</p>
 <p>As we're trying to classify digits 0-9 a total of 10 classes, our output dimension is 10. </p>
 <p>And we're feeding the model with 28x28 images, hence our input dimension is 28x28.
-<div class="codehilite"><pre><span></span><span class="n">input_dim</span> <span class="o">=</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span>
+<div class="highlight"><pre><span></span><code><span class="n">input_dim</span> <span class="o">=</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span>
 <span class="n">output_dim</span> <span class="o">=</span> <span class="mi">10</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">LogisticRegressionModel</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">)</span>
-</pre></div></p>
+</code></pre></div></p>
 </div>
 <h3 id="step-5-instantiate-loss-class">Step 5: Instantiate Loss Class<a class="headerlink" href="#step-5-instantiate-loss-class" title="Permanent link">&para;</a></h3>
 <ul>
@@ -2209,8 +2324,8 @@
 <div class="admonition note">
 <p class="admonition-title">Create Cross Entry Loss Class</p>
 <p>Unlike linear regression, we do not use MSE here, we need Cross Entry Loss to calculate our loss before we backpropagate and update our parameters.</p>
-<div class="codehilite"><pre><span></span><span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>  
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>  
+</code></pre></div>
 
 </div>
 <div class="admonition alert">
@@ -2232,7 +2347,7 @@
 </ul>
 </li>
 <li>Even simplier equation<ul>
-<li><code class="codehilite">parameters = parameters - learning_rate * parameters_gradients</code></li>
+<li><code>parameters = parameters - learning_rate * parameters_gradients</code></li>
 <li><strong>At every iteration, we update our model's parameters</strong></li>
 </ul>
 </li>
@@ -2240,34 +2355,34 @@
 <div class="admonition note">
 <p class="admonition-title">Create optimizer</p>
 <p>Similar to what we've covered above, this calculates the parameters' gradients and update them subsequently.
-<div class="codehilite"><pre><span></span><span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.001</span>
+<div class="highlight"><pre><span></span><code><span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.001</span>
 
 <span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">)</span>  
-</pre></div></p>
+</code></pre></div></p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Parameters In-Depth</p>
 <p>You'll realize we have 2 sets of parameters, 10x784 which is A and 10x1 which is b in the <span><span class="MathJax_Preview">y = AX + b</span><script type="math/tex">y = AX + b</script></span> equation where X is our input of size 784.</p>
 <p>We'll go into details subsequently how these parameters interact with our input to produce our 10x1 output. </p>
-<div class="codehilite"><pre><span></span><span class="c1"># Type of parameter object</span>
-<span class="k">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Type of parameter object</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span>
 
 <span class="c1"># Length of parameters</span>
-<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())))</span>
 
 <span class="c1"># FC 1 Parameters </span>
-<span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
 
 <span class="c1"># FC 1 Bias Parameters</span>
-<span class="k">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
-</pre></div>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+</code></pre></div>
 
 </div>
-<div class="codehilite"><pre><span></span><span class="o">&lt;</span><span class="n">generator</span> <span class="nb">object</span> <span class="n">Module</span><span class="o">.</span><span class="n">parameters</span> <span class="n">at</span> <span class="mh">0x7ff7c884f830</span><span class="o">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="n">generator</span> <span class="nb">object</span> <span class="n">Module</span><span class="o">.</span><span class="n">parameters</span> <span class="n">at</span> <span class="mh">0x7ff7c884f830</span><span class="o">&gt;</span>
 <span class="mi">2</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">784</span><span class="p">])</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">10</span><span class="p">])</span>
-</pre></div>
+</code></pre></div>
 
 <div class="admonition note">
 <p class="admonition-title">Quick Matrix Product Review</p>
@@ -2304,14 +2419,14 @@
 <li>Get loss</li>
 <li>Get gradients w.r.t. parameters</li>
 <li>Update parameters using gradients<ul>
-<li><code class="codehilite">parameters = parameters - learning_rate * parameters_gradients</code></li>
+<li><code>parameters = parameters - learning_rate * parameters_gradients</code></li>
 </ul>
 </li>
 <li>REPEAT</li>
 </ol>
 </li>
 </ul>
-<div class="codehilite"><pre><span></span><span class="nb">iter</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight"><pre><span></span><code><span class="nb">iter</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">train_loader</span><span class="p">):</span>
         <span class="c1"># Load images as Variable</span>
@@ -2359,36 +2474,36 @@
             <span class="n">accuracy</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">correct</span> <span class="o">/</span> <span class="n">total</span>
 
             <span class="c1"># Print Loss</span>
-            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Iteration: {}. Loss: {}. Accuracy: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">accuracy</span><span class="p">))</span>
-</pre></div>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Iteration: </span><span class="si">{}</span><span class="s1">. Loss: </span><span class="si">{}</span><span class="s1">. Accuracy: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">accuracy</span><span class="p">))</span>
+</code></pre></div>
 
 </div>
-<div class="codehilite"><pre><span></span><span class="n">Iteration</span><span class="p">:</span> <span class="mf">500.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">1.8513233661651611</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mi">70</span>
+<div class="highlight"><pre><span></span><code><span class="n">Iteration</span><span class="p">:</span> <span class="mf">500.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">1.8513233661651611</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mi">70</span>
 <span class="n">Iteration</span><span class="p">:</span> <span class="mf">1000.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">1.5732524394989014</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mi">77</span>
 <span class="n">Iteration</span><span class="p">:</span> <span class="mf">1500.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">1.3840199708938599</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mi">79</span>
 <span class="n">Iteration</span><span class="p">:</span> <span class="mf">2000.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">1.1711134910583496</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mi">81</span>
 <span class="n">Iteration</span><span class="p">:</span> <span class="mf">2500.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">1.1094708442687988</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mi">82</span>
 <span class="n">Iteration</span><span class="p">:</span> <span class="mf">3000.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">1.002761721611023</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mi">82</span>
-</pre></div>
+</code></pre></div>
 
 <h4 id="break-down-accuracy-calculation">Break Down Accuracy Calculation<a class="headerlink" href="#break-down-accuracy-calculation" title="Permanent link">&para;</a></h4>
 <div class="admonition note">
 <p class="admonition-title">Printing outputs of our model</p>
 <p>As we've trained our model, we can extract the accuracy calculation portion to understand what's happening without re-training the model.</p>
 <p>This would print out the output of the model's predictions on your notebook.</p>
-<div class="codehilite"><pre><span></span><span class="n">iter_test</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight"><pre><span></span><code><span class="n">iter_test</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">test_loader</span><span class="p">:</span>
     <span class="n">iter_test</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">)</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">()</span>
     <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">iter_test</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;OUTPUTS&#39;</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">outputs</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;OUTPUTS&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">outputs</span><span class="p">)</span>
     <span class="n">_</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
 </div>
-<div class="codehilite"><pre><span></span><span class="n">OUTPUTS</span>
+<div class="highlight"><pre><span></span><code><span class="n">OUTPUTS</span>
 <span class="n">tensor</span><span class="p">([[</span><span class="o">-</span><span class="mf">0.4181</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0784</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4840</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.0985</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2394</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1801</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.1639</span><span class="p">,</span>
           <span class="mf">2.9352</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1552</span><span class="p">,</span>  <span class="mf">0.8852</span><span class="p">],</span>
         <span class="p">[</span> <span class="mf">0.5117</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1099</span><span class="p">,</span>  <span class="mf">1.5295</span><span class="p">,</span>  <span class="mf">0.8863</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.8813</span><span class="p">,</span>  <span class="mf">0.5967</span><span class="p">,</span>  <span class="mf">1.3632</span><span class="p">,</span>
@@ -2589,25 +2704,25 @@
          <span class="o">-</span><span class="mf">0.9946</span><span class="p">,</span>  <span class="mf">0.2010</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.7731</span><span class="p">],</span>
         <span class="p">[</span><span class="o">-</span><span class="mf">1.1263</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.7484</span><span class="p">,</span>  <span class="mf">0.0041</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5439</span><span class="p">,</span>  <span class="mf">1.7242</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.9475</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3835</span><span class="p">,</span>
           <span class="mf">0.8452</span><span class="p">,</span>  <span class="mf">0.3077</span><span class="p">,</span>  <span class="mf">2.2689</span><span class="p">]])</span>
-</pre></div>
+</code></pre></div>
 
 <div class="admonition note">
 <p class="admonition-title">Printing output size</p>
 <p>This produces a 100x10 matrix because each iteration has a batch size of 100 and each prediction across the 10 classes, with the largest number indicating the likely number it is predicting.
-<div class="codehilite"><pre><span></span><span class="n">iter_test</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight"><pre><span></span><code><span class="n">iter_test</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">test_loader</span><span class="p">:</span>
     <span class="n">iter_test</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">)</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">()</span>
     <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">iter_test</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;OUTPUTS&#39;</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;OUTPUTS&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
     <span class="n">_</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-</pre></div></p>
+</code></pre></div></p>
 </div>
-<div class="codehilite"><pre><span></span><span class="n">OUTPUTS</span>
+<div class="highlight"><pre><span></span><code><span class="n">OUTPUTS</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
-</pre></div>
+</code></pre></div>
 
 <div class="admonition note">
 <p class="admonition-title">Printing one output</p>
@@ -2616,82 +2731,82 @@
 <br /> number 1: -1.0784
 <br />...
 <br /> number 7: 2.9352
-<div class="codehilite"><pre><span></span><span class="n">iter_test</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight"><pre><span></span><code><span class="n">iter_test</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">test_loader</span><span class="p">:</span>
     <span class="n">iter_test</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">)</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">()</span>
     <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">iter_test</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;OUTPUTS&#39;</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;OUTPUTS&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:])</span>
     <span class="n">_</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-</pre></div></p>
+</code></pre></div></p>
 </div>
-<div class="codehilite"><pre><span></span>OUTPUTS
+<div class="highlight"><pre><span></span><code>OUTPUTS
 tensor([-0.4181, -1.0784, -0.4840, -0.0985, -0.2394, -0.1801, -1.1639,
          2.9352, -0.1552,  0.8852])
-</pre></div>
+</code></pre></div>
 
 <div class="admonition note">
 <p class="admonition-title">Printing prediction output</p>
 <p>Because our output is of size 100 (our batch size), our prediction size would also of the size 100.</p>
-<div class="codehilite"><pre><span></span><span class="n">iter_test</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight"><pre><span></span><code><span class="n">iter_test</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">test_loader</span><span class="p">:</span>
     <span class="n">iter_test</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">)</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">()</span>
     <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
     <span class="n">_</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">iter_test</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;PREDICTION&#39;</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">predicted</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
-</pre></div>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;PREDICTION&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">predicted</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+</code></pre></div>
 
 </div>
-<div class="codehilite"><pre><span></span><span class="n">PREDICTION</span>
+<div class="highlight"><pre><span></span><code><span class="n">PREDICTION</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">100</span><span class="p">])</span>
-</pre></div>
+</code></pre></div>
 
 <div class="admonition note">
 <p class="admonition-title">Print prediction value</p>
 <p>We are printing our prediction which as verified above, should be digit 7.</p>
-<div class="codehilite"><pre><span></span><span class="n">iter_test</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight"><pre><span></span><code><span class="n">iter_test</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">test_loader</span><span class="p">:</span>
     <span class="n">iter_test</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">)</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">()</span>
     <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
     <span class="n">_</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">iter_test</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;PREDICTION&#39;</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">predicted</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</pre></div>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;PREDICTION&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">predicted</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</code></pre></div>
 
 </div>
-<div class="codehilite"><pre><span></span><span class="n">PREDICTION</span>
+<div class="highlight"><pre><span></span><code><span class="n">PREDICTION</span>
 <span class="n">tensor</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
 <div class="admonition note">
 <p class="admonition-title">Print prediction, label and label size</p>
 <p>We are trying to show what we are predicting and the actual values. In this case, we're predicting the right value 7!</p>
-<div class="codehilite"><pre><span></span><span class="n">iter_test</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight"><pre><span></span><code><span class="n">iter_test</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">test_loader</span><span class="p">:</span>
     <span class="n">iter_test</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">)</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">()</span>
     <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
     <span class="n">_</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">iter_test</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;PREDICTION&#39;</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">predicted</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;PREDICTION&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">predicted</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;LABEL SIZE&#39;</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">labels</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;LABEL SIZE&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">labels</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
 
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;LABEL FOR IMAGE 0&#39;</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">labels</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</pre></div>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;LABEL FOR IMAGE 0&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">labels</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</code></pre></div>
 
 </div>
-<div class="codehilite"><pre><span></span><span class="n">PREDICTION</span>
+<div class="highlight"><pre><span></span><code><span class="n">PREDICTION</span>
 <span class="n">tensor</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
 
 <span class="n">LABEL</span> <span class="n">SIZE</span>
@@ -2699,12 +2814,12 @@ tensor([-0.4181, -1.0784, -0.4840, -0.0985, -0.2394, -0.1801, -1.1639,
 
 <span class="n">LABEL</span> <span class="n">FOR</span> <span class="n">IMAGE</span> <span class="mi">0</span>
 <span class="n">tensor</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
 <div class="admonition note">
 <p class="admonition-title">Print second prediction and ground truth</p>
 <p>Again, the prediction is correct. Naturally, as our model is quite competent in this simple task.</p>
-<div class="codehilite"><pre><span></span><span class="n">iter_test</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight"><pre><span></span><code><span class="n">iter_test</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">test_loader</span><span class="p">:</span>
     <span class="n">iter_test</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">)</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">()</span>
@@ -2712,18 +2827,18 @@ tensor([-0.4181, -1.0784, -0.4840, -0.0985, -0.2394, -0.1801, -1.1639,
     <span class="n">_</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">iter_test</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;PREDICTION&#39;</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">predicted</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;PREDICTION&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">predicted</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;LABEL SIZE&#39;</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">labels</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;LABEL SIZE&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">labels</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
 
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;LABEL FOR IMAGE 1&#39;</span><span class="p">)</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">labels</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-</pre></div>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;LABEL FOR IMAGE 1&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">labels</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</code></pre></div>
 
 </div>
-<div class="codehilite"><pre><span></span><span class="n">PREDICTION</span>
+<div class="highlight"><pre><span></span><code><span class="n">PREDICTION</span>
 <span class="n">tensor</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="n">LABEL</span> <span class="n">SIZE</span>
@@ -2731,13 +2846,13 @@ tensor([-0.4181, -1.0784, -0.4840, -0.0985, -0.2394, -0.1801, -1.1639,
 
 <span class="n">LABEL</span> <span class="n">FOR</span> <span class="n">IMAGE</span> <span class="mi">1</span>
 <span class="n">tensor</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
 <div class="admonition note">
 <p class="admonition-title">Print accuracy</p>
 <p>Now we know what each object represents, we can understand how we arrived at our accuracy numbers.</p>
-<p>One last thing to note is that <code class="codehilite">correct.item()</code> has this syntax is because <code class="codehilite">correct</code> is a PyTorch tensor and to get the value to compute with <code class="codehilite">total</code> which is an integer, we need to do this.
-<div class="codehilite"><pre><span></span><span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span>
+<p>One last thing to note is that <code>correct.item()</code> has this syntax is because <code>correct</code> is a PyTorch tensor and to get the value to compute with <code>total</code> which is an integer, we need to do this.
+<div class="highlight"><pre><span></span><code><span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">iter_test</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">test_loader</span><span class="p">:</span>
@@ -2754,72 +2869,72 @@ tensor([-0.4181, -1.0784, -0.4840, -0.0985, -0.2394, -0.1801, -1.1639,
 
 <span class="n">accuracy</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">correct</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="o">/</span> <span class="n">total</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">accuracy</span><span class="p">)</span>
-</pre></div></p>
+<span class="nb">print</span><span class="p">(</span><span class="n">accuracy</span><span class="p">)</span>
+</code></pre></div></p>
 </div>
-<div class="codehilite"><pre><span></span><span class="mf">82.94</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="mf">82.94</span>
+</code></pre></div>
 
 <div class="admonition note">
 <p class="admonition-title">Explanation of Python's .sum() function</p>
-<p>Python's .sum() function allows you to do a comparison between two matrices and sum the ones that return <code class="codehilite">True</code> or in our case, those predictions that match actual labels (correct predictions).</p>
-<div class="codehilite"><pre><span></span><span class="c1"># Explaining .sum() python built-in function</span>
+<p>Python's .sum() function allows you to do a comparison between two matrices and sum the ones that return <code>True</code> or in our case, those predictions that match actual labels (correct predictions).</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Explaining .sum() python built-in function</span>
 <span class="c1"># correct += (predicted == labels).sum()</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">10</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">10</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">((</span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
-</pre></div>
+<span class="nb">print</span><span class="p">((</span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</code></pre></div>
 
 </div>
-<div class="codehilite"><pre><span></span><span class="c1"># matrix a</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># matrix a</span>
 <span class="p">[</span><span class="mf">1.</span> <span class="mf">1.</span> <span class="mf">1.</span> <span class="mf">1.</span> <span class="mf">1.</span> <span class="mf">1.</span> <span class="mf">1.</span> <span class="mf">1.</span> <span class="mf">1.</span> <span class="mf">1.</span><span class="p">]</span>
 
 <span class="c1"># matrix b</span>
 <span class="p">[</span><span class="mf">1.</span> <span class="mf">1.</span> <span class="mf">1.</span> <span class="mf">1.</span> <span class="mf">1.</span> <span class="mf">1.</span> <span class="mf">1.</span> <span class="mf">1.</span> <span class="mf">1.</span> <span class="mf">1.</span><span class="p">]</span>
 
 <span class="c1"># boolean array</span>
-<span class="p">[</span> <span class="bp">True</span>  <span class="bp">True</span>  <span class="bp">True</span>  <span class="bp">True</span>  <span class="bp">True</span>  <span class="bp">True</span>  <span class="bp">True</span>  <span class="bp">True</span>  <span class="bp">True</span>  <span class="bp">True</span><span class="p">]</span>
+<span class="p">[</span> <span class="kc">True</span>  <span class="kc">True</span>  <span class="kc">True</span>  <span class="kc">True</span>  <span class="kc">True</span>  <span class="kc">True</span>  <span class="kc">True</span>  <span class="kc">True</span>  <span class="kc">True</span>  <span class="kc">True</span><span class="p">]</span>
 
 <span class="c1"># number of elementswhere a matches b</span>
 <span class="mi">10</span>
-</pre></div>
+</code></pre></div>
 
 <h4 id="saving-model">Saving Model<a class="headerlink" href="#saving-model" title="Permanent link">&para;</a></h4>
 <div class="admonition note">
 <p class="admonition-title">Saving PyTorch model</p>
-<p>This is how you save your model. Feel free to just change <code class="codehilite">save_model = True</code> to save your model
-<div class="codehilite"><pre><span></span><span class="n">save_model</span> <span class="o">=</span> <span class="bp">False</span>
-<span class="k">if</span> <span class="n">save_model</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
+<p>This is how you save your model. Feel free to just change <code>save_model = True</code> to save your model
+<div class="highlight"><pre><span></span><code><span class="n">save_model</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="k">if</span> <span class="n">save_model</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
     <span class="c1"># Saves only parameters</span>
     <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="s1">&#39;awesome_model.pkl&#39;</span><span class="p">)</span>
-</pre></div></p>
+</code></pre></div></p>
 </div>
 <h2 id="building-a-logistic-regression-model-with-pytorch-gpu">Building a Logistic Regression Model with PyTorch (GPU)<a class="headerlink" href="#building-a-logistic-regression-model-with-pytorch-gpu" title="Permanent link">&para;</a></h2>
 <div class="admonition note">
 <p class="admonition-title">CPU version</p>
 <p>The usual 7-step process, getting repetitive by now which we like. </p>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="kn">as</span> <span class="nn">nn</span>
-<span class="kn">import</span> <span class="nn">torchvision.transforms</span> <span class="kn">as</span> <span class="nn">transforms</span>
-<span class="kn">import</span> <span class="nn">torchvision.datasets</span> <span class="kn">as</span> <span class="nn">dsets</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torchvision.transforms</span> <span class="k">as</span> <span class="nn">transforms</span>
+<span class="kn">import</span> <span class="nn">torchvision.datasets</span> <span class="k">as</span> <span class="nn">dsets</span>
 
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">STEP 1: LOADING DATASET</span>
 <span class="sd">&#39;&#39;&#39;</span>
 
 <span class="n">train_dataset</span> <span class="o">=</span> <span class="n">dsets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;./data&#39;</span><span class="p">,</span> 
-                            <span class="n">train</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> 
+                            <span class="n">train</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
                             <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
-                            <span class="n">download</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+                            <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">test_dataset</span> <span class="o">=</span> <span class="n">dsets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;./data&#39;</span><span class="p">,</span> 
-                           <span class="n">train</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> 
+                           <span class="n">train</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
                            <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">())</span>
 
 <span class="sd">&#39;&#39;&#39;</span>
@@ -2833,11 +2948,11 @@ tensor([-0.4181, -1.0784, -0.4840, -0.0985, -0.2394, -0.1801, -1.1639,
 
 <span class="n">train_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">train_dataset</span><span class="p">,</span> 
                                            <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> 
-                                           <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+                                           <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">test_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">test_dataset</span><span class="p">,</span> 
                                           <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> 
-                                          <span class="n">shuffle</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+                                          <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">STEP 3: CREATE MODEL CLASS</span>
@@ -2925,40 +3040,40 @@ tensor([-0.4181, -1.0784, -0.4840, -0.0985, -0.2394, -0.1801, -1.1639,
             <span class="n">accuracy</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">correct</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="o">/</span> <span class="n">total</span>
 
             <span class="c1"># Print Loss</span>
-            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Iteration: {}. Loss: {}. Accuracy: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">accuracy</span><span class="p">))</span>
-</pre></div>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Iteration: </span><span class="si">{}</span><span class="s1">. Loss: </span><span class="si">{}</span><span class="s1">. Accuracy: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">accuracy</span><span class="p">))</span>
+</code></pre></div>
 
 </div>
-<div class="codehilite"><pre><span></span><span class="n">Iteration</span><span class="p">:</span> <span class="mf">500.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">1.876196026802063</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mf">64.44</span>
+<div class="highlight"><pre><span></span><code><span class="n">Iteration</span><span class="p">:</span> <span class="mf">500.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">1.876196026802063</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mf">64.44</span>
 <span class="n">Iteration</span><span class="p">:</span> <span class="mf">1000.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">1.5153584480285645</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mf">75.68</span>
 <span class="n">Iteration</span><span class="p">:</span> <span class="mf">1500.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">1.3521136045455933</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mf">78.98</span>
 <span class="n">Iteration</span><span class="p">:</span> <span class="mf">2000.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">1.2136967182159424</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mf">80.95</span>
 <span class="n">Iteration</span><span class="p">:</span> <span class="mf">2500.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">1.0934826135635376</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mf">81.97</span>
 <span class="n">Iteration</span><span class="p">:</span> <span class="mf">3000.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">1.024120569229126</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mf">82.49</span>
-</pre></div>
+</code></pre></div>
 
 <div class="admonition note">
 <p class="admonition-title">GPU version</p>
 <p>2 things must be on GPU
-<br />- <code class="codehilite">model</code>
-<br />- <code class="codehilite">tensors</code></p>
+<br />- <code>model</code>
+<br />- <code>tensors</code></p>
 <p>Remember step 4 and 7 will be affected and this will be the same for all model building moving forward.</p>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="kn">as</span> <span class="nn">nn</span>
-<span class="kn">import</span> <span class="nn">torchvision.transforms</span> <span class="kn">as</span> <span class="nn">transforms</span>
-<span class="kn">import</span> <span class="nn">torchvision.datasets</span> <span class="kn">as</span> <span class="nn">dsets</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torchvision.transforms</span> <span class="k">as</span> <span class="nn">transforms</span>
+<span class="kn">import</span> <span class="nn">torchvision.datasets</span> <span class="k">as</span> <span class="nn">dsets</span>
 
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">STEP 1: LOADING DATASET</span>
 <span class="sd">&#39;&#39;&#39;</span>
 
 <span class="n">train_dataset</span> <span class="o">=</span> <span class="n">dsets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;./data&#39;</span><span class="p">,</span> 
-                            <span class="n">train</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> 
+                            <span class="n">train</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
                             <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">(),</span>
-                            <span class="n">download</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+                            <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">test_dataset</span> <span class="o">=</span> <span class="n">dsets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s1">&#39;./data&#39;</span><span class="p">,</span> 
-                           <span class="n">train</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> 
+                           <span class="n">train</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
                            <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">())</span>
 
 <span class="sd">&#39;&#39;&#39;</span>
@@ -2972,11 +3087,11 @@ tensor([-0.4181, -1.0784, -0.4840, -0.0985, -0.2394, -0.1801, -1.1639,
 
 <span class="n">train_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">train_dataset</span><span class="p">,</span> 
                                            <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> 
-                                           <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+                                           <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">test_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">test_dataset</span><span class="p">,</span> 
                                           <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> 
-                                          <span class="n">shuffle</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+                                          <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">STEP 3: CREATE MODEL CLASS</span>
@@ -3080,17 +3195,17 @@ tensor([-0.4181, -1.0784, -0.4840, -0.0985, -0.2394, -0.1801, -1.1639,
             <span class="n">accuracy</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">correct</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="o">/</span> <span class="n">total</span>
 
             <span class="c1"># Print Loss</span>
-            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Iteration: {}. Loss: {}. Accuracy: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">accuracy</span><span class="p">))</span>
-</pre></div>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Iteration: </span><span class="si">{}</span><span class="s1">. Loss: </span><span class="si">{}</span><span class="s1">. Accuracy: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">accuracy</span><span class="p">))</span>
+</code></pre></div>
 
 </div>
-<div class="codehilite"><pre><span></span><span class="n">Iteration</span><span class="p">:</span> <span class="mf">500.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">1.8571407794952393</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mf">68.99</span>
+<div class="highlight"><pre><span></span><code><span class="n">Iteration</span><span class="p">:</span> <span class="mf">500.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">1.8571407794952393</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mf">68.99</span>
 <span class="n">Iteration</span><span class="p">:</span> <span class="mf">1000.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">1.5415704250335693</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mf">75.86</span>
 <span class="n">Iteration</span><span class="p">:</span> <span class="mf">1500.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">1.2755383253097534</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mf">78.92</span>
 <span class="n">Iteration</span><span class="p">:</span> <span class="mf">2000.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">1.2468739748001099</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mf">80.72</span>
 <span class="n">Iteration</span><span class="p">:</span> <span class="mf">2500.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">1.0708973407745361</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mf">81.73</span>
 <span class="n">Iteration</span><span class="p">:</span> <span class="mf">3000.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">1.0359245538711548</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mf">82.74</span>
-</pre></div>
+</code></pre></div>
 
 <h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
 <p>We've learnt to...</p>
@@ -3117,8 +3232,8 @@ tensor([-0.4181, -1.0784, -0.4840, -0.0985, -0.2394, -0.1801, -1.1639,
 </ul>
 </li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Important things to be on <strong>GPU</strong><ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code class="codehilite">model</code></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code class="codehilite">tensors with gradients</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>model</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <code>tensors with gradients</code></li>
 </ul>
 </li>
 </ul>
@@ -3127,8 +3242,6 @@ tensor([-0.4181, -1.0784, -0.4840, -0.0985, -0.2394, -0.1801, -1.1639,
 <p>If you have found these useful in your research, presentations, school work, projects or workshops, feel free to cite using this DOI.</p>
 <p><a href="https://zenodo.org/badge/latestdoi/139945544"><img alt="DOI" src="https://zenodo.org/badge/139945544.svg" /></a></p>
                 
-                  
-                
               
               
                 
@@ -3136,19 +3249,7 @@ tensor([-0.4181, -1.0784, -0.4840, -0.0985, -0.2394, -0.1801, -1.1639,
 
   <h2 id="__comments">Comments</h2>
   <div id="disqus_thread"></div>
-  <script>
-    var disqus_config = function () {
-      this.page.url = "https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_logistic_regression/";
-      this.page.identifier =
-        "deep_learning/practical_pytorch/pytorch_logistic_regression/";
-    };
-    (function() {
-      var d = document, s = d.createElement("script");
-      s.src = "//deep-learning-wizard.disqus.com/embed.js";
-      s.setAttribute("data-timestamp", +new Date());
-      (d.head || d.body).appendChild(s);
-    })();
-  </script>
+  <script>var disqus_config=function(){this.page.url="https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_logistic_regression/",this.page.identifier="deep_learning/practical_pytorch/pytorch_logistic_regression/"};!function(){var e=document,i=e.createElement("script");i.src="//deep-learning-wizard.disqus.com/embed.js",i.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(i)}()</script>
 
               
             </article>
@@ -3157,49 +3258,74 @@ tensor([-0.4181, -1.0784, -0.4840, -0.0985, -0.2394, -0.1801, -1.1639,
       </main>
       
         
+
+<!-- Application footer -->
 <footer class="md-footer">
+
+  <!-- Link to previous and/or next page -->
   
     <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
+      <nav
+        class="md-footer-nav__inner md-grid"
+        aria-label="Footer"
+      >
+
+        <!-- Link to previous page -->
         
-          <a href="deep_learning/practical_pytorch/pytorch_linear_regression/" title="Linear Regression" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+          <a
+            href="../pytorch_linear_regression/"
+            title="Linear Regression"
+            class="md-footer-nav__link md-footer-nav__link--prev"
+            rel="prev"
+          >
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
             </div>
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
                 Linear Regression
-              </span>
+              </div>
             </div>
           </a>
         
+
+        <!-- Link to next page -->
         
-          <a href="deep_learning/practical_pytorch/pytorch_feedforward_neuralnetwork/" title="Feedforward Neural Networks (FNN)" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
+          <a
+            href="../pytorch_feedforward_neuralnetwork/"
+            title="Feedforward Neural Networks (FNN)"
+            class="md-footer-nav__link md-footer-nav__link--next"
+            rel="next"
+          >
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
                 Feedforward Neural Networks (FNN)
-              </span>
+              </div>
             </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>
             </div>
           </a>
         
       </nav>
     </div>
   
+
+  <!-- Further information -->
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
+
+      <!-- Copyright and theme information -->
       <div class="md-footer-copyright">
         
           <div class="md-footer-copyright__highlight">
-            Copyright &copy; 2019 Deep Learning Wizard
+            Copyright &copy; 2020 Deep Learning Wizard by Ritchie Ng
           </div>
         
         proudly an
@@ -3207,37 +3333,53 @@ tensor([-0.4181, -1.0784, -0.4840, -0.0985, -0.2394, -0.1801, -1.1639,
         <a href="https://aws.amazon.com/activate/">Amazon AWS Activate Programme</a> by
         <a href="https://www.ritchieng.com/">
           Ritchie Ng</a>
+        </a>
       </div>
+
+      <!-- Social links -->
       
-        
   <div class="md-footer-social">
-    <link rel="stylesheet" href="../../../assets/fonts/font-awesome.css">
     
-      <a href="https://github.com/ritchieng" class="md-footer-social__link fa fa-github"></a>
+      
+      
+      <a href="https://github.com/ritchieng" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
     
-      <a href="https://www.facebook.com/DeepLearningWizard/" class="md-footer-social__link fa fa-facebook"></a>
+      
+      
+      <a href="https://www.facebook.com/DeepLearningWizard/" target="_blank" rel="noopener" title="www.facebook.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+      </a>
     
-      <a href="https://www.linkedin.com/company/deeplearningwizard/" class="md-footer-social__link fa fa-linkedin"></a>
+      
+      
+      <a href="https://www.linkedin.com/company/deeplearningwizard/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+      </a>
     
   </div>
 
-      
     </div>
   </div>
 </footer>
       
     </div>
     
-      <script src="../../../assets/javascripts/application.583bbe55.js"></script>
+      <script src="../../../assets/javascripts/vendor.36cbf620.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.00c583dd.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      <script>
+        app = initialize({
+          base: "../../..",
+          features: ["tabs", "instant"],
+          search: Object.assign({
+            worker: "../../../assets/javascripts/worker/search.7f7c8775.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-      
-    
-    
-      
-        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-122083328-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
       
     
   </body>

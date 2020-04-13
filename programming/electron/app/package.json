@@ -1,0 +1,14 @@
+{
+  "name": "dlw",
+  "version": "0.1.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^6.0.8"
+  },
+  "dependencies": {
+    "python-shell": "^1.0.8"
+  }
+}
