@@ -92,10 +92,11 @@ theme:
   name: 'material'
   custom_dir: 'theme'
   language: 'en'
-  feature:
-    tabs: true
-  logo:
-    icon: 'whatshot'
+  features:
+    - tabs
+    - instant
+  icon:
+    logo: 'material/cloud'
   palette:
     primary: 'teal'
     accent: 'teal'
@@ -120,6 +121,7 @@ markdown_extensions:
   - pymdownx.critic
   - pymdownx.details
   - pymdownx.emoji:
+      emoji_index: !!python/name:pymdownx.emoji.twemoji
       emoji_generator: !!python/name:pymdownx.emoji.to_svg
   - pymdownx.inlinehilite
   - pymdownx.magiclink
@@ -137,19 +139,29 @@ extra_javascript:
 # Social
 extra:
   social:
-    - type: 'github'
+    - icon: 'fontawesome/brands/github'
       link: 'https://github.com/ritchieng'
-    - type: 'facebook'
+    - icon: 'fontawesome/brands/facebook'
       link: 'https://www.facebook.com/DeepLearningWizard/'
-    - type: 'linkedin'
+    - icon: 'fontawesome/brands/linkedin'
       link: 'https://www.linkedin.com/company/deeplearningwizard/'
   disqus: 'deep-learning-wizard'
 
+# Search
+plugins:
+  - search:
+      separator: '[\s\-\.]+'
+      lang:
+        - en
 
 # Google Analytics
 google_analytics:
   - 'UA-122083328-1'
   - 'auto'
+
+# Source to repository
+repo_name: ritchieng/deep-learning-wizard
+repo_url: https://github.com/ritchieng/deep-learning-wizard
 
 # Copyright
 copyright: 'Copyright &copy; 2020 Deep Learning Wizard by Ritchie Ng'
