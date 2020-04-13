@@ -2,34 +2,23 @@
 
 You will the learn the suite of tools to build an end-to-end deep learning pipeline.
 
-=== "Machine Learning and Deep Learning Packages"
+=== "Tools You Will Learn To Use"
     - PyTorch (CPU/GPU)
     - Scikit-learn (CPU)
     - RAPIDS cuML (GPU)
-
-=== "Deep Reinforcement Learning Packages"
-    - Gym
-
-=== "Scripting and Programming Languages"
+    - Gym (CPU)
     - Python (scripting)
     - C++ (programming)
-    - Bash
-
-=== "Data Pre- and Post-processing"
+    - Bash (scripting)
     - NumPy (CPU)
     - CuPy (GPU)
-    - Bash
     - Pandas (CPU)
     - RAPIDS cuDF (GPU)
-
-=== "Plots & Dashboards"
-	- Matplotlib
-	- Plotly
-	- Streamlit
-
-=== "Databases"
-	- CassandraDB (CPU)
-	- BlazingSQL (GPU)
+	- Matplotlib (Plot)
+	- Plotly (Plot)
+	- Streamlit (Dashboard)
+	- CassandraDB (CPU DB)
+	- BlazingSQL (GPU DB)
 
 We deploy a top-down approach that enables you to grasp deep learning and deep reinforcement learning theories and code easily and quickly. We have open-sourced all our materials through our [Deep Learning Wizard Tutorials](https://www.deeplearningwizard.com/deep_learning/course_progression/). For visual learners, feel free to sign up for our [video course](https://www.udemy.com/practical-deep-learning-with-pytorch/?couponCode=DEEPWIZARD) and join over 6000 deep learning wizards.
 
