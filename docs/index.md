@@ -1,14 +1,35 @@
 # Learn The Whole AI Pipeline With
 
-<button class="button" onClick="window.open('https://www.python.org/');" data-md-color-primary="indigo">Python</button>
-<button class="button" onClick="window.open('http://www.cplusplus.org/');" data-md-color-primary="blue">C++</button>
-<button class="button" onClick="window.open('https://en.wikipedia.org/wiki/Bash_(Unix_shell)');" data-md-color-primary="grey">Bash</button>
-<button class="button" onClick="window.open('https://pytorch.org/');" data-md-color-primary="red">PyTorch</button>
-<button class="button" onClick="window.open('https://pandas.pydata.org/');" data-md-color-primary="blue-grey">Pandas</button>
-<button class="button" onClick="window.open('http://www.numpy.org/');" data-md-color-primary="yellow">NumPy</button>
-<button class="button" onClick="window.open('https://gym.openai.com/');" data-md-color-primary="teal">Gym</button>
-<button class="button" onClick="window.open('https://scikit-learn.org/');" data-md-color-primary="orange">Scikit-learn</button>
-<button class="button" onClick="window.open('https://plot.ly/');" data-md-color-primary="light-blue">Plotly</button>
+You will the learn the suite of tools to build an end-to-end deep learning pipeline.
+
+=== "Machine Learning and Deep Learning Packages"
+    - PyTorch (CPU/GPU)
+    - Scikit-learn (CPU)
+    - RAPIDS cuML (GPU)
+
+=== "Deep Reinforcement Learning Packages"
+    - Gym
+
+=== "Scripting and Programming Languages"
+    - Python (scripting)
+    - C++ (programming)
+    - Bash
+
+=== "Data Pre- and Post-processing"
+    - NumPy (CPU)
+    - CuPy (GPU)
+    - Bash
+    - Pandas (CPU)
+    - RAPIDS cuDF (GPU)
+
+=== "Plots & Dashboards"
+	- Matplotlib
+	- Plotly
+	- Streamlit
+
+=== "Databases"
+	- CassandraDB (CPU)
+	- BlazingSQL (GPU)
 
 We deploy a top-down approach that enables you to grasp deep learning and deep reinforcement learning theories and code easily and quickly. We have open-sourced all our materials through our [Deep Learning Wizard Tutorials](https://www.deeplearningwizard.com/deep_learning/course_progression/). For visual learners, feel free to sign up for our [video course](https://www.udemy.com/practical-deep-learning-with-pytorch/?couponCode=DEEPWIZARD) and join over 6000 deep learning wizards.
 
