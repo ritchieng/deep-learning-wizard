@@ -5,7 +5,7 @@ site_author: 'Ritchie Ng'
 site_url: 'https://www.deeplearningwizard.com/'
 
 # Navigation
-pages:
+nav:
     - Home: index.md
     - About Us: about.md
     - Reviews: review.md
@@ -131,6 +131,7 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
+  - pymdownx.tabbed
 
 # Equations
 extra_javascript:
@@ -151,8 +152,10 @@ extra:
 plugins:
   - search:
       separator: '[\s\-\.]+'
-      lang:
+      lang: 
         - en
+  # - minify:
+  #     minify_html: true
 
 # Google Analytics
 google_analytics:

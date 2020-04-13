@@ -1,7 +1,7 @@
 disqus:
 
 # Scalable Database for Deep Learning
-Our main open-source programming languages and libraries are Python, C++, Apache Cassandra and Bash. 
+Our main open-source programming languages and libraries are Python, C++, Apache Cassandra, RapidSQL and Bash. 
 
 This is a critical part of production deployment of deep learning algorithms.
 

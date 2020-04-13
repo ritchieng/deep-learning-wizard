@@ -4,10 +4,11 @@ disqus:
 
 We'll be covering both CPU and GPU implementations of deep learning and deep reinforcement learning algorithms
 
-<button class="button" onClick="window.open('https://www.python.org/');" data-md-color-primary="indigo">Python</button>
-<button class="button" onClick="window.open('https://pytorch.org/');" data-md-color-primary="red">PyTorch</button>
-<button class="button" onClick="window.open('http://www.numpy.org/');" data-md-color-primary="yellow">NumPy</button>
-<button class="button" onClick="window.open('https://gym.openai.com/');" data-md-color-primary="teal">Gym</button>
+=== "Packages and Languages you will Learn to Use"
+    - Python
+    - PyTorch
+    - NumPy
+    - Gym
 
 If you would like a more visual and guided experience, feel free to take our [video course](https://www.udemy.com/practical-deep-learning-with-pytorch/?couponCode=DEEPWIZARD).
 
