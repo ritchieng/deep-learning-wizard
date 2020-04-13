@@ -98,8 +98,8 @@ theme:
   icon:
     logo: 'material/cloud'
   palette:
-    primary: 'teal'
-    accent: 'teal'
+    primary: 'blue-grey'
+    accent: 'indigo'
   font:
     text: 'Roboto'
     code: 'Roboto Mono'
