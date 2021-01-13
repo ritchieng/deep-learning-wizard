@@ -6,8 +6,9 @@ site_url: 'https://www.deeplearningwizard.com/'
 
 # Navigation
 nav:
-    - Home:
-      - Home: index.md
+    - Home: index.md
+    - About:
+      - Home: home.md
       - About Us: about.md
       - Reviews: review.md
       - AI Pipeline: pipeline.md
@@ -91,7 +92,7 @@ nav:
 # Configuration
 theme:
   name: 'material'
-  custom_dir: 'theme'
+  custom_dir: 'material'
   language: 'en'
   features:
     - navigation.tabs
@@ -99,7 +100,8 @@ theme:
   icon:
     logo: 'material/cloud'
   palette:
-    primary: 'blue-grey'
+    scheme: default
+    primary: 'indigo'
     accent: 'indigo'
   font:
     text: 'Roboto'
