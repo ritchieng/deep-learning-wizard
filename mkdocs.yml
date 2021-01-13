@@ -6,11 +6,12 @@ site_url: 'https://www.deeplearningwizard.com/'
 
 # Navigation
 nav:
-    - Home: index.md
-    - About Us: about.md
-    - Reviews: review.md
-    - AI Pipeline: pipeline.md
-    - Consultancy: consultancy.md
+    - Home:
+      - Home: index.md
+      - About Us: about.md
+      - Reviews: review.md
+      - AI Pipeline: pipeline.md
+      - Consultancy: consultancy.md
     - Deep Learning Tutorials (CPU/GPU):
       - Introduction: deep_learning/intro.md
       - Course Progression: deep_learning/course_progression.md
@@ -93,7 +94,7 @@ theme:
   custom_dir: 'theme'
   language: 'en'
   features:
-    - tabs
+    - navigation.tabs
     - instant
   icon:
     logo: 'material/cloud'
