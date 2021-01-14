@@ -1,6 +1,6 @@
 # Project information
 site_name: 'Deep Learning Wizard'
-site_description: 'Learn deep learning and deep reinforcement learning math and code easily and quickly. Used by thousands of students and professionals from top tech companies and research institutions.'
+site_description: 'We try to make learning deep learning, deep bayesian learning, and deep reinforcement learning math and code easier. Used by thousands.'
 site_author: 'Ritchie Ng'
 site_url: 'https://www.deeplearningwizard.com/'
 
@@ -8,7 +8,7 @@ site_url: 'https://www.deeplearningwizard.com/'
 nav:
     - Home: index.md
     - About:
-      - Home: home.md
+      - Intro: home.md
       - About Us: about.md
       - Reviews: review.md
       - AI Pipeline: pipeline.md
@@ -93,6 +93,9 @@ nav:
 theme:
   name: 'material'
   custom_dir: 'material'
+  # 404 page
+  static_templates:
+    - 404.html
   language: 'en'
   features:
     - navigation.tabs
