@@ -13,7 +13,7 @@ nav:
       - Reviews: review.md
       - AI Pipeline: pipeline.md
       - Consultancy: consultancy.md
-    - Deep Learning Tutorials (CPU/GPU):
+    - Deep Learning (CPU/GPU):
       - Introduction: deep_learning/intro.md
       - Course Progression: deep_learning/course_progression.md
       - Matrices: deep_learning/practical_pytorch/pytorch_matrices.md
@@ -46,7 +46,7 @@ nav:
       - Speed Optimization Basics Numba: deep_learning/production_pytorch/speed_optimization_basics_numba.md
       - Additional Readings: deep_learning/readings.md
 
-    - Machine Learning Tutorials (CPU/GPU):
+    - Machine Learning (CPU/GPU):
       - Introduction: machine_learning/intro.md
       - GPU DataFrames: machine_learning/gpu/rapids_cudf.md
       - GPU/CPU Fractional Differencing: machine_learning/gpu/gpu_fractional_differencing.md
@@ -61,7 +61,7 @@ nav:
 #      - Principal Component Analysis (PCA), Dimensionality Reduction: machine_learning/gpu/rapids_cudf.md
 #      - Uniform Manifold Approximation and Projection (UMAP), Dimensionality Reduction: machine_learning/gpu/rapids_cudf.md
 
-    - Programming Tutorials:
+    - Programming:
       - Introduction: programming/intro.md
       - C++: programming/cpp/cpp.md
       - Bash: programming/bash/bash.md
@@ -70,7 +70,10 @@ nav:
       - Electron: programming/electron/electron.md
 #      - Matplotlib: programming/plotting/matplotlib.md
 
-    - Scalable Database Tutorials:
+    - Plotting:
+      - Introduction: programming/plotting/intro.md
+
+    - Scalable Database:
       - Introduction: database/intro.md
       - Cassandra Cluster Setup: database/setting_up_cluster.md
 
@@ -138,6 +141,11 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.tilde
   - pymdownx.tabbed
+  # - pymdownx.superfences:
+  #     custom_fences:
+  #       - name: mermaid
+  #         class: mermaid-experimental
+  #         format: !!python/name:pymdownx.superfences.fence_code_format
 
 # Equations
 extra_javascript:
