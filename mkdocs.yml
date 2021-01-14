@@ -101,7 +101,7 @@ theme:
     - navigation.tabs
     - instant
   icon:
-    logo: 'material/cloud'
+    logo: 'fontawesome/regular/chart-bar'
   palette:
     scheme: default
     primary: 'indigo'
