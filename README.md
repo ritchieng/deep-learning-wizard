@@ -59,7 +59,7 @@ This stack would get you started, and enable you to adjust the stack according t
 ## About Deep Learning Wizard
 We deploy a top-down approach that enables you to grasp deep learning theories and code easily and quickly. We have open-sourced all our materials through our Deep Learning Wizard Wikipedia. For visual learners, feel free to sign up for our video course and join over 2300 deep learning wizards.
 
-To this date, we have taught thousands of students across more than 120+ countries from students in high school to postgraduates and professionals in leading MNCs and research institutions around the world.
+To this date, we have taught thousands of students across more than 120+ countries.
 
 ## Contribution
 We are openly calling people to contribute to this repository for errors. Feel free to create a pull request.
