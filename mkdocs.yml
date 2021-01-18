@@ -70,8 +70,11 @@ nav:
       - Electron: programming/electron/electron.md
 #      - Matplotlib: programming/plotting/matplotlib.md
 
-    - Plotting:
-      - Introduction: programming/plotting/intro.md
+    # - Plotting:
+    #   - Introduction: programming/plotting/intro.md
+
+    - Out of Distribution Data:
+      - Introduction: ood/intro.md
 
     - Scalable Database:
       - Introduction: database/intro.md
