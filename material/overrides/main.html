@@ -25,13 +25,20 @@
   <link rel="stylesheet" href="{{ 'assets/stylesheets/overrides.46d791ea.min.css' | url }}">
 {% endblock %}
 {% block announce %}
-  <a href="https://twitter.com/ritchieng">
-    For updates follow <strong>@ritchieng</strong> on
-    <span class="twemoji twitter">
-      {% include ".icons/fontawesome/brands/twitter.svg" %}
-    </span>
-    <strong>Twitter</strong>
-  </a>
+    For updates follow us on
+    <a href="https://twitter.com/ritchieng">
+      <span class="twemoji twitter">
+        {% include ".icons/fontawesome/brands/twitter.svg" %}
+      </span>
+      <strong>Twitter</strong>
+    </a>
+    or subscribe to our channel on
+    <a href="https://www.youtube.com/channel/UCJz2MIjiCosOQCwhnsYxeEw">
+      <span class="twemoji twitter" style="color:red">
+        {% include ".icons/fontawesome/brands/youtube.svg" %}
+      </span>
+      <strong>YouTube</strong>
+    </a>
 {% endblock %}
 {% block content %}
   {{ super() }}
