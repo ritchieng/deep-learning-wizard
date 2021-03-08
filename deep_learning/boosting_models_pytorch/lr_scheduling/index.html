@@ -1,6 +1,4 @@
 
-
-
 <!doctype html>
 <html lang="en" class="no-js">
   <head>
@@ -8,16 +6,17 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Learn deep learning and deep reinforcement learning math and code easily and quickly. Used by thousands of students and professionals from top tech companies and research institutions.">
+        <meta name="description" content="We try to make learning deep learning, deep bayesian learning, and deep reinforcement learning math and code easier. Used by thousands.">
       
-      
-        <link rel="canonical" href="https://www.deeplearningwizard.com/deep_learning/boosting_models_pytorch/lr_scheduling/">
       
       
         <meta name="author" content="Ritchie Ng">
       
+      
+        <link rel="canonical" href="https://www.deeplearningwizard.com/deep_learning/boosting_models_pytorch/lr_scheduling/">
+      
       <link rel="shortcut icon" href="../../../docs/assets/favicon.ico">
-      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.0">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.4">
     
     
       
@@ -25,20 +24,22 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.89dc9fe3.min.css">
-      
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ecd4686e.min.css">
-      
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.15aa0b43.min.css">
       
         
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.75751829.min.css">
         
-        <meta name="theme-color" content="#546e7a">
+          
+          
+          <meta name="theme-color" content="#4051b5">
+        
       
     
     
     
       
-        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
       
@@ -48,8 +49,7 @@
     
       
         
-<link rel="preconnect dns-prefetch" href="https://www.google-analytics.com">
-<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-122083328-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview")})</script>
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-122083328-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview",document.location.pathname)})</script>
 <script async src="https://www.google-analytics.com/analytics.js"></script>
       
     
@@ -59,8 +59,13 @@
   
     
     
-    <body dir="ltr" data-md-color-primary="blue-grey" data-md-color-accent="indigo">
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+      
   
+    
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
@@ -76,54 +81,58 @@
       
     </div>
     
-      <header class="md-header" data-md-component="header">
+      
+
+<header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
     <a href="https://www.deeplearningwizard.com/" title="Deep Learning Wizard" class="md-header-nav__button md-logo" aria-label="Deep Learning Wizard">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.35,10.03C18.67,6.59 15.64,4 12,4C9.11,4 6.6,5.64 5.35,8.03C2.34,8.36 0,10.9 0,14A6,6 0 0,0 6,20H19A5,5 0 0,0 24,15C24,12.36 21.95,10.22 19.35,10.03Z" /></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M396.8 352h22.4c6.4 0 12.8-6.4 12.8-12.8V108.8c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v230.4c0 6.4 6.4 12.8 12.8 12.8zm-192 0h22.4c6.4 0 12.8-6.4 12.8-12.8V140.8c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v198.4c0 6.4 6.4 12.8 12.8 12.8zm96 0h22.4c6.4 0 12.8-6.4 12.8-12.8V204.8c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v134.4c0 6.4 6.4 12.8 12.8 12.8zM496 400H48V80c0-8.84-7.16-16-16-16H16C7.16 64 0 71.16 0 80v336c0 17.67 14.33 32 32 32h464c8.84 0 16-7.16 16-16v-16c0-8.84-7.16-16-16-16zm-387.2-48h22.4c6.4 0 12.8-6.4 12.8-12.8v-70.4c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v70.4c0 6.4 6.4 12.8 12.8 12.8z"/></svg>
 
     </a>
     <label class="md-header-nav__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
     </label>
     <div class="md-header-nav__title" data-md-component="header-title">
-      
-        <div class="md-header-nav__ellipsis">
-          <span class="md-header-nav__topic md-ellipsis">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
             Deep Learning Wizard
           </span>
-          <span class="md-header-nav__topic md-ellipsis">
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
             
               Learning Rate Scheduling
             
           </span>
         </div>
-      
+      </div>
     </div>
     
       <label class="md-header-nav__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
       </label>
       
 <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
       <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
       </label>
       <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
       </button>
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
-            Type to start searching
+            Initializing search
           </div>
           <ol class="md-search-result__list"></ol>
         </div>
@@ -138,7 +147,7 @@
 <a href="https://github.com/ritchieng/deep-learning-wizard/" title="Go to repository" class="md-source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     ritchieng/deep-learning-wizard
@@ -151,45 +160,37 @@
     
     <div class="md-container" data-md-component="container">
       
-        
-      
       
         
           
-
-  
-
-<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
         
+  
+  
+
+
   <li class="md-tabs__item">
-    
-      <a href="../../.." class="md-tabs__link">
-        Home
-      </a>
-    
+    <a href="../../.." class="md-tabs__link">
+      Home
+    </a>
   </li>
 
       
         
-      
-        
-      
-        
-      
-        
-      
-        
+  
+  
+
+
+  
   
   
     <li class="md-tabs__item">
-      
-        <a href="../../intro/" class="md-tabs__link md-tabs__link--active">
-          Deep Learning Tutorials (CPU/GPU)
-        </a>
-      
+      <a href="../../../home/" class="md-tabs__link">
+        About
+      </a>
     </li>
   
 
@@ -197,12 +198,17 @@
         
   
   
+    
+  
+
+
+  
+  
+  
     <li class="md-tabs__item">
-      
-        <a href="../../../machine_learning/intro/" class="md-tabs__link">
-          Machine Learning Tutorials (CPU/GPU)
-        </a>
-      
+      <a href="../../intro/" class="md-tabs__link md-tabs__link--active">
+        Deep Learning (CPU/GPU)
+      </a>
     </li>
   
 
@@ -210,12 +216,15 @@
         
   
   
+
+
+  
+  
+  
     <li class="md-tabs__item">
-      
-        <a href="../../../programming/intro/" class="md-tabs__link">
-          Programming Tutorials
-        </a>
-      
+      <a href="../../../machine_learning/intro/" class="md-tabs__link">
+        Machine Learning (CPU/GPU)
+      </a>
     </li>
   
 
@@ -223,12 +232,15 @@
         
   
   
+
+
+  
+  
+  
     <li class="md-tabs__item">
-      
-        <a href="../../../database/intro/" class="md-tabs__link">
-          Scalable Database Tutorials
-        </a>
-      
+      <a href="../../../programming/intro/" class="md-tabs__link">
+        Programming
+      </a>
     </li>
   
 
@@ -236,12 +248,47 @@
         
   
   
+
+
+  
+  
+  
     <li class="md-tabs__item">
+      <a href="../../../ood/intro/" class="md-tabs__link">
+        Out of Distribution Data
+      </a>
+    </li>
+  
+
       
-        <a href="../../../news/news/" class="md-tabs__link">
-          News
-        </a>
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../database/intro/" class="md-tabs__link">
+        Scalable Database
+      </a>
+    </li>
+  
+
       
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../news/news/" class="md-tabs__link">
+        News
+      </a>
     </li>
   
 
@@ -255,15 +302,23 @@
         <div class="md-main__inner md-grid">
           
             
-              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+                    
+
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="https://www.deeplearningwizard.com/" title="Deep Learning Wizard" class="md-nav__button md-logo" aria-label="Deep Learning Wizard">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.35,10.03C18.67,6.59 15.64,4 12,4C9.11,4 6.6,5.64 5.35,8.03C2.34,8.36 0,10.9 0,14A6,6 0 0,0 6,20H19A5,5 0 0,0 24,15C24,12.36 21.95,10.22 19.35,10.03Z" /></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M396.8 352h22.4c6.4 0 12.8-6.4 12.8-12.8V108.8c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v230.4c0 6.4 6.4 12.8 12.8 12.8zm-192 0h22.4c6.4 0 12.8-6.4 12.8-12.8V140.8c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v198.4c0 6.4 6.4 12.8 12.8 12.8zm96 0h22.4c6.4 0 12.8-6.4 12.8-12.8V204.8c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v134.4c0 6.4 6.4 12.8 12.8 12.8zM496 400H48V80c0-8.84-7.16-16-16-16H16C7.16 64 0 71.16 0 80v336c0 17.67 14.33 32 32 32h464c8.84 0 16-7.16 16-16v-16c0-8.84-7.16-16-16-16zm-387.2-48h22.4c6.4 0 12.8-6.4 12.8-12.8v-70.4c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v70.4c0 6.4 6.4 12.8 12.8 12.8z"/></svg>
 
     </a>
     Deep Learning Wizard
@@ -274,7 +329,7 @@
 <a href="https://github.com/ritchieng/deep-learning-wizard/" title="Go to repository" class="md-source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     ritchieng/deep-learning-wizard
@@ -289,8 +344,9 @@
       
 
 
+
   <li class="md-nav__item">
-    <a href="../../.." title="Home" class="md-nav__link">
+    <a href="../../.." class="md-nav__link">
       Home
     </a>
   </li>
@@ -301,72 +357,21 @@
       
 
 
-  <li class="md-nav__item">
-    <a href="../../../about/" title="About Us" class="md-nav__link">
-      About Us
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../../../review/" title="Reviews" class="md-nav__link">
-      Reviews
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../../../pipeline/" title="AI Pipeline" class="md-nav__link">
-      AI Pipeline
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../../../consultancy/" title="Consultancy" class="md-nav__link">
-      Consultancy
-    </a>
-  </li>
-
-    
-      
-      
-      
 
   
-
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
     
-    <label class="md-nav__link" for="nav-6">
-      Deep Learning Tutorials (CPU/GPU)
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
-      </span>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+    
+    <label class="md-nav__link" for="nav-2">
+      About
+      <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="Deep Learning Tutorials (CPU/GPU)" data-md-level="1">
-      <label class="md-nav__title" for="nav-6">
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
-        </span>
-        Deep Learning Tutorials (CPU/GPU)
+    <nav class="md-nav" aria-label="About" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        About
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -376,8 +381,105 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../intro/" title="Introduction" class="md-nav__link">
+    <a href="../../../home/" class="md-nav__link">
+      Intro
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../../about/" class="md-nav__link">
+      About Us
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../../review/" class="md-nav__link">
+      Reviews
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../../pipeline/" class="md-nav__link">
+      AI Pipeline
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../../consultancy/" class="md-nav__link">
+      Consultancy
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  
+
+
+  
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Deep Learning (CPU/GPU)
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Deep Learning (CPU/GPU)" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Deep Learning (CPU/GPU)
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../intro/" class="md-nav__link">
       Introduction
     </a>
   </li>
@@ -388,8 +490,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../course_progression/" title="Course Progression" class="md-nav__link">
+    <a href="../../course_progression/" class="md-nav__link">
       Course Progression
     </a>
   </li>
@@ -400,8 +503,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../practical_pytorch/pytorch_matrices/" title="Matrices" class="md-nav__link">
+    <a href="../../practical_pytorch/pytorch_matrices/" class="md-nav__link">
       Matrices
     </a>
   </li>
@@ -412,8 +516,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../practical_pytorch/pytorch_gradients/" title="Gradients" class="md-nav__link">
+    <a href="../../practical_pytorch/pytorch_gradients/" class="md-nav__link">
       Gradients
     </a>
   </li>
@@ -424,8 +529,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../practical_pytorch/pytorch_linear_regression/" title="Linear Regression" class="md-nav__link">
+    <a href="../../practical_pytorch/pytorch_linear_regression/" class="md-nav__link">
       Linear Regression
     </a>
   </li>
@@ -436,8 +542,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../practical_pytorch/pytorch_logistic_regression/" title="Logistic Regression" class="md-nav__link">
+    <a href="../../practical_pytorch/pytorch_logistic_regression/" class="md-nav__link">
       Logistic Regression
     </a>
   </li>
@@ -448,8 +555,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../practical_pytorch/pytorch_feedforward_neuralnetwork/" title="Feedforward Neural Networks (FNN)" class="md-nav__link">
+    <a href="../../practical_pytorch/pytorch_feedforward_neuralnetwork/" class="md-nav__link">
       Feedforward Neural Networks (FNN)
     </a>
   </li>
@@ -460,8 +568,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../practical_pytorch/pytorch_convolutional_neuralnetwork/" title="Convolutional Neural Networks (CNN)" class="md-nav__link">
+    <a href="../../practical_pytorch/pytorch_convolutional_neuralnetwork/" class="md-nav__link">
       Convolutional Neural Networks (CNN)
     </a>
   </li>
@@ -472,8 +581,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../practical_pytorch/pytorch_recurrent_neuralnetwork/" title="Recurrent Neural Networks (RNN)" class="md-nav__link">
+    <a href="../../practical_pytorch/pytorch_recurrent_neuralnetwork/" class="md-nav__link">
       Recurrent Neural Networks (RNN)
     </a>
   </li>
@@ -484,8 +594,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../practical_pytorch/pytorch_lstm_neuralnetwork/" title="Long Short Term Memory Neural Networks (LSTM)" class="md-nav__link">
+    <a href="../../practical_pytorch/pytorch_lstm_neuralnetwork/" class="md-nav__link">
       Long Short Term Memory Neural Networks (LSTM)
     </a>
   </li>
@@ -496,8 +607,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../practical_pytorch/pytorch_autoencoder/" title="Autoencoders (AE)" class="md-nav__link">
+    <a href="../../practical_pytorch/pytorch_autoencoder/" class="md-nav__link">
       Autoencoders (AE)
     </a>
   </li>
@@ -508,8 +620,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../practical_pytorch/pytorch_fc_overcomplete_ae/" title="Fully-connected Overcomplete Autoencoder (AE)" class="md-nav__link">
+    <a href="../../practical_pytorch/pytorch_fc_overcomplete_ae/" class="md-nav__link">
       Fully-connected Overcomplete Autoencoder (AE)
     </a>
   </li>
@@ -520,8 +633,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../derivative_gradient_jacobian/" title="Derivative, Gradient and Jacobian" class="md-nav__link">
+    <a href="../derivative_gradient_jacobian/" class="md-nav__link">
       Derivative, Gradient and Jacobian
     </a>
   </li>
@@ -532,8 +646,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../forwardpropagation_backpropagation_gradientdescent/" title="Forward- and Backward-propagation and Gradient Descent (From Scratch FNN Regression)" class="md-nav__link">
+    <a href="../forwardpropagation_backpropagation_gradientdescent/" class="md-nav__link">
       Forward- and Backward-propagation and Gradient Descent (From Scratch FNN Regression)
     </a>
   </li>
@@ -544,8 +659,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../fromscratch/fromscratch_logistic_regression/" title="From Scratch Logistic Regression Classification" class="md-nav__link">
+    <a href="../../fromscratch/fromscratch_logistic_regression/" class="md-nav__link">
       From Scratch Logistic Regression Classification
     </a>
   </li>
@@ -556,8 +672,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../fromscratch/fromscratch_cnn/" title="From Scratch CNN Classification" class="md-nav__link">
+    <a href="../../fromscratch/fromscratch_cnn/" class="md-nav__link">
       From Scratch CNN Classification
     </a>
   </li>
@@ -566,6 +683,7 @@
           
           
           
+
 
   
 
@@ -579,12 +697,10 @@
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
         Learning Rate Scheduling
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,9H17V7H3V9M3,13H17V11H3V13M3,17H17V15H3V17M19,17H21V15H19V17M19,7V9H21V7H19M19,13H21V11H19V13Z" /></svg>
-        </span>
+        <span class="md-nav__icon md-icon"></span>
       </label>
     
-    <a href="./" title="Learning Rate Scheduling" class="md-nav__link md-nav__link--active">
+    <a href="./" class="md-nav__link md-nav__link--active">
       Learning Rate Scheduling
     </a>
     
@@ -596,9 +712,7 @@
   
   
     <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
-      </span>
+      <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-scrollfix>
@@ -745,8 +859,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../optimizers/" title="Optimization Algorithms" class="md-nav__link">
+    <a href="../optimizers/" class="md-nav__link">
       Optimization Algorithms
     </a>
   </li>
@@ -757,8 +872,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../weight_initialization_activation_functions/" title="Weight Initialization and Activation Functions" class="md-nav__link">
+    <a href="../weight_initialization_activation_functions/" class="md-nav__link">
       Weight Initialization and Activation Functions
     </a>
   </li>
@@ -769,8 +885,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../deep_reinforcement_learning_pytorch/supervised_to_rl/" title="Supervised Learning to Reinforcement Learning (RL)" class="md-nav__link">
+    <a href="../../deep_reinforcement_learning_pytorch/supervised_to_rl/" class="md-nav__link">
       Supervised Learning to Reinforcement Learning (RL)
     </a>
   </li>
@@ -781,8 +898,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../deep_reinforcement_learning_pytorch/bellman_mdp/" title="Markov Decision Processes (MDP) and Bellman Equations" class="md-nav__link">
+    <a href="../../deep_reinforcement_learning_pytorch/bellman_mdp/" class="md-nav__link">
       Markov Decision Processes (MDP) and Bellman Equations
     </a>
   </li>
@@ -793,8 +911,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../deep_reinforcement_learning_pytorch/dynamic_programming_frozenlake/" title="Dynamic Programming" class="md-nav__link">
+    <a href="../../deep_reinforcement_learning_pytorch/dynamic_programming_frozenlake/" class="md-nav__link">
       Dynamic Programming
     </a>
   </li>
@@ -805,8 +924,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../production_pytorch/speed_optimization_basics_numba/" title="Speed Optimization Basics Numba" class="md-nav__link">
+    <a href="../../production_pytorch/speed_optimization_basics_numba/" class="md-nav__link">
       Speed Optimization Basics Numba
     </a>
   </li>
@@ -817,8 +937,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../readings/" title="Additional Readings" class="md-nav__link">
+    <a href="../../readings/" class="md-nav__link">
       Additional Readings
     </a>
   </li>
@@ -834,22 +955,21 @@
       
 
 
+
+  
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
     
-    <label class="md-nav__link" for="nav-7">
-      Machine Learning Tutorials (CPU/GPU)
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
-      </span>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+    
+    <label class="md-nav__link" for="nav-4">
+      Machine Learning (CPU/GPU)
+      <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="Machine Learning Tutorials (CPU/GPU)" data-md-level="1">
-      <label class="md-nav__title" for="nav-7">
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
-        </span>
-        Machine Learning Tutorials (CPU/GPU)
+    <nav class="md-nav" aria-label="Machine Learning (CPU/GPU)" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        Machine Learning (CPU/GPU)
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -859,8 +979,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../../machine_learning/intro/" title="Introduction" class="md-nav__link">
+    <a href="../../../machine_learning/intro/" class="md-nav__link">
       Introduction
     </a>
   </li>
@@ -871,8 +992,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../../machine_learning/gpu/rapids_cudf/" title="GPU DataFrames" class="md-nav__link">
+    <a href="../../../machine_learning/gpu/rapids_cudf/" class="md-nav__link">
       GPU DataFrames
     </a>
   </li>
@@ -883,8 +1005,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../../machine_learning/gpu/gpu_fractional_differencing/" title="GPU/CPU Fractional Differencing" class="md-nav__link">
+    <a href="../../../machine_learning/gpu/gpu_fractional_differencing/" class="md-nav__link">
       GPU/CPU Fractional Differencing
     </a>
   </li>
@@ -900,22 +1023,21 @@
       
 
 
+
+  
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
     
-    <label class="md-nav__link" for="nav-8">
-      Programming Tutorials
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
-      </span>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
+    
+    <label class="md-nav__link" for="nav-5">
+      Programming
+      <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="Programming Tutorials" data-md-level="1">
-      <label class="md-nav__title" for="nav-8">
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
-        </span>
-        Programming Tutorials
+    <nav class="md-nav" aria-label="Programming" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Programming
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -925,8 +1047,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../../programming/intro/" title="Introduction" class="md-nav__link">
+    <a href="../../../programming/intro/" class="md-nav__link">
       Introduction
     </a>
   </li>
@@ -937,8 +1060,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../../programming/cpp/cpp/" title="C++" class="md-nav__link">
+    <a href="../../../programming/cpp/cpp/" class="md-nav__link">
       C++
     </a>
   </li>
@@ -949,8 +1073,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../../programming/bash/bash/" title="Bash" class="md-nav__link">
+    <a href="../../../programming/bash/bash/" class="md-nav__link">
       Bash
     </a>
   </li>
@@ -961,8 +1086,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../../programming/python/python/" title="Python" class="md-nav__link">
+    <a href="../../../programming/python/python/" class="md-nav__link">
       Python
     </a>
   </li>
@@ -973,8 +1099,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../../programming/javascript/javascript/" title="Javascript" class="md-nav__link">
+    <a href="../../../programming/javascript/javascript/" class="md-nav__link">
       Javascript
     </a>
   </li>
@@ -985,8 +1112,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../../programming/electron/electron/" title="Electron" class="md-nav__link">
+    <a href="../../../programming/electron/electron/" class="md-nav__link">
       Electron
     </a>
   </li>
@@ -1002,22 +1130,21 @@
       
 
 
+
+  
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
     
-    <label class="md-nav__link" for="nav-9">
-      Scalable Database Tutorials
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
-      </span>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" >
+    
+    <label class="md-nav__link" for="nav-6">
+      Out of Distribution Data
+      <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="Scalable Database Tutorials" data-md-level="1">
-      <label class="md-nav__title" for="nav-9">
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
-        </span>
-        Scalable Database Tutorials
+    <nav class="md-nav" aria-label="Out of Distribution Data" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon"></span>
+        Out of Distribution Data
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -1027,8 +1154,51 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../../database/intro/" title="Introduction" class="md-nav__link">
+    <a href="../../../ood/intro/" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" >
+    
+    <label class="md-nav__link" for="nav-7">
+      Scalable Database
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Scalable Database" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon"></span>
+        Scalable Database
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../../database/intro/" class="md-nav__link">
       Introduction
     </a>
   </li>
@@ -1039,8 +1209,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../../database/setting_up_cluster/" title="Cassandra Cluster Setup" class="md-nav__link">
+    <a href="../../../database/setting_up_cluster/" class="md-nav__link">
       Cassandra Cluster Setup
     </a>
   </li>
@@ -1056,21 +1227,20 @@
       
 
 
+
+  
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
     
-    <label class="md-nav__link" for="nav-10">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8" >
+    
+    <label class="md-nav__link" for="nav-8">
       News
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
-      </span>
+      <span class="md-nav__icon md-icon"></span>
     </label>
     <nav class="md-nav" aria-label="News" data-md-level="1">
-      <label class="md-nav__title" for="nav-10">
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
-        </span>
+      <label class="md-nav__title" for="nav-8">
+        <span class="md-nav__icon md-icon"></span>
         News
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1081,8 +1251,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../../news/news/" title="Welcome" class="md-nav__link">
+    <a href="../../../news/news/" class="md-nav__link">
       Welcome
     </a>
   </li>
@@ -1093,8 +1264,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../../news/dbs_gpu_rapids_nvidia_ensemble_frac_diff/" title="Fractional Differencing with GPU (GFD), DBS and NVIDIA, September 2019" class="md-nav__link">
+    <a href="../../../news/dbs_gpu_rapids_nvidia_ensemble_frac_diff/" class="md-nav__link">
       Fractional Differencing with GPU (GFD), DBS and NVIDIA, September 2019
     </a>
   </li>
@@ -1105,8 +1277,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../../news/defence_and_science_technology_agency_dsta_nvidia_talk_2016_06/" title="Deep Learning Introduction, Defence and Science Technology Agency (DSTA) and NVIDIA, June 2019" class="md-nav__link">
+    <a href="../../../news/defence_and_science_technology_agency_dsta_nvidia_talk_2016_06/" class="md-nav__link">
       Deep Learning Introduction, Defence and Science Technology Agency (DSTA) and NVIDIA, June 2019
     </a>
   </li>
@@ -1117,8 +1290,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../../news/detect_waterbone_debris_ai_for_social_good_icml_2019_06/" title="Oral Presentation for AI for Social Good Workshop ICML, June 2019" class="md-nav__link">
+    <a href="../../../news/detect_waterbone_debris_ai_for_social_good_icml_2019_06/" class="md-nav__link">
       Oral Presentation for AI for Social Good Workshop ICML, June 2019
     </a>
   </li>
@@ -1129,8 +1303,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../../news/it_youth_leader_2019_03_11/" title="IT Youth Leader of The Year 2019, March 2019" class="md-nav__link">
+    <a href="../../../news/it_youth_leader_2019_03_11/" class="md-nav__link">
       IT Youth Leader of The Year 2019, March 2019
     </a>
   </li>
@@ -1141,8 +1316,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../../news/ammi_facebook_google_recap_2018_11_21/" title="AMMI (AIMS) supported by Facebook and Google, November 2018" class="md-nav__link">
+    <a href="../../../news/ammi_facebook_google_recap_2018_11_21/" class="md-nav__link">
       AMMI (AIMS) supported by Facebook and Google, November 2018
     </a>
   </li>
@@ -1153,8 +1329,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../../news/nanjing_next_nus_tsinghua_ai_finance_healthcare_2018_11_01/" title="NExT++ AI in Healthcare and Finance, Nanjing, November 2018" class="md-nav__link">
+    <a href="../../../news/nanjing_next_nus_tsinghua_ai_finance_healthcare_2018_11_01/" class="md-nav__link">
       NExT++ AI in Healthcare and Finance, Nanjing, November 2018
     </a>
   </li>
@@ -1165,8 +1342,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../../news/facebook_pytorch_devcon_recap_2018_10_02/" title="Recap of Facebook PyTorch Developer Conference, San Francisco, September 2018" class="md-nav__link">
+    <a href="../../../news/facebook_pytorch_devcon_recap_2018_10_02/" class="md-nav__link">
       Recap of Facebook PyTorch Developer Conference, San Francisco, September 2018
     </a>
   </li>
@@ -1177,8 +1355,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../../news/facebook_pytorch_developer_conference_2018_09_05/" title="Facebook PyTorch Developer Conference, San Francisco, September 2018" class="md-nav__link">
+    <a href="../../../news/facebook_pytorch_developer_conference_2018_09_05/" class="md-nav__link">
       Facebook PyTorch Developer Conference, San Francisco, September 2018
     </a>
   </li>
@@ -1189,8 +1368,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../../news/nvidia_nus_mit_datathon_2018_07_05/" title="NUS-MIT-NUHS NVIDIA Image Recognition Workshop, Singapore, July 2018" class="md-nav__link">
+    <a href="../../../news/nvidia_nus_mit_datathon_2018_07_05/" class="md-nav__link">
       NUS-MIT-NUHS NVIDIA Image Recognition Workshop, Singapore, July 2018
     </a>
   </li>
@@ -1201,8 +1381,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../../news/deep_learning_wizard_1y_2018_06_01/" title="Featured on PyTorch Website 2018" class="md-nav__link">
+    <a href="../../../news/deep_learning_wizard_1y_2018_06_01/" class="md-nav__link">
       Featured on PyTorch Website 2018
     </a>
   </li>
@@ -1213,8 +1394,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../../news/nvidia_self_driving_cars_talk_2017_06_21/" title="NVIDIA Self Driving Cars & Healthcare Talk, Singapore, June 2017" class="md-nav__link">
+    <a href="../../../news/nvidia_self_driving_cars_talk_2017_06_21/" class="md-nav__link">
       NVIDIA Self Driving Cars & Healthcare Talk, Singapore, June 2017
     </a>
   </li>
@@ -1225,8 +1407,9 @@
           
 
 
+
   <li class="md-nav__item">
-    <a href="../../../news/deep_learning_wizard_nvidia_inception_2018_05_01/" title="NVIDIA Inception Partner Status, Singapore, May 2017" class="md-nav__link">
+    <a href="../../../news/deep_learning_wizard_nvidia_inception_2018_05_01/" class="md-nav__link">
       NVIDIA Inception Partner Status, Singapore, May 2017
     </a>
   </li>
@@ -1244,7 +1427,8 @@
               </div>
             
             
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -1255,9 +1439,7 @@
   
   
     <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
-      </span>
+      <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-scrollfix>
@@ -1405,11 +1587,8 @@
               
                 
                   <a href="https://github.com/ritchieng/deep-learning-wizard/edit/master/docs/deep_learning/boosting_models_pytorch/lr_scheduling.md" title="Edit this page" class="md-content__button md-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" /></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
-                
-                
-                  
                 
                 
                 <h1 id="learning-rate-scheduling">Learning Rate Scheduling<a class="headerlink" href="#learning-rate-scheduling" title="Permanent link">&para;</a></h1>
@@ -1646,7 +1825,6 @@
             <span class="c1"># Print Loss</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Iteration: </span><span class="si">{}</span><span class="s1">. Loss: </span><span class="si">{}</span><span class="s1">. Accuracy: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">accuracy</span><span class="p">))</span>
 </code></pre></div>
-
 </div>
 <div class="highlight"><pre><span></span><code><span class="n">Epoch</span><span class="p">:</span> <span class="mi">0</span> <span class="n">LR</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">]</span>
 <span class="n">Iteration</span><span class="p">:</span> <span class="mf">500.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.15292978286743164</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mi">96</span>
@@ -1660,7 +1838,6 @@
 <span class="n">Iteration</span><span class="p">:</span> <span class="mf">2500.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.06775809079408646</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mi">97</span>
 <span class="n">Iteration</span><span class="p">:</span> <span class="mf">3000.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.03737065941095352</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mi">97</span>
 </code></pre></div>
-
 <h4 id="step-wise-decay-every-2-epochs">Step-wise Decay: Every 2 Epochs<a class="headerlink" href="#step-wise-decay-every-2-epochs" title="Permanent link">&para;</a></h4>
 <ul>
 <li>At every 2 epoch,<ul>
@@ -1835,7 +2012,6 @@
             <span class="c1"># Print Loss</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Iteration: </span><span class="si">{}</span><span class="s1">. Loss: </span><span class="si">{}</span><span class="s1">. Accuracy: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">accuracy</span><span class="p">))</span>
 </code></pre></div>
-
 </div>
 <div class="highlight"><pre><span></span><code><span class="n">Epoch</span><span class="p">:</span> <span class="mi">0</span> <span class="n">LR</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">]</span>
 <span class="n">Iteration</span><span class="p">:</span> <span class="mf">500.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.15292978286743164</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mi">96</span>
@@ -1849,7 +2025,6 @@
 <span class="n">Iteration</span><span class="p">:</span> <span class="mf">2500.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.03511016443371773</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mi">97</span>
 <span class="n">Iteration</span><span class="p">:</span> <span class="mf">3000.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.029424520209431648</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mi">97</span>
 </code></pre></div>
-
 <h4 id="step-wise-decay-every-epoch-larger-gamma">Step-wise Decay: Every Epoch, Larger Gamma<a class="headerlink" href="#step-wise-decay-every-epoch-larger-gamma" title="Permanent link">&para;</a></h4>
 <ul>
 <li>At every epoch,<ul>
@@ -2026,7 +2201,6 @@
             <span class="c1"># Print Loss</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Iteration: </span><span class="si">{}</span><span class="s1">. Loss: </span><span class="si">{}</span><span class="s1">. Accuracy: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">accuracy</span><span class="p">))</span>
 </code></pre></div>
-
 </div>
 <div class="highlight"><pre><span></span><code><span class="n">Epoch</span><span class="p">:</span> <span class="mi">0</span> <span class="n">LR</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">]</span>
 <span class="n">Iteration</span><span class="p">:</span> <span class="mf">500.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.15292978286743164</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mi">96</span>
@@ -2040,7 +2214,6 @@
 <span class="n">Iteration</span><span class="p">:</span> <span class="mf">2500.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.04521659016609192</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mi">97</span>
 <span class="n">Iteration</span><span class="p">:</span> <span class="mf">3000.</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.027839098125696182</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mi">97</span>
 </code></pre></div>
-
 <h4 id="pointers-on-step-wise-decay">Pointers on Step-wise Decay<a class="headerlink" href="#pointers-on-step-wise-decay" title="Permanent link">&para;</a></h4>
 <ul>
 <li>You would want to decay your LR gradually when you're training more epochs<ul>
@@ -2231,7 +2404,6 @@
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">20</span><span class="p">)</span>
     <span class="n">scheduler</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">accuracy</span><span class="p">)</span>
 </code></pre></div>
-
 </div>
 <div class="highlight"><pre><span></span><code><span class="n">Epoch</span> <span class="mi">0</span> <span class="n">completed</span>
 <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.17087846994400024</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mf">96.26</span>
@@ -2268,7 +2440,6 @@
 <span class="o">--------------------</span>
 <span class="n">Epoch</span>     <span class="mi">9</span><span class="p">:</span> <span class="n">reducing</span> <span class="n">learning</span> <span class="n">rate</span> <span class="n">of</span> <span class="n">group</span> <span class="mi">0</span> <span class="n">to</span> <span class="mf">1.0000e-05</span><span class="o">.</span>
 </code></pre></div>
-
 <h4 id="reduce-on-loss-plateau-decay-patience0-factor05">Reduce on Loss Plateau Decay, Patience=0, Factor=0.5<a class="headerlink" href="#reduce-on-loss-plateau-decay-patience0-factor05" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Reduce learning rate whenever loss plateaus<ul>
@@ -2446,7 +2617,6 @@
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">20</span><span class="p">)</span>
     <span class="n">scheduler</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">accuracy</span><span class="p">)</span>
 </code></pre></div>
-
 </div>
 <div class="highlight"><pre><span></span><code><span class="n">Epoch</span> <span class="mi">0</span> <span class="n">completed</span>
 <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.17087846994400024</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mf">96.26</span>
@@ -2482,7 +2652,6 @@
 <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.0035198689438402653</span><span class="o">.</span> <span class="n">Accuracy</span><span class="p">:</span> <span class="mf">98.01</span>
 <span class="o">--------------------</span>
 </code></pre></div>
-
 <h2 id="pointers-on-reduce-on-loss-pleateau-decay">Pointers on Reduce on Loss Pleateau Decay<a class="headerlink" href="#pointers-on-reduce-on-loss-pleateau-decay" title="Permanent link">&para;</a></h2>
 <ul>
 <li>In these examples, we used patience=1 because we are running few epochs<ul>
@@ -2556,7 +2725,7 @@
 
   <h2 id="__comments">Comments</h2>
   <div id="disqus_thread"></div>
-  <script>var disqus_config=function(){this.page.url="https://www.deeplearningwizard.com/deep_learning/boosting_models_pytorch/lr_scheduling/",this.page.identifier="deep_learning/boosting_models_pytorch/lr_scheduling/"};!function(){var e=document,i=e.createElement("script");i.src="//deep-learning-wizard.disqus.com/embed.js",i.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(i)}()</script>
+  <script>var disqus_config=function(){this.page.url="https://www.deeplearningwizard.com/deep_learning/boosting_models_pytorch/lr_scheduling/",this.page.identifier="deep_learning/boosting_models_pytorch/lr_scheduling/"};window.addEventListener("load",function(){var e=document,i=e.createElement("script");i.src="//deep-learning-wizard.disqus.com/embed.js",i.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(i)})</script>
 
               
             </article>
@@ -2586,7 +2755,7 @@
             rel="prev"
           >
             <div class="md-footer-nav__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
@@ -2616,7 +2785,7 @@
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
             </div>
           </a>
         
@@ -2632,7 +2801,7 @@
       <div class="md-footer-copyright">
         
           <div class="md-footer-copyright__highlight">
-            Copyright &copy; 2020 Deep Learning Wizard by Ritchie Ng
+            Copyright &copy; 2021 Deep Learning Wizard by Ritchie Ng
           </div>
         
         proudly an
@@ -2649,11 +2818,26 @@
     
       
       
-      <a href="https://github.com/ritchieng" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+        
+        
+      
+      <a href="https://www.youtube.com/channel/UCJz2MIjiCosOQCwhnsYxeEw" target="_blank" rel="noopener" title="www.youtube.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
       </a>
     
       
+      
+        
+        
+      
+      <a href="https://twitter.com/deeplearningwiz" target="_blank" rel="noopener" title="twitter.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+      </a>
+    
+      
+      
+        
+        
       
       <a href="https://www.facebook.com/DeepLearningWizard/" target="_blank" rel="noopener" title="www.facebook.com" class="md-footer-social__link">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
@@ -2661,8 +2845,20 @@
     
       
       
+        
+        
+      
       <a href="https://www.linkedin.com/company/deeplearningwizard/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-footer-social__link">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/ritchieng" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
       </a>
     
   </div>
@@ -2673,15 +2869,15 @@
       
     </div>
     
-      <script src="../../../assets/javascripts/vendor.36cbf620.min.js"></script>
-      <script src="../../../assets/javascripts/bundle.00c583dd.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      <script src="../../../assets/javascripts/vendor.93c04032.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.83e5331e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
       
       <script>
         app = initialize({
           base: "../../..",
-          features: ["tabs", "instant"],
+          features: ['navigation.tabs', 'instant'],
           search: Object.assign({
-            worker: "../../../assets/javascripts/worker/search.7f7c8775.min.js"
+            worker: "../../../assets/javascripts/worker/search.8c7e0a7e.min.js"
           }, typeof search !== "undefined" && search)
         })
       </script>
