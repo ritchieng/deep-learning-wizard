@@ -157,12 +157,16 @@ extra_javascript:
 # Social
 extra:
   social:
-    - icon: 'fontawesome/brands/github'
-      link: 'https://github.com/ritchieng'
+    - icon: 'fontawesome/brands/youtube'
+      link: 'https://www.youtube.com/channel/UCJz2MIjiCosOQCwhnsYxeEw'
+    - icon: 'fontawesome/brands/twitter'
+      link: 'https://twitter.com/deeplearningwiz'
     - icon: 'fontawesome/brands/facebook'
       link: 'https://www.facebook.com/DeepLearningWizard/'
     - icon: 'fontawesome/brands/linkedin'
       link: 'https://www.linkedin.com/company/deeplearningwizard/'
+    - icon: 'fontawesome/brands/github'
+      link: 'https://github.com/ritchieng'
   disqus: 'deep-learning-wizard'
 
 # Search
