@@ -191,6 +191,9 @@ extra_javascript:
 
 # Social
 extra:
+  analytics:
+    provider: google
+    property: 'UA-122083328-1'
   social:
     - icon: 'fontawesome/brands/youtube'
       link: 'https://www.youtube.com/channel/UCJz2MIjiCosOQCwhnsYxeEw'
@@ -207,13 +210,6 @@ extra:
 # Search
 plugins:
   - search
-
-# Google Analytics
-extra:
-  analytics:
-    provider: google
-    property: 'UA-122083328-1'
-  
 
 # Source to repository
 repo_name: ritchieng/deep-learning-wizard
