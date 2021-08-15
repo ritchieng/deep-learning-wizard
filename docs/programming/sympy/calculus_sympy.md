@@ -4,41 +4,46 @@
 
 ### Basic Rules
 
+---
 $$
-
 f(x) = x^n
 \\ f\prime(x) = nx^{x-1}
+$$
 
-\\ \dots
-
-\\ f(x) = c
+---
+$$
+f(x) = c
 \\ f\prime(x) = 0
+$$
 
-\\ \dots
-
-\\ f(x) = \cos(x)
+---
+$$
+f(x) = \cos(x)
 \\ f\prime(x) = -\sin(x)
+$$
 
-\\ \dots
-
-\\ f(x) = \cosh(x)
+---
+$$
+f(x) = \cosh(x)
 \\ f\prime(x) = \sinh(x)
+$$
 
-\\ \dots
-
-\\ f(x) = \sin(x)
+---
+$$
+f(x) = \sin(x)
 \\ f\prime(x) = \cos(x)
+$$
 
-\\  \dots
-
-\\ f(x) = \sinh(x)
+---
+$$
+f(x) = \sinh(x)
 \\ f\prime(x) = \cosh(x)
+$$
 
-\\ \dots
-
-\\ f(x) = \ln (x)
+---
+$$
+f(x) = \ln (x)
 \\ f\prime(x) = \frac{1}{x}
-
 $$
 
 ### Sum Difference Rule
@@ -71,11 +76,11 @@ $$ f'(x) = \big[g(x) \cdot h(x)\big]\prime \cdot i(x) + \big[g(x) \cdot h(x) \bi
 
 Given
 
-$$f(x) = \frac{g(x)}{h(x)}$$
+$$ f(x) = \frac{g(x)}{h(x)} $$
 
 Then
 
-$$f\prime(x) = \frac{g\prime(x) \cdot h(x) - g(x) \cdot h\prime(x)}{h^2(x)}$$
+$$ f\prime(x) = \frac{g\prime(x) \cdot h(x) - g(x) \cdot h\prime(x)}{h^2(x)} $$
 
 ### Logarithmic Rule
 
@@ -85,15 +90,17 @@ $$f(x) = ln(g(x))$$
 
 Then
 
-$$f\prime(x) = \frac{g\prime(x)}{g(x)}$$
+$$ f\prime(x) = \frac{g\prime(x)}{g(x)} $$
 
 ### Exponential Rule
 
 Given
-$$f(x) = \exp \big(g(x)\big)$$
+
+$$ f(x) = \exp \big(g(x)\big) $$
 
 Then
-$$f\prime(x) = g\prime(x) \exp \big(g(x)\big)$$
+
+$$ f\prime(x) = g\prime(x) \exp \big(g(x)\big) $$
 
 ### Partial Derivative
 
@@ -109,56 +116,64 @@ When computing the partial derivative of $x_i$ with respect to (w.r.t.) the mult
 
 Given function $f(x)$ and integral of that function $F(x)$, then basic rules include
 
+---
 $$
-
 f(x) = x^n
 \\ F(x) = \frac{x^{n+1}}{n+1} + c
+$$
 
-\\ \dots
-
-\\ f(x) = 0
+---
+$$
+f(x) = 0
 \\ F(x) = c
+$$
 
-\\ \dots
-
-\\ f(x) = \sin(x)
+---
+$$
+f(x) = \sin(x)
 \\ F(x) = -\cos(x) + c
+$$
 
-\\ \dots
-
-\\ f(x) = \sinh(x)
+---
+$$
+f(x) = \sinh(x)
 \\ F(x) = \cosh(x) + c
+$$
 
-\\ \dots
-
-\\ f(x) = \cos(x)
+---
+$$
+f(x) = \cos(x)
 \\ F(x) = \sin(x) + c
+$$
 
-\\ \dots
-
-\\ f(x) = \cosh(x)
+---
+$$
+f(x) = \cosh(x)
 \\ F(x) = \sinh(x) + c
+$$
 
-\\ \dots
-
-\\ f(x) = \frac{1}{x}
+---
+$$
+f(x) = \frac{1}{x}
 \\ F(x) = \ln(x) + c
+$$
 
-\\ \dots
-
-\\ f(x) = m
+---
+$$
+f(x) = m
 \\ F(x) = mx + c
+$$
 
-\\ \dots
-
-\\ f(x) = \frac{1}{x^2 + a^2}
+---
+$$
+f(x) = \frac{1}{x^2 + a^2}
 \\ F(x) = (\frac{1}{a}) \cdot \arctan(\frac{x}{a}) + c
+$$
 
-\\ \dots
-
-\\ f(x) = \frac{1}{\sqrt{a^2 - x^2}}
+---
+$$
+f(x) = \frac{1}{\sqrt{a^2 - x^2}}
 \\ F(x) = \arcsin(\frac{x}{a}) + c
-
 $$
 
 ### Sum Difference Rule
@@ -170,4 +185,3 @@ $$ f(x) = g(x) \pm h(x) $$
 Then
 
 $$ F(x) = \int \big( g(x) \pm h(x) \big) \, dx$$
-

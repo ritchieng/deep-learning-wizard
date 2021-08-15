@@ -6,6 +6,7 @@
 *-ubyte.gz
 *.sif
 *.simg
+.vscode/
 site/
 /docs/programming/electron/app/node_modules/*
 /docs/programming/electron/app-win32-x64/*

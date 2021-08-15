@@ -1,14 +1,15 @@
-#!/usr/bin/env bash
+# !/usr/bin/env bash
 
 eval "$(conda shell.bash hook)"
 
 echo Creating deployment folder
 cd ..
-sudo cp -rf deep-learning-wizard dlw-deploy
+sudo -u ritchieng cp -rf deep-learning-wizard dlw-deploy
 wait
 
 echo Cleaning files for deployment...
 cd dlw-deploy
+sudo find . -name "*.simg" -exec rm {} \;
 sudo find . -name "*.pt" -exec rm {} \;
 sudo find . -name "*-ubyte" -exec rm {} \;
 sudo find . -name "*.ipynb" -exec rm {} \;
