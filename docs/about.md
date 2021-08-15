@@ -9,43 +9,21 @@ To this date, we have taught thousands of students across more than 120+ countri
 ## Experienced Research and Applied Core Team
 
 !!! abstract "Ritchie Ng"
-    ---
 
-    <center>Currently in Hessian Matrix, NUS, NVIDIA</center>
+    **Industry**: Assistant Director in EastSpring Investments, one of Asia's largest asset manager, where I am responsible for leading AI algorithms research and production deployment with multimodal and multilingual data in Asian systematic investment portfolios.
 
-    ---
+    **Academia**: Visiting Research Scholar, Sea-NExT Lab, a joint AI research lab based in National University of Singapore (NUS) between NUS, Tsinghua University, and Sea.
 
-    (1) I lead as Chief Investment Officer, Head of AI, at [Hessian Matrix](https://www.hessianmatrix.com/) where we develop systematic strategies with deep Learning, reinforcement learning and bayesian learning for thin-tailed and fat-tailed distributions. We are a systematic global hedge fund led by a team with deep experience formerly from GIC, NUS, and NVIDIA.
+    **Education**: Master's degree from Imperial College London and Bachelor's degree from NUS.
 
-    (2) I am also an [NVIDIA Deep Learning Institute instructor](https://www.facebook.com/nus.nvidia/) leading all deep learning industry workshops in NUS, Singapore and conducting workshops across Southeast Asia.
+    **About**: ritchieng.live
 
-    (3) I’m into applied research for systematic trading strategies with deep learning at NUS where I am a research scholar in [NExT (NUS)](http://www.nextcenter.org/)) and a PYI Fellow.
+    **Notes**: ritchieng.com
 
-    (4) My passion for enabling anyone to leverage on deep learning has led to the creation of [Deep Learning Wizard](https://www.deeplearningwizard.com/) where I have taught and still continue to teach more than 3000 undergraduates, graduates and professionals in over 60 countries around the world.
-
-    ---
-
-    <center>Previously in AI Quant Hedge Fund: ensemblecap.ai</center>
-
-    ---
-
-    I spent 2.5 years leading artificial intelligence with my colleagues in [ensemblecap.ai](https://ensemblecap.ai/), an AI hedge fund based in Singapore comprising [research scientists, engineers, quants, and traders](https://www.bloomberg.com/news/articles/2017-11-29/ex-jpmorgan-traders-start-singapore-currency-options-quant-fund) from NVIDIA and JP Morgan. I have built the whole AI tech stack in a production environment with rigorous time-sensitive and fail-safe software testing powering multi-million dollar trades daily. Additionally, I led, as portfolio manager, our deep learning systematic portfolio, delivering high positive returns in highly volatile years like 2018 (US-China trade war initiation) and 2020 YTD (covid-19 virus)
-
-    ---
-
-    <center>Previously in AI Academia:  NUS</center>
-
-    ---
-
-    I was previously conducting research in meta-learning for hyperparameter optimization for deep learning algorithms in NExT Search Centre that is jointly setup between National University of Singapore (NUS), Tsinghua University and University of Southampton led by co-directors [Prof Tat-Seng Chua](https://www.chuatatseng.com/) (KITHCT Chair Professor at the School of Computing), [Prof Sun Maosong](http://www.cs.tsinghua.edu.cn/publish/csen/4623/2010/20101224193416561782037/20101224193416561782037_.html) (Dean of Department of Computer Science and Technology, Tsinghua University), and [Prof Dame Wendy Hall](https://www.ecs.soton.ac.uk/people/wh) (Director of the Web Science Institute, University of Southampton).
-
-    I graduated from NUS where I was an NUS Global Merit Scholar, Chua Thian Poh Community Leadership Programme Fellow, Philip Yeo Innovation Associate, and NUS Enterprise I&E Praticum Award recipient. I was awarded the [IT Youth Leader of the Year Award](https://www.scs.org.sg/it-leader-awards/winners-by-year.php?year=2019) in 2019.
-
-    Check out my profile link at [ritchieng.com](https://www.ritchieng.com/)
-    
-    <p align="center"><img width="80%" src="https://res.cloudinary.com/ritchieng/image/upload/v1540354047/logos/ritchie_website_affliated_logos.png" /></p>
+    **Guides**: deeplearningwizard.com
 
 !!! abstract "Jie Fu"
+
     I am undergoing my postdoc journey at Montreal Institute for Learning Algorithms (MILA) to prepare for the coming AI winter, as Eddard Stark said "He won't be a boy forever and winter is coming" -- Game of Thrones. I am privileged to work with Christopher Pal.
 
     I earned my PhD degree from National University of Singapore (NUS), and was fortunately under the supervision of Tat-Seng Chua and Huan Xu, also closely working with Jiashi Feng and Kian Hsiang Low.
@@ -57,13 +35,15 @@ To this date, we have taught thousands of students across more than 120+ countri
 ##  Supporters
 
 !!! abstract "Alfredo Canziani"
+
     Alfredo is the main person who inspired Ritchie to open-source Deep Learning Wizard's materials. We are very grateful for his advice particular in the space of open-source projects, deep learning and PyTorch.
     
-    He is currently working as a Post-Doctoral Deep Learning Research Scientist and Lecturer at Courant Institute of Mathematical Sciences, under the supervision of professors KyungHyun Cho and Yann LeCun.
+    He is currently working as an Assistant Professor at Courant Institute of Mathematical Sciences, under the guidance of professor Yann LeCun.
     
     Do check out his latest [mini-course on PyTorch](https://github.com/Atcold/pytorch-Deep-Learning-Minicourse) that was held in Princeton University and was delivered with Ritchie Ng at AMMI (AIMS) Kigali, Rwanda supported by Google and Facebook.
     
 !!! abstract "Marek Bardonski"
+
     Since graduation, Marek has been working on state-of-the-art research. He was involved in inventing the system that diagnoses problems with Ubuntu packages using Machine Learning and in improving the detection accuracy of breast cancer using Deep Learning, each time leading 40 highly skilled Machine Learning/Deep Learning engineers for over 6 months.
 
     NASA noticed his unique skills and asked him to manage a project aiming to improve the International Space Station rotation algorithm that would allow them to collect enough power from solar panels while preventing them from overheating. The project was successful and generated a huge ROI for NASA. Marek has been honored by multiple Harvard professors and the Director of Advanced Exploration Systems at NASA, who signed an official Letter of Recommendation.

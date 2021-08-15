@@ -69,8 +69,8 @@ We are openly calling people to contribute to this repository for errors. Feel f
 
 ## Editors and Supporters
 - [Jie Fu, Editor (Postdoc in Montreal Institute for Learning Algorithms (MILA))](https://github.com/bigaidream)
-- [Alfredo Canziani, Supporter (Postdoc in NYU under Yann Lecun)](https://github.com/Atcold)
-- [Marek Bardonski, Supporter (Global Head of Deep Learning, Sigmoidal)](https://www.linkedin.com/in/marek-bardonski/)
+- [Alfredo Canziani, Supporter (Assistant Prof in NYU under Yann Lecun)](https://github.com/Atcold)
+- [Marek Bardonski, Supporter (Managing Partner, AIRev)](https://www.linkedin.com/in/marek-bardonski/)
 
 ## Bugs and Improvements
 Feel free to report bugs and improvements via issues. Or just simply try to pull to make any improvements/corrections.
