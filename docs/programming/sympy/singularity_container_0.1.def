@@ -1,0 +1,45 @@
+Bootstrap: docker
+
+From: continuumio/anaconda3:2021.05
+
+%post
+export PATH=/opt/conda/bin:$PATH
+
+# update
+apt-get update
+apt-get install -y tree
+
+conda update conda 
+
+pip install --upgrade pip
+
+# pytorch
+conda install pytorch torchvision torchaudio cudatoolkit=11.1 -c pytorch -c nvidia
+
+# sympy
+conda install -c conda-forge sympy
+
+# numpy
+conda install -c conda-forge numpy
+
+# scipy
+conda install -c conda-forge numpy
+
+# statsmodel
+conda install -c conda-forge statsmodels
+
+# scikit
+conda install -c anaconda scikit-learn
+
+# pyarrow
+conda install -c conda-forge pyarrow
+
+# matplotlib
+conda install -c conda-forge matplotlib
+
+# pandas/number
+conda install -c conda-forge pandas numpy
+
+# jupyter 
+conda install -c conda-forge jupyterlab ipykernel
+pip install jupyterlab_theme_solarized_dark
