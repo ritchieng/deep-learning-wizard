@@ -302,5 +302,7 @@ $$V = \int _{x=a}^{x=b} \int _{y=c}^{y=d} f(x,y) \ dy \ dx$$
 
 #### Triple Integral
 
-$$V = \int _{x=a}^{x=b} \int _{y=c}^{y=d} \int _{z=f}^{z=g} f(x,y,z) \ dz \ dy \ dx$$
+$$V = \int _{x=a}^{x=b} \int _{y=c}^{y=d} \int _{z=e}^{z=f} f(x,y,z) \ dz \ dy \ dx$$
+
+## Calculus: Taylor Expansion (Theory)
 
