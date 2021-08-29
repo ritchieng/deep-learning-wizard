@@ -50,7 +50,6 @@ $$ \begin{bmatrix} a & b &c \\ d& e &f \\ g& h &i \end{bmatrix} \\
 * singular matrix: $\det(A) = 0$ where at least 2 rows/columns are linearly dependent
 * non-singular: $\det(A) \neq 0$ where no rows/columns are linearly dependent (matrix has full rank)
 
-
 ## Inverse of a Non-Singular Square Matrix
 
 ### Unique Property
@@ -66,3 +65,63 @@ $$ A=\begin{bmatrix}a & b \\c & d \end{bmatrix} $$
 $$ A^{-1}=\frac{1}{ad-bc}\begin{bmatrix}d & -b \\-c & a \end{bmatrix} $$
 
 $$ \begin{array}{lcl}AA^{-1}&=&\begin{bmatrix}a & b \\c & d \end{bmatrix}\frac{1}{ad-bc}\begin{bmatrix}d & -b \\-c & a \end{bmatrix}\\ &=&\frac{1}{ad-bc}\begin{bmatrix}ad+b(-c) & a(-b)+b(a) \\cd+d(-c) & c(-b)+d(a) \end{bmatrix}\\ &=&\begin{bmatrix}1 & 0\\0 & 1 \end{bmatrix}\end{array} $$
+
+## Linear System of Equations in Matrices
+
+We can express many linear equations in the form of matrices for example $ AX= B $
+
+Where we have $A$ representing our parameters, $B$ representing our input variables and $B$ representing our constant/bias variables.
+
+$$
+A = \begin{bmatrix} a_{11} & a_{12} & \cdots & a_{1N} \\ a_{21} & a_{22} & \cdots & a_{2N} \\ \vdots & \vdots & \ddots & \vdots \\ a_{M1} & a_{M2} & \cdots & a_{MN} \end{bmatrix}, X = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_M \end{bmatrix}, B = \begin{bmatrix} b_1 \\ b_2 \\ \vdots \\ b_M \end{bmatrix}
+$$
+
+If we find $\det (A) $ to be non-zero where the matrix is a non-singular matrix, the system of equations would have a unique solution. Hence, given $A$ and $B$, we can find out the unique solution in $B$.
+
+$$ 
+AX = B \\
+A^{-1}AX = A^{-1}B \\
+IX = A^{-1}B \\
+X = A^{-1}B
+$$
+
+### Solving System of Equations for Square and Non-Singular
+
+If the matrix A is square and $det(A) \neq 0$ (non-singular, inverse matrix can be calculated), then Cramer's rule can be applied to solve the linear system of equations.
+
+#### Process for a 2 x 2 Non-Singular Matrix A
+- Replace First Column of $A$ with $B$ to get $A_1$
+$$ x_1 = \frac{\det(A_1)}{\det(A)} $$
+- Replace Second Column of $A$ with $B$ to get $A_2$
+$$ x_2 = \frac{\det(A_2)}{\det(A)} $$
+- Repeat till all columns covered for bigger matrices
+
+## Eigenvalue (characteristic root) and eigenvalue (characteristic value)
+
+Given a square matrix $A$, eigenvalue $\lambda$ and eigenvector $v$ where $v \neq 0$, we have:
+
+$$
+A v = \lambda v \\
+A v = \lambda I v \\
+Av - \lambda I v = 0 \\
+(A - \lambda I)v = 0 \\
+$$
+
+Since  $v \neq 0$ then we have characteristic matrix $(A - \lambda I) = 0$.
+
+### Solving eigens
+- We can solve for the determinant of the characteristic matrix (characteristic polynomial) $|A - \lambda I| = 0$ through this characteristic equation.
+    - We will get multiple values of $\lambda$
+- Substitute $\lambda$ into $(A - \lambda I)v = 0 $, solve for $v$
+    - If infinite solution (no constant values for x and y), impose uniqueness with $v\prime v  = 1$
+    - Substitute y into unique equation to solve for x
+    - Solve for $v$
+- Simple eigenvector $\lambda _1 \neq \lambda _2$ 
+- Repeated/double eigenvector $\lambda _1 = \lambda _2$ $
+
+### Properties of eigenvalue and eigenvector
+- If $|A - \lambda I| = 0$, singular there infinite solutions. Hence:
+    - $\lambda \gt 0$: positive definite
+    - $\lambda \ge 0$: positive semi-definite
+    - $\lambda \lt 0$: negative definite
+    - $\lambda \le 0$: negative semi-definite
