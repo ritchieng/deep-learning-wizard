@@ -1,4 +1,6 @@
-# Math for AI
+# Calculus wth Sympy
+
+In this section, we will be covering basic calculus theory and using sympy to solve the related equations.
 
 ## Calculus: Differentiation (Theory)
 
@@ -257,7 +259,7 @@ $$ F(x)_{-1}^1 = \int _2 ^2 cos(u) du = 0 $$
 ##### Substitution Example 2
 
 Given
-$$ h(x) = x(x+3)^{\frac{1}{2}}$ $$
+$$ h(x) = x(x+3)^{\frac{1}{2}} $$
 
 Then definite integral from -1 to 1 is
 $$ H(x)_{-1}^1 = \int _{-1} ^ 1 x(x+3)^{\frac{1}{2}} $$
@@ -305,4 +307,25 @@ $$V = \int _{x=a}^{x=b} \int _{y=c}^{y=d} f(x,y) \ dy \ dx$$
 $$V = \int _{x=a}^{x=b} \int _{y=c}^{y=d} \int _{z=e}^{z=f} f(x,y,z) \ dz \ dy \ dx$$
 
 ## Calculus: Taylor Expansion (Theory)
+
+### Taylor Expansion: Single Variable
+
+Given a function that has continuous derivatives up to $(n+1)$ order, the function can be expanded with the following equation:
+
+$$ F(x) = \sum^{\infty}_{n=0} \frac{F^{(n)}(a)}{n!}\ (x-a)^n $$
+
+$$ F(x) = F(a) + F\prime (x)(x-a) + \frac{F\prime\prime(a)}{2!}(x-a)^2 + \cdots + \frac{F(n)(a)}{n!} + R_n(x) $$
+
+If not expanded till $\infty$ then there will be a remainder of $R_n(x)$
+
+### Taylor Expansion: Multiple Variables
+
+In the case of 2 variables $(x, y)$, we can expand the multivariate equation with the generalized Taylor expansion equation:
+
+$$
+F(x, y) = \\
+F(a, b) + \big[ \frac{\partial}{\partial x} F(x, y)_{a,b} (x-a) + \frac{\partial}{\partial y} F(x, y)_{a,b} ) (y - b)  \big] \\
++ \frac{1}{2!} \big[ \frac{\partial ^2}{\partial x^2} F(x, y)_{a,b} (x-a)^2 + \frac{\partial ^2}{\partial y^2} F(x, y)_{a,b}(y-b)^2 \big] \\
++ \frac{\partial ^2}{\partial x \partial y} F(x, y)_{a,b} (x-a)(y-b) + R_2 (x,y)
+$$
 

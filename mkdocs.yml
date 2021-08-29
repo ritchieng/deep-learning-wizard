@@ -69,6 +69,7 @@ nav:
       - Javascript: programming/javascript/javascript.md
       - Electron: programming/electron/electron.md
       - Sympy: programming/sympy/calculus_sympy.md
+      - NumPy and CuPy: programming/numpycupy/linalg_numpy_cupy.md
     #  - Matplotlib: programming/plotting/matplotlib.md
 
     # - Plotting:
