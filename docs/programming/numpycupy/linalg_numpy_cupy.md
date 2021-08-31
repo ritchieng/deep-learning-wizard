@@ -26,7 +26,9 @@ In this section, we will be covering linear algebra and using numpy for CPU-base
 ## Multiplication and Subtraction
 
 - Element-wise Matrix Addition/Subtraction
-    - add/subtract every individual element $a_{ij}$ of the first matrix $A_{M \times N}$ with $b_{ij}$ of the second matrix $B_{M \times N}Scalar Multiplication with Matrix: multiply scalar $\lambda$ with every individual element $a_{ij}$ of the matrix $A_{M \times N}$
+    - add/subtract every individual element $a_{ij}$ of the first matrix $A_{M \times N}$ with $b_{ij}$ of the second matrix $B_{M \times N}$
+- Scalar Multiplication with Matrix
+    - multiply scalar $\lambda$ with every individual element $a_{ij}$ of the matrix $A_{M \times N}$
 - Matrix Multiplication
     - can only be done where $A_{M \times N}$ and $B_{N \times O}$ have a coinciding dimension $N$ which is the same to yield a new matrix $C_{N \times O}$ of $N \times O $ dimension
     - new element $c_{ij} = \sum _{q=1} ^N a_{iq} b_{qj}$
