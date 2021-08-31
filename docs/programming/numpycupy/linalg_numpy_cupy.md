@@ -76,7 +76,7 @@ $$
 A = \begin{bmatrix} a_{11} & a_{12} & \cdots & a_{1N} \\ a_{21} & a_{22} & \cdots & a_{2N} \\ \vdots & \vdots & \ddots & \vdots \\ a_{M1} & a_{M2} & \cdots & a_{MN} \end{bmatrix}, X = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_M \end{bmatrix}, B = \begin{bmatrix} b_1 \\ b_2 \\ \vdots \\ b_M \end{bmatrix}
 $$
 
-If we find $\det (A) $ to be non-zero where the matrix is a non-singular matrix, the system of equations would have a unique solution. Hence, given $A$ and $B$, we can find out the unique solution in $B$.
+If we find $\det (A)$ to be non-zero where the matrix is a non-singular matrix, the system of equations would have a unique solution. Hence, given $A$ and $B$, we can find out the unique solution in $B$.
 
 $$ 
 AX = B \\
@@ -112,15 +112,15 @@ Since  $v \neq 0$ then we have characteristic matrix $(A - \lambda I) = 0$.
 ### Solving eigens
 - We can solve for the determinant of the characteristic matrix (characteristic polynomial) $|A - \lambda I| = 0$ through this characteristic equation.
     - We will get multiple values of $\lambda$
-- Substitute $\lambda$ into $(A - \lambda I)v = 0 $, solve for $v$
+- Substitute $\lambda$ into $(A - \lambda I)v = 0$, solve for $v$
     - If infinite solution (no constant values for x and y), impose uniqueness with $v\prime v  = 1$
     - Substitute y into unique equation to solve for x
     - Solve for $v$
 - Simple eigenvector $\lambda _1 \neq \lambda _2$ 
-- Repeated/double eigenvector $\lambda _1 = \lambda _2$ $
+- Repeated/double eigenvector $\lambda _1 = \lambda _2$
 
 ### Properties of eigenvalue and eigenvector
-- If $|A - \lambda I| = 0$, singular there infinite solutions. Hence:
+- If $|A - \lambda I| = 0$, singular therefore infinite solutions, hence:
     - $\lambda \gt 0$: positive definite
     - $\lambda \ge 0$: positive semi-definite
     - $\lambda \lt 0$: negative definite
