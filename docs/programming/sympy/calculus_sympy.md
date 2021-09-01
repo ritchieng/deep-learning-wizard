@@ -329,3 +329,6 @@ F(a, b) + \big[ \frac{\partial}{\partial x} F(x, y)_{a,b} (x-a) + \frac{\partial
 + \frac{\partial ^2}{\partial x \partial y} F(x, y)_{a,b} (x-a)(y-b) + R_2 (x,y)
 $$
 
+### Maclaurin Expansion
+
+It is simply a Taylor expansion about the point 0.

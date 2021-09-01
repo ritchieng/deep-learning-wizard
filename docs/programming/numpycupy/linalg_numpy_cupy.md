@@ -30,7 +30,7 @@ In this section, we will be covering linear algebra and using numpy for CPU-base
 - Scalar Multiplication with Matrix
     - multiply scalar $\lambda$ with every individual element $a_{ij}$ of the matrix $A_{M \times N}$
 - Matrix Multiplication
-    - can only be done where $A_{M \times N}$ and $B_{N \times O}$ have a coinciding dimension $N$ which is the same to yield a new matrix $C_{N \times O}$ of $N \times O $ dimension
+    - can only be done where $A_{M \times N}$ and $B_{N \times O}$ have a coinciding dimension $N$ which is the same to yield a new matrix $C_{N \times O}$ of $N \times O$ dimension
     - new element $c_{ij} = \sum _{q=1} ^N a_{iq} b_{qj}$
     - essentially the first row and first column element of the new matrix is equal to the summation element-wise multiplication of the first row of matrix $A$ with the first column of matrix $B$
 
@@ -70,7 +70,7 @@ $$ \begin{array}{lcl}AA^{-1}&=&\begin{bmatrix}a & b \\c & d \end{bmatrix}\frac{1
 
 ## Linear System of Equations in Matrices
 
-We can express many linear equations in the form of matrices for example $ AX= B $
+We can express many linear equations in the form of matrices for example $AX= B$
 
 Where we have $A$ representing our parameters, $B$ representing our input variables and $B$ representing our constant/bias variables.
 
@@ -115,9 +115,9 @@ Since  $v \neq 0$ then we have characteristic matrix $(A - \lambda I) = 0$.
 - We can solve for the determinant of the characteristic matrix (characteristic polynomial) $|A - \lambda I| = 0$ through this characteristic equation.
     - We will get multiple values of $\lambda$
 - Substitute $\lambda$ into $(A - \lambda I)v = 0$, solve for $v$
-    - If infinite solution (no constant values for x and y), impose uniqueness with $v\prime v  = 1$
-    - Substitute y into unique equation to solve for x
-    - Solve for $v$
+    - If infinite solution (no constant values for x and y), impose uniqueness with $v\prime v  = 1$ in this case $\begin{bmatrix} x & y \end{bmatrix} \begin{bmatrix} x \\ y \end{bmatrix} = x^2 + y^2 = 1$
+    - Substitute y into $v\prime v  = 1$ to solve for x, then solve for y
+    - Substitute x and y to solve for $v$
 - Simple eigenvector $\lambda _1 \neq \lambda _2$ 
 - Repeated/double eigenvector $\lambda _1 = \lambda _2$
 
