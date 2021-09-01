@@ -15,8 +15,8 @@
       
         <link rel="canonical" href="https://www.deeplearningwizard.com/deep_learning/deep_reinforcement_learning_pytorch/bellman_mdp/">
       
-      <link rel="shortcut icon" href="../../../docs/assets/favicon.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.4">
+      <link rel="icon" href="../../../docs/assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.4">
     
     
       
@@ -24,14 +24,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.15aa0b43.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.f7f47774.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.75751829.min.css">
-        
-          
-          
-          <meta name="theme-color" content="#4051b5">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
         
       
     
@@ -41,17 +37,26 @@
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
       
     
     
     
     
       
-        
-<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-122083328-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview",document.location.pathname)})</script>
-<script async src="https://www.google-analytics.com/analytics.js"></script>
-      
+
+  
+
+
+  
+
+  
+
+
+  <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-122083328-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
+  <script async src="https://www.google-analytics.com/analytics.js"></script>
+
+
     
     
   </head>
@@ -59,12 +64,17 @@
   
     
     
+      
+    
     
     
     
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
-      
   
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -81,27 +91,25 @@
       
     </div>
     
-      
-
-<header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid" aria-label="Header">
-    <a href="https://www.deeplearningwizard.com/" title="Deep Learning Wizard" class="md-header-nav__button md-logo" aria-label="Deep Learning Wizard">
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Deep Learning Wizard" class="md-header__button md-logo" aria-label="Deep Learning Wizard" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M396.8 352h22.4c6.4 0 12.8-6.4 12.8-12.8V108.8c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v230.4c0 6.4 6.4 12.8 12.8 12.8zm-192 0h22.4c6.4 0 12.8-6.4 12.8-12.8V140.8c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v198.4c0 6.4 6.4 12.8 12.8 12.8zm96 0h22.4c6.4 0 12.8-6.4 12.8-12.8V204.8c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v134.4c0 6.4 6.4 12.8 12.8 12.8zM496 400H48V80c0-8.84-7.16-16-16-16H16C7.16 64 0 71.16 0 80v336c0 17.67 14.33 32 32 32h464c8.84 0 16-7.16 16-16v-16c0-8.84-7.16-16-16-16zm-387.2-48h22.4c6.4 0 12.8-6.4 12.8-12.8v-70.4c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v70.4c0 6.4 6.4 12.8 12.8 12.8z"/></svg>
 
     </a>
-    <label class="md-header-nav__button md-icon" for="__drawer">
+    <label class="md-header__button md-icon" for="__drawer">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
     </label>
-    <div class="md-header-nav__title" data-md-component="header-title">
-      <div class="md-header-nav__ellipsis">
-        <div class="md-header-nav__topic">
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
           <span class="md-ellipsis">
             Deep Learning Wizard
           </span>
         </div>
-        <div class="md-header-nav__topic">
+        <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
               Markov Decision Processes (MDP) and Bellman Equations
@@ -111,22 +119,56 @@
       </div>
     </div>
     
-      <label class="md-header-nav__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m10-3a5 5 0 0 1 5 5 5 5 0 0 1-5 5H7a5 5 0 0 1-5-5 5 5 0 0 1 5-5h10M7 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3h10a3 3 0 0 0 3-3 3 3 0 0 0-3-3H7z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
       </label>
       
 <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
       </label>
-      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
-      </button>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
@@ -142,12 +184,12 @@
 </div>
     
     
-      <div class="md-header-nav__source">
+      <div class="md-header__source">
         
-<a href="https://github.com/ritchieng/deep-learning-wizard/" title="Go to repository" class="md-source">
+<a href="https://github.com/ritchieng/deep-learning-wizard/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     ritchieng/deep-learning-wizard
@@ -254,24 +296,8 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../ood/intro/" class="md-tabs__link">
-        Out of Distribution Data
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
       <a href="../../../database/intro/" class="md-tabs__link">
-        Scalable Database
+        Database
       </a>
     </li>
   
@@ -303,19 +329,17 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
-
-
 
   
 
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="https://www.deeplearningwizard.com/" title="Deep Learning Wizard" class="md-nav__button md-logo" aria-label="Deep Learning Wizard">
+    <a href="../../.." title="Deep Learning Wizard" class="md-nav__button md-logo" aria-label="Deep Learning Wizard" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M396.8 352h22.4c6.4 0 12.8-6.4 12.8-12.8V108.8c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v230.4c0 6.4 6.4 12.8 12.8 12.8zm-192 0h22.4c6.4 0 12.8-6.4 12.8-12.8V140.8c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v198.4c0 6.4 6.4 12.8 12.8 12.8zm96 0h22.4c6.4 0 12.8-6.4 12.8-12.8V204.8c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v134.4c0 6.4 6.4 12.8 12.8 12.8zM496 400H48V80c0-8.84-7.16-16-16-16H16C7.16 64 0 71.16 0 80v336c0 17.67 14.33 32 32 32h464c8.84 0 16-7.16 16-16v-16c0-8.84-7.16-16-16-16zm-387.2-48h22.4c6.4 0 12.8-6.4 12.8-12.8v-70.4c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v70.4c0 6.4 6.4 12.8 12.8 12.8z"/></svg>
@@ -326,10 +350,10 @@
   
     <div class="md-nav__source">
       
-<a href="https://github.com/ritchieng/deep-learning-wizard/" title="Go to repository" class="md-source">
+<a href="https://github.com/ritchieng/deep-learning-wizard/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     ritchieng/deep-learning-wizard
@@ -343,419 +367,397 @@
       
       
 
-
-
-  <li class="md-nav__item">
-    <a href="../../.." class="md-nav__link">
-      Home
-    </a>
-  </li>
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
 
     
       
       
       
-
-
 
   
-  <li class="md-nav__item md-nav__item--nested">
+  
+  
     
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
-    
-    <label class="md-nav__link" for="nav-2">
-      About
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="About" data-md-level="1">
-      <label class="md-nav__title" for="nav-2">
-        <span class="md-nav__icon md-icon"></span>
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
         About
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../home/" class="md-nav__link">
-      Intro
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../about/" class="md-nav__link">
-      About Us
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../review/" class="md-nav__link">
-      Reviews
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../pipeline/" class="md-nav__link">
-      AI Pipeline
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../consultancy/" class="md-nav__link">
-      Consultancy
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  
-
-
-  
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-    
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
-    
-    <label class="md-nav__link" for="nav-3">
-      Deep Learning (CPU/GPU)
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="Deep Learning (CPU/GPU)" data-md-level="1">
-      <label class="md-nav__title" for="nav-3">
         <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="About" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          About
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../home/" class="md-nav__link">
+        Intro
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        About Us
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../review/" class="md-nav__link">
+        Reviews
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pipeline/" class="md-nav__link">
+        AI Pipeline
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../consultancy/" class="md-nav__link">
+        Consultancy
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
         Deep Learning (CPU/GPU)
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../intro/" class="md-nav__link">
-      Introduction
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../course_progression/" class="md-nav__link">
-      Course Progression
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../practical_pytorch/pytorch_matrices/" class="md-nav__link">
-      Matrices
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../practical_pytorch/pytorch_gradients/" class="md-nav__link">
-      Gradients
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../practical_pytorch/pytorch_linear_regression/" class="md-nav__link">
-      Linear Regression
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../practical_pytorch/pytorch_logistic_regression/" class="md-nav__link">
-      Logistic Regression
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../practical_pytorch/pytorch_feedforward_neuralnetwork/" class="md-nav__link">
-      Feedforward Neural Networks (FNN)
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../practical_pytorch/pytorch_convolutional_neuralnetwork/" class="md-nav__link">
-      Convolutional Neural Networks (CNN)
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../practical_pytorch/pytorch_recurrent_neuralnetwork/" class="md-nav__link">
-      Recurrent Neural Networks (RNN)
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../practical_pytorch/pytorch_lstm_neuralnetwork/" class="md-nav__link">
-      Long Short Term Memory Neural Networks (LSTM)
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../practical_pytorch/pytorch_autoencoder/" class="md-nav__link">
-      Autoencoders (AE)
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../practical_pytorch/pytorch_fc_overcomplete_ae/" class="md-nav__link">
-      Fully-connected Overcomplete Autoencoder (AE)
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../boosting_models_pytorch/derivative_gradient_jacobian/" class="md-nav__link">
-      Derivative, Gradient and Jacobian
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../boosting_models_pytorch/forwardpropagation_backpropagation_gradientdescent/" class="md-nav__link">
-      Forward- and Backward-propagation and Gradient Descent (From Scratch FNN Regression)
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../fromscratch/fromscratch_logistic_regression/" class="md-nav__link">
-      From Scratch Logistic Regression Classification
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../fromscratch/fromscratch_cnn/" class="md-nav__link">
-      From Scratch CNN Classification
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../boosting_models_pytorch/lr_scheduling/" class="md-nav__link">
-      Learning Rate Scheduling
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../boosting_models_pytorch/optimizers/" class="md-nav__link">
-      Optimization Algorithms
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../boosting_models_pytorch/weight_initialization_activation_functions/" class="md-nav__link">
-      Weight Initialization and Activation Functions
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../supervised_to_rl/" class="md-nav__link">
-      Supervised Learning to Reinforcement Learning (RL)
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Markov Decision Processes (MDP) and Bellman Equations
         <span class="md-nav__icon md-icon"></span>
       </label>
+      <nav class="md-nav" aria-label="Deep Learning (CPU/GPU)" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Deep Learning (CPU/GPU)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course_progression/" class="md-nav__link">
+        Course Progression
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practical_pytorch/pytorch_matrices/" class="md-nav__link">
+        Matrices
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practical_pytorch/pytorch_gradients/" class="md-nav__link">
+        Gradients
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practical_pytorch/pytorch_linear_regression/" class="md-nav__link">
+        Linear Regression
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practical_pytorch/pytorch_logistic_regression/" class="md-nav__link">
+        Logistic Regression
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practical_pytorch/pytorch_feedforward_neuralnetwork/" class="md-nav__link">
+        Feedforward Neural Networks (FNN)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practical_pytorch/pytorch_convolutional_neuralnetwork/" class="md-nav__link">
+        Convolutional Neural Networks (CNN)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practical_pytorch/pytorch_recurrent_neuralnetwork/" class="md-nav__link">
+        Recurrent Neural Networks (RNN)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practical_pytorch/pytorch_lstm_neuralnetwork/" class="md-nav__link">
+        Long Short Term Memory Neural Networks (LSTM)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practical_pytorch/pytorch_autoencoder/" class="md-nav__link">
+        Autoencoders (AE)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practical_pytorch/pytorch_fc_overcomplete_ae/" class="md-nav__link">
+        Fully-connected Overcomplete Autoencoder (AE)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../boosting_models_pytorch/derivative_gradient_jacobian/" class="md-nav__link">
+        Derivative, Gradient and Jacobian
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../boosting_models_pytorch/forwardpropagation_backpropagation_gradientdescent/" class="md-nav__link">
+        Forward- and Backward-propagation and Gradient Descent (From Scratch FNN Regression)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fromscratch/fromscratch_logistic_regression/" class="md-nav__link">
+        From Scratch Logistic Regression Classification
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fromscratch/fromscratch_cnn/" class="md-nav__link">
+        From Scratch CNN Classification
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../boosting_models_pytorch/lr_scheduling/" class="md-nav__link">
+        Learning Rate Scheduling
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../boosting_models_pytorch/optimizers/" class="md-nav__link">
+        Optimization Algorithms
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../boosting_models_pytorch/weight_initialization_activation_functions/" class="md-nav__link">
+        Weight Initialization and Activation Functions
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../supervised_to_rl/" class="md-nav__link">
+        Supervised Learning to Reinforcement Learning (RL)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
     
-    <a href="./" class="md-nav__link md-nav__link--active">
-      Markov Decision Processes (MDP) and Bellman Equations
-    </a>
-    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
       
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Markov Decision Processes (MDP) and Bellman Equations
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Markov Decision Processes (MDP) and Bellman Equations
+      </a>
+      
+        
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
   
   
   
@@ -763,7 +765,7 @@
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
   <a href="#markov-decision-processes-mdps" class="md-nav__link">
@@ -871,522 +873,483 @@
     </ul>
   
 </nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dynamic_programming_frozenlake/" class="md-nav__link">
+        Dynamic Programming
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production_pytorch/speed_optimization_basics_numba/" class="md-nav__link">
+        Speed Optimization Basics Numba
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../readings/" class="md-nav__link">
+        Additional Readings
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
     
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../dynamic_programming_frozenlake/" class="md-nav__link">
-      Dynamic Programming
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../production_pytorch/speed_optimization_basics_numba/" class="md-nav__link">
-      Speed Optimization Basics Numba
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../readings/" class="md-nav__link">
-      Additional Readings
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
       
       
       
-
-
 
   
-  <li class="md-nav__item md-nav__item--nested">
+  
+  
     
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
-    
-    <label class="md-nav__link" for="nav-4">
-      Machine Learning (CPU/GPU)
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="Machine Learning (CPU/GPU)" data-md-level="1">
-      <label class="md-nav__title" for="nav-4">
-        <span class="md-nav__icon md-icon"></span>
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
         Machine Learning (CPU/GPU)
+        <span class="md-nav__icon md-icon"></span>
       </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
+      <nav class="md-nav" aria-label="Machine Learning (CPU/GPU)" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Machine Learning (CPU/GPU)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../machine_learning/intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../machine_learning/gpu/rapids_cudf/" class="md-nav__link">
+        GPU DataFrames
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../machine_learning/gpu/gpu_fractional_differencing/" class="md-nav__link">
+        GPU/CPU Fractional Differencing
+      </a>
+    </li>
+  
 
-
-
-  <li class="md-nav__item">
-    <a href="../../../machine_learning/intro/" class="md-nav__link">
-      Introduction
-    </a>
-  </li>
-
-        
           
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../machine_learning/gpu/rapids_cudf/" class="md-nav__link">
-      GPU DataFrames
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../machine_learning/gpu/gpu_fractional_differencing/" class="md-nav__link">
-      GPU/CPU Fractional Differencing
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
+        </ul>
+      </nav>
+    </li>
+  
 
     
       
       
       
-
-
 
   
-  <li class="md-nav__item md-nav__item--nested">
+  
+  
     
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
-    
-    <label class="md-nav__link" for="nav-5">
-      Programming
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="Programming" data-md-level="1">
-      <label class="md-nav__title" for="nav-5">
-        <span class="md-nav__icon md-icon"></span>
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
         Programming
+        <span class="md-nav__icon md-icon"></span>
       </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
+      <nav class="md-nav" aria-label="Programming" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Programming
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/cpp/cpp/" class="md-nav__link">
+        C++
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/bash/bash/" class="md-nav__link">
+        Bash
+      </a>
+    </li>
+  
 
-
-
-  <li class="md-nav__item">
-    <a href="../../../programming/intro/" class="md-nav__link">
-      Introduction
-    </a>
-  </li>
-
-        
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/python/python/" class="md-nav__link">
+        Python
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/javascript/javascript/" class="md-nav__link">
+        Javascript
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/electron/electron/" class="md-nav__link">
+        Electron
+      </a>
+    </li>
+  
 
-
-
-  <li class="md-nav__item">
-    <a href="../../../programming/cpp/cpp/" class="md-nav__link">
-      C++
-    </a>
-  </li>
-
-        
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/sympy/calculus_sympy/" class="md-nav__link">
+        Sympy
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/numpycupy/linalg_numpy_cupy/" class="md-nav__link">
+        NumPy and CuPy
+      </a>
+    </li>
+  
+
           
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../programming/bash/bash/" class="md-nav__link">
-      Bash
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../programming/python/python/" class="md-nav__link">
-      Python
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../programming/javascript/javascript/" class="md-nav__link">
-      Javascript
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../programming/electron/electron/" class="md-nav__link">
-      Electron
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
+        </ul>
+      </nav>
+    </li>
+  
 
     
       
       
       
-
-
 
   
-  <li class="md-nav__item md-nav__item--nested">
+  
+  
     
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" >
-    
-    <label class="md-nav__link" for="nav-6">
-      Out of Distribution Data
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="Out of Distribution Data" data-md-level="1">
-      <label class="md-nav__title" for="nav-6">
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Database
         <span class="md-nav__icon md-icon"></span>
-        Out of Distribution Data
       </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
+      <nav class="md-nav" aria-label="Database" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Database
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../database/intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../database/setting_up_cluster/" class="md-nav__link">
+        Cassandra Cluster Setup
+      </a>
+    </li>
+  
+
           
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../ood/intro/" class="md-nav__link">
-      Introduction
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
+        </ul>
+      </nav>
+    </li>
+  
 
     
       
       
       
-
-
 
   
-  <li class="md-nav__item md-nav__item--nested">
-    
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" >
-    
-    <label class="md-nav__link" for="nav-7">
-      Scalable Database
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="Scalable Database" data-md-level="1">
-      <label class="md-nav__title" for="nav-7">
-        <span class="md-nav__icon md-icon"></span>
-        Scalable Database
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../database/intro/" class="md-nav__link">
-      Introduction
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../database/setting_up_cluster/" class="md-nav__link">
-      Cassandra Cluster Setup
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-
   
-  <li class="md-nav__item md-nav__item--nested">
+  
     
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8" >
-    
-    <label class="md-nav__link" for="nav-8">
-      News
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="News" data-md-level="1">
-      <label class="md-nav__title" for="nav-8">
-        <span class="md-nav__icon md-icon"></span>
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
         News
+        <span class="md-nav__icon md-icon"></span>
       </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
+      <nav class="md-nav" aria-label="News" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          News
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/news/" class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/dbs_gpu_rapids_nvidia_ensemble_frac_diff/" class="md-nav__link">
+        Fractional Differencing with GPU (GFD), DBS and NVIDIA, September 2019
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/defence_and_science_technology_agency_dsta_nvidia_talk_2016_06/" class="md-nav__link">
+        Deep Learning Introduction, Defence and Science Technology Agency (DSTA) and NVIDIA, June 2019
+      </a>
+    </li>
+  
 
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/news/" class="md-nav__link">
-      Welcome
-    </a>
-  </li>
-
-        
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/detect_waterbone_debris_ai_for_social_good_icml_2019_06/" class="md-nav__link">
+        Oral Presentation for AI for Social Good Workshop ICML, June 2019
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/it_youth_leader_2019_03_11/" class="md-nav__link">
+        IT Youth Leader of The Year 2019, March 2019
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/ammi_facebook_google_recap_2018_11_21/" class="md-nav__link">
+        AMMI (AIMS) supported by Facebook and Google, November 2018
+      </a>
+    </li>
+  
 
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/dbs_gpu_rapids_nvidia_ensemble_frac_diff/" class="md-nav__link">
-      Fractional Differencing with GPU (GFD), DBS and NVIDIA, September 2019
-    </a>
-  </li>
-
-        
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/nanjing_next_nus_tsinghua_ai_finance_healthcare_2018_11_01/" class="md-nav__link">
+        NExT++ AI in Healthcare and Finance, Nanjing, November 2018
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/facebook_pytorch_devcon_recap_2018_10_02/" class="md-nav__link">
+        Recap of Facebook PyTorch Developer Conference, San Francisco, September 2018
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/facebook_pytorch_developer_conference_2018_09_05/" class="md-nav__link">
+        Facebook PyTorch Developer Conference, San Francisco, September 2018
+      </a>
+    </li>
+  
 
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/defence_and_science_technology_agency_dsta_nvidia_talk_2016_06/" class="md-nav__link">
-      Deep Learning Introduction, Defence and Science Technology Agency (DSTA) and NVIDIA, June 2019
-    </a>
-  </li>
-
-        
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/nvidia_nus_mit_datathon_2018_07_05/" class="md-nav__link">
+        NUS-MIT-NUHS NVIDIA Image Recognition Workshop, Singapore, July 2018
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/deep_learning_wizard_1y_2018_06_01/" class="md-nav__link">
+        Featured on PyTorch Website 2018
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/nvidia_self_driving_cars_talk_2017_06_21/" class="md-nav__link">
+        NVIDIA Self Driving Cars & Healthcare Talk, Singapore, June 2017
+      </a>
+    </li>
+  
 
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/detect_waterbone_debris_ai_for_social_good_icml_2019_06/" class="md-nav__link">
-      Oral Presentation for AI for Social Good Workshop ICML, June 2019
-    </a>
-  </li>
-
-        
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/deep_learning_wizard_nvidia_inception_2018_05_01/" class="md-nav__link">
+        NVIDIA Inception Partner Status, Singapore, May 2017
+      </a>
+    </li>
+  
+
           
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/it_youth_leader_2019_03_11/" class="md-nav__link">
-      IT Youth Leader of The Year 2019, March 2019
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/ammi_facebook_google_recap_2018_11_21/" class="md-nav__link">
-      AMMI (AIMS) supported by Facebook and Google, November 2018
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/nanjing_next_nus_tsinghua_ai_finance_healthcare_2018_11_01/" class="md-nav__link">
-      NExT++ AI in Healthcare and Finance, Nanjing, November 2018
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/facebook_pytorch_devcon_recap_2018_10_02/" class="md-nav__link">
-      Recap of Facebook PyTorch Developer Conference, San Francisco, September 2018
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/facebook_pytorch_developer_conference_2018_09_05/" class="md-nav__link">
-      Facebook PyTorch Developer Conference, San Francisco, September 2018
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/nvidia_nus_mit_datathon_2018_07_05/" class="md-nav__link">
-      NUS-MIT-NUHS NVIDIA Image Recognition Workshop, Singapore, July 2018
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/deep_learning_wizard_1y_2018_06_01/" class="md-nav__link">
-      Featured on PyTorch Website 2018
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/nvidia_self_driving_cars_talk_2017_06_21/" class="md-nav__link">
-      NVIDIA Self Driving Cars & Healthcare Talk, Singapore, June 2017
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/deep_learning_wizard_nvidia_inception_2018_05_01/" class="md-nav__link">
-      NVIDIA Inception Partner Status, Singapore, May 2017
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
+        </ul>
+      </nav>
+    </li>
+  
 
     
   </ul>
@@ -1397,7 +1360,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -1405,11 +1368,12 @@
   
   
   
+  
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
   <a href="#markov-decision-processes-mdps" class="md-nav__link">
@@ -1522,7 +1486,7 @@
               </div>
             
           
-          <div class="md-content">
+          <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
                 
@@ -1562,9 +1526,9 @@
 <p>Permutations of whether there is presence of the two main characteristics would lead to different Markov models. These are not important now, but it gives you an idea of what other frameworks we can use besides MDPs.</p>
 <h6 id="types-of-markov-models">Types of Markov Models<a class="headerlink" href="#types-of-markov-models" title="Permanent link">&para;</a></h6>
 <ol>
-<li><ins class="critic">Control</ins> over state transitions and <ins class="critic">completely observable</ins> states: <strong>MDPs</strong></li>
-<li><ins class="critic">Control</ins> over state transitions and <mark>partially observable states</mark>: <strong>Partially Observable MDPs (POMDPs)</strong></li>
-<li><mark>No control</mark> over state transitions and <ins class="critic">completely observable</ins> states: <strong>Markov Chain</strong></li>
+<li>{++Control++} over state transitions and {++completely observable++} states: <strong>MDPs</strong></li>
+<li>{++Control++} over state transitions and <mark>partially observable states</mark>: <strong>Partially Observable MDPs (POMDPs)</strong></li>
+<li><mark>No control</mark> over state transitions and {++completely observable++} states: <strong>Markov Chain</strong></li>
 <li><mark>No control</mark> over state transitions and <mark>partially observable</mark> states: <strong>Hidden Markov Model</strong></li>
 </ol>
 <h6 id="pomdps">POMDPs<a class="headerlink" href="#pomdps" title="Permanent link">&para;</a></h6>
@@ -1580,24 +1544,24 @@
 </div>
 <h2 id="5-components-of-mdps">5 Components of MDPs<a class="headerlink" href="#5-components-of-mdps" title="Permanent link">&para;</a></h2>
 <ol>
-<li><span><span class="MathJax_Preview">\mathcal{S}</span><script type="math/tex">\mathcal{S}</script></span>: set of states</li>
-<li><span><span class="MathJax_Preview">\mathcal{A}</span><script type="math/tex">\mathcal{A}</script></span>: set of actions</li>
-<li><span><span class="MathJax_Preview">\mathcal{R}</span><script type="math/tex">\mathcal{R}</script></span>: reward function</li>
-<li><span><span class="MathJax_Preview">\mathcal{P}</span><script type="math/tex">\mathcal{P}</script></span>: transition probability function</li>
-<li><span><span class="MathJax_Preview">\gamma</span><script type="math/tex">\gamma</script></span>: discount for future rewards</li>
+<li><span class="arithmatex">\(\mathcal{S}\)</span>: set of states</li>
+<li><span class="arithmatex">\(\mathcal{A}\)</span>: set of actions</li>
+<li><span class="arithmatex">\(\mathcal{R}\)</span>: reward function</li>
+<li><span class="arithmatex">\(\mathcal{P}\)</span>: transition probability function</li>
+<li><span class="arithmatex">\(\gamma\)</span>: discount for future rewards</li>
 </ol>
 <div class="admonition tip">
 <p class="admonition-title">Remembering 5 components with a mnemonic</p>
-<p>A mnemonic I use to remember the 5 components is the acronym "SARPY" (sar-py). I know <span><span class="MathJax_Preview">\gamma</span><script type="math/tex">\gamma</script></span> is not <span><span class="MathJax_Preview">\mathcal{Y}</span><script type="math/tex">\mathcal{Y}</script></span> but it looks like a <code>y</code> so there's that.</p>
+<p>A mnemonic I use to remember the 5 components is the acronym "SARPY" (sar-py). I know <span class="arithmatex">\(\gamma\)</span> is not <span class="arithmatex">\(\mathcal{Y}\)</span> but it looks like a <code>y</code> so there's that.</p>
 </div>
 <h2 id="moving-from-mdps-to-optimal-policy">Moving From MDPs to Optimal Policy<a class="headerlink" href="#moving-from-mdps-to-optimal-policy" title="Permanent link">&para;</a></h2>
 <ul>
 <li>We have an <strong>agent</strong> acting in an <strong>environment</strong></li>
-<li>The way the <strong>environment</strong> reacts to the agent's <strong>actions (<span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>)</strong> is dictated by a <strong>model</strong></li>
-<li>The agent can take <strong>actions (<span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>)</strong> to move from one <strong>state (<span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>)</strong> to another <strong>new state (<span><span class="MathJax_Preview">s')</span><script type="math/tex">s')</script></span></strong></li>
-<li>When the agent has transited to a <strong>new state (<span><span class="MathJax_Preview">s')</span><script type="math/tex">s')</script></span></strong>, there will a <strong>reward (<span><span class="MathJax_Preview">r</span><script type="math/tex">r</script></span>)</strong></li>
+<li>The way the <strong>environment</strong> reacts to the agent's <strong>actions (<span class="arithmatex">\(a\)</span>)</strong> is dictated by a <strong>model</strong></li>
+<li>The agent can take <strong>actions (<span class="arithmatex">\(a\)</span>)</strong> to move from one <strong>state (<span class="arithmatex">\(s\)</span>)</strong> to another <strong>new state (<span class="arithmatex">\(s')\)</span></strong></li>
+<li>When the agent has transited to a <strong>new state (<span class="arithmatex">\(s')\)</span></strong>, there will a <strong>reward (<span class="arithmatex">\(r\)</span>)</strong></li>
 <li>We may or may not know our <strong>model</strong><ol>
-<li><strong>Model-based RL</strong>: this is where we can <ins class="critic">clearly define</ins> our (1) transition probabilities and/or (2) reward function<ul>
+<li><strong>Model-based RL</strong>: this is where we can {++clearly define++} our (1) transition probabilities and/or (2) reward function<ul>
 <li>A global minima can be attained via Dynamic Programming (DP)</li>
 </ul>
 </li>
@@ -1607,44 +1571,44 @@
 </li>
 </ol>
 </li>
-<li>How the agent <strong>acts (<span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span>)</strong> in its current <strong>state (<span><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span>)</strong> is specified by its <strong>policy (<span><span class="MathJax_Preview">\pi(s)</span><script type="math/tex">\pi(s)</script></span>)</strong><ul>
+<li>How the agent <strong>acts (<span class="arithmatex">\(a\)</span>)</strong> in its current <strong>state (<span class="arithmatex">\(s\)</span>)</strong> is specified by its <strong>policy (<span class="arithmatex">\(\pi(s)\)</span>)</strong><ul>
 <li>It can either be deterministic or stochastic<ol>
-<li><strong>Deterministic policy</strong>: <span><span class="MathJax_Preview">a = \pi(s)</span><script type="math/tex">a = \pi(s)</script></span></li>
-<li><strong>Stochastic policy</strong>: <span><span class="MathJax_Preview">\mathbb{P}_\pi [A=a \vert S=s] = \pi(a | s)</span><script type="math/tex">\mathbb{P}_\pi [A=a \vert S=s] = \pi(a | s)</script></span><ul>
+<li><strong>Deterministic policy</strong>: <span class="arithmatex">\(a = \pi(s)\)</span></li>
+<li><strong>Stochastic policy</strong>: <span class="arithmatex">\(\mathbb{P}_\pi [A=a \vert S=s] = \pi(a | s)\)</span><ul>
 <li>This is the proability of taking an action given the current state under the policy</li>
-<li><span><span class="MathJax_Preview">\mathcal{A}</span><script type="math/tex">\mathcal{A}</script></span>: set of all actions</li>
-<li><span><span class="MathJax_Preview">\mathcal{S}</span><script type="math/tex">\mathcal{S}</script></span>: set of all states</li>
+<li><span class="arithmatex">\(\mathcal{A}\)</span>: set of all actions</li>
+<li><span class="arithmatex">\(\mathcal{S}\)</span>: set of all states</li>
 </ul>
 </li>
 </ol>
 </li>
 </ul>
 </li>
-<li>When the agent acts given its state under the <strong>policy (<span><span class="MathJax_Preview">\pi(a | s)</span><script type="math/tex">\pi(a | s)</script></span>)</strong>, the <strong>transition probability function <span><span class="MathJax_Preview">\mathcal{P}</span><script type="math/tex">\mathcal{P}</script></span></strong> determines the subsequent <strong>state (<span><span class="MathJax_Preview">s'</span><script type="math/tex">s'</script></span>)</strong><ul>
-<li><span><span class="MathJax_Preview">\mathcal{P}_{ss'}^a = \mathcal{P}(s' \vert s, a)  = \mathbb{P} [S_{t+1} = s' \vert S_t = s, A_t = a]</span><script type="math/tex">\mathcal{P}_{ss'}^a = \mathcal{P}(s' \vert s, a)  = \mathbb{P} [S_{t+1} = s' \vert S_t = s, A_t = a]</script></span></li>
+<li>When the agent acts given its state under the <strong>policy (<span class="arithmatex">\(\pi(a | s)\)</span>)</strong>, the <strong>transition probability function <span class="arithmatex">\(\mathcal{P}\)</span></strong> determines the subsequent <strong>state (<span class="arithmatex">\(s'\)</span>)</strong><ul>
+<li><span class="arithmatex">\(\mathcal{P}_{ss'}^a = \mathcal{P}(s' \vert s, a)  = \mathbb{P} [S_{t+1} = s' \vert S_t = s, A_t = a]\)</span></li>
 </ul>
 </li>
-<li>When the agent act based on its <strong>policy (<span><span class="MathJax_Preview">\pi(a | s)</span><script type="math/tex">\pi(a | s)</script></span>)</strong> and transited to the new state determined by the transition probability function <span><span class="MathJax_Preview">\mathcal{P}_{ss'}^a</span><script type="math/tex">\mathcal{P}_{ss'}^a</script></span> it gets a reward based on the <strong>reward function</strong> as a feedback<ul>
-<li><span><span class="MathJax_Preview">\mathcal{R}_s^a = \mathbb{E} [\mathcal{R}_{t+1} \vert S_t = s, A_t = a]</span><script type="math/tex">\mathcal{R}_s^a = \mathbb{E} [\mathcal{R}_{t+1} \vert S_t = s, A_t = a]</script></span></li>
+<li>When the agent act based on its <strong>policy (<span class="arithmatex">\(\pi(a | s)\)</span>)</strong> and transited to the new state determined by the transition probability function <span class="arithmatex">\(\mathcal{P}_{ss'}^a\)</span> it gets a reward based on the <strong>reward function</strong> as a feedback<ul>
+<li><span class="arithmatex">\(\mathcal{R}_s^a = \mathbb{E} [\mathcal{R}_{t+1} \vert S_t = s, A_t = a]\)</span></li>
 </ul>
 </li>
-<li>Rewards are short-term, given as feedback after the agent takes an action and transits to a new state. Summing all future rewards and discounting them would lead to our <strong>return <span><span class="MathJax_Preview">\mathcal{G}</span><script type="math/tex">\mathcal{G}</script></span></strong><ul>
-<li><span><span class="MathJax_Preview">\mathcal{G}_t = \sum_{i=0}^{N} \gamma^k \mathcal{R}_{t+1+i}</span><script type="math/tex">\mathcal{G}_t = \sum_{i=0}^{N} \gamma^k \mathcal{R}_{t+1+i}</script></span><ul>
-<li><span><span class="MathJax_Preview">\gamma</span><script type="math/tex">\gamma</script></span>, our discount factor which ranges from 0 to 1 (inclusive) reduces the weightage of future rewards allowing us to balance between short-term and long-term goals</li>
+<li>Rewards are short-term, given as feedback after the agent takes an action and transits to a new state. Summing all future rewards and discounting them would lead to our <strong>return <span class="arithmatex">\(\mathcal{G}\)</span></strong><ul>
+<li><span class="arithmatex">\(\mathcal{G}_t = \sum_{i=0}^{N} \gamma^k \mathcal{R}_{t+1+i}\)</span><ul>
+<li><span class="arithmatex">\(\gamma\)</span>, our discount factor which ranges from 0 to 1 (inclusive) reduces the weightage of future rewards allowing us to balance between short-term and long-term goals</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>With our <strong>return <span><span class="MathJax_Preview">\mathcal{G}</span><script type="math/tex">\mathcal{G}</script></span></strong>, we then have our <strong>state-value function <span><span class="MathJax_Preview">\mathcal{V}_{\pi}</span><script type="math/tex">\mathcal{V}_{\pi}</script></span></strong> (how good to stay in that state) and our <strong>action-value or q-value function <span><span class="MathJax_Preview">\mathcal{Q}_{\pi}</span><script type="math/tex">\mathcal{Q}_{\pi}</script></span></strong> (how good to take the action)<ul>
-<li><span><span class="MathJax_Preview">\mathcal{V}_{\pi}(s) = \mathbb{E}_{\pi}[\mathcal{G}_t \vert \mathcal{S}_t = s]</span><script type="math/tex">\mathcal{V}_{\pi}(s) = \mathbb{E}_{\pi}[\mathcal{G}_t \vert \mathcal{S}_t = s]</script></span></li>
-<li><span><span class="MathJax_Preview">\mathcal{Q}_{\pi}(s, a) = \mathbb{E}_{\pi}[\mathcal{G}_t \vert \mathcal{S}_t = s, \mathcal{A}_t = a]</span><script type="math/tex">\mathcal{Q}_{\pi}(s, a) = \mathbb{E}_{\pi}[\mathcal{G}_t \vert \mathcal{S}_t = s, \mathcal{A}_t = a]</script></span></li>
-<li>The advantage function is simply the difference between the two functions <span><span class="MathJax_Preview">\mathcal{A}_{\pi}(s, a) = \mathcal{Q}_{\pi}(s, a) - \mathcal{V}_{\pi}(s)</span><script type="math/tex">\mathcal{A}_{\pi}(s, a) = \mathcal{Q}_{\pi}(s, a) - \mathcal{V}_{\pi}(s)</script></span><ul>
+<li>With our <strong>return <span class="arithmatex">\(\mathcal{G}\)</span></strong>, we then have our <strong>state-value function <span class="arithmatex">\(\mathcal{V}_{\pi}\)</span></strong> (how good to stay in that state) and our <strong>action-value or q-value function <span class="arithmatex">\(\mathcal{Q}_{\pi}\)</span></strong> (how good to take the action)<ul>
+<li><span class="arithmatex">\(\mathcal{V}_{\pi}(s) = \mathbb{E}_{\pi}[\mathcal{G}_t \vert \mathcal{S}_t = s]\)</span></li>
+<li><span class="arithmatex">\(\mathcal{Q}_{\pi}(s, a) = \mathbb{E}_{\pi}[\mathcal{G}_t \vert \mathcal{S}_t = s, \mathcal{A}_t = a]\)</span></li>
+<li>The advantage function is simply the difference between the two functions <span class="arithmatex">\(\mathcal{A}_{\pi}(s, a) = \mathcal{Q}_{\pi}(s, a) - \mathcal{V}_{\pi}(s)\)</span><ul>
 <li>Seems useless at this stage, but this advantage function will be used in some key algorithms we are covering</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>Since our policy determines how our agent acts given its state, achieving an <strong>optimal policy <span><span class="MathJax_Preview">\pi_*</span><script type="math/tex">\pi_*</script></span></strong> would mean achieving optimal actions that is exactly what we want!</li>
+<li>Since our policy determines how our agent acts given its state, achieving an <strong>optimal policy <span class="arithmatex">\(\pi_*\)</span></strong> would mean achieving optimal actions that is exactly what we want!</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Basic Categories of Approaches</p>
@@ -1660,12 +1624,12 @@
 </div>
 <h2 id="optimal-policy">Optimal Policy<a class="headerlink" href="#optimal-policy" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Optimal policy <span><span class="MathJax_Preview">\pi_*</span><script type="math/tex">\pi_*</script></span> &rarr; optimal state-value and action-value functions &rarr; max return &rarr; argmax of value functions<ul>
-<li><span><span class="MathJax_Preview">\pi_{*} = \arg\max_{\pi} \mathcal{V}_{\pi}(s) = \arg\max_{\pi} \mathcal{Q}_{\pi}(s, a)</span><script type="math/tex">\pi_{*} = \arg\max_{\pi} \mathcal{V}_{\pi}(s) = \arg\max_{\pi} \mathcal{Q}_{\pi}(s, a)</script></span></li>
+<li>Optimal policy <span class="arithmatex">\(\pi_*\)</span> &rarr; optimal state-value and action-value functions &rarr; max return &rarr; argmax of value functions<ul>
+<li><span class="arithmatex">\(\pi_{*} = \arg\max_{\pi} \mathcal{V}_{\pi}(s) = \arg\max_{\pi} \mathcal{Q}_{\pi}(s, a)\)</span></li>
 </ul>
 </li>
-<li>To calculate argmax of value functions &rarr; we need max return <span><span class="MathJax_Preview">\mathcal{G}_t</span><script type="math/tex">\mathcal{G}_t</script></span> &rarr; need max sum of rewards <span><span class="MathJax_Preview">\mathcal{R}_s^a</span><script type="math/tex">\mathcal{R}_s^a</script></span></li>
-<li>To get max sum of rewards <span><span class="MathJax_Preview">\mathcal{R}_s^a</span><script type="math/tex">\mathcal{R}_s^a</script></span> we will rely on the Bellman Equations.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup></li>
+<li>To calculate argmax of value functions &rarr; we need max return <span class="arithmatex">\(\mathcal{G}_t\)</span> &rarr; need max sum of rewards <span class="arithmatex">\(\mathcal{R}_s^a\)</span></li>
+<li>To get max sum of rewards <span class="arithmatex">\(\mathcal{R}_s^a\)</span> we will rely on the Bellman Equations.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup></li>
 </ul>
 <h2 id="bellman-equation">Bellman Equation<a class="headerlink" href="#bellman-equation" title="Permanent link">&para;</a></h2>
 <ul>
@@ -1675,33 +1639,27 @@
 </ol>
 </li>
 <li>State-value function can be broken into:<ul>
-<li><span><span class="MathJax_Preview">\begin{aligned}
+<li><span class="arithmatex">\(\begin{aligned}
     \mathcal{V}_{\pi}(s) &amp;= \mathbb{E}[\mathcal{G}_t \vert \mathcal{S}_t = s] \\
     &amp;= \mathbb{E} [\mathcal{R}_{t+1} + \gamma \mathcal{R}_{t+2} + \gamma^2 \mathcal{R}_{t+3} + \dots \vert \mathcal{S}_t = s] \\
     &amp;= \mathbb{E} [\mathcal{R}_{t+1} + \gamma (\mathcal{R}_{t+2} + \gamma \mathcal{R}_{t+3} + \dots) \vert \mathcal{S}_t = s] \\
     &amp;= \mathbb{E} [\mathcal{R}_{t+1} + \gamma \mathcal{G}_{t+1} \vert \mathcal{S}_t = s] \\
     &amp;= \mathbb{E} [\mathcal{R}_{t+1} + \gamma \mathcal{V}_{\pi}(\mathcal{s}_{t+1}) \vert \mathcal{S}_t = s]
-    \end{aligned}</span><script type="math/tex">\begin{aligned}
-    \mathcal{V}_{\pi}(s) &= \mathbb{E}[\mathcal{G}_t \vert \mathcal{S}_t = s] \\
-    &= \mathbb{E} [\mathcal{R}_{t+1} + \gamma \mathcal{R}_{t+2} + \gamma^2 \mathcal{R}_{t+3} + \dots \vert \mathcal{S}_t = s] \\
-    &= \mathbb{E} [\mathcal{R}_{t+1} + \gamma (\mathcal{R}_{t+2} + \gamma \mathcal{R}_{t+3} + \dots) \vert \mathcal{S}_t = s] \\
-    &= \mathbb{E} [\mathcal{R}_{t+1} + \gamma \mathcal{G}_{t+1} \vert \mathcal{S}_t = s] \\
-    &= \mathbb{E} [\mathcal{R}_{t+1} + \gamma \mathcal{V}_{\pi}(\mathcal{s}_{t+1}) \vert \mathcal{S}_t = s]
-    \end{aligned}</script></span></li>
+    \end{aligned}\)</span></li>
 </ul>
 </li>
 <li>Action-value function can be broken into:<ul>
-<li><span><span class="MathJax_Preview">\mathcal{Q}_{\pi}(s, a) = \mathbb{E} [\mathcal{R}_{t+1} + \gamma \mathcal{Q}_{\pi}(\mathcal{s}_{t+1}, \mathcal{a}_{t+1}) \vert \mathcal{S}_t = s, \mathcal{A} = a]</span><script type="math/tex">\mathcal{Q}_{\pi}(s, a) = \mathbb{E} [\mathcal{R}_{t+1} + \gamma \mathcal{Q}_{\pi}(\mathcal{s}_{t+1}, \mathcal{a}_{t+1}) \vert \mathcal{S}_t = s, \mathcal{A} = a]</script></span></li>
+<li><span class="arithmatex">\(\mathcal{Q}_{\pi}(s, a) = \mathbb{E} [\mathcal{R}_{t+1} + \gamma \mathcal{Q}_{\pi}(\mathcal{s}_{t+1}, \mathcal{a}_{t+1}) \vert \mathcal{S}_t = s, \mathcal{A} = a]\)</span></li>
 </ul>
 </li>
 </ul>
 <h2 id="key-recap-on-value-functions">Key Recap on Value Functions<a class="headerlink" href="#key-recap-on-value-functions" title="Permanent link">&para;</a></h2>
 <ul>
-<li><span><span class="MathJax_Preview">\mathcal{V}_{\pi}(s) = \mathbb{E}_{\pi}[\mathcal{G}_t \vert \mathcal{S}_t = s]</span><script type="math/tex">\mathcal{V}_{\pi}(s) = \mathbb{E}_{\pi}[\mathcal{G}_t \vert \mathcal{S}_t = s]</script></span><ul>
+<li><span class="arithmatex">\(\mathcal{V}_{\pi}(s) = \mathbb{E}_{\pi}[\mathcal{G}_t \vert \mathcal{S}_t = s]\)</span><ul>
 <li>State-value function: tells us how good to be in that state</li>
 </ul>
 </li>
-<li><span><span class="MathJax_Preview">\mathcal{Q}_{\pi}(s, a) = \mathbb{E}_{\pi}[\mathcal{G}_t \vert \mathcal{S}_t = s, \mathcal{A}_t = a]</span><script type="math/tex">\mathcal{Q}_{\pi}(s, a) = \mathbb{E}_{\pi}[\mathcal{G}_t \vert \mathcal{S}_t = s, \mathcal{A}_t = a]</script></span><ul>
+<li><span class="arithmatex">\(\mathcal{Q}_{\pi}(s, a) = \mathbb{E}_{\pi}[\mathcal{G}_t \vert \mathcal{S}_t = s, \mathcal{A}_t = a]\)</span><ul>
 <li>Action-value function: tells us how good to take actions given state</li>
 </ul>
 </li>
@@ -1709,12 +1667,12 @@
 <h2 id="bellman-expectation-equations">Bellman Expectation Equations<a class="headerlink" href="#bellman-expectation-equations" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Now we can move from Bellman Equations into Bellman Expectation Equations</li>
-<li><strong>Basic: State-value function <span><span class="MathJax_Preview">\mathcal{V}_{\pi}(s)</span><script type="math/tex">\mathcal{V}_{\pi}(s)</script></span></strong><ol>
-<li>Current state <span><span class="MathJax_Preview">\mathcal{S}</span><script type="math/tex">\mathcal{S}</script></span></li>
-<li>Multiple possible actions determined by stochastic policy <span><span class="MathJax_Preview">\pi(a | s)</span><script type="math/tex">\pi(a | s)</script></span></li>
-<li>Each possible action is associated with a action-value function <span><span class="MathJax_Preview">\mathcal{Q}_{\pi}(s, a)</span><script type="math/tex">\mathcal{Q}_{\pi}(s, a)</script></span> returning a value of that particular action</li>
+<li><strong>Basic: State-value function <span class="arithmatex">\(\mathcal{V}_{\pi}(s)\)</span></strong><ol>
+<li>Current state <span class="arithmatex">\(\mathcal{S}\)</span></li>
+<li>Multiple possible actions determined by stochastic policy <span class="arithmatex">\(\pi(a | s)\)</span></li>
+<li>Each possible action is associated with a action-value function <span class="arithmatex">\(\mathcal{Q}_{\pi}(s, a)\)</span> returning a value of that particular action</li>
 <li>Multiplying the possible actions with the action-value function and summing them gives us an indication of how good it is to be in that state<ul>
-<li><strong>Final equation: <span><span class="MathJax_Preview">\mathcal{V}_{\pi}(s) = \sum_{a \in \mathcal{A}} \pi(a | s) \mathcal{Q}(s, a)</span><script type="math/tex">\mathcal{V}_{\pi}(s) = \sum_{a \in \mathcal{A}} \pi(a | s) \mathcal{Q}(s, a)</script></span></strong></li>
+<li><strong>Final equation: <span class="arithmatex">\(\mathcal{V}_{\pi}(s) = \sum_{a \in \mathcal{A}} \pi(a | s) \mathcal{Q}(s, a)\)</span></strong></li>
 <li><strong>Loose intuitive interpretation</strong>: <ul>
 <li>state-value = sum(policy determining actions * respective action-values)</li>
 </ul>
@@ -1723,15 +1681,15 @@
 </li>
 </ol>
 </li>
-<li><strong>Basic: Action-value function <span><span class="MathJax_Preview">\mathcal{Q}_{\pi}(s, a)</span><script type="math/tex">\mathcal{Q}_{\pi}(s, a)</script></span></strong><ol>
-<li>With a list of possible multiple actions, there is a list of possible subsequent states <span><span class="MathJax_Preview">s'</span><script type="math/tex">s'</script></span> associated with:<ol>
-<li>state value function <span><span class="MathJax_Preview">\mathcal{V}_{\pi}(s')</span><script type="math/tex">\mathcal{V}_{\pi}(s')</script></span> </li>
-<li>transition probability function <span><span class="MathJax_Preview">\mathcal{P}_{ss'}^a</span><script type="math/tex">\mathcal{P}_{ss'}^a</script></span> determining where the agent could land in based on the action</li>
-<li>reward <span><span class="MathJax_Preview">\mathcal{R}_s^a</span><script type="math/tex">\mathcal{R}_s^a</script></span> for taking the action</li>
+<li><strong>Basic: Action-value function <span class="arithmatex">\(\mathcal{Q}_{\pi}(s, a)\)</span></strong><ol>
+<li>With a list of possible multiple actions, there is a list of possible subsequent states <span class="arithmatex">\(s'\)</span> associated with:<ol>
+<li>state value function <span class="arithmatex">\(\mathcal{V}_{\pi}(s')\)</span> </li>
+<li>transition probability function <span class="arithmatex">\(\mathcal{P}_{ss'}^a\)</span> determining where the agent could land in based on the action</li>
+<li>reward <span class="arithmatex">\(\mathcal{R}_s^a\)</span> for taking the action</li>
 </ol>
 </li>
 <li>Summing the reward and the transition probability function associated with the state-value function gives us an indication of how good it is to take the actions given our state<ul>
-<li><strong>Final equation: <span><span class="MathJax_Preview">\mathcal{Q}_{\pi}(s, a) = \mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{\pi}(s')</span><script type="math/tex">\mathcal{Q}_{\pi}(s, a) = \mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{\pi}(s')</script></span></strong></li>
+<li><strong>Final equation: <span class="arithmatex">\(\mathcal{Q}_{\pi}(s, a) = \mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{\pi}(s')\)</span></strong></li>
 <li><strong>Loose intuitive interpretation</strong>: <ul>
 <li>action-value = reward + sum(transition outcomes determining states * respective state-values)</li>
 </ul>
@@ -1742,11 +1700,11 @@
 </li>
 <li><strong>Expanded functions (substitution)</strong><ul>
 <li>Substituting action-value function into the <strong>state-value function</strong><ul>
-<li><span><span class="MathJax_Preview">\mathcal{V}_{\pi}(s) = \sum_{a \in \mathcal{A}} \pi(a | s) (\mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{\pi}(s'))</span><script type="math/tex">\mathcal{V}_{\pi}(s) = \sum_{a \in \mathcal{A}} \pi(a | s) (\mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{\pi}(s'))</script></span></li>
+<li><span class="arithmatex">\(\mathcal{V}_{\pi}(s) = \sum_{a \in \mathcal{A}} \pi(a | s) (\mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{\pi}(s'))\)</span></li>
 </ul>
 </li>
 <li>Substituting  state-value function into <strong>action-value function</strong><ul>
-<li><span><span class="MathJax_Preview">\mathcal{Q}_{\pi}(s, a) = \mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a \sum_{a' \in \mathcal{A}} \pi(a' | s') \mathcal{Q}(s', a')</span><script type="math/tex">\mathcal{Q}_{\pi}(s, a) = \mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a \sum_{a' \in \mathcal{A}} \pi(a' | s') \mathcal{Q}(s', a')</script></span></li>
+<li><span class="arithmatex">\(\mathcal{Q}_{\pi}(s, a) = \mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a \sum_{a' \in \mathcal{A}} \pi(a' | s') \mathcal{Q}(s', a')\)</span></li>
 </ul>
 </li>
 </ul>
@@ -1754,21 +1712,21 @@
 </ul>
 <h2 id="bellman-optimality-equations">Bellman Optimality Equations<a class="headerlink" href="#bellman-optimality-equations" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Remember optimal policy <span><span class="MathJax_Preview">\pi_*</span><script type="math/tex">\pi_*</script></span> &rarr; optimal state-value and action-value functions &rarr; argmax of value functions<ul>
-<li><span><span class="MathJax_Preview">\pi_{*} = \arg\max_{\pi} \mathcal{V}_{\pi}(s) = \arg\max_{\pi} \mathcal{Q}_{\pi}(s, a)</span><script type="math/tex">\pi_{*} = \arg\max_{\pi} \mathcal{V}_{\pi}(s) = \arg\max_{\pi} \mathcal{Q}_{\pi}(s, a)</script></span></li>
+<li>Remember optimal policy <span class="arithmatex">\(\pi_*\)</span> &rarr; optimal state-value and action-value functions &rarr; argmax of value functions<ul>
+<li><span class="arithmatex">\(\pi_{*} = \arg\max_{\pi} \mathcal{V}_{\pi}(s) = \arg\max_{\pi} \mathcal{Q}_{\pi}(s, a)\)</span></li>
 </ul>
 </li>
 <li>Finally with Bellman Expectation Equations derived from Bellman Equations, we can derive the equations for the argmax of our value functions</li>
 <li><strong>Optimal state-value function</strong><ul>
-<li><span><span class="MathJax_Preview">\mathcal{V}_*(s) = \arg\max_{\pi} \mathcal{V}_{\pi}(s)</span><script type="math/tex">\mathcal{V}_*(s) = \arg\max_{\pi} \mathcal{V}_{\pi}(s)</script></span></li>
-<li>Given <span><span class="MathJax_Preview">\mathcal{V}_{\pi}(s) = \sum_{a \in \mathcal{A}} \pi(a | s) (\mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{\pi}(s'))</span><script type="math/tex">\mathcal{V}_{\pi}(s) = \sum_{a \in \mathcal{A}} \pi(a | s) (\mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{\pi}(s'))</script></span></li>
-<li>We have <span><span class="MathJax_Preview">\mathcal{V}_*(s) = \max_{a \in \mathcal{A}} (\mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{*}(s')))</span><script type="math/tex">\mathcal{V}_*(s) = \max_{a \in \mathcal{A}} (\mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{*}(s')))</script></span></li>
+<li><span class="arithmatex">\(\mathcal{V}_*(s) = \arg\max_{\pi} \mathcal{V}_{\pi}(s)\)</span></li>
+<li>Given <span class="arithmatex">\(\mathcal{V}_{\pi}(s) = \sum_{a \in \mathcal{A}} \pi(a | s) (\mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{\pi}(s'))\)</span></li>
+<li>We have <span class="arithmatex">\(\mathcal{V}_*(s) = \max_{a \in \mathcal{A}} (\mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a {V}_{*}(s')))\)</span></li>
 </ul>
 </li>
 <li><strong>Optimal action-value function</strong><ul>
-<li><span><span class="MathJax_Preview">\mathcal{Q}_*(s) = \arg\max_{\pi} \mathcal{Q}_{\pi}(s)</span><script type="math/tex">\mathcal{Q}_*(s) = \arg\max_{\pi} \mathcal{Q}_{\pi}(s)</script></span></li>
-<li>Given <span><span class="MathJax_Preview">\mathcal{Q}_{\pi}(s, a) = \mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a \sum_{a' \in \mathcal{A}} \pi(a' | s') \mathcal{Q}(s', a')</span><script type="math/tex">\mathcal{Q}_{\pi}(s, a) = \mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a \sum_{a' \in \mathcal{A}} \pi(a' | s') \mathcal{Q}(s', a')</script></span></li>
-<li>We have <span><span class="MathJax_Preview">\mathcal{Q}_{*}(s, a) = \mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a max_{a' \in \mathcal{A}} \mathcal{Q}_{*}(s', a')</span><script type="math/tex">\mathcal{Q}_{*}(s, a) = \mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a max_{a' \in \mathcal{A}} \mathcal{Q}_{*}(s', a')</script></span></li>
+<li><span class="arithmatex">\(\mathcal{Q}_*(s) = \arg\max_{\pi} \mathcal{Q}_{\pi}(s)\)</span></li>
+<li>Given <span class="arithmatex">\(\mathcal{Q}_{\pi}(s, a) = \mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a \sum_{a' \in \mathcal{A}} \pi(a' | s') \mathcal{Q}(s', a')\)</span></li>
+<li>We have <span class="arithmatex">\(\mathcal{Q}_{*}(s, a) = \mathcal{R}_s^a + \gamma \sum_{s' \in \mathcal{S}} \mathcal{P}_{ss'}^a max_{a' \in \mathcal{A}} \mathcal{Q}_{*}(s', a')\)</span></li>
 </ul>
 </li>
 </ul>
@@ -1801,7 +1759,7 @@
 <div class="admonition note">
 <p class="admonition-title">Closed form solution</p>
 <p>If there is a closed form solution, then the variables' values can be obtained with a finite number of mathematical operations (for example add, subtract, divide, and multiply).</p>
-<p>For example, solving <span><span class="MathJax_Preview">2x = 8 - 6x</span><script type="math/tex">2x = 8 - 6x</script></span> would yield <span><span class="MathJax_Preview">8x = 8</span><script type="math/tex">8x = 8</script></span> by adding <span><span class="MathJax_Preview">6x</span><script type="math/tex">6x</script></span> on both sides of the equation and finally yielding the value of <span><span class="MathJax_Preview">x=1</span><script type="math/tex">x=1</script></span> by dividing both sides of the equation by <span><span class="MathJax_Preview">8</span><script type="math/tex">8</script></span>. </p>
+<p>For example, solving <span class="arithmatex">\(2x = 8 - 6x\)</span> would yield <span class="arithmatex">\(8x = 8\)</span> by adding <span class="arithmatex">\(6x\)</span> on both sides of the equation and finally yielding the value of <span class="arithmatex">\(x=1\)</span> by dividing both sides of the equation by <span class="arithmatex">\(8\)</span>. </p>
 <p>These finite 2 steps of mathematical operations allowed us to solve for the value of x as the equation has a closed-form solution.</p>
 <p>However, many cases in deep learning and reinforcement learning there are no closed-form solutions which requires all the iterative methods mentioned above.</p>
 </div>
@@ -1833,88 +1791,62 @@
             </article>
           </div>
         </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
       </main>
       
         
-
-<!-- Application footer -->
 <footer class="md-footer">
-
-  <!-- Link to previous and/or next page -->
   
-    <div class="md-footer-nav">
-      <nav
-        class="md-footer-nav__inner md-grid"
-        aria-label="Footer"
-      >
-
-        <!-- Link to previous page -->
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
         
-          <a
-            href="../supervised_to_rl/"
-            title="Supervised Learning to Reinforcement Learning (RL)"
-            class="md-footer-nav__link md-footer-nav__link--prev"
-            rel="prev"
-          >
-            <div class="md-footer-nav__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        <a href="../supervised_to_rl/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Supervised Learning to Reinforcement Learning (RL)" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Supervised Learning to Reinforcement Learning (RL)
             </div>
-            <div class="md-footer-nav__title">
-              <div class="md-ellipsis">
-                <span class="md-footer-nav__direction">
-                  Previous
-                </span>
-                Supervised Learning to Reinforcement Learning (RL)
-              </div>
-            </div>
-          </a>
+          </div>
+        </a>
+      
+      
         
-
-        <!-- Link to next page -->
-        
-          <a
-            href="../dynamic_programming_frozenlake/"
-            title="Dynamic Programming"
-            class="md-footer-nav__link md-footer-nav__link--next"
-            rel="next"
-          >
-            <div class="md-footer-nav__title">
-              <div class="md-ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                Dynamic Programming
-              </div>
+        <a href="../dynamic_programming_frozenlake/" class="md-footer__link md-footer__link--next" aria-label="Next: Dynamic Programming" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Dynamic Programming
             </div>
-            <div class="md-footer-nav__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
-    </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
-
-  <!-- Further information -->
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
-
-      <!-- Copyright and theme information -->
       <div class="md-footer-copyright">
         
           <div class="md-footer-copyright__highlight">
             Copyright &copy; 2021 Deep Learning Wizard by Ritchie Ng
           </div>
         
-        proudly an
-        <a href="http://www.nvidia.com/page/home.html">NVIDIA Inception Partner</a> and supported by the
-        <a href="https://aws.amazon.com/activate/">Amazon AWS Activate Programme</a> by
-        <a href="https://www.ritchieng.com/">
-          Ritchie Ng</a>
-        </a>
+        
       </div>
-
-      <!-- Social links -->
       
   <div class="md-footer-social">
     
@@ -1970,19 +1902,13 @@
 </footer>
       
     </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotate", "content.tabs.link", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
     
-      <script src="../../../assets/javascripts/vendor.93c04032.min.js"></script>
-      <script src="../../../assets/javascripts/bundle.83e5331e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
-      
-      <script>
-        app = initialize({
-          base: "../../..",
-          features: ['navigation.tabs', 'instant'],
-          search: Object.assign({
-            worker: "../../../assets/javascripts/worker/search.8c7e0a7e.min.js"
-          }, typeof search !== "undefined" && search)
-        })
-      </script>
+    
+      <script src="../../../assets/javascripts/bundle.56838a2c.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       

@@ -15,8 +15,8 @@
       
         <link rel="canonical" href="https://www.deeplearningwizard.com/deep_learning/boosting_models_pytorch/optimizers/">
       
-      <link rel="shortcut icon" href="../../../docs/assets/favicon.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.4">
+      <link rel="icon" href="../../../docs/assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.4">
     
     
       
@@ -24,14 +24,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.15aa0b43.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.f7f47774.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.75751829.min.css">
-        
-          
-          
-          <meta name="theme-color" content="#4051b5">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
         
       
     
@@ -41,17 +37,26 @@
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
       
     
     
     
     
       
-        
-<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-122083328-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview",document.location.pathname)})</script>
-<script async src="https://www.google-analytics.com/analytics.js"></script>
-      
+
+  
+
+
+  
+
+  
+
+
+  <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-122083328-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
+  <script async src="https://www.google-analytics.com/analytics.js"></script>
+
+
     
     
   </head>
@@ -59,12 +64,17 @@
   
     
     
+      
+    
     
     
     
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
-      
   
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -81,27 +91,25 @@
       
     </div>
     
-      
-
-<header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid" aria-label="Header">
-    <a href="https://www.deeplearningwizard.com/" title="Deep Learning Wizard" class="md-header-nav__button md-logo" aria-label="Deep Learning Wizard">
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Deep Learning Wizard" class="md-header__button md-logo" aria-label="Deep Learning Wizard" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M396.8 352h22.4c6.4 0 12.8-6.4 12.8-12.8V108.8c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v230.4c0 6.4 6.4 12.8 12.8 12.8zm-192 0h22.4c6.4 0 12.8-6.4 12.8-12.8V140.8c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v198.4c0 6.4 6.4 12.8 12.8 12.8zm96 0h22.4c6.4 0 12.8-6.4 12.8-12.8V204.8c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v134.4c0 6.4 6.4 12.8 12.8 12.8zM496 400H48V80c0-8.84-7.16-16-16-16H16C7.16 64 0 71.16 0 80v336c0 17.67 14.33 32 32 32h464c8.84 0 16-7.16 16-16v-16c0-8.84-7.16-16-16-16zm-387.2-48h22.4c6.4 0 12.8-6.4 12.8-12.8v-70.4c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v70.4c0 6.4 6.4 12.8 12.8 12.8z"/></svg>
 
     </a>
-    <label class="md-header-nav__button md-icon" for="__drawer">
+    <label class="md-header__button md-icon" for="__drawer">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
     </label>
-    <div class="md-header-nav__title" data-md-component="header-title">
-      <div class="md-header-nav__ellipsis">
-        <div class="md-header-nav__topic">
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
           <span class="md-ellipsis">
             Deep Learning Wizard
           </span>
         </div>
-        <div class="md-header-nav__topic">
+        <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
               Optimization Algorithms
@@ -111,22 +119,56 @@
       </div>
     </div>
     
-      <label class="md-header-nav__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m10-3a5 5 0 0 1 5 5 5 5 0 0 1-5 5H7a5 5 0 0 1-5-5 5 5 0 0 1 5-5h10M7 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3h10a3 3 0 0 0 3-3 3 3 0 0 0-3-3H7z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
       </label>
       
 <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
       </label>
-      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
-      </button>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
@@ -142,12 +184,12 @@
 </div>
     
     
-      <div class="md-header-nav__source">
+      <div class="md-header__source">
         
-<a href="https://github.com/ritchieng/deep-learning-wizard/" title="Go to repository" class="md-source">
+<a href="https://github.com/ritchieng/deep-learning-wizard/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     ritchieng/deep-learning-wizard
@@ -254,24 +296,8 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../ood/intro/" class="md-tabs__link">
-        Out of Distribution Data
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
       <a href="../../../database/intro/" class="md-tabs__link">
-        Scalable Database
+        Database
       </a>
     </li>
   
@@ -303,19 +329,17 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
-
-
 
   
 
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="https://www.deeplearningwizard.com/" title="Deep Learning Wizard" class="md-nav__button md-logo" aria-label="Deep Learning Wizard">
+    <a href="../../.." title="Deep Learning Wizard" class="md-nav__button md-logo" aria-label="Deep Learning Wizard" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M396.8 352h22.4c6.4 0 12.8-6.4 12.8-12.8V108.8c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v230.4c0 6.4 6.4 12.8 12.8 12.8zm-192 0h22.4c6.4 0 12.8-6.4 12.8-12.8V140.8c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v198.4c0 6.4 6.4 12.8 12.8 12.8zm96 0h22.4c6.4 0 12.8-6.4 12.8-12.8V204.8c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v134.4c0 6.4 6.4 12.8 12.8 12.8zM496 400H48V80c0-8.84-7.16-16-16-16H16C7.16 64 0 71.16 0 80v336c0 17.67 14.33 32 32 32h464c8.84 0 16-7.16 16-16v-16c0-8.84-7.16-16-16-16zm-387.2-48h22.4c6.4 0 12.8-6.4 12.8-12.8v-70.4c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v70.4c0 6.4 6.4 12.8 12.8 12.8z"/></svg>
@@ -326,10 +350,10 @@
   
     <div class="md-nav__source">
       
-<a href="https://github.com/ritchieng/deep-learning-wizard/" title="Go to repository" class="md-source">
+<a href="https://github.com/ritchieng/deep-learning-wizard/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     ritchieng/deep-learning-wizard
@@ -343,382 +367,363 @@
       
       
 
-
-
-  <li class="md-nav__item">
-    <a href="../../.." class="md-nav__link">
-      Home
-    </a>
-  </li>
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
 
     
       
       
       
-
-
 
   
-  <li class="md-nav__item md-nav__item--nested">
+  
+  
     
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
-    
-    <label class="md-nav__link" for="nav-2">
-      About
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="About" data-md-level="1">
-      <label class="md-nav__title" for="nav-2">
-        <span class="md-nav__icon md-icon"></span>
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
         About
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../home/" class="md-nav__link">
-      Intro
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../about/" class="md-nav__link">
-      About Us
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../review/" class="md-nav__link">
-      Reviews
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../pipeline/" class="md-nav__link">
-      AI Pipeline
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../consultancy/" class="md-nav__link">
-      Consultancy
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  
-
-
-  
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-    
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
-    
-    <label class="md-nav__link" for="nav-3">
-      Deep Learning (CPU/GPU)
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="Deep Learning (CPU/GPU)" data-md-level="1">
-      <label class="md-nav__title" for="nav-3">
         <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="About" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          About
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../home/" class="md-nav__link">
+        Intro
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        About Us
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../review/" class="md-nav__link">
+        Reviews
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pipeline/" class="md-nav__link">
+        AI Pipeline
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../consultancy/" class="md-nav__link">
+        Consultancy
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
         Deep Learning (CPU/GPU)
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../intro/" class="md-nav__link">
-      Introduction
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../course_progression/" class="md-nav__link">
-      Course Progression
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../practical_pytorch/pytorch_matrices/" class="md-nav__link">
-      Matrices
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../practical_pytorch/pytorch_gradients/" class="md-nav__link">
-      Gradients
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../practical_pytorch/pytorch_linear_regression/" class="md-nav__link">
-      Linear Regression
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../practical_pytorch/pytorch_logistic_regression/" class="md-nav__link">
-      Logistic Regression
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../practical_pytorch/pytorch_feedforward_neuralnetwork/" class="md-nav__link">
-      Feedforward Neural Networks (FNN)
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../practical_pytorch/pytorch_convolutional_neuralnetwork/" class="md-nav__link">
-      Convolutional Neural Networks (CNN)
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../practical_pytorch/pytorch_recurrent_neuralnetwork/" class="md-nav__link">
-      Recurrent Neural Networks (RNN)
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../practical_pytorch/pytorch_lstm_neuralnetwork/" class="md-nav__link">
-      Long Short Term Memory Neural Networks (LSTM)
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../practical_pytorch/pytorch_autoencoder/" class="md-nav__link">
-      Autoencoders (AE)
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../practical_pytorch/pytorch_fc_overcomplete_ae/" class="md-nav__link">
-      Fully-connected Overcomplete Autoencoder (AE)
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../derivative_gradient_jacobian/" class="md-nav__link">
-      Derivative, Gradient and Jacobian
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../forwardpropagation_backpropagation_gradientdescent/" class="md-nav__link">
-      Forward- and Backward-propagation and Gradient Descent (From Scratch FNN Regression)
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../fromscratch/fromscratch_logistic_regression/" class="md-nav__link">
-      From Scratch Logistic Regression Classification
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../fromscratch/fromscratch_cnn/" class="md-nav__link">
-      From Scratch CNN Classification
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../lr_scheduling/" class="md-nav__link">
-      Learning Rate Scheduling
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Optimization Algorithms
         <span class="md-nav__icon md-icon"></span>
       </label>
+      <nav class="md-nav" aria-label="Deep Learning (CPU/GPU)" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Deep Learning (CPU/GPU)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course_progression/" class="md-nav__link">
+        Course Progression
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practical_pytorch/pytorch_matrices/" class="md-nav__link">
+        Matrices
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practical_pytorch/pytorch_gradients/" class="md-nav__link">
+        Gradients
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practical_pytorch/pytorch_linear_regression/" class="md-nav__link">
+        Linear Regression
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practical_pytorch/pytorch_logistic_regression/" class="md-nav__link">
+        Logistic Regression
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practical_pytorch/pytorch_feedforward_neuralnetwork/" class="md-nav__link">
+        Feedforward Neural Networks (FNN)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practical_pytorch/pytorch_convolutional_neuralnetwork/" class="md-nav__link">
+        Convolutional Neural Networks (CNN)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practical_pytorch/pytorch_recurrent_neuralnetwork/" class="md-nav__link">
+        Recurrent Neural Networks (RNN)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practical_pytorch/pytorch_lstm_neuralnetwork/" class="md-nav__link">
+        Long Short Term Memory Neural Networks (LSTM)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practical_pytorch/pytorch_autoencoder/" class="md-nav__link">
+        Autoencoders (AE)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practical_pytorch/pytorch_fc_overcomplete_ae/" class="md-nav__link">
+        Fully-connected Overcomplete Autoencoder (AE)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../derivative_gradient_jacobian/" class="md-nav__link">
+        Derivative, Gradient and Jacobian
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../forwardpropagation_backpropagation_gradientdescent/" class="md-nav__link">
+        Forward- and Backward-propagation and Gradient Descent (From Scratch FNN Regression)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fromscratch/fromscratch_logistic_regression/" class="md-nav__link">
+        From Scratch Logistic Regression Classification
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fromscratch/fromscratch_cnn/" class="md-nav__link">
+        From Scratch CNN Classification
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lr_scheduling/" class="md-nav__link">
+        Learning Rate Scheduling
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
     
-    <a href="./" class="md-nav__link md-nav__link--active">
-      Optimization Algorithms
-    </a>
-    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
       
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Optimization Algorithms
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Optimization Algorithms
+      </a>
+      
+        
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
   
   
     
@@ -728,7 +733,7 @@
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
   <a href="#introduction-to-gradient-descent-optimizers" class="md-nav__link">
@@ -886,561 +891,519 @@
     </ul>
   
 </nav>
-    
-  </li>
+      
+    </li>
+  
 
-        
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../weight_initialization_activation_functions/" class="md-nav__link">
+        Weight Initialization and Activation Functions
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deep_reinforcement_learning_pytorch/supervised_to_rl/" class="md-nav__link">
+        Supervised Learning to Reinforcement Learning (RL)
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deep_reinforcement_learning_pytorch/bellman_mdp/" class="md-nav__link">
+        Markov Decision Processes (MDP) and Bellman Equations
+      </a>
+    </li>
+  
 
-
-
-  <li class="md-nav__item">
-    <a href="../weight_initialization_activation_functions/" class="md-nav__link">
-      Weight Initialization and Activation Functions
-    </a>
-  </li>
-
-        
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deep_reinforcement_learning_pytorch/dynamic_programming_frozenlake/" class="md-nav__link">
+        Dynamic Programming
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production_pytorch/speed_optimization_basics_numba/" class="md-nav__link">
+        Speed Optimization Basics Numba
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../readings/" class="md-nav__link">
+        Additional Readings
+      </a>
+    </li>
+  
 
-
-
-  <li class="md-nav__item">
-    <a href="../../deep_reinforcement_learning_pytorch/supervised_to_rl/" class="md-nav__link">
-      Supervised Learning to Reinforcement Learning (RL)
-    </a>
-  </li>
-
-        
           
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../deep_reinforcement_learning_pytorch/bellman_mdp/" class="md-nav__link">
-      Markov Decision Processes (MDP) and Bellman Equations
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../deep_reinforcement_learning_pytorch/dynamic_programming_frozenlake/" class="md-nav__link">
-      Dynamic Programming
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../production_pytorch/speed_optimization_basics_numba/" class="md-nav__link">
-      Speed Optimization Basics Numba
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../readings/" class="md-nav__link">
-      Additional Readings
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
+        </ul>
+      </nav>
+    </li>
+  
 
     
       
       
       
-
-
 
   
-  <li class="md-nav__item md-nav__item--nested">
+  
+  
     
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
-    
-    <label class="md-nav__link" for="nav-4">
-      Machine Learning (CPU/GPU)
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="Machine Learning (CPU/GPU)" data-md-level="1">
-      <label class="md-nav__title" for="nav-4">
-        <span class="md-nav__icon md-icon"></span>
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
         Machine Learning (CPU/GPU)
+        <span class="md-nav__icon md-icon"></span>
       </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
+      <nav class="md-nav" aria-label="Machine Learning (CPU/GPU)" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Machine Learning (CPU/GPU)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../machine_learning/intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../machine_learning/gpu/rapids_cudf/" class="md-nav__link">
+        GPU DataFrames
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../machine_learning/gpu/gpu_fractional_differencing/" class="md-nav__link">
+        GPU/CPU Fractional Differencing
+      </a>
+    </li>
+  
 
-
-
-  <li class="md-nav__item">
-    <a href="../../../machine_learning/intro/" class="md-nav__link">
-      Introduction
-    </a>
-  </li>
-
-        
           
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../machine_learning/gpu/rapids_cudf/" class="md-nav__link">
-      GPU DataFrames
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../machine_learning/gpu/gpu_fractional_differencing/" class="md-nav__link">
-      GPU/CPU Fractional Differencing
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
+        </ul>
+      </nav>
+    </li>
+  
 
     
       
       
       
-
-
 
   
-  <li class="md-nav__item md-nav__item--nested">
+  
+  
     
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
-    
-    <label class="md-nav__link" for="nav-5">
-      Programming
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="Programming" data-md-level="1">
-      <label class="md-nav__title" for="nav-5">
-        <span class="md-nav__icon md-icon"></span>
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
         Programming
+        <span class="md-nav__icon md-icon"></span>
       </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
+      <nav class="md-nav" aria-label="Programming" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Programming
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/cpp/cpp/" class="md-nav__link">
+        C++
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/bash/bash/" class="md-nav__link">
+        Bash
+      </a>
+    </li>
+  
 
-
-
-  <li class="md-nav__item">
-    <a href="../../../programming/intro/" class="md-nav__link">
-      Introduction
-    </a>
-  </li>
-
-        
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/python/python/" class="md-nav__link">
+        Python
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/javascript/javascript/" class="md-nav__link">
+        Javascript
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/electron/electron/" class="md-nav__link">
+        Electron
+      </a>
+    </li>
+  
 
-
-
-  <li class="md-nav__item">
-    <a href="../../../programming/cpp/cpp/" class="md-nav__link">
-      C++
-    </a>
-  </li>
-
-        
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/sympy/calculus_sympy/" class="md-nav__link">
+        Sympy
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/numpycupy/linalg_numpy_cupy/" class="md-nav__link">
+        NumPy and CuPy
+      </a>
+    </li>
+  
+
           
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../programming/bash/bash/" class="md-nav__link">
-      Bash
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../programming/python/python/" class="md-nav__link">
-      Python
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../programming/javascript/javascript/" class="md-nav__link">
-      Javascript
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../programming/electron/electron/" class="md-nav__link">
-      Electron
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
+        </ul>
+      </nav>
+    </li>
+  
 
     
       
       
       
-
-
 
   
-  <li class="md-nav__item md-nav__item--nested">
+  
+  
     
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" >
-    
-    <label class="md-nav__link" for="nav-6">
-      Out of Distribution Data
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="Out of Distribution Data" data-md-level="1">
-      <label class="md-nav__title" for="nav-6">
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Database
         <span class="md-nav__icon md-icon"></span>
-        Out of Distribution Data
       </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
+      <nav class="md-nav" aria-label="Database" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Database
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../database/intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../database/setting_up_cluster/" class="md-nav__link">
+        Cassandra Cluster Setup
+      </a>
+    </li>
+  
+
           
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../ood/intro/" class="md-nav__link">
-      Introduction
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
+        </ul>
+      </nav>
+    </li>
+  
 
     
       
       
       
-
-
 
   
-  <li class="md-nav__item md-nav__item--nested">
-    
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" >
-    
-    <label class="md-nav__link" for="nav-7">
-      Scalable Database
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="Scalable Database" data-md-level="1">
-      <label class="md-nav__title" for="nav-7">
-        <span class="md-nav__icon md-icon"></span>
-        Scalable Database
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../database/intro/" class="md-nav__link">
-      Introduction
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../database/setting_up_cluster/" class="md-nav__link">
-      Cassandra Cluster Setup
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-
   
-  <li class="md-nav__item md-nav__item--nested">
+  
     
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8" >
-    
-    <label class="md-nav__link" for="nav-8">
-      News
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="News" data-md-level="1">
-      <label class="md-nav__title" for="nav-8">
-        <span class="md-nav__icon md-icon"></span>
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
         News
+        <span class="md-nav__icon md-icon"></span>
       </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
+      <nav class="md-nav" aria-label="News" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          News
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/news/" class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/dbs_gpu_rapids_nvidia_ensemble_frac_diff/" class="md-nav__link">
+        Fractional Differencing with GPU (GFD), DBS and NVIDIA, September 2019
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/defence_and_science_technology_agency_dsta_nvidia_talk_2016_06/" class="md-nav__link">
+        Deep Learning Introduction, Defence and Science Technology Agency (DSTA) and NVIDIA, June 2019
+      </a>
+    </li>
+  
 
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/news/" class="md-nav__link">
-      Welcome
-    </a>
-  </li>
-
-        
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/detect_waterbone_debris_ai_for_social_good_icml_2019_06/" class="md-nav__link">
+        Oral Presentation for AI for Social Good Workshop ICML, June 2019
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/it_youth_leader_2019_03_11/" class="md-nav__link">
+        IT Youth Leader of The Year 2019, March 2019
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/ammi_facebook_google_recap_2018_11_21/" class="md-nav__link">
+        AMMI (AIMS) supported by Facebook and Google, November 2018
+      </a>
+    </li>
+  
 
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/dbs_gpu_rapids_nvidia_ensemble_frac_diff/" class="md-nav__link">
-      Fractional Differencing with GPU (GFD), DBS and NVIDIA, September 2019
-    </a>
-  </li>
-
-        
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/nanjing_next_nus_tsinghua_ai_finance_healthcare_2018_11_01/" class="md-nav__link">
+        NExT++ AI in Healthcare and Finance, Nanjing, November 2018
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/facebook_pytorch_devcon_recap_2018_10_02/" class="md-nav__link">
+        Recap of Facebook PyTorch Developer Conference, San Francisco, September 2018
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/facebook_pytorch_developer_conference_2018_09_05/" class="md-nav__link">
+        Facebook PyTorch Developer Conference, San Francisco, September 2018
+      </a>
+    </li>
+  
 
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/defence_and_science_technology_agency_dsta_nvidia_talk_2016_06/" class="md-nav__link">
-      Deep Learning Introduction, Defence and Science Technology Agency (DSTA) and NVIDIA, June 2019
-    </a>
-  </li>
-
-        
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/nvidia_nus_mit_datathon_2018_07_05/" class="md-nav__link">
+        NUS-MIT-NUHS NVIDIA Image Recognition Workshop, Singapore, July 2018
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/deep_learning_wizard_1y_2018_06_01/" class="md-nav__link">
+        Featured on PyTorch Website 2018
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/nvidia_self_driving_cars_talk_2017_06_21/" class="md-nav__link">
+        NVIDIA Self Driving Cars & Healthcare Talk, Singapore, June 2017
+      </a>
+    </li>
+  
 
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/detect_waterbone_debris_ai_for_social_good_icml_2019_06/" class="md-nav__link">
-      Oral Presentation for AI for Social Good Workshop ICML, June 2019
-    </a>
-  </li>
-
-        
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/deep_learning_wizard_nvidia_inception_2018_05_01/" class="md-nav__link">
+        NVIDIA Inception Partner Status, Singapore, May 2017
+      </a>
+    </li>
+  
+
           
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/it_youth_leader_2019_03_11/" class="md-nav__link">
-      IT Youth Leader of The Year 2019, March 2019
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/ammi_facebook_google_recap_2018_11_21/" class="md-nav__link">
-      AMMI (AIMS) supported by Facebook and Google, November 2018
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/nanjing_next_nus_tsinghua_ai_finance_healthcare_2018_11_01/" class="md-nav__link">
-      NExT++ AI in Healthcare and Finance, Nanjing, November 2018
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/facebook_pytorch_devcon_recap_2018_10_02/" class="md-nav__link">
-      Recap of Facebook PyTorch Developer Conference, San Francisco, September 2018
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/facebook_pytorch_developer_conference_2018_09_05/" class="md-nav__link">
-      Facebook PyTorch Developer Conference, San Francisco, September 2018
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/nvidia_nus_mit_datathon_2018_07_05/" class="md-nav__link">
-      NUS-MIT-NUHS NVIDIA Image Recognition Workshop, Singapore, July 2018
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/deep_learning_wizard_1y_2018_06_01/" class="md-nav__link">
-      Featured on PyTorch Website 2018
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/nvidia_self_driving_cars_talk_2017_06_21/" class="md-nav__link">
-      NVIDIA Self Driving Cars & Healthcare Talk, Singapore, June 2017
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/deep_learning_wizard_nvidia_inception_2018_05_01/" class="md-nav__link">
-      NVIDIA Inception Partner Status, Singapore, May 2017
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
+        </ul>
+      </nav>
+    </li>
+  
 
     
   </ul>
@@ -1451,11 +1414,12 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
   
   
     
@@ -1465,7 +1429,7 @@
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
   <a href="#introduction-to-gradient-descent-optimizers" class="md-nav__link">
@@ -1628,7 +1592,7 @@
               </div>
             
           
-          <div class="md-content">
+          <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
                 
@@ -1789,14 +1753,13 @@
             <span class="c1"># Print Loss</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Iteration: </span><span class="si">{}</span><span class="s1">. Loss: </span><span class="si">{}</span><span class="s1">. Accuracy: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">accuracy</span><span class="p">))</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="n">Iteration</span><span class="o">:</span> <span class="mi">500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.3440718352794647</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">91</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">1000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.2057694047689438</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">93</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">1500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.2646750807762146</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">94</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">2000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.17563636600971222</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">94</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">2500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.1361844837665558</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">95</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">3000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.11089023947715759</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">95</span>
+<div class="highlight"><pre><span></span><code>Iteration: 500. Loss: 0.3440718352794647. Accuracy: 91
+Iteration: 1000. Loss: 0.2057694047689438. Accuracy: 93
+Iteration: 1500. Loss: 0.2646750807762146. Accuracy: 94
+Iteration: 2000. Loss: 0.17563636600971222. Accuracy: 94
+Iteration: 2500. Loss: 0.1361844837665558. Accuracy: 95
+Iteration: 3000. Loss: 0.11089023947715759. Accuracy: 95
 </code></pre></div>
-
 <h3 id="non-technical-process">Non-Technical Process<a class="headerlink" href="#non-technical-process" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Convert inputs/labels to variables</li>
@@ -1812,53 +1775,53 @@
 </ol>
 <h3 id="why-is-it-called-gradient-descent">Why is it called Gradient Descent?<a class="headerlink" href="#why-is-it-called-gradient-descent" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Use gradients (calculated through backpropagation) <span><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> update parameters to minimize our loss (descent) <span><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> better predictive accuracy</li>
+<li>Use gradients (calculated through backpropagation) <span class="arithmatex">\(\rightarrow\)</span> update parameters to minimize our loss (descent) <span class="arithmatex">\(\rightarrow\)</span> better predictive accuracy</li>
 </ul>
 <h3 id="mathematical-interpretation-of-gradient-descent">Mathematical Interpretation of Gradient Descent<a class="headerlink" href="#mathematical-interpretation-of-gradient-descent" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Model's parameters: <span><span class="MathJax_Preview">\theta \in ℝ^d</span><script type="math/tex">\theta \in ℝ^d</script></span></li>
-<li>Loss function: <span><span class="MathJax_Preview">J(\theta)</span><script type="math/tex">J(\theta)</script></span></li>
-<li>Gradient w.r.t. parameters: <span><span class="MathJax_Preview">\nabla J(\theta)</span><script type="math/tex">\nabla J(\theta)</script></span></li>
-<li>Learning rate: <span><span class="MathJax_Preview">\eta</span><script type="math/tex">\eta</script></span></li>
-<li>Batch Gradient descent: <span><span class="MathJax_Preview">\theta = \theta - \eta \cdot  \nabla J(\theta)</span><script type="math/tex">\theta = \theta - \eta \cdot  \nabla J(\theta)</script></span></li>
+<li>Model's parameters: <span class="arithmatex">\(\theta \in ℝ^d\)</span></li>
+<li>Loss function: <span class="arithmatex">\(J(\theta)\)</span></li>
+<li>Gradient w.r.t. parameters: <span class="arithmatex">\(\nabla J(\theta)\)</span></li>
+<li>Learning rate: <span class="arithmatex">\(\eta\)</span></li>
+<li>Batch Gradient descent: <span class="arithmatex">\(\theta = \theta - \eta \cdot  \nabla J(\theta)\)</span></li>
 </ul>
 <h2 id="optimization-algorithm-1-batch-gradient-descent">Optimization Algorithm 1: Batch Gradient Descent<a class="headerlink" href="#optimization-algorithm-1-batch-gradient-descent" title="Permanent link">&para;</a></h2>
 <ul>
 <li>What we've covered so far: batch gradient descent<ul>
-<li><span><span class="MathJax_Preview">\theta = \theta - \eta \cdot  \nabla J(\theta)</span><script type="math/tex">\theta = \theta - \eta \cdot  \nabla J(\theta)</script></span></li>
+<li><span class="arithmatex">\(\theta = \theta - \eta \cdot  \nabla J(\theta)\)</span></li>
 </ul>
 </li>
 <li>Characteristics<ul>
-<li>Compute the gradient of the lost function w.r.t. parameters for the entire training data, <span><span class="MathJax_Preview">\nabla J(\theta)</span><script type="math/tex">\nabla J(\theta)</script></span> </li>
+<li>Compute the gradient of the lost function w.r.t. parameters for the entire training data, <span class="arithmatex">\(\nabla J(\theta)\)</span> </li>
 <li>Use this to update our parameters at every iteration</li>
 </ul>
 </li>
 <li>Problems<ul>
 <li>Unable to fit whole datasets in memory </li>
-<li>Computationally slow as we attempt to compute a large gradient matrix <span><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> first order derivative, <span><span class="MathJax_Preview">\nabla J(\theta)</span><script type="math/tex">\nabla J(\theta)</script></span></li>
+<li>Computationally slow as we attempt to compute a large gradient matrix <span class="arithmatex">\(\rightarrow\)</span> first order derivative, <span class="arithmatex">\(\nabla J(\theta)\)</span></li>
 </ul>
 </li>
-<li>Conceptually easy to understand <span><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> rarely used</li>
+<li>Conceptually easy to understand <span class="arithmatex">\(\rightarrow\)</span> rarely used</li>
 </ul>
 <h2 id="optimization-algorithm-2-stochastic-gradient-descent">Optimization Algorithm 2: Stochastic Gradient Descent<a class="headerlink" href="#optimization-algorithm-2-stochastic-gradient-descent" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Modification of batch gradient descent<ul>
-<li><span><span class="MathJax_Preview">\theta = \theta - \eta \cdot  \nabla J(\theta, x^{i}, y^{i})</span><script type="math/tex">\theta = \theta - \eta \cdot  \nabla J(\theta, x^{i}, y^{i})</script></span></li>
+<li><span class="arithmatex">\(\theta = \theta - \eta \cdot  \nabla J(\theta, x^{i}, y^{i})\)</span></li>
 </ul>
 </li>
 <li>Characteristics<ul>
-<li>Compute the gradient of the lost function w.r.t. parameters for the <strong>one set of training sample (1 input and 1 label)</strong>, <span><span class="MathJax_Preview">\nabla J(\theta, x^{i}, y^{i})</span><script type="math/tex">\nabla J(\theta, x^{i}, y^{i})</script></span></li>
+<li>Compute the gradient of the lost function w.r.t. parameters for the <strong>one set of training sample (1 input and 1 label)</strong>, <span class="arithmatex">\(\nabla J(\theta, x^{i}, y^{i})\)</span></li>
 <li>Use this to update our parameters at every iteration</li>
 </ul>
 </li>
 <li>Benefits<ul>
 <li>Able to fit large datasets</li>
-<li>Computationally faster <span><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> instead gradients w.r.t to the whole training data, we get the gradients w.r.t. training sample</li>
+<li>Computationally faster <span class="arithmatex">\(\rightarrow\)</span> instead gradients w.r.t to the whole training data, we get the gradients w.r.t. training sample</li>
 </ul>
 </li>
 <li>Problems<ul>
-<li>Updating very frequently <span><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> huge variance in parameter updates <span><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> may overshoot local minima <ul>
-<li>Can be solved by carefully decaying your learning rate <span><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> take smaller steps in incorporating gradients to improve the parameters</li>
+<li>Updating very frequently <span class="arithmatex">\(\rightarrow\)</span> huge variance in parameter updates <span class="arithmatex">\(\rightarrow\)</span> may overshoot local minima <ul>
+<li>Can be solved by carefully decaying your learning rate <span class="arithmatex">\(\rightarrow\)</span> take smaller steps in incorporating gradients to improve the parameters</li>
 </ul>
 </li>
 </ul>
@@ -1867,17 +1830,17 @@
 <h2 id="optimization-algorithm-3-mini-batch-gradient-descent">Optimization Algorithm 3: Mini-batch Gradient Descent<a class="headerlink" href="#optimization-algorithm-3-mini-batch-gradient-descent" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Combination of batch gradient descent &amp; stochastic gradient descent<ul>
-<li><span><span class="MathJax_Preview">\theta = \theta - \eta \cdot  \nabla J(\theta, x^{i: i+n}, y^{i:i+n})</span><script type="math/tex">\theta = \theta - \eta \cdot  \nabla J(\theta, x^{i: i+n}, y^{i:i+n})</script></span></li>
+<li><span class="arithmatex">\(\theta = \theta - \eta \cdot  \nabla J(\theta, x^{i: i+n}, y^{i:i+n})\)</span></li>
 </ul>
 </li>
 <li>Characteristics<ul>
-<li>Compute the gradient of the lost function w.r.t. parameters for <strong>n sets of training sample (n input and n label)</strong>, <span><span class="MathJax_Preview">\nabla J(\theta, x^{i: i+n}, y^{i:i+n})</span><script type="math/tex">\nabla J(\theta, x^{i: i+n}, y^{i:i+n})</script></span></li>
+<li>Compute the gradient of the lost function w.r.t. parameters for <strong>n sets of training sample (n input and n label)</strong>, <span class="arithmatex">\(\nabla J(\theta, x^{i: i+n}, y^{i:i+n})\)</span></li>
 <li>Use this to update our parameters at every iteration</li>
 </ul>
 </li>
 <li>Benefits<ul>
 <li>Able to fit large datasets</li>
-<li>Computationally faster <span><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> instead gradients w.r.t to the whole training data, we get the gradients w.r.t. training sample</li>
+<li>Computationally faster <span class="arithmatex">\(\rightarrow\)</span> instead gradients w.r.t to the whole training data, we get the gradients w.r.t. training sample</li>
 <li>Lower variance of parameter updates</li>
 </ul>
 </li>
@@ -2016,32 +1979,31 @@
             <span class="c1"># Print Loss</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Iteration: </span><span class="si">{}</span><span class="s1">. Loss: </span><span class="si">{}</span><span class="s1">. Accuracy: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">accuracy</span><span class="p">))</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="n">Iteration</span><span class="o">:</span> <span class="mi">500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.3440718352794647</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">91</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">1000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.2057694047689438</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">93</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">1500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.2646750807762146</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">94</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">2000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.17563636600971222</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">94</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">2500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.1361844837665558</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">95</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">3000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.11089023947715759</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">95</span>
+<div class="highlight"><pre><span></span><code>Iteration: 500. Loss: 0.3440718352794647. Accuracy: 91
+Iteration: 1000. Loss: 0.2057694047689438. Accuracy: 93
+Iteration: 1500. Loss: 0.2646750807762146. Accuracy: 94
+Iteration: 2000. Loss: 0.17563636600971222. Accuracy: 94
+Iteration: 2500. Loss: 0.1361844837665558. Accuracy: 95
+Iteration: 3000. Loss: 0.11089023947715759. Accuracy: 95
 </code></pre></div>
-
 <h2 id="optimization-algorithm-4-sgd-momentum">Optimization Algorithm 4: SGD Momentum<a class="headerlink" href="#optimization-algorithm-4-sgd-momentum" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Modification of SGD<ul>
-<li><span><span class="MathJax_Preview">v_t = \gamma v_{t-1} + \eta \cdot  \nabla J(\theta, x^{i: i+n}, y^{i:i+n})</span><script type="math/tex">v_t = \gamma v_{t-1} + \eta \cdot  \nabla J(\theta, x^{i: i+n}, y^{i:i+n})</script></span></li>
-<li><span><span class="MathJax_Preview">\theta = \theta - v_t</span><script type="math/tex">\theta = \theta - v_t</script></span></li>
+<li><span class="arithmatex">\(v_t = \gamma v_{t-1} + \eta \cdot  \nabla J(\theta, x^{i: i+n}, y^{i:i+n})\)</span></li>
+<li><span class="arithmatex">\(\theta = \theta - v_t\)</span></li>
 </ul>
 </li>
 <li>Characteristics<ul>
-<li>Compute the gradient of the lost function w.r.t. parameters for <strong>n sets of training sample (n input and n label)</strong>, <span><span class="MathJax_Preview">\nabla J(\theta, x^{i: i+n}, y^{i:i+n})</span><script type="math/tex">\nabla J(\theta, x^{i: i+n}, y^{i:i+n})</script></span></li>
-<li>Use this to add to the previous update vector <span><span class="MathJax_Preview">v_{t-1}</span><script type="math/tex">v_{t-1}</script></span></li>
-<li>Momentum, usually set to <span><span class="MathJax_Preview">\gamma = 0.9</span><script type="math/tex">\gamma = 0.9</script></span></li>
-<li>Parameters updated with update vector, <span><span class="MathJax_Preview">v_t</span><script type="math/tex">v_t</script></span> that incorporates previous update vector<ul>
-<li><span><span class="MathJax_Preview">\gamma v_{t}</span><script type="math/tex">\gamma v_{t}</script></span> increases if gradient same sign/direction as <span><span class="MathJax_Preview">v_{t-1}</span><script type="math/tex">v_{t-1}</script></span> <ul>
+<li>Compute the gradient of the lost function w.r.t. parameters for <strong>n sets of training sample (n input and n label)</strong>, <span class="arithmatex">\(\nabla J(\theta, x^{i: i+n}, y^{i:i+n})\)</span></li>
+<li>Use this to add to the previous update vector <span class="arithmatex">\(v_{t-1}\)</span></li>
+<li>Momentum, usually set to <span class="arithmatex">\(\gamma = 0.9\)</span></li>
+<li>Parameters updated with update vector, <span class="arithmatex">\(v_t\)</span> that incorporates previous update vector<ul>
+<li><span class="arithmatex">\(\gamma v_{t}\)</span> increases if gradient same sign/direction as <span class="arithmatex">\(v_{t-1}\)</span> <ul>
 <li>Gives SGD the push when it is going in the right direction (minimizing loss)</li>
 <li>Accelerated convergence</li>
 </ul>
 </li>
-<li><span><span class="MathJax_Preview">\gamma v_{t}</span><script type="math/tex">\gamma v_{t}</script></span> decreases if gradient different sign/direction as <span><span class="MathJax_Preview">v_{t-1}</span><script type="math/tex">v_{t-1}</script></span><ul>
+<li><span class="arithmatex">\(\gamma v_{t}\)</span> decreases if gradient different sign/direction as <span class="arithmatex">\(v_{t-1}\)</span><ul>
 <li>Dampens SGD when it is going in a different direction</li>
 <li>Lower variation in loss minimization</li>
 </ul>
@@ -2051,7 +2013,7 @@
 </ul>
 </li>
 <li>Problems<ul>
-<li>It might go the wrong direction (higher loss) <span><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> continue to be accelerated to the wrong direction (higher loss) </li>
+<li>It might go the wrong direction (higher loss) <span class="arithmatex">\(\rightarrow\)</span> continue to be accelerated to the wrong direction (higher loss) </li>
 </ul>
 </li>
 </ul>
@@ -2188,28 +2150,27 @@
             <span class="c1"># Print Loss</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Iteration: </span><span class="si">{}</span><span class="s1">. Loss: </span><span class="si">{}</span><span class="s1">. Accuracy: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">accuracy</span><span class="p">))</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="n">Iteration</span><span class="o">:</span> <span class="mi">500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.16120098531246185</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">96</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">1000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.15727552771568298</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">96</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">1500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.1303034871816635</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">96</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">2000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.022178759798407555</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">97</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">2500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.07027597725391388</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">97</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">3000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.02519878000020981</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">97</span>
+<div class="highlight"><pre><span></span><code>Iteration: 500. Loss: 0.16120098531246185. Accuracy: 96
+Iteration: 1000. Loss: 0.15727552771568298. Accuracy: 96
+Iteration: 1500. Loss: 0.1303034871816635. Accuracy: 96
+Iteration: 2000. Loss: 0.022178759798407555. Accuracy: 97
+Iteration: 2500. Loss: 0.07027597725391388. Accuracy: 97
+Iteration: 3000. Loss: 0.02519878000020981. Accuracy: 97
 </code></pre></div>
-
 <h2 id="optimization-algorithm-4-sgd-nesterov">Optimization Algorithm 4: SGD Nesterov<a class="headerlink" href="#optimization-algorithm-4-sgd-nesterov" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Modification of SGD Momentum <ul>
-<li><span><span class="MathJax_Preview">v_t = \gamma v_{t-1} + \eta \cdot  \nabla J(\theta - \gamma v_{t-1}, x^{i: i+n}, y^{i:i+n})</span><script type="math/tex">v_t = \gamma v_{t-1} + \eta \cdot  \nabla J(\theta - \gamma v_{t-1}, x^{i: i+n}, y^{i:i+n})</script></span></li>
-<li><span><span class="MathJax_Preview">\theta = \theta - v_t</span><script type="math/tex">\theta = \theta - v_t</script></span></li>
+<li><span class="arithmatex">\(v_t = \gamma v_{t-1} + \eta \cdot  \nabla J(\theta - \gamma v_{t-1}, x^{i: i+n}, y^{i:i+n})\)</span></li>
+<li><span class="arithmatex">\(\theta = \theta - v_t\)</span></li>
 </ul>
 </li>
 <li>Characteristics<ul>
-<li>Compute the gradient of the lost function w.r.t. <strong>future approximate parameters</strong> for <strong>n sets of training sample (n input and n label)</strong>, <span><span class="MathJax_Preview">\nabla J(\theta - \gamma v_{t-1}, x^{i: i+n}, y^{i:i+n})</span><script type="math/tex">\nabla J(\theta - \gamma v_{t-1}, x^{i: i+n}, y^{i:i+n})</script></span><ul>
-<li>Use this to add to the previous update vector <span><span class="MathJax_Preview">v_{t-1}</span><script type="math/tex">v_{t-1}</script></span></li>
-<li>Momentum, usually set to <span><span class="MathJax_Preview">\gamma = 0.9</span><script type="math/tex">\gamma = 0.9</script></span></li>
+<li>Compute the gradient of the lost function w.r.t. <strong>future approximate parameters</strong> for <strong>n sets of training sample (n input and n label)</strong>, <span class="arithmatex">\(\nabla J(\theta - \gamma v_{t-1}, x^{i: i+n}, y^{i:i+n})\)</span><ul>
+<li>Use this to add to the previous update vector <span class="arithmatex">\(v_{t-1}\)</span></li>
+<li>Momentum, usually set to <span class="arithmatex">\(\gamma = 0.9\)</span></li>
 </ul>
 </li>
-<li>Gradients w.r.t. future approximate parameters <span><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> sense of where we will be <span><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> anticipate if we are going in the wrong direction in the next step <span><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> slow down accordingly</li>
+<li>Gradients w.r.t. future approximate parameters <span class="arithmatex">\(\rightarrow\)</span> sense of where we will be <span class="arithmatex">\(\rightarrow\)</span> anticipate if we are going in the wrong direction in the next step <span class="arithmatex">\(\rightarrow\)</span> slow down accordingly</li>
 </ul>
 </li>
 </ul>
@@ -2346,43 +2307,42 @@
             <span class="c1"># Print Loss</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Iteration: </span><span class="si">{}</span><span class="s1">. Loss: </span><span class="si">{}</span><span class="s1">. Accuracy: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">accuracy</span><span class="p">))</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="n">Iteration</span><span class="o">:</span> <span class="mi">500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.15292978286743164</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">96</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">1000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.11253029108047485</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">96</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">1500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.11986596137285233</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">96</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">2000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.016192540526390076</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">97</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">2500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.06744947284460068</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">97</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">3000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.03692319989204407</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">97</span>
+<div class="highlight"><pre><span></span><code>Iteration: 500. Loss: 0.15292978286743164. Accuracy: 96
+Iteration: 1000. Loss: 0.11253029108047485. Accuracy: 96
+Iteration: 1500. Loss: 0.11986596137285233. Accuracy: 96
+Iteration: 2000. Loss: 0.016192540526390076. Accuracy: 97
+Iteration: 2500. Loss: 0.06744947284460068. Accuracy: 97
+Iteration: 3000. Loss: 0.03692319989204407. Accuracy: 97
 </code></pre></div>
-
 <h2 id="optimization-algorithm-4-adam">Optimization Algorithm 4: Adam<a class="headerlink" href="#optimization-algorithm-4-adam" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Adaptive Learning Rates<ul>
-<li><span><span class="MathJax_Preview">m_t = \beta_1 m_{t-1} + (1 - \beta_1)g_t</span><script type="math/tex">m_t = \beta_1 m_{t-1} + (1 - \beta_1)g_t</script></span><ul>
+<li><span class="arithmatex">\(m_t = \beta_1 m_{t-1} + (1 - \beta_1)g_t\)</span><ul>
 <li>Keeping track of decaying gradient</li>
 <li>Estimate of the mean of gradients</li>
 </ul>
 </li>
-<li><span><span class="MathJax_Preview">v_t = \beta_2 v_{t-1} + (1 - \beta_2)g_t^2</span><script type="math/tex">v_t = \beta_2 v_{t-1} + (1 - \beta_2)g_t^2</script></span><ul>
+<li><span class="arithmatex">\(v_t = \beta_2 v_{t-1} + (1 - \beta_2)g_t^2\)</span><ul>
 <li>Keeping track of decaying squared gradient </li>
 <li>Estimate of the variance of gradients</li>
 </ul>
 </li>
-<li>When <span><span class="MathJax_Preview">m_t, v_t</span><script type="math/tex">m_t, v_t</script></span> initializes as 0, <span><span class="MathJax_Preview">m_t, v_t \rightarrow 0</span><script type="math/tex">m_t, v_t \rightarrow 0</script></span> initially when decay rates small, <span><span class="MathJax_Preview">\beta_1, \beta_2 \rightarrow 1</span><script type="math/tex">\beta_1, \beta_2 \rightarrow 1</script></span>  <ul>
+<li>When <span class="arithmatex">\(m_t, v_t\)</span> initializes as 0, <span class="arithmatex">\(m_t, v_t \rightarrow 0\)</span> initially when decay rates small, <span class="arithmatex">\(\beta_1, \beta_2 \rightarrow 1\)</span>  <ul>
 <li>Need to correct this with:</li>
-<li><span><span class="MathJax_Preview">\hat m_t = \frac{m_t}{1- \beta_1}</span><script type="math/tex">\hat m_t = \frac{m_t}{1- \beta_1}</script></span></li>
-<li><span><span class="MathJax_Preview">\hat v_t = \frac{v_t}{1- \beta_2}</span><script type="math/tex">\hat v_t = \frac{v_t}{1- \beta_2}</script></span></li>
+<li><span class="arithmatex">\(\hat m_t = \frac{m_t}{1- \beta_1}\)</span></li>
+<li><span class="arithmatex">\(\hat v_t = \frac{v_t}{1- \beta_2}\)</span></li>
 </ul>
 </li>
-<li><span><span class="MathJax_Preview">\theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{\hat v_t} + \epsilon}\hat m_t</span><script type="math/tex">\theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{\hat v_t} + \epsilon}\hat m_t</script></span></li>
+<li><span class="arithmatex">\(\theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{\hat v_t} + \epsilon}\hat m_t\)</span></li>
 <li>Default recommended values<ul>
-<li><span><span class="MathJax_Preview">\beta_1 = 0.9</span><script type="math/tex">\beta_1 = 0.9</script></span></li>
-<li><span><span class="MathJax_Preview">\beta_2 = 0.999</span><script type="math/tex">\beta_2 = 0.999</script></span></li>
-<li><span><span class="MathJax_Preview">\epsilon = 10^{-8}</span><script type="math/tex">\epsilon = 10^{-8}</script></span></li>
+<li><span class="arithmatex">\(\beta_1 = 0.9\)</span></li>
+<li><span class="arithmatex">\(\beta_2 = 0.999\)</span></li>
+<li><span class="arithmatex">\(\epsilon = 10^{-8}\)</span></li>
 </ul>
 </li>
 </ul>
 </li>
-<li>Instead of learning rate <span><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> equations account for estimates of mean/variance of gradients to determine the next learning rate</li>
+<li>Instead of learning rate <span class="arithmatex">\(\rightarrow\)</span> equations account for estimates of mean/variance of gradients to determine the next learning rate</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
@@ -2517,14 +2477,13 @@
             <span class="c1"># Print Loss</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Iteration: </span><span class="si">{}</span><span class="s1">. Loss: </span><span class="si">{}</span><span class="s1">. Accuracy: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">accuracy</span><span class="p">))</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="n">Iteration</span><span class="o">:</span> <span class="mi">500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.2703690826892853</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">93</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">1000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.15547044575214386</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">95</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">1500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.17266806960105896</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">95</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">2000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.0865858644247055</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">96</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">2500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.07156120240688324</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">96</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">3000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.04664849117398262</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">97</span>
+<div class="highlight"><pre><span></span><code>Iteration: 500. Loss: 0.2703690826892853. Accuracy: 93
+Iteration: 1000. Loss: 0.15547044575214386. Accuracy: 95
+Iteration: 1500. Loss: 0.17266806960105896. Accuracy: 95
+Iteration: 2000. Loss: 0.0865858644247055. Accuracy: 96
+Iteration: 2500. Loss: 0.07156120240688324. Accuracy: 96
+Iteration: 3000. Loss: 0.04664849117398262. Accuracy: 97
 </code></pre></div>
-
 <h2 id="other-adaptive-algorithms">Other Adaptive Algorithms<a class="headerlink" href="#other-adaptive-algorithms" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Other adaptive algorithms (like Adam, adapting learning rates)<ul>
@@ -2669,14 +2628,13 @@
             <span class="c1"># Print Loss</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Iteration: </span><span class="si">{}</span><span class="s1">. Loss: </span><span class="si">{}</span><span class="s1">. Accuracy: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">accuracy</span><span class="p">))</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="n">Iteration</span><span class="o">:</span> <span class="mi">500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.2757369875907898</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">92</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">1000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.1992958039045334</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">93</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">1500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.2227272093296051</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">94</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">2000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.18628711998462677</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">94</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">2500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.1470586657524109</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">95</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">3000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.11748368293046951</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">95</span>
+<div class="highlight"><pre><span></span><code>Iteration: 500. Loss: 0.2757369875907898. Accuracy: 92
+Iteration: 1000. Loss: 0.1992958039045334. Accuracy: 93
+Iteration: 1500. Loss: 0.2227272093296051. Accuracy: 94
+Iteration: 2000. Loss: 0.18628711998462677. Accuracy: 94
+Iteration: 2500. Loss: 0.1470586657524109. Accuracy: 95
+Iteration: 3000. Loss: 0.11748368293046951. Accuracy: 95
 </code></pre></div>
-
 <h2 id="optimization-algorithm-6-adadelta">Optimization Algorithm 6: Adadelta<a class="headerlink" href="#optimization-algorithm-6-adadelta" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
@@ -2811,14 +2769,13 @@
             <span class="c1"># Print Loss</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Iteration: </span><span class="si">{}</span><span class="s1">. Loss: </span><span class="si">{}</span><span class="s1">. Accuracy: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="n">loss</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">accuracy</span><span class="p">))</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="n">Iteration</span><span class="o">:</span> <span class="mi">500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.26303035020828247</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mf">93.95</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">1000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.08731874823570251</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mf">95.83</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">1500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.11502093076705933</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mf">96.87</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">2000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.03550947830080986</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mf">97.12</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">2500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.042649827897548676</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mf">97.54</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">3000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.03061559610068798</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mf">97.45</span>
+<div class="highlight"><pre><span></span><code>Iteration: 500. Loss: 0.26303035020828247. Accuracy: 93.95
+Iteration: 1000. Loss: 0.08731874823570251. Accuracy: 95.83
+Iteration: 1500. Loss: 0.11502093076705933. Accuracy: 96.87
+Iteration: 2000. Loss: 0.03550947830080986. Accuracy: 97.12
+Iteration: 2500. Loss: 0.042649827897548676. Accuracy: 97.54
+Iteration: 3000. Loss: 0.03061559610068798. Accuracy: 97.45
 </code></pre></div>
-
 <h2 id="optimization-algorithm-6-adamax">Optimization Algorithm 6: Adamax<a class="headerlink" href="#optimization-algorithm-6-adamax" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
@@ -2953,14 +2910,13 @@
             <span class="c1"># Print Loss</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Iteration: </span><span class="si">{}</span><span class="s1">. Loss: </span><span class="si">{}</span><span class="s1">. Accuracy: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">accuracy</span><span class="p">))</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="n">Iteration</span><span class="o">:</span> <span class="mi">500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.29930350184440613</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">92</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">1000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.18749120831489563</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">93</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">1500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.21887679398059845</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">95</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">2000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.14390651881694794</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">95</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">2500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.10771607607603073</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">96</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">3000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.0839928686618805</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">96</span>
+<div class="highlight"><pre><span></span><code>Iteration: 500. Loss: 0.29930350184440613. Accuracy: 92
+Iteration: 1000. Loss: 0.18749120831489563. Accuracy: 93
+Iteration: 1500. Loss: 0.21887679398059845. Accuracy: 95
+Iteration: 2000. Loss: 0.14390651881694794. Accuracy: 95
+Iteration: 2500. Loss: 0.10771607607603073. Accuracy: 96
+Iteration: 3000. Loss: 0.0839928686618805. Accuracy: 96
 </code></pre></div>
-
 <h2 id="optimization-algorithm-7-rmsprop">Optimization Algorithm 7: RMSProp<a class="headerlink" href="#optimization-algorithm-7-rmsprop" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
@@ -3095,14 +3051,13 @@
             <span class="c1"># Print Loss</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Iteration: </span><span class="si">{}</span><span class="s1">. Loss: </span><span class="si">{}</span><span class="s1">. Accuracy: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">iter</span><span class="p">,</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">accuracy</span><span class="p">))</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="n">Iteration</span><span class="o">:</span> <span class="mi">500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.25550296902656555</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">95</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">1000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.17357593774795532</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">93</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">1500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.10597744584083557</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">96</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">2000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.03807783126831055</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">96</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">2500</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.10654022544622421</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">96</span>
-<span class="n">Iteration</span><span class="o">:</span> <span class="mi">3000</span><span class="o">.</span> <span class="n">Loss</span><span class="o">:</span> <span class="mf">0.05745543912053108</span><span class="o">.</span> <span class="n">Accuracy</span><span class="o">:</span> <span class="mi">96</span>
+<div class="highlight"><pre><span></span><code>Iteration: 500. Loss: 0.25550296902656555. Accuracy: 95
+Iteration: 1000. Loss: 0.17357593774795532. Accuracy: 93
+Iteration: 1500. Loss: 0.10597744584083557. Accuracy: 96
+Iteration: 2000. Loss: 0.03807783126831055. Accuracy: 96
+Iteration: 2500. Loss: 0.10654022544622421. Accuracy: 96
+Iteration: 3000. Loss: 0.05745543912053108. Accuracy: 96
 </code></pre></div>
-
 <h2 id="summary-of-optimization-algorithms-performance">Summary of Optimization Algorithms Performance<a class="headerlink" href="#summary-of-optimization-algorithms-performance" title="Permanent link">&para;</a></h2>
 <ul>
 <li>SGD: 95.78%</li>
@@ -3155,7 +3110,7 @@
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Using gradients (error signals from loss class) to update parameters</li>
 </ul>
 </li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>Mathematical</strong> interpretation: <span><span class="MathJax_Preview">\theta = \theta - \eta \cdot  \nabla J(\theta)</span><script type="math/tex">\theta = \theta - \eta \cdot  \nabla J(\theta)</script></span></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>Mathematical</strong> interpretation: <span class="arithmatex">\(\theta = \theta - \eta \cdot  \nabla J(\theta)\)</span></li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>Optimisation Algorithms</strong><ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Batch gradient descent</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Stochastic gradient descent</li>
@@ -3191,88 +3146,62 @@
             </article>
           </div>
         </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
       </main>
       
         
-
-<!-- Application footer -->
 <footer class="md-footer">
-
-  <!-- Link to previous and/or next page -->
   
-    <div class="md-footer-nav">
-      <nav
-        class="md-footer-nav__inner md-grid"
-        aria-label="Footer"
-      >
-
-        <!-- Link to previous page -->
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
         
-          <a
-            href="../lr_scheduling/"
-            title="Learning Rate Scheduling"
-            class="md-footer-nav__link md-footer-nav__link--prev"
-            rel="prev"
-          >
-            <div class="md-footer-nav__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        <a href="../lr_scheduling/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Learning Rate Scheduling" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Learning Rate Scheduling
             </div>
-            <div class="md-footer-nav__title">
-              <div class="md-ellipsis">
-                <span class="md-footer-nav__direction">
-                  Previous
-                </span>
-                Learning Rate Scheduling
-              </div>
-            </div>
-          </a>
+          </div>
+        </a>
+      
+      
         
-
-        <!-- Link to next page -->
-        
-          <a
-            href="../weight_initialization_activation_functions/"
-            title="Weight Initialization and Activation Functions"
-            class="md-footer-nav__link md-footer-nav__link--next"
-            rel="next"
-          >
-            <div class="md-footer-nav__title">
-              <div class="md-ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                Weight Initialization and Activation Functions
-              </div>
+        <a href="../weight_initialization_activation_functions/" class="md-footer__link md-footer__link--next" aria-label="Next: Weight Initialization and Activation Functions" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Weight Initialization and Activation Functions
             </div>
-            <div class="md-footer-nav__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
-    </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
-
-  <!-- Further information -->
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
-
-      <!-- Copyright and theme information -->
       <div class="md-footer-copyright">
         
           <div class="md-footer-copyright__highlight">
             Copyright &copy; 2021 Deep Learning Wizard by Ritchie Ng
           </div>
         
-        proudly an
-        <a href="http://www.nvidia.com/page/home.html">NVIDIA Inception Partner</a> and supported by the
-        <a href="https://aws.amazon.com/activate/">Amazon AWS Activate Programme</a> by
-        <a href="https://www.ritchieng.com/">
-          Ritchie Ng</a>
-        </a>
+        
       </div>
-
-      <!-- Social links -->
       
   <div class="md-footer-social">
     
@@ -3328,19 +3257,13 @@
 </footer>
       
     </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotate", "content.tabs.link", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
     
-      <script src="../../../assets/javascripts/vendor.93c04032.min.js"></script>
-      <script src="../../../assets/javascripts/bundle.83e5331e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
-      
-      <script>
-        app = initialize({
-          base: "../../..",
-          features: ['navigation.tabs', 'instant'],
-          search: Object.assign({
-            worker: "../../../assets/javascripts/worker/search.8c7e0a7e.min.js"
-          }, typeof search !== "undefined" && search)
-        })
-      </script>
+    
+      <script src="../../../assets/javascripts/bundle.56838a2c.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       

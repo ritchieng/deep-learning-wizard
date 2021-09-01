@@ -15,8 +15,8 @@
       
         <link rel="canonical" href="https://www.deeplearningwizard.com/machine_learning/gpu/rapids_cudf/">
       
-      <link rel="shortcut icon" href="../../../docs/assets/favicon.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.4">
+      <link rel="icon" href="../../../docs/assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.4">
     
     
       
@@ -24,14 +24,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.15aa0b43.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.f7f47774.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.75751829.min.css">
-        
-          
-          
-          <meta name="theme-color" content="#4051b5">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
         
       
     
@@ -41,17 +37,26 @@
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
       
     
     
     
     
       
-        
-<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-122083328-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview",document.location.pathname)})</script>
-<script async src="https://www.google-analytics.com/analytics.js"></script>
-      
+
+  
+
+
+  
+
+  
+
+
+  <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-122083328-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
+  <script async src="https://www.google-analytics.com/analytics.js"></script>
+
+
     
     
   </head>
@@ -59,12 +64,17 @@
   
     
     
+      
+    
     
     
     
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
-      
   
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -81,27 +91,25 @@
       
     </div>
     
-      
-
-<header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid" aria-label="Header">
-    <a href="https://www.deeplearningwizard.com/" title="Deep Learning Wizard" class="md-header-nav__button md-logo" aria-label="Deep Learning Wizard">
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Deep Learning Wizard" class="md-header__button md-logo" aria-label="Deep Learning Wizard" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M396.8 352h22.4c6.4 0 12.8-6.4 12.8-12.8V108.8c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v230.4c0 6.4 6.4 12.8 12.8 12.8zm-192 0h22.4c6.4 0 12.8-6.4 12.8-12.8V140.8c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v198.4c0 6.4 6.4 12.8 12.8 12.8zm96 0h22.4c6.4 0 12.8-6.4 12.8-12.8V204.8c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v134.4c0 6.4 6.4 12.8 12.8 12.8zM496 400H48V80c0-8.84-7.16-16-16-16H16C7.16 64 0 71.16 0 80v336c0 17.67 14.33 32 32 32h464c8.84 0 16-7.16 16-16v-16c0-8.84-7.16-16-16-16zm-387.2-48h22.4c6.4 0 12.8-6.4 12.8-12.8v-70.4c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v70.4c0 6.4 6.4 12.8 12.8 12.8z"/></svg>
 
     </a>
-    <label class="md-header-nav__button md-icon" for="__drawer">
+    <label class="md-header__button md-icon" for="__drawer">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
     </label>
-    <div class="md-header-nav__title" data-md-component="header-title">
-      <div class="md-header-nav__ellipsis">
-        <div class="md-header-nav__topic">
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
           <span class="md-ellipsis">
             Deep Learning Wizard
           </span>
         </div>
-        <div class="md-header-nav__topic">
+        <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
               GPU DataFrames
@@ -111,22 +119,56 @@
       </div>
     </div>
     
-      <label class="md-header-nav__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m10-3a5 5 0 0 1 5 5 5 5 0 0 1-5 5H7a5 5 0 0 1-5-5 5 5 0 0 1 5-5h10M7 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3h10a3 3 0 0 0 3-3 3 3 0 0 0-3-3H7z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
       </label>
       
 <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
       </label>
-      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
-      </button>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
@@ -142,12 +184,12 @@
 </div>
     
     
-      <div class="md-header-nav__source">
+      <div class="md-header__source">
         
-<a href="https://github.com/ritchieng/deep-learning-wizard/" title="Go to repository" class="md-source">
+<a href="https://github.com/ritchieng/deep-learning-wizard/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     ritchieng/deep-learning-wizard
@@ -254,24 +296,8 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../ood/intro/" class="md-tabs__link">
-        Out of Distribution Data
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
       <a href="../../../database/intro/" class="md-tabs__link">
-        Scalable Database
+        Database
       </a>
     </li>
   
@@ -303,19 +329,17 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
-
-
 
   
 
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="https://www.deeplearningwizard.com/" title="Deep Learning Wizard" class="md-nav__button md-logo" aria-label="Deep Learning Wizard">
+    <a href="../../.." title="Deep Learning Wizard" class="md-nav__button md-logo" aria-label="Deep Learning Wizard" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M396.8 352h22.4c6.4 0 12.8-6.4 12.8-12.8V108.8c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v230.4c0 6.4 6.4 12.8 12.8 12.8zm-192 0h22.4c6.4 0 12.8-6.4 12.8-12.8V140.8c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v198.4c0 6.4 6.4 12.8 12.8 12.8zm96 0h22.4c6.4 0 12.8-6.4 12.8-12.8V204.8c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v134.4c0 6.4 6.4 12.8 12.8 12.8zM496 400H48V80c0-8.84-7.16-16-16-16H16C7.16 64 0 71.16 0 80v336c0 17.67 14.33 32 32 32h464c8.84 0 16-7.16 16-16v-16c0-8.84-7.16-16-16-16zm-387.2-48h22.4c6.4 0 12.8-6.4 12.8-12.8v-70.4c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v70.4c0 6.4 6.4 12.8 12.8 12.8z"/></svg>
@@ -326,10 +350,10 @@
   
     <div class="md-nav__source">
       
-<a href="https://github.com/ritchieng/deep-learning-wizard/" title="Go to repository" class="md-source">
+<a href="https://github.com/ritchieng/deep-learning-wizard/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     ritchieng/deep-learning-wizard
@@ -343,515 +367,489 @@
       
       
 
-
-
-  <li class="md-nav__item">
-    <a href="../../.." class="md-nav__link">
-      Home
-    </a>
-  </li>
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
 
     
       
       
       
-
-
 
   
-  <li class="md-nav__item md-nav__item--nested">
+  
+  
     
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
-    
-    <label class="md-nav__link" for="nav-2">
-      About
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="About" data-md-level="1">
-      <label class="md-nav__title" for="nav-2">
-        <span class="md-nav__icon md-icon"></span>
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
         About
+        <span class="md-nav__icon md-icon"></span>
       </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
+      <nav class="md-nav" aria-label="About" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          About
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../home/" class="md-nav__link">
+        Intro
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        About Us
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../review/" class="md-nav__link">
+        Reviews
+      </a>
+    </li>
+  
 
-
-
-  <li class="md-nav__item">
-    <a href="../../../home/" class="md-nav__link">
-      Intro
-    </a>
-  </li>
-
-        
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pipeline/" class="md-nav__link">
+        AI Pipeline
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../consultancy/" class="md-nav__link">
+        Consultancy
+      </a>
+    </li>
+  
+
           
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../about/" class="md-nav__link">
-      About Us
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../review/" class="md-nav__link">
-      Reviews
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../pipeline/" class="md-nav__link">
-      AI Pipeline
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../consultancy/" class="md-nav__link">
-      Consultancy
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
+        </ul>
+      </nav>
+    </li>
+  
 
     
       
       
       
-
-
 
   
-  <li class="md-nav__item md-nav__item--nested">
+  
+  
     
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
-    
-    <label class="md-nav__link" for="nav-3">
-      Deep Learning (CPU/GPU)
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="Deep Learning (CPU/GPU)" data-md-level="1">
-      <label class="md-nav__title" for="nav-3">
-        <span class="md-nav__icon md-icon"></span>
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
         Deep Learning (CPU/GPU)
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/intro/" class="md-nav__link">
-      Introduction
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/course_progression/" class="md-nav__link">
-      Course Progression
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/practical_pytorch/pytorch_matrices/" class="md-nav__link">
-      Matrices
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/practical_pytorch/pytorch_gradients/" class="md-nav__link">
-      Gradients
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/practical_pytorch/pytorch_linear_regression/" class="md-nav__link">
-      Linear Regression
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/practical_pytorch/pytorch_logistic_regression/" class="md-nav__link">
-      Logistic Regression
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/practical_pytorch/pytorch_feedforward_neuralnetwork/" class="md-nav__link">
-      Feedforward Neural Networks (FNN)
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/practical_pytorch/pytorch_convolutional_neuralnetwork/" class="md-nav__link">
-      Convolutional Neural Networks (CNN)
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/practical_pytorch/pytorch_recurrent_neuralnetwork/" class="md-nav__link">
-      Recurrent Neural Networks (RNN)
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/practical_pytorch/pytorch_lstm_neuralnetwork/" class="md-nav__link">
-      Long Short Term Memory Neural Networks (LSTM)
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/practical_pytorch/pytorch_autoencoder/" class="md-nav__link">
-      Autoencoders (AE)
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/practical_pytorch/pytorch_fc_overcomplete_ae/" class="md-nav__link">
-      Fully-connected Overcomplete Autoencoder (AE)
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/boosting_models_pytorch/derivative_gradient_jacobian/" class="md-nav__link">
-      Derivative, Gradient and Jacobian
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/boosting_models_pytorch/forwardpropagation_backpropagation_gradientdescent/" class="md-nav__link">
-      Forward- and Backward-propagation and Gradient Descent (From Scratch FNN Regression)
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/fromscratch/fromscratch_logistic_regression/" class="md-nav__link">
-      From Scratch Logistic Regression Classification
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/fromscratch/fromscratch_cnn/" class="md-nav__link">
-      From Scratch CNN Classification
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/boosting_models_pytorch/lr_scheduling/" class="md-nav__link">
-      Learning Rate Scheduling
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/boosting_models_pytorch/optimizers/" class="md-nav__link">
-      Optimization Algorithms
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/boosting_models_pytorch/weight_initialization_activation_functions/" class="md-nav__link">
-      Weight Initialization and Activation Functions
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/deep_reinforcement_learning_pytorch/supervised_to_rl/" class="md-nav__link">
-      Supervised Learning to Reinforcement Learning (RL)
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/deep_reinforcement_learning_pytorch/bellman_mdp/" class="md-nav__link">
-      Markov Decision Processes (MDP) and Bellman Equations
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/deep_reinforcement_learning_pytorch/dynamic_programming_frozenlake/" class="md-nav__link">
-      Dynamic Programming
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/production_pytorch/speed_optimization_basics_numba/" class="md-nav__link">
-      Speed Optimization Basics Numba
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/readings/" class="md-nav__link">
-      Additional Readings
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  
-
-
-  
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-    
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
-    
-    <label class="md-nav__link" for="nav-4">
-      Machine Learning (CPU/GPU)
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="Machine Learning (CPU/GPU)" data-md-level="1">
-      <label class="md-nav__title" for="nav-4">
         <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Deep Learning (CPU/GPU)" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Deep Learning (CPU/GPU)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/course_progression/" class="md-nav__link">
+        Course Progression
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/practical_pytorch/pytorch_matrices/" class="md-nav__link">
+        Matrices
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/practical_pytorch/pytorch_gradients/" class="md-nav__link">
+        Gradients
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/practical_pytorch/pytorch_linear_regression/" class="md-nav__link">
+        Linear Regression
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/practical_pytorch/pytorch_logistic_regression/" class="md-nav__link">
+        Logistic Regression
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/practical_pytorch/pytorch_feedforward_neuralnetwork/" class="md-nav__link">
+        Feedforward Neural Networks (FNN)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/practical_pytorch/pytorch_convolutional_neuralnetwork/" class="md-nav__link">
+        Convolutional Neural Networks (CNN)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/practical_pytorch/pytorch_recurrent_neuralnetwork/" class="md-nav__link">
+        Recurrent Neural Networks (RNN)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/practical_pytorch/pytorch_lstm_neuralnetwork/" class="md-nav__link">
+        Long Short Term Memory Neural Networks (LSTM)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/practical_pytorch/pytorch_autoencoder/" class="md-nav__link">
+        Autoencoders (AE)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/practical_pytorch/pytorch_fc_overcomplete_ae/" class="md-nav__link">
+        Fully-connected Overcomplete Autoencoder (AE)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/boosting_models_pytorch/derivative_gradient_jacobian/" class="md-nav__link">
+        Derivative, Gradient and Jacobian
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/boosting_models_pytorch/forwardpropagation_backpropagation_gradientdescent/" class="md-nav__link">
+        Forward- and Backward-propagation and Gradient Descent (From Scratch FNN Regression)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/fromscratch/fromscratch_logistic_regression/" class="md-nav__link">
+        From Scratch Logistic Regression Classification
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/fromscratch/fromscratch_cnn/" class="md-nav__link">
+        From Scratch CNN Classification
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/boosting_models_pytorch/lr_scheduling/" class="md-nav__link">
+        Learning Rate Scheduling
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/boosting_models_pytorch/optimizers/" class="md-nav__link">
+        Optimization Algorithms
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/boosting_models_pytorch/weight_initialization_activation_functions/" class="md-nav__link">
+        Weight Initialization and Activation Functions
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/deep_reinforcement_learning_pytorch/supervised_to_rl/" class="md-nav__link">
+        Supervised Learning to Reinforcement Learning (RL)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/deep_reinforcement_learning_pytorch/bellman_mdp/" class="md-nav__link">
+        Markov Decision Processes (MDP) and Bellman Equations
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/deep_reinforcement_learning_pytorch/dynamic_programming_frozenlake/" class="md-nav__link">
+        Dynamic Programming
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/production_pytorch/speed_optimization_basics_numba/" class="md-nav__link">
+        Speed Optimization Basics Numba
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/readings/" class="md-nav__link">
+        Additional Readings
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
         Machine Learning (CPU/GPU)
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../intro/" class="md-nav__link">
-      Introduction
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        GPU DataFrames
         <span class="md-nav__icon md-icon"></span>
       </label>
+      <nav class="md-nav" aria-label="Machine Learning (CPU/GPU)" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Machine Learning (CPU/GPU)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
     
-    <a href="./" class="md-nav__link md-nav__link--active">
-      GPU DataFrames
-    </a>
-    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
       
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          GPU DataFrames
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        GPU DataFrames
+      </a>
+      
+        
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
   
   
     
@@ -861,7 +859,7 @@
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
   <a href="#environment-setup" class="md-nav__link">
@@ -1124,428 +1122,393 @@
     </ul>
   
 </nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gpu_fractional_differencing/" class="md-nav__link">
+        GPU/CPU Fractional Differencing
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
     
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../gpu_fractional_differencing/" class="md-nav__link">
-      GPU/CPU Fractional Differencing
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
       
       
       
-
-
 
   
-  <li class="md-nav__item md-nav__item--nested">
+  
+  
     
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
-    
-    <label class="md-nav__link" for="nav-5">
-      Programming
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="Programming" data-md-level="1">
-      <label class="md-nav__title" for="nav-5">
-        <span class="md-nav__icon md-icon"></span>
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
         Programming
+        <span class="md-nav__icon md-icon"></span>
       </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
+      <nav class="md-nav" aria-label="Programming" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Programming
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/cpp/cpp/" class="md-nav__link">
+        C++
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/bash/bash/" class="md-nav__link">
+        Bash
+      </a>
+    </li>
+  
 
-
-
-  <li class="md-nav__item">
-    <a href="../../../programming/intro/" class="md-nav__link">
-      Introduction
-    </a>
-  </li>
-
-        
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/python/python/" class="md-nav__link">
+        Python
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/javascript/javascript/" class="md-nav__link">
+        Javascript
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/electron/electron/" class="md-nav__link">
+        Electron
+      </a>
+    </li>
+  
 
-
-
-  <li class="md-nav__item">
-    <a href="../../../programming/cpp/cpp/" class="md-nav__link">
-      C++
-    </a>
-  </li>
-
-        
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/sympy/calculus_sympy/" class="md-nav__link">
+        Sympy
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/numpycupy/linalg_numpy_cupy/" class="md-nav__link">
+        NumPy and CuPy
+      </a>
+    </li>
+  
+
           
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../programming/bash/bash/" class="md-nav__link">
-      Bash
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../programming/python/python/" class="md-nav__link">
-      Python
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../programming/javascript/javascript/" class="md-nav__link">
-      Javascript
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../programming/electron/electron/" class="md-nav__link">
-      Electron
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
+        </ul>
+      </nav>
+    </li>
+  
 
     
       
       
       
-
-
 
   
-  <li class="md-nav__item md-nav__item--nested">
+  
+  
     
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" >
-    
-    <label class="md-nav__link" for="nav-6">
-      Out of Distribution Data
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="Out of Distribution Data" data-md-level="1">
-      <label class="md-nav__title" for="nav-6">
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Database
         <span class="md-nav__icon md-icon"></span>
-        Out of Distribution Data
       </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
+      <nav class="md-nav" aria-label="Database" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Database
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../database/intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../database/setting_up_cluster/" class="md-nav__link">
+        Cassandra Cluster Setup
+      </a>
+    </li>
+  
+
           
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../ood/intro/" class="md-nav__link">
-      Introduction
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
+        </ul>
+      </nav>
+    </li>
+  
 
     
       
       
       
-
-
 
   
-  <li class="md-nav__item md-nav__item--nested">
-    
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" >
-    
-    <label class="md-nav__link" for="nav-7">
-      Scalable Database
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="Scalable Database" data-md-level="1">
-      <label class="md-nav__title" for="nav-7">
-        <span class="md-nav__icon md-icon"></span>
-        Scalable Database
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../database/intro/" class="md-nav__link">
-      Introduction
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../database/setting_up_cluster/" class="md-nav__link">
-      Cassandra Cluster Setup
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-
   
-  <li class="md-nav__item md-nav__item--nested">
+  
     
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8" >
-    
-    <label class="md-nav__link" for="nav-8">
-      News
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="News" data-md-level="1">
-      <label class="md-nav__title" for="nav-8">
-        <span class="md-nav__icon md-icon"></span>
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
         News
+        <span class="md-nav__icon md-icon"></span>
       </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
+      <nav class="md-nav" aria-label="News" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          News
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/news/" class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/dbs_gpu_rapids_nvidia_ensemble_frac_diff/" class="md-nav__link">
+        Fractional Differencing with GPU (GFD), DBS and NVIDIA, September 2019
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/defence_and_science_technology_agency_dsta_nvidia_talk_2016_06/" class="md-nav__link">
+        Deep Learning Introduction, Defence and Science Technology Agency (DSTA) and NVIDIA, June 2019
+      </a>
+    </li>
+  
 
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/news/" class="md-nav__link">
-      Welcome
-    </a>
-  </li>
-
-        
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/detect_waterbone_debris_ai_for_social_good_icml_2019_06/" class="md-nav__link">
+        Oral Presentation for AI for Social Good Workshop ICML, June 2019
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/it_youth_leader_2019_03_11/" class="md-nav__link">
+        IT Youth Leader of The Year 2019, March 2019
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/ammi_facebook_google_recap_2018_11_21/" class="md-nav__link">
+        AMMI (AIMS) supported by Facebook and Google, November 2018
+      </a>
+    </li>
+  
 
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/dbs_gpu_rapids_nvidia_ensemble_frac_diff/" class="md-nav__link">
-      Fractional Differencing with GPU (GFD), DBS and NVIDIA, September 2019
-    </a>
-  </li>
-
-        
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/nanjing_next_nus_tsinghua_ai_finance_healthcare_2018_11_01/" class="md-nav__link">
+        NExT++ AI in Healthcare and Finance, Nanjing, November 2018
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/facebook_pytorch_devcon_recap_2018_10_02/" class="md-nav__link">
+        Recap of Facebook PyTorch Developer Conference, San Francisco, September 2018
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/facebook_pytorch_developer_conference_2018_09_05/" class="md-nav__link">
+        Facebook PyTorch Developer Conference, San Francisco, September 2018
+      </a>
+    </li>
+  
 
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/defence_and_science_technology_agency_dsta_nvidia_talk_2016_06/" class="md-nav__link">
-      Deep Learning Introduction, Defence and Science Technology Agency (DSTA) and NVIDIA, June 2019
-    </a>
-  </li>
-
-        
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/nvidia_nus_mit_datathon_2018_07_05/" class="md-nav__link">
+        NUS-MIT-NUHS NVIDIA Image Recognition Workshop, Singapore, July 2018
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/deep_learning_wizard_1y_2018_06_01/" class="md-nav__link">
+        Featured on PyTorch Website 2018
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/nvidia_self_driving_cars_talk_2017_06_21/" class="md-nav__link">
+        NVIDIA Self Driving Cars & Healthcare Talk, Singapore, June 2017
+      </a>
+    </li>
+  
 
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/detect_waterbone_debris_ai_for_social_good_icml_2019_06/" class="md-nav__link">
-      Oral Presentation for AI for Social Good Workshop ICML, June 2019
-    </a>
-  </li>
-
-        
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/deep_learning_wizard_nvidia_inception_2018_05_01/" class="md-nav__link">
+        NVIDIA Inception Partner Status, Singapore, May 2017
+      </a>
+    </li>
+  
+
           
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/it_youth_leader_2019_03_11/" class="md-nav__link">
-      IT Youth Leader of The Year 2019, March 2019
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/ammi_facebook_google_recap_2018_11_21/" class="md-nav__link">
-      AMMI (AIMS) supported by Facebook and Google, November 2018
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/nanjing_next_nus_tsinghua_ai_finance_healthcare_2018_11_01/" class="md-nav__link">
-      NExT++ AI in Healthcare and Finance, Nanjing, November 2018
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/facebook_pytorch_devcon_recap_2018_10_02/" class="md-nav__link">
-      Recap of Facebook PyTorch Developer Conference, San Francisco, September 2018
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/facebook_pytorch_developer_conference_2018_09_05/" class="md-nav__link">
-      Facebook PyTorch Developer Conference, San Francisco, September 2018
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/nvidia_nus_mit_datathon_2018_07_05/" class="md-nav__link">
-      NUS-MIT-NUHS NVIDIA Image Recognition Workshop, Singapore, July 2018
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/deep_learning_wizard_1y_2018_06_01/" class="md-nav__link">
-      Featured on PyTorch Website 2018
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/nvidia_self_driving_cars_talk_2017_06_21/" class="md-nav__link">
-      NVIDIA Self Driving Cars & Healthcare Talk, Singapore, June 2017
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/deep_learning_wizard_nvidia_inception_2018_05_01/" class="md-nav__link">
-      NVIDIA Inception Partner Status, Singapore, May 2017
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
+        </ul>
+      </nav>
+    </li>
+  
 
     
   </ul>
@@ -1556,11 +1519,12 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
   
   
     
@@ -1570,7 +1534,7 @@
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
   <a href="#environment-setup" class="md-nav__link">
@@ -1838,7 +1802,7 @@
               </div>
             
           
-          <div class="md-content">
+          <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
                 
@@ -1855,54 +1819,50 @@
 <div class="highlight"><pre><span></span><code><span class="c1"># Check Python Version</span>
 <span class="err">!</span><span class="n">python</span> <span class="o">--</span><span class="n">version</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="err">Python 3.6.7</span>
+<div class="highlight"><pre><span></span><code>Python 3.6.7
 </code></pre></div>
-
 <h4 id="ubuntu-version">Ubuntu Version<a class="headerlink" href="#ubuntu-version" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># Check Ubuntu Version</span>
 <span class="err">!</span><span class="n">lsb_release</span> <span class="o">-</span><span class="n">a</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="err">No LSB modules are available.</span>
-<span class="err">Distributor ID: Ubuntu</span>
-<span class="c">Description:    Ubuntu 18.04.2 LTS</span>
-<span class="c">Release:    18.04</span>
-<span class="c">Codename:   bionic</span>
+<div class="highlight"><pre><span></span><code>No LSB modules are available.
+Distributor ID: Ubuntu
+Description:    Ubuntu 18.04.2 LTS
+Release:    18.04
+Codename:   bionic
 </code></pre></div>
-
 <h4 id="check-cuda-version">Check CUDA Version<a class="headerlink" href="#check-cuda-version" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># Check CUDA/cuDNN Version</span>
 <span class="err">!</span><span class="n">nvcc</span> <span class="o">-</span><span class="n">V</span> <span class="o">&amp;&amp;</span> <span class="n">which</span> <span class="n">nvcc</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="n">nvcc</span><span class="o">:</span> <span class="n">NVIDIA</span> <span class="o">(</span><span class="n">R</span><span class="o">)</span> <span class="n">Cuda</span> <span class="n">compiler</span> <span class="n">driver</span>
-<span class="n">Copyright</span> <span class="o">(</span><span class="n">c</span><span class="o">)</span> <span class="mi">2005</span><span class="o">-</span><span class="mi">2018</span> <span class="n">NVIDIA</span> <span class="n">Corporation</span>
-<span class="n">Built</span> <span class="n">on</span> <span class="n">Sat_Aug_25_21</span><span class="o">:</span><span class="mi">08</span><span class="o">:</span><span class="mi">01</span><span class="n">_CDT_2018</span>
-<span class="n">Cuda</span> <span class="n">compilation</span> <span class="n">tools</span><span class="o">,</span> <span class="n">release</span> <span class="mf">10.0</span><span class="o">,</span> <span class="n">V10</span><span class="o">.</span><span class="mf">0.130</span>
-<span class="sr">/usr/local/cuda/bin/</span><span class="n">nvcc</span>
+<div class="highlight"><pre><span></span><code>nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2018 NVIDIA Corporation
+Built on Sat_Aug_25_21:08:01_CDT_2018
+Cuda compilation tools, release 10.0, V10.0.130
+/usr/local/cuda/bin/nvcc
 </code></pre></div>
-
 <h4 id="check-gpu-version">Check GPU Version<a class="headerlink" href="#check-gpu-version" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># Check GPU</span>
 <span class="err">!</span><span class="n">nvidia</span><span class="o">-</span><span class="n">smi</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="c">Mon May 13 09:31:40 2019       </span>
-<span class="nb">+-----------------------------------------------------------------------------+</span><span class="c"></span>
-<span class="c">| NVIDIA</span><span class="nb">-</span><span class="c">SMI 418</span><span class="nt">.</span><span class="c">56       Driver Version: 410</span><span class="nt">.</span><span class="c">79       CUDA Version: 10</span><span class="nt">.</span><span class="c">0     |</span>
-<span class="c">|</span><span class="nb">-------------------------------+----------------------+----------------------+</span><span class="c"></span>
-<span class="c">| GPU  Name        Persistence</span><span class="nb">-</span><span class="c">M| Bus</span><span class="nb">-</span><span class="c">Id        Disp</span><span class="nt">.</span><span class="c">A | Volatile Uncorr</span><span class="nt">.</span><span class="c"> ECC |</span>
-<span class="c">| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory</span><span class="nb">-</span><span class="c">Usage | GPU</span><span class="nb">-</span><span class="c">Util  Compute M</span><span class="nt">.</span><span class="c"> |</span>
-<span class="c">|===============================</span><span class="nb">+</span><span class="c">======================</span><span class="nb">+</span><span class="c">======================|</span>
-<span class="c">|   0  Tesla T4            Off  | 00000000:00:04</span><span class="nt">.</span><span class="c">0 Off |                    0 |</span>
-<span class="c">| N/A   67C    P8    17W /  70W |      0MiB / 15079MiB |      0%      Default |</span>
-<span class="nb">+-------------------------------+----------------------+----------------------+</span><span class="c"></span>
+<div class="highlight"><pre><span></span><code>Mon May 13 09:31:40 2019       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 418.56       Driver Version: 410.79       CUDA Version: 10.0     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|===============================+======================+======================|
+|   0  Tesla T4            Off  | 00000000:00:04.0 Off |                    0 |
+| N/A   67C    P8    17W /  70W |      0MiB / 15079MiB |      0%      Default |
++-------------------------------+----------------------+----------------------+
 
-<span class="nb">+-----------------------------------------------------------------------------+</span><span class="c"></span>
-<span class="c">| Processes:                                                       GPU Memory |</span>
-<span class="c">|  GPU       PID   Type   Process name                             Usage      |</span>
-<span class="c">|=============================================================================|</span>
-<span class="c">|  No running processes found                                                 |</span>
-<span class="nb">+-----------------------------------------------------------------------------+</span><span class="c"></span>
++-----------------------------------------------------------------------------+
+| Processes:                                                       GPU Memory |
+|  GPU       PID   Type   Process name                             Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
 </code></pre></div>
-
 <h4 id="check-gpu-if-youve-right-version-t4">Check GPU if You've Right Version (T4)<a class="headerlink" href="#check-gpu-if-youve-right-version-t4" title="Permanent link">&para;</a></h4>
 <p>Many thanks to NVIDIA team for this snippet of code to automatically set up everything.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pynvml</span>
@@ -1924,19 +1884,18 @@
 <span class="k">else</span><span class="p">:</span>
   <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Woo! You got the right kind of GPU!&#39;</span><span class="p">)</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="err">Woo! You got the right kind of GPU!</span>
+<div class="highlight"><pre><span></span><code>Woo! You got the right kind of GPU!
 </code></pre></div>
-
 <h3 id="installation-of-cudfcuml">Installation of cuDF/cuML<a class="headerlink" href="#installation-of-cudfcuml" title="Permanent link">&para;</a></h3>
 <p>Many thanks to NVIDIA team for this snippet of code to automatically set up everything.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># intall miniconda</span>
-<span class="err">!</span><span class="n">wget</span> <span class="o">-</span><span class="n">c</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">repo</span><span class="o">.</span><span class="n">continuum</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">Miniconda3</span><span class="o">-</span><span class="mf">4.5</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span>
-<span class="err">!</span><span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="n">Miniconda3</span><span class="o">-</span><span class="mf">4.5</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span>
-<span class="err">!</span><span class="n">bash</span> <span class="o">./</span><span class="n">Miniconda3</span><span class="o">-</span><span class="mf">4.5</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">b</span> <span class="o">-</span><span class="n">f</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span>
+<span class="err">!</span><span class="n">wget</span> <span class="o">-</span><span class="n">c</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">repo</span><span class="o">.</span><span class="n">continuum</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">Miniconda3</span><span class="o">-</span><span class="mf">4.5.4</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span>
+<span class="err">!</span><span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="n">Miniconda3</span><span class="o">-</span><span class="mf">4.5.4</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span>
+<span class="err">!</span><span class="n">bash</span> <span class="o">./</span><span class="n">Miniconda3</span><span class="o">-</span><span class="mf">4.5.4</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">b</span> <span class="o">-</span><span class="n">f</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span>
 
 <span class="c1"># install RAPIDS packages</span>
 <span class="err">!</span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">q</span> <span class="o">-</span><span class="n">y</span> <span class="o">--</span><span class="n">prefix</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> \
-  <span class="o">-</span><span class="n">c</span> <span class="n">rapidsai</span><span class="o">-</span><span class="n">nightly</span><span class="o">/</span><span class="n">label</span><span class="o">/</span><span class="n">cuda10</span><span class="o">.</span><span class="mi">0</span> <span class="o">-</span><span class="n">c</span> <span class="n">nvidia</span><span class="o">/</span><span class="n">label</span><span class="o">/</span><span class="n">cuda10</span><span class="o">.</span><span class="mi">0</span> \
+  <span class="o">-</span><span class="n">c</span> <span class="n">rapidsai</span><span class="o">-</span><span class="n">nightly</span><span class="o">/</span><span class="n">label</span><span class="o">/</span><span class="n">cuda10</span><span class="mf">.0</span> <span class="o">-</span><span class="n">c</span> <span class="n">nvidia</span><span class="o">/</span><span class="n">label</span><span class="o">/</span><span class="n">cuda10</span><span class="mf">.0</span> \
   <span class="n">cudf</span> <span class="n">cuml</span>
 
 <span class="c1"># set environment vars</span>
@@ -1949,168 +1908,167 @@
 <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;libcudf.so&#39;</span><span class="p">,</span> <span class="s1">&#39;librmm.so&#39;</span><span class="p">]:</span>
   <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="s1">&#39;/usr/local/lib/&#39;</span><span class="o">+</span><span class="n">fn</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="o">--</span><span class="mi">2019</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">13</span> <span class="mi">09</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">42</span><span class="o">--</span>  <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">repo</span><span class="o">.</span><span class="n">continuum</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">Miniconda3</span><span class="o">-</span><span class="mf">4.5</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span>
-<span class="n">Resolving</span> <span class="n">repo</span><span class="o">.</span><span class="n">continuum</span><span class="o">.</span><span class="n">io</span> <span class="p">(</span><span class="n">repo</span><span class="o">.</span><span class="n">continuum</span><span class="o">.</span><span class="n">io</span><span class="p">)</span><span class="o">...</span> <span class="mf">104.18</span><span class="o">.</span><span class="mf">201.79</span><span class="p">,</span> <span class="mf">104.18</span><span class="o">.</span><span class="mf">200.79</span><span class="p">,</span> <span class="mi">2606</span><span class="p">:</span><span class="mi">4700</span><span class="p">::</span><span class="mi">6812</span><span class="p">:</span><span class="n">c84f</span><span class="p">,</span> <span class="o">...</span>
-<span class="n">Connecting</span> <span class="n">to</span> <span class="n">repo</span><span class="o">.</span><span class="n">continuum</span><span class="o">.</span><span class="n">io</span> <span class="p">(</span><span class="n">repo</span><span class="o">.</span><span class="n">continuum</span><span class="o">.</span><span class="n">io</span><span class="p">)</span><span class="o">|</span><span class="mf">104.18</span><span class="o">.</span><span class="mf">201.79</span><span class="o">|</span><span class="p">:</span><span class="mf">443.</span><span class="o">..</span> <span class="n">connected</span><span class="o">.</span>
-<span class="n">HTTP</span> <span class="n">request</span> <span class="n">sent</span><span class="p">,</span> <span class="n">awaiting</span> <span class="n">response</span><span class="o">...</span> <span class="mi">200</span> <span class="n">OK</span>
-<span class="n">Length</span><span class="p">:</span> <span class="mi">58468498</span> <span class="p">(</span><span class="mi">56</span><span class="n">M</span><span class="p">)</span> <span class="p">[</span><span class="n">application</span><span class="o">/</span><span class="n">x</span><span class="o">-</span><span class="n">sh</span><span class="p">]</span>
-<span class="n">Saving</span> <span class="n">to</span><span class="p">:</span> <span class="err">‘</span><span class="n">Miniconda3</span><span class="o">-</span><span class="mf">4.5</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span><span class="err">’</span>
+<div class="highlight"><pre><span></span><code>--2019-05-13 09:31:42--  https://repo.continuum.io/miniconda/Miniconda3-4.5.4-Linux-x86_64.sh
+Resolving repo.continuum.io (repo.continuum.io)... 104.18.201.79, 104.18.200.79, 2606:4700::6812:c84f, ...
+Connecting to repo.continuum.io (repo.continuum.io)|104.18.201.79|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 58468498 (56M) [application/x-sh]
+Saving to: ‘Miniconda3-4.5.4-Linux-x86_64.sh’
 
-<span class="n">Miniconda3</span><span class="o">-</span><span class="mf">4.5</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="n">Li</span> <span class="mi">100</span><span class="o">%</span><span class="p">[</span><span class="o">===================&gt;</span><span class="p">]</span>  <span class="mf">55.76</span><span class="n">M</span>  <span class="mf">64.9</span><span class="n">MB</span><span class="o">/</span><span class="n">s</span>    <span class="ow">in</span> <span class="mf">0.9</span><span class="n">s</span>
+Miniconda3-4.5.4-Li 100%[===================&gt;]  55.76M  64.9MB/s    in 0.9s
 
-<span class="mi">2019</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">13</span> <span class="mi">09</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">48</span> <span class="p">(</span><span class="mf">64.9</span> <span class="n">MB</span><span class="o">/</span><span class="n">s</span><span class="p">)</span> <span class="o">-</span> <span class="err">‘</span><span class="n">Miniconda3</span><span class="o">-</span><span class="mf">4.5</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span><span class="err">’</span> <span class="n">saved</span> <span class="p">[</span><span class="mi">58468498</span><span class="o">/</span><span class="mi">58468498</span><span class="p">]</span>
+2019-05-13 09:31:48 (64.9 MB/s) - ‘Miniconda3-4.5.4-Linux-x86_64.sh’ saved [58468498/58468498]
 
-<span class="n">PREFIX</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">python</span><span class="o">-</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">5</span><span class="o">-</span><span class="n">hc3d631a_2</span> <span class="o">...</span>
-<span class="n">Python</span> <span class="mf">3.6</span><span class="o">.</span><span class="mi">5</span> <span class="p">::</span> <span class="n">Anaconda</span><span class="p">,</span> <span class="n">Inc</span><span class="o">.</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">ca</span><span class="o">-</span><span class="n">certificates</span><span class="o">-</span><span class="mf">2018.03</span><span class="o">.</span><span class="mi">07</span><span class="o">-</span><span class="mi">0</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">conda</span><span class="o">-</span><span class="n">env</span><span class="o">-</span><span class="mf">2.6</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">h36134e3_1</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">libgcc</span><span class="o">-</span><span class="n">ng</span><span class="o">-</span><span class="mf">7.2</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">hdf63c60_3</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">libstdcxx</span><span class="o">-</span><span class="n">ng</span><span class="o">-</span><span class="mf">7.2</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">hdf63c60_3</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">libffi</span><span class="o">-</span><span class="mf">3.2</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="n">hd88cf55_4</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">ncurses</span><span class="o">-</span><span class="mf">6.1</span><span class="o">-</span><span class="n">hf484d3e_0</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">openssl</span><span class="o">-</span><span class="mf">1.0</span><span class="o">.</span><span class="mi">2</span><span class="n">o</span><span class="o">-</span><span class="n">h20670df_0</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">tk</span><span class="o">-</span><span class="mf">8.6</span><span class="o">.</span><span class="mi">7</span><span class="o">-</span><span class="n">hc745277_3</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">xz</span><span class="o">-</span><span class="mf">5.2</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="n">h14c3975_4</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">yaml</span><span class="o">-</span><span class="mf">0.1</span><span class="o">.</span><span class="mi">7</span><span class="o">-</span><span class="n">had09818_2</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">zlib</span><span class="o">-</span><span class="mf">1.2</span><span class="o">.</span><span class="mi">11</span><span class="o">-</span><span class="n">ha838bed_2</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">libedit</span><span class="o">-</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">20170329</span><span class="o">-</span><span class="n">h6b74fdf_2</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">readline</span><span class="o">-</span><span class="mf">7.0</span><span class="o">-</span><span class="n">ha6073c6_4</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">sqlite</span><span class="o">-</span><span class="mf">3.23</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="n">he433501_0</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">asn1crypto</span><span class="o">-</span><span class="mf">0.24</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">py36_0</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">certifi</span><span class="o">-</span><span class="mf">2018.4</span><span class="o">.</span><span class="mi">16</span><span class="o">-</span><span class="n">py36_0</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">chardet</span><span class="o">-</span><span class="mf">3.0</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="n">py36h0f667ec_1</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">idna</span><span class="o">-</span><span class="mf">2.6</span><span class="o">-</span><span class="n">py36h82fb2a8_1</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">pycosat</span><span class="o">-</span><span class="mf">0.6</span><span class="o">.</span><span class="mi">3</span><span class="o">-</span><span class="n">py36h0a5515d_0</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">pycparser</span><span class="o">-</span><span class="mf">2.18</span><span class="o">-</span><span class="n">py36hf9f622e_1</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">pysocks</span><span class="o">-</span><span class="mf">1.6</span><span class="o">.</span><span class="mi">8</span><span class="o">-</span><span class="n">py36_0</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">ruamel_yaml</span><span class="o">-</span><span class="mf">0.15</span><span class="o">.</span><span class="mi">37</span><span class="o">-</span><span class="n">py36h14c3975_2</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">six</span><span class="o">-</span><span class="mf">1.11</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">py36h372c433_1</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">cffi</span><span class="o">-</span><span class="mf">1.11</span><span class="o">.</span><span class="mi">5</span><span class="o">-</span><span class="n">py36h9745a5d_0</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">setuptools</span><span class="o">-</span><span class="mf">39.2</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">py36_0</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">cryptography</span><span class="o">-</span><span class="mf">2.2</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">py36h14c3975_0</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">wheel</span><span class="o">-</span><span class="mf">0.31</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="n">py36_0</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">pip</span><span class="o">-</span><span class="mf">10.0</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="n">py36_0</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">pyopenssl</span><span class="o">-</span><span class="mf">18.0</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">py36_0</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">urllib3</span><span class="o">-</span><span class="mf">1.22</span><span class="o">-</span><span class="n">py36hbe7ace6_0</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">requests</span><span class="o">-</span><span class="mf">2.18</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="n">py36he2e5f8d_1</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">conda</span><span class="o">-</span><span class="mf">4.5</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="n">py36_0</span> <span class="o">...</span>
-<span class="n">installation</span> <span class="n">finished</span><span class="o">.</span>
-<span class="n">WARNING</span><span class="p">:</span>
-    <span class="n">You</span> <span class="n">currently</span> <span class="n">have</span> <span class="n">a</span> <span class="n">PYTHONPATH</span> <span class="n">environment</span> <span class="n">variable</span> <span class="n">set</span><span class="o">.</span> <span class="n">This</span> <span class="n">may</span> <span class="n">cause</span>
-    <span class="n">unexpected</span> <span class="n">behavior</span> <span class="n">when</span> <span class="n">running</span> <span class="n">the</span> <span class="n">Python</span> <span class="n">interpreter</span> <span class="ow">in</span> <span class="n">Miniconda3</span><span class="o">.</span>
-    <span class="n">For</span> <span class="n">best</span> <span class="n">results</span><span class="p">,</span> <span class="n">please</span> <span class="n">verify</span> <span class="n">that</span> <span class="n">your</span> <span class="n">PYTHONPATH</span> <span class="n">only</span> <span class="n">points</span> <span class="n">to</span>
-    <span class="n">directories</span> <span class="n">of</span> <span class="n">packages</span> <span class="n">that</span> <span class="n">are</span> <span class="n">compatible</span> <span class="n">with</span> <span class="n">the</span> <span class="n">Python</span> <span class="n">interpreter</span>
-    <span class="ow">in</span> <span class="n">Miniconda3</span><span class="p">:</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span>
-<span class="n">Solving</span> <span class="n">environment</span><span class="p">:</span> <span class="o">...</span><span class="n">working</span><span class="o">...</span> <span class="n">done</span>
+PREFIX=/usr/local
+installing: python-3.6.5-hc3d631a_2 ...
+Python 3.6.5 :: Anaconda, Inc.
+installing: ca-certificates-2018.03.07-0 ...
+installing: conda-env-2.6.0-h36134e3_1 ...
+installing: libgcc-ng-7.2.0-hdf63c60_3 ...
+installing: libstdcxx-ng-7.2.0-hdf63c60_3 ...
+installing: libffi-3.2.1-hd88cf55_4 ...
+installing: ncurses-6.1-hf484d3e_0 ...
+installing: openssl-1.0.2o-h20670df_0 ...
+installing: tk-8.6.7-hc745277_3 ...
+installing: xz-5.2.4-h14c3975_4 ...
+installing: yaml-0.1.7-had09818_2 ...
+installing: zlib-1.2.11-ha838bed_2 ...
+installing: libedit-3.1.20170329-h6b74fdf_2 ...
+installing: readline-7.0-ha6073c6_4 ...
+installing: sqlite-3.23.1-he433501_0 ...
+installing: asn1crypto-0.24.0-py36_0 ...
+installing: certifi-2018.4.16-py36_0 ...
+installing: chardet-3.0.4-py36h0f667ec_1 ...
+installing: idna-2.6-py36h82fb2a8_1 ...
+installing: pycosat-0.6.3-py36h0a5515d_0 ...
+installing: pycparser-2.18-py36hf9f622e_1 ...
+installing: pysocks-1.6.8-py36_0 ...
+installing: ruamel_yaml-0.15.37-py36h14c3975_2 ...
+installing: six-1.11.0-py36h372c433_1 ...
+installing: cffi-1.11.5-py36h9745a5d_0 ...
+installing: setuptools-39.2.0-py36_0 ...
+installing: cryptography-2.2.2-py36h14c3975_0 ...
+installing: wheel-0.31.1-py36_0 ...
+installing: pip-10.0.1-py36_0 ...
+installing: pyopenssl-18.0.0-py36_0 ...
+installing: urllib3-1.22-py36hbe7ace6_0 ...
+installing: requests-2.18.4-py36he2e5f8d_1 ...
+installing: conda-4.5.4-py36_0 ...
+installation finished.
+WARNING:
+    You currently have a PYTHONPATH environment variable set. This may cause
+    unexpected behavior when running the Python interpreter in Miniconda3.
+    For best results, please verify that your PYTHONPATH only points to
+    directories of packages that are compatible with the Python interpreter
+    in Miniconda3: /usr/local
+Solving environment: ...working... done
 
-<span class="c1">## Package Plan ##</span>
+## Package Plan ##
 
-  <span class="n">environment</span> <span class="n">location</span><span class="p">:</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span>
+  environment location: /usr/local
 
-  <span class="n">added</span> <span class="o">/</span> <span class="n">updated</span> <span class="n">specs</span><span class="p">:</span> 
-    <span class="o">-</span> <span class="n">cudf</span>
-    <span class="o">-</span> <span class="n">cuml</span>
+  added / updated specs: 
+    - cudf
+    - cuml
 
 
-<span class="n">The</span> <span class="n">following</span> <span class="n">packages</span> <span class="n">will</span> <span class="n">be</span> <span class="n">downloaded</span><span class="p">:</span>
+The following packages will be downloaded:
 
-    <span class="n">package</span>                    <span class="o">|</span>            <span class="n">build</span>
-    <span class="o">---------------------------|-----------------</span>
-    <span class="n">icu</span><span class="o">-</span><span class="mf">58.2</span>                   <span class="o">|</span>    <span class="n">hf484d3e_1000</span>        <span class="mf">22.6</span> <span class="n">MB</span>  <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">libgcc</span><span class="o">-</span><span class="n">ng</span><span class="o">-</span><span class="mf">8.2</span><span class="o">.</span><span class="mi">0</span>            <span class="o">|</span>       <span class="n">hdf63c60_1</span>         <span class="mf">7.6</span> <span class="n">MB</span>
-    <span class="n">sqlite</span><span class="o">-</span><span class="mf">3.26</span><span class="o">.</span><span class="mi">0</span>              <span class="o">|</span>    <span class="n">h67949de_1001</span>         <span class="mf">1.9</span> <span class="n">MB</span>  <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">python</span><span class="o">-</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">7</span>               <span class="o">|</span>    <span class="n">h381d211_1004</span>        <span class="mf">34.5</span> <span class="n">MB</span>  <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">numpy</span><span class="o">-</span><span class="mf">1.16</span><span class="o">.</span><span class="mi">3</span>               <span class="o">|</span>   <span class="n">py36he5ce36f_0</span>         <span class="mf">4.3</span> <span class="n">MB</span>  <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">cudatoolkit</span><span class="o">-</span><span class="mf">10.0</span><span class="o">.</span><span class="mi">130</span>       <span class="o">|</span>                <span class="mi">0</span>       <span class="mf">380.0</span> <span class="n">MB</span>
-    <span class="n">libcudf</span><span class="o">-</span><span class="mf">0.7</span><span class="o">.</span><span class="mf">0.</span><span class="n">dev0</span>         <span class="o">|</span>    <span class="n">cuda10</span><span class="o">.</span><span class="mi">0</span><span class="n">_1567</span>        <span class="mf">21.0</span> <span class="n">MB</span>  <span class="n">rapidsai</span><span class="o">-</span><span class="n">nightly</span><span class="o">/</span><span class="n">label</span><span class="o">/</span><span class="n">cuda10</span><span class="o">.</span><span class="mi">0</span>
-    <span class="n">parquet</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="mf">1.5</span><span class="o">.</span><span class="mi">1</span>          <span class="o">|</span>                <span class="mi">4</span>           <span class="mi">3</span> <span class="n">KB</span>  <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">arrow</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="mf">0.12</span><span class="o">.</span><span class="mi">1</span>           <span class="o">|</span>   <span class="n">py36h0e61e49_0</span>         <span class="mf">6.9</span> <span class="n">MB</span>  <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">liblapack</span><span class="o">-</span><span class="mf">3.8</span><span class="o">.</span><span class="mi">0</span>            <span class="o">|</span>       <span class="mi">9</span><span class="n">_openblas</span>           <span class="mi">6</span> <span class="n">KB</span>  <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">libstdcxx</span><span class="o">-</span><span class="n">ng</span><span class="o">-</span><span class="mf">8.2</span><span class="o">.</span><span class="mi">0</span>         <span class="o">|</span>       <span class="n">hdf63c60_1</span>         <span class="mf">2.9</span> <span class="n">MB</span>
-    <span class="n">libblas</span><span class="o">-</span><span class="mf">3.8</span><span class="o">.</span><span class="mi">0</span>              <span class="o">|</span>       <span class="mi">9</span><span class="n">_openblas</span>           <span class="mi">6</span> <span class="n">KB</span>  <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">openssl</span><span class="o">-</span><span class="mf">1.1</span><span class="o">.</span><span class="mi">1</span><span class="n">b</span>             <span class="o">|</span>       <span class="n">h14c3975_1</span>         <span class="mf">4.0</span> <span class="n">MB</span>  <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">cython</span><span class="o">-</span><span class="mf">0.29</span><span class="o">.</span><span class="mi">7</span>              <span class="o">|</span>   <span class="n">py36he1b5a44_0</span>         <span class="mf">2.2</span> <span class="n">MB</span>  <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">cryptography</span><span class="o">-</span><span class="mf">2.6</span><span class="o">.</span><span class="mi">1</span>         <span class="o">|</span>   <span class="n">py36h72c5cf5_0</span>         <span class="mi">606</span> <span class="n">KB</span>  <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">certifi</span><span class="o">-</span><span class="mf">2019.3</span><span class="o">.</span><span class="mi">9</span>           <span class="o">|</span>           <span class="n">py36_0</span>         <span class="mi">149</span> <span class="n">KB</span>  <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">ca</span><span class="o">-</span><span class="n">certificates</span><span class="o">-</span><span class="mf">2019.3</span><span class="o">.</span><span class="mi">9</span>   <span class="o">|</span>       <span class="n">hecc5488_0</span>         <span class="mi">146</span> <span class="n">KB</span>  <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">tk</span><span class="o">-</span><span class="mf">8.6</span><span class="o">.</span><span class="mi">9</span>                   <span class="o">|</span>    <span class="n">h84994c4_1001</span>         <span class="mf">3.2</span> <span class="n">MB</span>  <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">libcuml</span><span class="o">-</span><span class="mf">0.8</span><span class="o">.</span><span class="mi">0</span><span class="n">a</span>             <span class="o">|</span>     <span class="n">cuda10</span><span class="o">.</span><span class="mi">0</span><span class="n">_610</span>        <span class="mf">24.4</span> <span class="n">MB</span>  <span class="n">rapidsai</span><span class="o">-</span><span class="n">nightly</span><span class="o">/</span><span class="n">label</span><span class="o">/</span><span class="n">cuda10</span><span class="o">.</span><span class="mi">0</span>
-    <span class="n">bzip2</span><span class="o">-</span><span class="mf">1.0</span><span class="o">.</span><span class="mi">6</span>                <span class="o">|</span>    <span class="n">h14c3975_1002</span>         <span class="mi">415</span> <span class="n">KB</span>  <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">cuml</span><span class="o">-</span><span class="mf">0.8</span><span class="o">.</span><span class="mi">0</span><span class="n">a</span>                <span class="o">|</span><span class="n">cuda10</span><span class="o">.</span><span class="mi">0</span><span class="n">_py36_610</span>         <span class="mf">3.0</span> <span class="n">MB</span>  <span class="n">rapidsai</span><span class="o">-</span><span class="n">nightly</span><span class="o">/</span><span class="n">label</span><span class="o">/</span><span class="n">cuda10</span><span class="o">.</span><span class="mi">0</span>
-    <span class="n">python</span><span class="o">-</span><span class="n">dateutil</span><span class="o">-</span><span class="mf">2.8</span><span class="o">.</span><span class="mi">0</span>      <span class="o">|</span>             <span class="n">py_0</span>         <span class="mi">219</span> <span class="n">KB</span>  <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">conda</span><span class="o">-</span><span class="mf">4.6</span><span class="o">.</span><span class="mi">14</span>               <span class="o">|</span>           <span class="n">py36_0</span>         <span class="mf">2.1</span> <span class="n">MB</span>  <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">openblas</span><span class="o">-</span><span class="mf">0.3</span><span class="o">.</span><span class="mi">6</span>             <span class="o">|</span>       <span class="n">h6e990d7_2</span>        <span class="mf">15.8</span> <span class="n">MB</span>  <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">thrift</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="mf">0.12</span><span class="o">.</span><span class="mi">0</span>          <span class="o">|</span>    <span class="n">h0a07b25_1002</span>         <span class="mf">2.4</span> <span class="n">MB</span>  <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">rmm</span><span class="o">-</span><span class="mf">0.7</span><span class="o">.</span><span class="mf">0.</span><span class="n">dev0</span>             <span class="o">|</span>          <span class="n">py36_54</span>          <span class="mi">14</span> <span class="n">KB</span>  <span class="n">rapidsai</span><span class="o">-</span><span class="n">nightly</span><span class="o">/</span><span class="n">label</span><span class="o">/</span><span class="n">cuda10</span><span class="o">.</span><span class="mi">0</span>
-    <span class="n">pyarrow</span><span class="o">-</span><span class="mf">0.12</span><span class="o">.</span><span class="mi">1</span>             <span class="o">|</span>   <span class="n">py36hbbcf98d_0</span>         <span class="mf">2.2</span> <span class="n">MB</span>  <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">libprotobuf</span><span class="o">-</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">1</span>          <span class="o">|</span>    <span class="n">hdbcaa40_1001</span>         <span class="mf">4.0</span> <span class="n">MB</span>  <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">nvstrings</span><span class="o">-</span><span class="mf">0.7</span><span class="o">.</span><span class="mf">0.</span><span class="n">dev0</span>       <span class="o">|</span>         <span class="n">py36_143</span>          <span class="mi">88</span> <span class="n">KB</span>  <span class="n">rapidsai</span><span class="o">-</span><span class="n">nightly</span><span class="o">/</span><span class="n">label</span><span class="o">/</span><span class="n">cuda10</span><span class="o">.</span><span class="mi">0</span>
-    <span class="n">librmm</span><span class="o">-</span><span class="mf">0.7</span><span class="o">.</span><span class="mf">0.</span><span class="n">dev0</span>          <span class="o">|</span>      <span class="n">cuda10</span><span class="o">.</span><span class="mi">0</span><span class="n">_54</span>          <span class="mi">39</span> <span class="n">KB</span>  <span class="n">rapidsai</span><span class="o">-</span><span class="n">nightly</span><span class="o">/</span><span class="n">label</span><span class="o">/</span><span class="n">cuda10</span><span class="o">.</span><span class="mi">0</span>
-    <span class="n">libcblas</span><span class="o">-</span><span class="mf">3.8</span><span class="o">.</span><span class="mi">0</span>             <span class="o">|</span>       <span class="mi">9</span><span class="n">_openblas</span>           <span class="mi">6</span> <span class="n">KB</span>  <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">libgfortran</span><span class="o">-</span><span class="n">ng</span><span class="o">-</span><span class="mf">7.3</span><span class="o">.</span><span class="mi">0</span>       <span class="o">|</span>       <span class="n">hdf63c60_0</span>         <span class="mf">1.3</span> <span class="n">MB</span>
-    <span class="n">libnvstrings</span><span class="o">-</span><span class="mf">0.7</span><span class="o">.</span><span class="mf">0.</span><span class="n">dev0</span>    <span class="o">|</span>     <span class="n">cuda10</span><span class="o">.</span><span class="mi">0</span><span class="n">_132</span>         <span class="mf">9.3</span> <span class="n">MB</span>  <span class="n">rapidsai</span><span class="o">-</span><span class="n">nightly</span><span class="o">/</span><span class="n">label</span><span class="o">/</span><span class="n">cuda10</span><span class="o">.</span><span class="mi">0</span>
-    <span class="n">llvmlite</span><span class="o">-</span><span class="mf">0.28</span><span class="o">.</span><span class="mi">0</span>            <span class="o">|</span>   <span class="n">py36hdbcaa40_0</span>        <span class="mf">20.2</span> <span class="n">MB</span>  <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">cudf</span><span class="o">-</span><span class="mf">0.7</span><span class="o">.</span><span class="mf">0.</span><span class="n">dev0</span>            <span class="o">|</span>        <span class="n">py36_1568</span>         <span class="mf">2.7</span> <span class="n">MB</span>  <span class="n">rapidsai</span><span class="o">-</span><span class="n">nightly</span><span class="o">/</span><span class="n">label</span><span class="o">/</span><span class="n">cuda10</span><span class="o">.</span><span class="mi">0</span>
-    <span class="n">pytz</span><span class="o">-</span><span class="mf">2019.1</span>                <span class="o">|</span>             <span class="n">py_0</span>         <span class="mi">227</span> <span class="n">KB</span>  <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">numba</span><span class="o">-</span><span class="mf">0.43</span><span class="o">.</span><span class="mi">1</span>               <span class="o">|</span>   <span class="n">py36hf2d7682_0</span>         <span class="mf">2.9</span> <span class="n">MB</span>  <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">boost</span><span class="o">-</span><span class="n">cpp</span><span class="o">-</span><span class="mf">1.68</span><span class="o">.</span><span class="mi">0</span>           <span class="o">|</span>    <span class="n">h11c811c_1000</span>        <span class="mf">20.5</span> <span class="n">MB</span>  <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">pandas</span><span class="o">-</span><span class="mf">0.24</span><span class="o">.</span><span class="mi">2</span>              <span class="o">|</span>   <span class="n">py36hf484d3e_0</span>        <span class="mf">11.1</span> <span class="n">MB</span>  <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">libcumlmg</span><span class="o">-</span><span class="mf">0.0</span><span class="o">.</span><span class="mf">0.</span><span class="n">dev0</span>       <span class="o">|</span>     <span class="n">cuda10</span><span class="o">.</span><span class="mi">0</span><span class="n">_373</span>         <span class="mi">955</span> <span class="n">KB</span>  <span class="n">nvidia</span><span class="o">/</span><span class="n">label</span><span class="o">/</span><span class="n">cuda10</span><span class="o">.</span><span class="mi">0</span>
-    <span class="o">------------------------------------------------------------</span>
-                                           <span class="n">Total</span><span class="p">:</span>       <span class="mf">615.7</span> <span class="n">MB</span>
+    package                    |            build
+    ---------------------------|-----------------
+    icu-58.2                   |    hf484d3e_1000        22.6 MB  conda-forge
+    libgcc-ng-8.2.0            |       hdf63c60_1         7.6 MB
+    sqlite-3.26.0              |    h67949de_1001         1.9 MB  conda-forge
+    python-3.6.7               |    h381d211_1004        34.5 MB  conda-forge
+    numpy-1.16.3               |   py36he5ce36f_0         4.3 MB  conda-forge
+    cudatoolkit-10.0.130       |                0       380.0 MB
+    libcudf-0.7.0.dev0         |    cuda10.0_1567        21.0 MB  rapidsai-nightly/label/cuda10.0
+    parquet-cpp-1.5.1          |                4           3 KB  conda-forge
+    arrow-cpp-0.12.1           |   py36h0e61e49_0         6.9 MB  conda-forge
+    liblapack-3.8.0            |       9_openblas           6 KB  conda-forge
+    libstdcxx-ng-8.2.0         |       hdf63c60_1         2.9 MB
+    libblas-3.8.0              |       9_openblas           6 KB  conda-forge
+    openssl-1.1.1b             |       h14c3975_1         4.0 MB  conda-forge
+    cython-0.29.7              |   py36he1b5a44_0         2.2 MB  conda-forge
+    cryptography-2.6.1         |   py36h72c5cf5_0         606 KB  conda-forge
+    certifi-2019.3.9           |           py36_0         149 KB  conda-forge
+    ca-certificates-2019.3.9   |       hecc5488_0         146 KB  conda-forge
+    tk-8.6.9                   |    h84994c4_1001         3.2 MB  conda-forge
+    libcuml-0.8.0a             |     cuda10.0_610        24.4 MB  rapidsai-nightly/label/cuda10.0
+    bzip2-1.0.6                |    h14c3975_1002         415 KB  conda-forge
+    cuml-0.8.0a                |cuda10.0_py36_610         3.0 MB  rapidsai-nightly/label/cuda10.0
+    python-dateutil-2.8.0      |             py_0         219 KB  conda-forge
+    conda-4.6.14               |           py36_0         2.1 MB  conda-forge
+    openblas-0.3.6             |       h6e990d7_2        15.8 MB  conda-forge
+    thrift-cpp-0.12.0          |    h0a07b25_1002         2.4 MB  conda-forge
+    rmm-0.7.0.dev0             |          py36_54          14 KB  rapidsai-nightly/label/cuda10.0
+    pyarrow-0.12.1             |   py36hbbcf98d_0         2.2 MB  conda-forge
+    libprotobuf-3.6.1          |    hdbcaa40_1001         4.0 MB  conda-forge
+    nvstrings-0.7.0.dev0       |         py36_143          88 KB  rapidsai-nightly/label/cuda10.0
+    librmm-0.7.0.dev0          |      cuda10.0_54          39 KB  rapidsai-nightly/label/cuda10.0
+    libcblas-3.8.0             |       9_openblas           6 KB  conda-forge
+    libgfortran-ng-7.3.0       |       hdf63c60_0         1.3 MB
+    libnvstrings-0.7.0.dev0    |     cuda10.0_132         9.3 MB  rapidsai-nightly/label/cuda10.0
+    llvmlite-0.28.0            |   py36hdbcaa40_0        20.2 MB  conda-forge
+    cudf-0.7.0.dev0            |        py36_1568         2.7 MB  rapidsai-nightly/label/cuda10.0
+    pytz-2019.1                |             py_0         227 KB  conda-forge
+    numba-0.43.1               |   py36hf2d7682_0         2.9 MB  conda-forge
+    boost-cpp-1.68.0           |    h11c811c_1000        20.5 MB  conda-forge
+    pandas-0.24.2              |   py36hf484d3e_0        11.1 MB  conda-forge
+    libcumlmg-0.0.0.dev0       |     cuda10.0_373         955 KB  nvidia/label/cuda10.0
+    ------------------------------------------------------------
+                                           Total:       615.7 MB
 
-<span class="n">The</span> <span class="n">following</span> <span class="n">NEW</span> <span class="n">packages</span> <span class="n">will</span> <span class="n">be</span> <span class="n">INSTALLED</span><span class="p">:</span>
+The following NEW packages will be INSTALLED:
 
-    <span class="n">arrow</span><span class="o">-</span><span class="n">cpp</span><span class="p">:</span>       <span class="mf">0.12</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="n">py36h0e61e49_0</span>    <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>                    
-    <span class="n">boost</span><span class="o">-</span><span class="n">cpp</span><span class="p">:</span>       <span class="mf">1.68</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">h11c811c_1000</span>     <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>                    
-    <span class="n">bzip2</span><span class="p">:</span>           <span class="mf">1.0</span><span class="o">.</span><span class="mi">6</span><span class="o">-</span><span class="n">h14c3975_1002</span>      <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>                    
-    <span class="n">cudatoolkit</span><span class="p">:</span>     <span class="mf">10.0</span><span class="o">.</span><span class="mi">130</span><span class="o">-</span><span class="mi">0</span>                                              
-    <span class="n">cudf</span><span class="p">:</span>            <span class="mf">0.7</span><span class="o">.</span><span class="mf">0.</span><span class="n">dev0</span><span class="o">-</span><span class="n">py36_1568</span>     <span class="n">rapidsai</span><span class="o">-</span><span class="n">nightly</span><span class="o">/</span><span class="n">label</span><span class="o">/</span><span class="n">cuda10</span><span class="o">.</span><span class="mi">0</span>
-    <span class="n">cuml</span><span class="p">:</span>            <span class="mf">0.8</span><span class="o">.</span><span class="mi">0</span><span class="n">a</span><span class="o">-</span><span class="n">cuda10</span><span class="o">.</span><span class="mi">0</span><span class="n">_py36_610</span> <span class="n">rapidsai</span><span class="o">-</span><span class="n">nightly</span><span class="o">/</span><span class="n">label</span><span class="o">/</span><span class="n">cuda10</span><span class="o">.</span><span class="mi">0</span>
-    <span class="n">cython</span><span class="p">:</span>          <span class="mf">0.29</span><span class="o">.</span><span class="mi">7</span><span class="o">-</span><span class="n">py36he1b5a44_0</span>    <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>                    
-    <span class="n">icu</span><span class="p">:</span>             <span class="mf">58.2</span><span class="o">-</span><span class="n">hf484d3e_1000</span>       <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>                    
-    <span class="n">libblas</span><span class="p">:</span>         <span class="mf">3.8</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="n">_openblas</span>         <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>                    
-    <span class="n">libcblas</span><span class="p">:</span>        <span class="mf">3.8</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="n">_openblas</span>         <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>                    
-    <span class="n">libcudf</span><span class="p">:</span>         <span class="mf">0.7</span><span class="o">.</span><span class="mf">0.</span><span class="n">dev0</span><span class="o">-</span><span class="n">cuda10</span><span class="o">.</span><span class="mi">0</span><span class="n">_1567</span> <span class="n">rapidsai</span><span class="o">-</span><span class="n">nightly</span><span class="o">/</span><span class="n">label</span><span class="o">/</span><span class="n">cuda10</span><span class="o">.</span><span class="mi">0</span>
-    <span class="n">libcuml</span><span class="p">:</span>         <span class="mf">0.8</span><span class="o">.</span><span class="mi">0</span><span class="n">a</span><span class="o">-</span><span class="n">cuda10</span><span class="o">.</span><span class="mi">0</span><span class="n">_610</span>      <span class="n">rapidsai</span><span class="o">-</span><span class="n">nightly</span><span class="o">/</span><span class="n">label</span><span class="o">/</span><span class="n">cuda10</span><span class="o">.</span><span class="mi">0</span>
-    <span class="n">libcumlmg</span><span class="p">:</span>       <span class="mf">0.0</span><span class="o">.</span><span class="mf">0.</span><span class="n">dev0</span><span class="o">-</span><span class="n">cuda10</span><span class="o">.</span><span class="mi">0</span><span class="n">_373</span>  <span class="n">nvidia</span><span class="o">/</span><span class="n">label</span><span class="o">/</span><span class="n">cuda10</span><span class="o">.</span><span class="mi">0</span>          
-    <span class="n">libgfortran</span><span class="o">-</span><span class="n">ng</span><span class="p">:</span>  <span class="mf">7.3</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">hdf63c60_0</span>                                        
-    <span class="n">liblapack</span><span class="p">:</span>       <span class="mf">3.8</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="n">_openblas</span>         <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>                    
-    <span class="n">libnvstrings</span><span class="p">:</span>    <span class="mf">0.7</span><span class="o">.</span><span class="mf">0.</span><span class="n">dev0</span><span class="o">-</span><span class="n">cuda10</span><span class="o">.</span><span class="mi">0</span><span class="n">_132</span>  <span class="n">rapidsai</span><span class="o">-</span><span class="n">nightly</span><span class="o">/</span><span class="n">label</span><span class="o">/</span><span class="n">cuda10</span><span class="o">.</span><span class="mi">0</span>
-    <span class="n">libprotobuf</span><span class="p">:</span>     <span class="mf">3.6</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="n">hdbcaa40_1001</span>      <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>                    
-    <span class="n">librmm</span><span class="p">:</span>          <span class="mf">0.7</span><span class="o">.</span><span class="mf">0.</span><span class="n">dev0</span><span class="o">-</span><span class="n">cuda10</span><span class="o">.</span><span class="mi">0</span><span class="n">_54</span>   <span class="n">rapidsai</span><span class="o">-</span><span class="n">nightly</span><span class="o">/</span><span class="n">label</span><span class="o">/</span><span class="n">cuda10</span><span class="o">.</span><span class="mi">0</span>
-    <span class="n">llvmlite</span><span class="p">:</span>        <span class="mf">0.28</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">py36hdbcaa40_0</span>    <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>                    
-    <span class="n">numba</span><span class="p">:</span>           <span class="mf">0.43</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="n">py36hf2d7682_0</span>    <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>                    
-    <span class="n">numpy</span><span class="p">:</span>           <span class="mf">1.16</span><span class="o">.</span><span class="mi">3</span><span class="o">-</span><span class="n">py36he5ce36f_0</span>    <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>                    
-    <span class="n">nvstrings</span><span class="p">:</span>       <span class="mf">0.7</span><span class="o">.</span><span class="mf">0.</span><span class="n">dev0</span><span class="o">-</span><span class="n">py36_143</span>      <span class="n">rapidsai</span><span class="o">-</span><span class="n">nightly</span><span class="o">/</span><span class="n">label</span><span class="o">/</span><span class="n">cuda10</span><span class="o">.</span><span class="mi">0</span>
-    <span class="n">openblas</span><span class="p">:</span>        <span class="mf">0.3</span><span class="o">.</span><span class="mi">6</span><span class="o">-</span><span class="n">h6e990d7_2</span>         <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>                    
-    <span class="n">pandas</span><span class="p">:</span>          <span class="mf">0.24</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">py36hf484d3e_0</span>    <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>                    
-    <span class="n">parquet</span><span class="o">-</span><span class="n">cpp</span><span class="p">:</span>     <span class="mf">1.5</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">4</span>                  <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>                    
-    <span class="n">pyarrow</span><span class="p">:</span>         <span class="mf">0.12</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="n">py36hbbcf98d_0</span>    <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>                    
-    <span class="n">python</span><span class="o">-</span><span class="n">dateutil</span><span class="p">:</span> <span class="mf">2.8</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">py_0</span>               <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>                    
-    <span class="n">pytz</span><span class="p">:</span>            <span class="mf">2019.1</span><span class="o">-</span><span class="n">py_0</span>              <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>                    
-    <span class="n">rmm</span><span class="p">:</span>             <span class="mf">0.7</span><span class="o">.</span><span class="mf">0.</span><span class="n">dev0</span><span class="o">-</span><span class="n">py36_54</span>       <span class="n">rapidsai</span><span class="o">-</span><span class="n">nightly</span><span class="o">/</span><span class="n">label</span><span class="o">/</span><span class="n">cuda10</span><span class="o">.</span><span class="mi">0</span>
-    <span class="n">thrift</span><span class="o">-</span><span class="n">cpp</span><span class="p">:</span>      <span class="mf">0.12</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">h0a07b25_1002</span>     <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
+    arrow-cpp:       0.12.1-py36h0e61e49_0    conda-forge                    
+    boost-cpp:       1.68.0-h11c811c_1000     conda-forge                    
+    bzip2:           1.0.6-h14c3975_1002      conda-forge                    
+    cudatoolkit:     10.0.130-0                                              
+    cudf:            0.7.0.dev0-py36_1568     rapidsai-nightly/label/cuda10.0
+    cuml:            0.8.0a-cuda10.0_py36_610 rapidsai-nightly/label/cuda10.0
+    cython:          0.29.7-py36he1b5a44_0    conda-forge                    
+    icu:             58.2-hf484d3e_1000       conda-forge                    
+    libblas:         3.8.0-9_openblas         conda-forge                    
+    libcblas:        3.8.0-9_openblas         conda-forge                    
+    libcudf:         0.7.0.dev0-cuda10.0_1567 rapidsai-nightly/label/cuda10.0
+    libcuml:         0.8.0a-cuda10.0_610      rapidsai-nightly/label/cuda10.0
+    libcumlmg:       0.0.0.dev0-cuda10.0_373  nvidia/label/cuda10.0          
+    libgfortran-ng:  7.3.0-hdf63c60_0                                        
+    liblapack:       3.8.0-9_openblas         conda-forge                    
+    libnvstrings:    0.7.0.dev0-cuda10.0_132  rapidsai-nightly/label/cuda10.0
+    libprotobuf:     3.6.1-hdbcaa40_1001      conda-forge                    
+    librmm:          0.7.0.dev0-cuda10.0_54   rapidsai-nightly/label/cuda10.0
+    llvmlite:        0.28.0-py36hdbcaa40_0    conda-forge                    
+    numba:           0.43.1-py36hf2d7682_0    conda-forge                    
+    numpy:           1.16.3-py36he5ce36f_0    conda-forge                    
+    nvstrings:       0.7.0.dev0-py36_143      rapidsai-nightly/label/cuda10.0
+    openblas:        0.3.6-h6e990d7_2         conda-forge                    
+    pandas:          0.24.2-py36hf484d3e_0    conda-forge                    
+    parquet-cpp:     1.5.1-4                  conda-forge                    
+    pyarrow:         0.12.1-py36hbbcf98d_0    conda-forge                    
+    python-dateutil: 2.8.0-py_0               conda-forge                    
+    pytz:            2019.1-py_0              conda-forge                    
+    rmm:             0.7.0.dev0-py36_54       rapidsai-nightly/label/cuda10.0
+    thrift-cpp:      0.12.0-h0a07b25_1002     conda-forge
 
-<span class="n">The</span> <span class="n">following</span> <span class="n">packages</span> <span class="n">will</span> <span class="n">be</span> <span class="n">UPDATED</span><span class="p">:</span>
+The following packages will be UPDATED:
 
-    <span class="n">ca</span><span class="o">-</span><span class="n">certificates</span><span class="p">:</span> <span class="mf">2018.03</span><span class="o">.</span><span class="mi">07</span><span class="o">-</span><span class="mi">0</span>                                             <span class="o">--&gt;</span> <span class="mf">2019.3</span><span class="o">.</span><span class="mi">9</span><span class="o">-</span><span class="n">hecc5488_0</span>  <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">certifi</span><span class="p">:</span>         <span class="mf">2018.4</span><span class="o">.</span><span class="mi">16</span><span class="o">-</span><span class="n">py36_0</span>                                         <span class="o">--&gt;</span> <span class="mf">2019.3</span><span class="o">.</span><span class="mi">9</span><span class="o">-</span><span class="n">py36_0</span>      <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">conda</span><span class="p">:</span>           <span class="mf">4.5</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="n">py36_0</span>                                             <span class="o">--&gt;</span> <span class="mf">4.6</span><span class="o">.</span><span class="mi">14</span><span class="o">-</span><span class="n">py36_0</span>        <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">cryptography</span><span class="p">:</span>    <span class="mf">2.2</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">py36h14c3975_0</span>                                     <span class="o">--&gt;</span> <span class="mf">2.6</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="n">py36h72c5cf5_0</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">libgcc</span><span class="o">-</span><span class="n">ng</span><span class="p">:</span>       <span class="mf">7.2</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">hdf63c60_3</span>                                         <span class="o">--&gt;</span> <span class="mf">8.2</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">hdf63c60_1</span>                
-    <span class="n">libstdcxx</span><span class="o">-</span><span class="n">ng</span><span class="p">:</span>    <span class="mf">7.2</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">hdf63c60_3</span>                                         <span class="o">--&gt;</span> <span class="mf">8.2</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">hdf63c60_1</span>                
-    <span class="n">openssl</span><span class="p">:</span>         <span class="mf">1.0</span><span class="o">.</span><span class="mi">2</span><span class="n">o</span><span class="o">-</span><span class="n">h20670df_0</span>                                        <span class="o">--&gt;</span> <span class="mf">1.1</span><span class="o">.</span><span class="mi">1</span><span class="n">b</span><span class="o">-</span><span class="n">h14c3975_1</span>    <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">python</span><span class="p">:</span>          <span class="mf">3.6</span><span class="o">.</span><span class="mi">5</span><span class="o">-</span><span class="n">hc3d631a_2</span>                                         <span class="o">--&gt;</span> <span class="mf">3.6</span><span class="o">.</span><span class="mi">7</span><span class="o">-</span><span class="n">h381d211_1004</span>  <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">sqlite</span><span class="p">:</span>          <span class="mf">3.23</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="n">he433501_0</span>                                        <span class="o">--&gt;</span> <span class="mf">3.26</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">h67949de_1001</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">tk</span><span class="p">:</span>              <span class="mf">8.6</span><span class="o">.</span><span class="mi">7</span><span class="o">-</span><span class="n">hc745277_3</span>                                         <span class="o">--&gt;</span> <span class="mf">8.6</span><span class="o">.</span><span class="mi">9</span><span class="o">-</span><span class="n">h84994c4_1001</span>  <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
+    ca-certificates: 2018.03.07-0                                             --&gt; 2019.3.9-hecc5488_0  conda-forge
+    certifi:         2018.4.16-py36_0                                         --&gt; 2019.3.9-py36_0      conda-forge
+    conda:           4.5.4-py36_0                                             --&gt; 4.6.14-py36_0        conda-forge
+    cryptography:    2.2.2-py36h14c3975_0                                     --&gt; 2.6.1-py36h72c5cf5_0 conda-forge
+    libgcc-ng:       7.2.0-hdf63c60_3                                         --&gt; 8.2.0-hdf63c60_1                
+    libstdcxx-ng:    7.2.0-hdf63c60_3                                         --&gt; 8.2.0-hdf63c60_1                
+    openssl:         1.0.2o-h20670df_0                                        --&gt; 1.1.1b-h14c3975_1    conda-forge
+    python:          3.6.5-hc3d631a_2                                         --&gt; 3.6.7-h381d211_1004  conda-forge
+    sqlite:          3.23.1-he433501_0                                        --&gt; 3.26.0-h67949de_1001 conda-forge
+    tk:              8.6.7-hc745277_3                                         --&gt; 8.6.9-h84994c4_1001  conda-forge
 
-<span class="n">Preparing</span> <span class="n">transaction</span><span class="p">:</span> <span class="o">...</span><span class="n">working</span><span class="o">...</span> <span class="n">done</span>
-<span class="n">Verifying</span> <span class="n">transaction</span><span class="p">:</span> <span class="o">...</span><span class="n">working</span><span class="o">...</span> <span class="n">done</span>
-<span class="n">Executing</span> <span class="n">transaction</span><span class="p">:</span> <span class="o">...</span><span class="n">working</span><span class="o">...</span> <span class="n">done</span>
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... done
 </code></pre></div>
-
 <h2 id="critical-imports">Critical Imports<a class="headerlink" href="#critical-imports" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="c1"># Critical imports</span>
 <span class="kn">import</span> <span class="nn">nvstrings</span><span class="o">,</span> <span class="nn">nvcategory</span><span class="o">,</span> <span class="nn">cudf</span>
@@ -2125,39 +2083,36 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">gdf</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">gdf</span><span class="p">))</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="err">0    1</span>
-<span class="err">1    2</span>
-<span class="err">2    3</span>
-<span class="err">3    4</span>
-<span class="err">4    5</span>
-<span class="err">5    6</span>
-<span class="c">dtype: int64</span>
-<span class="err">&lt;class &#39;cudf.dataframe.series.Series&#39;&gt;</span>
+<div class="highlight"><pre><span></span><code>0    1
+1    2
+2    3
+3    4
+4    5
+5    6
+dtype: int64
+&lt;class &#39;cudf.dataframe.series.Series&#39;&gt;
 </code></pre></div>
-
 <h3 id="create-a-series-of-floats">Create a Series of floats<a class="headerlink" href="#create-a-series-of-floats" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">gdf</span> <span class="o">=</span> <span class="n">cudf</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">,</span> <span class="mf">6.</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">gdf</span><span class="p">)</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="err">0    1.0</span>
-<span class="err">1    2.0</span>
-<span class="err">2    3.0</span>
-<span class="err">3    4.0</span>
-<span class="err">4    5.0</span>
-<span class="err">5    6.0</span>
-<span class="c">dtype: float64</span>
+<div class="highlight"><pre><span></span><code>0    1.0
+1    2.0
+2    3.0
+3    4.0
+4    5.0
+5    6.0
+dtype: float64
 </code></pre></div>
-
 <h3 id="create-a-series-of-strings">Create a  Series of strings<a class="headerlink" href="#create-a-series-of-strings" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">gdf</span> <span class="o">=</span> <span class="n">cudf</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">gdf</span><span class="p">)</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="err">0    a</span>
-<span class="err">1    b</span>
-<span class="err">2    c</span>
-<span class="c">dtype: object</span>
+<div class="highlight"><pre><span></span><code>0    a
+1    b
+2    c
+dtype: object
 </code></pre></div>
-
 <h3 id="create-3-column-dataframe">Create 3 column DataFrame<a class="headerlink" href="#create-3-column-dataframe" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Consisting of dates, integers and floats</li>
@@ -2181,19 +2136,18 @@
 <span class="c1"># Print dataframe</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">gdf</span><span class="p">)</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="err">                     dates  integers  floats</span>
-<span class="err">0 2019-01-01T00:00:00.000         0     0.0</span>
-<span class="err">1 2019-01-02T00:00:00.000         1     1.0</span>
-<span class="err">2 2019-01-03T00:00:00.000         2     2.0</span>
-<span class="err">3 2019-01-04T00:00:00.000         3     3.0</span>
-<span class="err">4 2019-01-07T00:00:00.000         4     4.0</span>
-<span class="err">5 2019-01-08T00:00:00.000         5     5.0</span>
-<span class="err">6 2019-01-09T00:00:00.000         6     6.0</span>
-<span class="err">7 2019-01-10T00:00:00.000         7     7.0</span>
-<span class="err">8 2019-01-11T00:00:00.000         8     8.0</span>
-<span class="err">9 2019-01-14T00:00:00.000         9     9.0</span>
+<div class="highlight"><pre><span></span><code>                     dates  integers  floats
+0 2019-01-01T00:00:00.000         0     0.0
+1 2019-01-02T00:00:00.000         1     1.0
+2 2019-01-03T00:00:00.000         2     2.0
+3 2019-01-04T00:00:00.000         3     3.0
+4 2019-01-07T00:00:00.000         4     4.0
+5 2019-01-08T00:00:00.000         5     5.0
+6 2019-01-09T00:00:00.000         6     6.0
+7 2019-01-10T00:00:00.000         7     7.0
+8 2019-01-11T00:00:00.000         8     8.0
+9 2019-01-14T00:00:00.000         9     9.0
 </code></pre></div>
-
 <h3 id="create-2-column-dataframe">Create 2 column Dataframe<a class="headerlink" href="#create-2-column-dataframe" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Consisting of integers and string category</li>
@@ -2209,13 +2163,12 @@
 
 <span class="nb">print</span><span class="p">(</span><span class="n">gdf</span><span class="p">)</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="err">   integers  string</span>
-<span class="err">0         1       a</span>
-<span class="err">1         2       b</span>
-<span class="err">2         3       c</span>
-<span class="err">3         4       d</span>
+<div class="highlight"><pre><span></span><code>   integers  string
+0         1       a
+1         2       b
+2         3       c
+3         4       d
 </code></pre></div>
-
 <h3 id="create-a-2-column-dataframe-with-pandas-bridge">Create a 2 Column  Dataframe with Pandas Bridge<a class="headerlink" href="#create-a-2-column-dataframe-with-pandas-bridge" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Consisting of integers and string category</li>
@@ -2236,39 +2189,35 @@
 <span class="c1"># Print dataframe</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">gdf</span><span class="p">)</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="err">   integers  strings</span>
-<span class="err">0         1        a</span>
-<span class="err">1         2        b</span>
-<span class="err">2         3        c</span>
-<span class="err">3         4        d</span>
+<div class="highlight"><pre><span></span><code>   integers  strings
+0         1        a
+1         2        b
+2         3        c
+3         4        d
 </code></pre></div>
-
 <h2 id="viewing">Viewing<a class="headerlink" href="#viewing" title="Permanent link">&para;</a></h2>
 <h3 id="printing-column-names">Printing Column Names<a class="headerlink" href="#printing-column-names" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">gdf</span><span class="o">.</span><span class="n">columns</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="err">Index([&#39;integers&#39;, &#39;strings&#39;], dtype=&#39;object&#39;)</span>
+<div class="highlight"><pre><span></span><code>Index([&#39;integers&#39;, &#39;strings&#39;], dtype=&#39;object&#39;)
 </code></pre></div>
-
 <h3 id="viewing-top-of-dataframe">Viewing Top of DataFrame<a class="headerlink" href="#viewing-top-of-dataframe" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">num_of_rows_to_view</span> <span class="o">=</span> <span class="mi">2</span> 
 <span class="nb">print</span><span class="p">(</span><span class="n">gdf</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">num_of_rows_to_view</span><span class="p">))</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="err">   integers  strings</span>
-<span class="err">0         1        a</span>
-<span class="err">1         2        b</span>
+<div class="highlight"><pre><span></span><code>   integers  strings
+0         1        a
+1         2        b
 </code></pre></div>
-
 <h3 id="viewing-bottom-of-dataframe">Viewing Bottom of DataFrame<a class="headerlink" href="#viewing-bottom-of-dataframe" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">num_of_rows_to_view</span> <span class="o">=</span> <span class="mi">3</span> 
 <span class="nb">print</span><span class="p">(</span><span class="n">gdf</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="n">num_of_rows_to_view</span><span class="p">))</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="err">   integers  strings</span>
-<span class="err">1         2        b</span>
-<span class="err">2         3        c</span>
-<span class="err">3         4        d</span>
+<div class="highlight"><pre><span></span><code>   integers  strings
+1         2        b
+2         3        c
+3         4        d
 </code></pre></div>
-
 <h2 id="filtering">Filtering<a class="headerlink" href="#filtering" title="Permanent link">&para;</a></h2>
 <h3 id="method-1-query">Method 1: Query<a class="headerlink" href="#method-1-query" title="Permanent link">&para;</a></h3>
 <h4 id="filtering-integersfloats-by-column-values">Filtering Integers/Floats by Column Values<a class="headerlink" href="#filtering-integersfloats-by-column-values" title="Permanent link">&para;</a></h4>
@@ -2277,95 +2226,90 @@
 </ul>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">gdf</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;integers == 1&#39;</span><span class="p">))</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="err">   integers  strings</span>
-<span class="err">0         1        a</span>
+<div class="highlight"><pre><span></span><code>   integers  strings
+0         1        a
 </code></pre></div>
-
 <h4 id="filtering-strings-by-column-values">Filtering Strings by Column Values<a class="headerlink" href="#filtering-strings-by-column-values" title="Permanent link">&para;</a></h4>
 <ul>
 <li>This only works for floats and integers, not for strings so this will return an error!</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">gdf</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;strings == a&#39;</span><span class="p">))</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="o">---------------------------------------------------------------------------</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code>---------------------------------------------------------------------------
 
-<span class="n">KeyError</span><span class="w">                                  </span><span class="n">Traceback</span><span class="w"> </span><span class="p">(</span><span class="n">most</span><span class="w"> </span><span class="n">recent</span><span class="w"> </span><span class="k">call</span><span class="w"> </span><span class="k">last</span><span class="p">)</span><span class="w"></span>
+KeyError                                  Traceback (most recent call last)
 
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="k">input</span><span class="o">-</span><span class="mi">33</span><span class="o">-</span><span class="mi">5</span><span class="n">cfd0345d51c</span><span class="o">&gt;</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="o">&lt;</span><span class="k">module</span><span class="o">&gt;</span><span class="p">()</span><span class="w"></span>
-<span class="o">----&gt;</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">print</span><span class="p">(</span><span class="n">gdf</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;strings == a&#39;</span><span class="p">))</span><span class="w"></span>
-
-
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.6</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">cudf</span><span class="o">/</span><span class="n">dataframe</span><span class="o">/</span><span class="n">dataframe</span><span class="p">.</span><span class="n">py</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">query</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="n">expr</span><span class="p">,</span><span class="w"> </span><span class="n">local_dict</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="mi">1905</span><span class="w">         </span><span class="err">}</span><span class="w"></span>
-<span class="w">   </span><span class="mi">1906</span><span class="w">         </span><span class="err">#</span><span class="w"> </span><span class="n">Run</span><span class="w"> </span><span class="n">query</span><span class="w"></span>
-<span class="o">-&gt;</span><span class="w"> </span><span class="mi">1907</span><span class="w">         </span><span class="n">boolmask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">queryutils</span><span class="p">.</span><span class="n">query_execute</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="n">expr</span><span class="p">,</span><span class="w"> </span><span class="n">callenv</span><span class="p">)</span><span class="w"></span>
-<span class="w">   </span><span class="mi">1908</span><span class="w"> </span>
-<span class="w">   </span><span class="mi">1909</span><span class="w">         </span><span class="n">selected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Series</span><span class="p">(</span><span class="n">boolmask</span><span class="p">)</span><span class="w"></span>
+&lt;ipython-input-33-5cfd0345d51c&gt; in &lt;module&gt;()
+----&gt; 1 print(gdf.query(&#39;strings == a&#39;))
 
 
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.6</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">cudf</span><span class="o">/</span><span class="n">utils</span><span class="o">/</span><span class="n">queryutils</span><span class="p">.</span><span class="n">py</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">query_execute</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">expr</span><span class="p">,</span><span class="w"> </span><span class="n">callenv</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="mi">215</span><span class="w">             </span><span class="n">envargs</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="mi">216</span><span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="k">prepare</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="n">args</span><span class="w"></span>
-<span class="o">--&gt;</span><span class="w"> </span><span class="mi">217</span><span class="w">     </span><span class="n">colarrays</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n">df[col</span><span class="o">]</span><span class="p">.</span><span class="n">to_gpu_array</span><span class="p">()</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">compiled</span><span class="o">[</span><span class="n">&#39;colnames&#39;</span><span class="o">]</span><span class="err">]</span><span class="w"></span>
-<span class="w">    </span><span class="mi">218</span><span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="k">allocate</span><span class="w"> </span><span class="k">output</span><span class="w"> </span><span class="n">buffer</span><span class="w"></span>
-<span class="w">    </span><span class="mi">219</span><span class="w">     </span><span class="n">nrows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="w"></span>
+/usr/local/lib/python3.6/site-packages/cudf/dataframe/dataframe.py in query(self, expr, local_dict)
+   1905         }
+   1906         # Run query
+-&gt; 1907         boolmask = queryutils.query_execute(self, expr, callenv)
+   1908 
+   1909         selected = Series(boolmask)
 
 
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.6</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">cudf</span><span class="o">/</span><span class="n">utils</span><span class="o">/</span><span class="n">queryutils</span><span class="p">.</span><span class="n">py</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="o">&lt;</span><span class="n">listcomp</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">.0</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="mi">215</span><span class="w">             </span><span class="n">envargs</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="mi">216</span><span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="k">prepare</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="n">args</span><span class="w"></span>
-<span class="o">--&gt;</span><span class="w"> </span><span class="mi">217</span><span class="w">     </span><span class="n">colarrays</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n">df[col</span><span class="o">]</span><span class="p">.</span><span class="n">to_gpu_array</span><span class="p">()</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">compiled</span><span class="o">[</span><span class="n">&#39;colnames&#39;</span><span class="o">]</span><span class="err">]</span><span class="w"></span>
-<span class="w">    </span><span class="mi">218</span><span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="k">allocate</span><span class="w"> </span><span class="k">output</span><span class="w"> </span><span class="n">buffer</span><span class="w"></span>
-<span class="w">    </span><span class="mi">219</span><span class="w">     </span><span class="n">nrows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="w"></span>
+/usr/local/lib/python3.6/site-packages/cudf/utils/queryutils.py in query_execute(df, expr, callenv)
+    215             envargs.append(val)
+    216     # prepare col args
+--&gt; 217     colarrays = [df[col].to_gpu_array() for col in compiled[&#39;colnames&#39;]]
+    218     # allocate output buffer
+    219     nrows = len(df)
 
 
-<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.6</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">cudf</span><span class="o">/</span><span class="n">dataframe</span><span class="o">/</span><span class="n">dataframe</span><span class="p">.</span><span class="n">py</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">__getitem__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="n">arg</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="mi">230</span><span class="w">             </span><span class="k">return</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">columns</span><span class="p">.</span><span class="n">_get_column_major</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="n">arg</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="mi">231</span><span class="w">         </span><span class="k">if</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nf">str</span><span class="p">,</span><span class="w"> </span><span class="n">numbers</span><span class="p">.</span><span class="n">Number</span><span class="p">))</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span><span class="w"> </span><span class="n">tuple</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
-<span class="o">--&gt;</span><span class="w"> </span><span class="mi">232</span><span class="w">             </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">_cols</span><span class="o">[</span><span class="n">arg</span><span class="o">]</span><span class="w"></span>
-<span class="w">    </span><span class="mi">233</span><span class="w">             </span><span class="n">s</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arg</span><span class="w"></span>
-<span class="w">    </span><span class="mi">234</span><span class="w">             </span><span class="n">s</span><span class="p">.</span><span class="k">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="k">index</span><span class="w"></span>
+/usr/local/lib/python3.6/site-packages/cudf/utils/queryutils.py in &lt;listcomp&gt;(.0)
+    215             envargs.append(val)
+    216     # prepare col args
+--&gt; 217     colarrays = [df[col].to_gpu_array() for col in compiled[&#39;colnames&#39;]]
+    218     # allocate output buffer
+    219     nrows = len(df)
 
 
-<span class="nl">KeyError</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;a&#39;</span><span class="w"></span>
+/usr/local/lib/python3.6/site-packages/cudf/dataframe/dataframe.py in __getitem__(self, arg)
+    230             return self.columns._get_column_major(self, arg)
+    231         if isinstance(arg, (str, numbers.Number)) or isinstance(arg, tuple):
+--&gt; 232             s = self._cols[arg]
+    233             s.name = arg
+    234             s.index = self.index
+
+
+KeyError: &#39;a&#39;
 </code></pre></div>
-
 <h3 id="method-2-simple-columns">Method 2:  Simple Columns<a class="headerlink" href="#method-2-simple-columns" title="Permanent link">&para;</a></h3>
 <h4 id="filtering-strings-by-column-values_1">Filtering Strings by Column Values<a class="headerlink" href="#filtering-strings-by-column-values_1" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># Filtering based on the string column</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="n">gdf</span><span class="o">.</span><span class="n">strings</span> <span class="o">==</span> <span class="s1">&#39;b&#39;</span><span class="p">])</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="err">   integers  strings</span>
-<span class="err">1         2        b</span>
+<div class="highlight"><pre><span></span><code>   integers  strings
+1         2        b
 </code></pre></div>
-
 <h4 id="filtering-integersfloats-by-column-values_1">Filtering Integers/Floats by Column Values<a class="headerlink" href="#filtering-integersfloats-by-column-values_1" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># Filtering based on the string column</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="n">gdf</span><span class="o">.</span><span class="n">integers</span> <span class="o">==</span> <span class="mi">2</span><span class="p">])</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="err">   integers  strings</span>
-<span class="err">1         2        b</span>
+<div class="highlight"><pre><span></span><code>   integers  strings
+1         2        b
 </code></pre></div>
-
 <h3 id="method-2-simple-rows">Method 2:  Simple Rows<a class="headerlink" href="#method-2-simple-rows" title="Permanent link">&para;</a></h3>
 <h4 id="filtering-by-row-numbers">Filtering by Row Numbers<a class="headerlink" href="#filtering-by-row-numbers" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># Filter rows 0 to 2 (not inclusive of the third row with the index 2)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="err">   integers  strings</span>
-<span class="err">0         1        a</span>
-<span class="err">1         2        b</span>
+<div class="highlight"><pre><span></span><code>   integers  strings
+0         1        a
+1         2        b
 </code></pre></div>
-
 <h3 id="method-3-locrows-columns">Method 3:  loc[rows, columns]<a class="headerlink" href="#method-3-locrows-columns" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># The syntax is as follows loc[rows, columns] allowing you to choose rows and columns accordingly</span>
 <span class="c1"># The example allows us to filter the first 3 rows (inclusive) of the column integers</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">gdf</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;integers&#39;</span><span class="p">]])</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="err">   integers</span>
-<span class="err">0         1</span>
-<span class="err">1         2</span>
-<span class="err">2         3</span>
+<div class="highlight"><pre><span></span><code>   integers
+0         1
+1         2
+2         3
 </code></pre></div>
                 
               
@@ -2381,88 +2325,62 @@
             </article>
           </div>
         </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
       </main>
       
         
-
-<!-- Application footer -->
 <footer class="md-footer">
-
-  <!-- Link to previous and/or next page -->
   
-    <div class="md-footer-nav">
-      <nav
-        class="md-footer-nav__inner md-grid"
-        aria-label="Footer"
-      >
-
-        <!-- Link to previous page -->
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
         
-          <a
-            href="../../intro/"
-            title="Introduction"
-            class="md-footer-nav__link md-footer-nav__link--prev"
-            rel="prev"
-          >
-            <div class="md-footer-nav__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        <a href="../../intro/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Introduction" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Introduction
             </div>
-            <div class="md-footer-nav__title">
-              <div class="md-ellipsis">
-                <span class="md-footer-nav__direction">
-                  Previous
-                </span>
-                Introduction
-              </div>
-            </div>
-          </a>
+          </div>
+        </a>
+      
+      
         
-
-        <!-- Link to next page -->
-        
-          <a
-            href="../gpu_fractional_differencing/"
-            title="GPU/CPU Fractional Differencing"
-            class="md-footer-nav__link md-footer-nav__link--next"
-            rel="next"
-          >
-            <div class="md-footer-nav__title">
-              <div class="md-ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                GPU/CPU Fractional Differencing
-              </div>
+        <a href="../gpu_fractional_differencing/" class="md-footer__link md-footer__link--next" aria-label="Next: GPU/CPU Fractional Differencing" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              GPU/CPU Fractional Differencing
             </div>
-            <div class="md-footer-nav__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
-    </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
-
-  <!-- Further information -->
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
-
-      <!-- Copyright and theme information -->
       <div class="md-footer-copyright">
         
           <div class="md-footer-copyright__highlight">
             Copyright &copy; 2021 Deep Learning Wizard by Ritchie Ng
           </div>
         
-        proudly an
-        <a href="http://www.nvidia.com/page/home.html">NVIDIA Inception Partner</a> and supported by the
-        <a href="https://aws.amazon.com/activate/">Amazon AWS Activate Programme</a> by
-        <a href="https://www.ritchieng.com/">
-          Ritchie Ng</a>
-        </a>
+        
       </div>
-
-      <!-- Social links -->
       
   <div class="md-footer-social">
     
@@ -2518,19 +2436,13 @@
 </footer>
       
     </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotate", "content.tabs.link", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
     
-      <script src="../../../assets/javascripts/vendor.93c04032.min.js"></script>
-      <script src="../../../assets/javascripts/bundle.83e5331e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
-      
-      <script>
-        app = initialize({
-          base: "../../..",
-          features: ['navigation.tabs', 'instant'],
-          search: Object.assign({
-            worker: "../../../assets/javascripts/worker/search.8c7e0a7e.min.js"
-          }, typeof search !== "undefined" && search)
-        })
-      </script>
+    
+      <script src="../../../assets/javascripts/bundle.56838a2c.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       

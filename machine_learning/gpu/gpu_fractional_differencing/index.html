@@ -15,8 +15,8 @@
       
         <link rel="canonical" href="https://www.deeplearningwizard.com/machine_learning/gpu/gpu_fractional_differencing/">
       
-      <link rel="shortcut icon" href="../../../docs/assets/favicon.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.4">
+      <link rel="icon" href="../../../docs/assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.4">
     
     
       
@@ -24,14 +24,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.15aa0b43.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.f7f47774.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.75751829.min.css">
-        
-          
-          
-          <meta name="theme-color" content="#4051b5">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
         
       
     
@@ -41,17 +37,26 @@
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
       
     
     
     
     
       
-        
-<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-122083328-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview",document.location.pathname)})</script>
-<script async src="https://www.google-analytics.com/analytics.js"></script>
-      
+
+  
+
+
+  
+
+  
+
+
+  <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-122083328-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
+  <script async src="https://www.google-analytics.com/analytics.js"></script>
+
+
     
     
   </head>
@@ -59,12 +64,17 @@
   
     
     
+      
+    
     
     
     
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
-      
   
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -81,27 +91,25 @@
       
     </div>
     
-      
-
-<header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid" aria-label="Header">
-    <a href="https://www.deeplearningwizard.com/" title="Deep Learning Wizard" class="md-header-nav__button md-logo" aria-label="Deep Learning Wizard">
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Deep Learning Wizard" class="md-header__button md-logo" aria-label="Deep Learning Wizard" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M396.8 352h22.4c6.4 0 12.8-6.4 12.8-12.8V108.8c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v230.4c0 6.4 6.4 12.8 12.8 12.8zm-192 0h22.4c6.4 0 12.8-6.4 12.8-12.8V140.8c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v198.4c0 6.4 6.4 12.8 12.8 12.8zm96 0h22.4c6.4 0 12.8-6.4 12.8-12.8V204.8c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v134.4c0 6.4 6.4 12.8 12.8 12.8zM496 400H48V80c0-8.84-7.16-16-16-16H16C7.16 64 0 71.16 0 80v336c0 17.67 14.33 32 32 32h464c8.84 0 16-7.16 16-16v-16c0-8.84-7.16-16-16-16zm-387.2-48h22.4c6.4 0 12.8-6.4 12.8-12.8v-70.4c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v70.4c0 6.4 6.4 12.8 12.8 12.8z"/></svg>
 
     </a>
-    <label class="md-header-nav__button md-icon" for="__drawer">
+    <label class="md-header__button md-icon" for="__drawer">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
     </label>
-    <div class="md-header-nav__title" data-md-component="header-title">
-      <div class="md-header-nav__ellipsis">
-        <div class="md-header-nav__topic">
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
           <span class="md-ellipsis">
             Deep Learning Wizard
           </span>
         </div>
-        <div class="md-header-nav__topic">
+        <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
               GPU/CPU Fractional Differencing
@@ -111,22 +119,56 @@
       </div>
     </div>
     
-      <label class="md-header-nav__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2m10-3a5 5 0 0 1 5 5 5 5 0 0 1-5 5H7a5 5 0 0 1-5-5 5 5 0 0 1 5-5h10M7 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3h10a3 3 0 0 0 3-3 3 3 0 0 0-3-3H7z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
       </label>
       
 <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
       </label>
-      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
-      </button>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
@@ -142,12 +184,12 @@
 </div>
     
     
-      <div class="md-header-nav__source">
+      <div class="md-header__source">
         
-<a href="https://github.com/ritchieng/deep-learning-wizard/" title="Go to repository" class="md-source">
+<a href="https://github.com/ritchieng/deep-learning-wizard/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     ritchieng/deep-learning-wizard
@@ -254,24 +296,8 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../ood/intro/" class="md-tabs__link">
-        Out of Distribution Data
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
       <a href="../../../database/intro/" class="md-tabs__link">
-        Scalable Database
+        Database
       </a>
     </li>
   
@@ -303,19 +329,17 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
-
-
 
   
 
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="https://www.deeplearningwizard.com/" title="Deep Learning Wizard" class="md-nav__button md-logo" aria-label="Deep Learning Wizard">
+    <a href="../../.." title="Deep Learning Wizard" class="md-nav__button md-logo" aria-label="Deep Learning Wizard" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M396.8 352h22.4c6.4 0 12.8-6.4 12.8-12.8V108.8c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v230.4c0 6.4 6.4 12.8 12.8 12.8zm-192 0h22.4c6.4 0 12.8-6.4 12.8-12.8V140.8c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v198.4c0 6.4 6.4 12.8 12.8 12.8zm96 0h22.4c6.4 0 12.8-6.4 12.8-12.8V204.8c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v134.4c0 6.4 6.4 12.8 12.8 12.8zM496 400H48V80c0-8.84-7.16-16-16-16H16C7.16 64 0 71.16 0 80v336c0 17.67 14.33 32 32 32h464c8.84 0 16-7.16 16-16v-16c0-8.84-7.16-16-16-16zm-387.2-48h22.4c6.4 0 12.8-6.4 12.8-12.8v-70.4c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v70.4c0 6.4 6.4 12.8 12.8 12.8z"/></svg>
@@ -326,10 +350,10 @@
   
     <div class="md-nav__source">
       
-<a href="https://github.com/ritchieng/deep-learning-wizard/" title="Go to repository" class="md-source">
+<a href="https://github.com/ritchieng/deep-learning-wizard/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     ritchieng/deep-learning-wizard
@@ -343,528 +367,501 @@
       
       
 
-
-
-  <li class="md-nav__item">
-    <a href="../../.." class="md-nav__link">
-      Home
-    </a>
-  </li>
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
 
     
       
       
       
-
-
 
   
-  <li class="md-nav__item md-nav__item--nested">
+  
+  
     
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
-    
-    <label class="md-nav__link" for="nav-2">
-      About
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="About" data-md-level="1">
-      <label class="md-nav__title" for="nav-2">
-        <span class="md-nav__icon md-icon"></span>
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
         About
+        <span class="md-nav__icon md-icon"></span>
       </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
+      <nav class="md-nav" aria-label="About" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          About
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../home/" class="md-nav__link">
+        Intro
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        About Us
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../review/" class="md-nav__link">
+        Reviews
+      </a>
+    </li>
+  
 
-
-
-  <li class="md-nav__item">
-    <a href="../../../home/" class="md-nav__link">
-      Intro
-    </a>
-  </li>
-
-        
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pipeline/" class="md-nav__link">
+        AI Pipeline
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../consultancy/" class="md-nav__link">
+        Consultancy
+      </a>
+    </li>
+  
+
           
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../about/" class="md-nav__link">
-      About Us
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../review/" class="md-nav__link">
-      Reviews
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../pipeline/" class="md-nav__link">
-      AI Pipeline
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../consultancy/" class="md-nav__link">
-      Consultancy
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
+        </ul>
+      </nav>
+    </li>
+  
 
     
       
       
       
-
-
 
   
-  <li class="md-nav__item md-nav__item--nested">
+  
+  
     
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
-    
-    <label class="md-nav__link" for="nav-3">
-      Deep Learning (CPU/GPU)
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="Deep Learning (CPU/GPU)" data-md-level="1">
-      <label class="md-nav__title" for="nav-3">
-        <span class="md-nav__icon md-icon"></span>
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
         Deep Learning (CPU/GPU)
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/intro/" class="md-nav__link">
-      Introduction
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/course_progression/" class="md-nav__link">
-      Course Progression
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/practical_pytorch/pytorch_matrices/" class="md-nav__link">
-      Matrices
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/practical_pytorch/pytorch_gradients/" class="md-nav__link">
-      Gradients
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/practical_pytorch/pytorch_linear_regression/" class="md-nav__link">
-      Linear Regression
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/practical_pytorch/pytorch_logistic_regression/" class="md-nav__link">
-      Logistic Regression
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/practical_pytorch/pytorch_feedforward_neuralnetwork/" class="md-nav__link">
-      Feedforward Neural Networks (FNN)
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/practical_pytorch/pytorch_convolutional_neuralnetwork/" class="md-nav__link">
-      Convolutional Neural Networks (CNN)
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/practical_pytorch/pytorch_recurrent_neuralnetwork/" class="md-nav__link">
-      Recurrent Neural Networks (RNN)
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/practical_pytorch/pytorch_lstm_neuralnetwork/" class="md-nav__link">
-      Long Short Term Memory Neural Networks (LSTM)
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/practical_pytorch/pytorch_autoencoder/" class="md-nav__link">
-      Autoencoders (AE)
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/practical_pytorch/pytorch_fc_overcomplete_ae/" class="md-nav__link">
-      Fully-connected Overcomplete Autoencoder (AE)
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/boosting_models_pytorch/derivative_gradient_jacobian/" class="md-nav__link">
-      Derivative, Gradient and Jacobian
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/boosting_models_pytorch/forwardpropagation_backpropagation_gradientdescent/" class="md-nav__link">
-      Forward- and Backward-propagation and Gradient Descent (From Scratch FNN Regression)
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/fromscratch/fromscratch_logistic_regression/" class="md-nav__link">
-      From Scratch Logistic Regression Classification
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/fromscratch/fromscratch_cnn/" class="md-nav__link">
-      From Scratch CNN Classification
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/boosting_models_pytorch/lr_scheduling/" class="md-nav__link">
-      Learning Rate Scheduling
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/boosting_models_pytorch/optimizers/" class="md-nav__link">
-      Optimization Algorithms
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/boosting_models_pytorch/weight_initialization_activation_functions/" class="md-nav__link">
-      Weight Initialization and Activation Functions
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/deep_reinforcement_learning_pytorch/supervised_to_rl/" class="md-nav__link">
-      Supervised Learning to Reinforcement Learning (RL)
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/deep_reinforcement_learning_pytorch/bellman_mdp/" class="md-nav__link">
-      Markov Decision Processes (MDP) and Bellman Equations
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/deep_reinforcement_learning_pytorch/dynamic_programming_frozenlake/" class="md-nav__link">
-      Dynamic Programming
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/production_pytorch/speed_optimization_basics_numba/" class="md-nav__link">
-      Speed Optimization Basics Numba
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../deep_learning/readings/" class="md-nav__link">
-      Additional Readings
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  
-
-
-  
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-    
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
-    
-    <label class="md-nav__link" for="nav-4">
-      Machine Learning (CPU/GPU)
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="Machine Learning (CPU/GPU)" data-md-level="1">
-      <label class="md-nav__title" for="nav-4">
         <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Deep Learning (CPU/GPU)" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Deep Learning (CPU/GPU)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/course_progression/" class="md-nav__link">
+        Course Progression
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/practical_pytorch/pytorch_matrices/" class="md-nav__link">
+        Matrices
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/practical_pytorch/pytorch_gradients/" class="md-nav__link">
+        Gradients
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/practical_pytorch/pytorch_linear_regression/" class="md-nav__link">
+        Linear Regression
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/practical_pytorch/pytorch_logistic_regression/" class="md-nav__link">
+        Logistic Regression
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/practical_pytorch/pytorch_feedforward_neuralnetwork/" class="md-nav__link">
+        Feedforward Neural Networks (FNN)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/practical_pytorch/pytorch_convolutional_neuralnetwork/" class="md-nav__link">
+        Convolutional Neural Networks (CNN)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/practical_pytorch/pytorch_recurrent_neuralnetwork/" class="md-nav__link">
+        Recurrent Neural Networks (RNN)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/practical_pytorch/pytorch_lstm_neuralnetwork/" class="md-nav__link">
+        Long Short Term Memory Neural Networks (LSTM)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/practical_pytorch/pytorch_autoencoder/" class="md-nav__link">
+        Autoencoders (AE)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/practical_pytorch/pytorch_fc_overcomplete_ae/" class="md-nav__link">
+        Fully-connected Overcomplete Autoencoder (AE)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/boosting_models_pytorch/derivative_gradient_jacobian/" class="md-nav__link">
+        Derivative, Gradient and Jacobian
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/boosting_models_pytorch/forwardpropagation_backpropagation_gradientdescent/" class="md-nav__link">
+        Forward- and Backward-propagation and Gradient Descent (From Scratch FNN Regression)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/fromscratch/fromscratch_logistic_regression/" class="md-nav__link">
+        From Scratch Logistic Regression Classification
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/fromscratch/fromscratch_cnn/" class="md-nav__link">
+        From Scratch CNN Classification
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/boosting_models_pytorch/lr_scheduling/" class="md-nav__link">
+        Learning Rate Scheduling
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/boosting_models_pytorch/optimizers/" class="md-nav__link">
+        Optimization Algorithms
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/boosting_models_pytorch/weight_initialization_activation_functions/" class="md-nav__link">
+        Weight Initialization and Activation Functions
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/deep_reinforcement_learning_pytorch/supervised_to_rl/" class="md-nav__link">
+        Supervised Learning to Reinforcement Learning (RL)
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/deep_reinforcement_learning_pytorch/bellman_mdp/" class="md-nav__link">
+        Markov Decision Processes (MDP) and Bellman Equations
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/deep_reinforcement_learning_pytorch/dynamic_programming_frozenlake/" class="md-nav__link">
+        Dynamic Programming
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/production_pytorch/speed_optimization_basics_numba/" class="md-nav__link">
+        Speed Optimization Basics Numba
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../deep_learning/readings/" class="md-nav__link">
+        Additional Readings
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
         Machine Learning (CPU/GPU)
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../intro/" class="md-nav__link">
-      Introduction
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../rapids_cudf/" class="md-nav__link">
-      GPU DataFrames
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        GPU/CPU Fractional Differencing
         <span class="md-nav__icon md-icon"></span>
       </label>
+      <nav class="md-nav" aria-label="Machine Learning (CPU/GPU)" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Machine Learning (CPU/GPU)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rapids_cudf/" class="md-nav__link">
+        GPU DataFrames
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
     
-    <a href="./" class="md-nav__link md-nav__link--active">
-      GPU/CPU Fractional Differencing
-    </a>
-    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
       
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          GPU/CPU Fractional Differencing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        GPU/CPU Fractional Differencing
+      </a>
+      
+        
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
   
   
     
@@ -874,7 +871,7 @@
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
   <a href="#summary" class="md-nav__link">
@@ -983,22 +980,22 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#for-d-0d-0-no-differencing" class="md-nav__link">
-    For d = 0d = 0 (no differencing)
+  <a href="#for-d-0-no-differencing" class="md-nav__link">
+    For \(d = 0\) (no differencing)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#for-d-04d-04-fractional-differencing" class="md-nav__link">
-    For d = 0.4d = 0.4 (fractional differencing)
+  <a href="#for-d-04-fractional-differencing" class="md-nav__link">
+    For \(d = 0.4\) (fractional differencing)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#for-d-1d-1-integer-differencing" class="md-nav__link">
-    For d = 1d = 1 (integer differencing)
+  <a href="#for-d-1-integer-differencing" class="md-nav__link">
+    For \(d = 1\) (integer differencing)
   </a>
   
 </li>
@@ -1118,415 +1115,381 @@
     </ul>
   
 </nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
     
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
       
       
       
-
-
 
   
-  <li class="md-nav__item md-nav__item--nested">
+  
+  
     
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
-    
-    <label class="md-nav__link" for="nav-5">
-      Programming
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="Programming" data-md-level="1">
-      <label class="md-nav__title" for="nav-5">
-        <span class="md-nav__icon md-icon"></span>
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
         Programming
+        <span class="md-nav__icon md-icon"></span>
       </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
+      <nav class="md-nav" aria-label="Programming" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Programming
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/cpp/cpp/" class="md-nav__link">
+        C++
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/bash/bash/" class="md-nav__link">
+        Bash
+      </a>
+    </li>
+  
 
-
-
-  <li class="md-nav__item">
-    <a href="../../../programming/intro/" class="md-nav__link">
-      Introduction
-    </a>
-  </li>
-
-        
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/python/python/" class="md-nav__link">
+        Python
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/javascript/javascript/" class="md-nav__link">
+        Javascript
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/electron/electron/" class="md-nav__link">
+        Electron
+      </a>
+    </li>
+  
 
-
-
-  <li class="md-nav__item">
-    <a href="../../../programming/cpp/cpp/" class="md-nav__link">
-      C++
-    </a>
-  </li>
-
-        
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/sympy/calculus_sympy/" class="md-nav__link">
+        Sympy
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/numpycupy/linalg_numpy_cupy/" class="md-nav__link">
+        NumPy and CuPy
+      </a>
+    </li>
+  
+
           
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../programming/bash/bash/" class="md-nav__link">
-      Bash
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../programming/python/python/" class="md-nav__link">
-      Python
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../programming/javascript/javascript/" class="md-nav__link">
-      Javascript
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../programming/electron/electron/" class="md-nav__link">
-      Electron
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
+        </ul>
+      </nav>
+    </li>
+  
 
     
       
       
       
-
-
 
   
-  <li class="md-nav__item md-nav__item--nested">
+  
+  
     
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" >
-    
-    <label class="md-nav__link" for="nav-6">
-      Out of Distribution Data
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="Out of Distribution Data" data-md-level="1">
-      <label class="md-nav__title" for="nav-6">
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Database
         <span class="md-nav__icon md-icon"></span>
-        Out of Distribution Data
       </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
+      <nav class="md-nav" aria-label="Database" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Database
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../database/intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../database/setting_up_cluster/" class="md-nav__link">
+        Cassandra Cluster Setup
+      </a>
+    </li>
+  
+
           
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../ood/intro/" class="md-nav__link">
-      Introduction
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
+        </ul>
+      </nav>
+    </li>
+  
 
     
       
       
       
-
-
 
   
-  <li class="md-nav__item md-nav__item--nested">
-    
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" >
-    
-    <label class="md-nav__link" for="nav-7">
-      Scalable Database
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="Scalable Database" data-md-level="1">
-      <label class="md-nav__title" for="nav-7">
-        <span class="md-nav__icon md-icon"></span>
-        Scalable Database
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../database/intro/" class="md-nav__link">
-      Introduction
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../database/setting_up_cluster/" class="md-nav__link">
-      Cassandra Cluster Setup
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-
   
-  <li class="md-nav__item md-nav__item--nested">
+  
     
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8" >
-    
-    <label class="md-nav__link" for="nav-8">
-      News
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="News" data-md-level="1">
-      <label class="md-nav__title" for="nav-8">
-        <span class="md-nav__icon md-icon"></span>
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
         News
+        <span class="md-nav__icon md-icon"></span>
       </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
+      <nav class="md-nav" aria-label="News" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          News
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/news/" class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/dbs_gpu_rapids_nvidia_ensemble_frac_diff/" class="md-nav__link">
+        Fractional Differencing with GPU (GFD), DBS and NVIDIA, September 2019
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/defence_and_science_technology_agency_dsta_nvidia_talk_2016_06/" class="md-nav__link">
+        Deep Learning Introduction, Defence and Science Technology Agency (DSTA) and NVIDIA, June 2019
+      </a>
+    </li>
+  
 
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/news/" class="md-nav__link">
-      Welcome
-    </a>
-  </li>
-
-        
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/detect_waterbone_debris_ai_for_social_good_icml_2019_06/" class="md-nav__link">
+        Oral Presentation for AI for Social Good Workshop ICML, June 2019
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/it_youth_leader_2019_03_11/" class="md-nav__link">
+        IT Youth Leader of The Year 2019, March 2019
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/ammi_facebook_google_recap_2018_11_21/" class="md-nav__link">
+        AMMI (AIMS) supported by Facebook and Google, November 2018
+      </a>
+    </li>
+  
 
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/dbs_gpu_rapids_nvidia_ensemble_frac_diff/" class="md-nav__link">
-      Fractional Differencing with GPU (GFD), DBS and NVIDIA, September 2019
-    </a>
-  </li>
-
-        
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/nanjing_next_nus_tsinghua_ai_finance_healthcare_2018_11_01/" class="md-nav__link">
+        NExT++ AI in Healthcare and Finance, Nanjing, November 2018
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/facebook_pytorch_devcon_recap_2018_10_02/" class="md-nav__link">
+        Recap of Facebook PyTorch Developer Conference, San Francisco, September 2018
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/facebook_pytorch_developer_conference_2018_09_05/" class="md-nav__link">
+        Facebook PyTorch Developer Conference, San Francisco, September 2018
+      </a>
+    </li>
+  
 
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/defence_and_science_technology_agency_dsta_nvidia_talk_2016_06/" class="md-nav__link">
-      Deep Learning Introduction, Defence and Science Technology Agency (DSTA) and NVIDIA, June 2019
-    </a>
-  </li>
-
-        
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/nvidia_nus_mit_datathon_2018_07_05/" class="md-nav__link">
+        NUS-MIT-NUHS NVIDIA Image Recognition Workshop, Singapore, July 2018
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/deep_learning_wizard_1y_2018_06_01/" class="md-nav__link">
+        Featured on PyTorch Website 2018
+      </a>
+    </li>
+  
+
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/nvidia_self_driving_cars_talk_2017_06_21/" class="md-nav__link">
+        NVIDIA Self Driving Cars & Healthcare Talk, Singapore, June 2017
+      </a>
+    </li>
+  
 
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/detect_waterbone_debris_ai_for_social_good_icml_2019_06/" class="md-nav__link">
-      Oral Presentation for AI for Social Good Workshop ICML, June 2019
-    </a>
-  </li>
-
-        
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../news/deep_learning_wizard_nvidia_inception_2018_05_01/" class="md-nav__link">
+        NVIDIA Inception Partner Status, Singapore, May 2017
+      </a>
+    </li>
+  
+
           
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/it_youth_leader_2019_03_11/" class="md-nav__link">
-      IT Youth Leader of The Year 2019, March 2019
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/ammi_facebook_google_recap_2018_11_21/" class="md-nav__link">
-      AMMI (AIMS) supported by Facebook and Google, November 2018
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/nanjing_next_nus_tsinghua_ai_finance_healthcare_2018_11_01/" class="md-nav__link">
-      NExT++ AI in Healthcare and Finance, Nanjing, November 2018
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/facebook_pytorch_devcon_recap_2018_10_02/" class="md-nav__link">
-      Recap of Facebook PyTorch Developer Conference, San Francisco, September 2018
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/facebook_pytorch_developer_conference_2018_09_05/" class="md-nav__link">
-      Facebook PyTorch Developer Conference, San Francisco, September 2018
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/nvidia_nus_mit_datathon_2018_07_05/" class="md-nav__link">
-      NUS-MIT-NUHS NVIDIA Image Recognition Workshop, Singapore, July 2018
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/deep_learning_wizard_1y_2018_06_01/" class="md-nav__link">
-      Featured on PyTorch Website 2018
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/nvidia_self_driving_cars_talk_2017_06_21/" class="md-nav__link">
-      NVIDIA Self Driving Cars & Healthcare Talk, Singapore, June 2017
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../../news/deep_learning_wizard_nvidia_inception_2018_05_01/" class="md-nav__link">
-      NVIDIA Inception Partner Status, Singapore, May 2017
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
+        </ul>
+      </nav>
+    </li>
+  
 
     
   </ul>
@@ -1537,11 +1500,12 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
   
   
     
@@ -1551,7 +1515,7 @@
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
   <a href="#summary" class="md-nav__link">
@@ -1660,22 +1624,22 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#for-d-0d-0-no-differencing" class="md-nav__link">
-    For d = 0d = 0 (no differencing)
+  <a href="#for-d-0-no-differencing" class="md-nav__link">
+    For \(d = 0\) (no differencing)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#for-d-04d-04-fractional-differencing" class="md-nav__link">
-    For d = 0.4d = 0.4 (fractional differencing)
+  <a href="#for-d-04-fractional-differencing" class="md-nav__link">
+    For \(d = 0.4\) (fractional differencing)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#for-d-1d-1-integer-differencing" class="md-nav__link">
-    For d = 1d = 1 (integer differencing)
+  <a href="#for-d-1-integer-differencing" class="md-nav__link">
+    For \(d = 1\) (integer differencing)
   </a>
   
 </li>
@@ -1800,7 +1764,7 @@
               </div>
             
           
-          <div class="md-content">
+          <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
                 
@@ -1849,18 +1813,17 @@
 <span class="k">else</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Woo! You got the right kind of GPU, a Tesla T4!&#39;</span><span class="p">)</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="err">Currently running on b&#39;Tesla T4&#39;</span>
-<span class="err">Woo! You got the right kind of GPU, a Tesla T4!</span>
+<div class="highlight"><pre><span></span><code>Currently running on b&#39;Tesla T4&#39;
+Woo! You got the right kind of GPU, a Tesla T4!
 </code></pre></div>
-
 <div class="highlight"><pre><span></span><code><span class="c1"># intall miniconda</span>
-<span class="err">!</span><span class="n">wget</span> <span class="o">-</span><span class="n">c</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">repo</span><span class="o">.</span><span class="n">continuum</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">Miniconda3</span><span class="o">-</span><span class="mf">4.5</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span>
-<span class="err">!</span><span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="n">Miniconda3</span><span class="o">-</span><span class="mf">4.5</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span>
-<span class="err">!</span><span class="n">bash</span> <span class="o">./</span><span class="n">Miniconda3</span><span class="o">-</span><span class="mf">4.5</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">b</span> <span class="o">-</span><span class="n">f</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span>
+<span class="err">!</span><span class="n">wget</span> <span class="o">-</span><span class="n">c</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">repo</span><span class="o">.</span><span class="n">continuum</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">Miniconda3</span><span class="o">-</span><span class="mf">4.5.4</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span>
+<span class="err">!</span><span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="n">Miniconda3</span><span class="o">-</span><span class="mf">4.5.4</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span>
+<span class="err">!</span><span class="n">bash</span> <span class="o">./</span><span class="n">Miniconda3</span><span class="o">-</span><span class="mf">4.5.4</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">b</span> <span class="o">-</span><span class="n">f</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span>
 
 <span class="c1"># install RAPIDS packages</span>
 <span class="err">!</span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">q</span> <span class="o">-</span><span class="n">y</span> <span class="o">--</span><span class="n">prefix</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> \
-  <span class="o">-</span><span class="n">c</span> <span class="n">rapidsai</span><span class="o">-</span><span class="n">nightly</span><span class="o">/</span><span class="n">label</span><span class="o">/</span><span class="n">cuda10</span><span class="o">.</span><span class="mi">0</span> <span class="o">-</span><span class="n">c</span> <span class="n">nvidia</span><span class="o">/</span><span class="n">label</span><span class="o">/</span><span class="n">cuda10</span><span class="o">.</span><span class="mi">0</span> \
+  <span class="o">-</span><span class="n">c</span> <span class="n">rapidsai</span><span class="o">-</span><span class="n">nightly</span><span class="o">/</span><span class="n">label</span><span class="o">/</span><span class="n">cuda10</span><span class="mf">.0</span> <span class="o">-</span><span class="n">c</span> <span class="n">nvidia</span><span class="o">/</span><span class="n">label</span><span class="o">/</span><span class="n">cuda10</span><span class="mf">.0</span> \
   <span class="n">cudf</span> <span class="n">cuml</span>
 
 <span class="c1"># set environment vars</span>
@@ -1873,94 +1836,93 @@
 <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;libcudf.so&#39;</span><span class="p">,</span> <span class="s1">&#39;librmm.so&#39;</span><span class="p">]:</span>
     <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="s1">&#39;/usr/local/lib/&#39;</span><span class="o">+</span><span class="n">fn</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="o">--</span><span class="mi">2019</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">19</span> <span class="mi">05</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">25</span><span class="o">--</span>  <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">repo</span><span class="o">.</span><span class="n">continuum</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">Miniconda3</span><span class="o">-</span><span class="mf">4.5</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span>
-<span class="n">Resolving</span> <span class="n">repo</span><span class="o">.</span><span class="n">continuum</span><span class="o">.</span><span class="n">io</span> <span class="p">(</span><span class="n">repo</span><span class="o">.</span><span class="n">continuum</span><span class="o">.</span><span class="n">io</span><span class="p">)</span><span class="o">...</span> <span class="mf">104.18</span><span class="o">.</span><span class="mf">200.79</span><span class="p">,</span> <span class="mf">104.18</span><span class="o">.</span><span class="mf">201.79</span><span class="p">,</span> <span class="mi">2606</span><span class="p">:</span><span class="mi">4700</span><span class="p">::</span><span class="mi">6812</span><span class="p">:</span><span class="n">c84f</span><span class="p">,</span> <span class="o">...</span>
-<span class="n">Connecting</span> <span class="n">to</span> <span class="n">repo</span><span class="o">.</span><span class="n">continuum</span><span class="o">.</span><span class="n">io</span> <span class="p">(</span><span class="n">repo</span><span class="o">.</span><span class="n">continuum</span><span class="o">.</span><span class="n">io</span><span class="p">)</span><span class="o">|</span><span class="mf">104.18</span><span class="o">.</span><span class="mf">200.79</span><span class="o">|</span><span class="p">:</span><span class="mf">443.</span><span class="o">..</span> <span class="n">connected</span><span class="o">.</span>
-<span class="n">HTTP</span> <span class="n">request</span> <span class="n">sent</span><span class="p">,</span> <span class="n">awaiting</span> <span class="n">response</span><span class="o">...</span> <span class="mi">416</span> <span class="n">Requested</span> <span class="n">Range</span> <span class="n">Not</span> <span class="n">Satisfiable</span>
+<div class="highlight"><pre><span></span><code>--2019-08-19 05:36:25--  https://repo.continuum.io/miniconda/Miniconda3-4.5.4-Linux-x86_64.sh
+Resolving repo.continuum.io (repo.continuum.io)... 104.18.200.79, 104.18.201.79, 2606:4700::6812:c84f, ...
+Connecting to repo.continuum.io (repo.continuum.io)|104.18.200.79|:443... connected.
+HTTP request sent, awaiting response... 416 Requested Range Not Satisfiable
 
-    <span class="n">The</span> <span class="n">file</span> <span class="k">is</span> <span class="n">already</span> <span class="n">fully</span> <span class="n">retrieved</span><span class="p">;</span> <span class="n">nothing</span> <span class="n">to</span> <span class="n">do</span><span class="o">.</span>
+    The file is already fully retrieved; nothing to do.
 
-<span class="n">PREFIX</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">python</span><span class="o">-</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">5</span><span class="o">-</span><span class="n">hc3d631a_2</span> <span class="o">...</span>
-<span class="n">Python</span> <span class="mf">3.6</span><span class="o">.</span><span class="mi">5</span> <span class="p">::</span> <span class="n">Anaconda</span><span class="p">,</span> <span class="n">Inc</span><span class="o">.</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">ca</span><span class="o">-</span><span class="n">certificates</span><span class="o">-</span><span class="mf">2018.03</span><span class="o">.</span><span class="mi">07</span><span class="o">-</span><span class="mi">0</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">conda</span><span class="o">-</span><span class="n">env</span><span class="o">-</span><span class="mf">2.6</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">h36134e3_1</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">libgcc</span><span class="o">-</span><span class="n">ng</span><span class="o">-</span><span class="mf">7.2</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">hdf63c60_3</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">libstdcxx</span><span class="o">-</span><span class="n">ng</span><span class="o">-</span><span class="mf">7.2</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">hdf63c60_3</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">libffi</span><span class="o">-</span><span class="mf">3.2</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="n">hd88cf55_4</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">ncurses</span><span class="o">-</span><span class="mf">6.1</span><span class="o">-</span><span class="n">hf484d3e_0</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">openssl</span><span class="o">-</span><span class="mf">1.0</span><span class="o">.</span><span class="mi">2</span><span class="n">o</span><span class="o">-</span><span class="n">h20670df_0</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">tk</span><span class="o">-</span><span class="mf">8.6</span><span class="o">.</span><span class="mi">7</span><span class="o">-</span><span class="n">hc745277_3</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">xz</span><span class="o">-</span><span class="mf">5.2</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="n">h14c3975_4</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">yaml</span><span class="o">-</span><span class="mf">0.1</span><span class="o">.</span><span class="mi">7</span><span class="o">-</span><span class="n">had09818_2</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">zlib</span><span class="o">-</span><span class="mf">1.2</span><span class="o">.</span><span class="mi">11</span><span class="o">-</span><span class="n">ha838bed_2</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">libedit</span><span class="o">-</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">20170329</span><span class="o">-</span><span class="n">h6b74fdf_2</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">readline</span><span class="o">-</span><span class="mf">7.0</span><span class="o">-</span><span class="n">ha6073c6_4</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">sqlite</span><span class="o">-</span><span class="mf">3.23</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="n">he433501_0</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">asn1crypto</span><span class="o">-</span><span class="mf">0.24</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">py36_0</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">certifi</span><span class="o">-</span><span class="mf">2018.4</span><span class="o">.</span><span class="mi">16</span><span class="o">-</span><span class="n">py36_0</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">chardet</span><span class="o">-</span><span class="mf">3.0</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="n">py36h0f667ec_1</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">idna</span><span class="o">-</span><span class="mf">2.6</span><span class="o">-</span><span class="n">py36h82fb2a8_1</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">pycosat</span><span class="o">-</span><span class="mf">0.6</span><span class="o">.</span><span class="mi">3</span><span class="o">-</span><span class="n">py36h0a5515d_0</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">pycparser</span><span class="o">-</span><span class="mf">2.18</span><span class="o">-</span><span class="n">py36hf9f622e_1</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">pysocks</span><span class="o">-</span><span class="mf">1.6</span><span class="o">.</span><span class="mi">8</span><span class="o">-</span><span class="n">py36_0</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">ruamel_yaml</span><span class="o">-</span><span class="mf">0.15</span><span class="o">.</span><span class="mi">37</span><span class="o">-</span><span class="n">py36h14c3975_2</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">six</span><span class="o">-</span><span class="mf">1.11</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">py36h372c433_1</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">cffi</span><span class="o">-</span><span class="mf">1.11</span><span class="o">.</span><span class="mi">5</span><span class="o">-</span><span class="n">py36h9745a5d_0</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">setuptools</span><span class="o">-</span><span class="mf">39.2</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">py36_0</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">cryptography</span><span class="o">-</span><span class="mf">2.2</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">py36h14c3975_0</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">wheel</span><span class="o">-</span><span class="mf">0.31</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="n">py36_0</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">pip</span><span class="o">-</span><span class="mf">10.0</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="n">py36_0</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">pyopenssl</span><span class="o">-</span><span class="mf">18.0</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">py36_0</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">urllib3</span><span class="o">-</span><span class="mf">1.22</span><span class="o">-</span><span class="n">py36hbe7ace6_0</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">requests</span><span class="o">-</span><span class="mf">2.18</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="n">py36he2e5f8d_1</span> <span class="o">...</span>
-<span class="n">installing</span><span class="p">:</span> <span class="n">conda</span><span class="o">-</span><span class="mf">4.5</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="n">py36_0</span> <span class="o">...</span>
-<span class="n">unlinking</span><span class="p">:</span> <span class="n">ca</span><span class="o">-</span><span class="n">certificates</span><span class="o">-</span><span class="mf">2019.6</span><span class="o">.</span><span class="mi">16</span><span class="o">-</span><span class="n">hecc5488_0</span>
-<span class="n">unlinking</span><span class="p">:</span> <span class="n">certifi</span><span class="o">-</span><span class="mf">2019.6</span><span class="o">.</span><span class="mi">16</span><span class="o">-</span><span class="n">py36_1</span>
-<span class="n">unlinking</span><span class="p">:</span> <span class="n">conda</span><span class="o">-</span><span class="mf">4.7</span><span class="o">.</span><span class="mi">11</span><span class="o">-</span><span class="n">py36_0</span>
-<span class="n">unlinking</span><span class="p">:</span> <span class="n">cryptography</span><span class="o">-</span><span class="mf">2.7</span><span class="o">-</span><span class="n">py36h72c5cf5_0</span>
-<span class="n">unlinking</span><span class="p">:</span> <span class="n">libgcc</span><span class="o">-</span><span class="n">ng</span><span class="o">-</span><span class="mf">9.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">hdf63c60_0</span>
-<span class="n">unlinking</span><span class="p">:</span> <span class="n">libstdcxx</span><span class="o">-</span><span class="n">ng</span><span class="o">-</span><span class="mf">9.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">hdf63c60_0</span>
-<span class="n">unlinking</span><span class="p">:</span> <span class="n">openssl</span><span class="o">-</span><span class="mf">1.1</span><span class="o">.</span><span class="mi">1</span><span class="n">c</span><span class="o">-</span><span class="n">h516909a_0</span>
-<span class="n">unlinking</span><span class="p">:</span> <span class="n">python</span><span class="o">-</span><span class="mf">3.6</span><span class="o">.</span><span class="mi">7</span><span class="o">-</span><span class="n">h381d211_1004</span>
-<span class="n">unlinking</span><span class="p">:</span> <span class="n">sqlite</span><span class="o">-</span><span class="mf">3.28</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">h8b20d00_0</span>
-<span class="n">unlinking</span><span class="p">:</span> <span class="n">tk</span><span class="o">-</span><span class="mf">8.6</span><span class="o">.</span><span class="mi">9</span><span class="o">-</span><span class="n">hed695b0_1002</span>
-<span class="n">installation</span> <span class="n">finished</span><span class="o">.</span>
-<span class="n">WARNING</span><span class="p">:</span>
-    <span class="n">You</span> <span class="n">currently</span> <span class="n">have</span> <span class="n">a</span> <span class="n">PYTHONPATH</span> <span class="n">environment</span> <span class="n">variable</span> <span class="n">set</span><span class="o">.</span> <span class="n">This</span> <span class="n">may</span> <span class="n">cause</span>
-    <span class="n">unexpected</span> <span class="n">behavior</span> <span class="n">when</span> <span class="n">running</span> <span class="n">the</span> <span class="n">Python</span> <span class="n">interpreter</span> <span class="ow">in</span> <span class="n">Miniconda3</span><span class="o">.</span>
-    <span class="n">For</span> <span class="n">best</span> <span class="n">results</span><span class="p">,</span> <span class="n">please</span> <span class="n">verify</span> <span class="n">that</span> <span class="n">your</span> <span class="n">PYTHONPATH</span> <span class="n">only</span> <span class="n">points</span> <span class="n">to</span>
-    <span class="n">directories</span> <span class="n">of</span> <span class="n">packages</span> <span class="n">that</span> <span class="n">are</span> <span class="n">compatible</span> <span class="n">with</span> <span class="n">the</span> <span class="n">Python</span> <span class="n">interpreter</span>
-    <span class="ow">in</span> <span class="n">Miniconda3</span><span class="p">:</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span>
-<span class="n">Solving</span> <span class="n">environment</span><span class="p">:</span> <span class="o">...</span><span class="n">working</span><span class="o">...</span> <span class="n">done</span>
+PREFIX=/usr/local
+installing: python-3.6.5-hc3d631a_2 ...
+Python 3.6.5 :: Anaconda, Inc.
+installing: ca-certificates-2018.03.07-0 ...
+installing: conda-env-2.6.0-h36134e3_1 ...
+installing: libgcc-ng-7.2.0-hdf63c60_3 ...
+installing: libstdcxx-ng-7.2.0-hdf63c60_3 ...
+installing: libffi-3.2.1-hd88cf55_4 ...
+installing: ncurses-6.1-hf484d3e_0 ...
+installing: openssl-1.0.2o-h20670df_0 ...
+installing: tk-8.6.7-hc745277_3 ...
+installing: xz-5.2.4-h14c3975_4 ...
+installing: yaml-0.1.7-had09818_2 ...
+installing: zlib-1.2.11-ha838bed_2 ...
+installing: libedit-3.1.20170329-h6b74fdf_2 ...
+installing: readline-7.0-ha6073c6_4 ...
+installing: sqlite-3.23.1-he433501_0 ...
+installing: asn1crypto-0.24.0-py36_0 ...
+installing: certifi-2018.4.16-py36_0 ...
+installing: chardet-3.0.4-py36h0f667ec_1 ...
+installing: idna-2.6-py36h82fb2a8_1 ...
+installing: pycosat-0.6.3-py36h0a5515d_0 ...
+installing: pycparser-2.18-py36hf9f622e_1 ...
+installing: pysocks-1.6.8-py36_0 ...
+installing: ruamel_yaml-0.15.37-py36h14c3975_2 ...
+installing: six-1.11.0-py36h372c433_1 ...
+installing: cffi-1.11.5-py36h9745a5d_0 ...
+installing: setuptools-39.2.0-py36_0 ...
+installing: cryptography-2.2.2-py36h14c3975_0 ...
+installing: wheel-0.31.1-py36_0 ...
+installing: pip-10.0.1-py36_0 ...
+installing: pyopenssl-18.0.0-py36_0 ...
+installing: urllib3-1.22-py36hbe7ace6_0 ...
+installing: requests-2.18.4-py36he2e5f8d_1 ...
+installing: conda-4.5.4-py36_0 ...
+unlinking: ca-certificates-2019.6.16-hecc5488_0
+unlinking: certifi-2019.6.16-py36_1
+unlinking: conda-4.7.11-py36_0
+unlinking: cryptography-2.7-py36h72c5cf5_0
+unlinking: libgcc-ng-9.1.0-hdf63c60_0
+unlinking: libstdcxx-ng-9.1.0-hdf63c60_0
+unlinking: openssl-1.1.1c-h516909a_0
+unlinking: python-3.6.7-h381d211_1004
+unlinking: sqlite-3.28.0-h8b20d00_0
+unlinking: tk-8.6.9-hed695b0_1002
+installation finished.
+WARNING:
+    You currently have a PYTHONPATH environment variable set. This may cause
+    unexpected behavior when running the Python interpreter in Miniconda3.
+    For best results, please verify that your PYTHONPATH only points to
+    directories of packages that are compatible with the Python interpreter
+    in Miniconda3: /usr/local
+Solving environment: ...working... done
 
-<span class="c1">## Package Plan ##</span>
+## Package Plan ##
 
-  <span class="n">environment</span> <span class="n">location</span><span class="p">:</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span>
+  environment location: /usr/local
 
-  <span class="n">added</span> <span class="o">/</span> <span class="n">updated</span> <span class="n">specs</span><span class="p">:</span> 
-    <span class="o">-</span> <span class="n">cudf</span>
-    <span class="o">-</span> <span class="n">cuml</span>
+  added / updated specs: 
+    - cudf
+    - cuml
 
 
-<span class="n">The</span> <span class="n">following</span> <span class="n">packages</span> <span class="n">will</span> <span class="n">be</span> <span class="n">UPDATED</span><span class="p">:</span>
+The following packages will be UPDATED:
 
-    <span class="n">ca</span><span class="o">-</span><span class="n">certificates</span><span class="p">:</span> <span class="mf">2018.03</span><span class="o">.</span><span class="mi">07</span><span class="o">-</span><span class="mi">0</span>         <span class="o">--&gt;</span> <span class="mf">2019.6</span><span class="o">.</span><span class="mi">16</span><span class="o">-</span><span class="n">hecc5488_0</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">certifi</span><span class="p">:</span>         <span class="mf">2018.4</span><span class="o">.</span><span class="mi">16</span><span class="o">-</span><span class="n">py36_0</span>     <span class="o">--&gt;</span> <span class="mf">2019.6</span><span class="o">.</span><span class="mi">16</span><span class="o">-</span><span class="n">py36_1</span>     <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">conda</span><span class="p">:</span>           <span class="mf">4.5</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="n">py36_0</span>         <span class="o">--&gt;</span> <span class="mf">4.7</span><span class="o">.</span><span class="mi">11</span><span class="o">-</span><span class="n">py36_0</span>        <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">cryptography</span><span class="p">:</span>    <span class="mf">2.2</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">py36h14c3975_0</span> <span class="o">--&gt;</span> <span class="mf">2.7</span><span class="o">-</span><span class="n">py36h72c5cf5_0</span>   <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">libgcc</span><span class="o">-</span><span class="n">ng</span><span class="p">:</span>       <span class="mf">7.2</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">hdf63c60_3</span>     <span class="o">--&gt;</span> <span class="mf">9.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">hdf63c60_0</span>                
-    <span class="n">libstdcxx</span><span class="o">-</span><span class="n">ng</span><span class="p">:</span>    <span class="mf">7.2</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">hdf63c60_3</span>     <span class="o">--&gt;</span> <span class="mf">9.1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">hdf63c60_0</span>                
-    <span class="n">openssl</span><span class="p">:</span>         <span class="mf">1.0</span><span class="o">.</span><span class="mi">2</span><span class="n">o</span><span class="o">-</span><span class="n">h20670df_0</span>    <span class="o">--&gt;</span> <span class="mf">1.1</span><span class="o">.</span><span class="mi">1</span><span class="n">c</span><span class="o">-</span><span class="n">h516909a_0</span>    <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">python</span><span class="p">:</span>          <span class="mf">3.6</span><span class="o">.</span><span class="mi">5</span><span class="o">-</span><span class="n">hc3d631a_2</span>     <span class="o">--&gt;</span> <span class="mf">3.6</span><span class="o">.</span><span class="mi">7</span><span class="o">-</span><span class="n">h381d211_1004</span>  <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">sqlite</span><span class="p">:</span>          <span class="mf">3.23</span><span class="o">.</span><span class="mi">1</span><span class="o">-</span><span class="n">he433501_0</span>    <span class="o">--&gt;</span> <span class="mf">3.28</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">h8b20d00_0</span>    <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-    <span class="n">tk</span><span class="p">:</span>              <span class="mf">8.6</span><span class="o">.</span><span class="mi">7</span><span class="o">-</span><span class="n">hc745277_3</span>     <span class="o">--&gt;</span> <span class="mf">8.6</span><span class="o">.</span><span class="mi">9</span><span class="o">-</span><span class="n">hed695b0_1002</span>  <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
+    ca-certificates: 2018.03.07-0         --&gt; 2019.6.16-hecc5488_0 conda-forge
+    certifi:         2018.4.16-py36_0     --&gt; 2019.6.16-py36_1     conda-forge
+    conda:           4.5.4-py36_0         --&gt; 4.7.11-py36_0        conda-forge
+    cryptography:    2.2.2-py36h14c3975_0 --&gt; 2.7-py36h72c5cf5_0   conda-forge
+    libgcc-ng:       7.2.0-hdf63c60_3     --&gt; 9.1.0-hdf63c60_0                
+    libstdcxx-ng:    7.2.0-hdf63c60_3     --&gt; 9.1.0-hdf63c60_0                
+    openssl:         1.0.2o-h20670df_0    --&gt; 1.1.1c-h516909a_0    conda-forge
+    python:          3.6.5-hc3d631a_2     --&gt; 3.6.7-h381d211_1004  conda-forge
+    sqlite:          3.23.1-he433501_0    --&gt; 3.28.0-h8b20d00_0    conda-forge
+    tk:              8.6.7-hc745277_3     --&gt; 8.6.9-hed695b0_1002  conda-forge
 
-<span class="n">Preparing</span> <span class="n">transaction</span><span class="p">:</span> <span class="o">...</span><span class="n">working</span><span class="o">...</span> <span class="n">done</span>
-<span class="n">Verifying</span> <span class="n">transaction</span><span class="p">:</span> <span class="o">...</span><span class="n">working</span><span class="o">...</span> <span class="n">done</span>
-<span class="n">Executing</span> <span class="n">transaction</span><span class="p">:</span> <span class="o">...</span><span class="n">working</span><span class="o">...</span> <span class="n">done</span>
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... done
 </code></pre></div>
-
 <p><strong>You would need to do a <code>Runtime &gt; Restart and Run All</code> on your Google Colab notebook at this step.</strong></p>
 <h2 id="imports">Imports<a class="headerlink" href="#imports" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="c1"># Critical imports for GPU cuDF</span>
@@ -2023,8 +1985,8 @@
 Recently, fractional differencing was introduced for financial time series through the fixed window fractional differencing instead of the expanding window method by Marcos Lopez de Prado2.</p>
 <h3 id="fractional-differencing-weight-function-and-plot">Fractional Differencing Weight Function and Plot<a class="headerlink" href="#fractional-differencing-weight-function-and-plot" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Weights formula: <span><span class="MathJax_Preview">w_k = -w_{k-1} \frac{d - k + 1}{k}</span><script type="math/tex">w_k = -w_{k-1} \frac{d - k + 1}{k}</script></span></li>
-<li>Weight converges to zero: <span><span class="MathJax_Preview">w_k \rightarrow 0</span><script type="math/tex">w_k \rightarrow 0</script></span></li>
+<li>Weights formula: <span class="arithmatex">\(w_k = -w_{k-1} \frac{d - k + 1}{k}\)</span></li>
+<li>Weight converges to zero: <span class="arithmatex">\(w_k \rightarrow 0\)</span></li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_weights</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">num_k</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Calculate weights ($w$) for each lag ($k$) through</span>
@@ -2180,69 +2142,66 @@ Recently, fractional differencing was introduced for financial time series throu
 <ul>
 <li>Assume spot have values 100, 99, 98, 97, 96, 95, 94 from k=0 to k=6</li>
 </ul>
-<h4 id="for-d-0d-0-no-differencing">For <span><span class="MathJax_Preview">d = 0</span><script type="math/tex">d = 0</script></span> (no differencing)<a class="headerlink" href="#for-d-0d-0-no-differencing" title="Permanent link">&para;</a></h4>
+<h4 id="for-d-0-no-differencing">For <span class="arithmatex">\(d = 0\)</span> (no differencing)<a class="headerlink" href="#for-d-0-no-differencing" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="n">differenced_value</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">99</span> <span class="o">*</span> <span class="mi">0</span> <span class="o">+</span> <span class="mi">98</span> <span class="o">*</span> <span class="mi">0</span> <span class="o">+</span> <span class="mi">97</span> <span class="o">*</span> <span class="mi">0</span> <span class="o">+</span> <span class="mi">96</span> <span class="o">*</span> <span class="mi">0</span> <span class="o">+</span> <span class="mi">95</span> <span class="o">*</span> <span class="mi">0</span> <span class="o">+</span> <span class="mi">94</span> <span class="o">*</span> <span class="mi">0</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Differenced value: </span><span class="si">{</span><span class="n">differenced_value</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">df_wk</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="n">Differenced</span> <span class="n">value</span><span class="p">:</span> <span class="mi">100</span>
+<div class="highlight"><pre><span></span><code>Differenced value: 100
 
 
 
 
 
-<span class="mi">0</span>    <span class="mi">1</span><span class="p">.</span><span class="mi">0</span>
-<span class="mi">1</span>   <span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
-<span class="mi">2</span>   <span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
-<span class="mi">3</span>   <span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
-<span class="mi">4</span>   <span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
-<span class="mi">5</span>   <span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
-<span class="mi">6</span>   <span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
-<span class="n">Name</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+0    1.0
+1   -0.0
+2   -0.0
+3   -0.0
+4   -0.0
+5   -0.0
+6   -0.0
+Name: 0.0, dtype: float64
 </code></pre></div>
-
-<h4 id="for-d-04d-04-fractional-differencing">For <span><span class="MathJax_Preview">d = 0.4</span><script type="math/tex">d = 0.4</script></span> (fractional differencing)<a class="headerlink" href="#for-d-04d-04-fractional-differencing" title="Permanent link">&para;</a></h4>
+<h4 id="for-d-04-fractional-differencing">For <span class="arithmatex">\(d = 0.4\)</span> (fractional differencing)<a class="headerlink" href="#for-d-04-fractional-differencing" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="n">differenced_value</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">99</span> <span class="o">*</span> <span class="o">-</span><span class="mf">0.400000</span> <span class="o">+</span> <span class="mi">98</span> <span class="o">*</span> <span class="o">-</span><span class="mf">0.120000</span> <span class="o">+</span> <span class="mi">97</span> <span class="o">*</span> <span class="o">-</span><span class="mf">0.064000</span> <span class="o">+</span> <span class="mi">96</span> <span class="o">*</span> <span class="o">-</span><span class="mf">0.041600</span> <span class="o">+</span> <span class="mi">95</span> <span class="o">*</span> <span class="o">-</span><span class="mf">0.041600</span> <span class="o">+</span> <span class="mi">94</span> <span class="o">*</span> <span class="o">-</span><span class="mf">0.041600</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Differenced value: </span><span class="si">{</span><span class="n">differenced_value</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">df_wk</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="n">Differenced</span> <span class="n">value</span><span class="p">:</span> <span class="mi">30</span><span class="p">.</span><span class="mi">576000000000004</span>
+<div class="highlight"><pre><span></span><code>Differenced value: 30.576000000000004
 
 
 
 
 
-<span class="mi">0</span>    <span class="mi">1</span><span class="p">.</span><span class="mi">000000</span>
-<span class="mi">1</span>   <span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">200000</span>
-<span class="mi">2</span>   <span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">080000</span>
-<span class="mi">3</span>   <span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">048000</span>
-<span class="mi">4</span>   <span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">033600</span>
-<span class="mi">5</span>   <span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">025536</span>
-<span class="mi">6</span>   <span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">020429</span>
-<span class="n">Name</span><span class="p">:</span> <span class="mi">0</span><span class="p">.</span><span class="mi">2</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+0    1.000000
+1   -0.200000
+2   -0.080000
+3   -0.048000
+4   -0.033600
+5   -0.025536
+6   -0.020429
+Name: 0.2, dtype: float64
 </code></pre></div>
-
-<h4 id="for-d-1d-1-integer-differencing">For <span><span class="MathJax_Preview">d = 1</span><script type="math/tex">d = 1</script></span> (integer differencing)<a class="headerlink" href="#for-d-1d-1-integer-differencing" title="Permanent link">&para;</a></h4>
+<h4 id="for-d-1-integer-differencing">For <span class="arithmatex">\(d = 1\)</span> (integer differencing)<a class="headerlink" href="#for-d-1-integer-differencing" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="n">differenced_value</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">99</span> <span class="o">*</span> <span class="o">-</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">98</span> <span class="o">*</span> <span class="mi">0</span> <span class="o">+</span> <span class="mi">97</span> <span class="o">*</span> <span class="mi">0</span> <span class="o">+</span> <span class="mi">96</span> <span class="o">*</span> <span class="mi">0</span> <span class="o">+</span> <span class="mi">95</span> <span class="o">*</span> <span class="mi">0</span> <span class="o">+</span> <span class="mi">94</span> <span class="o">*</span> <span class="mi">0</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Differenced value: </span><span class="si">{</span><span class="n">differenced_value</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">df_wk</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="n">Differenced</span> <span class="n">value</span><span class="p">:</span> <span class="mi">1</span>
+<div class="highlight"><pre><span></span><code>Differenced value: 1
 
 
 
 
 
-<span class="mi">0</span>    <span class="mi">1</span><span class="p">.</span><span class="mi">0</span>
-<span class="mi">1</span>   <span class="o">-</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span>
-<span class="mi">2</span>    <span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
-<span class="mi">3</span>    <span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
-<span class="mi">4</span>    <span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
-<span class="mi">5</span>    <span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
-<span class="mi">6</span>    <span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
-<span class="n">Name</span><span class="p">:</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+0    1.0
+1   -1.0
+2    0.0
+3    0.0
+4    0.0
+5    0.0
+6    0.0
+Name: 1.0, dtype: float64
 </code></pre></div>
-
 <h3 id="cumulative-sum-of-weights-behavior">Cumulative Sum of Weights Behavior<a class="headerlink" href="#cumulative-sum-of-weights-behavior" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Higher differencing value would accelerate cumulative sum weight decay</li>
@@ -2360,16 +2319,14 @@ Recently, fractional differencing was introduced for financial time series throu
 <span class="c1"># Plot</span>
 <span class="n">df_raw_fd</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">);</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="err">Time 0.5417799949645996 s</span>
+<div class="highlight"><pre><span></span><code>Time 0.5417799949645996 s
 </code></pre></div>
-
 <p><img alt="png" src="../gpu_fractional_differencing_files/gpu_fractional_differencing_40_1.png" /></p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">multiprocessing</span>
 <span class="n">multiprocessing</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="err">4</span>
+<div class="highlight"><pre><span></span><code>4
 </code></pre></div>
-
 <p>Existing CPU-based implementations are inefficient for running fractional differencing on many large-scale time-series. GPU-based implementations provide an avenue to adapt to this century’s big data requirements.</p>
 <h3 id="fixed-window-fractional-differencing-function-gpu">Fixed Window Fractional Differencing Function (GPU)<a class="headerlink" href="#fixed-window-fractional-differencing-function-gpu" title="Permanent link">&para;</a></h3>
 <ul>
@@ -2458,9 +2415,8 @@ Recently, fractional differencing was introduced for financial time series throu
 <span class="c1"># Plot</span>
 <span class="n">df_raw_fd_from_gpu</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">);</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="err">Time 0.27262187004089355 s</span>
+<div class="highlight"><pre><span></span><code>Time 0.27262187004089355 s
 </code></pre></div>
-
 <p><img alt="png" src="../gpu_fractional_differencing_files/gpu_fractional_differencing_44_1.png" /></p>
 <h3 id="check-values">Check Values<a class="headerlink" href="#check-values" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Compare tail values</span>
@@ -2468,31 +2424,28 @@ Recently, fractional differencing was introduced for financial time series throu
 <span class="nb">print</span><span class="p">(</span><span class="n">df_raw_fd_from_gpu</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_raw_fd</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,))</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="err">Tail values check</span>
-<span class="err">[107.00340988 133.85520208 117.92878691 109.44132697  79.32562638]</span>
-<span class="err">[107.00340988 133.85520208 117.92878691 109.44132697  79.32562638]</span>
+<div class="highlight"><pre><span></span><code>Tail values check
+[107.00340988 133.85520208 117.92878691 109.44132697  79.32562638]
+[107.00340988 133.85520208 117.92878691 109.44132697  79.32562638]
 </code></pre></div>
-
 <div class="highlight"><pre><span></span><code><span class="c1"># Compare tail values</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Head values check&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_raw_fd_from_gpu</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_raw_fd</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,))</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="err">Head values check</span>
-<span class="err">[56.74989213 52.56766288 47.32421832 45.89772154 37.74401501]</span>
-<span class="err">[56.74989213 52.56766288 47.32421832 45.89772154 37.74401501]</span>
+<div class="highlight"><pre><span></span><code>Head values check
+[56.74989213 52.56766288 47.32421832 45.89772154 37.74401501]
+[56.74989213 52.56766288 47.32421832 45.89772154 37.74401501]
 </code></pre></div>
-
 <div class="highlight"><pre><span></span><code><span class="n">num_rows_true</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_raw_fd</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">==</span> <span class="n">df_raw_fd_from_gpu</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="n">total_rows</span> <span class="o">=</span> <span class="n">df_raw_fd</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Number of rows equal: </span><span class="si">{</span><span class="n">num_rows_true</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Total number of rows: </span><span class="si">{</span><span class="n">total_rows</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="err">Number of rows equal: 2093</span>
-<span class="err">Total number of rows: 2093</span>
+<div class="highlight"><pre><span></span><code>Number of rows equal: 2093
+Total number of rows: 2093
 </code></pre></div>
-
 <h2 id="stationarity">Stationarity<a class="headerlink" href="#stationarity" title="Permanent link">&para;</a></h2>
 <ul>
 <li>"A stationary time series is one whose statistical properties such as mean, variance, autocorrelation, etc. are all constant over time", <a href="https://people.duke.edu/~rnau/411diff.htm">Robert Nau, Duke University</a></li>
@@ -2526,18 +2479,17 @@ Recently, fractional differencing was introduced for financial time series throu
 <span class="c1"># Fail to reject the null hypothesis that there&#39;s unit root at the 1% significance level</span>
 <span class="c1"># ==&gt; Fail to reject H0 ==&gt; Unit root ==&gt; Non-stationary</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="err">Stationarity Test for SPX Absolute Levels (d=0)</span>
-<span class="err">--------------------------------------------------</span>
-<span class="err">t-stat </span>
-<span class="err">    -0.11</span>
-<span class="err">p-value </span>
-<span class="err">    0.95</span>
-<span class="err">Critical Values</span>
-<span class="err">    1%: -3.43</span>
-<span class="err">    5%: -2.86</span>
-<span class="err">    10%: -2.57</span>
+<div class="highlight"><pre><span></span><code>Stationarity Test for SPX Absolute Levels (d=0)
+--------------------------------------------------
+t-stat 
+    -0.11
+p-value 
+    0.95
+Critical Values
+    1%: -3.43
+    5%: -2.86
+    10%: -2.57
 </code></pre></div>
-
 <h4 id="adf-daily-return-data-d1">ADF: daily return data (d=1)<a class="headerlink" href="#adf-daily-return-data-d1" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># ADF on 1 day returns (d=1)</span>
 
@@ -2555,18 +2507,17 @@ Recently, fractional differencing was introduced for financial time series throu
 <span class="c1"># Reject the null hypothesis that there&#39;s unit root at the 1% significance level</span>
 <span class="c1"># ==&gt; Reject H0 ==&gt; No unit root ==&gt; Stationary</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="err">Stationarity Test for SPX Daily Returns (d=1)</span>
-<span class="err">--------------------------------------------------</span>
-<span class="err">t-stat </span>
-<span class="err">    -11.12</span>
-<span class="err">p-value </span>
-<span class="err">    0.00</span>
-<span class="err">Critical Values</span>
-<span class="err">    1%: -3.43</span>
-<span class="err">    5%: -2.86</span>
-<span class="err">    10%: -2.57</span>
+<div class="highlight"><pre><span></span><code>Stationarity Test for SPX Daily Returns (d=1)
+--------------------------------------------------
+t-stat 
+    -11.12
+p-value 
+    0.00
+Critical Values
+    1%: -3.43
+    5%: -2.86
+    10%: -2.57
 </code></pre></div>
-
 <h4 id="adf-fractionally-differenced-data-d05">ADF: fractionally differenced data (d=0.5)<a class="headerlink" href="#adf-fractionally-differenced-data-d05" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># ADF on fractionally differenced values</span>
 
@@ -2588,18 +2539,17 @@ Recently, fractional differencing was introduced for financial time series throu
 <span class="c1"># Reject the null hypothesis that there&#39;s unit root at the 1% significance level</span>
 <span class="c1"># ==&gt; Reject H0 ==&gt; No unit root ==&gt; Stationary</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="err">Stationarity Test (ADF) for SPX Fractionally Differenced (d=0.5)</span>
-<span class="err">--------------------------------------------------</span>
-<span class="err">t-stat </span>
-<span class="err">    -3.86</span>
-<span class="err">p-value </span>
-<span class="err">    0.00</span>
-<span class="err">Critical Values</span>
-<span class="err">    1%: -3.43</span>
-<span class="err">    5%: -2.86</span>
-<span class="err">    10%: -2.57</span>
+<div class="highlight"><pre><span></span><code>Stationarity Test (ADF) for SPX Fractionally Differenced (d=0.5)
+--------------------------------------------------
+t-stat 
+    -3.86
+p-value 
+    0.00
+Critical Values
+    1%: -3.43
+    5%: -2.86
+    10%: -2.57
 </code></pre></div>
-
 <h2 id="large-scale-rapid-fractional-differencing">Large-scale Rapid Fractional Differencing<a class="headerlink" href="#large-scale-rapid-fractional-differencing" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Here we test on a 100k, 1m, 10m and 100m datapoint dataframe.</li>
@@ -2608,9 +2558,8 @@ Recently, fractional differencing was introduced for financial time series throu
 <span class="n">large_time_series_length</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">1e6</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">large_time_series_length</span><span class="p">)</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="err">1000000</span>
+<div class="highlight"><pre><span></span><code>1000000
 </code></pre></div>
-
 <div class="highlight"><pre><span></span><code><span class="c1"># Start timer</span>
 <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 
@@ -2628,12 +2577,11 @@ Recently, fractional differencing was introduced for financial time series throu
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Correct Shape&#39;</span><span class="p">,</span> <span class="n">df_raw</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">weights</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Original Shape&#39;</span><span class="p">,</span> <span class="n">df_raw</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="err">Time 0.4671785831451416 s</span>
-<span class="err">FD Shape 999682</span>
-<span class="err">Correct Shape 999682</span>
-<span class="err">Original Shape 1000000</span>
+<div class="highlight"><pre><span></span><code>Time 0.4671785831451416 s
+FD Shape 999682
+Correct Shape 999682
+Original Shape 1000000
 </code></pre></div>
-
 <div class="highlight"><pre><span></span><code><span class="c1"># Start timer</span>
 <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 
@@ -2652,10 +2600,10 @@ Recently, fractional differencing was introduced for financial time series throu
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Correct Shape&#39;</span><span class="p">,</span> <span class="n">df_raw</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">weights</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Original Shape&#39;</span><span class="p">,</span> <span class="n">df_raw</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </code></pre></div>
-<div class="codehilite"><pre><span></span><code><span class="err">Time 128.29733324050903 s</span>
-<span class="err">FD Shape 999682</span>
-<span class="err">Correct Shape 999682</span>
-<span class="err">Original Shape 1000000</span>
+<div class="highlight"><pre><span></span><code>Time 128.29733324050903 s
+FD Shape 999682
+Correct Shape 999682
+Original Shape 1000000
 </code></pre></div>
                 
               
@@ -2671,88 +2619,62 @@ Recently, fractional differencing was introduced for financial time series throu
             </article>
           </div>
         </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
       </main>
       
         
-
-<!-- Application footer -->
 <footer class="md-footer">
-
-  <!-- Link to previous and/or next page -->
   
-    <div class="md-footer-nav">
-      <nav
-        class="md-footer-nav__inner md-grid"
-        aria-label="Footer"
-      >
-
-        <!-- Link to previous page -->
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
         
-          <a
-            href="../rapids_cudf/"
-            title="GPU DataFrames"
-            class="md-footer-nav__link md-footer-nav__link--prev"
-            rel="prev"
-          >
-            <div class="md-footer-nav__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        <a href="../rapids_cudf/" class="md-footer__link md-footer__link--prev" aria-label="Previous: GPU DataFrames" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              GPU DataFrames
             </div>
-            <div class="md-footer-nav__title">
-              <div class="md-ellipsis">
-                <span class="md-footer-nav__direction">
-                  Previous
-                </span>
-                GPU DataFrames
-              </div>
-            </div>
-          </a>
+          </div>
+        </a>
+      
+      
         
-
-        <!-- Link to next page -->
-        
-          <a
-            href="../../../programming/intro/"
-            title="Introduction"
-            class="md-footer-nav__link md-footer-nav__link--next"
-            rel="next"
-          >
-            <div class="md-footer-nav__title">
-              <div class="md-ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                Introduction
-              </div>
+        <a href="../../../programming/intro/" class="md-footer__link md-footer__link--next" aria-label="Next: Introduction" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Introduction
             </div>
-            <div class="md-footer-nav__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
-    </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
-
-  <!-- Further information -->
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
-
-      <!-- Copyright and theme information -->
       <div class="md-footer-copyright">
         
           <div class="md-footer-copyright__highlight">
             Copyright &copy; 2021 Deep Learning Wizard by Ritchie Ng
           </div>
         
-        proudly an
-        <a href="http://www.nvidia.com/page/home.html">NVIDIA Inception Partner</a> and supported by the
-        <a href="https://aws.amazon.com/activate/">Amazon AWS Activate Programme</a> by
-        <a href="https://www.ritchieng.com/">
-          Ritchie Ng</a>
-        </a>
+        
       </div>
-
-      <!-- Social links -->
       
   <div class="md-footer-social">
     
@@ -2808,19 +2730,13 @@ Recently, fractional differencing was introduced for financial time series throu
 </footer>
       
     </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotate", "content.tabs.link", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
     
-      <script src="../../../assets/javascripts/vendor.93c04032.min.js"></script>
-      <script src="../../../assets/javascripts/bundle.83e5331e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
-      
-      <script>
-        app = initialize({
-          base: "../../..",
-          features: ['navigation.tabs', 'instant'],
-          search: Object.assign({
-            worker: "../../../assets/javascripts/worker/search.8c7e0a7e.min.js"
-          }, typeof search !== "undefined" && search)
-        })
-      </script>
+    
+      <script src="../../../assets/javascripts/bundle.56838a2c.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
