@@ -66,6 +66,7 @@ nav:
       - C++: programming/cpp/cpp.md
       - Bash: programming/bash/bash.md
       - Python: programming/python/python.md
+      - R: programming/python/r.md
       - Javascript: programming/javascript/javascript.md
       - Electron: programming/electron/electron.md
       - Sympy: programming/sympy/calculus_sympy.md
