@@ -26,7 +26,7 @@
 - If we set $\eta$ to be a **large value** $\rightarrow$ learn too much (rapid learning)
     - Unable to converge to a good local minima (unable to effectively gradually decrease your loss, overshoot the local lowest value)
 - If we set $\eta$ to be a **small value** $\rightarrow$ learn too little (slow learning)
-    - May take too long or unable to convert to a good local minima
+    - May take too long or unable to converge to a good local minima
 
 ## Need for Learning Rate Schedules
 - Benefits
