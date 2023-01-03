@@ -906,8 +906,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#check-gpu-if-youve-right-version-t4" class="md-nav__link">
-    Check GPU if You've Right Version (T4)
+  <a href="#setup" class="md-nav__link">
+    Setup:
   </a>
   
 </li>
@@ -918,8 +918,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#installation-of-cudfcuml" class="md-nav__link">
-    Installation of cuDF/cuML
+  <a href="#installation-of-rapids-including-cudfcuml" class="md-nav__link">
+    Installation of RAPIDS (including cuDF/cuML)
   </a>
   
 </li>
@@ -1593,8 +1593,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#check-gpu-if-youve-right-version-t4" class="md-nav__link">
-    Check GPU if You've Right Version (T4)
+  <a href="#setup" class="md-nav__link">
+    Setup:
   </a>
   
 </li>
@@ -1605,8 +1605,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#installation-of-cudfcuml" class="md-nav__link">
-    Installation of cuDF/cuML
+  <a href="#installation-of-rapids-including-cudfcuml" class="md-nav__link">
+    Installation of RAPIDS (including cuDF/cuML)
   </a>
   
 </li>
@@ -1831,7 +1831,7 @@
 <div class="highlight"><pre><span></span><code><span class="c1"># Check Python Version</span>
 <span class="err">!</span><span class="n">python</span> <span class="o">--</span><span class="n">version</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>Python 3.6.7
+<div class="highlight"><pre><span></span><code>Python 3.8.16
 </code></pre></div>
 <h4 id="ubuntu-version">Ubuntu Version<a class="headerlink" href="#ubuntu-version" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># Check Ubuntu Version</span>
@@ -1839,7 +1839,7 @@
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>No LSB modules are available.
 Distributor ID: Ubuntu
-Description:    Ubuntu 18.04.2 LTS
+Description:    Ubuntu 18.04.6 LTS
 Release:    18.04
 Codename:   bionic
 </code></pre></div>
@@ -1848,246 +1848,221 @@ Codename:   bionic
 <span class="err">!</span><span class="n">nvcc</span> <span class="o">-</span><span class="n">V</span> <span class="o">&amp;&amp;</span> <span class="n">which</span> <span class="n">nvcc</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>nvcc: NVIDIA (R) Cuda compiler driver
-Copyright (c) 2005-2018 NVIDIA Corporation
-Built on Sat_Aug_25_21:08:01_CDT_2018
-Cuda compilation tools, release 10.0, V10.0.130
+Copyright (c) 2005-2021 NVIDIA Corporation
+Built on Sun_Feb_14_21:12:58_PST_2021
+Cuda compilation tools, release 11.2, V11.2.152
+Build cuda_11.2.r11.2/compiler.29618528_0
 /usr/local/cuda/bin/nvcc
 </code></pre></div>
 <h4 id="check-gpu-version">Check GPU Version<a class="headerlink" href="#check-gpu-version" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># Check GPU</span>
 <span class="err">!</span><span class="n">nvidia</span><span class="o">-</span><span class="n">smi</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>Mon May 13 09:31:40 2019       
+<div class="highlight"><pre><span></span><code>Tue Jan  3 04:41:06 2023       
 +-----------------------------------------------------------------------------+
-| NVIDIA-SMI 418.56       Driver Version: 410.79       CUDA Version: 10.0     |
+| NVIDIA-SMI 460.32.03    Driver Version: 460.32.03    CUDA Version: 11.2     |
 |-------------------------------+----------------------+----------------------+
 | GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
 | Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
 |===============================+======================+======================|
 |   0  Tesla T4            Off  | 00000000:00:04.0 Off |                    0 |
-| N/A   67C    P8    17W /  70W |      0MiB / 15079MiB |      0%      Default |
+| N/A   59C    P0    27W /  70W |      0MiB / 15109MiB |      0%      Default |
+|                               |                      |                  N/A |
 +-------------------------------+----------------------+----------------------+
 
 +-----------------------------------------------------------------------------+
-| Processes:                                                       GPU Memory |
-|  GPU       PID   Type   Process name                             Usage      |
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
 |=============================================================================|
 |  No running processes found                                                 |
 +-----------------------------------------------------------------------------+
 </code></pre></div>
-<h4 id="check-gpu-if-youve-right-version-t4">Check GPU if You've Right Version (T4)<a class="headerlink" href="#check-gpu-if-youve-right-version-t4" title="Permanent link">&para;</a></h4>
-<p>Many thanks to NVIDIA team for this snippet of code to automatically set up everything.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pynvml</span>
-
-<span class="n">pynvml</span><span class="o">.</span><span class="n">nvmlInit</span><span class="p">()</span>
-<span class="n">handle</span> <span class="o">=</span> <span class="n">pynvml</span><span class="o">.</span><span class="n">nvmlDeviceGetHandleByIndex</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">device_name</span> <span class="o">=</span> <span class="n">pynvml</span><span class="o">.</span><span class="n">nvmlDeviceGetName</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
-
-<span class="k">if</span> <span class="n">device_name</span> <span class="o">!=</span> <span class="sa">b</span><span class="s1">&#39;Tesla T4&#39;</span><span class="p">:</span>
-  <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">    Unfortunately this instance does not have a T4 GPU.</span>
-
-<span class="s2">    Please make sure you&#39;ve configured Colab to request a GPU instance type.</span>
-
-<span class="s2">    Sometimes Colab allocates a Tesla K80 instead of a T4. Resetting the instance.</span>
-
-<span class="s2">    If you get a K80 GPU, try Runtime -&gt; Reset all runtimes...</span>
-<span class="s2">  &quot;&quot;&quot;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Woo! You got the right kind of GPU!&#39;</span><span class="p">)</span>
+<h4 id="setup">Setup:<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h4>
+<p>Set up script installs
+- Updates gcc in Colab
+- Installs Conda
+- Install RAPIDS' current stable version of its libraries, as well as some external libraries including:
+    - cuDF
+    - cuML
+    - cuGraph
+    - cuSpatial
+    - cuSignal
+    - BlazingSQL
+    - xgboost
+- Copy RAPIDS .so files into current working directory, a neccessary workaround for RAPIDS+Colab integration.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># This get the RAPIDS-Colab install files and test check your GPU.  Run this and the next cell only.</span>
+<span class="c1"># Please read the output of this cell.  If your Colab Instance is not RAPIDS compatible, it will warn you and give you remediation steps.</span>
+<span class="err">!</span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">rapidsai</span><span class="o">/</span><span class="n">rapidsai</span><span class="o">-</span><span class="n">csp</span><span class="o">-</span><span class="n">utils</span><span class="o">.</span><span class="n">git</span>
+<span class="err">!</span><span class="n">python</span> <span class="n">rapidsai</span><span class="o">-</span><span class="n">csp</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">colab</span><span class="o">/</span><span class="n">env</span><span class="o">-</span><span class="n">check</span><span class="o">.</span><span class="n">py</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>Woo! You got the right kind of GPU!
+<div class="highlight"><pre><span></span><code>Cloning into &#39;rapidsai-csp-utils&#39;...
+remote: Enumerating objects: 328, done.[K
+remote: Counting objects: 100% (157/157), done.[K
+remote: Compressing objects: 100% (102/102), done.[K
+remote: Total 328 (delta 92), reused 98 (delta 55), pack-reused 171[K
+Receiving objects: 100% (328/328), 94.64 KiB | 3.05 MiB/s, done.
+Resolving deltas: 100% (154/154), done.
+Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+Collecting pynvml
+  Downloading pynvml-11.4.1-py3-none-any.whl (46 kB)
+Installing collected packages: pynvml
+Successfully installed pynvml-11.4.1
+***********************************************************************
+Woo! Your instance has the right kind of GPU, a Tesla T4!
+We will now install RAPIDS via pip!  Please stand by, should be quick...
+***********************************************************************
 </code></pre></div>
-<h3 id="installation-of-cudfcuml">Installation of cuDF/cuML<a class="headerlink" href="#installation-of-cudfcuml" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># This will update the Colab environment and restart the kernel.  Don&#39;t run the next cell until you see the session crash.</span>
+<span class="err">!</span><span class="n">bash</span> <span class="n">rapidsai</span><span class="o">-</span><span class="n">csp</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">colab</span><span class="o">/</span><span class="n">update_gcc</span><span class="o">.</span><span class="n">sh</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">_exit</span><span class="p">(</span><span class="mi">00</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Updating your Colab environment.  This will restart your kernel.  Don&#39;t Panic!
+Get:1 https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/ InRelease [3,626 B]
+Get:2 http://ppa.launchpad.net/c2d4u.team/c2d4u4.0+/ubuntu bionic InRelease [15.9 kB]
+Get:3 http://security.ubuntu.com/ubuntu bionic-security InRelease [88.7 kB]
+Hit:4 http://archive.ubuntu.com/ubuntu bionic InRelease
+Get:5 http://archive.ubuntu.com/ubuntu bionic-updates InRelease [88.7 kB]
+Hit:6 http://ppa.launchpad.net/cran/libgit2/ubuntu bionic InRelease
+Ign:7 https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64  InRelease
+Hit:8 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64  InRelease
+Hit:9 https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64  Release
+Hit:11 http://ppa.launchpad.net/deadsnakes/ppa/ubuntu bionic InRelease
+Hit:12 http://ppa.launchpad.net/graphics-drivers/ppa/ubuntu bionic InRelease
+Get:13 http://archive.ubuntu.com/ubuntu bionic-backports InRelease [83.3 kB]
+Get:14 http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu bionic InRelease [20.8 kB]
+Get:15 http://ppa.launchpad.net/c2d4u.team/c2d4u4.0+/ubuntu bionic/main Sources [2,237 kB]
+Get:16 http://ppa.launchpad.net/c2d4u.team/c2d4u4.0+/ubuntu bionic/main amd64 Packages [1,144 kB]
+Get:17 http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu bionic/main amd64 Packages [50.4 kB]
+Fetched 3,733 kB in 6s (635 kB/s)
+Reading package lists... Done
+Added repo
+Hit:1 https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/ InRelease
+Hit:2 http://security.ubuntu.com/ubuntu bionic-security InRelease
+Hit:3 http://ppa.launchpad.net/c2d4u.team/c2d4u4.0+/ubuntu bionic InRelease
+Ign:4 https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64  InRelease
+Hit:5 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64  InRelease
+Hit:6 https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64  Release
+Hit:7 http://archive.ubuntu.com/ubuntu bionic InRelease
+Hit:9 http://archive.ubuntu.com/ubuntu bionic-updates InRelease
+Hit:10 http://ppa.launchpad.net/cran/libgit2/ubuntu bionic InRelease
+Hit:11 http://archive.ubuntu.com/ubuntu bionic-backports InRelease
+Hit:12 http://ppa.launchpad.net/deadsnakes/ppa/ubuntu bionic InRelease
+Hit:13 http://ppa.launchpad.net/graphics-drivers/ppa/ubuntu bionic InRelease
+Hit:14 http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu bionic InRelease
+Reading package lists... Done
+Installing libstdc++
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+Selected version &#39;11.1.0-1ubuntu1~18.04.1&#39; (Toolchain test builds:18.04/bionic [amd64]) for &#39;libstdc++6&#39;
+The following package was automatically installed and is no longer required:
+  libnvidia-common-460
+Use &#39;sudo apt autoremove&#39; to remove it.
+The following additional packages will be installed:
+  gcc-11-base libgcc-s1
+The following NEW packages will be installed:
+  gcc-11-base libgcc-s1
+The following packages will be upgraded:
+  libstdc++6
+1 upgraded, 2 newly installed, 0 to remove and 31 not upgraded.
+Need to get 641 kB of archives.
+After this operation, 981 kB of additional disk space will be used.
+Get:1 http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu bionic/main amd64 gcc-11-base amd64 11.1.0-1ubuntu1~18.04.1 [19.0 kB]
+Get:2 http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu bionic/main amd64 libgcc-s1 amd64 11.1.0-1ubuntu1~18.04.1 [41.8 kB]
+Get:3 http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu bionic/main amd64 libstdc++6 amd64 11.1.0-1ubuntu1~18.04.1 [580 kB]
+Fetched 641 kB in 2s (277 kB/s)
+debconf: unable to initialize frontend: Dialog
+debconf: (No usable dialog-like program is installed, so the dialog based frontend cannot be used. at /usr/share/perl5/Debconf/FrontEnd/Dialog.pm line 76, &lt;&gt; line 3.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: unable to re-open stdin: 
+Selecting previously unselected package gcc-11-base:amd64.
+(Reading database ... 124016 files and directories currently installed.)
+Preparing to unpack .../gcc-11-base_11.1.0-1ubuntu1~18.04.1_amd64.deb ...
+Unpacking gcc-11-base:amd64 (11.1.0-1ubuntu1~18.04.1) ...
+Setting up gcc-11-base:amd64 (11.1.0-1ubuntu1~18.04.1) ...
+Selecting previously unselected package libgcc-s1:amd64.
+(Reading database ... 124021 files and directories currently installed.)
+Preparing to unpack .../libgcc-s1_11.1.0-1ubuntu1~18.04.1_amd64.deb ...
+Unpacking libgcc-s1:amd64 (11.1.0-1ubuntu1~18.04.1) ...
+Replacing files in old package libgcc1:amd64 (1:8.4.0-1ubuntu1~18.04) ...
+Setting up libgcc-s1:amd64 (11.1.0-1ubuntu1~18.04.1) ...
+(Reading database ... 124023 files and directories currently installed.)
+Preparing to unpack .../libstdc++6_11.1.0-1ubuntu1~18.04.1_amd64.deb ...
+Unpacking libstdc++6:amd64 (11.1.0-1ubuntu1~18.04.1) over (8.4.0-1ubuntu1~18.04) ...
+Setting up libstdc++6:amd64 (11.1.0-1ubuntu1~18.04.1) ...
+Processing triggers for libc-bin (2.27-3ubuntu1.6) ...
+restarting Colab...
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># This will install CondaColab.  This will restart your kernel one last time.  Run this cell by itself and only run the next cell once you see the session crash.</span>
+<span class="kn">import</span> <span class="nn">condacolab</span>
+<span class="n">condacolab</span><span class="o">.</span><span class="n">install</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>⏬ Downloading https://github.com/jaimergp/miniforge/releases/latest/download/Mambaforge-colab-Linux-x86_64.sh...
+📦 Installing...
+📌 Adjusting configuration...
+🩹 Patching environment...
+⏲ Done in 0:00:14
+🔁 Restarting kernel...
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># you can now run the rest of the cells as normal</span>
+<span class="kn">import</span> <span class="nn">condacolab</span>
+<span class="n">condacolab</span><span class="o">.</span><span class="n">check</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>✨🍰✨ Everything looks OK!
+</code></pre></div>
+<h3 id="installation-of-rapids-including-cudfcuml">Installation of RAPIDS (including cuDF/cuML)<a class="headerlink" href="#installation-of-rapids-including-cudfcuml" title="Permanent link">&para;</a></h3>
 <p>Many thanks to NVIDIA team for this snippet of code to automatically set up everything.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># intall miniconda</span>
-<span class="err">!</span><span class="n">wget</span> <span class="o">-</span><span class="n">c</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">repo</span><span class="o">.</span><span class="n">continuum</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">Miniconda3</span><span class="o">-</span><span class="mf">4.5.4</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span>
-<span class="err">!</span><span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="n">Miniconda3</span><span class="o">-</span><span class="mf">4.5.4</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span>
-<span class="err">!</span><span class="n">bash</span> <span class="o">./</span><span class="n">Miniconda3</span><span class="o">-</span><span class="mf">4.5.4</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">b</span> <span class="o">-</span><span class="n">f</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span>
-
-<span class="c1"># install RAPIDS packages</span>
-<span class="err">!</span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">q</span> <span class="o">-</span><span class="n">y</span> <span class="o">--</span><span class="n">prefix</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> \
-  <span class="o">-</span><span class="n">c</span> <span class="n">rapidsai</span><span class="o">-</span><span class="n">nightly</span><span class="o">/</span><span class="n">label</span><span class="o">/</span><span class="n">cuda10</span><span class="mf">.0</span> <span class="o">-</span><span class="n">c</span> <span class="n">nvidia</span><span class="o">/</span><span class="n">label</span><span class="o">/</span><span class="n">cuda10</span><span class="mf">.0</span> \
-  <span class="n">cudf</span> <span class="n">cuml</span>
-
-<span class="c1"># set environment vars</span>
-<span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">shutil</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;/usr/local/lib/python3.6/site-packages/&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Installing RAPIDS is now &#39;python rapidsai-csp-utils/colab/install_rapids.py &lt;release&gt; &lt;packages&gt;&#39;</span>
+<span class="c1"># The &lt;release&gt; options are &#39;stable&#39; and &#39;nightly&#39;.  Leaving it blank or adding any other words will default to stable.</span>
+<span class="c1"># The &lt;packages&gt; option are default blank or &#39;core&#39;.  By default, we install RAPIDSAI and BlazingSQL.  The &#39;core&#39; option will install only RAPIDSAI and not include BlazingSQL, </span>
+<span class="err">!</span><span class="n">python</span> <span class="n">rapidsai</span><span class="o">-</span><span class="n">csp</span><span class="o">-</span><span class="n">utils</span><span class="o">/</span><span class="n">colab</span><span class="o">/</span><span class="n">install_rapids</span><span class="o">.</span><span class="n">py</span> <span class="n">stable</span>
+<span class="kn">import</span> <span class="nn">os</span>
 <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;NUMBAPRO_NVVM&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;/usr/local/cuda/nvvm/lib64/libnvvm.so&#39;</span>
 <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;NUMBAPRO_LIBDEVICE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;/usr/local/cuda/nvvm/libdevice/&#39;</span>
-
-<span class="c1"># copy .so files to current working dir</span>
-<span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;libcudf.so&#39;</span><span class="p">,</span> <span class="s1">&#39;librmm.so&#39;</span><span class="p">]:</span>
-  <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="s1">&#39;/usr/local/lib/&#39;</span><span class="o">+</span><span class="n">fn</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>--2019-05-13 09:31:42--  https://repo.continuum.io/miniconda/Miniconda3-4.5.4-Linux-x86_64.sh
-Resolving repo.continuum.io (repo.continuum.io)... 104.18.201.79, 104.18.200.79, 2606:4700::6812:c84f, ...
-Connecting to repo.continuum.io (repo.continuum.io)|104.18.201.79|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 58468498 (56M) [application/x-sh]
-Saving to: ‘Miniconda3-4.5.4-Linux-x86_64.sh’
-
-Miniconda3-4.5.4-Li 100%[===================&gt;]  55.76M  64.9MB/s    in 0.9s
-
-2019-05-13 09:31:48 (64.9 MB/s) - ‘Miniconda3-4.5.4-Linux-x86_64.sh’ saved [58468498/58468498]
-
-PREFIX=/usr/local
-installing: python-3.6.5-hc3d631a_2 ...
-Python 3.6.5 :: Anaconda, Inc.
-installing: ca-certificates-2018.03.07-0 ...
-installing: conda-env-2.6.0-h36134e3_1 ...
-installing: libgcc-ng-7.2.0-hdf63c60_3 ...
-installing: libstdcxx-ng-7.2.0-hdf63c60_3 ...
-installing: libffi-3.2.1-hd88cf55_4 ...
-installing: ncurses-6.1-hf484d3e_0 ...
-installing: openssl-1.0.2o-h20670df_0 ...
-installing: tk-8.6.7-hc745277_3 ...
-installing: xz-5.2.4-h14c3975_4 ...
-installing: yaml-0.1.7-had09818_2 ...
-installing: zlib-1.2.11-ha838bed_2 ...
-installing: libedit-3.1.20170329-h6b74fdf_2 ...
-installing: readline-7.0-ha6073c6_4 ...
-installing: sqlite-3.23.1-he433501_0 ...
-installing: asn1crypto-0.24.0-py36_0 ...
-installing: certifi-2018.4.16-py36_0 ...
-installing: chardet-3.0.4-py36h0f667ec_1 ...
-installing: idna-2.6-py36h82fb2a8_1 ...
-installing: pycosat-0.6.3-py36h0a5515d_0 ...
-installing: pycparser-2.18-py36hf9f622e_1 ...
-installing: pysocks-1.6.8-py36_0 ...
-installing: ruamel_yaml-0.15.37-py36h14c3975_2 ...
-installing: six-1.11.0-py36h372c433_1 ...
-installing: cffi-1.11.5-py36h9745a5d_0 ...
-installing: setuptools-39.2.0-py36_0 ...
-installing: cryptography-2.2.2-py36h14c3975_0 ...
-installing: wheel-0.31.1-py36_0 ...
-installing: pip-10.0.1-py36_0 ...
-installing: pyopenssl-18.0.0-py36_0 ...
-installing: urllib3-1.22-py36hbe7ace6_0 ...
-installing: requests-2.18.4-py36he2e5f8d_1 ...
-installing: conda-4.5.4-py36_0 ...
-installation finished.
-WARNING:
-    You currently have a PYTHONPATH environment variable set. This may cause
-    unexpected behavior when running the Python interpreter in Miniconda3.
-    For best results, please verify that your PYTHONPATH only points to
-    directories of packages that are compatible with the Python interpreter
-    in Miniconda3: /usr/local
-Solving environment: ...working... done
-
-## Package Plan ##
-
-  environment location: /usr/local
-
-  added / updated specs: 
-    - cudf
-    - cuml
-
-
-The following packages will be downloaded:
-
-    package                    |            build
-    ---------------------------|-----------------
-    icu-58.2                   |    hf484d3e_1000        22.6 MB  conda-forge
-    libgcc-ng-8.2.0            |       hdf63c60_1         7.6 MB
-    sqlite-3.26.0              |    h67949de_1001         1.9 MB  conda-forge
-    python-3.6.7               |    h381d211_1004        34.5 MB  conda-forge
-    numpy-1.16.3               |   py36he5ce36f_0         4.3 MB  conda-forge
-    cudatoolkit-10.0.130       |                0       380.0 MB
-    libcudf-0.7.0.dev0         |    cuda10.0_1567        21.0 MB  rapidsai-nightly/label/cuda10.0
-    parquet-cpp-1.5.1          |                4           3 KB  conda-forge
-    arrow-cpp-0.12.1           |   py36h0e61e49_0         6.9 MB  conda-forge
-    liblapack-3.8.0            |       9_openblas           6 KB  conda-forge
-    libstdcxx-ng-8.2.0         |       hdf63c60_1         2.9 MB
-    libblas-3.8.0              |       9_openblas           6 KB  conda-forge
-    openssl-1.1.1b             |       h14c3975_1         4.0 MB  conda-forge
-    cython-0.29.7              |   py36he1b5a44_0         2.2 MB  conda-forge
-    cryptography-2.6.1         |   py36h72c5cf5_0         606 KB  conda-forge
-    certifi-2019.3.9           |           py36_0         149 KB  conda-forge
-    ca-certificates-2019.3.9   |       hecc5488_0         146 KB  conda-forge
-    tk-8.6.9                   |    h84994c4_1001         3.2 MB  conda-forge
-    libcuml-0.8.0a             |     cuda10.0_610        24.4 MB  rapidsai-nightly/label/cuda10.0
-    bzip2-1.0.6                |    h14c3975_1002         415 KB  conda-forge
-    cuml-0.8.0a                |cuda10.0_py36_610         3.0 MB  rapidsai-nightly/label/cuda10.0
-    python-dateutil-2.8.0      |             py_0         219 KB  conda-forge
-    conda-4.6.14               |           py36_0         2.1 MB  conda-forge
-    openblas-0.3.6             |       h6e990d7_2        15.8 MB  conda-forge
-    thrift-cpp-0.12.0          |    h0a07b25_1002         2.4 MB  conda-forge
-    rmm-0.7.0.dev0             |          py36_54          14 KB  rapidsai-nightly/label/cuda10.0
-    pyarrow-0.12.1             |   py36hbbcf98d_0         2.2 MB  conda-forge
-    libprotobuf-3.6.1          |    hdbcaa40_1001         4.0 MB  conda-forge
-    nvstrings-0.7.0.dev0       |         py36_143          88 KB  rapidsai-nightly/label/cuda10.0
-    librmm-0.7.0.dev0          |      cuda10.0_54          39 KB  rapidsai-nightly/label/cuda10.0
-    libcblas-3.8.0             |       9_openblas           6 KB  conda-forge
-    libgfortran-ng-7.3.0       |       hdf63c60_0         1.3 MB
-    libnvstrings-0.7.0.dev0    |     cuda10.0_132         9.3 MB  rapidsai-nightly/label/cuda10.0
-    llvmlite-0.28.0            |   py36hdbcaa40_0        20.2 MB  conda-forge
-    cudf-0.7.0.dev0            |        py36_1568         2.7 MB  rapidsai-nightly/label/cuda10.0
-    pytz-2019.1                |             py_0         227 KB  conda-forge
-    numba-0.43.1               |   py36hf2d7682_0         2.9 MB  conda-forge
-    boost-cpp-1.68.0           |    h11c811c_1000        20.5 MB  conda-forge
-    pandas-0.24.2              |   py36hf484d3e_0        11.1 MB  conda-forge
-    libcumlmg-0.0.0.dev0       |     cuda10.0_373         955 KB  nvidia/label/cuda10.0
-    ------------------------------------------------------------
-                                           Total:       615.7 MB
-
-The following NEW packages will be INSTALLED:
-
-    arrow-cpp:       0.12.1-py36h0e61e49_0    conda-forge                    
-    boost-cpp:       1.68.0-h11c811c_1000     conda-forge                    
-    bzip2:           1.0.6-h14c3975_1002      conda-forge                    
-    cudatoolkit:     10.0.130-0                                              
-    cudf:            0.7.0.dev0-py36_1568     rapidsai-nightly/label/cuda10.0
-    cuml:            0.8.0a-cuda10.0_py36_610 rapidsai-nightly/label/cuda10.0
-    cython:          0.29.7-py36he1b5a44_0    conda-forge                    
-    icu:             58.2-hf484d3e_1000       conda-forge                    
-    libblas:         3.8.0-9_openblas         conda-forge                    
-    libcblas:        3.8.0-9_openblas         conda-forge                    
-    libcudf:         0.7.0.dev0-cuda10.0_1567 rapidsai-nightly/label/cuda10.0
-    libcuml:         0.8.0a-cuda10.0_610      rapidsai-nightly/label/cuda10.0
-    libcumlmg:       0.0.0.dev0-cuda10.0_373  nvidia/label/cuda10.0          
-    libgfortran-ng:  7.3.0-hdf63c60_0                                        
-    liblapack:       3.8.0-9_openblas         conda-forge                    
-    libnvstrings:    0.7.0.dev0-cuda10.0_132  rapidsai-nightly/label/cuda10.0
-    libprotobuf:     3.6.1-hdbcaa40_1001      conda-forge                    
-    librmm:          0.7.0.dev0-cuda10.0_54   rapidsai-nightly/label/cuda10.0
-    llvmlite:        0.28.0-py36hdbcaa40_0    conda-forge                    
-    numba:           0.43.1-py36hf2d7682_0    conda-forge                    
-    numpy:           1.16.3-py36he5ce36f_0    conda-forge                    
-    nvstrings:       0.7.0.dev0-py36_143      rapidsai-nightly/label/cuda10.0
-    openblas:        0.3.6-h6e990d7_2         conda-forge                    
-    pandas:          0.24.2-py36hf484d3e_0    conda-forge                    
-    parquet-cpp:     1.5.1-4                  conda-forge                    
-    pyarrow:         0.12.1-py36hbbcf98d_0    conda-forge                    
-    python-dateutil: 2.8.0-py_0               conda-forge                    
-    pytz:            2019.1-py_0              conda-forge                    
-    rmm:             0.7.0.dev0-py36_54       rapidsai-nightly/label/cuda10.0
-    thrift-cpp:      0.12.0-h0a07b25_1002     conda-forge
-
-The following packages will be UPDATED:
-
-    ca-certificates: 2018.03.07-0                                             --&gt; 2019.3.9-hecc5488_0  conda-forge
-    certifi:         2018.4.16-py36_0                                         --&gt; 2019.3.9-py36_0      conda-forge
-    conda:           4.5.4-py36_0                                             --&gt; 4.6.14-py36_0        conda-forge
-    cryptography:    2.2.2-py36h14c3975_0                                     --&gt; 2.6.1-py36h72c5cf5_0 conda-forge
-    libgcc-ng:       7.2.0-hdf63c60_3                                         --&gt; 8.2.0-hdf63c60_1                
-    libstdcxx-ng:    7.2.0-hdf63c60_3                                         --&gt; 8.2.0-hdf63c60_1                
-    openssl:         1.0.2o-h20670df_0                                        --&gt; 1.1.1b-h14c3975_1    conda-forge
-    python:          3.6.5-hc3d631a_2                                         --&gt; 3.6.7-h381d211_1004  conda-forge
-    sqlite:          3.23.1-he433501_0                                        --&gt; 3.26.0-h67949de_1001 conda-forge
-    tk:              8.6.7-hc745277_3                                         --&gt; 8.6.9-h84994c4_1001  conda-forge
-
-Preparing transaction: ...working... done
-Verifying transaction: ...working... done
-Executing transaction: ...working... done
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;CONDA_PREFIX&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;/usr/local&#39;</span>
 </code></pre></div>
 <h2 id="critical-imports">Critical Imports<a class="headerlink" href="#critical-imports" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="c1"># Critical imports</span>
-<span class="kn">import</span> <span class="nn">nvstrings</span><span class="o">,</span> <span class="nn">nvcategory</span><span class="o">,</span> <span class="nn">cudf</span>
+<span class="c1">#import nvstrings, nvcategory, cudf</span>
+<span class="kn">import</span> <span class="nn">cudf</span>
 <span class="kn">import</span> <span class="nn">cuml</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>/usr/local/lib/python3.8/site-packages/cupy/_environment.py:439: UserWarning: 
+--------------------------------------------------------------------------------
+
+  CuPy may not function correctly because multiple CuPy packages are installed
+  in your environment:
+
+    cupy, cupy-cuda11x
+
+  Follow these steps to resolve this issue:
+
+    1. For all packages listed above, run the following command to remove all
+       existing CuPy installations:
+
+         $ pip uninstall &lt;package_name&gt;
+
+      If you previously installed CuPy via conda, also run the following:
+
+         $ conda uninstall cupy
+
+    2. Install the appropriate CuPy package.
+       Refer to the Installation Guide for detailed instructions.
+
+         https://docs.cupy.dev/en/stable/install.html
+
+--------------------------------------------------------------------------------
+
+  warnings.warn(f&#39;&#39;&#39;
 </code></pre></div>
 <h2 id="creating">Creating<a class="headerlink" href="#creating" title="Permanent link">&para;</a></h2>
 <h3 id="create-a-series-of-integers">Create a Series of integers<a class="headerlink" href="#create-a-series-of-integers" title="Permanent link">&para;</a></h3>
@@ -2102,7 +2077,7 @@ Executing transaction: ...working... done
 4    5
 5    6
 dtype: int64
-&lt;class &#39;cudf.dataframe.series.Series&#39;&gt;
+&lt;class &#39;cudf.core.series.Series&#39;&gt;
 </code></pre></div>
 <h3 id="create-a-series-of-floats">Create a Series of floats<a class="headerlink" href="#create-a-series-of-floats" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">gdf</span> <span class="o">=</span> <span class="n">cudf</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">,</span> <span class="mf">6.</span><span class="p">])</span>
@@ -2132,54 +2107,54 @@ dtype: object
 <div class="highlight"><pre><span></span><code><span class="c1"># Import</span>
 <span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
 
-<span class="c1"># Using a list of tuples</span>
-<span class="c1"># Each element in the list represents a category</span>
-<span class="c1"># The first element of the tuple is the category&#39;s name</span>
-<span class="c1"># The second element of the tuple is a list of the values in that category</span>
-<span class="n">gdf</span> <span class="o">=</span> <span class="n">cudf</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
+<span class="c1"># Using a dictionary of key-value pairs</span>
+<span class="c1"># Each key in the dictionary represents a category</span>
+<span class="c1"># The key is the category&#39;s name</span>
+<span class="c1"># The value is a list of the values in that category</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">cudf</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
     <span class="c1"># Create 10 busindates ess from 1st January 2019 via pandas</span>
-    <span class="p">(</span><span class="s1">&#39;dates&#39;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;1/1/2019&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">)),</span>
+    <span class="s1">&#39;dates&#39;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;1/1/2019&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">),</span>
     <span class="c1"># Integers</span>
-    <span class="p">(</span><span class="s1">&#39;integers&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]),</span>
+    <span class="s1">&#39;integers&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)],</span>
     <span class="c1"># Floats</span>
-    <span class="p">(</span><span class="s1">&#39;floats&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)])</span>
-<span class="p">])</span>
+    <span class="s1">&#39;floats&#39;</span><span class="p">:</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<span class="p">})</span>
 
 <span class="c1"># Print dataframe</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">gdf</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>                     dates  integers  floats
-0 2019-01-01T00:00:00.000         0     0.0
-1 2019-01-02T00:00:00.000         1     1.0
-2 2019-01-03T00:00:00.000         2     2.0
-3 2019-01-04T00:00:00.000         3     3.0
-4 2019-01-07T00:00:00.000         4     4.0
-5 2019-01-08T00:00:00.000         5     5.0
-6 2019-01-09T00:00:00.000         6     6.0
-7 2019-01-10T00:00:00.000         7     7.0
-8 2019-01-11T00:00:00.000         8     8.0
-9 2019-01-14T00:00:00.000         9     9.0
+<div class="highlight"><pre><span></span><code>       dates  integers  floats
+0 2019-01-01         0     0.0
+1 2019-01-02         1     1.0
+2 2019-01-03         2     2.0
+3 2019-01-04         3     3.0
+4 2019-01-07         4     4.0
+5 2019-01-08         5     5.0
+6 2019-01-09         6     6.0
+7 2019-01-10         7     7.0
+8 2019-01-11         8     8.0
+9 2019-01-14         9     9.0
 </code></pre></div>
 <h3 id="create-2-column-dataframe">Create 2 column Dataframe<a class="headerlink" href="#create-2-column-dataframe" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Consisting of integers and string category</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="c1"># Using a list of tuples</span>
-<span class="c1"># Each element in the list represents a category</span>
-<span class="c1"># The first element of the tuple is the category&#39;s name</span>
-<span class="c1"># The second element of the tuple is a list of the values in that category</span>
-<span class="n">gdf</span> <span class="o">=</span> <span class="n">cudf</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
-    <span class="p">(</span><span class="s1">&#39;integers&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span> <span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]),</span>
-    <span class="p">(</span><span class="s1">&#39;string&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">])</span>
-<span class="p">])</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Using a dictionary</span>
+<span class="c1"># Each key in the dictionary represents a category</span>
+<span class="c1"># The key is the category&#39;s name</span>
+<span class="c1"># The value is a list of the values in that category</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">cudf</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;integers&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span> <span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+    <span class="s1">&#39;string&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">]</span>
+<span class="p">})</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">gdf</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>   integers  string
-0         1       a
-1         2       b
-2         3       c
-3         4       d
+<div class="highlight"><pre><span></span><code>   integers string
+0         1      a
+1         2      b
+2         3      c
+3         4      d
 </code></pre></div>
 <h3 id="create-a-2-column-dataframe-with-pandas-bridge">Create a 2 Column  Dataframe with Pandas Bridge<a class="headerlink" href="#create-a-2-column-dataframe-with-pandas-bridge" title="Permanent link">&para;</a></h3>
 <ul>
@@ -2201,11 +2176,11 @@ dtype: object
 <span class="c1"># Print dataframe</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">gdf</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>   integers  strings
-0         1        a
-1         2        b
-2         3        c
-3         4        d
+<div class="highlight"><pre><span></span><code>   integers strings
+0         1       a
+1         2       b
+2         3       c
+3         4       d
 </code></pre></div>
 <h2 id="viewing">Viewing<a class="headerlink" href="#viewing" title="Permanent link">&para;</a></h2>
 <h3 id="printing-column-names">Printing Column Names<a class="headerlink" href="#printing-column-names" title="Permanent link">&para;</a></h3>
@@ -2217,18 +2192,18 @@ dtype: object
 <div class="highlight"><pre><span></span><code><span class="n">num_of_rows_to_view</span> <span class="o">=</span> <span class="mi">2</span> 
 <span class="nb">print</span><span class="p">(</span><span class="n">gdf</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">num_of_rows_to_view</span><span class="p">))</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>   integers  strings
-0         1        a
-1         2        b
+<div class="highlight"><pre><span></span><code>   integers strings
+0         1       a
+1         2       b
 </code></pre></div>
 <h3 id="viewing-bottom-of-dataframe">Viewing Bottom of DataFrame<a class="headerlink" href="#viewing-bottom-of-dataframe" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">num_of_rows_to_view</span> <span class="o">=</span> <span class="mi">3</span> 
 <span class="nb">print</span><span class="p">(</span><span class="n">gdf</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="n">num_of_rows_to_view</span><span class="p">))</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>   integers  strings
-1         2        b
-2         3        c
-3         4        d
+<div class="highlight"><pre><span></span><code>   integers strings
+1         2       b
+2         3       c
+3         4       d
 </code></pre></div>
 <h2 id="filtering">Filtering<a class="headerlink" href="#filtering" title="Permanent link">&para;</a></h2>
 <h3 id="method-1-query">Method 1: Query<a class="headerlink" href="#method-1-query" title="Permanent link">&para;</a></h3>
@@ -2236,10 +2211,9 @@ dtype: object
 <ul>
 <li>This only works for floats and integers, not for strings</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">gdf</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;integers == 1&#39;</span><span class="p">))</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>   integers  strings
-0         1        a
+<div class="highlight"><pre><span></span><code><span class="c1"># DO NOT RUN</span>
+<span class="c1"># TOFIX: `cffi` package version mismatch error</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">gdf</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;integers == 1&#39;</span><span class="p">))</span>
 </code></pre></div>
 <h4 id="filtering-strings-by-column-values">Filtering Strings by Column Values<a class="headerlink" href="#filtering-strings-by-column-values" title="Permanent link">&para;</a></h4>
 <ul>
@@ -2251,67 +2225,94 @@ dtype: object
 
 KeyError                                  Traceback (most recent call last)
 
-&lt;ipython-input-33-5cfd0345d51c&gt; in &lt;module&gt;()
+/usr/local/lib/python3.8/site-packages/cudf/core/dataframe.py in extract_col(df, col)
+   7558     try:
+-&gt; 7559         return df._data[col]
+   7560     except KeyError:
+
+
+/usr/local/lib/python3.8/site-packages/cudf/core/column_accessor.py in __getitem__(self, key)
+    154     def __getitem__(self, key: Any) -&gt; ColumnBase:
+--&gt; 155         return self._data[key]
+    156
+
+
+KeyError: &#39;a&#39;
+
+
+During handling of the above exception, another exception occurred:
+
+
+KeyError                                  Traceback (most recent call last)
+
+&lt;ipython-input-22-5cfd0345d51c&gt; in &lt;module&gt;
 ----&gt; 1 print(gdf.query(&#39;strings == a&#39;))
 
 
-/usr/local/lib/python3.6/site-packages/cudf/dataframe/dataframe.py in query(self, expr, local_dict)
-   1905         }
-   1906         # Run query
--&gt; 1907         boolmask = queryutils.query_execute(self, expr, callenv)
-   1908 
-   1909         selected = Series(boolmask)
+/usr/local/lib/python3.8/site-packages/cudf/core/dataframe.py in query(self, expr, local_dict)
+   4172             }
+   4173             # Run query
+-&gt; 4174             boolmask = queryutils.query_execute(self, expr, callenv)
+   4175             return self._apply_boolean_mask(boolmask)
+   4176
 
 
-/usr/local/lib/python3.6/site-packages/cudf/utils/queryutils.py in query_execute(df, expr, callenv)
-    215             envargs.append(val)
-    216     # prepare col args
---&gt; 217     colarrays = [df[col].to_gpu_array() for col in compiled[&#39;colnames&#39;]]
-    218     # allocate output buffer
-    219     nrows = len(df)
+/usr/local/lib/python3.8/site-packages/cudf/utils/queryutils.py in query_execute(df, expr, callenv)
+    212 
+    213     # prepare col args
+--&gt; 214     colarrays = [cudf.core.dataframe.extract_col(df, col) for col in columns]
+    215 
+    216     # wait to check the types until we know which cols are used
 
 
-/usr/local/lib/python3.6/site-packages/cudf/utils/queryutils.py in &lt;listcomp&gt;(.0)
-    215             envargs.append(val)
-    216     # prepare col args
---&gt; 217     colarrays = [df[col].to_gpu_array() for col in compiled[&#39;colnames&#39;]]
-    218     # allocate output buffer
-    219     nrows = len(df)
+/usr/local/lib/python3.8/site-packages/cudf/utils/queryutils.py in &lt;listcomp&gt;(.0)
+    212 
+    213     # prepare col args
+--&gt; 214     colarrays = [cudf.core.dataframe.extract_col(df, col) for col in columns]
+    215 
+    216     # wait to check the types until we know which cols are used
 
 
-/usr/local/lib/python3.6/site-packages/cudf/dataframe/dataframe.py in __getitem__(self, arg)
-    230             return self.columns._get_column_major(self, arg)
-    231         if isinstance(arg, (str, numbers.Number)) or isinstance(arg, tuple):
---&gt; 232             s = self._cols[arg]
-    233             s.name = arg
-    234             s.index = self.index
+/usr/local/lib/python3.8/site-packages/cudf/core/dataframe.py in extract_col(df, col)
+   7565         ):
+   7566             return df.index._data.columns[0]
+-&gt; 7567         return df.index._data[col]
+   7568 
+   7569
+
+
+/usr/local/lib/python3.8/site-packages/cudf/core/column_accessor.py in __getitem__(self, key)
+    153 
+    154     def __getitem__(self, key: Any) -&gt; ColumnBase:
+--&gt; 155         return self._data[key]
+    156 
+    157     def __setitem__(self, key: Any, value: Any):
 
 
 KeyError: &#39;a&#39;
 </code></pre></div>
 <h3 id="method-2-simple-columns">Method 2:  Simple Columns<a class="headerlink" href="#method-2-simple-columns" title="Permanent link">&para;</a></h3>
 <h4 id="filtering-strings-by-column-values_1">Filtering Strings by Column Values<a class="headerlink" href="#filtering-strings-by-column-values_1" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># Filtering based on the string column</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># DO NOT RUN</span>
+<span class="c1"># TOFIX: `cffi` package version mismatch error</span>
+<span class="c1"># Filtering based on the string column</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="n">gdf</span><span class="o">.</span><span class="n">strings</span> <span class="o">==</span> <span class="s1">&#39;b&#39;</span><span class="p">])</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>   integers  strings
-1         2        b
 </code></pre></div>
 <h4 id="filtering-integersfloats-by-column-values_1">Filtering Integers/Floats by Column Values<a class="headerlink" href="#filtering-integersfloats-by-column-values_1" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># Filtering based on the string column</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="n">gdf</span><span class="o">.</span><span class="n">integers</span> <span class="o">==</span> <span class="mi">2</span><span class="p">])</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>   integers  strings
-1         2        b
+<div class="highlight"><pre><span></span><code>   integers strings
+1         2       b
 </code></pre></div>
 <h3 id="method-2-simple-rows">Method 2:  Simple Rows<a class="headerlink" href="#method-2-simple-rows" title="Permanent link">&para;</a></h3>
 <h4 id="filtering-by-row-numbers">Filtering by Row Numbers<a class="headerlink" href="#filtering-by-row-numbers" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># Filter rows 0 to 2 (not inclusive of the third row with the index 2)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>   integers  strings
-0         1        a
-1         2        b
+<div class="highlight"><pre><span></span><code>   integers strings
+0         1       a
+1         2       b
 </code></pre></div>
 <h3 id="method-3-locrows-columns">Method 3:  loc[rows, columns]<a class="headerlink" href="#method-3-locrows-columns" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># The syntax is as follows loc[rows, columns] allowing you to choose rows and columns accordingly</span>
@@ -2322,6 +2323,8 @@ KeyError: &#39;a&#39;
 0         1
 1         2
 2         3
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>
 </code></pre></div>
                 
               
