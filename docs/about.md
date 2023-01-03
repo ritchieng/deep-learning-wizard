@@ -10,9 +10,9 @@ To this date, we have taught thousands of students across more than 120+ countri
 
 !!! abstract "Ritchie Ng"
 
-    **Industry**: Assistant Director in EastSpring Investments, one of Asia's largest asset manager, where I am responsible for leading AI algorithms research and production deployment with multimodal and multilingual data in Asian systematic investment portfolios.
+    **Industry**: Global Head of Data & AI in EastSpring Investments, one of Asia's largest asset manager, leading data engineering and applied deep learning research globally.
 
-    **Academia**: Visiting Research Scholar, Sea-NExT Lab, a joint AI research lab based in National University of Singapore (NUS) between NUS, Tsinghua University, and Sea.
+    **Academia**: Visiting Research Scholar, NExT++ Lab, a joint AI research lab based in National University of Singapore (NUS) between NUS and Tsinghua University.
 
     **Education**: Master's degree from Imperial College London and Bachelor's degree from NUS.
 
@@ -24,12 +24,12 @@ To this date, we have taught thousands of students across more than 120+ countri
 
 !!! abstract "Jie Fu"
 
-    I am undergoing my postdoc journey at Montreal Institute for Learning Algorithms (MILA) to prepare for the coming AI winter, as Eddard Stark said "He won't be a boy forever and winter is coming" -- Game of Thrones. I am privileged to work with Christopher Pal.
+    Jie Fu (付杰) is a happy and funny machine learning researcher (principal investigator), at Beijing Academy of Artificial Intelligence2 (BAAI, 北京智源人工智能研究院), with his human-friendly big AI dream.
 
-    I earned my PhD degree from National University of Singapore (NUS), and was fortunately under the supervision of Tat-Seng Chua and Huan Xu, also closely working with Jiashi Feng and Kian Hsiang Low.
-    
-    I am interested in machine learning. More specifically, my research is focused on deep learning, probabilistic reasoning, reinforcement learning and neural abstract machines. I am especially excited about reducing the gap between theoretical and practical algorithms in a principled and efficient manner.
-    
+    He worked as a postdoc with Yoshua Bengio at University of Montreal, Quebec AI Institute (Mila), funded by Microsoft Research Montreal. He was an IVADO postdoc fellow working with Chris Pal at Polytechnique Montreal, Quebec AI Institute (Mila). He obtained his PhD from National University of Singapore under the supervision of Tat-Seng Chua. He received ICLR 2021 Outstanding Paper Award.
+
+    He is currently working towards system-2 deep learning and its adaption to various real-world tasks, including AI for Science (drug discovery in particular) and AI for Social Good that can benefit all of society. He is also broadly interested in general deep learning, reinforcement learning, and language processing.
+
     Check out my profile link at [bigaidream.github.io](http://bigaidream.github.io/)
     
 ##  Supporters
