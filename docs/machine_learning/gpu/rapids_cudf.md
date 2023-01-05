@@ -56,7 +56,7 @@
 !nvidia-smi
 ```
 
-    Tue Jan  3 04:41:06 2023       
+    Wed Jan  4 19:14:22 2023       
     +-----------------------------------------------------------------------------+
     | NVIDIA-SMI 460.32.03    Driver Version: 460.32.03    CUDA Version: 11.2     |
     |-------------------------------+----------------------+----------------------+
@@ -65,7 +65,7 @@
     |                               |                      |               MIG M. |
     |===============================+======================+======================|
     |   0  Tesla T4            Off  | 00000000:00:04.0 Off |                    0 |
-    | N/A   59C    P0    27W /  70W |      0MiB / 15109MiB |      0%      Default |
+    | N/A   48C    P0    29W /  70W |      0MiB / 15109MiB |      0%      Default |
     |                               |                      |                  N/A |
     +-------------------------------+----------------------+----------------------+
                                                                                    
@@ -78,27 +78,33 @@
     +-----------------------------------------------------------------------------+
 
 
-#### Setup:
-Set up script installs
-- Updates gcc in Colab
-- Installs Conda
-- Install RAPIDS' current stable version of its libraries, as well as some external libraries including:
-    - cuDF
-    - cuML
-    - cuGraph
-    - cuSpatial
-    - cuSignal
-    - BlazingSQL
-    - xgboost
-- Copy RAPIDS .so files into current working directory, a neccessary workaround for RAPIDS+Colab integration.
+#Setup:
+This set up script:
 
+1. Checks to make sure that the GPU is RAPIDS compatible
+1. Installs the **current stable version** of RAPIDSAI's core libraries using pip, which are:
+  1. cuDF
+  1. cuML
+  1. cuGraph
+  1. xgboost
+
+**This will complete in about 3-4 minutes**
+
+Please use the [RAPIDS Conda Colab Template notebook](https://colab.research.google.com/drive/1TAAi_szMfWqRfHVfjGSqnGVLr_ztzUM9) if you need to install any of RAPIDS Extended libraries, such as:
+- cuSpatial
+- cuSignal
+- cuxFilter
+- cuCIM
+
+OR
+- nightly versions of any library 
 
 
 ```python
 # This get the RAPIDS-Colab install files and test check your GPU.  Run this and the next cell only.
 # Please read the output of this cell.  If your Colab Instance is not RAPIDS compatible, it will warn you and give you remediation steps.
 !git clone https://github.com/rapidsai/rapidsai-csp-utils.git
-!python rapidsai-csp-utils/colab/env-check.py
+!python rapidsai-csp-utils/colab/pip-install.py
 ```
 
     Cloning into 'rapidsai-csp-utils'...
@@ -106,11 +112,12 @@ Set up script installs
     remote: Counting objects: 100% (157/157), done.[K
     remote: Compressing objects: 100% (102/102), done.[K
     remote: Total 328 (delta 92), reused 98 (delta 55), pack-reused 171[K
-    Receiving objects: 100% (328/328), 94.64 KiB | 3.05 MiB/s, done.
+    Receiving objects: 100% (328/328), 94.64 KiB | 18.93 MiB/s, done.
     Resolving deltas: 100% (154/154), done.
     Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
     Collecting pynvml
       Downloading pynvml-11.4.1-py3-none-any.whl (46 kB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 47.0/47.0 KB 6.1 MB/s eta 0:00:00
     Installing collected packages: pynvml
     Successfully installed pynvml-11.4.1
     ***********************************************************************
@@ -118,178 +125,159 @@ Set up script installs
     We will now install RAPIDS via pip!  Please stand by, should be quick...
     ***********************************************************************
     
+    Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/, https://pypi.ngc.nvidia.com
+    Collecting cudf-cu11
+      Downloading https://developer.download.nvidia.com/compute/redist/cudf-cu11/cudf_cu11-22.12.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (442.8 MB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 442.8/442.8 MB 3.5 MB/s eta 0:00:00
+    Collecting cuml-cu11
+      Downloading https://developer.download.nvidia.com/compute/redist/cuml-cu11/cuml_cu11-22.12.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1359.8 MB)
+    tcmalloc: large alloc 1359798272 bytes == 0x3116000 @  0x7f53812b21e7 0x4d30a0 0x4d312c 0x5d6f4c 0x51edd1 0x51ef5b 0x4f750a 0x4997a2 0x55cd91 0x5d8941 0x4997a2 0x55cd91 0x5d8941 0x4997a2 0x55cd91 0x5d8941 0x4997a2 0x55cd91 0x5d8941 0x4997a2 0x55cd91 0x5d8941 0x4997a2 0x5d8868 0x4997a2 0x55cd91 0x5d8941 0x49abe4 0x55cd91 0x5d8941 0x4997a2
+    tcmalloc: large alloc 1699749888 bytes == 0x541e4000 @  0x7f53812b3615 0x5d6f4c 0x51edd1 0x51ef5b 0x4f750a 0x4997a2 0x55cd91 0x5d8941 0x4997a2 0x55cd91 0x5d8941 0x4997a2 0x55cd91 0x5d8941 0x4997a2 0x55cd91 0x5d8941 0x4997a2 0x55cd91 0x5d8941 0x4997a2 0x5d8868 0x4997a2 0x55cd91 0x5d8941 0x49abe4 0x55cd91 0x5d8941 0x4997a2 0x55cd91 0x5d8941
+    tcmalloc: large alloc 1359798272 bytes == 0x3116000 @  0x7f53812b21e7 0x4d30a0 0x5dede2 0x6758aa 0x4f750a 0x4997a2 0x55cd91 0x5d8941 0x4997a2 0x55cd91 0x5d8941 0x4fe318 0x5da092 0x62042c 0x5d8d8c 0x561f80 0x4fd2db 0x4997c7 0x4fd8b5 0x4997c7 0x4fd8b5 0x49abe4 0x4f5fe9 0x55e146 0x4f5fe9 0x55e146 0x4f5fe9 0x55e146 0x5d8868 0x5da092 0x587116
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.4/1.4 GB 1.3 MB/s eta 0:00:00
+    Collecting cugraph-cu11
+      Downloading https://developer.download.nvidia.com/compute/redist/cugraph-cu11/cugraph_cu11-22.12.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1028.4 MB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.0/1.0 GB 1.9 MB/s eta 0:00:00
+    Requirement already satisfied: numba>=0.56.2 in /usr/local/lib/python3.8/dist-packages (from cudf-cu11) (0.56.4)
+    Requirement already satisfied: numpy in /usr/local/lib/python3.8/dist-packages (from cudf-cu11) (1.21.6)
+    Collecting ptxcompiler-cu11
+      Downloading https://developer.download.nvidia.com/compute/redist/ptxcompiler-cu11/ptxcompiler_cu11-0.7.0.post1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (8.8 MB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.8/8.8 MB 99.1 MB/s eta 0:00:00
+    Collecting cuda-python<12.0,>=11.7.1
+      Downloading cuda_python-11.8.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.2 MB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.2/16.2 MB 77.6 MB/s eta 0:00:00
+    Requirement already satisfied: pyarrow==9.0.0 in /usr/local/lib/python3.8/dist-packages (from cudf-cu11) (9.0.0)
+    Requirement already satisfied: pandas<1.6.0dev0,>=1.0 in /usr/local/lib/python3.8/dist-packages (from cudf-cu11) (1.3.5)
+    Requirement already satisfied: typing-extensions in /usr/local/lib/python3.8/dist-packages (from cudf-cu11) (4.4.0)
+    Requirement already satisfied: cupy-cuda11x in /usr/local/lib/python3.8/dist-packages (from cudf-cu11) (11.0.0)
+    Requirement already satisfied: cachetools in /usr/local/lib/python3.8/dist-packages (from cudf-cu11) (5.2.0)
+    Requirement already satisfied: fsspec>=0.6.0 in /usr/local/lib/python3.8/dist-packages (from cudf-cu11) (2022.11.0)
+    Collecting protobuf<3.21.0a0,>=3.20.1
+      Downloading protobuf-3.20.3-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.whl (1.0 MB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.0/1.0 MB 46.4 MB/s eta 0:00:00
+    Collecting rmm-cu11
+      Downloading https://developer.download.nvidia.com/compute/redist/rmm-cu11/rmm_cu11-22.12.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.8 MB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 61.1 MB/s eta 0:00:00
+    Collecting cubinlinker-cu11
+      Downloading https://developer.download.nvidia.com/compute/redist/cubinlinker-cu11/cubinlinker_cu11-0.3.0.post1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (8.8 MB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.8/8.8 MB 99.9 MB/s eta 0:00:00
+    Requirement already satisfied: packaging in /usr/local/lib/python3.8/dist-packages (from cudf-cu11) (21.3)
+    Collecting nvtx>=0.2.1
+      Downloading nvtx-0.2.5-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (453 kB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 453.6/453.6 KB 28.4 MB/s eta 0:00:00
+    Requirement already satisfied: seaborn in /usr/local/lib/python3.8/dist-packages (from cuml-cu11) (0.11.2)
+    Collecting raft-dask-cu11
+      Downloading https://developer.download.nvidia.com/compute/redist/raft-dask-cu11/raft_dask_cu11-22.12.0.post1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (210.5 MB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 210.5/210.5 MB 6.7 MB/s eta 0:00:00
+    Requirement already satisfied: scipy in /usr/local/lib/python3.8/dist-packages (from cuml-cu11) (1.7.3)
+    Collecting treelite==3.0.1
+      Downloading treelite-3.0.1-py3-none-manylinux2014_x86_64.whl (864 kB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 864.6/864.6 KB 38.0 MB/s eta 0:00:00
+    Collecting treelite-runtime==3.0.1
+      Downloading treelite_runtime-3.0.1-py3-none-manylinux2014_x86_64.whl (191 kB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 191.9/191.9 KB 25.3 MB/s eta 0:00:00
+    Collecting dask-cudf-cu11
+      Downloading https://developer.download.nvidia.com/compute/redist/dask-cudf-cu11/dask_cudf_cu11-22.12.0.post1-py3-none-any.whl (76 kB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 76.6/76.6 KB 12.2 MB/s eta 0:00:00
+    Collecting pylibraft-cu11
+      Downloading https://developer.download.nvidia.com/compute/redist/pylibraft-cu11/pylibraft_cu11-22.12.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (580.3 MB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 580.3/580.3 MB 3.2 MB/s eta 0:00:00
+    Collecting pylibcugraph-cu11
+      Downloading https://developer.download.nvidia.com/compute/redist/pylibcugraph-cu11/pylibcugraph_cu11-22.12.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1627.2 MB)
+    tcmalloc: large alloc 1627185152 bytes == 0x541e8000 @  0x7f53812b21e7 0x4d30a0 0x4d312c 0x5d6f4c 0x51edd1 0x51ef5b 0x4f750a 0x4997a2 0x55cd91 0x5d8941 0x4997a2 0x55cd91 0x5d8941 0x4997a2 0x55cd91 0x5d8941 0x4997a2 0x55cd91 0x5d8941 0x4997a2 0x55cd91 0x5d8941 0x4997a2 0x5d8868 0x4997a2 0x55cd91 0x5d8941 0x49abe4 0x55cd91 0x5d8941 0x4997a2
+    tcmalloc: large alloc 2033983488 bytes == 0xb51b6000 @  0x7f53812b3615 0x5d6f4c 0x51edd1 0x51ef5b 0x4f750a 0x4997a2 0x55cd91 0x5d8941 0x4997a2 0x55cd91 0x5d8941 0x4997a2 0x55cd91 0x5d8941 0x4997a2 0x55cd91 0x5d8941 0x4997a2 0x55cd91 0x5d8941 0x4997a2 0x5d8868 0x4997a2 0x55cd91 0x5d8941 0x49abe4 0x55cd91 0x5d8941 0x4997a2 0x55cd91 0x5d8941
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 GB 1.1 MB/s eta 0:00:00
+    Collecting dask-cuda
+      Downloading dask_cuda-22.12.0-py3-none-any.whl (121 kB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 121.1/121.1 KB 17.5 MB/s eta 0:00:00
+    Requirement already satisfied: cython in /usr/local/lib/python3.8/dist-packages (from cuda-python<12.0,>=11.7.1->cudf-cu11) (0.29.32)
+    Requirement already satisfied: importlib-metadata in /usr/local/lib/python3.8/dist-packages (from numba>=0.56.2->cudf-cu11) (5.2.0)
+    Requirement already satisfied: llvmlite<0.40,>=0.39.0dev0 in /usr/local/lib/python3.8/dist-packages (from numba>=0.56.2->cudf-cu11) (0.39.1)
+    Requirement already satisfied: setuptools in /usr/local/lib/python3.8/dist-packages (from numba>=0.56.2->cudf-cu11) (57.4.0)
+    Requirement already satisfied: python-dateutil>=2.7.3 in /usr/local/lib/python3.8/dist-packages (from pandas<1.6.0dev0,>=1.0->cudf-cu11) (2.8.2)
+    Requirement already satisfied: pytz>=2017.3 in /usr/local/lib/python3.8/dist-packages (from pandas<1.6.0dev0,>=1.0->cudf-cu11) (2022.7)
+    Requirement already satisfied: fastrlock>=0.5 in /usr/local/lib/python3.8/dist-packages (from cupy-cuda11x->cudf-cu11) (0.8.1)
+    Requirement already satisfied: zict>=0.1.3 in /usr/local/lib/python3.8/dist-packages (from dask-cuda->cugraph-cu11) (2.2.0)
+    Collecting distributed==2022.11.1
+      Downloading distributed-2022.11.1-py3-none-any.whl (923 kB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 923.4/923.4 KB 50.7 MB/s eta 0:00:00
+    Collecting dask==2022.11.1
+      Downloading dask-2022.11.1-py3-none-any.whl (1.1 MB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB 52.6 MB/s eta 0:00:00
+    Requirement already satisfied: pynvml>=11.0.0 in /usr/local/lib/python3.8/dist-packages (from dask-cuda->cugraph-cu11) (11.4.1)
+    Requirement already satisfied: click>=7.0 in /usr/local/lib/python3.8/dist-packages (from dask==2022.11.1->dask-cuda->cugraph-cu11) (7.1.2)
+    Requirement already satisfied: toolz>=0.8.2 in /usr/local/lib/python3.8/dist-packages (from dask==2022.11.1->dask-cuda->cugraph-cu11) (0.12.0)
+    Requirement already satisfied: partd>=0.3.10 in /usr/local/lib/python3.8/dist-packages (from dask==2022.11.1->dask-cuda->cugraph-cu11) (1.3.0)
+    Requirement already satisfied: cloudpickle>=1.1.1 in /usr/local/lib/python3.8/dist-packages (from dask==2022.11.1->dask-cuda->cugraph-cu11) (1.5.0)
+    Requirement already satisfied: pyyaml>=5.3.1 in /usr/local/lib/python3.8/dist-packages (from dask==2022.11.1->dask-cuda->cugraph-cu11) (6.0)
+    Requirement already satisfied: tornado<6.2,>=6.0.3 in /usr/local/lib/python3.8/dist-packages (from distributed==2022.11.1->dask-cuda->cugraph-cu11) (6.0.4)
+    Requirement already satisfied: locket>=1.0.0 in /usr/local/lib/python3.8/dist-packages (from distributed==2022.11.1->dask-cuda->cugraph-cu11) (1.0.0)
+    Requirement already satisfied: tblib>=1.6.0 in /usr/local/lib/python3.8/dist-packages (from distributed==2022.11.1->dask-cuda->cugraph-cu11) (1.7.0)
+    Requirement already satisfied: jinja2 in /usr/local/lib/python3.8/dist-packages (from distributed==2022.11.1->dask-cuda->cugraph-cu11) (2.11.3)
+    Requirement already satisfied: psutil>=5.0 in /usr/local/lib/python3.8/dist-packages (from distributed==2022.11.1->dask-cuda->cugraph-cu11) (5.4.8)
+    Requirement already satisfied: urllib3 in /usr/local/lib/python3.8/dist-packages (from distributed==2022.11.1->dask-cuda->cugraph-cu11) (1.24.3)
+    Requirement already satisfied: sortedcontainers!=2.0.0,!=2.0.1 in /usr/local/lib/python3.8/dist-packages (from distributed==2022.11.1->dask-cuda->cugraph-cu11) (2.4.0)
+    Requirement already satisfied: msgpack>=0.6.0 in /usr/local/lib/python3.8/dist-packages (from distributed==2022.11.1->dask-cuda->cugraph-cu11) (1.0.4)
+    Requirement already satisfied: pyparsing!=3.0.5,>=2.0.2 in /usr/local/lib/python3.8/dist-packages (from packaging->cudf-cu11) (3.0.9)
+    Requirement already satisfied: joblib>=0.11 in /usr/local/lib/python3.8/dist-packages (from raft-dask-cu11->cuml-cu11) (1.2.0)
+    Collecting ucx-py-cu11
+      Downloading https://developer.download.nvidia.com/compute/redist/ucx-py-cu11/ucx_py_cu11-0.29.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (8.3 MB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.3/8.3 MB 72.8 MB/s eta 0:00:00
+    Requirement already satisfied: matplotlib>=2.2 in /usr/local/lib/python3.8/dist-packages (from seaborn->cuml-cu11) (3.2.2)
+    Requirement already satisfied: cycler>=0.10 in /usr/local/lib/python3.8/dist-packages (from matplotlib>=2.2->seaborn->cuml-cu11) (0.11.0)
+    Requirement already satisfied: kiwisolver>=1.0.1 in /usr/local/lib/python3.8/dist-packages (from matplotlib>=2.2->seaborn->cuml-cu11) (1.4.4)
+    Requirement already satisfied: six>=1.5 in /usr/local/lib/python3.8/dist-packages (from python-dateutil>=2.7.3->pandas<1.6.0dev0,>=1.0->cudf-cu11) (1.15.0)
+    Requirement already satisfied: heapdict in /usr/local/lib/python3.8/dist-packages (from zict>=0.1.3->dask-cuda->cugraph-cu11) (1.0.1)
+    Requirement already satisfied: zipp>=0.5 in /usr/local/lib/python3.8/dist-packages (from importlib-metadata->numba>=0.56.2->cudf-cu11) (3.11.0)
+    Requirement already satisfied: MarkupSafe>=0.23 in /usr/local/lib/python3.8/dist-packages (from jinja2->distributed==2022.11.1->dask-cuda->cugraph-cu11) (2.0.1)
+    Installing collected packages: ptxcompiler-cu11, nvtx, cubinlinker-cu11, ucx-py-cu11, protobuf, cuda-python, treelite-runtime, treelite, dask, rmm-cu11, distributed, pylibraft-cu11, dask-cuda, cudf-cu11, raft-dask-cu11, pylibcugraph-cu11, dask-cudf-cu11, cuml-cu11, cugraph-cu11
+      Attempting uninstall: protobuf
+        Found existing installation: protobuf 3.19.6
+        Uninstalling protobuf-3.19.6:
+          Successfully uninstalled protobuf-3.19.6
+      Attempting uninstall: dask
+        Found existing installation: dask 2022.2.1
+        Uninstalling dask-2022.2.1:
+          Successfully uninstalled dask-2022.2.1
+      Attempting uninstall: distributed
+        Found existing installation: distributed 2022.2.1
+        Uninstalling distributed-2022.2.1:
+          Successfully uninstalled distributed-2022.2.1
+    ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+    tensorflow 2.9.2 requires protobuf<3.20,>=3.9.2, but you have protobuf 3.20.3 which is incompatible.
+    tensorboard 2.9.1 requires protobuf<3.20,>=3.9.2, but you have protobuf 3.20.3 which is incompatible.
+    Successfully installed cubinlinker-cu11-0.3.0.post1 cuda-python-11.8.1 cudf-cu11-22.12.0 cugraph-cu11-22.12.0 cuml-cu11-22.12.0 dask-2022.11.1 dask-cuda-22.12.0 dask-cudf-cu11-22.12.0.post1 distributed-2022.11.1 nvtx-0.2.5 protobuf-3.20.3 ptxcompiler-cu11-0.7.0.post1 pylibcugraph-cu11-22.12.0 pylibraft-cu11-22.12.0 raft-dask-cu11-22.12.0.post1 rmm-cu11-22.12.0 treelite-3.0.1 treelite-runtime-3.0.1 ucx-py-cu11-0.29.0
+    Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+    Collecting cupy-cuda11x
+      Downloading cupy_cuda11x-11.4.0-cp38-cp38-manylinux1_x86_64.whl (93.7 MB)
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 93.7/93.7 MB 10.7 MB/s eta 0:00:00
+    Requirement already satisfied: numpy<1.26,>=1.20 in /usr/local/lib/python3.8/dist-packages (from cupy-cuda11x) (1.21.6)
+    Requirement already satisfied: fastrlock>=0.5 in /usr/local/lib/python3.8/dist-packages (from cupy-cuda11x) (0.8.1)
+    Installing collected packages: cupy-cuda11x
+    Successfully installed cupy-cuda11x-11.4.0
+    
+              ***********************************************************************
+              With the new pip install complete, please do not run any further installation 
+              commands from the conda based installation methods!!!  
+              
+              In your personal files, you can delete these cells.  
+              
+              RAPIDSAI owned templates/notebooks should already be updated with no action needed.
+              ***********************************************************************
+              
 
-
-
-```python
-# This will update the Colab environment and restart the kernel.  Don't run the next cell until you see the session crash.
-!bash rapidsai-csp-utils/colab/update_gcc.sh
-import os
-os._exit(00)
-```
-
-    Updating your Colab environment.  This will restart your kernel.  Don't Panic!
-    Get:1 https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/ InRelease [3,626 B]
-    Get:2 http://ppa.launchpad.net/c2d4u.team/c2d4u4.0+/ubuntu bionic InRelease [15.9 kB]
-    Get:3 http://security.ubuntu.com/ubuntu bionic-security InRelease [88.7 kB]
-    Hit:4 http://archive.ubuntu.com/ubuntu bionic InRelease
-    Get:5 http://archive.ubuntu.com/ubuntu bionic-updates InRelease [88.7 kB]
-    Hit:6 http://ppa.launchpad.net/cran/libgit2/ubuntu bionic InRelease
-    Ign:7 https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64  InRelease
-    Hit:8 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64  InRelease
-    Hit:9 https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64  Release
-    Hit:11 http://ppa.launchpad.net/deadsnakes/ppa/ubuntu bionic InRelease
-    Hit:12 http://ppa.launchpad.net/graphics-drivers/ppa/ubuntu bionic InRelease
-    Get:13 http://archive.ubuntu.com/ubuntu bionic-backports InRelease [83.3 kB]
-    Get:14 http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu bionic InRelease [20.8 kB]
-    Get:15 http://ppa.launchpad.net/c2d4u.team/c2d4u4.0+/ubuntu bionic/main Sources [2,237 kB]
-    Get:16 http://ppa.launchpad.net/c2d4u.team/c2d4u4.0+/ubuntu bionic/main amd64 Packages [1,144 kB]
-    Get:17 http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu bionic/main amd64 Packages [50.4 kB]
-    Fetched 3,733 kB in 6s (635 kB/s)
-    Reading package lists... Done
-    Added repo
-    Hit:1 https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/ InRelease
-    Hit:2 http://security.ubuntu.com/ubuntu bionic-security InRelease
-    Hit:3 http://ppa.launchpad.net/c2d4u.team/c2d4u4.0+/ubuntu bionic InRelease
-    Ign:4 https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64  InRelease
-    Hit:5 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64  InRelease
-    Hit:6 https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64  Release
-    Hit:7 http://archive.ubuntu.com/ubuntu bionic InRelease
-    Hit:9 http://archive.ubuntu.com/ubuntu bionic-updates InRelease
-    Hit:10 http://ppa.launchpad.net/cran/libgit2/ubuntu bionic InRelease
-    Hit:11 http://archive.ubuntu.com/ubuntu bionic-backports InRelease
-    Hit:12 http://ppa.launchpad.net/deadsnakes/ppa/ubuntu bionic InRelease
-    Hit:13 http://ppa.launchpad.net/graphics-drivers/ppa/ubuntu bionic InRelease
-    Hit:14 http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu bionic InRelease
-    Reading package lists... Done
-    Installing libstdc++
-    Reading package lists... Done
-    Building dependency tree       
-    Reading state information... Done
-    Selected version '11.1.0-1ubuntu1~18.04.1' (Toolchain test builds:18.04/bionic [amd64]) for 'libstdc++6'
-    The following package was automatically installed and is no longer required:
-      libnvidia-common-460
-    Use 'sudo apt autoremove' to remove it.
-    The following additional packages will be installed:
-      gcc-11-base libgcc-s1
-    The following NEW packages will be installed:
-      gcc-11-base libgcc-s1
-    The following packages will be upgraded:
-      libstdc++6
-    1 upgraded, 2 newly installed, 0 to remove and 31 not upgraded.
-    Need to get 641 kB of archives.
-    After this operation, 981 kB of additional disk space will be used.
-    Get:1 http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu bionic/main amd64 gcc-11-base amd64 11.1.0-1ubuntu1~18.04.1 [19.0 kB]
-    Get:2 http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu bionic/main amd64 libgcc-s1 amd64 11.1.0-1ubuntu1~18.04.1 [41.8 kB]
-    Get:3 http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu bionic/main amd64 libstdc++6 amd64 11.1.0-1ubuntu1~18.04.1 [580 kB]
-    Fetched 641 kB in 2s (277 kB/s)
-    debconf: unable to initialize frontend: Dialog
-    debconf: (No usable dialog-like program is installed, so the dialog based frontend cannot be used. at /usr/share/perl5/Debconf/FrontEnd/Dialog.pm line 76, <> line 3.)
-    debconf: falling back to frontend: Readline
-    debconf: unable to initialize frontend: Readline
-    debconf: (This frontend requires a controlling tty.)
-    debconf: falling back to frontend: Teletype
-    dpkg-preconfigure: unable to re-open stdin: 
-    Selecting previously unselected package gcc-11-base:amd64.
-    (Reading database ... 124016 files and directories currently installed.)
-    Preparing to unpack .../gcc-11-base_11.1.0-1ubuntu1~18.04.1_amd64.deb ...
-    Unpacking gcc-11-base:amd64 (11.1.0-1ubuntu1~18.04.1) ...
-    Setting up gcc-11-base:amd64 (11.1.0-1ubuntu1~18.04.1) ...
-    Selecting previously unselected package libgcc-s1:amd64.
-    (Reading database ... 124021 files and directories currently installed.)
-    Preparing to unpack .../libgcc-s1_11.1.0-1ubuntu1~18.04.1_amd64.deb ...
-    Unpacking libgcc-s1:amd64 (11.1.0-1ubuntu1~18.04.1) ...
-    Replacing files in old package libgcc1:amd64 (1:8.4.0-1ubuntu1~18.04) ...
-    Setting up libgcc-s1:amd64 (11.1.0-1ubuntu1~18.04.1) ...
-    (Reading database ... 124023 files and directories currently installed.)
-    Preparing to unpack .../libstdc++6_11.1.0-1ubuntu1~18.04.1_amd64.deb ...
-    Unpacking libstdc++6:amd64 (11.1.0-1ubuntu1~18.04.1) over (8.4.0-1ubuntu1~18.04) ...
-    Setting up libstdc++6:amd64 (11.1.0-1ubuntu1~18.04.1) ...
-    Processing triggers for libc-bin (2.27-3ubuntu1.6) ...
-    restarting Colab...
-
-
-
-```python
-# This will install CondaColab.  This will restart your kernel one last time.  Run this cell by itself and only run the next cell once you see the session crash.
-import condacolab
-condacolab.install()
-```
-
-    ⏬ Downloading https://github.com/jaimergp/miniforge/releases/latest/download/Mambaforge-colab-Linux-x86_64.sh...
-    📦 Installing...
-    📌 Adjusting configuration...
-    🩹 Patching environment...
-    ⏲ Done in 0:00:14
-    🔁 Restarting kernel...
-
-
-
-```python
-# you can now run the rest of the cells as normal
-import condacolab
-condacolab.check()
-```
-
-    ✨🍰✨ Everything looks OK!
-
-
-### Installation of RAPIDS (including cuDF/cuML)
-Many thanks to NVIDIA team for this snippet of code to automatically set up everything.
-
-
-```python
-# Installing RAPIDS is now 'python rapidsai-csp-utils/colab/install_rapids.py <release> <packages>'
-# The <release> options are 'stable' and 'nightly'.  Leaving it blank or adding any other words will default to stable.
-# The <packages> option are default blank or 'core'.  By default, we install RAPIDSAI and BlazingSQL.  The 'core' option will install only RAPIDSAI and not include BlazingSQL, 
-!python rapidsai-csp-utils/colab/install_rapids.py stable
-import os
-os.environ['NUMBAPRO_NVVM'] = '/usr/local/cuda/nvvm/lib64/libnvvm.so'
-os.environ['NUMBAPRO_LIBDEVICE'] = '/usr/local/cuda/nvvm/libdevice/'
-os.environ['CONDA_PREFIX'] = '/usr/local'
-```
 
 ## Critical Imports
 
 
 ```python
 # Critical imports
-#import nvstrings, nvcategory, cudf
 import cudf
 import cuml
 import os
 import numpy as np
 import pandas as pd
 ```
-
-    /usr/local/lib/python3.8/site-packages/cupy/_environment.py:439: UserWarning: 
-    --------------------------------------------------------------------------------
-    
-      CuPy may not function correctly because multiple CuPy packages are installed
-      in your environment:
-    
-        cupy, cupy-cuda11x
-    
-      Follow these steps to resolve this issue:
-    
-        1. For all packages listed above, run the following command to remove all
-           existing CuPy installations:
-    
-             $ pip uninstall <package_name>
-    
-          If you previously installed CuPy via conda, also run the following:
-    
-             $ conda uninstall cupy
-    
-        2. Install the appropriate CuPy package.
-           Refer to the Installation Guide for detailed instructions.
-    
-             https://docs.cupy.dev/en/stable/install.html
-    
-    --------------------------------------------------------------------------------
-    
-      warnings.warn(f'''
-
 
 ## Creating
 
@@ -492,6 +480,10 @@ print(gdf.tail(num_of_rows_to_view))
 print(gdf.query('integers == 1'))
 ```
 
+       integers strings
+    0         1       a
+
+
 #### Filtering Strings by Column Values
 - This only works for floats and integers, not for strings so this will return an error!
 
@@ -505,13 +497,13 @@ print(gdf.query('strings == a'))
 
     KeyError                                  Traceback (most recent call last)
 
-    /usr/local/lib/python3.8/site-packages/cudf/core/dataframe.py in extract_col(df, col)
+    /usr/local/lib/python3.8/dist-packages/cudf/core/dataframe.py in extract_col(df, col)
        7558     try:
     -> 7559         return df._data[col]
        7560     except KeyError:
 
 
-    /usr/local/lib/python3.8/site-packages/cudf/core/column_accessor.py in __getitem__(self, key)
+    /usr/local/lib/python3.8/dist-packages/cudf/core/column_accessor.py in __getitem__(self, key)
         154     def __getitem__(self, key: Any) -> ColumnBase:
     --> 155         return self._data[key]
         156 
@@ -525,11 +517,11 @@ print(gdf.query('strings == a'))
 
     KeyError                                  Traceback (most recent call last)
 
-    <ipython-input-22-5cfd0345d51c> in <module>
+    <ipython-input-17-5cfd0345d51c> in <module>
     ----> 1 print(gdf.query('strings == a'))
     
 
-    /usr/local/lib/python3.8/site-packages/cudf/core/dataframe.py in query(self, expr, local_dict)
+    /usr/local/lib/python3.8/dist-packages/cudf/core/dataframe.py in query(self, expr, local_dict)
        4172             }
        4173             # Run query
     -> 4174             boolmask = queryutils.query_execute(self, expr, callenv)
@@ -537,7 +529,7 @@ print(gdf.query('strings == a'))
        4176 
 
 
-    /usr/local/lib/python3.8/site-packages/cudf/utils/queryutils.py in query_execute(df, expr, callenv)
+    /usr/local/lib/python3.8/dist-packages/cudf/utils/queryutils.py in query_execute(df, expr, callenv)
         212 
         213     # prepare col args
     --> 214     colarrays = [cudf.core.dataframe.extract_col(df, col) for col in columns]
@@ -545,7 +537,7 @@ print(gdf.query('strings == a'))
         216     # wait to check the types until we know which cols are used
 
 
-    /usr/local/lib/python3.8/site-packages/cudf/utils/queryutils.py in <listcomp>(.0)
+    /usr/local/lib/python3.8/dist-packages/cudf/utils/queryutils.py in <listcomp>(.0)
         212 
         213     # prepare col args
     --> 214     colarrays = [cudf.core.dataframe.extract_col(df, col) for col in columns]
@@ -553,7 +545,7 @@ print(gdf.query('strings == a'))
         216     # wait to check the types until we know which cols are used
 
 
-    /usr/local/lib/python3.8/site-packages/cudf/core/dataframe.py in extract_col(df, col)
+    /usr/local/lib/python3.8/dist-packages/cudf/core/dataframe.py in extract_col(df, col)
        7565         ):
        7566             return df.index._data.columns[0]
     -> 7567         return df.index._data[col]
@@ -561,7 +553,7 @@ print(gdf.query('strings == a'))
        7569 
 
 
-    /usr/local/lib/python3.8/site-packages/cudf/core/column_accessor.py in __getitem__(self, key)
+    /usr/local/lib/python3.8/dist-packages/cudf/core/column_accessor.py in __getitem__(self, key)
         153 
         154     def __getitem__(self, key: Any) -> ColumnBase:
     --> 155         return self._data[key]
@@ -579,11 +571,13 @@ print(gdf.query('strings == a'))
 
 
 ```python
-# DO NOT RUN
-# TOFIX: `cffi` package version mismatch error
 # Filtering based on the string column
 print(gdf[gdf.strings == 'b'])
 ```
+
+       integers strings
+    1         2       b
+
 
 #### Filtering Integers/Floats by Column Values
 
