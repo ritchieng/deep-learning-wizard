@@ -269,6 +269,21 @@ sudo apt-get install trash-cli
 thrash-empty
 ```
 
+### Fix Git Permissions
+There are times whether you're on Windows (frequent), Mac, or Linux, you might encounter a permission error although you have obviously set it up correctly and it was last working. This is quick fix you can run. 
+
+```bash
+eval `ssh-agent -s` && ssh-add ~/.ssh/github
+```
+
+If you want, you can even make an alias `fixgit` and quickly call it in bash to make it easier to fix whenever you face this issue. It's a quick fix, there're more permnanent ways to fix it if you want. But this is a quick fix section. 
+
+In your `.bashrc` or `.zshrc`, include the following:
+
+```bash
+alias fixgit='eval `ssh-agent -s` && ssh-add ~/.ssh/github'
+```
+
 ## Conda Commands
 
 ### Check conda environment
