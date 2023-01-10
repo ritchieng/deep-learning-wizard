@@ -1228,6 +1228,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#fix-git-permissions" class="md-nav__link">
+    Fix Git Permissions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-git-repo-information" class="md-nav__link">
+    Get Git Repo Information
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2064,6 +2078,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#fix-git-permissions" class="md-nav__link">
+    Fix Git Permissions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-git-repo-information" class="md-nav__link">
+    Get Git Repo Information
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2463,6 +2491,17 @@ jupyter nbconvert --to html python.ipynb
 <h3 id="empty-thrash">Empty thrash<a class="headerlink" href="#empty-thrash" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>sudo apt-get install trash-cli
 thrash-empty
+</code></pre></div>
+<h3 id="fix-git-permissions">Fix Git Permissions<a class="headerlink" href="#fix-git-permissions" title="Permanent link">&para;</a></h3>
+<p>There are times whether you're on Windows (frequent), Mac, or Linux, you might encounter a permission error although you have obviously set it up correctly and it was last working. This is quick fix you can run. </p>
+<div class="highlight"><pre><span></span><code><span class="nb">eval</span> <span class="sb">`</span>ssh-agent -s<span class="sb">`</span> <span class="o">&amp;&amp;</span> ssh-add ~/.ssh/github
+</code></pre></div>
+<p>If you want, you can even make an alias <code>fixgit</code> and quickly call it in bash to make it easier to fix whenever you face this issue. It's a quick fix, there're more permnanent ways to fix it if you want. But this is a quick fix section. </p>
+<p>In your <code>.bashrc</code> or <code>.zshrc</code>, include the following:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">alias</span> <span class="nv">fixgit</span><span class="o">=</span><span class="s1">&#39;eval `ssh-agent -s` &amp;&amp; ssh-add ~/.ssh/github&#39;</span>
+</code></pre></div>
+<h3 id="get-git-repo-information">Get Git Repo Information<a class="headerlink" href="#get-git-repo-information" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>curl https://api.github.com/&lt;user&gt;/&lt;repo_name&gt;
 </code></pre></div>
 <h2 id="conda-commands">Conda Commands<a class="headerlink" href="#conda-commands" title="Permanent link">&para;</a></h2>
 <h3 id="check-conda-environment">Check conda environment<a class="headerlink" href="#check-conda-environment" title="Permanent link">&para;</a></h3>
