@@ -284,6 +284,11 @@ In your `.bashrc` or `.zshrc`, include the following:
 alias fixgit='eval `ssh-agent -s` && ssh-add ~/.ssh/github'
 ```
 
+### Get Git Repo Information
+```bash
+curl https://api.github.com/<user>/<repo_name>
+```
+
 ## Conda Commands
 
 ### Check conda environment
