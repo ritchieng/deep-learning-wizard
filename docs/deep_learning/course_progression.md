@@ -20,7 +20,7 @@ If you would like a smooth transition in learning deep learning concepts, you ne
 * [x] :hourglass_flowing_sand: Generative Adversarial Networks (GAN)
 * [x] :hourglass_flowing_sand: Transformers
 
-## 2. Boosting Deep Learning Models with PyTorch
+## 2. Improving Deep Learning Models with PyTorch
 * [x] Derivatives, Gradients and Jacobian
 * [x] Gradient Descent and Backpropagation (From Scratch FNN Regression)
 * [x] Learning Rate Scheduling
@@ -32,7 +32,7 @@ If you would like a smooth transition in learning deep learning concepts, you ne
 * [x] :hourglass_flowing_sand: Data Preprocessing for Images and Videos
 * [x] :hourglass_flowing_sand: Data Preprocessing for Time Series
 
-## 3. Deep Model-Free Reinforcement Learning with PyTorch
+## 3. Deep Reinforcement Learning with PyTorch
 * [x] Supervised Learning to Reinforcement Learning
 * [x] Markov Decision Processes and Bellman Equations
 * [x] Dynamic Programming
@@ -53,3 +53,7 @@ If you would like a smooth transition in learning deep learning concepts, you ne
 * [x] :hourglass_flowing_sand: From Scratch RNN Classification
 * [x] :hourglass_flowing_sand: From Scratch LSTM Classification
 * [x] :hourglass_flowing_sand: From Scratch AE
+
+## 5. Large Language Models with PyTorch
+* [x] :hourglass_flowing_sand: Introduction
+* [x] :hourglass_flowing_sand: What is Temperature

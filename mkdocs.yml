@@ -16,35 +16,43 @@ nav:
     - Deep Learning (CPU/GPU):
       - Introduction: deep_learning/intro.md
       - Course Progression: deep_learning/course_progression.md
-      - Matrices: deep_learning/practical_pytorch/pytorch_matrices.md
-      - Gradients: deep_learning/practical_pytorch/pytorch_gradients.md
-      - Linear Regression: deep_learning/practical_pytorch/pytorch_linear_regression.md
-      - Logistic Regression: deep_learning/practical_pytorch/pytorch_logistic_regression.md
-      - Feedforward Neural Networks (FNN): deep_learning/practical_pytorch/pytorch_feedforward_neuralnetwork.md
-      - Convolutional Neural Networks (CNN): deep_learning/practical_pytorch/pytorch_convolutional_neuralnetwork.md
-      - Recurrent Neural Networks (RNN): deep_learning/practical_pytorch/pytorch_recurrent_neuralnetwork.md
-      - Long Short Term Memory Neural Networks (LSTM): deep_learning/practical_pytorch/pytorch_lstm_neuralnetwork.md
-      - Autoencoders (AE): deep_learning/practical_pytorch/pytorch_autoencoder.md
-      - Fully-connected Overcomplete Autoencoder (AE): deep_learning/practical_pytorch/pytorch_fc_overcomplete_ae.md
-      # - Fully-connected Undercomplete Autoencoder (AE): deep_learning/practical_pytorch/pytorch_fc_undercomplete_ae.md
-      # - Convolutional Overcomplete Variational Autoencoder (VAE): deep_learning/practical_pytorch/pytorch_autoencoder.md
-      # - Convolutional Overcomplete Adversarial Autoencoder (AAE): deep_learning/practical_pytorch/pytorch_autoencoder.md
-      # - Generative Adversarial Networks (GAN): deep_learning/practical_pytorch/pytorch_autoencoder.md
-      - Derivative, Gradient and Jacobian: deep_learning/boosting_models_pytorch/derivative_gradient_jacobian.md
-      - Forward- and Backward-propagation and Gradient Descent (From Scratch FNN Regression): deep_learning/boosting_models_pytorch/forwardpropagation_backpropagation_gradientdescent.md
-      - From Scratch Logistic Regression Classification: deep_learning/fromscratch/fromscratch_logistic_regression.md
-      - From Scratch CNN Classification: deep_learning/fromscratch/fromscratch_cnn.md
-      # - From Scratch RNN Classification: deep_learning/fromscratch/fromscratch_rnn_classification.md
-      # - From Scratch LSTM Classification: deep_learning/fromscratch/fromscratch_lstm_classification.md
-      # - From Scratch AE: deep_learning/fromscratch/fromscratch_ae_classification.md
-      - Learning Rate Scheduling: deep_learning/boosting_models_pytorch/lr_scheduling.md
-      - Optimization Algorithms: deep_learning/boosting_models_pytorch/optimizers.md
-      - Weight Initialization and Activation Functions: deep_learning/boosting_models_pytorch/weight_initialization_activation_functions.md
-      - Supervised Learning to Reinforcement Learning (RL): deep_learning/deep_reinforcement_learning_pytorch/supervised_to_rl.md
-      - Markov Decision Processes (MDP) and Bellman Equations: deep_learning/deep_reinforcement_learning_pytorch/bellman_mdp.md
-      - Dynamic Programming: deep_learning/deep_reinforcement_learning_pytorch/dynamic_programming_frozenlake.md
-      - Speed Optimization Basics Numba: deep_learning/production_pytorch/speed_optimization_basics_numba.md
-      - Additional Readings: deep_learning/readings.md
+      - Practical Deep Learning with PyTorch:
+        - Matrices: deep_learning/practical_pytorch/pytorch_matrices.md
+        - Gradients: deep_learning/practical_pytorch/pytorch_gradients.md
+        - Linear Regression: deep_learning/practical_pytorch/pytorch_linear_regression.md
+        - Logistic Regression: deep_learning/practical_pytorch/pytorch_logistic_regression.md
+        - Feedforward Neural Networks (FNN): deep_learning/practical_pytorch/pytorch_feedforward_neuralnetwork.md
+        - Convolutional Neural Networks (CNN): deep_learning/practical_pytorch/pytorch_convolutional_neuralnetwork.md
+        - Recurrent Neural Networks (RNN): deep_learning/practical_pytorch/pytorch_recurrent_neuralnetwork.md
+        - Long Short Term Memory Neural Networks (LSTM): deep_learning/practical_pytorch/pytorch_lstm_neuralnetwork.md
+        - Autoencoders (AE): deep_learning/practical_pytorch/pytorch_autoencoder.md
+        - Fully-connected Overcomplete Autoencoder (AE): deep_learning/practical_pytorch/pytorch_fc_overcomplete_ae.md
+        # - Fully-connected Undercomplete Autoencoder (AE): deep_learning/practical_pytorch/pytorch_fc_undercomplete_ae.md
+        # - Convolutional Overcomplete Variational Autoencoder (VAE): deep_learning/practical_pytorch/pytorch_autoencoder.md
+        # - Convolutional Overcomplete Adversarial Autoencoder (AAE): deep_learning/practical_pytorch/pytorch_autoencoder.md
+        # - Generative Adversarial Networks (GAN): deep_learning/practical_pytorch/pytorch_autoencoder.md
+      - Improving Deep Learning with PyTorch:
+        - Derivative, Gradient and Jacobian: deep_learning/boosting_models_pytorch/derivative_gradient_jacobian.md
+        - Forward- and Backward-propagation and Gradient Descent (From Scratch FNN Regression): deep_learning/boosting_models_pytorch/forwardpropagation_backpropagation_gradientdescent.md
+        - Learning Rate Scheduling: deep_learning/boosting_models_pytorch/lr_scheduling.md
+        - Optimization Algorithms: deep_learning/boosting_models_pytorch/optimizers.md
+        - Weight Initialization and Activation Functions: deep_learning/boosting_models_pytorch/weight_initialization_activation_functions.md
+      - Deep Reinforcement Learning with PyTorch:
+        - Supervised Learning to Reinforcement Learning (RL): deep_learning/deep_reinforcement_learning_pytorch/supervised_to_rl.md
+        - Markov Decision Processes (MDP) and Bellman Equations: deep_learning/deep_reinforcement_learning_pytorch/bellman_mdp.md
+        - Dynamic Programming: deep_learning/deep_reinforcement_learning_pytorch/dynamic_programming_frozenlake.md
+      - From Scratch Deep Learning with Python/PyTorch:
+        - From Scratch Logistic Regression Classification: deep_learning/fromscratch/fromscratch_logistic_regression.md
+        - From Scratch CNN Classification: deep_learning/fromscratch/fromscratch_cnn.md
+        # - From Scratch RNN Classification: deep_learning/fromscratch/fromscratch_rnn_classification.md
+        # - From Scratch LSTM Classification: deep_learning/fromscratch/fromscratch_lstm_classification.md
+        # - From Scratch AE: deep_learning/fromscratch/fromscratch_ae_classification.md
+      # - Large Language Models with PyTorch:
+        # - Introduction
+        # - What is Temperature
+      - Compute Optimization:
+        - Speed Optimization Basics Numba: deep_learning/production_pytorch/speed_optimization_basics_numba.md
+      # - Additional Readings: deep_learning/readings.md
 
     - Machine Learning (CPU/GPU):
       - Introduction: machine_learning/intro.md
