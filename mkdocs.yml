@@ -43,7 +43,7 @@ nav:
         - Dynamic Programming: deep_learning/deep_reinforcement_learning_pytorch/dynamic_programming_frozenlake.md
       - From Scratch Deep Learning with Python/PyTorch:
         - From Scratch Logistic Regression Classification: deep_learning/fromscratch/fromscratch_logistic_regression.md
-        - From Scratch CNN Classification: deep_learning/fromscratch/fromscratch_cnn.md
+        # - From Scratch CNN Classification: deep_learning/fromscratch/fromscratch_cnn.md
         # - From Scratch RNN Classification: deep_learning/fromscratch/fromscratch_rnn_classification.md
         # - From Scratch LSTM Classification: deep_learning/fromscratch/fromscratch_lstm_classification.md
         # - From Scratch AE: deep_learning/fromscratch/fromscratch_ae_classification.md
