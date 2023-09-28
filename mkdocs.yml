@@ -11,7 +11,7 @@ nav:
       - Intro: home.md
       - About Us: about.md
       - Reviews: review.md
-      - AI Pipeline: pipeline.md
+      # - AI Pipeline: pipeline.md
       - Consultancy: consultancy.md
     - Deep Learning (CPU/GPU):
       - Introduction: deep_learning/intro.md
