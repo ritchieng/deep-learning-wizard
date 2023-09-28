@@ -10,9 +10,9 @@ To this date, we have taught thousands of students across more than 120+ countri
 
 !!! abstract "Ritchie Ng"
 
-    **Industry**: Global Head of Data & AI in EastSpring Investments, one of Asia's largest asset manager, leading data engineering and applied deep learning research globally.
+    **Industry**: As the Group Head of Data & AI at Eastspring Investments, I spearhead engineering, governance, and strategy across data and machine learning in 13 countries with Assets Under Management (AUM) exceeding USD 220 billion.
 
-    **Academia**: Visiting Research Scholar, NExT++ Lab, a joint AI research lab based in National University of Singapore (NUS) between NUS and Tsinghua University.
+    **Academia**: Serving in the capacity of a Visiting Research Scholar at NExT++ Lab, jointly setup between NUS and Tsinghua University, I focus on applied deep learning research for Asian systematic trading strategies and the development of financial Large Language Models (LLM) using multimodal and multilingual data.
 
     **Education**: Master's degree from Imperial College London and Bachelor's degree from NUS.
 
