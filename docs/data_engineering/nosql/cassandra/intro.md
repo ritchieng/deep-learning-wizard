@@ -1,14 +1,9 @@
 disqus:
 
-# Scalable Database for Deep Learning 
+# Apache Cassandra
 
 === "Tools You Will Learn To Use"
-    - Python
-    - C++
-    - Apache CassandraDB
-    - BlazingSQL
-
-This is a critical part of production deployment of deep learning algorithms.
+    - Apache Cassandra
 
 ## Reasons for Using Apache Cassandra
 - It is is an open-source NoSQL database management system (DBMS) that is designed to handle large amounts of data across many servers, providing high availability with no single point of failure. 

@@ -56,8 +56,9 @@ nav:
 
     - Machine Learning (CPU/GPU):
       - Introduction: machine_learning/intro.md
-      - GPU DataFrames: machine_learning/gpu/rapids_cudf.md
-      - GPU/CPU Fractional Differencing: machine_learning/gpu/gpu_fractional_differencing.md
+      - RAPIDS cuDF:
+        - GPU DataFrames: machine_learning/gpu/rapids_cudf.md
+        - GPU/CPU Fractional Differencing: machine_learning/gpu/gpu_fractional_differencing.md
     #  - Linear Regression: machine_learning/gpu/rapids_cudf.md
     #  - Ridge Regression: machine_learning/gpu/rapids_cudf.md
     #  - Kalman Filter: machine_learning/gpu/rapids_cudf.md
@@ -87,9 +88,10 @@ nav:
     # - Out of Distribution Data:
     #   - Introduction: ood/intro.md
 
-    - Database:
-      - Introduction: database/intro.md
-      - Cassandra Cluster Setup: database/setting_up_cluster.md
+    - Data Engineering:
+      - Cassandra (NoSQL):
+        - Introduction: data_engineering/nosql/cassandra/intro.md
+        - Cassandra Cluster Setup: data_engineering/nosql/cassandra/setting_up_cluster.md
 
     - News:
       - Welcome: news/news.md
