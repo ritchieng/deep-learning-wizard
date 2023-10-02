@@ -55,7 +55,7 @@ Take note this is an early work in progress, do be patient as we gradually uploa
   - [Javascript](https://www.deeplearningwizard.com/programming/javascript/javascript/)
   - [Electron](https://www.deeplearningwizard.com/programming/electron/electron/)
 
-- Data Engineering (Libraries: Bash, Databricks, Delta Live Tables, Parquet, Python, Cassandra, and more)
+- Data Engineering Tutorials (Libraries: Bash, Databricks, Delta Live Tables, Parquet, Python, Cassandra, and more)
   - Cassandra (NoSQL)
     - [Introduction](https://www.deeplearningwizard.com/data_engineering/nosql/cassandra/intro/)
     - [Apache Cassandra Cluster Setup](https://www.deeplearningwizard.com/data_engineering/nosql/cassandra/setting_up_cluster/)
