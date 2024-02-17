@@ -53,9 +53,11 @@ nav:
       - Compute Optimization:
         - Speed Optimization Basics Numba: deep_learning/production_pytorch/speed_optimization_basics_numba.md
       # - Additional Readings: deep_learning/readings.md
-    # - LLM:
-    #   - Introduction:
-    #   - RAG:
+    - Language Model:
+      - Introduction: language_model/intro.md
+      - Containers: 
+        - HPC Containers with Apptainer: language_model/containers/hpc_containers_apptainer.md
+      # - RAG:
     - Machine Learning:
       - Introduction: machine_learning/intro.md
       - RAPIDS cuDF:
