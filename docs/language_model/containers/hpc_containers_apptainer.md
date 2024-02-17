@@ -1,5 +1,3 @@
-disqus:
-
 # Containers
 
 To run LLMs easily from laptops and desktops to the cloud, we will be introducing **Apptainer** (formerly Singularity) to achieve this where it has largely been adopted by the community to execute HPC workloads locally and in HPC data centers.
@@ -138,7 +136,7 @@ GPU containers can be found in `./containers/gpu` when you clone the above repos
   - To run ollama with mistral
     - Run 1st session `apptainer shell --nv --nvccli apptainer_container_0.1.sif`
       - `ollama serve`
-    - Run 2nd session (another window) `apptainer shell --nv --nvccli apptainer.1.sif``
+    - Run 2nd session (another window) `apptainer shell --nv --nvccli apptainer.1.sif`
       - `ollama run mistral`
       - You can now communicate with mistral model in your bash, or any other model you can pull on [ollama website](https://ollama.com/)
 
