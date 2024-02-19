@@ -141,22 +141,24 @@ GPU containers can be found in `./containers/gpu` when you clone the above repos
       - You can now communicate with mistral model in your bash, or any other model you can pull on [ollama website](https://ollama.com/)
 
 #### LLamaindex workloads
+
 - Go into container folder: `cd ./containers/gpu/llamaindex`
-    - Run 1st session (first window)`apptainer shell --nv --nvccli apptainer_container_0.1.sif`
-      - `ollama serve`
-    - Run 2nd session (second window) `apptainer shell --nv --nvccli apptainer_container_0.1.sif`
-      - `ollama run mistral`
-    - Run 3rd session (third window) `apptainer shell --nv --nvccli apptainer_container_0.1.sif`
-      - `python`
-      - `from llama_index.llms import Ollama`
-      - `llm = Ollama(model="mistral")`
-      - `response = llm.complete("What is Singapore")`
-      - `print(response)`
+  - Run 1st session (first window)`apptainer shell --nv --nvccli apptainer_container_0.1.sif`
+    - `ollama serve`
+  - Run 2nd session (second window) `apptainer shell --nv --nvccli apptainer_container_0.1.sif`
+    - `ollama run mistral`
+  - Run 3rd session (third window) `apptainer shell --nv --nvccli apptainer_container_0.1.sif`
+    - `python`
+    - `from llama_index.llms import Ollama`
+    - `llm = Ollama(model="mistral")`
+    - `response = llm.complete("What is Singapore")`
+    - `print(response)`
   
 ### CPU Containers
 
 CPU containers can be found in `./containers/cpu` when you clone the above repository.
 
 #### Math Workloads
+
 - Go into container folder: `cd ./containers/cpu/math`
     - Run `apptainer shell apptainer_container_0.2.sif`
