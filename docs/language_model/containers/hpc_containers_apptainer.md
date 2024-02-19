@@ -141,8 +141,7 @@ GPU containers can be found in `./containers/gpu` when you clone the above repos
 
 !!! info  "Model Choice"
 
-    This runs a Mistral model as an example. You can run any other models
-.
+    This runs a Mistral model as an example. You can run any other models by swapping out `mistral` reference above to any models on [Ollama's library](https://ollama.com/library).
 
 #### LLamaindex workloads
 
@@ -160,7 +159,7 @@ GPU containers can be found in `./containers/gpu` when you clone the above repos
 
 !!! info  "Model Choice"
 
-    This runs a Mistral model as an example. You can run any other models
+    This runs a Mistral model as an example. You can run any other models by swapping out `mistral` reference above to any models on [Ollama's library](https://ollama.com/library).
 
 ### CPU Containers
 
