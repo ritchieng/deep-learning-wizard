@@ -133,12 +133,16 @@ GPU containers can be found in `./containers/gpu` when you clone the above repos
 #### Ollama Workloads
 
 - Go into container folder: `cd ./containers/gpu/ollama`
-  - To run ollama with mistral
-    - Run 1st session `apptainer shell --nv --nvccli apptainer_container_0.1.sif`
-      - `ollama serve`
-    - Run 2nd session (another window) `apptainer shell --nv --nvccli apptainer.1.sif`
-      - `ollama run mistral`
-      - You can now communicate with mistral model in your bash, or any other model you can pull on [ollama website](https://ollama.com/)
+- Run 1st session `apptainer shell --nv --nvccli apptainer_container_0.1.sif`
+  - `ollama serve`
+- Run 2nd session (another window) `apptainer shell --nv --nvccli apptainer.1.sif`
+  - `ollama run mistral`
+  - You can now communicate with mistral model in your bash, or any other model you can pull on [ollama website](https://ollama.com/)
+
+!!! info  "Model Choice"
+
+    This runs a Mistral model as an example. You can run any other models
+.
 
 #### LLamaindex workloads
 
@@ -153,7 +157,11 @@ GPU containers can be found in `./containers/gpu` when you clone the above repos
     - `llm = Ollama(model="mistral")`
     - `response = llm.complete("What is Singapore")`
     - `print(response)`
-  
+
+!!! info  "Model Choice"
+
+    This runs a Mistral model as an example. You can run any other models
+
 ### CPU Containers
 
 CPU containers can be found in `./containers/cpu` when you clone the above repository.
