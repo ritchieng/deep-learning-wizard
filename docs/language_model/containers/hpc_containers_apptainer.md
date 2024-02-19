@@ -133,11 +133,11 @@ GPU containers can be found in `./containers/gpu` when you clone the above repos
 #### Ollama Workloads
 
 - Go into container folder: `cd ./containers/gpu/ollama`
-- Run 1st session `apptainer shell --nv --nvccli apptainer_container_0.1.sif`
-  - `ollama serve`
-- Run 2nd session (another window) `apptainer shell --nv --nvccli apptainer.1.sif`
-  - `ollama run mistral`
-  - You can now communicate with mistral model in your bash, or any other model you can pull on [ollama website](https://ollama.com/)
+  - Run 1st session `apptainer shell --nv --nvccli apptainer_container_0.1.sif`
+    - `ollama serve`
+  - Run 2nd session (another window) `apptainer shell --nv --nvccli apptainer.1.sif`
+    - `ollama run mistral`
+    - You can now communicate with mistral model in your bash, or any other model you can pull on [ollama website](https://ollama.com/)
 
 !!! info  "Model Choice"
 
