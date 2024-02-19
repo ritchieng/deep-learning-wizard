@@ -1,17 +1,21 @@
 # Deep Learning Materials by Deep Learning Wizard
+
 <img src="https://img.shields.io/badge/license-MIT-green.svg"/>
 
 [![DOI](https://zenodo.org/badge/139945544.svg)](https://zenodo.org/badge/latestdoi/139945544)
 
 ## Start Learning Now
+
 Please head to [www.deeplearningwizard.com](https://www.deeplearningwizard.com/) to start learning! It is mobile/tablet friendly and open-source.
 
 ## Repository Details
+
 This repository contains all the notebooks and mkdocs markdown files of the tutorials covering machine learning, deep learning, deep reinforcement learning, data engineering, general programming, and visualizations powering the website.
 
 Take note this is an early work in progress, do be patient as we gradually upload our guides.
 
 ## Sections and Subsections
+
 - Deep Learning and Deep Reinforcement Learning Tutorials (Libraries: Python, PyTorch, Gym, NumPy, Matplotlib and more)
     - [Introduction](https://www.deeplearningwizard.com/deep_learning/intro/)
     - [Course Progression](https://www.deeplearningwizard.com/deep_learning/course_progression/)
@@ -40,6 +44,11 @@ Take note this is an early work in progress, do be patient as we gradually uploa
       - [From Scratch Logistic Regression Classification](https://www.deeplearningwizard.com/deep_learning/fromscratch/fromscratch_logistic_regression/)
     - Compute Optimization
       - [Speed Optimization Basics Numba](https://www.deeplearningwizard.com/deep_learning/production_pytorch/speed_optimization_basics_numba/)
+
+- Language Models (Libraries: Python, Pytorch, Ollama, LlamaIndex, CUDA, Huggingface, Apptainer)
+  - [Intro](https://www.deeplearningwizard.com/language_model/intro/)
+  - Containers
+    - [HPC Containers with Apptainer](https://www.deeplearningwizard.com/language_model/containers/hpc_containers_apptainer/)
 
 - Machine Learning Tutorials (Libraries: Python, cuDF RAPIDS, cuML RAPIDS, pandas, numpy, scikit-learn and more)
   - RAPIDS cuDF
