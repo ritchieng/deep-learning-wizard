@@ -182,3 +182,7 @@ CPU containers can be found in `./containers/cpu` when you clone the above repos
 
 - Go into container folder: `cd ./containers/cpu/math`
     - Run `apptainer shell apptainer_container_0.2.sif`
+
+## Summary
+
+We introduced Apptainer as a way to run CPU or GPU workloads that can scale from your desktops, to on-prem HPC data centers, or to cloud providers like Azure, AWS, and GCP. Subsequently, we introduced running LLMs within Apptainer offline locally with Gemma 2b/7b (Google) and Mistral 7b (Mistral AI) models. With portable container to run our code and models, we can now move to diving deep into LLMs, Multimodal Language Models, and Retrieval Augmented Generation (RAG).
