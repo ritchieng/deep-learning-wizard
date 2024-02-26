@@ -49,6 +49,8 @@ Take note this is an early work in progress, do be patient as we gradually uploa
   - [Intro](https://www.deeplearningwizard.com/language_model/intro/)
   - Containers
     - [HPC Containers with Apptainer](https://www.deeplearningwizard.com/language_model/containers/hpc_containers_apptainer/)
+  - Language Models
+    - [LLM Introduction & Hyperparameter Tuning](https://www.deeplearningwizard.com/language_model/llm/llm_intro_hyperparameter_tuning/)
 
 - Machine Learning Tutorials (Libraries: Python, cuDF RAPIDS, cuML RAPIDS, pandas, numpy, scikit-learn and more)
   - RAPIDS cuDF
