@@ -207,7 +207,9 @@ In the Python code above leveraging on `numpy` library, you can see that
 ### Top-K Tuning
 
 In LLMs, the `top_k` hyperparameter is a key factor that influences the unpredictability of the generated output.
+
 - **For smaller `top_k` values**: The model behaves in a more predictable manner. It only takes into account a limited set of the most probable next tokens at each step of the generation process. This can result in responses that are more concise and consistent, but there’s a possibility that the output may be too restricted or repetitive.
+
 - **For larger `top_k` values**: The model takes into consideration a broader set of potential next tokens. This infuses more variety and randomness into the generated output. However, the responses can become less consistent and may occasionally be less coherent or pertinent.
 Therefore, the selection of the top_k value can be viewed as a balance between consistency and variety in the model’s responses. It’s crucial to adjust this parameter based on the specific needs of your task. 
 
