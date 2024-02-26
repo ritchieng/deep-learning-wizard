@@ -86,7 +86,9 @@ In our second question, we change the question to "What is a Large Language Mode
 ### Temperature Tuning
 
 The `temperature` parameter in LLMs plays a pivotal role in determining the predictability of the output. 
+
 - **Lower temperature values (e.g., 0.2)** lead to more predictable and consistent responses, but may risk being overly constrained or repetitive.
+
 - **Higher temperature values (e.g., 1.0)** introduce more randomness and diversity, but can result in less consistency and occasional incoherence.
 The choice of temperature value is a trade-off between consistency and variety, and should be tailored to the specific requirements of your task.
 
@@ -194,10 +196,12 @@ for T in [0.1, 1.0]:
     
 
 
-In the Python code above leverage on `numpy` library, you can see that
+In the Python code above leveraging on `numpy` library, you can see that
+
 - `softargmax` is a function that computes the soft(arg)max of an array of logits `x` for a given temperature `T`.
 - We define an array of logits and compute the soft(arg)max for different temperatures.
 - When you run this code, you'll see that as the temperature increases, the soft(arg)max output becomes more uniform (i.e., the probabilities are more evenly distributed), and as the temperature decreases, the soft(arg)max output becomes more peaky (i.e., one probability dominates the others). This illustrates how temperature can control the randomness of the model's output.
+
 - To close this off, taking the max of the soft(arg)max output, you will observe how it gets more random in the max value as the soft(arg)max output becomes more uniform. This links to the concept of how the next word gets more random because of the max of the uniformity of the soft(arg)max output.
 
 ### Top-K Tuning
@@ -321,9 +325,12 @@ for k in [2, 3, 4]:
     
 
 
-In the code above,
+In the code above
+
 - `top_k` is a function that computes the top `k` logits from an array of logits.
+
 - We define an array of logits and compute the top `k` logits for different values of `k`.
+
 - When you run this code, you'll see that as `k` increases, more logits are considered. This illustrates how `top_k` can control the number of tokens considered by the model.
 
 ## Summary
