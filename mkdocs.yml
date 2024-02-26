@@ -57,6 +57,8 @@ nav:
       - Introduction: language_model/intro.md
       - Containers: 
         - HPC Containers with Apptainer: language_model/containers/hpc_containers_apptainer.md
+      - LLMs:
+        - LLMs Introduction and Hyperparameter Tuning: /language_model/llm/llm_intro_hyperparameter_tuning.md
       # - RAG:
     - Machine Learning:
       - Introduction: machine_learning/intro.md
@@ -225,7 +227,8 @@ extra:
 
 # Search
 plugins:
-  - search
+  - search:
+      separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
 
 # Source to repository
 repo_name: ritchieng/deep-learning-wizard
