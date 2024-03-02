@@ -14,6 +14,8 @@ To run LLMs easily from laptops and desktops to the cloud, we will be introducin
 
 ## Installing Apptainer
 
+The following guide assumes a Linux distribution. We have also rigorously tested this on Windows WSL2 Ubuntu which works perfectly, so if you are on a Windows machine, this guide would work too. We are pleasantly surprised till this day, the sheer investment and improvement Windows made to bring WSL2 to a state where it is almost as good as a bare metal Linux distribution installation.
+
 ### Install Apptainer
 All you need is to install [Apptainer](https://apptainer.org/docs/admin/latest/installation.html) to be able to leverage on this repository to work in containers with multiple environments (CPU/GPU) with any packages and OS independent of your host (local) machine.
 
