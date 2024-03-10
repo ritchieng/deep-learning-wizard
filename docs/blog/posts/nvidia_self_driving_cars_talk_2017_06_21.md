@@ -5,6 +5,7 @@ description: >
   Hosted talk by Marek Bardoński, Senior Deep Learning Research Engineer, NVIDIA Switzerland.
 categories:
   - Workshops
+comments: true
 ---
 
 # NVIDIA Self-Driving Cars and Healthcare Workshop

@@ -5,6 +5,7 @@ description: >
   Helped to teach these students from The African Masters of Machine Intelligence (AMMI) by The African Institute for Mathematical Sciences (AIMS) with Alfredo Canziani. Sponsored by Google and Facebook.
 categories:
   - Workshops
+comments: true
 ---
 
 # AMMI (AIMS) Recap Supported by Facebook and Google

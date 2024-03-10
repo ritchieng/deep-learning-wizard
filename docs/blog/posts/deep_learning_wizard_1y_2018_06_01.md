@@ -5,6 +5,7 @@ description: >
   We are featured on PyTorch website's post celebrating the anniversary of PyTorch.
 categories:
   - Miscellaneous
+comments: true
 ---
 
 # Featured on PyTorch Website

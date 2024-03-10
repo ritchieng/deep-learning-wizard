@@ -5,6 +5,7 @@ description: >
   I created and led a workshop on accelerating fractional differencing with NVIDIA's RAPIDS in DBS, one of the largest bank in Singapore.
 categories:
   - Workshops
+comments: true
 ---
 
 # GPU Fractional Differencing with NVIDIA RAPIDS

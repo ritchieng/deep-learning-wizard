@@ -1,3 +1,1 @@
-disqus:
-
 # Blog
