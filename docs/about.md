@@ -24,7 +24,7 @@ To this date, we have taught thousands of students across more than 120+ countri
 
 !!! abstract "Jie Fu"
 
-    Jie Fu (付杰) is a happy and funny machine learning researcher (principal investigator), at Beijing Academy of Artificial Intelligence2 (BAAI, 北京智源人工智能研究院), with his human-friendly big AI dream.
+    Jie Fu is a happy and funny machine learning researcher (principal investigator), at Hong Kong University of Science and Technology (HKUST), with his human-friendly big AI dream.
 
     He worked as a postdoc with Yoshua Bengio at University of Montreal, Quebec AI Institute (Mila), funded by Microsoft Research Montreal. He was an IVADO postdoc fellow working with Chris Pal at Polytechnique Montreal, Quebec AI Institute (Mila). He obtained his PhD from National University of Singapore under the supervision of Tat-Seng Chua. He received ICLR 2021 Outstanding Paper Award.
 
