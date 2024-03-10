@@ -1,5 +1,3 @@
-disqus:
-
 # Deep Learning and Deep Reinforcement Learning Theory and Programming Tutorials
 
 We'll be covering both CPU and GPU implementations of deep learning and deep reinforcement learning algorithms

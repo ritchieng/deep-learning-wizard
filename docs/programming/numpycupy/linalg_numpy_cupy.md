@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # Linear Algebra with NumPy and CuPy
 
 In this section, we will be covering linear algebra and using numpy for CPU-based matrix manipulation and cupy for GPU-based matrix manipulation.

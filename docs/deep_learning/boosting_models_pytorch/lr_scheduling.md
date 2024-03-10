@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # Learning Rate Scheduling
 
 !!! tip "Run Jupyter Notebook"

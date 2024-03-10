@@ -1,5 +1,3 @@
-disqus:
-
 # Apache Cassandra
 
 === "Tools You Will Learn To Use"

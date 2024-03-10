@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 ## Markov Decision Processes (MDPs)
 - Typically we can **frame all RL tasks as MDPs**[^1]
 	- Intuitively, it's sort of a way to frame RL tasks such that we can solve them in a "principled" manner. We will go into the specifics throughout this tutorial

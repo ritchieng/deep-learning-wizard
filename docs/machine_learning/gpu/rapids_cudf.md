@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # RAPIDS cuDF
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ritchieng/deep-learning-wizard/blob/master/docs/machine_learning/gpu/rapids_cudf.ipynb)

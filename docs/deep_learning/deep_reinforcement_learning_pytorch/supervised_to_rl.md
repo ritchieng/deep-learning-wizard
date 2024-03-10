@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # Supervised Learning to Reinforcement Learning
 
 ## Supervised Learning

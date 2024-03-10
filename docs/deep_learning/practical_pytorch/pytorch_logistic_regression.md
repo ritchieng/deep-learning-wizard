@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # Logistic Regression with PyTorch
 
 !!! tip "Run Jupyter Notebook"

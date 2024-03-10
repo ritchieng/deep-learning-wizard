@@ -1,5 +1,3 @@
-disqus:
-
 # Out-of-distribution Data
 
 This is a persistent and critical production issue present in any machine learning and deep learning systems, no matter how good the models were trained.

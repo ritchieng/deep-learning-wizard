@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # Bash
 
 !!! tip "Run Bash Files"

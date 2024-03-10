@@ -1,3 +1,6 @@
+---
+comments: true
+---
 
 # Autoencoders with PyTorch
 

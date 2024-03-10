@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # Calculus wth Sympy
 
 In this section, we will be covering basic calculus theory and using sympy to solve the related equations.

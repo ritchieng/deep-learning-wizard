@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # Setting up Cassandra Multi-node Cluster
 
 ## Install Apache Cassandra 

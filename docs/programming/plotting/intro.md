@@ -1,5 +1,3 @@
-disqus:
-
 # Plotting
 
 === "Packages you will learn to use"

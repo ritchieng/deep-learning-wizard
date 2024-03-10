@@ -1,3 +1,6 @@
+---
+comments: true
+---
 
 # Overcomplete Autoencoders with PyTorch
 

@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # Containers
 
 To run LLMs easily from laptops and desktops to the cloud, we will be introducing **Apptainer** (formerly Singularity) to achieve this where it has largely been adopted by the community to execute HPC workloads locally and in HPC data centers.

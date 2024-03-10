@@ -1,5 +1,3 @@
-disqus:
-
 # Training, Consultancy & Deployment
 
 We've empowered hundreds of clients from large start-ups, to MNCs, to educational institutions, and to government organizations with deep learning.

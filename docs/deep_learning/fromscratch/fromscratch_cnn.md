@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # CNN from Scratch
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ritchieng/deep-learning-wizard/blob/master/docs/deep_learning/fromscratch/fromscratch_cnn.ipynb)
 

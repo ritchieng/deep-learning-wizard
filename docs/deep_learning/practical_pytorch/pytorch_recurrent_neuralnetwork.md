@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # Recurrent Neural Network with PyTorch
 
 !!! tip "Run Jupyter Notebook"

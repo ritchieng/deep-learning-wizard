@@ -210,7 +210,6 @@ extra:
       link: 'https://www.linkedin.com/company/deeplearningwizard/'
     - icon: 'fontawesome/brands/github'
       link: 'https://github.com/ritchieng'
-  disqus: 'deep-learning-wizard'
 
 # Search
 plugins:

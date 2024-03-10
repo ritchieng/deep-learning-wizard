@@ -1,5 +1,3 @@
-disqus:
-
 # Learn The Whole AI Pipeline With
 
 You will the learn the suite of tools to build an end-to-end deep learning pipeline.

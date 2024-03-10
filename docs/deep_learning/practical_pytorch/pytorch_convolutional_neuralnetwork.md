@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # Convolutional Neural Network with PyTorch
 
 !!! tip "Run Jupyter Notebook"

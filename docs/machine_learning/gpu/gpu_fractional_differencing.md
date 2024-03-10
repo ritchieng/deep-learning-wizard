@@ -1,3 +1,6 @@
+---
+comments: true
+---
 
 # GFD: GPU Fractional Differencing
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ritchieng/fractional_differencing_gpu/blob/master/notebooks/gpu_fractional_differencing.ipynb)

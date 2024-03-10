@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # Matrices with PyTorch 
 
 !!! tip "Run Jupyter Notebook"

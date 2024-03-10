@@ -1,5 +1,3 @@
-disqus:
-
 # Language Model
 
 We'll be covering both CPU and GPU implementations of Large Language Models (LLMs) and Multimodal Language Models.

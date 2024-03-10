@@ -1,3 +1,6 @@
+---
+comments: true
+---
 
 # Speed Optimization Basics: Numba
 

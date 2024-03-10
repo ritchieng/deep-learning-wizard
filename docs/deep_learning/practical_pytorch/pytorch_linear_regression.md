@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # Linear Regression with PyTorch
 
 !!! tip "Run Jupyter Notebook"

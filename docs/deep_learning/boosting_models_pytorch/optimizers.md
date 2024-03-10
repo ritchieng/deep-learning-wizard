@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # Optimization Algorithms
 
 !!! tip "Run Jupyter Notebook"

@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # Weight Initializations & Activation Functions
 
 !!! tip "Run Jupyter Notebook"

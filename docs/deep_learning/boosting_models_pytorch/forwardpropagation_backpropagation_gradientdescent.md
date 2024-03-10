@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # Forwardpropagation, Backpropagation and Gradient Descent with PyTorch
 
 !!! tip "Run Jupyter Notebook"
