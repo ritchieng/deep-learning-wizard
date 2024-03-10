@@ -4,7 +4,7 @@ In this tutorial, we will be covering LLMs leveraging on Ollama and LlamaIndex u
 
 ## Environment Setup
 
-Follow our [tutorial on Apptainer](https://www.deeplearningwizard.com/language_model/containers/hpc_containers_apptainer/) to get started. Once you have followed the tutorial and you completed the [Ollama, LlamaIndex and Gemma:7b](https://www.deeplearningwizard.com/language_model/containers/hpc_containers_apptainer/#ollama-gemma-workload section), you will be able to run `jupyter lab` in a new window to access and run this notebook.
+Follow our [tutorial on Apptainer](https://www.deeplearningwizard.com/language_model/containers/hpc_containers_apptainer/) to get started. Once you have followed the tutorial till the [Ollama section](https://www.deeplearningwizard.com/language_model/containers/hpc_containers_apptainer/#ollama-gemma-workloads) where you successfully ran `ollama serve` and `ollama run gemma:7b`, you can run the `apptainer shell --nv --nvccli apptainer_container_0.1.sif` command followed by `jupyter lab` to access and run this notebook.
 
 !!! info  "Directory Guide"
 
@@ -14,43 +14,56 @@ Follow our [tutorial on Apptainer](https://www.deeplearningwizard.com/language_m
 
 In this section, we will leverage on the `Gemma:7b` LLM model to ask basic questions to get responses.
 
+
+```python
+import ollama
+```
+
 ### Question 1
 
 
 ```python
-# Import the Ollama class from the llama_index.llms.ollama module.
-from llama_index.llms.ollama import Ollama
+# The 'chat' function is called with two parameters: 'model' and 'messages'.
+response = ollama.chat(
+    model='gemma:7b',  # The 'model' parameter specifies the model to be used. Here, 'gemma:7b' is the model.
+    messages=[  # The 'messages' parameter is a list of message objects.
+        {
+            'role': 'user',  # Each message object has a 'role' key. It can be 'user' or 'assistant'.
+            'content': 'What is Singapore?',  # The 'content' key contains the actual content of the message.
+        },
+    ]
+)
 
-# Create an instance of the Ollama class. The "gemma:7b" argument specifies the model to be used.
-llm = Ollama(model="gemma:7b")
-
-# Call the complete method on the Ollama instance. 
-# The method generates a completion for the given prompt "What is Singapore?".
-response = llm.complete("What is Singapore?")
-
-# Print the generated response
-print(response)
+# The 'chat' function returns a response object. 
+# The content of the assistant's message is accessed using the keys 'message' and 'content'.
+# The 'print' function is used to display this content.
+print(response['message']['content'])
 ```
 
-    /opt/conda/lib/python3.12/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
-      from .autonotebook import tqdm as notebook_tqdm
-
-
-    Singapore is a city-state located on the island of Singapore. It is a Southeast Asian country and is known for its high standard of living, cleanliness, and efficiency.
+    Singapore is a city-state located on the island of Singapore, a Southeast Asian island. It is a highly developed city known for its modern architecture, efficient transportation system, and vibrant cultural diversity.
 
 
 ### Question 2
 
 
 ```python
-response = llm.complete("What is a Large Language Model?")
-print(response)
+response = ollama.chat(
+    model='gemma:7b',
+    messages=[
+        {
+            'role': 'user',
+            'content': 'What is a Large Language Model?',
+        },
+    ]
+)
+
+print(response['message']['content'])
 ```
 
-    A Large Language Model (LLM) is a type of language model that has been trained on a massive amount of text data, typically billions or trillions of words. LLMs are designed to be able to understand and generate human-like text, engage in natural language processing tasks, and provide information and knowledge across a wide range of topics. LLMs are typically deep learning models that are trained using transformer architectures, such as the GPT-3 model.
+    Sure, a Large Language Model (LLM) is a type of language model that has been trained on a massive amount of text data and has the ability to engage in a wide range of natural language processing tasks. LLMs are typically designed to have a large number of parameters, which allows them to learn complex relationships between words and sentences. LLMs are often used for tasks such as text summarization, translation, and code generation.
 
 
-In our second question, we change the question to "What is a Large Language Model?" and you can observe how the answer is substantially longer than the first question "What is Singapore". In the next section, you will discover that this relates to a few hyperparemeters in LLMs that can be tweaked.
+In our second question, we change the question to "What is a Large Language Model?" and you can observe how the answer is slightly longer than the first question "What is Singapore". In the next section, you will discover that this relates to a few hyperparemeters in LLMs that can be tweaked.
 
 ## Question and Answer | Hyperparameter Tuning
 
@@ -67,257 +80,139 @@ The choice of temperature value is a trade-off between consistency and variety, 
 
 
 ```python
-# Set the prompt
-prompt = "Write a happy birthday message, I would like to send to my friend."
-
+# Create new model
 # Set the temperature
-# Higher values (e.g., 1.0) make the output more random, while lower values (e.g., 0.01) make it more deterministic
-temperature = 0.01
-# Instantiate the Ollama class again
-llm = Ollama(model="gemma:7b", temperature=temperature)
+# Higher values (e.g., 1.0) make the output more random, while lower values (e.g., 0.1) make it more deterministic
+modelfile='''
+FROM gemma:7b
+PARAMETER temperature 0.1
+'''
+ollama.create('gemma_low_temp', modelfile=modelfile)
 
-# Generate the response
-response = llm.complete(prompt)
+# Now you can use the new model with adjusted temperature
+response = ollama.chat(
+    model='gemma_low_temp',
+    messages=[
+        {
+            'role': 'user',
+            'content': 'Write a happy birthday message, I would like to send to my friend.',
+        },
+    ]
+)
 
-print(response)
+print(response['message']['content'])
 ```
 
-    Sure, here's a happy birthday message for your friend:
-    
-    **Happy Birthday, [Friend's Name]!**
-    
-    I hope your day is filled with joy, laughter, and happiness. May all your wishes come true.
-    
-    Have a wonderful day, and I'm looking forward to celebrating with you soon.
-    
-    **Best regards,**
-    
-    [Your Name]
-
-
-
-```python
-# Check model
-llm
-```
-
-
-
-
-    Ollama(callback_manager=<llama_index.core.callbacks.base.CallbackManager object at 0x7fd7e76754f0>, system_prompt=None, messages_to_prompt=<function messages_to_prompt at 0x7fd898237100>, completion_to_prompt=<function default_completion_to_prompt at 0x7fd8982bfd80>, output_parser=None, pydantic_program_mode=<PydanticProgramMode.DEFAULT: 'default'>, query_wrapper_prompt=None, base_url='http://localhost:11434', model='gemma:7b', temperature=0.01, context_window=3900, request_timeout=30.0, prompt_key='prompt', additional_kwargs={})
-
+    Happy Birthday, [Friend's Name]! I hope your day is filled with joy, laughter, and happiness. May all your wishes come true! 🎉🎂
 
 
 
 ```python
 # Run multiple times
 for i in range(3):
-    # Set the prompt
-    prompt = "Write a happy birthday message, I would like to send to my friend."
+    response = ollama.chat(
+        model='gemma_low_temp',
+        messages=[
+            {
+                'role': 'user',
+                'content': 'Write a happy birthday message, I would like to send to my friend.',
+            },
+        ],
+    )
     
-    # Set the temperature
-    # Higher values (e.g., 1.0) make the output more random, while lower values (e.g., 0.01) make it more deterministic
-    temperature = 0.01
-    # Instantiate the Ollama class again
-    llm = Ollama(model="gemma:7b", temperature=temperature)
-    
-    # Generate the response
-    response = llm.complete(prompt)
-
     # Print 
     print('-'*10)
     print(f'Response {i}') 
     print('-'*10)
-    print(response)
-
+    print(response['message']['content'])
 ```
 
     ----------
     Response 0
     ----------
-    Sure, here's a happy birthday message for your friend:
-    
-    **Happy Birthday, [Friend's Name]!**
-    
-    I hope your day is filled with joy, laughter, and happiness. May all your wishes come true.
-    
-    Have a wonderful day, and I'm looking forward to celebrating with you soon.
-    
-    **Best regards,**
-    
-    [Your Name]
+    Happy Birthday, [Friend's Name]! I hope your day is filled with joy, laughter, and happiness. May all your wishes come true! 🎉🎂
     ----------
     Response 1
     ----------
-    Sure, here's a happy birthday message for your friend:
-    
-    **Happy Birthday, [Friend's Name]!**
-    
-    I hope your day is filled with joy, laughter, and happiness. May all your wishes come true.
-    
-    Have a wonderful day, and I'm looking forward to celebrating with you soon.
-    
-    **Best regards,**
-    
-    [Your Name]
+    Happy Birthday, [Friend's Name]! I hope your day is filled with joy, laughter, and happiness. May all your wishes come true! 🎉🎂
     ----------
     Response 2
     ----------
-    Sure, here's a happy birthday message for your friend:
-    
-    **Happy Birthday, [Friend's Name]!**
-    
-    I hope your day is filled with joy, laughter, and happiness. May all your wishes come true.
-    
-    Have a wonderful day, and I'm looking forward to celebrating with you soon.
-    
-    **Best regards,**
-    
-    [Your Name]
+    Happy Birthday, [Friend's Name]! I hope your day is filled with joy, laughter, and happiness. May all your wishes come true! 🎉🎂
 
 
-**We can see above it is almost the exact same answer calling the LLM 3 times**.
+**We can see above it is the exact same answer calling the LLM 3 times**.
 
 #### High Temperature
 
 
 ```python
-# Set the prompt
-prompt = "Write a happy birthday message, I would like to send to my friend."
-
+# Create new model
 # Set the temperature
-# Higher values (e.g., 1.0) make the output more random, while lower values (e.g., 0.01) make it more deterministic
-temperature = 1.0
-# Instantiate the Ollama class again
-llm = Ollama(model="gemma:7b", temperature=temperature)
+# Higher values (e.g., 1.0) make the output more random, while lower values (e.g., 0.1) make it more deterministic
+modelfile='''
+FROM gemma:7b
+PARAMETER temperature 1.0
+'''
+ollama.create('gemma_high_temp', modelfile=modelfile)
 
-# Generate the response
-response = llm.complete(prompt)
+# Now you can use the new model with adjusted temperature
+response = ollama.chat(
+    model='gemma_high_temp',
+    messages=[
+        {
+            'role': 'user',
+            'content': 'Write a happy birthday message, I would like to send to my friend.',
+        },
+    ]
+)
 
-print(response)
-
+print(response['message']['content'])
 ```
 
-    Here are a few happy birthday messages you can send to your friend:
-    
-    **Short and sweet:**
-    
-    * "Happy Birthday, [friend's name]! Wishing you a day filled with joy!"
-    * "Have a very happy birthday, [friend's name]! Can't wait to see you!"
-    * "Happy Birthday, [friend's name]! May your day be filled with happiness!"
-    
-    **A little more personal:**
-    
-    * "Happy Birthday, [friend's name]! I hope your day is as special as you are."
-    * "Have a wonderful birthday, [friend's name]! I'm so glad I have you in my life."
-    * "Wishing you a very happy birthday, [friend's name]. Let's celebrate this special day together!"
-    
-    **Fun and cheeky:**
-    
-    * "Happy Birthday, [friend's name]! I hope your day is filled with cake and laughter."
-    * "Have a great birthday, [friend's name]! I'm not going to tell you how old you are... for now, at least."
-    * "Happy Birthday, [friend's name]! May your day be filled with all your favorite things... even if it's me."
-
-
-
-```python
-# Check model
-llm
-```
-
-
-
-
-    Ollama(callback_manager=<llama_index.core.callbacks.base.CallbackManager object at 0x7fd7e8b82ea0>, system_prompt=None, messages_to_prompt=<function messages_to_prompt at 0x7fd898237100>, completion_to_prompt=<function default_completion_to_prompt at 0x7fd8982bfd80>, output_parser=None, pydantic_program_mode=<PydanticProgramMode.DEFAULT: 'default'>, query_wrapper_prompt=None, base_url='http://localhost:11434', model='gemma:7b', temperature=1.0, context_window=3900, request_timeout=30.0, prompt_key='prompt', additional_kwargs={})
-
+    Happy Birthday, [Friend's Name]! I hope your day is filled with joy, laughter, and happiness! 🎉🎂 🎉
 
 
 
 ```python
 # Run multiple times
 for i in range(3):
-    # Set the prompt
-    prompt = "Write a happy birthday message, I would like to send to my friend."
+    response = ollama.chat(
+        model='gemma_high_temp',
+        messages=[
+            {
+                'role': 'user',
+                'content': 'Write a happy birthday message, I would like to send to my friend.',
+            },
+        ],
+    )
     
-    # Set the temperature
-    # Higher values (e.g., 1.0) make the output more random, while lower values (e.g., 0.01) make it more deterministic
-    temperature = 1.0
-    # Instantiate the Ollama class again
-    llm = Ollama(model="gemma:7b", temperature=temperature)
-    
-    # Generate the response
-    response = llm.complete(prompt)
-
     # Print 
     print('-'*10)
     print(f'Response {i}') 
     print('-'*10)
-    print(response)
-
+    print(response['message']['content'])
 ```
 
     ----------
     Response 0
     ----------
-    Here are a few happy birthday messages you can send to your friend:
-    
-    **Classic Wishes:**
-    
-    * "Happy Birthday, [Friend's Name]! Wishing you a day filled with joy, happiness, and laughter."
-    * "Have a very happy birthday, [Friend's Name]! May your day be filled with sunshine and good times."
-    * "Happy Birthday, my dear [Friend's Name]! I hope your day is as awesome as you are."
-    
-    **Personalized Wishes:**
-    
-    * "Happy Birthday, [Friend's Name]! I hope your day is filled with [specific things you know your friend enjoys]."
-    * "I'm so glad it's your birthday, [Friend's Name]! I'm sending you a virtual hug and a bunch of birthday wishes."
-    * "Wishing you a very happy birthday, [Friend's Name]! I can't wait to see what you have planned for this special day."
-    
-    **Fun and Quirky Wishes:**
-    
-    * "Happy Birthday, [Friend's Name]! May your day be filled with cake and laughter... and maybe a sprinkle of unicorn magic."
-    * "Have a very happy birthday, [Friend's Name]! I'm hoping your day is as memorable as a trip to the moon."
-    * "Happy Birthday, [Friend's Name]! I'm sending you virtual balloons and a party hat big enough for the both of us."
+    Happy Birthday, [Friend's Name]! I hope your day is filled with joy, laughter, and happiness. Let's celebrate your special day together!
     ----------
     Response 1
     ----------
-    Here are some happy birthday messages you can send to your friend:
-    
-    **Classic wishes:**
-    
-    * "Happy Birthday, [friend's name]! May your day be filled with joy, laughter, and good times."
-    * "Have a very happy birthday, [friend's name]! I hope all your wishes come true."
-    * "Wishing you a very happy birthday, [friend's name]! I'm sending you warmest wishes for a day filled with happiness."
-    
-    **Personalized wishes:**
-    
-    * "Happy Birthday, [friend's name]! I hope your day is as special as you are."
-    * "Have a wonderful birthday, [friend's name]! I'm so glad to have you in my life."
-    * "Sending you big birthday wishes, [friend's name]! I can't wait to see what you have planned."
-    
-    **Fun and cheesy:**
-    
-    * "Happy Birthday, [friend's name]! I'm hoping you have a day as awesome as you are."
-    * "Have a blast on your birthday, [friend's name]! I'm planning on eating a cake in your honor."
-    * "I'm not a party pooper, but I'm definitely not attending your party, [friend's name]. Have a great day!"
-    
-    **Remember:**
-    
-    * You can personalize the message with your friend's name and preferred gender-neutral pronouns.
-    * You can add a specific wish or goal you have for your friend.
-    * You can include a funny joke or a reference to a shared inside joke.
-    * You can keep the message short and sweet, or you can write a longer, more heartfelt message.
+    Happy Birthday, [Friend's Name]! I hope your day is filled with joy, laughter, and happiness. Wishing you a very special day filled with memorable moments and sweet treats!
     ----------
     Response 2
     ----------
-    Sure, here's a happy birthday message you can send to your friend:
+    Sure, here is a happy birthday message you can send to your friend:
     
     **Happy Birthday, [Friend's Name]!**
     
-    May your day be filled with joy, laughter, and happiness. I hope your special day is filled with all your favorite things, and I'm wishing you a very, very happy birthday!
+    May your day be filled with joy, laughter, and happiness. I hope your special day is filled with everything you wish for. I'm sending you positive vibes and can't wait to see you soon.
 
 
-**Here, you can see very varied answer in each of the 3 calls to the LLM commpared to lower temperature.**
+**Here, you can see very varied answer in each of the 3 calls to the LLM compared to lower temperature.**
 
 #### Mathematical Interpretation
 
@@ -327,11 +222,11 @@ In LLMs, the `temperature` parameter is used to control the randomness of predic
 
 - The soft(arg)max function is defined as follows:
 
-    $$\text{softargmax}(x_i) = \frac{e^{x_i}}{\sum_j e^{x_j}}$$
+    $$\text{softargmax}(x_i) = \frac{e^{x_i}}{\sum_i^j e^{x_i}}$$
 
 - Before applying soft(arg)max, the logits are divided by the `temperature` value. This process is called temperature scaling and the equation becomes:
 
-    $$\text{softargmax}(x_i) = \frac{e^{x_i/T}}{\sum_j e^{x_j/T}}$$
+    $$\text{softargmax}(x_i) = \frac{e^{x_i/T}}{\sum_i^j e^{x_i/T}}$$
 
 - When `T` > 1, it makes the distribution more uniform (increases randomness). When `T` < 1, it makes the distribution more peaky (reduces randomness).
 
@@ -371,7 +266,236 @@ In the Python code above leveraging on `numpy` library, you can see that
 
 - To close this off, taking the max of the soft(arg)max output, you will observe how it gets more random in the max value as the soft(arg)max output becomes more uniform. This links to the concept of how the next word gets more random because of the max of the uniformity of the soft(arg)max output.
 
+### Top-K Tuning
+
+In LLMs, the `top_k` hyperparameter is a key factor that influences the unpredictability of the generated output.
+
+- **For smaller `top_k` values**: The model behaves in a more predictable manner. It only takes into account a limited set of the most probable next tokens at each step of the generation process. This can result in responses that are more concise and consistent, but there’s a possibility that the output may be too restricted or repetitive.
+
+- **For larger `top_k` values**: The model takes into consideration a broader set of potential next tokens. This infuses more variety and randomness into the generated output. However, the responses can become less consistent and may occasionally be less coherent or pertinent.
+Therefore, the selection of the top_k value can be viewed as a balance between consistency and variety in the model’s responses. It’s crucial to adjust this parameter based on the specific needs of your task. 
+
+#### Low K
+
+
+```python
+# Create new model
+
+# Set the temperature
+# Higher values (e.g., 1.0) make the output more random, while lower values (e.g., 0.1) make it more deterministic
+
+# Set the top_k
+# This parameter controls the number of tokens considered for each step of the generation process
+modelfile='''
+FROM gemma:7b
+PARAMETER temperature 0.5
+PARAMETER top_k 3
+'''
+ollama.create('gemma_topk_3', modelfile=modelfile)
+
+# Now you can use the new model with adjusted temperature
+response = ollama.chat(
+    model='gemma_topk_3',
+    messages=[
+        {
+            'role': 'user',
+            'content': 'Write a happy birthday message, I would like to send to my friend.',
+        },
+    ]
+)
+
+print(response['message']['content'])
+```
+
+    Happy Birthday, [Friend's Name]! I hope your day is filled with joy, laughter, and happiness. May all your wishes come true!
+
+
+
+```python
+# Run multiple times
+for i in range(3):
+    response = ollama.chat(
+        model='gemma_topk_3',
+        messages=[
+            {
+                'role': 'user',
+                'content': 'Write a happy birthday message, I would like to send to my friend.',
+            },
+        ],
+    )
+    
+    # Print 
+    print('-'*10)
+    print(f'Response {i}') 
+    print('-'*10)
+    print(response['message']['content'])
+```
+
+    ----------
+    Response 0
+    ----------
+    Sure, here's a happy birthday message for your friend:
+    
+    **Happy Birthday, [Friend's Name]!**
+    
+    I hope your day is filled with joy, laughter, and happiness. May all your wishes come true. Have a blast! 🎉🎂🎉
+    ----------
+    Response 1
+    ----------
+    Happy Birthday, [Friend's Name]! I hope your day is filled with joy, laughter, and happiness. May all your wishes come true. 🎉🎂
+    ----------
+    Response 2
+    ----------
+    Happy Birthday, [Friend's Name]! I hope your day is filled with joy, laughter, and happiness. May all your wishes come true. 🎉🎂
+
+
+#### High K
+
+
+```python
+# Create new model
+
+# Set the temperature
+# Higher values (e.g., 1.0) make the output more random, while lower values (e.g., 0.1) make it more deterministic
+
+# Set the top_k
+# This parameter controls the number of tokens considered for each step of the generation process
+modelfile='''
+FROM gemma:7b
+PARAMETER temperature 0.5
+PARAMETER top_k 200
+'''
+ollama.create('gemma_topk_200', modelfile=modelfile)
+
+# Now you can use the new model with adjusted temperature
+response = ollama.chat(
+    model='gemma_topk_200',
+    messages=[
+        {
+            'role': 'user',
+            'content': 'Write a happy birthday message, I would like to send to my friend.',
+        },
+    ]
+)
+
+print(response['message']['content'])
+```
+
+    Happy Birthday, [Friend's name]! I hope your day is filled with joy, laughter, and happiness! 🎉🎂
+
+
+
+```python
+# Run multiple times
+for i in range(3):
+    response = ollama.chat(
+        model='gemma_topk_200',
+        messages=[
+            {
+                'role': 'user',
+                'content': 'Write a happy birthday message, I would like to send to my friend.',
+            },
+        ],
+    )
+    
+    # Print 
+    print('-'*10)
+    print(f'Response {i}') 
+    print('-'*10)
+    print(response['message']['content'])
+```
+
+    ----------
+    Response 0
+    ----------
+    Sure, here is a happy birthday message for your friend:
+    
+    **Happy Birthday, [Friend's Name]!**
+    
+    I hope your day is filled with joy, laughter, and happiness. May all your wishes come true today.
+    
+    Have a wonderful birthday, and I look forward to seeing you soon.
+    
+    **Best regards,**
+    
+    [Your Name]
+    ----------
+    Response 1
+    ----------
+    Sure, here's a happy birthday message for your friend:
+    
+    **Happy Birthday, [Friend's Name]!**
+    
+    May your day be filled with joy, laughter, and happiness. I hope your special day is filled with all your favorite things and that your wishes come true.
+    
+    **Have a wonderful birthday, my dear friend!**
+    ----------
+    Response 2
+    ----------
+    Sure, here's a happy birthday message for your friend:
+    
+    **Happy Birthday, [Friend's Name]!**
+    
+    May your day be filled with joy, laughter, and happiness. I hope you have a wonderful time celebrating your special day!
+
+
+You can observe that the reply is more diverse with a high `top_k` hyperparameter.
+
+#### Mathematical Interpretation
+
+In LLMs, the `top_k` parameter is used to limit the number of next tokens considered for generation.
+
+- After computing the soft(arg)max probabilities for all possible next tokens, the model sorts these probabilities in descending order.
+
+- The model then only considers the `top_k` tokens with the highest probabilities for the next step of the generation process.
+
+- This process is called `top_k` sampling.
+
+Here's a simple Python code snippet that illustrates how `top_k` works.
+
+
+```python
+def top_k(logits, k):
+    # Sort the logits
+    sorted_indices = np.argsort(logits)
+    
+    # Consider only the top k
+    top_k_indices = sorted_indices[-k:]
+    
+    # Create a new array with only the top k probabilities
+    top_k_logits = logits[top_k_indices]
+    
+    return top_k_logits
+
+# Define logits
+logits = np.array([0.2, 0.3, 0.1, 0.4])
+
+# Compute top_k for different values of k
+for k in [2, 3, 4]:
+    print(f"Top {k} logits:")
+    print(top_k(logits, k=k))
+    print()
+```
+
+    Top 2 logits:
+    [0.3 0.4]
+    
+    Top 3 logits:
+    [0.2 0.3 0.4]
+    
+    Top 4 logits:
+    [0.1 0.2 0.3 0.4]
+    
+
+
+In the code above
+
+- `top_k` is a function that computes the top `k` logits from an array of logits.
+
+- We define an array of logits and compute the top `k` logits for different values of `k`.
+
+- When you run this code, you'll see that as `k` increases, more logits are considered. This illustrates how `top_k` can control the number of tokens considered by the model.
 
 ## Summary
 
-We covered the functionality of a basic LLM without any hyperparameter tuning. We then covered Temperature hyperparameter tuning. It is important to note that there are many hyperparameters that can be tuned, and we will update this tutorial to gradually include as many as we can.
+We covered the functionality of a basic LLM without any hyperparameter tuning. We then covered Temperature and Top-K hyperparameter tuning. It is important to note that there are many hyperparameters that can be tuned, and we will update this tutorial to gradually include as many as we can.
