@@ -1,9 +1,8 @@
 ---
-date: 2022-09-12
+date: 2018-11-21
 authors: [ritchieng]
 description: >
-  Our new blog is built with the brand new built-in blog plugin. You can build
-  a blog alongside your documentation or standalone
+  Helped to teach these students from The African Masters of Machine Intelligence (AMMI) by The African Institute for Mathematical Sciences (AIMS) with Alfredo Canziani. Sponsored by Google and Facebook.
 categories:
   - Workshops
 ---
@@ -26,7 +25,7 @@ Speaking about community, I got to contribute to the deep learning community wit
 
 To the future of AI in and beyond Africa. Looking forward to help Moustapha in any way I can to nurture AI talent 🙂
 
-I'm being a fanboy here, but Yann Lecun liked my post on [Facebook](https://www.facebook.com/ritchiengz/posts/2267714723302661)! 
+I'm being a fanboy here, but Yann Lecun liked my post on [Facebook](https://www.facebook.com/ritchiengz/posts/2267714723302661)!
 
 Cheers,
 <br />Ritchie

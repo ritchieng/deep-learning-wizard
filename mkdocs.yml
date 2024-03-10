@@ -101,21 +101,6 @@ nav:
 
     - Blog:
       - blog/index.md
-      
-    - News:
-      - Welcome: news/news.md
-      - Fractional Differencing with GPU (GFD), DBS and NVIDIA, September 2019: news/dbs_gpu_rapids_nvidia_ensemble_frac_diff.md
-      - Deep Learning Introduction, Defence and Science Technology Agency (DSTA) and NVIDIA, June 2019: news/defence_and_science_technology_agency_dsta_nvidia_talk_2016_06.md
-      - Oral Presentation for AI for Social Good Workshop ICML, June 2019: news/detect_waterbone_debris_ai_for_social_good_icml_2019_06.md
-      - IT Youth Leader of The Year 2019, March 2019: news/it_youth_leader_2019_03_11.md
-      - AMMI (AIMS) supported by Facebook and Google, November 2018: news/ammi_facebook_google_recap_2018_11_21.md
-      - NExT++ AI in Healthcare and Finance, Nanjing, November 2018: news/nanjing_next_nus_tsinghua_ai_finance_healthcare_2018_11_01.md
-      - Recap of Facebook PyTorch Developer Conference, San Francisco, September 2018: news/facebook_pytorch_devcon_recap_2018_10_02.md
-      - Facebook PyTorch Developer Conference, San Francisco, September 2018: news/facebook_pytorch_developer_conference_2018_09_05.md
-      - NUS-MIT-NUHS NVIDIA Image Recognition Workshop, Singapore, July 2018: news/nvidia_nus_mit_datathon_2018_07_05.md
-      - Featured on PyTorch Website 2018: news/deep_learning_wizard_1y_2018_06_01.md
-      - NVIDIA Self Driving Cars & Healthcare Talk, Singapore, June 2017: news/nvidia_self_driving_cars_talk_2017_06_21.md
-      - NVIDIA Inception Partner Status, Singapore, May 2017: news/deep_learning_wizard_nvidia_inception_2018_05_01.md
 
 # Configuration
 theme:
