@@ -99,6 +99,9 @@ nav:
         - Introduction: data_engineering/nosql/cassandra/intro.md
         - Cassandra Cluster Setup: data_engineering/nosql/cassandra/setting_up_cluster.md
 
+    - Blog:
+      - blog/index.md
+      
     - News:
       - Welcome: news/news.md
       - Fractional Differencing with GPU (GFD), DBS and NVIDIA, September 2019: news/dbs_gpu_rapids_nvidia_ensemble_frac_diff.md
@@ -117,7 +120,7 @@ nav:
 # Configuration
 theme:
   name: material
-  custom_dir: material
+  custom_dir: material/overrides
   
   static_templates:
     - 404.html
@@ -226,6 +229,7 @@ extra:
 
 # Search
 plugins:
+  - blog
   - search:
       separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
 

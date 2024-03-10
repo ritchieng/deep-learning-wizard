@@ -1,4 +1,4 @@
 ---
-template: /overrides/home.html
+template: home.html
 title: Deep Learning Wizard
 ---
