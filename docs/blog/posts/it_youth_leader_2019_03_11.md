@@ -8,12 +8,9 @@ categories:
 ---
 
 # IT Youth Leader of the Year 2019 Award
-
-## We got it!
-
-![](https://res.cloudinary.com/ritchieng/image/upload/v1552267733/award_it_youth_2019_rwzanm.jpg)
-
 I am very happy to be the [IT Youth Leader of the Year 2019](https://www.scs.org.sg/it-leader-awards/winners-by-year.php?year=2019) in Singapore for my industry and non-profit contribution in AI at **Deep Learning Wizard**, ensemblecap.ai, NUS,  and NVIDIA!
+
+<!-- more -->
 
 I would like to thank the professor who changed my life, believed in me and nominated me for consideration, Professor Chua Tat-Seng from NExT Centre, NUS School of Computing. Big thanks to everyone who helped for this in NExT Centre particularly Choon Meng, Tek Min, Chua Yi Hao, and Eugene Tan.
 
@@ -36,6 +33,8 @@ Last thanks to everyone in #SingaporeComputerSociety like Jason Chen for being t
 Thanks to forward-looking civil servants and minister like Minister S Iswaran for gracing the event and delivering a speech on digital readiness and skills empowerment for Singaporeans.
 
 Thanks to my family for being by my side Carine Chng, Ng William, and Adabelle Ng for giving me the freedom and support to pursue whatever I wanted even from young.
+
+![](https://res.cloudinary.com/ritchieng/image/upload/v1552267733/award_it_youth_2019_rwzanm.jpg)
 
 To the future of AI!
 

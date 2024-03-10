@@ -9,11 +9,11 @@ categories:
 
 # Recap of Facebook PyTorch Devcon
 
-## Woo!
-
 Proud of how far PyTorch has come. Thanks Soumith Chintala, it is a great journey and it just started. And thanks to Adam Paszke too!
 
 Finally got to meet with Soumith Chintala, Alfredo Canziani and Marek Bardoński and found Andrej Karpathy! Back to Singapore tonight 🤗
+
+<!-- more -->
 
 Here are some photos of my trip! 
 

@@ -9,9 +9,9 @@ categories:
 
 # GPU Fractional Differencing with NVIDIA RAPIDS
 
-## Introduction to Deep Learning
-
 I created and led a workshop on accelerating fractional differencing with NVIDIA's RAPIDS in DBS.
+
+<!-- more -->
 
 This is our [article](https://medium.com/rapids-ai/rapid-fractional-differencing-to-minimize-memory-loss-while-making-a-time-series-stationary-2052f6c060a4) on medium with NVIDIA on our work.
 

@@ -9,9 +9,9 @@ categories:
 
 # NExT++ AI in Finance and Healthcare Workshop 2018
 
-## Recap
-
 This is [NExT++’s 3rd Workshop](http://www.nextcenter.org/event/next-workshop-2018-nanjing/) and this time we are looking at the applications and development of AI related technologies in the healthcare and finance verticals with the theme “AI in Health and Finance”
+
+<!-- more -->
 
 Visual summary of my talk on AI and Unstructured Analytics in Fintech. Doesn't contain everything, but whatever the non-technical designers could come up with in real-time. Really amazing so kudos to them.
 

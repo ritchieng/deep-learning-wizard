@@ -9,9 +9,9 @@ categories:
 
 # Facebook PyTorch Developer Conference
 
-## We are heading down!
-
 In barely 2 short years, PyTorch (Facebook) will be hosting their first [PyTorch Developer Conference](https://pytorch.fbreg.com) in San Francisco, USA.
+
+<!-- more -->
 
 I will be heading down thanks to Soumith Chintala for the invite and arrangements. Looking forward to meet anyone there. 
 

@@ -9,11 +9,9 @@ categories:
 
 # AMMI (AIMS) Recap Supported by Facebook and Google
 
-## To the future of AI in and beyond Africa
-
-![](https://res.cloudinary.com/ritchieng/image/upload/v1542700156/ritchieng.com/ammi_facebook_google_2018/ammi_students_2018.jpg)
-
 Helped to teach these students from The African Masters of Machine Intelligence (AMMI) by The African Institute for Mathematical Sciences (AIMS) with Alfredo Canziani.
+
+<!-- more -->
 
 A unique pedagogy is required for deep learning beginning with intuition, culminating in just enough math, and ending with programming. This approached has worked when I delivered my deep learning course to over 3000 students over 120 countries. And I continue to champion this pedagogy. I’m very pleased that I share the same passion with Alfedo when he delivered his interactive lectures.
 
@@ -26,6 +24,8 @@ Speaking about community, I got to contribute to the deep learning community wit
 To the future of AI in and beyond Africa. Looking forward to help Moustapha in any way I can to nurture AI talent 🙂
 
 I'm being a fanboy here, but Yann Lecun liked my post on [Facebook](https://www.facebook.com/ritchiengz/posts/2267714723302661)!
+
+![](https://res.cloudinary.com/ritchieng/image/upload/v1542700156/ritchieng.com/ammi_facebook_google_2018/ammi_students_2018.jpg)
 
 Cheers,
 <br />Ritchie

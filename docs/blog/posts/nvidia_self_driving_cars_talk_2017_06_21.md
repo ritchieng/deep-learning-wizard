@@ -9,9 +9,9 @@ categories:
 
 # NVIDIA Self-Driving Cars and Healthcare Workshop
 
-## Hosted by Ritchie Ng
-
 A talk by Marek Bardoński, Senior Deep Learning Research Engineer, NVIDIA Switzerland. This is hosted by Ritchie Ng, Deep Learning Researcher, NExT Search Centre, NUS.
+
+<!-- more -->
 
 We will be touching on cutting-edge applications of deep learning for self-driving cars and medical diagnostics. Also there will be a tutorial followed by networking with deep learning researchers from NUS and NVIDIA.
 

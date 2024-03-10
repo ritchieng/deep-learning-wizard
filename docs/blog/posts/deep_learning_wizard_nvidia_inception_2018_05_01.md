@@ -9,9 +9,9 @@ categories:
 
 # We Are an NVIDIA Inception Partner
 
-## We did it!
-
 After almost a year, we are an NVIDIA Inception Partner now!
+
+<!-- more -->
 
 !!! tip ""NVIDIA Inception Partner"
     <center><img src="https://res.cloudinary.com/ritchieng/image/upload/v1532596192/deeplearningwizard.com/nvidia_inception.png" style="width:200px"/></center>
