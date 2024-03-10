@@ -2,4 +2,4 @@
 
 eval "$(conda shell.bash hook)"
 
-mkdocs serve --livereload --dev-addr localhost:8007
+mkdocs serve --livereload --dev-addr localhost:8013
