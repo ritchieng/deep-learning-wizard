@@ -206,10 +206,6 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.tilde
 
-# Equations
-extra_javascript:
-  - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
-
 # Social
 extra:
   analytics:
@@ -232,6 +228,12 @@ extra:
 plugins:
   - search:
       separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+
+# For mathjax rendering
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 # Source to repository
 repo_name: ritchieng/deep-learning-wizard
