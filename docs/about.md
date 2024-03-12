@@ -4,7 +4,7 @@ We deploy a top-down approach that enables you to grasp deep learning and deep r
 
 To this date, we have taught thousands of students across more than 120+ countries from students in high school to postgraduates and professionals in leading MNCs and research institutions around the world.
 
-## Experienced Research and Applied Core Team
+## Core Team
 
 !!! abstract "Ritchie Ng"
 
@@ -20,17 +20,7 @@ To this date, we have taught thousands of students across more than 120+ countri
 
     **Guides**: deeplearningwizard.com
 
-!!! abstract "Jie Fu"
-
-    Jie Fu is a happy and funny machine learning researcher (principal investigator), at Hong Kong University of Science and Technology (HKUST), with his human-friendly big AI dream.
-
-    He worked as a postdoc with Yoshua Bengio at University of Montreal, Quebec AI Institute (Mila), funded by Microsoft Research Montreal. He was an IVADO postdoc fellow working with Chris Pal at Polytechnique Montreal, Quebec AI Institute (Mila). He obtained his PhD from National University of Singapore under the supervision of Tat-Seng Chua. He received ICLR 2021 Outstanding Paper Award.
-
-    He is currently working towards system-2 deep learning and its adaption to various real-world tasks, including AI for Science (drug discovery in particular) and AI for Social Good that can benefit all of society. He is also broadly interested in general deep learning, reinforcement learning, and language processing.
-
-    Check out my profile link at [bigaidream.github.io](http://bigaidream.github.io/)
-    
-##  Supporters
+## Supporters
 
 !!! abstract "Alfredo Canziani"
 
@@ -48,6 +38,16 @@ To this date, we have taught thousands of students across more than 120+ countri
 
     Since his first summer of university coursework, Marek has participated in four internships at NVIDIA HQ and Microsoft HQ. He also spent one year in NVIDIA Switzerland optimizing Deep Learning inference for self-driving cars and, by implementing very efficient Deep Learning algorithms in the GPU assembly language, improving the speed of Tesla’s cars self-driving engine inference. He's currently the Head of AI at [Sigmoidal](https://sigmoidal.io/).
 
+!!! abstract "Jie Fu"
+
+    Jie Fu is a happy and funny machine learning researcher (principal investigator), at Hong Kong University of Science and Technology (HKUST), with his human-friendly big AI dream.
+
+    He worked as a postdoc with Yoshua Bengio at University of Montreal, Quebec AI Institute (Mila), funded by Microsoft Research Montreal. He was an IVADO postdoc fellow working with Chris Pal at Polytechnique Montreal, Quebec AI Institute (Mila). He obtained his PhD from National University of Singapore under the supervision of Tat-Seng Chua. He received ICLR 2021 Outstanding Paper Award.
+
+    He is currently working towards system-2 deep learning and its adaption to various real-world tasks, including AI for Science (drug discovery in particular) and AI for Social Good that can benefit all of society. He is also broadly interested in general deep learning, reinforcement learning, and language processing.
+
+    Check out his profile link at [bigaidream.github.io](http://bigaidream.github.io/)
+    
 !!! tip ""NVIDIA Inception Partner"
     <center><img src="https://res.cloudinary.com/ritchieng/image/upload/v1532596192/deeplearningwizard.com/nvidia_inception.png" style="width:200px"/></center>
     

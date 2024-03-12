@@ -136,7 +136,9 @@ We maintain a repository of Apptainer recipes in this [repository](https://githu
 
 GPU containers can be found in `./containers/gpu` when you clone the above repository.
 
-#### Ollama (Mistral 7b) Workloads
+#### Ollama Workloads
+
+##### Ollama (Mistral 7b) Workloads
 
 - Go into container folder: `cd ./containers/gpu/ollama`
   - Run 1st session `apptainer shell --nv --nvccli apptainer_container_0.1.sif`
@@ -149,7 +151,7 @@ GPU containers can be found in `./containers/gpu` when you clone the above repos
 
     This runs a Mistral model as an example. You can run any other models by swapping out `mistral` reference above to any models on [Ollama's library](https://ollama.com/library).
 
-#### Ollama (Gemma) Workloads
+##### Ollama (Gemma:2b Gemma:7b) Workloads
 
 - Go into container folder: `cd ./containers/gpu/ollama`
   - Run 1st session `apptainer shell --nv --nvccli apptainer_container_0.1.sif`
@@ -158,9 +160,14 @@ GPU containers can be found in `./containers/gpu` when you clone the above repos
     - `ollama run gemma:7b` or `ollama run gemma:2b`
     - You can now communicate with gemma model in your bash, or any other model you can pull on [ollama website](https://ollama.com/)
 
-!!! info  "Model Choice"
+##### Ollama (Llava 7b-v.16) Workloads
 
-    This runs a Gemma 2b or 7b model as an example. You can run any other models by swapping out `gemma` reference above to any models on [Ollama's library](https://ollama.com/library).
+- Go into container folder: `cd ./containers/gpu/ollama`
+  - Run 1st session `apptainer shell --nv --nvccli apptainer_container_0.1.sif`
+    - `ollama serve`
+  - Run 2nd session (another window) `apptainer shell --nv --nvccli apptainer.1.sif`
+    - `ollama run llava:7b-v1.6`
+    - You can now communicate with multi-modal llava model in your bash, or any other model you can pull on [ollama website](https://ollama.com/)
 
 #### LLamaindex workloads
 
