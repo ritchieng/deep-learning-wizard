@@ -5,6 +5,7 @@ description: >
   After almost a year, we are an NVIDIA Inception Partner now!
 categories:
   - Awards
+comments: true
 ---
 
 # We Are an NVIDIA Inception Partner

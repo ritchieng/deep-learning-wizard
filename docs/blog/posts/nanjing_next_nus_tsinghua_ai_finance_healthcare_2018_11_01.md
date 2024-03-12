@@ -5,6 +5,7 @@ description: >
   Presented at NExT++'s 3rd Workshop in Nanjing, showcasing AI in Finance use cases.
 categories:
   - Workshops
+comments: true
 ---
 
 # NExT++ AI in Finance and Healthcare Workshop 2018

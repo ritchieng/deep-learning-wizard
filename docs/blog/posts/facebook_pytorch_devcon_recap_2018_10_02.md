@@ -5,6 +5,7 @@ description: >
   Finally got to meet with Soumith Chintala, Alfredo Canziani and Marek Bardoński and found Andrej Karpathy!
 categories:
   - Miscellaneous
+comments: true
 ---
 
 # Recap of Facebook PyTorch Devcon

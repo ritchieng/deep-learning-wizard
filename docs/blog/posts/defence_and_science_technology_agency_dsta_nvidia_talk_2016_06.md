@@ -5,6 +5,7 @@ description: >
   I gave an introductory talk on deep learning to more than 1000 students at BrainHack held by DSTA in June 2019.
 categories:
   - Workshops
+comments: true
 ---
 
 # Deep Learning Demystified, Defence and Science Technology Agency (DSTA)

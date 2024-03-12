@@ -5,6 +5,7 @@ description: >
   We visited PyTorch first Developer Conference thanks to Soumith Chintala.
 categories:
   - Miscellaneous
+comments: true
 ---
 
 # Facebook PyTorch Developer Conference

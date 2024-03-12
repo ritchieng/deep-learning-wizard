@@ -5,6 +5,7 @@ description: >
   Ritchie Ng named Singapore's IT Youth Leader of the Year 2019.
 categories:
   - Awards
+comments: true
 ---
 
 # IT Youth Leader of the Year 2019 Award

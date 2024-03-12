@@ -5,6 +5,7 @@ description: >
   Presented at NExT++'s 3rd Workshop in Nanjing, showcasing AI in Finance use cases.
 categories:
   - Workshops
+comments: true
 ---
 
 # NVIDIA Workshop at NUS-MIT-NUHS Datathon 
