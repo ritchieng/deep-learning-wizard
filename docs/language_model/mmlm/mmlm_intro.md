@@ -1,6 +1,6 @@
 # Multi Modal Language Models Introduction
 
-In this tutorial, we will be covering LLMs leveraging on Ollama using Llava:13b-v1.6 open-source model.
+In this tutorial, we will be covering Multi-Modal Language Models (MMLMs) leveraging on Ollama using Llava:13b-v1.6 open-source model.
 
 ## Environment Setup
 
