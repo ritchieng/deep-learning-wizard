@@ -4,7 +4,7 @@ We deploy a top-down approach that enables you to grasp deep learning and deep r
 
 To this date, we have taught thousands of students across more than 120+ countries from students in high school to postgraduates and professionals in leading MNCs and research institutions around the world.
 
-## Core Team
+## Core Contributor
 
 !!! abstract "Ritchie Ng"
 
@@ -20,7 +20,7 @@ To this date, we have taught thousands of students across more than 120+ countri
 
     **Guides**: deeplearningwizard.com
 
-## Supporters
+## Individual Supporters
 
 !!! abstract "Alfredo Canziani"
 
@@ -47,7 +47,9 @@ To this date, we have taught thousands of students across more than 120+ countri
     He is currently working towards system-2 deep learning and its adaption to various real-world tasks, including AI for Science (drug discovery in particular) and AI for Social Good that can benefit all of society. He is also broadly interested in general deep learning, reinforcement learning, and language processing.
 
     Check out his profile link at [bigaidream.github.io](http://bigaidream.github.io/)
-    
+
+## Corporate Supporters
+
 !!! tip ""NVIDIA Inception Partner"
     <center><img src="https://res.cloudinary.com/ritchieng/image/upload/v1532596192/deeplearningwizard.com/nvidia_inception.png" style="width:200px"/></center>
     
