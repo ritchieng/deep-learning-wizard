@@ -20,7 +20,7 @@ We will be using images to show the power of Multi-Modal Language Models (MMLMs)
 
 ### Generic Function to Save Images
 
-Thhe following function is a simple function to download any image from a given link. In this tutorial we will only be using images from [Unsplash](https://unsplash.com/) which is a fantastic website of royalty-free images!
+The following function is a simple function to download any image from a given link. In this tutorial we will only be using images from [Unsplash](https://unsplash.com/) which is a fantastic website of royalty-free images!
 
 
 ```python
@@ -147,6 +147,7 @@ It may be me, but I find it really fascinating how from the very long string abo
 ## Run Multi Modal Language Model (MMLM)
 
 In this section, we will explore multiple use cases of MMLM like:
+
 - Object Detection
 - Image Description
 - Text Recognition
