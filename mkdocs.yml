@@ -59,6 +59,8 @@ nav:
         - HPC Containers with Apptainer: language_model/containers/hpc_containers_apptainer.md
       - LLMs:
         - LLMs Introduction and Hyperparameter Tuning: language_model/llm/llm_intro_hyperparameter_tuning.md
+      - MMLMs:
+        - MMLMs Introduction: language_model/mmlm/mmlm_intro.md
       # - RAG:
     - Machine Learning:
       - Introduction: machine_learning/intro.md
