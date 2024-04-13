@@ -21,9 +21,11 @@ To run LLMs easily from laptops and desktops to the cloud, we will be introducin
 The following guide assumes a Linux distribution. We have also rigorously tested this on Windows WSL2 Ubuntu which works perfectly, so if you are on a Windows machine, this guide would work too. We are pleasantly surprised till this day, the sheer investment and improvement Windows made to bring WSL2 to a state where it is almost as good as a bare metal Linux distribution installation.
 
 ### Install Apptainer
+
 All you need is to install [Apptainer](https://apptainer.org/docs/admin/latest/installation.html) to be able to leverage on this repository to work in containers with multiple environments (CPU/GPU) with any packages and OS independent of your host (local) machine.
 
 ### Install NVIDIA libraries
+
 I advise you to use the [Lambda Stack](https://lambdalabs.com/lambda-stack-deep-learning-software) to manage your drivers effectively without errors. It's a single bash script that allows you to install and upgrade your NVIDIA drivers.
 
 Check CUDA toolkit installation via `nvcc -V`
@@ -54,6 +56,7 @@ sudo singularity config global --get "nvidia-container-cli path"
 This is recommended to build apptainer containers as it's transparent with the greatest reproducibility.
 
 #### 1. Build container (`.sif`)
+
 To build and test apptainer image container, simply run the following command in any of the folders:
 
 ```
@@ -61,6 +64,7 @@ bash build_sif.sh
 ```
 
 #### 2. Run container
+
 For CPU
 ```
 apptainer shell apptainer_container_$VER_sandbox.sif
@@ -74,31 +78,37 @@ apptainer shell --nv --nvccli apptainer_container_$VER_sandbox.sif
 A quick way to test if you're able have everything good to run is to run `nvidia-smi` when you shell into the container. 
 
 ### Notes on GPU Availability
+
 If you do not have a GPU on your host or local machine, the image will still be built and can be shared and used by machines with GPUs! The test for CUDA will fail on your local machine without GPU which will just spit out an error that you do not have a driver. There's nothing to worry about that.
 
 ### Option B: Blackbox
+
 This is not recommended to build production apptainer containers but it is good for experimentation to determine the right configuration to put into your definition file for `Option A`.
 
 Note, replace `$VER` with whatever version is in the specific folder.
 
 #### 1. Build container (`.sif`)
+
 To build and test apptainer image container, simply run the following command in any of the folders:
 ```
 bash build_sif.sh
 ```
 
 #### 2. Convert container to mutable sandbox
+
 ```
 apptainer build --sandbox apptainer_container_$VER_sandbox apptainer_container_$VER.sif
 ``` 
 
 #### 3. Shell into writable sandbox
+
 You can install new packages and make persisting changes to the container in this step for experimentation.
 ```
 apptainer shell --writable apptainer_container_$VER_sandbox
 ```
 
 #### 4. Convert container to immutable image (`.sif`)
+
 ```
 apptainer build --sandbox apptainer_container_$VER_sandbox.sif apptainer_container_$VER_img
 ``` 
@@ -138,7 +148,7 @@ GPU containers can be found in `./containers/gpu` when you clone the above repos
 
 #### Ollama Workloads
 
-##### Ollama (Mistral 7b) Workloads
+##### Ollama General Workloads (Example: mistral)
 
 - Go into container folder: `cd ./containers/gpu/ollama`
   - Run 1st session `apptainer shell --nv --nvccli apptainer_container_0.1.sif`
@@ -151,7 +161,7 @@ GPU containers can be found in `./containers/gpu` when you clone the above repos
 
     This runs a Mistral model as an example. You can run any other models by swapping out `mistral` reference above to any models on [Ollama's library](https://ollama.com/library).
 
-##### Ollama (Gemma:2b Gemma:7b) Workloads
+##### Ollama General Workloads (Example: gemma)
 
 - Go into container folder: `cd ./containers/gpu/ollama`
   - Run 1st session `apptainer shell --nv --nvccli apptainer_container_0.1.sif`
@@ -160,7 +170,7 @@ GPU containers can be found in `./containers/gpu` when you clone the above repos
     - `ollama run gemma:7b` or `ollama run gemma:2b`
     - You can now communicate with gemma model in your bash, or any other model you can pull on [ollama website](https://ollama.com/)
 
-##### Ollama (Llava 7b-v.16) Workloads
+##### Ollama Multi-modal Workloads (Example: llava:7b-v1.6)
 
 - Go into container folder: `cd ./containers/gpu/ollama`
   - Run 1st session `apptainer shell --nv --nvccli apptainer_container_0.1.sif`
@@ -168,6 +178,15 @@ GPU containers can be found in `./containers/gpu` when you clone the above repos
   - Run 2nd session (another window) `apptainer shell --nv --nvccli apptainer.1.sif`
     - `ollama run llava:7b-v1.6`
     - You can now communicate with multi-modal llava model in your bash, or any other model you can pull on [ollama website](https://ollama.com/)
+
+#### Ollama Embedding Workloads (Example: mxbai-embed-large)
+
+- Go into container folder: `cd ./containers/gpu/ollama`
+  - Run 1st session `apptainer shell apptainer_container_0.1.sif`
+    - `ollama serve`
+  - Run 2nd session (another window) `apptainer shell apptainer.1.sif`
+    - `ollama pull mxbai-embed-large`
+    - You can now communicate with the embedding model.
 
 #### LLamaindex workloads
 
