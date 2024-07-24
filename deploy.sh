@@ -9,17 +9,17 @@ wait
 
 echo Cleaning files for deployment...
 cd dlw-deploy
-sudo find . -name "*.simg" -exec rm {} \;
+find . -name "*.simg" -exec rm {} \;
 echo Cleaned *.simg
-sudo find . -name "*.pt" -exec rm {} \;
+find . -name "*.pt" -exec rm {} \;
 echo Cleaned *.pt
-sudo find . -name "*-ubyte" -exec rm {} \;
+find . -name "*-ubyte" -exec rm {} \;
 echo Cleaned *.-ubyte
-sudo find . -name "*.ipynb" -exec rm {} \;
-sudo find . -name "*.ipynb_checkpoints" -exec rmdir {} \;
+find . -name "*.ipynb" -exec rm {} \;
+find . -name "*.ipynb_checkpoints" -exec rmdir {} \;
 echo Cleaned *.ipynb
-sudo rm -rf ./docs/programming/electron/app-win32-x64/
-sudo rm -rf ./docs/programming/electron/app/node_modules/
+rm -rf ./docs/programming/electron/app-win32-x64/
+rm -rf ./docs/programming/electron/app/node_modules/
 echo Cleaned electron
 wait
 
@@ -28,12 +28,12 @@ mkdocs gh-deploy --force
 
 echo Removing files...
 cd ..
-sudo rm -rf dlw-deploy
+rm -rf dlw-deploy
 
 echo Reverting to original directory...
 cd deep-learning-wizard
 
 echo Emptying thrash
-trash-empty
+trash-empty -f
 
 echo Deployed site!
