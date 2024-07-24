@@ -14,6 +14,3 @@ These are just some of the hundreds of reviews we've had and will be updated whe
 
 !!! quote "Ian Lipton"
     This was a good overview of the different types of neural networks. I like that the instructor started with linear and logistic regression before diving into the neural networks. That background helped make sense of the neural network functionality. I like that this gave enough detail on the mathematics so that you can understand the basic functioning of the models but didn't overwhelm you with the nitty gritty math.
-    
-    
-And check out hundreds of more reviews for our [video course](https://www.udemy.com/practical-deep-learning-with-pytorch/?couponCode=DEEPWIZARD)! 
