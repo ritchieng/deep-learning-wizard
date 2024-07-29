@@ -8,11 +8,17 @@ In this tutorial, we will be covering Multi-Modal Language Models (MMLMs) levera
 
 ## Environment Setup
 
-Follow our [tutorial on Apptainer](https://www.deeplearningwizard.com/language_model/containers/hpc_containers_apptainer/) to get started. Once you have followed the tutorial till the [Ollama section](https://www.deeplearningwizard.com/language_model/containers/hpc_containers_apptainer/#ollama-gemma-workloads) where you successfully ran `ollama serve` and `ollama run llava:13b-v1.6`, you can run the `apptainer shell --nv --nvccli apptainer_container_0.1.sif` command followed by `jupyter lab` to access and run this notebook.
+!!! tip "Options"
 
-!!! info  "Directory Guide"
+    === "**Easy Option | Install Ollama Directly**"
 
-    When you shell into the Apptainer `.sif` container, you will need to navigate the directory as you normally would into the Deep Learning Wizard repository that you cloned, requiring you to `cd ..` to go back a few directories and finally reaching the right folder. 
+        If you do not want to run apptainer, feel free to just install the [Ollama](https://ollama.com) executable, and you can get up and running with all the Ollama commands like `ollama serve` and `ollama run mistral` for example.
+
+    === "**Hard/Scalable Option | Using Apptainer**"
+
+        Follow our [tutorial on Apptainer](https://www.deeplearningwizard.com/language_model/containers/hpc_containers_apptainer/) to get started. Once you have followed the tutorial till the [Ollama section](https://www.deeplearningwizard.com/language_model/containers/hpc_containers_apptainer/#ollama-gemma-workloads) where you successfully ran `ollama serve` and `ollama run gemma:7b`, you can run the `apptainer shell --nv --nvccli apptainer_container_0.1.sif` command followed by `jupyter lab` to access and run this notebook.
+        
+        When you shell into the Apptainer `.sif` container, you will need to navigate the directory as you normally would into the Deep Learning Wizard repository that you cloned, requiring you to `cd ..` to go back a few directories and finally reaching the right folder. 
 
 ## Images
 
