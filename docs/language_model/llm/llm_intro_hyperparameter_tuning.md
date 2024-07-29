@@ -4,7 +4,7 @@ comments: true
 
 # LLM Introduction & Hyperparameter Tuning
 
-In this tutorial, we will be covering LLMs leveraging on Ollama using Gemma:7b (Google) open-source model.
+In this tutorial, we will be covering LLMs leveraging on Ollama using `ollama run gemma:7b` open-source model.
 
 ## Environment Setup
 
@@ -12,7 +12,7 @@ In this tutorial, we will be covering LLMs leveraging on Ollama using Gemma:7b (
 
     === "**Easy Option | Install Ollama Directly**"
 
-        If you do not want to run apptainer, feel free to just install the [Ollama](https://ollama.com) executable, and you can get up and running with all the Ollama commands like `ollama serve` and `ollama run mistral` for example.
+        If you do not want to run apptainer, feel free to just install the [Ollama](https://ollama.com) executable, and you can get up and running with all the Ollama commands like `ollama serve` and `ollama run gemma:7b` for example.
 
     === "**Hard/Scalable Option | Using Apptainer**"
 
