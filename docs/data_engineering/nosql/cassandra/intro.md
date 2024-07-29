@@ -1,6 +1,7 @@
 # Apache Cassandra
 
-=== "Tools You Will Learn To Use"
+!!! tip "Packages and Languages you will Learn to Use"
+
     - Apache Cassandra
 
 ## Reasons for Using Apache Cassandra

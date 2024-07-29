@@ -2,7 +2,8 @@
 
 We'll be covering C++, Python, Bash and more for end-to-end AI deployments.
 
-=== "Packages and Languages you will learn to use"
+!!! tip "Packages and Languages you will Learn to Use"
+
     - C++
     - Python
     - Bash

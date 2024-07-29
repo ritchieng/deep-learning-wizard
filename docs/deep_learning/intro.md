@@ -2,7 +2,8 @@
 
 We'll be covering both CPU and GPU implementations of deep learning and deep reinforcement learning algorithms
 
-=== "Packages and Languages you will Learn to Use"
+!!! tip "Packages and Languages you will Learn to Use"
+
     - Python
     - PyTorch
     - NumPy
