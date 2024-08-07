@@ -196,7 +196,7 @@ def cosine_similarity(vector1, vector2):
 
 Above, we created a cosine similarity function using numpy, and this can be easily replicated in PyTorch, Jax, and any other libraries that optimise vector computations.
 
-#### Cosine Similarity: Sentence 1/2
+#### Cosine Similarity: Sentence 1 vs Sentence 3
 
 Given the sentences `Apple, oranges, and grapes are good fruits.` and `Eating a good balance of meat, vegetables, and fruits everyday is good for you.` we should expect some level of similarity, and in turn, a higher score. Cosine similarity returns a floating number that ranges between 0 to 1, the closer to 1 indicates higher similarity. And we can see it's indeed high at 0.70.
 
@@ -213,7 +213,7 @@ cosine_similarity(np.array(embeds_1['embedding']), np.array(embeds_2['embedding'
 
 
 
-#### Cosine Similarity: Sentence 1/2
+#### Cosine Similarity: Sentence 1 vs Sentence 3
 
 Given the sentences `Apple, oranges, and grapes are good fruits.` and `How to be a good data engineer?` we should expect a low level of similarity, and in turn, a lower score. Indeed, in this case we can see how it is 0.30 which is substantially lower than 0.70 when we ran cosine similarity between sentence 1 and sentence 2.
 

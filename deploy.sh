@@ -4,7 +4,7 @@ eval "$(conda shell.bash hook)"
 
 echo Creating deployment folder...
 cd ..
-sudo -u $(whoami) cp -rf deep-learning-wizard dlw-deploy
+cp -rf deep-learning-wizard dlw-deploy
 wait
 
 echo Cleaning files for deployment...
