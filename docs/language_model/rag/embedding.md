@@ -2,7 +2,7 @@
 comments: true
 ---
 
-# Retrieval Augmented Generation (RAG) | Vector Search & Biencoders
+# Embeddings
 
 In this tutorial, we will be covering embeddings leveraging on Ollama using `ollama pull mxbai-embed-large`.
 
