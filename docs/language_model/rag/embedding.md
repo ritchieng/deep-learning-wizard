@@ -43,18 +43,21 @@ In this section, we will cover the basics of embeddings which in simple terms, g
 import ollama
 ```
 
-Here, we use a simple sentence "An apple a day is good for you" to illustrate embeddings.
+Here, we use a simple sentence "An apple a day is good for you" to illustrate embeddings. In the following code we convert a sample sentence into sentence embeddings.
 
 
 ```python
+# Create a sample sentence
 text = 'An Apple a day is good for you!'
 
+# Pass the sentence to our embedding model 
 embeds = ollama.embeddings(model='mxbai-embed-large', 
                            prompt=f'{text}')
 ```
 
 
 ```python
+# The object returned is a dictionary
 type(embeds)
 ```
 
@@ -67,6 +70,7 @@ type(embeds)
 
 
 ```python
+# With the key 'embedding'
 embeds.keys()
 ```
 
@@ -79,7 +83,7 @@ embeds.keys()
 
 
 ```python
-# Access item via key
+# We can access the value through the key 'embedding' which returns a list
 type(embeds['embedding'])
 ```
 
@@ -132,6 +136,7 @@ If you look at the first 10 of our embedding of the sentence, you can see it's a
 ## Embedding Comparisons
 
 In this section, we:
+
 1. create 3 sentence,
 2. leverage on the `mxbai-embed-large` embedding model, we convert these 3 sentences individually into sentence embeddings essentially converting 3 bunch of texts into 3 vectors of numbers.
 3. run cosine similarity amongst the sentence embeddings to measure the similarity amongst the sentences. 
@@ -166,6 +171,7 @@ $$
 $$
 
 Where:
+
 - $\mathbf{A} \cdot \mathbf{B}$ denotes the dot product of vectors $\mathbf{A}$ and $\mathbf{B}$.
 - $\|\mathbf{A}\|$ denotes the Euclidean norm (magnitude) of vector $\mathbf{A}$.
 - $\|\mathbf{B}\|$ denotes the Euclidean norm (magnitude) of vector $\mathbf{B}$.
