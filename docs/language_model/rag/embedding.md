@@ -7,6 +7,7 @@ This is a critical prerequisite as it is the foundation of the "R" of Retrieval 
 After this tutorial, we can move on to the "AG" of RAG which focuses on leveraging on LLMs to take our top retrieved results and answer questions.
 
 In totality, we will cover a range of basic to advanced RAG architectures spanning across:
+
 1. semantic similarity through vector search using biencoders,
 2. lexical similarity through keyword search,
 3. ranking most relevant results through semantic reranking using cross-encoders,
