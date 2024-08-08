@@ -53,6 +53,8 @@ Take note this is an early work in progress, do be patient as we gradually uploa
     - [LLM Introduction & Hyperparameter Tuning](https://www.deeplearningwizard.com/language_model/llm/llm_intro_hyperparameter_tuning/)
   - Multi-Modal Language Models
     - [MMLM Introduction](https://www.deeplearningwizard.com/language_model/mmlm/mmlm_intro/)
+  - Retrieval Augemented Generation (RAG)
+    - [Embeddings Introduction](https://www.deeplearningwizard.com/language_model/rag/embedding/)
 
 - Machine Learning Tutorials (Libraries: Python, cuDF RAPIDS, cuML RAPIDS, pandas, numpy, scikit-learn and more)
   - RAPIDS cuDF
