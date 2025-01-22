@@ -9,7 +9,7 @@ comments: true
 - Hence, we would like to maximize the use of numba in our code where possible where there are loops/numpy
 
 ## Numba CPU: nopython
-- For a basic numba application, we can cecorate python function thus allowing it to run without python interpreter
+- For a basic numba application, we can decorate python function thus allowing it to run without python interpreter
 - Essentially, it will compile the function with specific arguments once into machine code, then uses the cache subsequently
 
 ### With Numba: no python
