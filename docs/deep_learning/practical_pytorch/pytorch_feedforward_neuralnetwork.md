@@ -90,7 +90,7 @@ LogisticRegressionModel(
     - A scaled sigmoid function
 - Input number $\rightarrow$ [-1, 1]
 - Cons: 
-    1. Activation saturates at 0 or 1 with **gradients $\approx$ 0**
+    1. Activation saturates at -1 or 1 with **gradients $\approx$ 0**
         - No signal to update weights $\rightarrow$ **cannot learn**
         - **Solution**: Have to carefully initialize weights to prevent this
 
