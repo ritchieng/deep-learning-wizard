@@ -6,7 +6,7 @@
     "start": "electron ."
   },
   "devDependencies": {
-    "electron": "^22.0.0"
+    "electron": "^35.7.5"
   },
   "dependencies": {
     "python-shell": "^1.0.8"
